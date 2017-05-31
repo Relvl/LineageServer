@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<!-- Custom zone for Q636 -->
+	<zone id="100000" type="ScriptZone" shape="Cuboid" minZ="-10735" maxZ="-10720"><!-- Pagans mark -->
+		<node X="-16100" Y="-36800" />
+		<node X="-16600" Y="-37100" />
+	</zone>
+	<!-- Custom zones for Q114 -->
+	<zone id="100001" type="ScriptZone" shape="Cuboid" minZ="-3300" maxZ="-3400"><!-- archaic_laboratory_gate1 -->
+		<node X="89953" Y="-106250" />
+		<node X="90242" Y="-106143" />
+	</zone>
+	<zone id="100002" type="ScriptZone" shape="NPoly" minZ="-3300" maxZ="-3400"><!-- archaic_laboratory_gate2 -->
+		<node X="91491" Y="-108277" />
+		<node X="91409" Y="-108192" />
+		<node X="91623" Y="-107981" />
+		<node X="91703" Y="-108064" />
+	</zone>
+	<zone id="100003" type="ScriptZone" shape="NPoly" minZ="-3300" maxZ="-3400"><!-- archaic_laboratory_gate3 -->
+		<node X="88468" Y="-108063" />
+		<node X="88549" Y="-107983" />
+		<node X="88759" Y="-108195" />
+		<node X="88677" Y="-108275" />
+	</zone>
+</list>

@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list>
+	<clan lvl='5'>
+		<skill id="370" lvl="1" repCost="500" itemId="8166"/> <!-- Clan Vitality -->
+		<skill id="370" lvl="2" repCost="500" itemId="8166"/> <!-- Clan Vitality -->
+		<skill id="370" lvl="3" repCost="500" itemId="8166"/> <!-- Clan Vitality -->
+		<skill id="373" lvl="1" repCost="500" itemId="8166"/> <!-- Clan Lifeblood -->
+		<skill id="373" lvl="2" repCost="500" itemId="8166"/> <!-- Clan Lifeblood -->
+		<skill id="373" lvl="3" repCost="500" itemId="8166"/> <!-- Clan Lifeblood -->
+		<skill id="379" lvl="1" repCost="500" itemId="8163"/> <!-- Clan Magic Protection -->
+		<skill id="379" lvl="2" repCost="500" itemId="8163"/> <!-- Clan Magic Protection -->
+		<skill id="379" lvl="3" repCost="500" itemId="8163"/> <!-- Clan Magic Protection -->
+		<skill id="391" lvl="1" repCost="0" itemId="8176"/> <!-- Clan Imperium -->
+	</clan>
+	<clan lvl='6'>
+		<skill id="371" lvl="1" repCost="800" itemId="8169"/> <!-- Clan Spirituality -->
+		<skill id="371" lvl="2" repCost="800" itemId="8169"/> <!-- Clan Spirituality -->
+		<skill id="371" lvl="3" repCost="800" itemId="8169"/> <!-- Clan Spirituality -->
+		<skill id="374" lvl="1" repCost="900" itemId="8169"/> <!-- Clan Morale -->
+		<skill id="374" lvl="2" repCost="900" itemId="8169"/> <!-- Clan Morale -->
+		<skill id="374" lvl="3" repCost="900" itemId="8169"/> <!-- Clan Morale -->
+		<skill id="376" lvl="1" repCost="1000" itemId="8163"/> <!-- Clan Might -->
+		<skill id="376" lvl="2" repCost="1000" itemId="8163"/> <!-- Clan Might -->
+		<skill id="376" lvl="3" repCost="1000" itemId="8163"/> <!-- Clan Might -->
+		<skill id="377" lvl="1" repCost="1000" itemId="8166"/> <!-- Clan Aegis -->
+		<skill id="377" lvl="2" repCost="1000" itemId="8166"/> <!-- Clan Aegis -->
+		<skill id="377" lvl="3" repCost="1000" itemId="8166"/> <!-- Clan Aegis -->
+		<skill id="383" lvl="1" repCost="800" itemId="8163"/> <!-- Clan Shield Boost -->
+		<skill id="383" lvl="2" repCost="800" itemId="8163"/> <!-- Clan Shield Boost -->
+		<skill id="383" lvl="3" repCost="800" itemId="8163"/> <!-- Clan Shield Boost -->
+	</clan>
+	<clan lvl='7'>
+		<skill id="380" lvl="1" repCost="1900" itemId="8160"/> <!-- Clan Guidance -->
+		<skill id="380" lvl="2" repCost="1900" itemId="8160"/> <!-- Clan Guidance -->
+		<skill id="380" lvl="3" repCost="1900" itemId="8160"/> <!-- Clan Guidance -->
+		<skill id="382" lvl="1" repCost="800" itemId="8160"/> <!-- Clan Withstand-Attack -->
+		<skill id="382" lvl="2" repCost="800" itemId="8160"/> <!-- Clan Withstand-Attack -->
+		<skill id="382" lvl="3" repCost="800" itemId="8160"/> <!-- Clan Withstand-Attack -->
+		<skill id="384" lvl="1" repCost="1800" itemId="8176"/> <!-- Clan Cyclonic Resistance -->
+		<skill id="384" lvl="2" repCost="1800" itemId="8176"/> <!-- Clan Cyclonic Resistance -->
+		<skill id="384" lvl="3" repCost="1800" itemId="8176"/> <!-- Clan Cyclonic Resistance -->
+		<skill id="385" lvl="1" repCost="1800" itemId="8176"/> <!-- Clan Magmatic Resistance -->
+		<skill id="385" lvl="2" repCost="1800" itemId="8176"/> <!-- Clan Magmatic Resistance -->
+		<skill id="385" lvl="3" repCost="1800" itemId="8176"/> <!-- Clan Magmatic Resistance -->
+		<skill id="386" lvl="1" repCost="1000" itemId="8176"/> <!-- Clan Fortitude -->
+		<skill id="386" lvl="2" repCost="1000" itemId="8176"/> <!-- Clan Fortitude -->
+		<skill id="386" lvl="3" repCost="1000" itemId="8176"/> <!-- Clan Fortitude -->
+		<skill id="387" lvl="1" repCost="1800" itemId="8176"/> <!-- Clan Freedom -->
+		<skill id="387" lvl="2" repCost="1800" itemId="8176"/> <!-- Clan Freedom -->
+		<skill id="387" lvl="3" repCost="1800" itemId="8176"/> <!-- Clan Freedom -->
+		<skill id="388" lvl="1" repCost="1800" itemId="8176"/> <!-- Clan Vigilance -->
+		<skill id="388" lvl="2" repCost="1800" itemId="8176"/> <!-- Clan Vigilance -->
+		<skill id="388" lvl="3" repCost="1800" itemId="8176"/> <!-- Clan Vigilance -->
+		<skill id="390" lvl="1" repCost="2200" itemId="8175"/> <!-- Clan Luck -->
+		<skill id="390" lvl="2" repCost="2200" itemId="8175"/> <!-- Clan Luck -->
+		<skill id="390" lvl="3" repCost="2200" itemId="8175"/> <!-- Clan Luck -->
+	</clan>
+	<clan lvl='8'>
+		<skill id="372" lvl="1" repCost="3900" itemId="8172"/> <!-- Clan Essence -->
+		<skill id="372" lvl="2" repCost="3900" itemId="8172"/> <!-- Clan Essence -->
+		<skill id="372" lvl="3" repCost="3900" itemId="8172"/> <!-- Clan Essence -->
+		<skill id="375" lvl="1" repCost="3900" itemId="8172"/> <!-- Clan Clarity -->
+		<skill id="375" lvl="2" repCost="3900" itemId="8172"/> <!-- Clan Clarity -->
+		<skill id="375" lvl="3" repCost="3900" itemId="8172"/> <!-- Clan Clarity -->
+		<skill id="378" lvl="1" repCost="3900" itemId="8172"/> <!-- Clan Empowerment -->
+		<skill id="378" lvl="2" repCost="3900" itemId="8172"/> <!-- Clan Empowerment -->
+		<skill id="378" lvl="3" repCost="3900" itemId="8172"/> <!-- Clan Empowerment -->
+		<skill id="381" lvl="1" repCost="4000" itemId="8160"/> <!-- Clan Agility -->
+		<skill id="381" lvl="2" repCost="4000" itemId="8160"/> <!-- Clan Agility -->
+		<skill id="381" lvl="3" repCost="4000" itemId="8160"/> <!-- Clan Agility -->
+		<skill id="389" lvl="1" repCost="3800" itemId="8175"/> <!-- Clan March -->
+		<skill id="389" lvl="2" repCost="3800" itemId="8175"/> <!-- Clan March -->
+		<skill id="389" lvl="3" repCost="3800" itemId="8175"/> <!-- Clan March -->
+	</clan>
+</list>

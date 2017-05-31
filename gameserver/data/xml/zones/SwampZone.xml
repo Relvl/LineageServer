@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<!-- Swamp Zones -->
+	<!-- Devil Isle Zones -->
+	<!-- Swamp -->
+	<zone type="SwampZone" shape="NPoly" minZ="-3964" maxZ="-3364"><!-- devil_slow_8 -->
+		<!-- stat name="initialDelay" val="1000" / -->
+		<stat name="move_bonus" val="-80" />
+		<node X="55250" Y="210873" />
+		<node X="55762" Y="211217" />
+		<node X="55934" Y="212274" />
+		<node X="55686" Y="212533" />
+		<node X="54639" Y="212740" />
+		<node X="54276" Y="212407" />
+		<node X="54160" Y="211696" />
+		<node X="54332" Y="211108" />
+	</zone>
+	<!-- Sea of Spores (Swamp Zone) -->
+	<zone type="SwampZone" shape="NPoly" minZ="-4468" maxZ="-4118"><!-- spore_boss_swamp_zone -->
+		<node X="43084" Y="15944" />
+		<node X="45140" Y="15816" />
+		<node X="45748" Y="17200" />
+		<node X="44504" Y="18780" />
+		<node X="43284" Y="18952" />
+		<node X="42476" Y="18164" />
+		<node X="42480" Y="16448" />
+	</zone>
+	<!-- Castle Trap Zones -->
+	<zone id="70001" type="SwampZone" shape="NPoly" minZ="-496" maxZ="-296"><!-- aden_slow_1 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="5" />
+		<node X="145548" Y="6670" />
+		<node X="145813" Y="6669" />
+		<node X="145813" Y="6803" />
+		<node X="145548" Y="6804" />
+	</zone>
+	<zone id="70002" type="SwampZone" shape="NPoly" minZ="-496" maxZ="-296"><!-- aden_slow_2 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="5" />
+		<node X="145548" Y="6798" />
+		<node X="145813" Y="6797" />
+		<node X="145813" Y="6931" />
+		<node X="145548" Y="6932" />
+	</zone>
+	<zone id="70003" type="SwampZone" shape="NPoly" minZ="-496" maxZ="-296"><!-- aden_slow_3 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="5" />
+		<node X="145548" Y="6926" />
+		<node X="145813" Y="6925" />
+		<node X="145813" Y="7059" />
+		<node X="145548" Y="7060" />
+	</zone>
+	<zone id="70004" type="SwampZone" shape="NPoly" minZ="-528" maxZ="-328"><!-- aden_slow_4 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="5" />
+		<node X="145548" Y="7054" />
+		<node X="145813" Y="7053" />
+		<node X="145813" Y="7187" />
+		<node X="145548" Y="7188" />
+	</zone>
+	<zone id="70005" type="SwampZone" shape="NPoly" minZ="-528" maxZ="-328"><!-- aden_slow_5 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="5" />
+		<node X="149084" Y="6686" />
+		<node X="149349" Y="6685" />
+		<node X="149349" Y="6819" />
+		<node X="149084" Y="6820" />
+	</zone>
+	<zone id="70006" type="SwampZone" shape="NPoly" minZ="-528" maxZ="-328"><!-- aden_slow_6 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="5" />
+		<node X="149084" Y="6814" />
+		<node X="149349" Y="6813" />
+		<node X="149349" Y="6947" />
+		<node X="149084" Y="6948" />
+	</zone>
+	<zone id="70007" type="SwampZone" shape="NPoly" minZ="-528" maxZ="-328"><!-- aden_slow_7 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="5" />
+		<node X="149084" Y="6942" />
+		<node X="149349" Y="6941" />
+		<node X="149349" Y="7075" />
+		<node X="149084" Y="7076" />
+	</zone>
+	<zone id="70008" type="SwampZone" shape="NPoly" minZ="-560" maxZ="-360"><!-- aden_slow_8 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="5" />
+		<node X="149084" Y="7070" />
+		<node X="149349" Y="7069" />
+		<node X="149349" Y="7203" />
+		<node X="149084" Y="7204" />
+	</zone>
+	<zone id="70009" type="SwampZone" shape="NPoly" minZ="-2627" maxZ="-2427"><!-- gludio_slow_1 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="1" />
+		<node X="-18255" Y="110790" />
+		<node X="-17971" Y="110790" />
+		<node X="-17972" Y="111174" />
+		<node X="-18256" Y="111174" />
+	</zone>
+	<zone id="70010" type="SwampZone" shape="NPoly" minZ="-2595" maxZ="-2395"><!-- gludio_slow_2 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="1" />
+		<node X="-19213" Y="107137" />
+		<node X="-18827" Y="107137" />
+		<node X="-18827" Y="107404" />
+		<node X="-19213" Y="107404" />
+	</zone>
+	<zone id="70011" type="SwampZone" shape="NPoly" minZ="-2821" maxZ="30341"><!-- dion_slow_1 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="2" />
+		<node X="22215" Y="158960" />
+		<node X="21931" Y="158960" />
+		<node X="21932" Y="158576" />
+		<node X="22216" Y="158576" />
+	</zone>
+	<zone id="70012" type="SwampZone" shape="NPoly" minZ="-2789" maxZ="30373"><!-- dion_slow_2 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="2" />
+		<node X="23173" Y="162613" />
+		<node X="22787" Y="162613" />
+		<node X="22787" Y="162346" />
+		<node X="23173" Y="162346" />
+	</zone>
+	<zone id="70013" type="SwampZone" shape="NPoly" minZ="-2694" maxZ="13957"><!-- giran_slow_1 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="3" />
+		<node X="115132" Y="144954" />
+		<node X="115132" Y="145238" />
+		<node X="114748" Y="145237" />
+		<node X="114748" Y="144953" />
+	</zone>
+	<zone id="70014" type="SwampZone" shape="NPoly" minZ="-2662" maxZ="13989"><!-- giran_slow_2 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="3" />
+		<node X="118785" Y="143996" />
+		<node X="118785" Y="144382" />
+		<node X="118518" Y="144382" />
+		<node X="118518" Y="143996" />
+	</zone>
+	<zone id="70015" type="SwampZone" shape="NPoly" minZ="-2421" maxZ="13957"><!-- oren_slow_1 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="4" />
+		<node X="81208" Y="37049" />
+		<node X="81208" Y="37333" />
+		<node X="80824" Y="37332" />
+		<node X="80824" Y="37048" />
+	</zone>
+	<zone id="70016" type="SwampZone" shape="NPoly" minZ="-2389" maxZ="13989"><!-- oren_slow_2 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="4" />
+		<node X="84861" Y="36091" />
+		<node X="84861" Y="36477" />
+		<node X="84594" Y="36477" />
+		<node X="84594" Y="36091" />
+	</zone>
+	<zone id="70017" type="SwampZone" shape="NPoly" minZ="-917" maxZ="30341"><!-- innadrile_slow_1 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="6" />
+		<node X="116166" Y="247739" />
+		<node X="115882" Y="247739" />
+		<node X="115883" Y="247355" />
+		<node X="116167" Y="247355" />
+	</zone>
+	<zone id="70018" type="SwampZone" shape="NPoly" minZ="-885" maxZ="30373"><!-- innadrile_slow_2 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="6" />
+		<node X="117124" Y="251392" />
+		<node X="116738" Y="251392" />
+		<node X="116738" Y="251125" />
+		<node X="117124" Y="251125" />
+	</zone>
+	<zone id="70019" type="SwampZone" shape="NPoly" minZ="-1789" maxZ="-1489"><!-- goddard_slow_1 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="7" />
+		<node X="149235" Y="-47768" />
+		<node X="149579" Y="-47608" />
+		<node X="149515" Y="-47472" />
+		<node X="149169" Y="-47634" />
+	</zone>
+	<zone id="70020" type="SwampZone" shape="NPoly" minZ="-1789" maxZ="-1439"><!-- goddard_slow_2 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="7" />
+		<node X="145352" Y="-47607" />
+		<node X="145696" Y="-47768" />
+		<node X="145760" Y="-47633" />
+		<node X="145415" Y="-47471" />
+	</zone>
+	<zone id="70021" type="SwampZone" shape="NPoly" minZ="509" maxZ="809"><!-- rune_slow_1 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="8" />
+		<node X="13785" Y="-47663" />
+		<node X="14046" Y="-47854" />
+		<node X="14203" Y="-47668" />
+		<node X="13916" Y="-47450" />
+	</zone>
+	<zone id="70022" type="SwampZone" shape="NPoly" minZ="518" maxZ="818"><!-- rune_slow_2 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="8" />
+		<node X="13917" Y="-50851" />
+		<node X="14209" Y="-50630" />
+		<node X="14052" Y="-50447" />
+		<node X="13788" Y="-50647" />
+	</zone>
+	<zone id="70023" type="SwampZone" shape="NPoly" minZ="-93" maxZ="207"><!-- schutt_slow_1 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="9" />
+		<node X="75440" Y="-151667" />
+		<node X="75787" Y="-151830" />
+		<node X="75849" Y="-151697" />
+		<node X="75503" Y="-151535" />
+	</zone>
+	<zone id="70024" type="SwampZone" shape="NPoly" minZ="-77" maxZ="223"><!-- schutt_slow_2 -->
+		<stat name="move_bonus" val="-80" />
+		<stat name="castleId" val="9" />
+		<node X="79322" Y="-151831" />
+		<node X="79668" Y="-151670" />
+		<node X="79606" Y="-151535" />
+		<node X="79261" Y="-151699" />
+	</zone>
+</list>

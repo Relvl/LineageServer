@@ -1,0 +1,846 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - acis@localhost" uuid="f0a153db-435a-4d42-bfb1-81ceb6069f55">
+    <database-info product="MySQL" version="5.5.25" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.40 ( Revision: 402933ef52cad9aa82624e80acbea46e3a701ce6 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="acis"/>
+    <table name="accounts" schema="" catalog="acis" type="TABLE">
+      <column name="login" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="password" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="lastactive" sqlType="DECIMAL" precision="20" scale="0" nullable="true" jdbcType="3"/>
+      <column name="access_level" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="lastServer" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="login"/>
+    </table>
+    <table name="announcements" schema="" catalog="acis" type="TABLE">
+      <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="sender" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="type" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="false" jdbcType="5" def="MTA="/>
+      <column name="text" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="priority" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="false" jdbcType="5" def="MA=="/>
+      <column name="enabled" sqlType="ENUM" precision="5" scale="0" nullable="false" jdbcType="1" def="J1RydWUn"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="auction" schema="" catalog="acis" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="sellerId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="sellerName" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="sellerClanName" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="itemId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="itemName" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="startingBid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="currentBid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="endDate" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <primary-key name="PRIMARY" columns="itemId"/>
+      <index name="id" unique="false" columns="id"/>
+    </table>
+    <table name="auction_bid" schema="" catalog="acis" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="auctionId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="bidderId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="bidderName" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="clan_name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="maxBid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="time_bid" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <primary-key name="PRIMARY" columns="auctionId,bidderId"/>
+      <index name="id" unique="false" columns="id"/>
+    </table>
+    <table name="augmentations" schema="" catalog="acis" type="TABLE">
+      <column name="item_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="attributes" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="LTE="/>
+      <column name="skill_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="LTE="/>
+      <column name="skill_level" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="LTE="/>
+      <primary-key name="PRIMARY" columns="item_id"/>
+    </table>
+    <table name="bbs_news" schema="" catalog="acis" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="author" sqlType="VARCHAR" precision="16" scale="0" nullable="false" jdbcType="12" def="J1NlcnZlcic="/>
+      <column name="caption" sqlType="VARCHAR" precision="256" scale="0" nullable="false" jdbcType="12"/>
+      <column name="text_short" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="text_full" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="prio" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="bookmarks" schema="" catalog="acis" type="TABLE">
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="obj_Id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="x" sqlType="MEDIUMINT" precision="7" scale="0" nullable="true" jdbcType="4"/>
+      <column name="y" sqlType="MEDIUMINT" precision="7" scale="0" nullable="true" jdbcType="4"/>
+      <column name="z" sqlType="MEDIUMINT" precision="7" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="name"/>
+    </table>
+    <table name="buffer_schemes" schema="" catalog="acis" type="TABLE">
+      <column name="object_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="scheme_name" sqlType="VARCHAR" precision="16" scale="0" nullable="false" jdbcType="12" def="J2RlZmF1bHQn"/>
+      <column name="skills" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+    </table>
+    <table name="buylists" schema="" catalog="acis" type="TABLE">
+      <column name="buylist_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="item_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="count" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="next_restock_time" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <primary-key name="PRIMARY" columns="buylist_id,item_id"/>
+    </table>
+    <table name="castle" schema="" catalog="acis" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="name" sqlType="VARCHAR" precision="25" scale="0" nullable="false" jdbcType="12"/>
+      <column name="taxPercent" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MTU="/>
+      <column name="treasury" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="siegeDate" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="regTimeOver" sqlType="ENUM" precision="5" scale="0" nullable="false" jdbcType="1" def="J3RydWUn"/>
+      <column name="regTimeEnd" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <primary-key name="PRIMARY" columns="name"/>
+      <index name="id" unique="false" columns="id"/>
+    </table>
+    <table name="castle_doorupgrade" schema="" catalog="acis" type="TABLE">
+      <column name="doorId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="hp" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="castleId" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="doorId"/>
+    </table>
+    <table name="castle_manor_procure" schema="" catalog="acis" type="TABLE">
+      <column name="castle_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="crop_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="can_buy" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="start_buy" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="price" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="reward_type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="period" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="castle_id,crop_id,period"/>
+    </table>
+    <table name="castle_manor_production" schema="" catalog="acis" type="TABLE">
+      <column name="castle_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="seed_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="can_produce" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="start_produce" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="seed_price" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="period" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="castle_id,seed_id,period"/>
+    </table>
+    <table name="castle_siege_guards" schema="" catalog="acis" type="TABLE">
+      <column name="castleId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="npcId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="x" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="y" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="z" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="heading" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="respawnDelay" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="isHired" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="id" unique="false" columns="castleId"/>
+    </table>
+    <table name="castle_trapupgrade" schema="" catalog="acis" type="TABLE">
+      <column name="castleId" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="towerIndex" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="level" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="towerIndex,castleId"/>
+    </table>
+    <table name="character_chat_bans" schema="" catalog="acis" type="TABLE">
+      <column name="oid" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="player_name" sqlType="VARCHAR" precision="16" scale="0" nullable="false" jdbcType="12"/>
+      <column name="punisher_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="J1tTZXJ2ZXJdJw=="/>
+      <column name="time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="expires" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzE5NzAtMDEtMDEgMDU6MDA6MDEn"/>
+      <column name="reason" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="J9Cd0LUg0YPQutCw0LfQsNC90LAn"/>
+      <column name="unbanned" sqlType="ENUM" precision="5" scale="0" nullable="false" jdbcType="1" def="J0ZhbHNlJw=="/>
+      <primary-key name="PRIMARY" columns="oid,player_name,time"/>
+      <foreign-key name="FK_CHATBANS_PLAYER" columns="oid" ref-table="characters" ref-schema="" ref-catalog="acis" ref-columns="obj_Id" update-rule="0" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="character_friends" schema="" catalog="acis" type="TABLE">
+      <column name="char_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="friend_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="relation" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="char_id,friend_id"/>
+    </table>
+    <table name="character_hennas" schema="" catalog="acis" type="TABLE">
+      <column name="char_obj_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="symbol_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="slot" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="class_index" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="char_obj_id,slot,class_index"/>
+    </table>
+    <table name="character_jails" schema="" catalog="acis" type="TABLE">
+      <column name="oid" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="player_name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="punisher" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" def="J1tTZXJ2ZXJdJw=="/>
+      <column name="time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="expires" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzE5NzAtMDEtMDEgMDU6MDA6MDEn"/>
+      <column name="reason" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="J9Cd0LDRgNGD0YjQtdC90LjQtSDQv9GA0LDQstC40LsuJw=="/>
+      <column name="unbanned" sqlType="ENUM" precision="5" scale="0" nullable="false" jdbcType="1" def="J0ZhbHNlJw=="/>
+      <primary-key name="PRIMARY" columns="oid,player_name,time"/>
+      <foreign-key name="FK_JAIL_PLAYER" columns="oid" ref-table="characters" ref-schema="" ref-catalog="acis" ref-columns="obj_Id" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="character_macroses" schema="" catalog="acis" type="TABLE">
+      <column name="char_obj_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="icon" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="descr" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12"/>
+      <column name="acronym" sqlType="VARCHAR" precision="4" scale="0" nullable="true" jdbcType="12"/>
+      <column name="commands" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="char_obj_id,id"/>
+    </table>
+    <table name="character_mail" schema="" catalog="acis" type="TABLE">
+      <column name="charId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="letterId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="senderId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="location" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="recipientNames" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="subject" sqlType="VARCHAR" precision="128" scale="0" nullable="true" jdbcType="12"/>
+      <column name="message" sqlType="VARCHAR" precision="3000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sentDate" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="unread" sqlType="SMALLINT" precision="5" scale="0" nullable="true" jdbcType="5" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="letterId"/>
+    </table>
+    <table name="character_memo" schema="" catalog="acis" type="TABLE">
+      <column name="charId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="var" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="val" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+    </table>
+    <table name="character_quests" schema="" catalog="acis" type="TABLE">
+      <column name="charId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="name" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="var" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="value" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="charId,name,var"/>
+    </table>
+    <table name="character_raid_points" schema="" catalog="acis" type="TABLE">
+      <column name="char_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="boss_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="points" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="char_id,boss_id"/>
+    </table>
+    <table name="character_recipebook" schema="" catalog="acis" type="TABLE">
+      <column name="char_id" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="id" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="id,char_id"/>
+    </table>
+    <table name="character_recommends" schema="" catalog="acis" type="TABLE">
+      <column name="char_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="target_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="char_id,target_id"/>
+    </table>
+    <table name="character_shortcuts" schema="" catalog="acis" type="TABLE">
+      <column name="char_obj_id" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="slot" sqlType="DECIMAL" precision="3" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="page" sqlType="DECIMAL" precision="3" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="type" sqlType="DECIMAL" precision="3" scale="0" nullable="true" jdbcType="3"/>
+      <column name="shortcut_id" sqlType="DECIMAL" precision="16" scale="0" nullable="true" jdbcType="3"/>
+      <column name="level" sqlType="VARCHAR" precision="4" scale="0" nullable="true" jdbcType="12"/>
+      <column name="class_index" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="char_obj_id,slot,page,class_index"/>
+      <index name="shortcut_id" unique="false" columns="shortcut_id"/>
+    </table>
+    <table name="character_skills" schema="" catalog="acis" type="TABLE">
+      <column name="char_obj_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="skill_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="skill_level" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <column name="class_index" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="char_obj_id,skill_id,class_index"/>
+    </table>
+    <table name="character_skills_save" schema="" catalog="acis" type="TABLE">
+      <column name="char_obj_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="skill_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="skill_level" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <column name="effect_count" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="effect_cur_time" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="reuse_delay" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="systime" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="restore_type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="class_index" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="buff_index" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="char_obj_id,skill_id,skill_level,class_index"/>
+    </table>
+    <table name="character_subclasses" schema="" catalog="acis" type="TABLE">
+      <column name="char_obj_id" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="class_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="exp" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="sp" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="level" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="NDA="/>
+      <column name="class_index" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="char_obj_id,class_id"/>
+    </table>
+    <table name="character_variables" schema="" catalog="acis" type="TABLE">
+      <column name="oid" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="key" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="value" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="oid,key"/>
+      <foreign-key name="FK_VARS_ON_CHARACTER" columns="oid" ref-table="characters" ref-schema="" ref-catalog="acis" ref-columns="obj_Id" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="characters" schema="" catalog="acis" type="TABLE">
+      <column name="account_name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="obj_Id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="char_name" sqlType="VARCHAR" precision="35" scale="0" nullable="false" jdbcType="12"/>
+      <column name="level" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="maxHp" sqlType="MEDIUMINT UNSIGNED" precision="8" scale="0" nullable="true" jdbcType="4"/>
+      <column name="curHp" sqlType="MEDIUMINT UNSIGNED" precision="8" scale="0" nullable="true" jdbcType="4"/>
+      <column name="maxCp" sqlType="MEDIUMINT UNSIGNED" precision="8" scale="0" nullable="true" jdbcType="4"/>
+      <column name="curCp" sqlType="MEDIUMINT UNSIGNED" precision="8" scale="0" nullable="true" jdbcType="4"/>
+      <column name="maxMp" sqlType="MEDIUMINT UNSIGNED" precision="8" scale="0" nullable="true" jdbcType="4"/>
+      <column name="curMp" sqlType="MEDIUMINT UNSIGNED" precision="8" scale="0" nullable="true" jdbcType="4"/>
+      <column name="face" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="hairStyle" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="hairColor" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="sex" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="heading" sqlType="MEDIUMINT" precision="7" scale="0" nullable="true" jdbcType="4"/>
+      <column name="x" sqlType="MEDIUMINT" precision="7" scale="0" nullable="true" jdbcType="4"/>
+      <column name="y" sqlType="MEDIUMINT" precision="7" scale="0" nullable="true" jdbcType="4"/>
+      <column name="z" sqlType="MEDIUMINT" precision="7" scale="0" nullable="true" jdbcType="4"/>
+      <column name="exp" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="true" jdbcType="-5" def="MA=="/>
+      <column name="expBeforeDeath" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="true" jdbcType="-5" def="MA=="/>
+      <column name="sp" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="karma" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="pvpkills" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="true" jdbcType="5"/>
+      <column name="pkkills" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="true" jdbcType="5"/>
+      <column name="clanid" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="race" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="classid" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="base_class" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="deletetime" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="cancraft" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="title" sqlType="VARCHAR" precision="16" scale="0" nullable="true" jdbcType="12"/>
+      <column name="rec_have" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="rec_left" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="accesslevel" sqlType="MEDIUMINT" precision="7" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="online" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="onlinetime" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="char_slot" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="lastAccess" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="clan_privs" sqlType="MEDIUMINT UNSIGNED" precision="8" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="wantspeace" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="isin7sdungeon" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="punish_level" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="punish_timer" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="power_grade" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="nobless" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="hero" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="subpledge" sqlType="SMALLINT" precision="5" scale="0" nullable="false" jdbcType="5" def="MA=="/>
+      <column name="last_recom_date" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="lvl_joined_academy" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="apprentice" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="sponsor" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="varka_ketra_ally" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="clan_join_expiry_time" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="clan_create_expiry_time" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="death_penalty_level" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="false" jdbcType="5" def="MA=="/>
+      <primary-key name="PRIMARY" columns="obj_Id"/>
+      <exported-key name="FK_CHATBANS_PLAYER" table="character_chat_bans" schema="" catalog="acis" columns="oid"/>
+      <exported-key name="FK_JAIL_PLAYER" table="character_jails" schema="" catalog="acis" columns="oid"/>
+      <exported-key name="FK_VARS_ON_CHARACTER" table="character_variables" schema="" catalog="acis" columns="oid"/>
+      <index name="clanid" unique="false" columns="clanid"/>
+    </table>
+    <table name="clan_data" schema="" catalog="acis" type="TABLE">
+      <column name="clan_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="clan_name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="clan_level" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="reputation_score" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="hasCastle" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ally_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ally_name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="leader_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="crest_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="crest_large_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ally_crest_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="auction_bid_at" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="ally_penalty_expiry_time" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="ally_penalty_type" sqlType="DECIMAL" precision="1" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="char_penalty_expiry_time" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="dissolving_expiry_time" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="enabled" sqlType="ENUM" precision="5" scale="0" nullable="false" jdbcType="1" def="J2ZhbHNlJw=="/>
+      <column name="notice" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="introduction" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="clan_id"/>
+      <index name="ally_id" unique="false" columns="ally_id"/>
+      <index name="leader_id" unique="false" columns="leader_id"/>
+    </table>
+    <table name="clan_privs" schema="" catalog="acis" type="TABLE">
+      <column name="clan_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="rank" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="privs" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="clan_id,rank"/>
+    </table>
+    <table name="clan_skills" schema="" catalog="acis" type="TABLE">
+      <column name="clan_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="skill_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="skill_level" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="skill_name" sqlType="VARCHAR" precision="26" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="clan_id,skill_id"/>
+    </table>
+    <table name="clan_subpledges" schema="" catalog="acis" type="TABLE">
+      <column name="clan_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="sub_pledge_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="leader_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="clan_id,sub_pledge_id"/>
+    </table>
+    <table name="clan_wars" schema="" catalog="acis" type="TABLE">
+      <column name="clan1" sqlType="VARCHAR" precision="35" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="clan2" sqlType="VARCHAR" precision="35" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="expiry_time" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <primary-key name="PRIMARY" columns="clan1,clan2"/>
+    </table>
+    <table name="clanhall" schema="" catalog="acis" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="name" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="ownerId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="lease" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="desc" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="location" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="paidUntil" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="Grade" sqlType="DECIMAL" precision="1" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="paid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="clanhall_functions" schema="" catalog="acis" type="TABLE">
+      <column name="hall_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="lvl" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="lease" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="rate" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="endTime" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <primary-key name="PRIMARY" columns="hall_id,type"/>
+    </table>
+    <table name="connection_test_table" schema="" catalog="acis" type="TABLE">
+      <column name="a" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
+    </table>
+    <table name="cursed_weapons" schema="" catalog="acis" type="TABLE">
+      <column name="itemId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="playerId" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="playerKarma" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="playerPkKills" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="nbKills" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="currentStage" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="numberBeforeNextStage" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="hungryTime" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="endTime" sqlType="DECIMAL" precision="20" scale="0" nullable="true" jdbcType="3" def="MA=="/>
+      <primary-key name="PRIMARY" columns="itemId"/>
+    </table>
+    <table name="fishing_championship" schema="" catalog="acis" type="TABLE">
+      <column name="player_name" sqlType="VARCHAR" precision="35" scale="0" nullable="false" jdbcType="12"/>
+      <column name="fish_length" sqlType="DOUBLE" precision="10" scale="3" nullable="false" jdbcType="8"/>
+      <column name="rewarded" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+    </table>
+    <table name="forums" schema="" catalog="acis" type="TABLE">
+      <column name="forum_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="forum_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="forum_parent" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="forum_post" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="forum_type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="forum_perm" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="forum_owner_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <index name="forum_id" unique="true" columns="forum_id"/>
+    </table>
+    <table name="games" schema="" catalog="acis" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="idnr" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="number1" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="number2" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="prize" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="newprize" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="prize1" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="prize2" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="prize3" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="enddate" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="finished" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="id,idnr"/>
+    </table>
+    <table name="gameservers" schema="" catalog="acis" type="TABLE">
+      <column name="server_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="hexid" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="host" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="server_id"/>
+    </table>
+    <table name="global_tasks" schema="" catalog="acis" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="task" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="type" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="last_activation" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="param1" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="param2" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="param3" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="grandboss_data" schema="" catalog="acis" type="TABLE">
+      <column name="boss_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="loc_x" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="loc_y" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="loc_z" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="heading" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="respawn_time" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="currentHP" sqlType="DECIMAL" precision="8" scale="0" nullable="true" jdbcType="3"/>
+      <column name="currentMP" sqlType="DECIMAL" precision="8" scale="0" nullable="true" jdbcType="3"/>
+      <column name="status" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="boss_id"/>
+    </table>
+    <table name="grandboss_list" schema="" catalog="acis" type="TABLE">
+      <column name="player_id" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3"/>
+      <column name="zone" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="player_id,zone"/>
+    </table>
+    <table name="heroes" schema="" catalog="acis" type="TABLE">
+      <column name="char_id" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="class_id" sqlType="DECIMAL" precision="3" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="count" sqlType="DECIMAL" precision="3" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="played" sqlType="DECIMAL" precision="1" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="active" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="message" sqlType="VARCHAR" precision="300" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="char_id"/>
+    </table>
+    <table name="heroes_diary" schema="" catalog="acis" type="TABLE">
+      <column name="char_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="time" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="action" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="param" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <index name="char_id" unique="false" columns="char_id"/>
+    </table>
+    <table name="items" schema="" catalog="acis" type="TABLE">
+      <column name="owner_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="object_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="item_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="count" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="enchant_level" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="loc" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="loc_data" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="time_of_use" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="custom_type1" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="custom_type2" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="mana_left" sqlType="DECIMAL" precision="5" scale="0" nullable="false" jdbcType="3" def="LTE="/>
+      <column name="time" sqlType="DECIMAL" precision="13" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <primary-key name="PRIMARY" columns="object_id"/>
+      <index name="key_item_id" unique="false" columns="item_id"/>
+      <index name="key_loc" unique="false" columns="loc"/>
+      <index name="key_owner_id" unique="false" columns="owner_id"/>
+      <index name="key_time_of_use" unique="false" columns="time_of_use"/>
+    </table>
+    <table name="items_on_ground" schema="" catalog="acis" type="TABLE">
+      <column name="object_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="item_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="count" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="enchant_level" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="x" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="y" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="z" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="time" sqlType="DECIMAL" precision="20" scale="0" nullable="true" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="object_id"/>
+    </table>
+    <table name="itemsonground" schema="" catalog="acis" type="TABLE">
+      <column name="object_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="item_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="count" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="enchant_level" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="x" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="y" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="z" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="drop_time" sqlType="DECIMAL" precision="20" scale="0" nullable="true" jdbcType="3"/>
+      <column name="equipable" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="object_id"/>
+    </table>
+    <table name="mdt_bets" schema="" catalog="acis" type="TABLE">
+      <column name="lane_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="bet" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="lane_id"/>
+    </table>
+    <table name="mdt_history" schema="" catalog="acis" type="TABLE">
+      <column name="race_id" sqlType="MEDIUMINT" precision="7" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="first" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="second" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="odd_rate" sqlType="DOUBLE" precision="10" scale="2" nullable="true" jdbcType="8" def="MC4wMA=="/>
+      <primary-key name="PRIMARY" columns="race_id"/>
+    </table>
+    <table name="merchant_buylists" schema="" catalog="acis" type="TABLE">
+      <column name="item_id" sqlType="DECIMAL" precision="9" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="price" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="shop_id" sqlType="DECIMAL" precision="9" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="order" sqlType="DECIMAL" precision="4" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="count" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="LTE="/>
+      <column name="currentCount" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="LTE="/>
+      <column name="time" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="savetimer" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <primary-key name="PRIMARY" columns="shop_id,order"/>
+    </table>
+    <table name="merchant_shopids" schema="" catalog="acis" type="TABLE">
+      <column name="shop_id" sqlType="DECIMAL" precision="9" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="npc_id" sqlType="VARCHAR" precision="9" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="shop_id"/>
+    </table>
+    <table name="merchants" schema="" catalog="acis" type="TABLE">
+      <column name="npc_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="merchant_area_id" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="npc_id"/>
+    </table>
+    <table name="mods_wedding" schema="" catalog="acis" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="player1Id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="player2Id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="married" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="npc" schema="" catalog="acis" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idTemplate" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="level" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="radius" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8" def="MA=="/>
+      <column name="height" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8" def="MA=="/>
+      <column name="rHand" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="lHand" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="type" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="exp" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="sp" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="hp" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="mp" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="hpRegen" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8" def="MS41"/>
+      <column name="mpRegen" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8" def="MC45"/>
+      <column name="pAtk" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="pDef" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="mAtk" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="mDef" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="crit" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="NA=="/>
+      <column name="atkSpd" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MzAw"/>
+      <column name="str" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="NDA="/>
+      <column name="int" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MjA="/>
+      <column name="dex" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MzA="/>
+      <column name="wit" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="NDM="/>
+      <column name="con" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MjE="/>
+      <column name="men" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MjA="/>
+      <column name="corpseTime" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="walkSpd" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="runSpd" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <column name="dropHerbGroup" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="atkRange" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="NDA="/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_NPC_AI_DATA" table="npc_aidata" schema="" catalog="acis" columns="id"/>
+      <exported-key name="FK_NPC_SKILL_DATA" table="npc_skills" schema="" catalog="acis" columns="id"/>
+    </table>
+    <table name="npc_aidata" schema="" catalog="acis" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ssCount" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ssRate" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="spsCount" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="spsRate" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="aggro" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="canMove" sqlType="BIT" precision="1" scale="0" nullable="false" jdbcType="-7" def="YicxJw=="/>
+      <column name="seedable" sqlType="BIT" precision="1" scale="0" nullable="false" jdbcType="-7" def="YicxJw=="/>
+      <column name="clan" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="clanRange" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="ignoredIds" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_NPC_AI_DATA" columns="id" ref-table="npc" ref-schema="" ref-catalog="acis" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="npc_dropdata" schema="" catalog="acis" type="TABLE">
+      <column name="npc" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="category" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="min" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="max" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="chance" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="npc,category,id"/>
+    </table>
+    <table name="npc_skills" schema="" catalog="acis" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="skill_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="skill_lvl" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id,skill_id,skill_lvl"/>
+      <foreign-key name="FK_NPC_SKILL_DATA" columns="id" ref-table="npc" ref-schema="" ref-catalog="acis" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="olympiad_data" schema="" catalog="acis" type="TABLE">
+      <column name="id" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="current_cycle" sqlType="MEDIUMINT UNSIGNED" precision="8" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <column name="period" sqlType="MEDIUMINT UNSIGNED" precision="8" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="olympiad_end" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="validation_end" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="next_weekly_change" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="olympiad_fights" schema="" catalog="acis" type="TABLE">
+      <column name="charOneId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="charTwoId" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="charOneClass" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="charTwoClass" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="winner" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="start" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="time" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="classed" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <index name="charOneId" unique="false" columns="charOneId"/>
+      <index name="charTwoId" unique="false" columns="charTwoId"/>
+    </table>
+    <table name="olympiad_nobles" schema="" catalog="acis" type="TABLE">
+      <column name="char_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="class_id" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="olympiad_points" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="competitions_done" sqlType="SMALLINT" precision="5" scale="0" nullable="false" jdbcType="5" def="MA=="/>
+      <column name="competitions_won" sqlType="SMALLINT" precision="5" scale="0" nullable="false" jdbcType="5" def="MA=="/>
+      <column name="competitions_lost" sqlType="SMALLINT" precision="5" scale="0" nullable="false" jdbcType="5" def="MA=="/>
+      <column name="competitions_drawn" sqlType="SMALLINT" precision="5" scale="0" nullable="false" jdbcType="5" def="MA=="/>
+      <primary-key name="PRIMARY" columns="char_id"/>
+    </table>
+    <table name="olympiad_nobles_eom" schema="" catalog="acis" type="TABLE">
+      <column name="char_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="class_id" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="olympiad_points" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="competitions_done" sqlType="SMALLINT" precision="5" scale="0" nullable="false" jdbcType="5" def="MA=="/>
+      <column name="competitions_won" sqlType="SMALLINT" precision="5" scale="0" nullable="false" jdbcType="5" def="MA=="/>
+      <column name="competitions_lost" sqlType="SMALLINT" precision="5" scale="0" nullable="false" jdbcType="5" def="MA=="/>
+      <column name="competitions_drawn" sqlType="SMALLINT" precision="5" scale="0" nullable="false" jdbcType="5" def="MA=="/>
+      <primary-key name="PRIMARY" columns="char_id"/>
+    </table>
+    <table name="pets" schema="" catalog="acis" type="TABLE">
+      <column name="item_obj_id" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="name" sqlType="VARCHAR" precision="16" scale="0" nullable="true" jdbcType="12"/>
+      <column name="level" sqlType="DECIMAL" precision="11" scale="0" nullable="true" jdbcType="3"/>
+      <column name="curHp" sqlType="DECIMAL" precision="18" scale="0" nullable="true" jdbcType="3"/>
+      <column name="curMp" sqlType="DECIMAL" precision="18" scale="0" nullable="true" jdbcType="3"/>
+      <column name="exp" sqlType="DECIMAL" precision="20" scale="0" nullable="true" jdbcType="3"/>
+      <column name="sp" sqlType="DECIMAL" precision="11" scale="0" nullable="true" jdbcType="3"/>
+      <column name="fed" sqlType="DECIMAL" precision="11" scale="0" nullable="true" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="item_obj_id"/>
+    </table>
+    <table name="posts" schema="" catalog="acis" type="TABLE">
+      <column name="post_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="post_owner_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="post_ownerid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="post_date" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="post_topic_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="post_forum_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="post_txt" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+    </table>
+    <table name="raidboss_spawnlist" schema="" catalog="acis" type="TABLE">
+      <column name="boss_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="loc_x" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="loc_y" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="loc_z" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="heading" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="spawn_time" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MzY="/>
+      <column name="random_time" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MjQ="/>
+      <column name="respawn_time" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="currentHp" sqlType="DECIMAL" precision="8" scale="0" nullable="true" jdbcType="3"/>
+      <column name="currentMp" sqlType="DECIMAL" precision="8" scale="0" nullable="true" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="boss_id,loc_x,loc_y,loc_z"/>
+    </table>
+    <table name="random_spawn" schema="" catalog="acis" type="TABLE">
+      <column name="groupId" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="npcId" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="false" jdbcType="5"/>
+      <column name="count" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="initialDelay" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="LTE="/>
+      <column name="respawnDelay" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="LTE="/>
+      <column name="despawnDelay" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="LTE="/>
+      <column name="broadcastSpawn" sqlType="ENUM" precision="5" scale="0" nullable="false" jdbcType="1" def="J2ZhbHNlJw=="/>
+      <column name="randomSpawn" sqlType="ENUM" precision="5" scale="0" nullable="false" jdbcType="1" def="J3RydWUn"/>
+      <primary-key name="PRIMARY" columns="groupId"/>
+    </table>
+    <table name="random_spawn_loc" schema="" catalog="acis" type="TABLE">
+      <column name="groupId" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="x" sqlType="MEDIUMINT" precision="7" scale="0" nullable="false" jdbcType="4"/>
+      <column name="y" sqlType="MEDIUMINT" precision="7" scale="0" nullable="false" jdbcType="4"/>
+      <column name="z" sqlType="MEDIUMINT" precision="7" scale="0" nullable="false" jdbcType="4"/>
+      <column name="heading" sqlType="MEDIUMINT" precision="7" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="groupId,x,y,z,heading"/>
+    </table>
+    <table name="server_memo" schema="" catalog="acis" type="TABLE">
+      <column name="var" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="value" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="var"/>
+    </table>
+    <table name="server_variables" schema="" catalog="acis" type="TABLE">
+      <column name="key" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="value" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="key"/>
+    </table>
+    <table name="seven_signs" schema="" catalog="acis" type="TABLE">
+      <column name="char_obj_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="cabal" sqlType="VARCHAR" precision="4" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="seal" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="red_stones" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="green_stones" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="blue_stones" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="ancient_adena_amount" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="contribution_score" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <primary-key name="PRIMARY" columns="char_obj_id"/>
+    </table>
+    <table name="seven_signs_festival" schema="" catalog="acis" type="TABLE">
+      <column name="festivalId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="cabal" sqlType="VARCHAR" precision="4" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="cycle" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="date" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5" def="MA=="/>
+      <column name="score" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="members" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="festivalId,cabal,cycle"/>
+    </table>
+    <table name="seven_signs_status" schema="" catalog="acis" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="current_cycle" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <column name="festival_cycle" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <column name="active_period" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <column name="date" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
+      <column name="previous_winner" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="dawn_stone_score" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="dawn_festival_score" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="dusk_stone_score" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="dusk_festival_score" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="avarice_owner" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="gnosis_owner" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="strife_owner" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="avarice_dawn_score" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="gnosis_dawn_score" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="strife_dawn_score" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="avarice_dusk_score" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="gnosis_dusk_score" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="strife_dusk_score" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="accumulated_bonus0" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="accumulated_bonus1" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="accumulated_bonus2" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="accumulated_bonus3" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="accumulated_bonus4" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="siege_clans" schema="" catalog="acis" type="TABLE">
+      <column name="castle_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="clan_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="type" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="castle_owner" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="clan_id,castle_id"/>
+    </table>
+    <table name="spawnlist" schema="" catalog="acis" type="TABLE">
+      <column name="npc_templateid" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="false" jdbcType="5" def="MA=="/>
+      <column name="locx" sqlType="MEDIUMINT" precision="7" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="locy" sqlType="MEDIUMINT" precision="7" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="locz" sqlType="MEDIUMINT" precision="7" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="heading" sqlType="MEDIUMINT" precision="7" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="respawn_delay" sqlType="MEDIUMINT" precision="7" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="respawn_rand" sqlType="MEDIUMINT" precision="7" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="periodOfDay" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+    </table>
+    <table name="spawnlist_4s" schema="" catalog="acis" type="TABLE">
+      <column name="id" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="false" jdbcType="5" autoIncrement="true"/>
+      <column name="npc_templateid" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="false" jdbcType="5" def="MA=="/>
+      <column name="locx" sqlType="MEDIUMINT" precision="7" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="locy" sqlType="MEDIUMINT" precision="7" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="locz" sqlType="MEDIUMINT" precision="7" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="heading" sqlType="MEDIUMINT" precision="7" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="respawn_delay" sqlType="MEDIUMINT" precision="7" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="key_npc_id" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="false" jdbcType="5" def="MA=="/>
+      <column name="spawntype" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="topic" schema="" catalog="acis" type="TABLE">
+      <column name="topic_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="topic_forum_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="topic_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="topic_date" sqlType="DECIMAL" precision="20" scale="0" nullable="false" jdbcType="3" def="MA=="/>
+      <column name="topic_ownername" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="JzAn"/>
+      <column name="topic_ownerid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="topic_type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="topic_reply" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+    </table>
+  </data-source>
+</component>

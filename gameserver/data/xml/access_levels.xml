@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<access level="1" name="Admin" nameColor="FF9900" titleColor="FF9900" childAccess="2;3;4;5" isGm="true" allowPeaceAttack="true" allowFixedRes="true" allowTransaction="true" allowAltg="true" giveDamage="true" takeAggro="true" gainExp="true" />
+	<access level="2" name="Head GM" nameColor="CC9900" titleColor="CC9900" childAccess="3;4;5" isGm="true" allowPeaceAttack="false" allowFixedRes="true" allowTransaction="true" allowAltg="true" giveDamage="true" takeAggro="true" gainExp="true" />
+	<access level="3" name="General GM" nameColor="CC6600" titleColor="CC6600" childAccess="4;5" isGm="true" allowPeaceAttack="false" allowFixedRes="true" allowTransaction="false" allowAltg="true" giveDamage="false" takeAggro="false" gainExp="false" />
+	<access level="4" name="Event GM" nameColor="0033CC" titleColor="0033CC" childAccess="5" isGm="true" allowPeaceAttack="false" allowFixedRes="true" allowTransaction="false" allowAltg="true" giveDamage="false" takeAggro="false" gainExp="false" />
+	<access level="5" name="Test GM" nameColor="0099CC" titleColor="0099CC" childAccess="" isGm="false" allowPeaceAttack="false" allowFixedRes="true" allowTransaction="false" allowAltg="true" giveDamage="false" takeAggro="false" gainExp="false" />
+</list>

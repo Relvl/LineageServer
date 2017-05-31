@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<walker npcId="31356" run="true">
+		<route id="1" X="-81681" Y="243384" Z="-3712">
+			<delay val="61" />
+			<chat val="A delivery for Mr. Lector? Very good!" />
+		</route>
+		<route id="2" X="-81915" Y="243870" Z="-3712">
+			<delay val="1" />
+		</route>
+		<route id="3" X="-82084" Y="243659" Z="-3712" />
+		<route id="4" X="-83148" Y="243731" Z="-3728" />
+		<route id="5" X="-84497" Y="243241" Z="-3728">
+			<delay val="6" />
+			<chat val="I need a break!" />
+		</route>
+		<route id="6" X="-85212" Y="243184" Z="-3728" />
+		<route id="7" X="-86161" Y="242898" Z="-3728" />
+		<route id="8" X="-86281" Y="242963" Z="-3720" />
+		<route id="9" X="-86356" Y="243201" Z="-3720">
+			<delay val="7" />
+			<chat val="Hello, Mr. Lector! Long time no see, Mr. Jackson!" />
+		</route>
+		<route id="10" X="-86491" Y="242781" Z="-3720" />
+		<route id="11" X="-86497" Y="242585" Z="-3728" />
+		<route id="12" X="-86114" Y="241587" Z="-3728" />
+		<route id="13" X="-85184" Y="240679" Z="-3728" />
+		<route id="14" X="-84099" Y="241264" Z="-3728">
+			<delay val="6" />
+			<chat val="Lulu! Lulu!" />
+		</route>
+		<route id="15" X="-83709" Y="241238" Z="-3728">
+			<chat val="Lulu!" />
+		</route>
+		<route id="16" X="-83075" Y="241150" Z="-3728">
+			<delay val="1" />
+		</route>
+		<route id="17" X="-82383" Y="242926" Z="-3720">
+			<delay val="1" />
+		</route>
+	</walker>
+	<walker npcId="31357" run="false">
+		<route id="1" X="-86328" Y="241120" Z="-3734">
+			<delay val="60" />
+			<chat val="Where did he go?" />
+		</route>
+		<route id="2" X="-86505" Y="240727" Z="-3704" />
+		<route id="3" X="-86081" Y="240402" Z="-3712" />
+		<route id="4" X="-86078" Y="240853" Z="-3720">
+			<delay val="15" />
+			<chat val="Have you seen Windawood?" />
+		</route>
+		<route id="5" X="-85957" Y="241389" Z="-3728" />
+		<route id="6" X="-83993" Y="242766" Z="-3728">
+			<delay val="10" />
+			<chat val="Where has he gone?" />
+		</route>
+		<route id="7" X="-82952" Y="244461" Z="-3728" />
+		<route id="8" X="-82370" Y="244919" Z="-3720" />
+		<route id="9" X="-82129" Y="245020" Z="-3720" />
+		<route id="10" X="-82198" Y="245350" Z="-3712" />
+		<route id="11" X="-82554" Y="245137" Z="-3716">
+			<delay val="1" />
+		</route>
+		<route id="12" X="-82198" Y="245350" Z="-3712" />
+		<route id="13" X="-82129" Y="245020" Z="-3720" />
+		<route id="14" X="-82370" Y="244919" Z="-3720" />
+		<route id="15" X="-82952" Y="244461" Z="-3728" />
+		<route id="16" X="-83993" Y="242766" Z="-3728">
+			<delay val="10" />
+			<chat val="Where has he gone?" />
+		</route>
+		<route id="17" X="-85957" Y="241389" Z="-3728" />
+		<route id="18" X="-86078" Y="240853" Z="-3720">
+			<delay val="15" />
+			<chat val="Have you seen Windawood?" />
+		</route>
+		<route id="19" X="-86081" Y="240402" Z="-3712" />
+		<route id="20" X="-86505" Y="240727" Z="-3704" />
+	</walker>
+	<walker npcId="31358" run="false">
+		<route id="1" X="47015" Y="51278" Z="-2992">
+			<delay val="65" />
+			<chat val="Lady Mirabel, may the peace of the lake be with you!" />
+		</route>
+		<route id="2" X="47437" Y="50441" Z="-2992" />
+		<route id="3" X="47509" Y="49038" Z="-2992" />
+		<route id="4" X="46725" Y="47755" Z="-2992" />
+		<route id="5" X="45319" Y="47339" Z="-2992">
+			<delay val="5" />
+			<chat val="The Mother Tree is always so gorgeous!" />
+		</route>
+		<route id="6" X="43998" Y="47672" Z="-2992" />
+		<route id="7" X="43037" Y="49310" Z="-2992" />
+		<route id="8" X="43310" Y="50382" Z="-2992" />
+		<route id="9" X="43896" Y="51060" Z="-2992" />
+		<route id="10" X="43312" Y="50362" Z="-2992" />
+		<route id="11" X="43040" Y="49311" Z="-2992" />
+		<route id="12" X="44018" Y="47645" Z="-2992" />
+		<route id="13" X="45301" Y="47340" Z="-2992">
+			<delay val="5" />
+			<chat val="The Mother Tree is always so gorgeous!" />
+		</route>
+		<route id="14" X="46693" Y="47752" Z="-2992" />
+		<route id="15" X="47489" Y="48976" Z="-2992" />
+		<route id="16" X="47441" Y="50455" Z="-2992" />
+	</walker>
+	<walker npcId="31359" run="false">
+		<route id="1" X="45744" Y="50561" Z="-3065">
+			<delay val="61" />
+		</route>
+		<route id="2" X="46444" Y="49742" Z="-3065">
+			<delay val="2" />
+		</route>
+		<route id="3" X="46103" Y="48798" Z="-3065">
+			<delay val="5" />
+			<chat val="How can we save the Mother Tree?" />
+		</route>
+		<route id="4" X="45403" Y="48436" Z="-3065">
+			<delay val="5" />
+			<chat val="The Mother Tree is slowly dying." />
+		</route>
+		<route id="5" X="44444" Y="49078" Z="-3065" />
+		<route id="6" X="44414" Y="50025" Z="-3065" />
+		<route id="7" X="44957" Y="50568" Z="-3065" />
+		<route id="8" X="44414" Y="50025" Z="-3065" />
+		<route id="9" X="44444" Y="49078" Z="-3065" />
+		<route id="10" X="45403" Y="48436" Z="-3065">
+			<delay val="5" />
+			<chat val="The Mother Tree is slowly dying." />
+		</route>
+		<route id="11" X="46103" Y="48798" Z="-3065">
+			<delay val="5" />
+			<chat val="How can we save the Mother Tree?" />
+		</route>
+		<route id="12" X="46444" Y="49742" Z="-3065">
+			<delay val="2" />
+		</route>
+	</walker>
+	<walker npcId="31360" run="false">
+		<route id="1" X="10826" Y="14777" Z="-4240">
+			<delay val="62" />
+		</route>
+		<route id="2" X="10966" Y="14626" Z="-4240" />
+		<route id="3" X="11264" Y="15838" Z="-4584" />
+		<route id="4" X="12100" Y="16378" Z="-4590">
+			<delay val="2" />
+		</route>
+		<route id="5" X="15088" Y="15664" Z="-4376">
+			<delay val="6" />
+			<chat val="You're a hard worker, Rayla!" />
+		</route>
+		<route id="6" X="15232" Y="16279" Z="-4383">
+			<delay val="7" />
+		</route>
+		<route id="7" X="12217" Y="16916" Z="-4590" />
+		<route id="8" X="11811" Y="17553" Z="-4580" />
+		<route id="9" X="11275" Y="17628" Z="-4589" />
+		<route id="10" X="10649" Y="17284" Z="-4584" />
+		<route id="11" X="7691" Y="18030" Z="-4376">
+			<delay val="6" />
+			<chat val="You're a hard worker!" />
+		</route>
+		<route id="12" X="10593" Y="16738" Z="-4590">
+			<delay val="2" />
+		</route>
+		<route id="13" X="11127" Y="16044" Z="-4589">
+			<delay val="2" />
+		</route>
+	</walker>
+	<walker npcId="31361" run="true">
+		<route id="1" X="22418" Y="10249" Z="-3648">
+			<delay val="61" />
+		</route>
+		<route id="2" X="23423" Y="11165" Z="-3720" />
+		<route id="3" X="20182" Y="11101" Z="-3720" />
+		<route id="4" X="17327" Y="13603" Z="-3728">
+			<delay val="1" />
+		</route>
+		<route id="5" X="17410" Y="13038" Z="-3736">
+			<delay val="10" />
+			<chat val="The mass of darkness will start in a couple of days. Pay more attention to the guard!" />
+		</route>
+		<route id="6" X="20176" Y="12902" Z="-3712" />
+		<route id="7" X="21669" Y="13378" Z="-3616" />
+		<route id="8" X="20675" Y="10401" Z="-3712" />
+	</walker>
+	<walker npcId="31362" run="false">
+		<route id="1" X="114847" Y="-180066" Z="-877">
+			<delay val="30" />
+			<chat val="Mr. Lid, Murdoc, and Airy! How are you doing?" />
+		</route>
+		<route id="2" X="114834" Y="-179685" Z="-877">
+			<delay val="2" />
+		</route>
+		<route id="3" X="116122" Y="-179457" Z="-1068">
+			<delay val="1" />
+		</route>
+		<route id="4" X="116798" Y="-180391" Z="-1200">
+			<delay val="2" />
+		</route>
+		<route id="5" X="116324" Y="-181564" Z="-1384">
+			<delay val="2" />
+		</route>
+		<route id="6" X="115797" Y="-181563" Z="-1336" />
+		<route id="7" X="116054" Y="-181575" Z="-1352">
+			<chat val="Care to go a round?" />
+		</route>
+		<route id="8" X="116506" Y="-181478" Z="-1384">
+			<delay val="2" />
+		</route>
+		<route id="9" X="116634" Y="-180029" Z="-1160">
+			<delay val="1" />
+		</route>
+		<route id="10" X="115347" Y="-178623" Z="-928">
+			<delay val="1" />
+		</route>
+		<route id="11" X="115763" Y="-177591" Z="-888">
+			<delay val="2" />
+		</route>
+		<route id="12" X="115801" Y="-177342" Z="-880">
+			<delay val="1" />
+			<chat val="Have a nice day, Mr. Garita and Mion!" />
+		</route>
+		<route id="13" X="115869" Y="-177340" Z="-880">
+			<delay val="15" />
+		</route>
+		<route id="14" X="115788" Y="-177482" Z="-880">
+			<delay val="3" />
+		</route>
+		<route id="15" X="115124" Y="-179821" Z="-885">
+			<delay val="1" />
+		</route>
+		<route id="16" X="115103" Y="-180065" Z="-877">
+			<delay val="1" />
+		</route>
+	</walker>
+	<walker npcId="31363" run="true">
+		<route id="1" X="116731" Y="-182477" Z="-1512">
+			<delay val="10" />
+			<chat val="Where is that fool hiding?" />
+		</route>
+		<route id="2" X="115870" Y="-183280" Z="-1472" />
+		<route id="3" X="115746" Y="-183428" Z="-1472">
+			<delay val="1" />
+		</route>
+		<route id="4" X="115870" Y="-183280" Z="-1472">
+			<delay val="1" />
+		</route>
+		<route id="5" X="115999" Y="-183246" Z="-1480" />
+		<route id="6" X="116094" Y="-183113" Z="-1480">
+			<delay val="1" />
+		</route>
+		<route id="7" X="116584" Y="-184294" Z="-1568">
+			<delay val="11" />
+			<chat val="Have you seen Torocco today?" />
+		</route>
+		<route id="8" X="116392" Y="-184100" Z="-1560">
+			<delay val="1" />
+		</route>
+		<route id="9" X="117093" Y="-182524" Z="-1528">
+			<delay val="1" />
+		</route>
+		<route id="10" X="117789" Y="-182540" Z="-1528">
+			<delay val="11" />
+			<chat val="Have you seen Torocco?" />
+		</route>
+	</walker>
+	<walker npcId="31364" run="false">
+		<route id="1" X="-46506" Y="-109402" Z="-238">
+			<delay val="10" />
+		</route>
+		<route id="2" X="-45752" Y="-111652" Z="-240" />
+		<route id="3" X="-44028" Y="-112688" Z="-240" />
+		<route id="4" X="-44049" Y="-114536" Z="-240" />
+		<route id="5" X="-45540" Y="-115415" Z="-240" />
+		<route id="6" X="-46526" Y="-117731" Z="-240" />
+		<route id="7" X="-45540" Y="-115415" Z="-240" />
+		<route id="8" X="-44049" Y="-114536" Z="-240" />
+		<route id="9" X="-44028" Y="-112688" Z="-240" />
+		<route id="10" X="-45752" Y="-111652" Z="-240" />
+	</walker>
+	<walker npcId="31365" run="false">
+		<route id="1" X="-48807" Y="-113489" Z="-241">
+			<delay val="61" />
+		</route>
+		<route id="2" X="-48821" Y="-113746" Z="-232">
+			<delay val="1" />
+		</route>
+		<route id="3" X="-48823" Y="-113505" Z="-232">
+			<delay val="61" />
+		</route>
+		<route id="4" X="-47339" Y="-113581" Z="-232">
+			<delay val="1" />
+		</route>
+		<route id="5" X="-45740" Y="-113562" Z="-240" />
+		<route id="6" X="-44851" Y="-112965" Z="-240" />
+		<route id="7" X="-44308" Y="-113207" Z="-240" />
+		<route id="8" X="-44204" Y="-113743" Z="-240" />
+		<route id="9" X="-44659" Y="-114171" Z="-240" />
+		<route id="10" X="-45167" Y="-114034" Z="-224" />
+		<route id="11" X="-45658" Y="-113633" Z="-240" />
+		<route id="12" X="-47363" Y="-113621" Z="-224" />
+		<route id="13" X="-48829" Y="-113746" Z="-232" />
+		<route id="14" X="-47363" Y="-113621" Z="-224" />
+		<route id="15" X="-45658" Y="-113633" Z="-240" />
+		<route id="16" X="-45167" Y="-114034" Z="-224" />
+		<route id="17" X="-44659" Y="-114171" Z="-240" />
+		<route id="18" X="-44204" Y="-113743" Z="-240" />
+		<route id="19" X="-44308" Y="-113207" Z="-240" />
+		<route id="20" X="-44851" Y="-112965" Z="-240" />
+		<route id="21" X="-45740" Y="-113562" Z="-240">
+			<delay val="1" />
+		</route>
+	</walker>
+	<walker npcId="32070" run="true">
+		<route id="1" X="90271" Y="-143869" Z="-1547">
+			<delay val="10" />
+		</route>
+		<route id="2" X="90605" Y="-143167" Z="-1536">
+			<delay val="1" />
+		</route>
+		<route id="3" X="89343" Y="-140746" Z="-1536">
+			<delay val="1" />
+		</route>
+		<route id="4" X="87351" Y="-140059" Z="-1536">
+			<delay val="5" />
+		</route>
+		<route id="5" X="85234" Y="-140963" Z="-1536">
+			<delay val="1" />
+		</route>
+		<route id="6" X="84465" Y="-142493" Z="-1536">
+			<delay val="1" />
+		</route>
+		<route id="7" X="84434" Y="-144061" Z="-1528">
+			<delay val="10" />
+		</route>
+		<route id="8" X="84465" Y="-142493" Z="-1536">
+			<delay val="1" />
+		</route>
+		<route id="9" X="85234" Y="-140963" Z="-1536">
+			<delay val="1" />
+		</route>
+		<route id="10" X="87351" Y="-140059" Z="-1536">
+			<delay val="5" />
+		</route>
+		<route id="11" X="89343" Y="-140746" Z="-1536">
+			<delay val="1" />
+		</route>
+		<route id="12" X="90605" Y="-143167" Z="-1536">
+			<delay val="1" />
+		</route>
+	</walker>
+	<walker npcId="32072" run="false">
+		<route id="1" X="84429" Y="-144065" Z="-1542">
+			<delay val="10" />
+		</route>
+		<route id="2" X="84465" Y="-142493" Z="-1536" />
+		<route id="3" X="85234" Y="-140963" Z="-1536" />
+		<route id="4" X="87351" Y="-140059" Z="-1536">
+			<delay val="5" />
+		</route>
+		<route id="5" X="89343" Y="-140746" Z="-1536" />
+		<route id="6" X="90605" Y="-143167" Z="-1536" />
+		<route id="7" X="90271" Y="-143869" Z="-1536">
+			<delay val="10" />
+		</route>
+		<route id="8" X="90605" Y="-143167" Z="-1536" />
+		<route id="9" X="89343" Y="-140746" Z="-1536" />
+		<route id="10" X="87351" Y="-140059" Z="-1536">
+			<delay val="5" />
+		</route>
+		<route id="11" X="85234" Y="-140963" Z="-1536" />
+		<route id="12" X="84465" Y="-142493" Z="-1536" />
+	</walker>
+</list>

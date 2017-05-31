@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<list>
+
+	<!-- ADMIN -->
+	<aCar name="admin_admin" accessLevel="1" />
+	<aCar name="admin_admin1" accessLevel="1" />
+	<aCar name="admin_admin2" accessLevel="1" />
+	<aCar name="admin_admin3" accessLevel="1" />
+	<aCar name="admin_admin4" accessLevel="1" />
+	<aCar name="admin_gmlist" accessLevel="1" />
+	<aCar name="admin_kill" accessLevel="1" />
+	<aCar name="admin_silence" accessLevel="1" />
+	<aCar name="admin_tradeoff" accessLevel="1" />
+	<aCar name="admin_reload" accessLevel="1" />
+
+	<!-- ANNOUNCEMENTS -->
+	<aCar name="admin_announce" accessLevel="1" />
+	<aCar name="admin_ann" accessLevel="1" />
+	<aCar name="admin_say" accessLevel="1" />
+
+	<!-- BAN -->
+	<aCar name="admin_ban" accessLevel="1" />
+	<aCar name="admin_ban_acc" accessLevel="1" />
+	<aCar name="admin_ban_char" accessLevel="1" />
+	<aCar name="admin_ban_chat" accessLevel="1" />
+	<aCar name="admin_unban" accessLevel="1" />
+	<aCar name="admin_unban_acc" accessLevel="1" />
+	<aCar name="admin_unban_char" accessLevel="1" />
+	<aCar name="admin_unban_chat" accessLevel="1" />
+	<aCar name="admin_jail" accessLevel="1" />
+	<aCar name="admin_unjail" accessLevel="1" />
+
+	<!-- BOOKMARK -->
+	<aCar name="admin_bkpage" accessLevel="1" />
+	<aCar name="admin_bk" accessLevel="1" />
+	<aCar name="admin_delbk" accessLevel="1" />
+
+	<!-- BUFF -->
+	<aCar name="admin_getbuffs" accessLevel="1" />
+	<aCar name="admin_stopbuff" accessLevel="1" />
+	<aCar name="admin_stopallbuffs" accessLevel="1" />
+	<aCar name="admin_areacancel" accessLevel="1" />
+	<aCar name="admin_removereuse" accessLevel="1" />
+
+	<!-- CACHE -->
+	<aCar name="admin_reload_cache_path" accessLevel="1" />
+	<aCar name="admin_reload_cache_file" accessLevel="1" />
+
+	<!-- CAMERA -->
+	<aCar name="admin_camera" accessLevel="1" />
+	<aCar name="admin_cameramode" accessLevel="1" />
+
+	<!-- CHANGE ACCESS LEVEL -->
+	<aCar name="admin_changelvl" accessLevel="1" />
+
+	<!-- CREATE ITEM -->
+	<aCar name="admin_itemcreate" accessLevel="1" />
+	<aCar name="admin_create_item" accessLevel="1" />
+	<aCar name="admin_create_set" accessLevel="1" />
+	<aCar name="admin_create_coin" accessLevel="1" />
+	<aCar name="admin_reward_all" accessLevel="1" />
+
+	<!-- CURSED WEAPONS -->
+	<aCar name="admin_cw_info" accessLevel="1" />
+	<aCar name="admin_cw_remove" accessLevel="1" />
+	<aCar name="admin_cw_goto" accessLevel="1" />
+	<aCar name="admin_cw_add" accessLevel="1" />
+	<aCar name="admin_cw_info_menu" accessLevel="1" />
+
+	<!-- DELETE -->
+	<aCar name="admin_delete" accessLevel="1" />
+
+	<!-- DOOR CONTROL -->
+	<aCar name="admin_open" accessLevel="1" />
+	<aCar name="admin_close" accessLevel="1" />
+	<aCar name="admin_openall" accessLevel="1" />
+	<aCar name="admin_closeall" accessLevel="1" />
+
+	<!-- EDIT CHAR -->
+	<aCar name="admin_edit_character" accessLevel="1" />
+	<aCar name="admin_current_player" accessLevel="1" />
+	<aCar name="admin_setkarma" accessLevel="1" />
+	<aCar name="admin_character_info" accessLevel="1" />
+	<aCar name="admin_show_characters" accessLevel="1" />
+	<aCar name="admin_find_character" accessLevel="1" />
+	<aCar name="admin_find_ip" accessLevel="1" />
+	<aCar name="admin_find_account" accessLevel="1" />
+	<aCar name="admin_find_dualbox" accessLevel="1" />
+	<aCar name="admin_rec" accessLevel="1" />
+	<aCar name="admin_settitle" accessLevel="1" />
+	<aCar name="admin_setname" accessLevel="1" />
+	<aCar name="admin_setsex" accessLevel="1" />
+	<aCar name="admin_setcolor" accessLevel="1" />
+	<aCar name="admin_settcolor" accessLevel="1" />
+	<aCar name="admin_setclass" accessLevel="1" />
+	<aCar name="admin_summon_info" accessLevel="1" />
+	<aCar name="admin_unsummon" accessLevel="1" />
+	<aCar name="admin_summon_setlvl" accessLevel="1" />
+	<aCar name="admin_show_pet_inv" accessLevel="1" />
+	<aCar name="admin_fullfood" accessLevel="1" />
+	<aCar name="admin_party_info" accessLevel="1" />
+	<aCar name="admin_clan_info" accessLevel="1" />
+	<aCar name="admin_remove_clan_penalty" accessLevel="1" />
+	<!-- <aCar name="admin_charquestmenu" accessLevel="1" /> -->
+	<!-- <aCar name="admin_setcharquest" accessLevel="1" /> -->
+
+	<!-- EDIT NPC -->
+	<aCar name="admin_show_droplist" accessLevel="1" />
+	<aCar name="admin_show_scripts" accessLevel="1" />
+	<aCar name="admin_show_shop" accessLevel="1" />
+	<aCar name="admin_show_shoplist" accessLevel="1" />
+	<aCar name="admin_show_skilllist" accessLevel="1" />
+
+	<!-- EFFECTS -->
+	<aCar name="admin_hide" accessLevel="1" />
+	<aCar name="admin_earthquake" accessLevel="1" />
+	<aCar name="admin_earthquake_menu" accessLevel="1" />
+	<aCar name="admin_gmspeed" accessLevel="1" />
+	<aCar name="admin_gmspeed_menu" accessLevel="1" />
+	<aCar name="admin_unpara_all" accessLevel="1" />
+	<aCar name="admin_para_all" accessLevel="1" />
+	<aCar name="admin_unpara" accessLevel="1" />
+	<aCar name="admin_para" accessLevel="1" />
+	<aCar name="admin_unpara_all_menu" accessLevel="1" />
+	<aCar name="admin_para_all_menu" accessLevel="1" />
+	<aCar name="admin_unpara_menu" accessLevel="1" />
+	<aCar name="admin_para_menu" accessLevel="1" />
+	<aCar name="admin_changename" accessLevel="1" />
+	<aCar name="admin_changename_menu" accessLevel="1" />
+	<aCar name="admin_social" accessLevel="1" />
+	<aCar name="admin_social_menu" accessLevel="1" />
+	<aCar name="admin_effect" accessLevel="1" />
+	<aCar name="admin_effect_menu" accessLevel="1" />
+	<aCar name="admin_special" accessLevel="1" />
+	<aCar name="admin_special_menu" accessLevel="1" />
+	<aCar name="admin_abnormal" accessLevel="1" />
+	<aCar name="admin_abnormal_menu" accessLevel="1" />
+	<aCar name="admin_jukebox" accessLevel="1" />
+	<aCar name="admin_play_sound" accessLevel="1" />
+	<aCar name="admin_atmosphere" accessLevel="1" />
+	<aCar name="admin_atmosphere_menu" accessLevel="1" />
+
+	<!-- ENCHANT -->
+	<aCar name="admin_seteh" accessLevel="1" />
+	<aCar name="admin_setec" accessLevel="1" />
+	<aCar name="admin_seteg" accessLevel="1" />
+	<aCar name="admin_setel" accessLevel="1" />
+	<aCar name="admin_seteb" accessLevel="1" />
+	<aCar name="admin_setew" accessLevel="1" />
+	<aCar name="admin_setes" accessLevel="1" />
+	<aCar name="admin_setle" accessLevel="1" />
+	<aCar name="admin_setre" accessLevel="1" />
+	<aCar name="admin_setlf" accessLevel="1" />
+	<aCar name="admin_setrf" accessLevel="1" />
+	<aCar name="admin_seten" accessLevel="1" />
+	<aCar name="admin_setun" accessLevel="1" />
+	<aCar name="admin_setba" accessLevel="1" />
+	<aCar name="admin_setbe" accessLevel="1" />
+	<aCar name="admin_enchant" accessLevel="1" />
+
+	<!-- EXP & SP -->
+	<aCar name="admin_add_exp_sp_to_character" accessLevel="1" />
+	<aCar name="admin_add_exp_sp" accessLevel="1" />
+	<aCar name="admin_remove_exp_sp" accessLevel="1" />
+
+	<!-- GEODATA -->
+	<aCar name="admin_geo_bug" accessLevel="1" />
+	<aCar name="admin_geo_pos" accessLevel="1" />
+	<aCar name="admin_geo_can_see" accessLevel="1" />
+	<aCar name="admin_geo_can_move_beeline" accessLevel="1" />
+
+	<!-- GM -->
+	<aCar name="admin_gm" accessLevel="1" />
+
+	<!-- GM CHAT -->
+	<aCar name="admin_gmchat" accessLevel="1" />
+	<aCar name="admin_gmchat_menu" accessLevel="1" />
+
+	<!-- HEAL -->
+	<aCar name="admin_heal" accessLevel="1" />
+
+	<!-- HELP PAGE -->
+	<aCar name="admin_help" accessLevel="1" />
+
+	<!-- INVUL -->
+	<aCar name="admin_invul" accessLevel="1" />
+	<aCar name="admin_setinvul" accessLevel="1" />
+
+	<!-- KICK -->
+	<aCar name="admin_character_disconnect" accessLevel="1" />
+	<aCar name="admin_kick" accessLevel="1" />
+	<aCar name="admin_kick_non_gm" accessLevel="1" />
+	
+	<!-- KNOWNLIST -->
+	<aCar name="admin_knownlist" accessLevel="1" />
+	
+	<!-- LEVEL -->
+	<aCar name="admin_addlevel" accessLevel="1" />
+	<aCar name="admin_setlevel" accessLevel="1" />
+
+	<!-- MAINTENANCE -->
+	<aCar name="admin_server" accessLevel="1" />
+	<aCar name="admin_server_shutdown" accessLevel="1" />
+	<aCar name="admin_server_restart" accessLevel="1" />
+	<aCar name="admin_server_abort" accessLevel="1" />
+	<aCar name="admin_server_gm_only" accessLevel="1" />
+	<aCar name="admin_server_all" accessLevel="1" />
+	<aCar name="admin_server_max_player" accessLevel="1" />
+
+	<!-- MAMMON -->
+	<aCar name="admin_mammon_find" accessLevel="1" />
+	<aCar name="admin_mammon_respawn" accessLevel="1" />
+	<aCar name="admin_msg" accessLevel="1" />
+
+	<!-- MANOR -->
+	<aCar name="admin_manor" accessLevel="1" />
+	<aCar name="admin_manor_approve" accessLevel="1" />
+	<aCar name="admin_manor_setnext" accessLevel="1" />
+	<aCar name="admin_manor_reset" accessLevel="1" />
+	<aCar name="admin_manor_setmaintenance" accessLevel="1" />
+	<aCar name="admin_manor_save" accessLevel="1" />
+	<aCar name="admin_manor_disable" accessLevel="1" />
+
+	<!-- MENU -->
+	<aCar name="admin_char_manage" accessLevel="1" />
+	<aCar name="admin_teleport_character_to_menu" accessLevel="1" />
+
+	<!-- MONSTER RACE -->
+	<aCar name="admin_mons" accessLevel="1" />
+	
+	<!-- MOVIE MAKER -->
+	<aCar name="admin_addseq" accessLevel="1" />
+	<aCar name="admin_playseqq" accessLevel="1" />
+	<aCar name="admin_delsequence" accessLevel="1" />
+	<aCar name="admin_editsequence" accessLevel="1" />
+	<aCar name="admin_addsequence" accessLevel="1" />
+	<aCar name="admin_playsequence" accessLevel="1" />
+	<aCar name="admin_movie" accessLevel="1" />
+	<aCar name="admin_updatesequence" accessLevel="1" />
+	<aCar name="admin_broadcast" accessLevel="1" />
+	<aCar name="admin_playmovie" accessLevel="1" />
+	<aCar name="admin_broadmovie" accessLevel="1" />
+	
+	<!-- OLYMPIADS -->
+	<aCar name="admin_endoly" accessLevel="1" />
+	<aCar name="admin_sethero" accessLevel="1" />
+	<aCar name="admin_setnoble" accessLevel="1" />
+	
+	<!-- PATHNODE -->
+	<aCar name="admin_pn_info" accessLevel="1" />
+	<aCar name="admin_find_path" accessLevel="1" />
+
+	<!-- PETITION -->
+	<aCar name="admin_view_petitions" accessLevel="1" />
+	<aCar name="admin_view_petition" accessLevel="1" />
+	<aCar name="admin_accept_petition" accessLevel="1" />
+	<aCar name="admin_reject_petition" accessLevel="1" />
+	<aCar name="admin_reset_petitions" accessLevel="1" />
+	<!-- <aCar name="admin_force_peti" accessLevel="1" /> -->
+
+	<!-- PFORGE -->
+	<aCar name="admin_forge" accessLevel="1" />
+	<aCar name="admin_forge2" accessLevel="1" />
+	<aCar name="admin_forge3" accessLevel="1" />
+
+	<!-- PLEDGE -->
+	<aCar name="admin_pledge" accessLevel="1" />
+
+	<!-- POLYMORPH -->
+	<aCar name="admin_polymorph" accessLevel="1" />
+	<aCar name="admin_unpolymorph" accessLevel="1" />
+	<aCar name="admin_polymorph_menu" accessLevel="1" />
+	<aCar name="admin_unpolymorph_menu" accessLevel="1" />
+
+	<!-- RES -->
+	<aCar name="admin_res" accessLevel="1" />
+	<aCar name="admin_res_monster" accessLevel="1" />
+
+	<!-- RIDE -->
+	<aCar name="admin_ride" accessLevel="1" />
+	<aCar name="admin_unride" accessLevel="1" />
+
+	<!-- SHOP -->
+	<aCar name="admin_buy" accessLevel="1" />
+	<aCar name="admin_gmshop" accessLevel="1" />
+
+	<!-- SIEGE -->
+	<aCar name="admin_siege" accessLevel="1" />
+	<aCar name="admin_add_attacker" accessLevel="1" />
+	<aCar name="admin_add_defender" accessLevel="1" />
+	<aCar name="admin_add_guard" accessLevel="1" />
+	<aCar name="admin_list_siege_clans" accessLevel="1" />
+	<aCar name="admin_clear_siege_list" accessLevel="1" />
+	<aCar name="admin_move_defenders" accessLevel="1" />
+	<aCar name="admin_spawn_doors" accessLevel="1" />
+	<aCar name="admin_endsiege" accessLevel="1" />
+	<aCar name="admin_startsiege" accessLevel="1" />
+	<!-- <aCar name="admin_setsiegetime" accessLevel="1" /> -->
+	<aCar name="admin_setcastle" accessLevel="1" />
+	<aCar name="admin_removecastle" accessLevel="1" />
+	<aCar name="admin_clanhall" accessLevel="1" />
+	<aCar name="admin_clanhallset" accessLevel="1" />
+	<aCar name="admin_clanhalldel" accessLevel="1" />
+	<aCar name="admin_clanhallopendoors" accessLevel="1" />
+	<aCar name="admin_clanhallclosedoors" accessLevel="1" />
+	<aCar name="admin_clanhallteleportself" accessLevel="1" />
+
+	<!-- SKILL -->
+	<aCar name="admin_show_skills" accessLevel="1" />
+	<aCar name="admin_remove_skills" accessLevel="1" />
+	<aCar name="admin_skill_list" accessLevel="1" />
+	<aCar name="admin_skill_index" accessLevel="1" />
+	<aCar name="admin_add_skill" accessLevel="1" />
+	<aCar name="admin_remove_skill" accessLevel="1" />
+	<aCar name="admin_get_skills" accessLevel="1" />
+	<aCar name="admin_reset_skills" accessLevel="1" />
+	<aCar name="admin_give_all_skills" accessLevel="1" />
+	<aCar name="admin_remove_all_skills" accessLevel="1" />
+	<aCar name="admin_add_clan_skill" accessLevel="1" />
+	<aCar name="admin_st" accessLevel="1" />
+
+	<!-- SPAWN -->
+	<aCar name="admin_list_spawns" accessLevel="1" />
+	<aCar name="admin_show_spawns" accessLevel="1" />
+	<aCar name="admin_spawn" accessLevel="1" />
+	<aCar name="admin_spawn_index" accessLevel="1" />
+	<aCar name="admin_unspawnall" accessLevel="1" />
+	<aCar name="admin_respawnall" accessLevel="1" />
+	<aCar name="admin_spawn_reload" accessLevel="1" />
+	<aCar name="admin_npc_index" accessLevel="1" />
+	<aCar name="admin_spawn_once" accessLevel="1" />
+	<aCar name="admin_show_npcs" accessLevel="1" />
+	<aCar name="admin_spawnnight" accessLevel="1" />
+	<aCar name="admin_spawnday" accessLevel="1" />
+
+	<!-- TARGET -->
+	<aCar name="admin_target" accessLevel="1" />
+
+	<!-- TELEPORT -->
+	<aCar name="admin_runmod" accessLevel="1" />
+	<aCar name="admin_instant_move" accessLevel="1" />
+	<aCar name="admin_tele" accessLevel="1" />
+	<aCar name="admin_tele_areas" accessLevel="1" />
+	<aCar name="admin_goto" accessLevel="1" />
+	<aCar name="admin_teleportto" accessLevel="1" />
+	<aCar name="admin_recall" accessLevel="1" />
+	<aCar name="admin_recall_party" accessLevel="1" />
+	<aCar name="admin_recall_clan" accessLevel="1" />
+	<aCar name="admin_move_to" accessLevel="1" />
+	<aCar name="admin_sendhome" accessLevel="1" />
+
+	<!-- ZONE -->
+	<aCar name="admin_zone_check" accessLevel="1" />
+	<aCar name="admin_zone_visual" accessLevel="1" />
+	
+</list>

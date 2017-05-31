@@ -1,0 +1,3454 @@
+<list>
+	<!-- Castles ordered by "castle id" -->
+	<door id="19210001" name="gludio_castle_outter_001">
+		<castle id="1" />
+		<position x="-18481" y="113065" z="-2476" />
+		<minpos x="-18481" y="113059" z="-2799" />
+		<maxpos x="-18351" y="113071" z="-2479" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="19210002" name="gludio_castle_outter_002">
+		<castle id="1" />
+		<position x="-18219" y="113065" z="-2476" />
+		<minpos x="-18350" y="113059" z="-2799" />
+		<maxpos x="-18219" y="113071" z="-2479" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="19210003" name="gludio_castle_wall_001">
+		<castle id="1" />
+		<position x="-19912" y="111381" z="-2688" />
+		<minpos x="-19975" y="111082" z="-2922" />
+		<maxpos x="-19848" y="111680" z="-2462" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="19210004" name="gludio_castle_wall_002">
+		<castle id="1" />
+		<position x="-16586" y="111382" z="-2688" />
+		<minpos x="-16649" y="111083" z="-2922" />
+		<maxpos x="-16522" y="111681" z="-2462" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="19210005" name="gludio_castle_inner_001">
+		<castle id="1" />
+		<position x="-18244" y="110520" z="-2289" />
+		<minpos x="-18244" y="110514" z="-2547" />
+		<maxpos x="-18114" y="110526" z="-2292" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="19210006" name="gludio_castle_inner_002">
+		<castle id="1" />
+		<position x="-17981" y="110520" z="-2289" />
+		<minpos x="-18112" y="110514" z="-2547" />
+		<maxpos x="-17981" y="110526" z="-2292" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="19210007" name="gludio_castle_small_002">
+		<castle id="1" />
+		<position x="-19235" y="108276" z="-2289" />
+		<minpos x="-19332" y="108276" z="-2408" />
+		<maxpos x="-19235" y="108276" z="-2280" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="19210008" name="gludio_castle_station">
+		<castle id="1" />
+		<position x="-18997" y="108062" z="-1817" />
+		<minpos x="-19003" y="108057" z="-2069" />
+		<maxpos x="-18991" y="108207" z="-1819" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="19210009" name="gludio_castle_small_001">
+		<castle id="1" />
+		<position x="-17939" y="107109" z="-2289" />
+		<minpos x="-17939" y="107011" z="-2408" />
+		<maxpos x="-17939" y="107109" z="-2280" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="20220001" name="dion_castle_outter_001">
+		<castle id="2" />
+		<position x="22441" y="156684" z="-2670" />
+		<minpos x="22302" y="156677" z="-2994" />
+		<maxpos x="22449" y="156690" z="-2674" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="20220002" name="dion_castle_outter_002">
+		<castle id="2" />
+		<position x="22179" y="156684" z="-2670" />
+		<minpos x="22171" y="156677" z="-2994" />
+		<maxpos x="22317" y="156691" z="-2674" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="20220003" name="dion_castle_wall_001">
+		<castle id="2" />
+		<position x="23873" y="158368" z="-2882" />
+		<minpos x="23809" y="158060" z="-3116" />
+		<maxpos x="23937" y="158676" z="-2656" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="20220004" name="dion_castle_wall_002">
+		<castle id="2" />
+		<position x="20546" y="158368" z="-2882" />
+		<minpos x="20482" y="158069" z="-3116" />
+		<maxpos x="20610" y="158667" z="-2656" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="20220005" name="dion_castle_inner_001">
+		<castle id="2" />
+		<position x="22205" y="159230" z="-2476" />
+		<minpos x="22067" y="159224" z="-2735" />
+		<maxpos x="22213" y="159236" z="-2480" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="20220006" name="dion_castle_inner_002">
+		<castle id="2" />
+		<position x="21943" y="159230" z="-2476" />
+		<minpos x="21935" y="159224" z="-2735" />
+		<maxpos x="22081" y="159236" z="-2480" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="20220007" name="dion_castle_small_001">
+		<castle id="2" />
+		<position x="23194" y="161470" z="-2483" />
+		<minpos x="23187" y="161470" z="-2602" />
+		<maxpos x="23299" y="161470" z="-2474" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="20220008" name="dion_castle_station">
+		<castle id="2" />
+		<position x="22905" y="161547" z="-2006" />
+		<minpos x="22900" y="161535" z="-2258" />
+		<maxpos x="22911" y="161701" z="-2008" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="20220009" name="dion_castle_small_002">
+		<castle id="2" />
+		<position x="21899" y="162737" z="-2483" />
+		<minpos x="21899" y="162628" z="-2601" />
+		<maxpos x="21899" y="162743" z="-2473" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="23220001" name="giran_castle_outter_001">
+		<castle id="3" />
+		<position x="112857" y="144729" z="-2540" />
+		<minpos x="112850" y="144720" z="-2864" />
+		<maxpos x="112863" y="144867" z="-2544" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="23220002" name="giran_castle_outter_002">
+		<castle id="3" />
+		<position x="112857" y="144990" z="-2540" />
+		<minpos x="112851" y="144852" z="-2864" />
+		<maxpos x="112863" y="144997" z="-2544" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="23220003" name="giran_castle_wall_001">
+		<castle id="3" />
+		<position x="114540" y="143296" z="-2755" />
+		<minpos x="114232" y="143232" z="-2991" />
+		<maxpos x="114847" y="143359" z="-2531" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="23220004" name="giran_castle_wall_002">
+		<castle id="3" />
+		<position x="114540" y="146623" z="-2755" />
+		<minpos x="114232" y="146560" z="-2989" />
+		<maxpos x="114848" y="146687" z="-2529" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="23220005" name="giran_castle_inner_001">
+		<castle id="3" />
+		<position x="115402" y="144965" z="-2349" />
+		<minpos x="115396" y="144957" z="-2607" />
+		<maxpos x="115408" y="145104" z="-2352" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="23220006" name="giran_castle_inner_002">
+		<castle id="3" />
+		<position x="115402" y="145227" z="-2349" />
+		<minpos x="115396" y="145088" z="-2607" />
+		<maxpos x="115408" y="145235" z="-2352" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="23220007" name="giran_castle_small_001">
+		<castle id="3" />
+		<position x="117643" y="143974" z="-2356" />
+		<minpos x="117643" y="143869" z="-2475" />
+		<maxpos x="117643" y="143981" z="-2347" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="23220008" name="giran_castle_station">
+		<castle id="3" />
+		<position x="117720" y="144242" z="-1877" />
+		<minpos x="117715" y="144236" z="-2129" />
+		<maxpos x="117865" y="144248" z="-1879" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="23220009" name="giran_castle_small_002">
+		<castle id="3" />
+		<position x="118811" y="145270" z="-2356" />
+		<minpos x="118805" y="145270" z="-2475" />
+		<maxpos x="118916" y="145270" z="-2347" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22190001" name="oren_castle_outter_001">
+		<castle id="4" />
+		<position x="78925" y="36824" z="-2267" />
+		<minpos x="78918" y="36816" z="-2591" />
+		<maxpos x="78931" y="36959" z="-2271" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="22190002" name="oren_castle_outter_002">
+		<castle id="4" />
+		<position x="78925" y="37085" z="-2267" />
+		<minpos x="78919" y="36950" z="-2591" />
+		<maxpos x="78931" y="37091" z="-2271" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="22190003" name="oren_castle_wall_001">
+		<castle id="4" />
+		<position x="80616" y="35391" z="-2482" />
+		<minpos x="80317" y="35327" z="-2716" />
+		<maxpos x="80923" y="35455" z="-2256" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="22190004" name="oren_castle_wall_002">
+		<castle id="4" />
+		<position x="80616" y="38718" z="-2482" />
+		<minpos x="80308" y="38654" z="-2716" />
+		<maxpos x="80924" y="38782" z="-2256" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="22190005" name="oren_castle_inner_001">
+		<castle id="4" />
+		<position x="81470" y="37060" z="-2076" />
+		<minpos x="81464" y="37060" z="-2335" />
+		<maxpos x="81476" y="37200" z="-2080" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22190006" name="oren_castle_inner_002">
+		<castle id="4" />
+		<position x="81470" y="37322" z="-2076" />
+		<minpos x="81464" y="37182" z="-2335" />
+		<maxpos x="81476" y="37331" z="-2080" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22190007" name="oren_castle_small_001">
+		<castle id="4" />
+		<position x="83719" y="36069" z="-2083" />
+		<minpos x="83719" y="35964" z="-2202" />
+		<maxpos x="83719" y="36075" z="-2074" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22190008" name="oren_castle_station">
+		<castle id="4" />
+		<position x="83796" y="36337" z="-1604" />
+		<minpos x="83784" y="36331" z="-1856" />
+		<maxpos x="83949" y="36343" z="-1606" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22190009" name="oren_castle_small_002">
+		<castle id="4" />
+		<position x="84887" y="37365" z="-2083" />
+		<minpos x="84880" y="37365" z="-2202" />
+		<maxpos x="84992" y="37365" z="-2074" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24180001" name="aden_castle_outter_001">
+		<castle id="5" />
+		<position x="147278" y="8483" z="-241" />
+		<minpos x="147277" y="8475" z="-495" />
+		<maxpos x="147463" y="8492" z="-175" />
+		<stats hp="271536" pdef="837" mdef="674" />
+	</door>
+	<door id="24180002" name="aden_castle_outter_002">
+		<castle id="5" />
+		<position x="147634" y="8483" z="-241" />
+		<minpos x="147448" y="8474" z="-495" />
+		<maxpos x="147635" y="8492" z="-175" />
+		<stats hp="271536" pdef="837" mdef="674" />
+	</door>
+	<door id="24180003" name="aden_castle_wall_in">
+		<castle id="5" />
+		<position x="146770" y="6977" z="-271" />
+		<minpos x="146440" y="6895" z="-496" />
+		<maxpos x="147100" y="7104" z="-391" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="24180004" name="aden_castle_inner_002">
+		<castle id="5" />
+		<position x="147341" y="6210" z="-278" />
+		<minpos x="147341" y="6202" z="-430" />
+		<maxpos x="147461" y="6218" z="-139" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="24180005" name="aden_castle_inner_001">
+		<castle id="5" />
+		<position x="147571" y="6210" z="-278" />
+		<minpos x="147450" y="6202" z="-430" />
+		<maxpos x="147572" y="6219" z="-139" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="24180006" name="aden_castle_wall_left">
+		<castle id="5" />
+		<position x="145200" y="5504" z="-442" />
+		<minpos x="144863" y="5119" z="-751" />
+		<maxpos x="145536" y="5889" z="-186" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="24180007" name="aden_castle_left_004">
+		<castle id="5" />
+		<position x="146607" y="5384" z="48" />
+		<minpos x="146600" y="5318" z="-44" />
+		<maxpos x="146613" y="5385" z="141" />
+		<stats hp="90521" pdef="837" mdef="674" />
+	</door>
+	<door id="24180008" name="aden_castle_left_003">
+		<castle id="5" />
+		<position x="146606" y="5262" z="48" />
+		<minpos x="146600" y="5262" z="-44" />
+		<maxpos x="146613" y="5328" z="141" />
+		<stats hp="90521" pdef="837" mdef="674" />
+	</door>
+	<door id="24180009" name="aden_castle_right_003">
+		<castle id="5" />
+		<position x="148324" y="5384" z="48" />
+		<minpos x="148317" y="5319" z="-44" />
+		<maxpos x="148330" y="5385" z="141" />
+		<stats hp="90521" pdef="837" mdef="674" />
+	</door>
+	<door id="24180010" name="aden_castle_right_004">
+		<castle id="5" />
+		<position x="148323" y="5262" z="48" />
+		<minpos x="148316" y="5261" z="-44" />
+		<maxpos x="148330" y="5327" z="141" />
+		<stats hp="90521" pdef="837" mdef="674" />
+	</door>
+	<door id="24180011" name="aden_castle_wall_right">
+		<castle id="5" />
+		<position x="149711" y="5503" z="-442" />
+		<minpos x="149375" y="5118" z="-751" />
+		<maxpos x="150048" y="5888" z="-186" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="24180012" name="aden_castle_left_002">
+		<castle id="5" />
+		<position x="146001" y="4721" z="-256" />
+		<minpos x="145992" y="4601" z="-427" />
+		<maxpos x="146010" y="4721" z="-92" />
+		<stats hp="90521" pdef="837" mdef="674" />
+	</door>
+	<door id="24180013" name="aden_castle_left_001">
+		<castle id="5" />
+		<position x="146001" y="4493" z="-256" />
+		<minpos x="145992" y="4493" z="-427" />
+		<maxpos x="146010" y="4612" z="-92" />
+		<stats hp="90521" pdef="837" mdef="674" />
+	</door>
+	<door id="24180014" name="aden_castle_right_001">
+		<castle id="5" />
+		<position x="148908" y="4721" z="-256" />
+		<minpos x="148899" y="4602" z="-427" />
+		<maxpos x="148917" y="4722" z="-92" />
+		<stats hp="90521" pdef="837" mdef="674" />
+	</door>
+	<door id="24180015" name="aden_castle_right_002">
+		<castle id="5" />
+		<position x="148908" y="4493" z="-256" />
+		<minpos x="148900" y="4492" z="-427" />
+		<maxpos x="148917" y="4612" z="-92" />
+		<stats hp="90521" pdef="837" mdef="674" />
+	</door>
+	<door id="24180016" name="aden_castle_terrace">
+		<castle id="5" />
+		<position x="147511" y="2240" z="322" />
+		<minpos x="147398" y="2243" z="201" />
+		<maxpos x="147513" y="2245" z="444" />
+		<stats hp="90521" pdef="837" mdef="674" />
+	</door>
+	<door id="24180018" name="aden_castle_side_door2">
+		<castle id="5" />
+		<position x="150044" y="3783" z="21" />
+		<minpos x="150040" y="3775" z="-101" />
+		<maxpos x="150055" y="3903" z="142" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="24180019" name="aden_castle_side_door1">
+		<castle id="5" />
+		<position x="149208" y="3077" z="1356" />
+		<minpos x="149208" y="3072" z="1234" />
+		<maxpos x="149215" y="3199" z="1477" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="24180020" name="aden_castle_side_door4">
+		<castle id="5" />
+		<position x="144859" y="3783" z="21" />
+		<minpos x="144848" y="3775" z="-102" />
+		<maxpos x="144880" y="3902" z="141" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="24180021" name="aden_castle_side_door3">
+		<castle id="5" />
+		<position x="145694" y="3076" z="1355" />
+		<minpos x="145688" y="3072" z="1234" />
+		<maxpos x="145711" y="3199" z="1477" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="23250001" name="innadrile_castle_outter_002">
+		<castle id="6" />
+		<position x="116392" y="245462" z="-766" />
+		<minpos x="116254" y="245456" z="-1090" />
+		<maxpos x="116399" y="245469" z="-770" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="23250002" name="innadrile_castle_outter_001">
+		<castle id="6" />
+		<position x="116130" y="245462" z="-766" />
+		<minpos x="116123" y="245456" z="-1090" />
+		<maxpos x="116268" y="245468" z="-770" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="23250003" name="innadrile_castle_wall_001">
+		<castle id="6" />
+		<position x="117824" y="247146" z="-978" />
+		<minpos x="117745" y="246830" z="-1212" />
+		<maxpos x="117910" y="247467" z="-752" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="23250004" name="innadrile_castle_wall_002">
+		<castle id="6" />
+		<position x="114497" y="247146" z="-978" />
+		<minpos x="114417" y="246833" z="-1212" />
+		<maxpos x="114576" y="247461" z="-752" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="23250005" name="innadrile_castle_inner_002">
+		<castle id="6" />
+		<position x="116155" y="248008" z="-572" />
+		<minpos x="116018" y="248002" z="-831" />
+		<maxpos x="116162" y="248014" z="-576" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="23250006" name="innadrile_castle_inner_001">
+		<castle id="6" />
+		<position x="115894" y="248008" z="-572" />
+		<minpos x="115886" y="248002" z="-831" />
+		<maxpos x="116033" y="248014" z="-576" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="23250007" name="innadrile_castle_small_001">
+		<castle id="6" />
+		<position x="117145" y="250249" z="-579" />
+		<minpos x="117138" y="250249" z="-698" />
+		<maxpos x="117249" y="250249" z="-570" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="23250008" name="innadrile_castle_station">
+		<castle id="6" />
+		<position x="116856" y="250326" z="-102" />
+		<minpos x="116850" y="250315" z="-354" />
+		<maxpos x="116862" y="250478" z="-104" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="23250009" name="innadrile_castle_small_002">
+		<castle id="6" />
+		<position x="115849" y="251516" z="-579" />
+		<minpos x="115849" y="251411" z="-697" />
+		<maxpos x="115849" y="251523" z="-569" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24160009" name="godad_castle_outter_002">
+		<castle id="7" />
+		<position x="147642" y="-45571" z="-1945" />
+		<minpos x="147448" y="-45584" z="-2116" />
+		<maxpos x="147663" y="-45552" z="-1796" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="24160010" name="godad_castle_outter_001">
+		<castle id="7" />
+		<position x="147290" y="-45571" z="-1945" />
+		<minpos x="147272" y="-45584" z="-2116" />
+		<maxpos x="147480" y="-45552" z="-1796" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="24160011" name="godad_castle_side_door_001">
+		<castle id="7" />
+		<position x="149143" y="-48368" z="-2223" />
+		<minpos x="149129" y="-48384" z="-2411" />
+		<maxpos x="149158" y="-48098" z="-2155" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24160012" name="godad_castle_side_door_002">
+		<castle id="7" />
+		<position x="145792" y="-48368" z="-2223" />
+		<minpos x="145778" y="-48384" z="-2410" />
+		<maxpos x="145810" y="-48098" z="-2154" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24160013" name="godad_castle_side_door_003">
+		<castle id="7" />
+		<position x="148997" y="-47794" z="-1511" />
+		<minpos x="148940" y="-47889" z="-1625" />
+		<maxpos x="149055" y="-47698" z="-1369" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="24160014" name="godad_castle_side_door_004">
+		<castle id="7" />
+		<position x="145930" y="-47793" z="-1511" />
+		<minpos x="145873" y="-47889" z="-1625" />
+		<maxpos x="145987" y="-47698" z="-1369" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="24160015" name="godad_castle_station_001">
+		<castle id="7" />
+		<position x="148750" y="-49120" z="-588" />
+		<minpos x="148650" y="-49143" z="-715" />
+		<maxpos x="148866" y="-49092" z="-459" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24160016" name="godad_castle_station_002">
+		<castle id="7" />
+		<position x="146180" y="-49121" z="-588" />
+		<minpos x="146080" y="-49144" z="-715" />
+		<maxpos x="146296" y="-49093" z="-459" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24160017" name="godad_castle_ctr_001">
+		<castle id="7" />
+		<position x="150248" y="-48577" z="-1659" />
+		<minpos x="150148" y="-48600" z="-1775" />
+		<maxpos x="150363" y="-48549" z="-1519" />
+		<stats hp="31650" pdef="644" mdef="518" />
+	</door>
+	<door id="24160018" name="godad_castle_ctr_002">
+		<castle id="7" />
+		<position x="144682" y="-48577" z="-1659" />
+		<minpos x="144582" y="-48600" z="-1775" />
+		<maxpos x="144797" y="-48549" z="-1519" />
+		<stats hp="31650" pdef="644" mdef="518" />
+	</door>
+	<door id="24160019" name="godad_castle_inner_001">
+		<castle id="7" />
+		<position x="148751" y="-48603" z="-2290" />
+		<minpos x="148736" y="-48680" z="-2414" />
+		<maxpos x="148764" y="-48528" z="-2158" />
+		<stats hp="543072" pdef="644" mdef="518" />
+	</door>
+	<door id="24160020" name="godad_castle_inner_002">
+		<castle id="7" />
+		<position x="146180" y="-48603" z="-2290" />
+		<minpos x="146165" y="-48680" z="-2414" />
+		<maxpos x="146193" y="-48528" z="-2158" />
+		<stats hp="543072" pdef="644" mdef="518" />
+	</door>
+	<door id="24160021" name="godad_castle_wall_001">
+		<castle id="7" />
+		<position x="150106" y="-47522" z="-2288" />
+		<minpos x="149637" y="-47957" z="-2572" />
+		<maxpos x="150635" y="-47039" z="-2112" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="24160022" name="godad_castle_wall_002">
+		<castle id="7" />
+		<position x="144824" y="-47522" z="-2289" />
+		<minpos x="144296" y="-47957" z="-2572" />
+		<maxpos x="145286" y="-47011" z="-2112" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="24160023" name="godad_castle_inner_003">
+		<castle id="7" />
+		<position x="147464" y="-46200" z="-1987" />
+		<minpos x="147366" y="-46217" z="-2112" />
+		<maxpos x="147562" y="-46171" z="-1856" />
+		<stats hp="543072" pdef="644" mdef="518" />
+	</door>
+	<door id="20160001" name="rune_castle_outter_001">
+		<castle id="8" />
+		<position x="18484" y="-49321" z="-1022" />
+		<minpos x="18458" y="-49337" z="-1251" />
+		<maxpos x="18507" y="-49136" z="-931" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="20160002" name="rune_castle_outter_002">
+		<castle id="8" />
+		<position x="18484" y="-48982" z="-1022" />
+		<minpos x="18458" y="-49167" z="-1251" />
+		<maxpos x="18506" y="-48967" z="-931" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="20160003" name="rune_castle_inner_001">
+		<castle id="8" />
+		<position x="15769" y="-49251" z="-901" />
+		<minpos x="15752" y="-49264" z="-1088" />
+		<maxpos x="15785" y="-49136" z="-768" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="20160004" name="rune_castle_inner_002">
+		<castle id="8" />
+		<position x="15769" y="-49053" z="-901" />
+		<minpos x="15752" y="-49168" z="-1088" />
+		<maxpos x="15785" y="-49039" z="-768" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="20160005" name="rune_castle_gate_001">
+		<castle id="8" />
+		<position x="15344" y="-49152" z="-720" />
+		<minpos x="15320" y="-49268" z="-1093" />
+		<maxpos x="15361" y="-49027" z="-773" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="20160006" name="rune_castle_inner_003">
+		<castle id="8" />
+		<position x="12861" y="-51116" z="-771" />
+		<minpos x="12746" y="-51140" z="-1115" />
+		<maxpos x="12984" y="-51096" z="-795" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="20160007" name="rune_castle_wall_001">
+		<castle id="8" />
+		<position x="17258" y="-51539" z="-879" />
+		<minpos x="16996" y="-51780" z="-1121" />
+		<maxpos x="17521" y="-51277" z="-641" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="20160008" name="rune_castle_wall_002">
+		<castle id="8" />
+		<position x="17258" y="-46763" z="-879" />
+		<minpos x="16983" y="-47020" z="-1121" />
+		<maxpos x="17522" y="-46522" z="-641" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="20160009" name="rune_castle_wall_003">
+		<castle id="8" />
+		<position x="13841" y="-51703" z="-764" />
+		<minpos x="13526" y="-52034" z="-1120" />
+		<maxpos x="14216" y="-51354" z="-352" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="22130001" name="schutt_castle_outter_001">
+		<castle id="9" />
+		<position x="77733" y="-149635" z="-213" />
+		<minpos x="77539" y="-149648" z="-381" />
+		<maxpos x="77754" y="-149616" z="-61" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="22130002" name="schutt_castle_outter_002">
+		<castle id="9" />
+		<position x="77381" y="-149635" z="-213" />
+		<minpos x="77362" y="-149649" z="-381" />
+		<maxpos x="77571" y="-149616" z="-61" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="22130003" name="schutt_castle_inner_003">
+		<castle id="9" />
+		<position x="77555" y="-150264" z="-255" />
+		<minpos x="77456" y="-150282" z="-376" />
+		<maxpos x="77653" y="-150235" z="-120" />
+		<stats hp="543072" pdef="644" mdef="518" />
+	</door>
+	<door id="22130004" name="schutt_castle_wall_001">
+		<castle id="9" />
+		<position x="80197" y="-151587" z="-557" />
+		<minpos x="79730" y="-152022" z="-840" />
+		<maxpos x="80861" y="-150985" z="-380" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="22130005" name="schutt_castle_wall_002">
+		<castle id="9" />
+		<position x="74915" y="-151587" z="-555" />
+		<minpos x="74229" y="-152016" z="-839" />
+		<maxpos x="75377" y="-150961" z="-379" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="22130006" name="schutt_castle_side_door_001">
+		<castle id="9" />
+		<position x="79234" y="-152432" z="-491" />
+		<minpos x="79220" y="-152449" z="-676" />
+		<maxpos x="79250" y="-152162" z="-420" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22130007" name="schutt_castle_side_door_002">
+		<castle id="9" />
+		<position x="75883" y="-152432" z="-491" />
+		<minpos x="75869" y="-152449" z="-677" />
+		<maxpos x="75902" y="-152162" z="-421" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22130008" name="schutt_castle_side_door_003">
+		<castle id="9" />
+		<position x="79088" y="-151859" z="221" />
+		<minpos x="79030" y="-151955" z="97" />
+		<maxpos x="79147" y="-151762" z="353" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="22130009" name="schutt_castle_side_door_004">
+		<castle id="9" />
+		<position x="76021" y="-151858" z="221" />
+		<minpos x="75964" y="-151954" z="97" />
+		<maxpos x="76079" y="-151763" z="353" />
+		<stats hp="253200" pdef="644" mdef="518" />
+	</door>
+	<door id="22130010" name="schutt_castle_ctr_001">
+		<castle id="9" />
+		<position x="80339" y="-152641" z="73" />
+		<minpos x="80238" y="-152664" z="-43" />
+		<maxpos x="80454" y="-152613" z="213" />
+		<stats hp="31650" pdef="644" mdef="518" />
+	</door>
+	<door id="22130011" name="schutt_castle_ctr_002">
+		<castle id="9" />
+		<position x="74773" y="-152641" z="73" />
+		<minpos x="74672" y="-152664" z="-43" />
+		<maxpos x="74888" y="-152613" z="213" />
+		<stats hp="31650" pdef="644" mdef="518" />
+	</door>
+	<door id="22130012" name="schutt_castle_inner_001">
+		<castle id="9" />
+		<position x="78842" y="-152667" z="-558" />
+		<minpos x="78826" y="-152745" z="-681" />
+		<maxpos x="78855" y="-152592" z="-425" />
+		<stats hp="543072" pdef="644" mdef="518" />
+	</door>
+	<door id="22130013" name="schutt_castle_inner_002">
+		<castle id="9" />
+		<position x="76271" y="-152667" z="-558" />
+		<minpos x="76255" y="-152745" z="-681" />
+		<maxpos x="76284" y="-152592" z="-425" />
+		<stats hp="543072" pdef="644" mdef="518" />
+	</door>
+	<door id="22130014" name="schutt_castle_station_001">
+		<castle id="9" />
+		<position x="78841" y="-153184" z="1144" />
+		<minpos x="78740" y="-153207" z="1017" />
+		<maxpos x="78957" y="-153156" z="1273" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22130015" name="schutt_castle_station_002">
+		<castle id="9" />
+		<position x="76271" y="-153185" z="1144" />
+		<minpos x="76170" y="-153208" z="1017" />
+		<maxpos x="76387" y="-153157" z="1273" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+
+	<!-- Siegable Clan Halls ordered by "siegableclanhall id" -->
+	<door id="21210001" name="partisan001">
+		<siegableclanhall id="21" />
+		<position x="43643" y="108908" z="-1970" />
+		<minpos x="43643" y="108840" z="-2015" />
+		<maxpos x="43651" y="108915" z="-1565" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21210002" name="partisan002">
+		<siegableclanhall id="21" />
+		<position x="43643" y="108783" z="-1970" />
+		<minpos x="43643" y="108778" z="-2015" />
+		<maxpos x="43651" y="108853" z="-1565" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25170001" name="Devastated_castle_outter_001">
+		<siegableclanhall id="34" />
+		<position x="178212" y="-15038" z="-2135" />
+		<minpos x="178211" y="-15038" z="-2294" />
+		<maxpos x="178342" y="-15017" z="-1976" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25170002" name="Devastated_castle_outter_002">
+		<siegableclanhall id="34" />
+		<position x="178468" y="-15038" z="-2135" />
+		<minpos x="178339" y="-15038" z="-2294" />
+		<maxpos x="178469" y="-15017" z="-1976" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25170005" name="Devastated_castle_001">
+		<siegableclanhall id="34" />
+		<position x="178302" y="-18573" z="-2287" />
+		<minpos x="178302" y="-18611" z="-2272" />
+		<maxpos x="178309" y="-18573" z="-1822" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25170006" name="Devastated_castle_002">
+		<siegableclanhall id="34" />
+		<position x="178302" y="-18648" z="-2287" />
+		<minpos x="178302" y="-18648" z="-2272" />
+		<maxpos x="178309" y="-18610" z="-1822" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25170003" name="Devastated_castle_003">
+		<siegableclanhall id="34" />
+		<position x="178120" y="-18225" z="-2286" />
+		<minpos x="178120" y="-18225" z="-2262" />
+		<maxpos x="178183" y="-18211" z="-1812" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25170004" name="Devastated_castle_004">
+		<siegableclanhall id="34" />
+		<position x="178245" y="-18225" z="-2286" />
+		<minpos x="178182" y="-18225" z="-2262" />
+		<maxpos x="178245" y="-18211" z="-1812" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22170001" name="Bandit_001">
+		<siegableclanhall id="35" />
+		<position x="85621" y="-18127" z="-1670" />
+		<minpos x="85411" y="-18299" z="-1821" />
+		<maxpos x="85633" y="-18118" z="-1471" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22170002" name="Bandit_002">
+		<siegableclanhall id="35" />
+		<position x="85213" y="-18458" z="-1670" />
+		<minpos x="85206" y="-18466" z="-1821" />
+		<maxpos x="85425" y="-18288" z="-1471" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22170003" name="Bandit_003">
+		<siegableclanhall id="35" />
+		<position x="80818" y="-15357" z="-1762" />
+		<minpos x="80815" y="-15445" z="-1829" />
+		<maxpos x="80821" y="-15349" z="-1379" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22170004" name="Bandit_004">
+		<siegableclanhall id="35" />
+		<position x="80818" y="-15518" z="-1762" />
+		<minpos x="80815" y="-15525" z="-1829" />
+		<maxpos x="80820" y="-15431" z="-1379" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24140001" name="rainbow_springs_agit_002_001">
+		<siegableclanhall id="62" />
+		<position x="140727" y="-124476" z="-1894" />
+		<minpos x="140725" y="-124478" z="-1913" />
+		<maxpos x="140754" y="-124437" z="-1463" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24140002" name="rainbow_springs_agit_002_002">
+		<siegableclanhall id="62" />
+		<position x="140777" y="-124401" z="-1894" />
+		<minpos x="140750" y="-124440" z="-1923" />
+		<maxpos x="140779" y="-124399" z="-1473" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24140003" name="rainbow_springs_agit_001_001">
+		<siegableclanhall id="62" />
+		<position x="141148" y="-124309" z="-1894" />
+		<minpos x="141146" y="-124336" z="-1921" />
+		<maxpos x="141187" y="-124306" z="-1471" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24140004" name="rainbow_springs_agit_001_002">
+		<siegableclanhall id="62" />
+		<position x="141223" y="-124359" z="-1893" />
+		<minpos x="141184" y="-124361" z="-1920" />
+		<maxpos x="141225" y="-124332" z="-1470" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24140005" name="rainbow_springs_agit_003_001">
+		<siegableclanhall id="62" />
+		<position x="141280" y="-124737" z="-1894" />
+		<minpos x="141253" y="-124777" z="-1949" />
+		<maxpos x="141282" y="-124735" z="-1499" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24140006" name="rainbow_springs_agit_003_002">
+		<siegableclanhall id="62" />
+		<position x="141230" y="-124812" z="-1894" />
+		<minpos x="141228" y="-124814" z="-1947" />
+		<maxpos x="141258" y="-124772" z="-1497" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24140007" name="rainbow_springs_agit_004_001">
+		<siegableclanhall id="62" />
+		<position x="140702" y="-123836" z="-1932" />
+		<minpos x="140700" y="-123886" z="-1942" />
+		<maxpos x="140715" y="-123835" z="-1492" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24140008" name="rainbow_springs_agit_004_002">
+		<siegableclanhall id="62" />
+		<position x="140721" y="-123934" z="-1931" />
+		<minpos x="140709" y="-123935" z="-1941" />
+		<maxpos x="140723" y="-123884" z="-1491" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21150001" name="beast_arena_agit_002_001">
+		<siegableclanhall id="63" />
+		<position x="59980" y="-94117" z="-1304" />
+		<minpos x="59945" y="-94178" z="-1382" />
+		<maxpos x="59985" y="-94114" z="-932" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21150002" name="beast_arena_agit_002_002">
+		<siegableclanhall id="63" />
+		<position x="59922" y="-94227" z="-1304" />
+		<minpos x="59917" y="-94231" z="-1382" />
+		<maxpos x="59957" y="-94166" z="-932" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21150003" name="beast_arena_agit_001_001">
+		<siegableclanhall id="63" />
+		<position x="55334" y="-93268" z="-1267" />
+		<minpos x="55294" y="-93274" z="-1396" />
+		<maxpos x="55338" y="-93143" z="-946" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21150004" name="beast_arena_agit_001_002">
+		<siegableclanhall id="63" />
+		<position x="55263" y="-93038" z="-1267" />
+		<minpos x="55257" y="-93158" z="-1396" />
+		<maxpos x="55304" y="-93031" z="-946" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21150005" name="beast_arena_agit_003_001">
+		<siegableclanhall id="63" />
+		<position x="58500" y="-93965" z="-1380" />
+		<minpos x="58304" y="-94077" z="-1391" />
+		<maxpos x="58685" y="-93846" z="-941" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21150006" name="beast_arena_agit_003_002">
+		<siegableclanhall id="63" />
+		<position x="56863" y="-93651" z="-1383" />
+		<minpos x="56697" y="-93815" z="-1394" />
+		<maxpos x="57010" y="-93497" z="-944" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21150007" name="beast_arena_agit_004_001">
+		<siegableclanhall id="63" />
+		<position x="56629" y="-91998" z="-1380" />
+		<minpos x="56516" y="-92178" z="-1391" />
+		<maxpos x="56731" y="-91807" z="-941" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21150008" name="beast_arena_agit_004_002">
+		<siegableclanhall id="63" />
+		<position x="58173" y="-91247" z="-1380" />
+		<minpos x="57979" y="-91316" z="-1391" />
+		<maxpos x="58373" y="-91198" z="-941" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21150009" name="beast_arena_agit_005_001">
+		<siegableclanhall id="63" />
+		<position x="59320" y="-92518" z="-1380" />
+		<minpos x="59264" y="-92718" z="-1391" />
+		<maxpos x="59368" y="-92322" z="-941" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21170001" name="rune_fortress_the_dead_gate_011">
+		<siegableclanhall id="64" />
+		<position x="57857" y="-29480" z="707" />
+		<minpos x="57849" y="-29498" z="544" />
+		<maxpos x="57969" y="-29465" z="994" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21170002" name="rune_fortress_the_dead_gate_012">
+		<siegableclanhall id="64" />
+		<position x="58061" y="-29479" z="707" />
+		<minpos x="57954" y="-29498" z="544" />
+		<maxpos x="58071" y="-29465" z="994" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21170003" name="rune_fortress_the_dead_room_021">
+		<siegableclanhall id="64" />
+		<position x="56977" y="-27193" z="639" />
+		<minpos x="56972" y="-27259" z="550" />
+		<maxpos x="56982" y="-27188" z="868" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21170004" name="rune_fortress_the_dead_room_022">
+		<siegableclanhall id="64" />
+		<position x="56977" y="-27318" z="639" />
+		<minpos x="56971" y="-27323" z="550" />
+		<maxpos x="56981" y="-27251" z="868" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21170005" name="rune_fortress_the_dead_door_031">
+		<siegableclanhall id="64" />
+		<position x="57902" y="-26392" z="654" />
+		<minpos x="57893" y="-26401" z="564" />
+		<maxpos x="57976" y="-26382" z="1014" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21170006" name="rune_fortress_the_dead_door_032">
+		<siegableclanhall id="64" />
+		<position x="58024" y="-26391" z="654" />
+		<minpos x="57953" y="-26400" z="564" />
+		<maxpos x="58037" y="-26383" z="1014" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+
+	<!-- Clan Halls ordered by "door id" -->
+	<door id="17220001" name="gludin_agit_003_001">
+		<position x="-84495" y="155208" z="-3150" />
+		<minpos x="-84497" y="155208" z="-3192" />
+		<maxpos x="-84494" y="155246" z="-2742" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="17220002" name="gludin_agit_003_002">
+		<position x="-84495" y="155286" z="-3150" />
+		<minpos x="-84496" y="155248" z="-3192" />
+		<maxpos x="-84494" y="155286" z="-2742" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="17220003" name="gludin_agit_003_001">
+		<position x="-83961" y="155257" z="-3149" />
+		<minpos x="-83962" y="155218" z="-3191" />
+		<maxpos x="-83960" y="155257" z="-2741" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="17220004" name="gludin_agit_003_002">
+		<position x="-83961" y="155180" z="-3149" />
+		<minpos x="-83962" y="155180" z="-3191" />
+		<maxpos x="-83960" y="155219" z="-2741" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="17220005" name="gludin_agit_002_001">
+		<position x="-83878" y="153063" z="-3149" />
+		<minpos x="-83917" y="153062" z="-3149" />
+		<maxpos x="-83878" y="153064" z="-2699" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="17220006" name="gludin_agit_002_002">
+		<position x="-83955" y="153063" z="-3149" />
+		<minpos x="-83955" y="153061" z="-3149" />
+		<maxpos x="-83916" y="153065" z="-2699" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="17220007" name="gludin_agit_002_003">
+		<position x="-83927" y="153598" z="-3149" />
+		<minpos x="-83927" y="153597" z="-3190" />
+		<maxpos x="-83889" y="153599" z="-2740" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="17220008" name="gludin_agit_002_004">
+		<position x="-83850" y="153598" z="-3149" />
+		<minpos x="-83889" y="153597" z="-3190" />
+		<maxpos x="-83850" y="153599" z="-2740" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="17220009" name="gludin_agit_001_001">
+		<position x="-83971" y="151880" z="-3111" />
+		<minpos x="-84009" y="151879" z="-3152" />
+		<maxpos x="-83971" y="151882" z="-2702" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="17220010" name="gludin_agit_001_002">
+		<position x="-84046" y="151880" z="-3111" />
+		<minpos x="-84046" y="151879" z="-3152" />
+		<maxpos x="-84008" y="151881" z="-2702" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="17220011" name="gludin_agit_004_001">
+		<position x="-79736" y="150062" z="-3026" />
+		<minpos x="-79737" y="150062" z="-3067" />
+		<maxpos x="-79735" y="150100" z="-2617" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="17220012" name="gludin_agit_004_002">
+		<position x="-79736" y="150138" z="-3026" />
+		<minpos x="-79737" y="150099" z="-3067" />
+		<maxpos x="-79735" y="150138" z="-2617" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="17220013" name="gludin_agit_005_001">
+		<position x="-79739" y="151522" z="-3027" />
+		<minpos x="-79740" y="151522" z="-3068" />
+		<maxpos x="-79738" y="151561" z="-2618" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="17220014" name="gludin_agit_005_002">
+		<position x="-79739" y="151597" z="-3027" />
+		<minpos x="-79740" y="151558" z="-3068" />
+		<maxpos x="-79738" y="151597" z="-2618" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="19210011" name="gludio_castle_agit_002_001">
+		<position x="-14790" y="125632" z="-3123" />
+		<minpos x="-14791" y="125595" z="-3158" />
+		<maxpos x="-14789" y="125632" z="-2708" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="19210012" name="gludio_castle_agit_002_002">
+		<position x="-14790" y="125557" z="-3123" />
+		<minpos x="-14791" y="125557" z="-3158" />
+		<maxpos x="-14789" y="125594" z="-2708" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="19210013" name="gludio_castle_agit_003_001">
+		<position x="-14116" y="125602" z="-3122" />
+		<minpos x="-14117" y="125602" z="-3157" />
+		<maxpos x="-14115" y="125639" z="-2707" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="19210014" name="gludio_castle_agit_003_002">
+		<position x="-14116" y="125677" z="-3122" />
+		<minpos x="-14117" y="125640" z="-3157" />
+		<maxpos x="-14115" y="125677" z="-2707" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="19210015" name="gludio_castle_agit_004_001">
+		<position x="-12600" y="123885" z="-3096" />
+		<minpos x="-12637" y="123884" z="-3131" />
+		<maxpos x="-12600" y="123886" z="-2681" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="19210016" name="gludio_castle_agit_004_002">
+		<position x="-12676" y="123885" z="-3096" />
+		<minpos x="-12676" y="123884" z="-3131" />
+		<maxpos x="-12639" y="123886" z="-2681" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="19210017" name="gludio_castle_agit_001_001">
+		<position x="-15981" y="123746" z="-3096" />
+		<minpos x="-15981" y="123734" z="-3131" />
+		<maxpos x="-15945" y="123747" z="-2681" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="19210018" name="gludio_castle_agit_001_002">
+		<position x="-15909" y="123724" z="-3096" />
+		<minpos x="-15945" y="123723" z="-3131" />
+		<maxpos x="-15909" y="123736" z="-2681" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="20220011" name="dion_castle_agit_002_001">
+		<position x="18879" y="143353" z="-2998" />
+		<minpos x="18874" y="143315" z="-3039" />
+		<maxpos x="18880" y="143353" z="-2589" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="20220012" name="dion_castle_agit_002_002">
+		<position x="18872" y="143278" z="-2998" />
+		<minpos x="18871" y="143278" z="-3039" />
+		<maxpos x="18877" y="143316" z="-2589" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="20220013" name="dion_castle_agit_001_001">
+		<position x="17616" y="145184" z="-3025" />
+		<minpos x="17616" y="145183" z="-3066" />
+		<maxpos x="17648" y="145206" z="-2616" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="20220014" name="dion_castle_agit_001_002">
+		<position x="17678" y="145226" z="-3025" />
+		<minpos x="17646" y="145204" z="-3066" />
+		<maxpos x="17679" y="145227" z="-2616" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="20220015" name="dion_castle_agit_003_001">
+		<position x="20118" y="145994" z="-3099" />
+		<minpos x="20118" y="145992" z="-3140" />
+		<maxpos x="20155" y="145996" z="-2690" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="20220016" name="dion_castle_agit_003_002">
+		<position x="20193" y="145994" z="-3099" />
+		<minpos x="20156" y="145993" z="-3140" />
+		<maxpos x="20193" y="145995" z="-2690" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21160001" name="rune_castle_agit_001_002">
+		<position x="37708" y="-50424" z="910" />
+		<minpos x="37681" y="-50451" z="900" />
+		<maxpos x="37735" y="-50397" z="1350" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21160002" name="rune_castle_agit_001_001">
+		<position x="37743" y="-50424" z="910" />
+		<minpos x="37716" y="-50451" z="900" />
+		<maxpos x="37770" y="-50397" z="1350" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21160003" name="rune_castle_agit_002_002">
+		<position x="38550" y="-50140" z="910" />
+		<minpos x="38523" y="-50167" z="900" />
+		<maxpos x="38577" y="-50113" z="1350" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21160004" name="rune_castle_agit_002_001">
+		<position x="38585" y="-50123" z="910" />
+		<minpos x="38558" y="-50150" z="900" />
+		<maxpos x="38612" y="-50096" z="1350" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21160005" name="rune_castle_agit_003_002">
+		<position x="39130" y="-49515" z="910" />
+		<minpos x="39103" y="-49542" z="900" />
+		<maxpos x="39157" y="-49488" z="1350" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21160006" name="rune_castle_agit_003_001">
+		<position x="39148" y="-49482" z="910" />
+		<minpos x="39121" y="-49509" z="900" />
+		<maxpos x="39175" y="-49455" z="1350" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21160007" name="rune_castle_agit_004_002">
+		<position x="39338" y="-48266" z="908" />
+		<minpos x="39311" y="-48293" z="898" />
+		<maxpos x="39365" y="-48239" z="1348" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21160008" name="rune_castle_agit_004_001">
+		<position x="39338" y="-48222" z="908" />
+		<minpos x="39311" y="-48249" z="898" />
+		<maxpos x="39365" y="-48195" z="1348" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21160009" name="rune_castle_agit_005_002">
+		<position x="39161" y="-47001" z="910" />
+		<minpos x="39134" y="-47028" z="900" />
+		<maxpos x="39188" y="-46974" z="1350" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21160010" name="rune_castle_agit_005_001">
+		<position x="39140" y="-46969" z="910" />
+		<minpos x="39113" y="-46996" z="900" />
+		<maxpos x="39167" y="-46942" z="1350" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21160011" name="rune_castle_agit_006_002">
+		<position x="38601" y="-46360" z="910" />
+		<minpos x="38574" y="-46387" z="900" />
+		<maxpos x="38628" y="-46333" z="1350" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21160012" name="rune_castle_agit_006_001">
+		<position x="38562" y="-46347" z="910" />
+		<minpos x="38535" y="-46374" z="900" />
+		<maxpos x="38589" y="-46320" z="1350" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21160013" name="rune_castle_agit_007_002">
+		<position x="37762" y="-46049" z="910" />
+		<minpos x="37735" y="-46076" z="900" />
+		<maxpos x="37789" y="-46022" z="1350" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="21160014" name="rune_castle_agit_007_001">
+		<position x="37718" y="-46046" z="910" />
+		<minpos x="37691" y="-46073" z="900" />
+		<maxpos x="37745" y="-46019" z="1350" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22130017" name="schutt_castle_agit_001_001">
+		<position x="86104" y="-143237" z="-1352" />
+		<minpos x="86098" y="-143241" z="-1352" />
+		<maxpos x="86114" y="-143190" z="-902" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22130018" name="schutt_castle_agit_001_002">
+		<position x="86115" y="-143148" z="-1352" />
+		<minpos x="86104" y="-143196" z="-1352" />
+		<maxpos x="86120" y="-143144" z="-902" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22130019" name="schutt_castle_agit_002_001">
+		<position x="86730" y="-142226" z="-1352" />
+		<minpos x="86725" y="-142232" z="-1352" />
+		<maxpos x="86775" y="-142199" z="-902" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22130020" name="schutt_castle_agit_002_002">
+		<position x="86809" y="-142184" z="-1352" />
+		<minpos x="86765" y="-142211" z="-1352" />
+		<maxpos x="86814" y="-142177" z="-902" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22130021" name="schutt_castle_agit_003_001">
+		<position x="87920" y="-142192" z="-1352" />
+		<minpos x="87915" y="-142218" z="-1352" />
+		<maxpos x="87964" y="-142186" z="-902" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22130022" name="schutt_castle_agit_003_002">
+		<position x="87999" y="-142234" z="-1352" />
+		<minpos x="87955" y="-142239" z="-1352" />
+		<maxpos x="88004" y="-142207" z="-902" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22130023" name="schutt_castle_agit_004_001">
+		<position x="88621" y="-143156" z="-1352" />
+		<minpos x="88615" y="-143205" z="-1352" />
+		<maxpos x="88633" y="-143153" z="-902" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22130024" name="schutt_castle_agit_004_002">
+		<position x="88633" y="-143246" z="-1352" />
+		<minpos x="88621" y="-143249" z="-1352" />
+		<maxpos x="88639" y="-143197" z="-902" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22220003" name="giran_castle_agit_005_001">
+		<position x="81873" y="151943" z="-3488" />
+		<minpos x="81870" y="151892" z="-3545" />
+		<maxpos x="81877" y="151944" z="-3095" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22220004" name="giran_castle_agit_005_002">
+		<position x="81873" y="151842" z="-3488" />
+		<minpos x="81870" y="151842" z="-3545" />
+		<maxpos x="81877" y="151894" z="-3095" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22220005" name="giran_castle_agit_004_002">
+		<position x="81196" y="151657" z="-3490" />
+		<minpos x="81192" y="151605" z="-3546" />
+		<maxpos x="81200" y="151658" z="-3096" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22220006" name="giran_castle_agit_004_001">
+		<position x="81196" y="151556" z="-3490" />
+		<minpos x="81192" y="151555" z="-3546" />
+		<maxpos x="81200" y="151607" z="-3096" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22220007" name="giran_castle_agit_001_001">
+		<position x="78622" y="148327" z="-3553" />
+		<minpos x="78570" y="148323" z="-3614" />
+		<maxpos x="78623" y="148331" z="-3164" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22220008" name="giran_castle_agit_001_002">
+		<position x="78521" y="148327" z="-3553" />
+		<minpos x="78520" y="148323" z="-3614" />
+		<maxpos x="78572" y="148331" z="-3164" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22220009" name="giran_castle_agit_002_001">
+		<position x="81831" y="145368" z="-3489" />
+		<minpos x="81827" y="145316" z="-3546" />
+		<maxpos x="81835" y="145369" z="-3096" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22220010" name="giran_castle_agit_002_002">
+		<position x="81831" y="145267" z="-3489" />
+		<minpos x="81828" y="145265" z="-3546" />
+		<maxpos x="81835" y="145319" z="-3096" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22220011" name="giran_castle_agit_003_002">
+		<position x="83618" y="145382" z="-3360" />
+		<minpos x="83614" y="145330" z="-3417" />
+		<maxpos x="83623" y="145383" z="-2967" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="22220012" name="giran_castle_agit_003_001">
+		<position x="83618" y="145281" z="-3360" />
+		<minpos x="83614" y="145280" z="-3417" />
+		<maxpos x="83622" y="145332" z="-2967" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24160001" name="godad_castle_agit_001_001">
+		<position x="146438" y="-55458" z="-2792" />
+		<minpos x="146432" y="-55506" z="-2821" />
+		<maxpos x="146450" y="-55453" z="-2371" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24160002" name="godad_castle_agit_001_002">
+		<position x="146449" y="-55547" z="-2792" />
+		<minpos x="146437" y="-55552" z="-2819" />
+		<maxpos x="146455" y="-55497" z="-2369" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24160003" name="godad_castle_agit_002_001">
+		<position x="147071" y="-56472" z="-2792" />
+		<minpos x="147065" y="-56500" z="-2815" />
+		<maxpos x="147117" y="-56465" z="-2365" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24160004" name="godad_castle_agit_002_002">
+		<position x="147151" y="-56514" z="-2792" />
+		<minpos x="147105" y="-56522" z="-2818" />
+		<maxpos x="147158" y="-56486" z="-2368" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24160005" name="godad_castle_agit_003_001">
+		<position x="148262" y="-56520" z="-2792" />
+		<minpos x="148255" y="-56529" z="-2823" />
+		<maxpos x="148310" y="-56490" z="-2373" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24160006" name="godad_castle_agit_003_002">
+		<position x="148342" y="-56478" z="-2792" />
+		<minpos x="148296" y="-56508" z="-2824" />
+		<maxpos x="148348" y="-56470" z="-2374" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24160007" name="godad_castle_agit_004_001">
+		<position x="148971" y="-55557" z="-2792" />
+		<minpos x="148965" y="-55561" z="-2812" />
+		<maxpos x="148982" y="-55509" z="-2362" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24160008" name="godad_castle_agit_004_002">
+		<position x="148982" y="-55468" z="-2792" />
+		<minpos x="148970" y="-55520" z="-2821" />
+		<maxpos x="148988" y="-55464" z="-2371" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24180022" name="aden_castle_agit_003_001">
+		<position x="145358" y="25385" z="-2089" />
+		<minpos x="145356" y="25343" z="-2142" />
+		<maxpos x="145360" y="25385" z="-1692" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24180023" name="aden_castle_agit_003_002">
+		<position x="145358" y="25304" z="-2089" />
+		<minpos x="145356" y="25304" z="-2142" />
+		<maxpos x="145360" y="25345" z="-1692" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24180024" name="aden_castle_agit_001_001">
+		<position x="149438" y="23176" z="-2100" />
+		<minpos x="149437" y="23135" z="-2152" />
+		<maxpos x="149439" y="23176" z="-1702" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24180025" name="aden_castle_agit_001_002">
+		<position x="149438" y="23095" z="-2100" />
+		<minpos x="149437" y="23095" z="-2152" />
+		<maxpos x="149439" y="23136" z="-1702" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24180026" name="aden_castle_agit_002_001">
+		<position x="150299" y="23695" z="-2089" />
+		<minpos x="150297" y="23653" z="-2141" />
+		<maxpos x="150301" y="23695" z="-1691" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24180027" name="aden_castle_agit_002_002">
+		<position x="150299" y="23614" z="-2089" />
+		<minpos x="150297" y="23614" z="-2141" />
+		<maxpos x="150301" y="23656" z="-1691" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24180028" name="aden_castle_agit_004_001">
+		<position x="150444" y="26583" z="-2225" />
+		<minpos x="150443" y="26542" z="-2278" />
+		<maxpos x="150446" y="26583" z="-1828" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24180029" name="aden_castle_agit_004_002">
+		<position x="150444" y="26502" z="-2225" />
+		<minpos x="150443" y="26502" z="-2278" />
+		<maxpos x="150445" y="26543" z="-1828" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24180030" name="aden_castle_agit_005_001">
+		<position x="144358" y="28238" z="-2217" />
+		<minpos x="144357" y="28197" z="-2270" />
+		<maxpos x="144359" y="28238" z="-1820" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24180031" name="aden_castle_agit_005_002">
+		<position x="144358" y="28157" z="-2217" />
+		<minpos x="144357" y="28157" z="-2270" />
+		<maxpos x="144359" y="28198" z="-1820" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24180032" name="aden_castle_agit_006_001">
+		<position x="144294" y="27130" z="-2228" />
+		<minpos x="144293" y="27089" z="-2280" />
+		<maxpos x="144295" y="27130" z="-1830" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24180033" name="aden_castle_agit_006_002">
+		<position x="144294" y="27049" z="-2228" />
+		<minpos x="144293" y="27049" z="-2280" />
+		<maxpos x="144295" y="27090" z="-1830" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+
+	<!-- PostIL Fortress ordered by "door id" -->
+	<door id="18200001" name="CloudMountain_Fort_Gate_01">
+		<position x="-54247" y="89585" z="-2870" />
+		<minpos x="-54367" y="89535" z="-2870" />
+		<maxpos x="-54139" y="89640" z="-2765" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="18200002" name="CloudMountain_Fort_Gate_02">
+		<position x="-53311" y="90621" z="-2849" />
+		<minpos x="-53310" y="90612" z="-2849" />
+		<maxpos x="-53225" y="90629" z="-2558" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="18200003" name="CloudMountain_Fort_Gate_03">
+		<position x="-53155" y="90621" z="-2849" />
+		<minpos x="-53241" y="90612" z="-2849" />
+		<maxpos x="-53144" y="90631" z="-2558" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="18200004" name="CloudMountain_Fort_Gate_04">
+		<position x="-51513" y="90260" z="-2851" />
+		<minpos x="-51521" y="90252" z="-2851" />
+		<maxpos x="-51504" y="90349" z="-2560" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="18200005" name="CloudMountain_Fort_Gate_05">
+		<position x="-51513" y="90416" z="-2851" />
+		<minpos x="-51521" y="90327" z="-2851" />
+		<maxpos x="-51503" y="90427" z="-2560" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="18200006" name="CloudMountain_Fort_Gate_06">
+		<position x="-55123" y="91777" z="-2819" />
+		<minpos x="-55131" y="91765" z="-2819" />
+		<maxpos x="-55114" y="91865" z="-2528" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="18200007" name="CloudMountain_Fort_Gate_07">
+		<position x="-55123" y="91933" z="-2819" />
+		<minpos x="-55131" y="91845" z="-2819" />
+		<maxpos x="-55114" y="91944" z="-2528" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="18200008" name="CloudMountain_Fort_Gate_08">
+		<position x="-51147" y="91962" z="-2811" />
+		<minpos x="-51221" y="91946" z="-2811" />
+		<maxpos x="-51131" y="92036" z="-2520" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="18200009" name="CloudMountain_Fort_Gate_09">
+		<position x="-51257" y="92072" z="-2811" />
+		<minpos x="-51273" y="91997" z="-2811" />
+		<maxpos x="-51185" y="92089" z="-2520" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="18200010" name="CloudMountain_Fort_Gate_10">
+		<position x="-52256" y="92985" z="-2869" />
+		<minpos x="-52376" y="92935" z="-2869" />
+		<maxpos x="-52148" y="93040" z="-2764" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="18200011" name="CloudMountain_Fort_Gate_11">
+		<position x="-53311" y="91822" z="-2849" />
+		<minpos x="-53310" y="91813" z="-2849" />
+		<maxpos x="-53225" y="91830" z="-2558" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="18200012" name="CloudMountain_Fort_Gate_12">
+		<position x="-53155" y="91822" z="-2849" />
+		<minpos x="-53241" y="91813" z="-2849" />
+		<maxpos x="-53144" y="91832" z="-2558" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="18220001" name="Shanty_Fort_Gate_01">
+		<position x="-50796" y="155913" z="-2102" />
+		<minpos x="-50844" y="155822" z="-2102" />
+		<maxpos x="-50749" y="155997" z="-1997" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="18220002" name="Shanty_Fort_Gate_02">
+		<position x="-52209" y="156244" z="-2081" />
+		<minpos x="-52220" y="156239" z="-2081" />
+		<maxpos x="-52176" y="156327" z="-1790" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="18220003" name="Shanty_Fort_Gate_03">
+		<position x="-52164" y="156393" z="-2081" />
+		<minpos x="-52197" y="156310" z="-2081" />
+		<maxpos x="-52149" y="156401" z="-1790" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="18220004" name="Shanty_Fort_Gate_04">
+		<position x="-53358" y="156593" z="-2081" />
+		<minpos x="-53367" y="156588" z="-2081" />
+		<maxpos x="-53327" y="156674" z="-1790" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="18220005" name="Shanty_Fort_Gate_05">
+		<position x="-53313" y="156742" z="-2081" />
+		<minpos x="-53345" y="156660" z="-2081" />
+		<maxpos x="-53302" y="156746" z="-1790" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="18220006" name="Shanty_Fort_Gate_06">
+		<position x="-52817" y="157874" z="-2053" />
+		<minpos x="-52828" y="157868" z="-2053" />
+		<maxpos x="-52783" y="157958" z="-1762" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="18220007" name="Shanty_Fort_Gate_07">
+		<position x="-52772" y="158023" z="-2053" />
+		<minpos x="-52807" y="157941" z="-2053" />
+		<maxpos x="-52762" y="158027" z="-1762" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="18220008" name="Shanty_Fort_Gate_08">
+		<position x="-54738" y="157112" z="-2102" />
+		<minpos x="-54799" y="157015" z="-2102" />
+		<maxpos x="-54676" y="157207" z="-1997" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="19240001" name="Southern_Fort_Gate_01">
+		<position x="-22326" y="218064" z="-3237" />
+		<minpos x="-22338" y="218063" z="-3237" />
+		<maxpos x="-22314" y="218143" z="-2946" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="19240002" name="Southern_Fort_Gate_02">
+		<position x="-22326" y="218220" z="-3237" />
+		<minpos x="-22338" y="218138" z="-3237" />
+		<maxpos x="-22313" y="218220" z="-2946" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="19240003" name="Southern_Fort_Gate_03">
+		<position x="-23550" y="218784" z="-3263" />
+		<minpos x="-23558" y="218772" z="-3263" />
+		<maxpos x="-23541" y="218872" z="-2972" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="19240004" name="Southern_Fort_Gate_04">
+		<position x="-23550" y="218940" z="-3263" />
+		<minpos x="-23558" y="218852" z="-3263" />
+		<maxpos x="-23541" y="218951" z="-2972" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="19240005" name="Southern_Fort_Gate_05">
+		<position x="-25126" y="219880" z="-3291" />
+		<minpos x="-25137" y="219801" z="-3292" />
+		<maxpos x="-25115" y="219960" z="-3187" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="19240006" name="Southern_Fort_Gate_06">
+		<position x="-23306" y="219723" z="-3264" />
+		<minpos x="-23315" y="219723" z="-3264" />
+		<maxpos x="-23297" y="219802" z="-2973" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="19240007" name="Southern_Fort_Gate_07">
+		<position x="-23306" y="219879" z="-3264" />
+		<minpos x="-23314" y="219800" z="-3264" />
+		<maxpos x="-23297" y="219879" z="-2973" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="19240008" name="Southern_Fort_Gate_08">
+		<position x="-22105" y="219723" z="-3264" />
+		<minpos x="-22115" y="219723" z="-3264" />
+		<maxpos x="-22096" y="219802" z="-2973" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="19240009" name="Southern_Fort_Gate_09">
+		<position x="-22105" y="219879" z="-3264" />
+		<minpos x="-22114" y="219800" z="-3264" />
+		<maxpos x="-22097" y="219879" z="-2973" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="19240010" name="Southern_Fort_Gate_10">
+		<position x="-20241" y="219888" z="-3288" />
+		<minpos x="-20252" y="219808" z="-3289" />
+		<maxpos x="-20230" y="219968" z="-3184" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="19240011" name="Southern_Fort_Gate_11">
+		<position x="-23211" y="221583" z="-3227" />
+		<minpos x="-23221" y="221583" z="-3227" />
+		<maxpos x="-23200" y="221662" z="-2936" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="19240012" name="Southern_Fort_Gate_12">
+		<position x="-23211" y="221739" z="-3227" />
+		<minpos x="-23221" y="221660" z="-3227" />
+		<maxpos x="-23202" y="221739" z="-2936" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20200001" name="Dragonspine_Fort_Gate_01">
+		<position x="12503" y="93513" z="-3475" />
+		<minpos x="12383" y="93463" z="-3475" />
+		<maxpos x="12611" y="93568" z="-3370" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="20200002" name="Dragonspine_Fort_Gate_02">
+		<position x="11459" y="94386" z="-3454" />
+		<minpos x="11460" y="94377" z="-3454" />
+		<maxpos x="11545" y="94394" z="-3163" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20200003" name="Dragonspine_Fort_Gate_03">
+		<position x="11615" y="94386" z="-3454" />
+		<minpos x="11529" y="94377" z="-3454" />
+		<maxpos x="11626" y="94396" z="-3163" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20200004" name="Dragonspine_Fort_Gate_04">
+		<position x="10128" y="94938" z="-3426" />
+		<minpos x="10120" y="94926" z="-3426" />
+		<maxpos x="10137" y="95026" z="-3135" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20200005" name="Dragonspine_Fort_Gate_05">
+		<position x="10128" y="95094" z="-3426" />
+		<minpos x="10120" y="95006" z="-3426" />
+		<maxpos x="10137" y="95105" z="-3135" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20200006" name="Dragonspine_Fort_Gate_06">
+		<position x="11459" y="95587" z="-3454" />
+		<minpos x="11460" y="95578" z="-3454" />
+		<maxpos x="11545" y="95595" z="-3163" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20200007" name="Dragonspine_Fort_Gate_07">
+		<position x="11615" y="95587" z="-3454" />
+		<minpos x="11529" y="95578" z="-3454" />
+		<maxpos x="11626" y="95597" z="-3163" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20200008" name="Dragonspine_Fort_Gate_08">
+		<position x="10493" y="96565" z="-3475" />
+		<minpos x="10373" y="96515" z="-3475" />
+		<maxpos x="10601" y="96620" z="-3370" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="20220017" name="Floran_Fort_Gate_17">
+		<position x="4739" y="147966" z="-2918" />
+		<minpos x="4739" y="147956" z="-2918" />
+		<maxpos x="4819" y="147977" z="-2627" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20220018" name="Floran_Fort_Gate_18">
+		<position x="4895" y="147966" z="-2918" />
+		<minpos x="4816" y="147954" z="-2918" />
+		<maxpos x="4896" y="147976" z="-2627" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20220019" name="Floran_Fort_Gate_19">
+		<position x="6381" y="148169" z="-2889" />
+		<minpos x="6372" y="148170" z="-2889" />
+		<maxpos x="6389" y="148248" z="-2598" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20220020" name="Floran_Fort_Gate_20">
+		<position x="6381" y="148325" z="-2889" />
+		<minpos x="6373" y="148245" z="-2889" />
+		<maxpos x="6391" y="148325" z="-2598" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20220021" name="Floran_Fort_Gate_21">
+		<position x="4016" y="148732" z="-2938" />
+		<minpos x="4001" y="148653" z="-2938" />
+		<maxpos x="4031" y="148811" z="-2833" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="20220022" name="Floran_Fort_Gate_22">
+		<position x="5012" y="149674" z="-2917" />
+		<minpos x="5004" y="149674" z="-2917" />
+		<maxpos x="5019" y="149753" z="-2626" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20220023" name="Floran_Fort_Gate_23">
+		<position x="5012" y="149830" z="-2917" />
+		<minpos x="5005" y="149751" z="-2917" />
+		<maxpos x="5019" y="149830" z="-2626" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20220024" name="Floran_Fort_Gate_24">
+		<position x="6213" y="149674" z="-2917" />
+		<minpos x="6206" y="149674" z="-2917" />
+		<maxpos x="6221" y="149753" z="-2626" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20220025" name="Floran_Fort_Gate_25">
+		<position x="6213" y="149830" z="-2917" />
+		<minpos x="6206" y="149751" z="-2917" />
+		<maxpos x="6221" y="149830" z="-2626" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20220026" name="Floran_Fort_Gate_26">
+		<position x="7439" y="150734" z="-2938" />
+		<minpos x="7421" y="150655" z="-2938" />
+		<maxpos x="7455" y="150814" z="-2833" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="20220027" name="Floran_Fort_Gate_27">
+		<position x="5136" y="151876" z="-2879" />
+		<minpos x="5136" y="151868" z="-2879" />
+		<maxpos x="5216" y="151885" z="-2588" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20220028" name="Floran_Fort_Gate_28">
+		<position x="5292" y="151876" z="-2879" />
+		<minpos x="5212" y="151868" z="-2879" />
+		<maxpos x="5292" y="151884" z="-2588" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20230003" name="Hive_Fort_Gate_03">
+		<position x="15546" y="186351" z="-2972" />
+		<minpos x="15444" y="186252" z="-2972" />
+		<maxpos x="15652" y="186435" z="-2867" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="20230004" name="Hive_Fort_Gate_04">
+		<position x="16181" y="187607" z="-2952" />
+		<minpos x="16172" y="187550" z="-2952" />
+		<maxpos x="16259" y="187620" z="-2661" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20230005" name="Hive_Fort_Gate_05">
+		<position x="16311" y="187520" z="-2952" />
+		<minpos x="16235" y="187509" z="-2952" />
+		<maxpos x="16321" y="187577" z="-2661" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20230006" name="Hive_Fort_Gate_06">
+		<position x="17540" y="187015" z="-2923" />
+		<minpos x="17529" y="186960" z="-2923" />
+		<maxpos x="17618" y="187029" z="-2632" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20230007" name="Hive_Fort_Gate_07">
+		<position x="17670" y="186928" z="-2923" />
+		<minpos x="17594" y="186917" z="-2923" />
+		<maxpos x="17681" y="186985" z="-2632" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20230008" name="Hive_Fort_Gate_08">
+		<position x="16848" y="188605" z="-2952" />
+		<minpos x="16838" y="188548" z="-2952" />
+		<maxpos x="16926" y="188619" z="-2661" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20230009" name="Hive_Fort_Gate_09">
+		<position x="16978" y="188519" z="-2952" />
+		<minpos x="16903" y="188508" z="-2952" />
+		<maxpos x="16987" y="188574" z="-2661" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="20230010" name="Hive_Fort_Gate_10">
+		<position x="17826" y="189764" z="-2972" />
+		<minpos x="17722" y="189671" z="-2972" />
+		<maxpos x="17937" y="189860" z="-2867" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="21220001" name="Tanor_Fort_Gate_01">
+		<position x="58984" y="138135" z="-1803" />
+		<minpos x="58888" y="138073" z="-1803" />
+		<maxpos x="59082" y="138199" z="-1698" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="21220002" name="Tanor_Fort_Gate_02">
+		<position x="60086" y="138861" z="-1782" />
+		<minpos x="60087" y="138851" z="-1782" />
+		<maxpos x="60172" y="138869" z="-1491" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="21220003" name="Tanor_Fort_Gate_03">
+		<position x="60239" y="138830" z="-1782" />
+		<minpos x="60153" y="138821" z="-1782" />
+		<maxpos x="60250" y="138840" z="-1491" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="21220004" name="Tanor_Fort_Gate_04">
+		<position x="61655" y="138596" z="-1754" />
+		<minpos x="61650" y="138566" z="-1754" />
+		<maxpos x="61738" y="138608" z="-1463" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="21220005" name="Tanor_Fort_Gate_05">
+		<position x="61809" y="138565" z="-1754" />
+		<minpos x="61724" y="138550" z="-1754" />
+		<maxpos x="61816" y="138593" z="-1463" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="21220006" name="Tanor_Fort_Gate_06">
+		<position x="60321" y="140039" z="-1782" />
+		<minpos x="60315" y="140008" z="-1782" />
+		<maxpos x="60406" y="140052" z="-1491" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="21220007" name="Tanor_Fort_Gate_07">
+		<position x="60474" y="140008" z="-1782" />
+		<minpos x="60390" y="139996" z="-1782" />
+		<maxpos x="60479" y="140037" z="-1491" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="21220008" name="Tanor_Fort_Gate_08">
+		<position x="61544" y="140749" z="-1803" />
+		<minpos x="61449" y="140681" z="-1803" />
+		<maxpos x="61644" y="140815" z="-1698" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="22150001" name="Monastic_Fort_Gate_01">
+		<position x="72491" y="-96493" z="-1478" />
+		<minpos x="72376" y="-96584" z="-1478" />
+		<maxpos x="72609" y="-96406" z="-1373" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="22150002" name="Monastic_Fort_Gate_02">
+		<position x="71866" y="-95291" z="-1456" />
+		<minpos x="71861" y="-95331" z="-1456" />
+		<maxpos x="71947" y="-95283" z="-1165" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22150003" name="Monastic_Fort_Gate_03">
+		<position x="72010" y="-95351" z="-1456" />
+		<minpos x="71929" y="-95361" z="-1456" />
+		<maxpos x="72018" y="-95312" z="-1165" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22150004" name="Monastic_Fort_Gate_04">
+		<position x="70848" y="-94272" z="-1428" />
+		<minpos x="70838" y="-94279" z="-1428" />
+		<maxpos x="70889" y="-94190" z="-1137" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22150005" name="Monastic_Fort_Gate_05">
+		<position x="70907" y="-94128" z="-1428" />
+		<minpos x="70866" y="-94210" z="-1428" />
+		<maxpos x="70918" y="-94120" z="-1137" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22150006" name="Monastic_Fort_Gate_06">
+		<position x="72326" y="-94182" z="-1456" />
+		<minpos x="72321" y="-94222" z="-1456" />
+		<maxpos x="72406" y="-94174" z="-1165" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22150007" name="Monastic_Fort_Gate_07">
+		<position x="72470" y="-94242" z="-1456" />
+		<minpos x="72388" y="-94250" z="-1456" />
+		<maxpos x="72476" y="-94202" z="-1165" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22150008" name="Monastic_Fort_Gate_08">
+		<position x="71795" y="-92905" z="-1477" />
+		<minpos x="71680" y="-92996" z="-1477" />
+		<maxpos x="71913" y="-92818" z="-1372" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="22160001" name="Swamp_Fort_Gate_01">
+		<position x="68834" y="-63635" z="-2834" />
+		<minpos x="68719" y="-63726" z="-2834" />
+		<maxpos x="68952" y="-63548" z="-2729" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="22160002" name="Swamp_Fort_Gate_02">
+		<position x="68644" y="-62606" z="-2814" />
+		<minpos x="68634" y="-62614" z="-2814" />
+		<maxpos x="68684" y="-62524" z="-2523" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22160003" name="Swamp_Fort_Gate_03">
+		<position x="68703" y="-62462" z="-2814" />
+		<minpos x="68663" y="-62543" z="-2814" />
+		<maxpos x="68712" y="-62454" z="-2523" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22160004" name="Swamp_Fort_Gate_04">
+		<position x="69532" y="-61953" z="-2814" />
+		<minpos x="69529" y="-61995" z="-2814" />
+		<maxpos x="69615" y="-61945" z="-2523" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22160005" name="Swamp_Fort_Gate_05">
+		<position x="69676" y="-62013" z="-2814" />
+		<minpos x="69594" y="-62024" z="-2814" />
+		<maxpos x="69680" y="-61973" z="-2523" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22160006" name="Swamp_Fort_Gate_06">
+		<position x="67850" y="-61154" z="-2776" />
+		<minpos x="67848" y="-61193" z="-2776" />
+		<maxpos x="67931" y="-61146" z="-2485" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22160007" name="Swamp_Fort_Gate_07">
+		<position x="67994" y="-61214" z="-2776" />
+		<minpos x="67912" y="-61221" z="-2776" />
+		<maxpos x="67997" y="-61175" z="-2485" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22160008" name="Swamp_Fort_Gate_08">
+		<position x="69992" y="-60844" z="-2814" />
+		<minpos x="69987" y="-60884" z="-2814" />
+		<maxpos x="70072" y="-60835" z="-2523" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22160009" name="Swamp_Fort_Gate_09">
+		<position x="70136" y="-60904" z="-2814" />
+		<minpos x="70054" y="-60912" z="-2814" />
+		<maxpos x="70140" y="-60864" z="-2523" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22160010" name="Swamp_Fort_Gate_10">
+		<position x="71440" y="-61683" z="-2786" />
+		<minpos x="71436" y="-61723" z="-2786" />
+		<maxpos x="71521" y="-61676" z="-2495" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22160011" name="Swamp_Fort_Gate_11">
+		<position x="71584" y="-61743" z="-2786" />
+		<minpos x="71502" y="-61751" z="-2786" />
+		<maxpos x="71588" y="-61704" z="-2495" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22160012" name="Swamp_Fort_Gate_12">
+		<position x="70698" y="-59119" z="-2834" />
+		<minpos x="70583" y="-59210" z="-2834" />
+		<maxpos x="70816" y="-59032" z="-2729" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="22180001" name="Ivory_Fort_Gate_01">
+		<position x="74199" y="2788" z="-3093" />
+		<minpos x="74131" y="2726" z="-3093" />
+		<maxpos x="74273" y="2850" z="-2988" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="22180002" name="Ivory_Fort_Gate_02">
+		<position x="73181" y="3762" z="-3073" />
+		<minpos x="73177" y="3757" z="-3073" />
+		<maxpos x="73246" y="3818" z="-2782" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22180003" name="Ivory_Fort_Gate_03">
+		<position x="73302" y="3861" z="-3073" />
+		<minpos x="73236" y="3806" z="-3073" />
+		<maxpos x="73307" y="3867" z="-2782" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22180004" name="Ivory_Fort_Gate_04">
+		<position x="72419" y="4690" z="-3073" />
+		<minpos x="72414" y="4685" z="-3073" />
+		<maxpos x="72485" y="4746" z="-2782" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22180005" name="Ivory_Fort_Gate_05">
+		<position x="72540" y="4789" z="-3073" />
+		<minpos x="72474" y="4734" z="-3073" />
+		<maxpos x="72545" y="4796" z="-2782" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22180006" name="Ivory_Fort_Gate_06">
+		<position x="74141" y="4890" z="-3044" />
+		<minpos x="74137" y="4884" z="-3044" />
+		<maxpos x="74208" y="4947" z="-2753" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22180007" name="Ivory_Fort_Gate_07">
+		<position x="74263" y="4990" z="-3044" />
+		<minpos x="74197" y="4933" z="-3044" />
+		<maxpos x="74269" y="4997" z="-2753" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22180008" name="Ivory_Fort_Gate_08">
+		<position x="71596" y="5960" z="-3093" />
+		<minpos x="71528" y="5898" z="-3093" />
+		<maxpos x="71670" y="6022" z="-2988" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="22200001" name="Antharas_Fort_Gate_01">
+		<position x="78090" y="89321" z="-2934" />
+		<minpos x="78027" y="89241" z="-2935" />
+		<maxpos x="78153" y="89406" z="-2830" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="22200002" name="Antharas_Fort_Gate_02">
+		<position x="80522" y="89327" z="-2877" />
+		<minpos x="80517" y="89314" z="-2877" />
+		<maxpos x="80600" y="89373" z="-2586" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22200003" name="Antharas_Fort_Gate_03">
+		<position x="80660" y="89400" z="-2877" />
+		<minpos x="80584" y="89351" z="-2877" />
+		<maxpos x="80668" y="89413" z="-2586" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22200004" name="Antharas_Fort_Gate_04">
+		<position x="78672" y="90834" z="-2912" />
+		<minpos x="78666" y="90762" z="-2912" />
+		<maxpos x="78715" y="90838" z="-2621" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22200005" name="Antharas_Fort_Gate_05">
+		<position x="78746" y="90697" z="-2912" />
+		<minpos x="78703" y="90694" z="-2912" />
+		<maxpos x="78754" y="90769" z="-2621" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22200006" name="Antharas_Fort_Gate_06">
+		<position x="79731" y="91401" z="-2912" />
+		<minpos x="79723" y="91326" z="-2912" />
+		<maxpos x="79778" y="91405" z="-2621" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22200007" name="Antharas_Fort_Gate_07">
+		<position x="79805" y="91263" z="-2912" />
+		<minpos x="79759" y="91258" z="-2912" />
+		<maxpos x="79816" y="91337" z="-2621" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22200008" name="Antharas_Fort_Gate_08">
+		<position x="77815" y="92083" z="-2887" />
+		<minpos x="77801" y="92005" z="-2887" />
+		<maxpos x="77865" y="92090" z="-2596" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22200009" name="Antharas_Fort_Gate_09">
+		<position x="77888" y="91945" z="-2887" />
+		<minpos x="77837" y="91938" z="-2887" />
+		<maxpos x="77900" y="92021" z="-2596" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22200010" name="Antharas_Fort_Gate_10">
+		<position x="79034" y="92957" z="-2916" />
+		<minpos x="79029" y="92947" z="-2916" />
+		<maxpos x="79110" y="93006" z="-2625" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22200011" name="Antharas_Fort_Gate_11">
+		<position x="79172" y="93030" z="-2916" />
+		<minpos x="79096" y="92984" z="-2916" />
+		<maxpos x="79180" y="93043" z="-2625" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22200012" name="Antharas_Fort_Gate_12">
+		<position x="80167" y="92700" z="-2934" />
+		<minpos x="80092" y="92614" z="-2935" />
+		<maxpos x="80234" y="92787" z="-2830" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="22230001" name="Aaru_Fort_Gate_01">
+		<position x="73057" y="184177" z="-2630" />
+		<minpos x="72951" y="184083" z="-2630" />
+		<maxpos x="73167" y="184271" z="-2525" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="22230002" name="Aaru_Fort_Gate_02">
+		<position x="71908" y="185170" z="-2581" />
+		<minpos x="71896" y="185091" z="-2581" />
+		<maxpos x="71965" y="185181" z="-2290" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22230003" name="Aaru_Fort_Gate_03">
+		<position x="71995" y="185040" z="-2581" />
+		<minpos x="71938" y="185032" z="-2581" />
+		<maxpos x="72006" y="185115" z="-2290" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22230004" name="Aaru_Fort_Gate_04">
+		<position x="73382" y="185443" z="-2609" />
+		<minpos x="73371" y="185428" z="-2609" />
+		<maxpos x="73460" y="185503" z="-2318" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22230005" name="Aaru_Fort_Gate_05">
+		<position x="73512" y="185530" z="-2609" />
+		<minpos x="73433" y="185472" z="-2609" />
+		<maxpos x="73522" y="185543" z="-2318" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22230006" name="Aaru_Fort_Gate_06">
+		<position x="72715" y="186442" z="-2609" />
+		<minpos x="72709" y="186432" z="-2609" />
+		<maxpos x="72789" y="186497" z="-2318" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22230007" name="Aaru_Fort_Gate_07">
+		<position x="72845" y="186528" z="-2609" />
+		<minpos x="72772" y="186473" z="-2609" />
+		<maxpos x="72852" y="186537" z="-2318" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="22230008" name="Aaru_Fort_Gate_08">
+		<position x="73037" y="187834" z="-2630" />
+		<minpos x="72945" y="187750" z="-2630" />
+		<maxpos x="73130" y="187924" z="-2525" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="23130001" name="Archaic_Fort_Gate_01">
+		<position x="107495" y="-140524" z="-3009" />
+		<minpos x="107427" y="-140617" z="-3009" />
+		<maxpos x="107565" y="-140435" z="-2904" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="23130002" name="Archaic_Fort_Gate_02">
+		<position x="108887" y="-141124" z="-2984" />
+		<minpos x="108879" y="-141127" z="-2984" />
+		<maxpos x="108918" y="-141046" z="-2693" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23130003" name="Archaic_Fort_Gate_03">
+		<position x="108932" y="-140975" z="-2984" />
+		<minpos x="108900" y="-141055" z="-2984" />
+		<maxpos x="108942" y="-140971" z="-2693" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23130004" name="Archaic_Fort_Gate_04">
+		<position x="110037" y="-141473" z="-2984" />
+		<minpos x="110028" y="-141477" z="-2984" />
+		<maxpos x="110070" y="-141393" z="-2693" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23130005" name="Archaic_Fort_Gate_05">
+		<position x="110082" y="-141324" z="-2984" />
+		<minpos x="110051" y="-141403" z="-2984" />
+		<maxpos x="110093" y="-141319" z="-2693" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23130006" name="Archaic_Fort_Gate_06">
+		<position x="111423" y="-141714" z="-3009" />
+		<minpos x="111355" y="-141807" z="-3009" />
+		<maxpos x="111493" y="-141625" z="-2904" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="23130007" name="Archaic_Fort_Gate_07">
+		<position x="110210" y="-140000" z="-2959" />
+		<minpos x="110201" y="-140004" z="-2959" />
+		<maxpos x="110243" y="-139920" z="-2668" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23130008" name="Archaic_Fort_Gate_08">
+		<position x="110255" y="-139851" z="-2959" />
+		<minpos x="110224" y="-139930" z="-2959" />
+		<maxpos x="110266" y="-139846" z="-2668" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23160001" name="Demon_Fort_Gate_01">
+		<position x="99133" y="-56363" z="-693" />
+		<minpos x="99087" y="-56469" z="-693" />
+		<maxpos x="99179" y="-56267" z="-588" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="23160002" name="Demon_Fort_Gate_02">
+		<position x="100609" y="-56727" z="-645" />
+		<minpos x="100609" y="-56737" z="-645" />
+		<maxpos x="100698" y="-56716" z="-354" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23160003" name="Demon_Fort_Gate_03">
+		<position x="100765" y="-56727" z="-645" />
+		<minpos x="100678" y="-56737" z="-645" />
+		<maxpos x="100764" y="-56718" z="-354" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23160004" name="Demon_Fort_Gate_04">
+		<position x="100116" y="-55397" z="-673" />
+		<minpos x="100107" y="-55404" z="-673" />
+		<maxpos x="100128" y="-55309" z="-382" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23160005" name="Demon_Fort_Gate_05">
+		<position x="100116" y="-55241" z="-673" />
+		<minpos x="100107" y="-55330" z="-673" />
+		<maxpos x="100128" y="-55234" z="-382" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23160006" name="Demon_Fort_Gate_06">
+		<position x="101317" y="-55397" z="-673" />
+		<minpos x="101306" y="-55400" z="-673" />
+		<maxpos x="101328" y="-55307" z="-382" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23160007" name="Demon_Fort_Gate_07">
+		<position x="101317" y="-55241" z="-673" />
+		<minpos x="101305" y="-55329" z="-673" />
+		<maxpos x="101329" y="-55235" z="-382" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23160008" name="Demon_Fort_Gate_08">
+		<position x="102190" y="-54353" z="-695" />
+		<minpos x="102144" y="-54459" z="-695" />
+		<maxpos x="102236" y="-54257" z="-590" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="23170001" name="Border_Outpost_Fort_Gate_01">
+		<position x="112349" y="-16973" z="-1045" />
+		<minpos x="112232" y="-17023" z="-1045" />
+		<maxpos x="112460" y="-16918" z="-940" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="23170002" name="Border_Outpost_Fort_Gate_02">
+		<position x="109793" y="-15889" z="-995" />
+		<minpos x="109786" y="-15901" z="-995" />
+		<maxpos x="109884" y="-15875" z="-704" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23170003" name="Border_Outpost_Fort_Gate_03">
+		<position x="109949" y="-15889" z="-995" />
+		<minpos x="109852" y="-15901" z="-995" />
+		<maxpos x="109958" y="-15875" z="-704" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23170004" name="Border_Outpost_Fort_Gate_04">
+		<position x="111290" y="-15750" z="-1023" />
+		<minpos x="111291" y="-15759" z="-1023" />
+		<maxpos x="111376" y="-15742" z="-732" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23170005" name="Border_Outpost_Fort_Gate_05">
+		<position x="111446" y="-15750" z="-1023" />
+		<minpos x="111360" y="-15759" z="-1023" />
+		<maxpos x="111457" y="-15740" z="-732" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23170006" name="Border_Outpost_Fort_Gate_06">
+		<position x="109582" y="-14431" z="-1024" />
+		<minpos x="109574" y="-14443" z="-1024" />
+		<maxpos x="109591" y="-14343" z="-733" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23170007" name="Border_Outpost_Fort_Gate_07">
+		<position x="109582" y="-14275" z="-1024" />
+		<minpos x="109574" y="-14363" z="-1024" />
+		<maxpos x="109591" y="-14264" z="-733" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23170008" name="Border_Outpost_Fort_Gate_08">
+		<position x="111290" y="-14549" z="-1023" />
+		<minpos x="111291" y="-14558" z="-1023" />
+		<maxpos x="111376" y="-14541" z="-732" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23170009" name="Border_Outpost_Fort_Gate_09">
+		<position x="111446" y="-14549" z="-1023" />
+		<minpos x="111360" y="-14558" z="-1023" />
+		<maxpos x="111457" y="-14539" z="-732" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23170010" name="Border_Outpost_Fort_Gate_10">
+		<position x="113492" y="-14829" z="-987" />
+		<minpos x="113484" y="-14842" z="-987" />
+		<maxpos x="113500" y="-14734" z="-696" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23170011" name="Border_Outpost_Fort_Gate_11">
+		<position x="113492" y="-14673" z="-987" />
+		<minpos x="113483" y="-14761" z="-987" />
+		<maxpos x="113502" y="-14658" z="-696" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23170012" name="Border_Outpost_Fort_Gate_12">
+		<position x="110348" y="-13549" z="-1047" />
+		<minpos x="110231" y="-13599" z="-1047" />
+		<maxpos x="110459" y="-13494" z="-942" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="23200001" name="Hunters_Fort_Gate_01">
+		<position x="124213" y="93493" z="-2191" />
+		<minpos x="124093" y="93443" z="-2191" />
+		<maxpos x="124321" y="93548" z="-2086" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="23200002" name="Hunters_Fort_Gate_02">
+		<position x="125168" y="94533" z="-2168" />
+		<minpos x="125169" y="94524" z="-2168" />
+		<maxpos x="125254" y="94541" z="-1877" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23200003" name="Hunters_Fort_Gate_03">
+		<position x="125324" y="94533" z="-2168" />
+		<minpos x="125238" y="94524" z="-2168" />
+		<maxpos x="125335" y="94543" z="-1877" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23200004" name="Hunters_Fort_Gate_04">
+		<position x="126966" y="94172" z="-2170" />
+		<minpos x="126958" y="94164" z="-2170" />
+		<maxpos x="126975" y="94261" z="-1879" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23200005" name="Hunters_Fort_Gate_05">
+		<position x="126966" y="94328" z="-2170" />
+		<minpos x="126958" y="94239" z="-2170" />
+		<maxpos x="126976" y="94339" z="-1879" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23200006" name="Hunters_Fort_Gate_06">
+		<position x="123356" y="95689" z="-2138" />
+		<minpos x="123348" y="95677" z="-2138" />
+		<maxpos x="123365" y="95777" z="-1847" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23200007" name="Hunters_Fort_Gate_07">
+		<position x="123356" y="95845" z="-2138" />
+		<minpos x="123348" y="95757" z="-2138" />
+		<maxpos x="123365" y="95856" z="-1847" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23200008" name="Hunters_Fort_Gate_08">
+		<position x="125168" y="95734" z="-2168" />
+		<minpos x="125169" y="95725" z="-2168" />
+		<maxpos x="125254" y="95742" z="-1877" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23200009" name="Hunters_Fort_Gate_09">
+		<position x="125324" y="95734" z="-2168" />
+		<minpos x="125238" y="95725" z="-2168" />
+		<maxpos x="125335" y="95744" z="-1877" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23200010" name="Hunters_Fort_Gate_10">
+		<position x="127222" y="95984" z="-2130" />
+		<minpos x="127206" y="95909" z="-2130" />
+		<maxpos x="127294" y="96001" z="-1839" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23200011" name="Hunters_Fort_Gate_11">
+		<position x="127332" y="95874" z="-2130" />
+		<minpos x="127258" y="95858" z="-2130" />
+		<maxpos x="127348" y="95948" z="-1839" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23200012" name="Hunters_Fort_Gate_12">
+		<position x="126193" y="96897" z="-2190" />
+		<minpos x="126073" y="96847" z="-2190" />
+		<maxpos x="126301" y="96952" z="-2085" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="23210001" name="Valley_Fort_Gate_01">
+		<position x="126069" y="120674" z="-2634" />
+		<minpos x="125949" y="120624" z="-2634" />
+		<maxpos x="126177" y="120729" z="-2529" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="23210002" name="Valley_Fort_Gate_02">
+		<position x="126760" y="121727" z="-2613" />
+		<minpos x="126752" y="121719" z="-2613" />
+		<maxpos x="126769" y="121816" z="-2322" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23210003" name="Valley_Fort_Gate_03">
+		<position x="126760" y="121883" z="-2613" />
+		<minpos x="126752" y="121794" z="-2613" />
+		<maxpos x="126770" y="121894" z="-2322" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23210004" name="Valley_Fort_Gate_04">
+		<position x="124224" y="122888" z="-2583" />
+		<minpos x="124225" y="122879" z="-2583" />
+		<maxpos x="124310" y="122896" z="-2292" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23210005" name="Valley_Fort_Gate_05">
+		<position x="124381" y="122888" z="-2583" />
+		<minpos x="124295" y="122879" z="-2583" />
+		<maxpos x="124392" y="122898" z="-2292" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23210006" name="Valley_Fort_Gate_06">
+		<position x="126001" y="122743" z="-2613" />
+		<minpos x="126002" y="122734" z="-2613" />
+		<maxpos x="126087" y="122751" z="-2322" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23210007" name="Valley_Fort_Gate_07">
+		<position x="126157" y="122743" z="-2613" />
+		<minpos x="126071" y="122734" z="-2613" />
+		<maxpos x="126168" y="122753" z="-2322" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23210008" name="Valley_Fort_Gate_08">
+		<position x="127569" y="123335" z="-2571" />
+		<minpos x="127561" y="123327" z="-2571" />
+		<maxpos x="127578" y="123424" z="-2280" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23210009" name="Valley_Fort_Gate_09">
+		<position x="127569" y="123491" z="-2571" />
+		<minpos x="127561" y="123402" z="-2571" />
+		<maxpos x="127579" y="123502" z="-2280" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23210010" name="Valley_Fort_Gate_10">
+		<position x="126001" y="123944" z="-2613" />
+		<minpos x="126002" y="123935" z="-2613" />
+		<maxpos x="126087" y="123952" z="-2322" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23210011" name="Valley_Fort_Gate_11">
+		<position x="126157" y="123944" z="-2613" />
+		<minpos x="126071" y="123935" z="-2613" />
+		<maxpos x="126168" y="123954" z="-2322" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23210012" name="Valley_Fort_Gate_12">
+		<position x="126066" y="125563" z="-2634" />
+		<minpos x="125946" y="125513" z="-2634" />
+		<maxpos x="126174" y="125618" z="-2529" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="23240001" name="WhiteSands_Fort_Gate_01">
+		<position x="116614" y="203941" z="-3382" />
+		<minpos x="116564" y="203865" z="-3382" />
+		<maxpos x="116664" y="204017" z="-3277" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="23240002" name="WhiteSands_Fort_Gate_02">
+		<position x="117846" y="204706" z="-3361" />
+		<minpos x="117840" y="204632" z="-3361" />
+		<maxpos x="117890" y="204709" z="-3070" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23240003" name="WhiteSands_Fort_Gate_03">
+		<position x="117920" y="204568" z="-3361" />
+		<minpos x="117875" y="204565" z="-3361" />
+		<maxpos x="117926" y="204641" z="-3070" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23240004" name="WhiteSands_Fort_Gate_04">
+		<position x="119430" y="203983" z="-3333" />
+		<minpos x="119422" y="203908" z="-3333" />
+		<maxpos x="119476" y="203987" z="-3042" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23240005" name="WhiteSands_Fort_Gate_05">
+		<position x="119503" y="203846" z="-3333" />
+		<minpos x="119458" y="203842" z="-3333" />
+		<maxpos x="119513" y="203920" z="-3042" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23240006" name="WhiteSands_Fort_Gate_06">
+		<position x="118905" y="205272" z="-3361" />
+		<minpos x="118899" y="205198" z="-3361" />
+		<maxpos x="118950" y="205276" z="-3070" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23240007" name="WhiteSands_Fort_Gate_07">
+		<position x="118979" y="205134" z="-3361" />
+		<minpos x="118934" y="205130" z="-3361" />
+		<maxpos x="118987" y="205208" z="-3070" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="23240008" name="WhiteSands_Fort_Gate_08">
+		<position x="120248" y="205879" z="-3382" />
+		<minpos x="120195" y="205801" z="-3382" />
+		<maxpos x="120298" y="205955" z="-3277" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="24150001" name="Borderland_Fort_Gate_01">
+		<position x="158498" y="-72104" z="-2865" />
+		<minpos x="158484" y="-72116" z="-2865" />
+		<maxpos x="158555" y="-72026" z="-2574" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="24150002" name="Borderland_Fort_Gate_02">
+		<position x="158585" y="-71973" z="-2865" />
+		<minpos x="158525" y="-72051" z="-2865" />
+		<maxpos x="158600" y="-71960" z="-2574" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="24150003" name="Borderland_Fort_Gate_03">
+		<position x="157297" y="-69092" z="-2916" />
+		<minpos x="157204" y="-69194" z="-2916" />
+		<maxpos x="157390" y="-68988" z="-2811" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="24150004" name="Borderland_Fort_Gate_04">
+		<position x="158607" y="-70040" z="-2892" />
+		<minpos x="158596" y="-70048" z="-2892" />
+		<maxpos x="158663" y="-69965" z="-2601" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="24150005" name="Borderland_Fort_Gate_05">
+		<position x="158693" y="-69910" z="-2892" />
+		<minpos x="158639" y="-69985" z="-2892" />
+		<maxpos x="158706" y="-69901" z="-2601" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="24150006" name="Borderland_Fort_Gate_06">
+		<position x="159605" y="-70707" z="-2892" />
+		<minpos x="159593" y="-70716" z="-2892" />
+		<maxpos x="159662" y="-70629" z="-2601" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="24150007" name="Borderland_Fort_Gate_07">
+		<position x="159692" y="-70577" z="-2892" />
+		<minpos x="159632" y="-70654" z="-2892" />
+		<maxpos x="159706" y="-70567" z="-2601" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="24150008" name="Borderland_Fort_Gate_08">
+		<position x="161354" y="-71814" z="-2916" />
+		<minpos x="161250" y="-71924" z="-2916" />
+		<maxpos x="161461" y="-71702" z="-2811" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="24150009" name="Borderland_Fort_Gate_09">
+		<position x="160742" y="-70553" z="-2899" />
+		<minpos x="160731" y="-70612" z="-2899" />
+		<maxpos x="160820" y="-70539" z="-2608" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="24150010" name="Borderland_Fort_Gate_10">
+		<position x="160872" y="-70640" z="-2899" />
+		<minpos x="160794" y="-70651" z="-2899" />
+		<maxpos x="160881" y="-70584" z="-2608" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="24150011" name="Borderland_Fort_Gate_11">
+		<position x="159855" y="-68987" z="-2853" />
+		<minpos x="159843" y="-69043" z="-2853" />
+		<maxpos x="159932" y="-68974" z="-2562" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="24150012" name="Borderland_Fort_Gate_12">
+		<position x="159984" y="-69074" z="-2853" />
+		<minpos x="159908" y="-69086" z="-2853" />
+		<maxpos x="159996" y="-69016" z="-2562" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="24170001" name="border_door_01">
+		<position x="157981" y="-25122" z="-1195" />
+		<minpos x="157859" y="-25172" z="-1344" />
+		<maxpos x="158104" y="-25069" z="-1088" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24190005" name="Narsell_Fort_Gate_05">
+		<position x="153328" y="56710" z="-3303" />
+		<minpos x="153263" y="56636" z="-3303" />
+		<maxpos x="153390" y="56781" z="-3198" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="24190006" name="Narsell_Fort_Gate_06">
+		<position x="154385" y="55624" z="-3282" />
+		<minpos x="154379" y="55620" z="-3282" />
+		<maxpos x="154443" y="55691" z="-2991" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="24190007" name="Narsell_Fort_Gate_07">
+		<position x="154484" y="55745" z="-3282" />
+		<minpos x="154427" y="55678" z="-3282" />
+		<maxpos x="154492" y="55750" z="-2991" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="24190008" name="Narsell_Fort_Gate_08">
+		<position x="155313" y="54862" z="-3282" />
+		<minpos x="155308" y="54858" z="-3282" />
+		<maxpos x="155370" y="54929" z="-2991" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="24190009" name="Narsell_Fort_Gate_09">
+		<position x="155412" y="54983" z="-3282" />
+		<minpos x="155356" y="54917" z="-3282" />
+		<maxpos x="155419" y="54988" z="-2991" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="24190010" name="Narsell_Fort_Gate_10">
+		<position x="156501" y="54106" z="-3303" />
+		<minpos x="156436" y="54032" z="-3304" />
+		<maxpos x="156564" y="54179" z="-3199" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="24190011" name="Narsell_Fort_Gate_11">
+		<position x="156035" y="56156" z="-3253" />
+		<minpos x="156029" y="56151" z="-3253" />
+		<maxpos x="156094" y="56223" z="-2962" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="24190012" name="Narsell_Fort_Gate_12">
+		<position x="156134" y="56278" z="-3253" />
+		<minpos x="156078" y="56211" z="-3253" />
+		<maxpos x="156141" y="56283" z="-2962" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="25190001" name="Bayou_Fort_Gate_01">
+		<position x="189904" y="37070" z="-3460" />
+		<minpos x="189784" y="37020" z="-3460" />
+		<maxpos x="190012" y="37125" z="-3355" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+	<door id="25190002" name="Bayou_Fort_Gate_02">
+		<position x="190612" y="38123" z="-3443" />
+		<minpos x="190604" y="38115" z="-3443" />
+		<maxpos x="190621" y="38212" z="-3152" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="25190003" name="Bayou_Fort_Gate_03">
+		<position x="190612" y="38279" z="-3443" />
+		<minpos x="190604" y="38190" z="-3443" />
+		<maxpos x="190622" y="38290" z="-3152" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="25190004" name="Bayou_Fort_Gate_04">
+		<position x="188076" y="39284" z="-3409" />
+		<minpos x="188077" y="39275" z="-3409" />
+		<maxpos x="188162" y="39292" z="-3118" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="25190005" name="Bayou_Fort_Gate_05">
+		<position x="188233" y="39284" z="-3409" />
+		<minpos x="188147" y="39275" z="-3409" />
+		<maxpos x="188244" y="39294" z="-3118" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="25190006" name="Bayou_Fort_Gate_06">
+		<position x="189853" y="39139" z="-3438" />
+		<minpos x="189854" y="39130" z="-6627" />
+		<maxpos x="189939" y="39147" z="-6336" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="25190007" name="Bayou_Fort_Gate_07">
+		<position x="190009" y="39139" z="-3438" />
+		<minpos x="189923" y="39130" z="-6625" />
+		<maxpos x="190020" y="39149" z="-6334" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="25190008" name="Bayou_Fort_Gate_08">
+		<position x="189853" y="40340" z="-3438" />
+		<minpos x="189854" y="40331" z="-6627" />
+		<maxpos x="189939" y="40348" z="-6336" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="25190009" name="Bayou_Fort_Gate_09">
+		<position x="190009" y="40340" z="-3438" />
+		<minpos x="189923" y="40331" z="-2156" />
+		<maxpos x="190020" y="40350" z="-1865" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="25190010" name="Bayou_Fort_Gate_10">
+		<position x="191421" y="39731" z="-3397" />
+		<minpos x="191413" y="39723" z="-2156" />
+		<maxpos x="191430" y="39820" z="-1865" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="25190011" name="Bayou_Fort_Gate_11">
+		<position x="191421" y="39887" z="-3397" />
+		<minpos x="191413" y="39798" z="3937" />
+		<maxpos x="191431" y="39898" z="4228" />
+		<stats hp="67884" pdef="837" mdef="674" />
+	</door>
+	<door id="25190012" name="Bayou_Fort_Gate_12">
+		<position x="189913" y="41955" z="-3460" />
+		<minpos x="189793" y="41905" z="3938" />
+		<maxpos x="190021" y="42010" z="4043" />
+		<stats hp="543072" pdef="837" mdef="674" />
+	</door>
+
+	<!-- All other doors ordered by "door id" -->
+	<door id="19160001" name="temple_gate">
+		<position x="-16364" y="-36786" z="-10720" />
+		<minpos x="-16582" y="-36816" z="-1072" />
+		<maxpos x="-16136" y="-36780" z="-860" />
+		<stats hp="60000" pdef="180000" mdef="180000" />
+	</door>
+	<door id="19160002" name="anteroom8">
+		<position x="-14870" y="-38970" z="-10720" />
+		<minpos x="-14952" y="-38970" z="10720" />
+		<maxpos x="-14781" y="-38960" z="10932" />
+		<stats hp="60000" pdef="180000" mdef="180000" />
+	</door>
+	<door id="19160003" name="anteroom7">
+		<position x="-14598" y="-39823" z="-10720" />
+		<minpos x="-14598" y="-39903" z="10720" />
+		<maxpos x="-14570" y="-39746" z="10932" />
+		<stats hp="60000" pdef="180000" mdef="180000" />
+	</door>
+	<door id="19160004" name="anteroom6">
+		<position x="-14598" y="-41690" z="-10720" />
+		<minpos x="-14598" y="-41778" z="10720" />
+		<maxpos x="-14570" y="-41619" z="10932" />
+		<stats hp="60000" pdef="180000" mdef="180000" />
+	</door>
+	<door id="19160005" name="anteroom5">
+		<position x="-14867" y="-42541" z="-10720" />
+		<minpos x="-14956" y="-42561" z="10720" />
+		<maxpos x="-14789" y="-42541" z="10932" />
+		<stats hp="60000" pdef="180000" mdef="180000" />
+	</door>
+	<door id="19160006" name="anteroom4">
+		<position x="-17860" y="-42541" z="-10720" />
+		<minpos x="-17932" y="-42561" z="10720" />
+		<maxpos x="-17780" y="-42541" z="10932" />
+		<stats hp="60000" pdef="180000" mdef="180000" />
+	</door>
+	<door id="19160007" name="anteroom3">
+		<position x="-18140" y="-41690" z="-10720" />
+		<minpos x="-18151" y="-41778" z="10720" />
+		<maxpos x="-18131" y="-41619" z="10932" />
+		<stats hp="60000" pdef="180000" mdef="180000" />
+	</door>
+	<door id="19160008" name="anteroom2">
+		<position x="-18140" y="-39823" z="-10720" />
+		<minpos x="-18151" y="-39903" z="10720" />
+		<maxpos x="-18131" y="-39746" z="10932" />
+		<stats hp="60000" pdef="180000" mdef="180000" />
+	</door>
+	<door id="19160009" name="anteroom1">
+		<position x="-17860" y="-38970" z="-10720" />
+		<minpos x="-17932" y="-38970" z="10720" />
+		<maxpos x="-17780" y="-38960" z="10932" />
+		<stats hp="60000" pdef="180000" mdef="180000" />
+	</door>
+	<door id="19160010" name="chapel_door1">
+		<position x="-16355" y="-44130" z="-10720" />
+		<minpos x="-16612" y="-44160" z="-10720" />
+		<maxpos x="-16121" y="-44130" z="-10508" />
+		<stats hp="60000" pdef="180000" mdef="180000" />
+	</door>
+	<door id="19160011" name="chapel_door2">
+		<position x="-16355" y="-44130" z="-10720" />
+		<minpos x="-16612" y="-44160" z="-10720" />
+		<maxpos x="-16121" y="-44130" z="-10508" />
+		<stats hp="60000" pdef="180000" mdef="180000" />
+	</door>
+	<door id="19160012" name="darkness_door2">
+		<position x="-14534" y="-52487" z="-11008" />
+		<minpos x="-14534" y="-52643" z="-11008" />
+		<maxpos x="-14504" y="-52342" z="-10796" />
+		<stats hp="60000" pdef="180000" mdef="180000" />
+	</door>
+	<door id="19160013" name="darkness_door1">
+		<position x="-18255" y="-52487" z="-11008" />
+		<minpos x="-18280" y="-52643" z="-11008" />
+		<maxpos x="-18255" y="-52342" z="-10796" />
+		<stats hp="60000" pdef="180000" mdef="180000" />
+	</door>
+	<door id="19160014" name="altar_low1">
+		<position x="-14833" y="-54978" z="-10600" />
+		<minpos x="-14955" y="-54978" z="-10600" />
+		<maxpos x="-14709" y="-54958" z="-10388" />
+		<stats hp="60000" pdef="180000" mdef="180000" />
+	</door>
+	<door id="19160015" name="altar_low2">
+		<position x="-17959" y="-54978" z="-10600" />
+		<minpos x="-18073" y="-54978" z="-10600" />
+		<maxpos x="-17828" y="-54958" z="-10388" />
+		<stats hp="60000" pdef="180000" mdef="180000" />
+	</door>
+	<door id="19160016" name="altar_top1">
+		<position x="-15355" y="-54843" z="-10448" />
+		<minpos x="-15385" y="-54960" z="-10448" />
+		<maxpos x="-15355" y="-54781" z="-10236" />
+		<stats hp="60000" pdef="180000" mdef="180000" />
+	</door>
+	<door id="19160017" name="altar_top2">
+		<position x="-17421" y="-54843" z="-10448" />
+		<minpos x="-17451" y="-54960" z="-10448" />
+		<maxpos x="-17421" y="-54781" z="-10236" />
+		<stats hp="60000" pdef="180000" mdef="180000" />
+	</door>
+	<door id="20210001" name="kuruma002">
+		<position x="17624" y="112427" z="-6456" />
+		<minpos x="17506" y="112402" z="-6625" />
+		<maxpos x="17741" y="112452" z="-6287" />
+		<stats hp="150000" pdef="476" mdef="383" />
+		<unlockable val="true" />
+	</door>
+	<door id="20210002" name="kuruma001">
+		<position x="17820" y="112427" z="-6456" />
+		<minpos x="17705" y="112402" z="-6627" />
+		<maxpos x="17938" y="112452" z="-6289" />
+		<stats hp="150000" pdef="476" mdef="383" />
+		<unlockable val="true" />
+	</door>
+	<door id="20210003" name="kuruma003">
+		<position x="17721" y="112427" z="-6579" />
+		<minpos x="17623" y="112396" z="-6627" />
+		<maxpos x="17819" y="112459" z="-6529" />
+		<stats hp="150000" pdef="476" mdef="383" />
+		<unlockable val="true" />
+	</door>
+	<door id="21240001" name="Devil_001">
+		<position x="42000" y="208377" z="-3666" />
+		<minpos x="41864" y="208287" z="-3785" />
+		<maxpos x="42006" y="208383" z="-3540" />
+		<stats hp="150000" pdef="100000" mdef="10000" />
+		<unlockable val="true" />
+	</door>
+	<door id="21240002" name="Devil_002">
+		<position x="43745" y="212594" z="-3623" />
+		<minpos x="43741" y="212433" z="-3742" />
+		<maxpos x="43749" y="212600" z="-3497" />
+		<stats hp="150000" pdef="100000" mdef="10000" />
+		<unlockable val="true" />
+	</door>
+	<door id="21240003" name="Devil_003">
+		<position x="42166" y="213285" z="-3643" />
+		<minpos x="42085" y="213285" z="-3760" />
+		<maxpos x="42246" y="213285" z="-3515" />
+		<stats hp="150000" pdef="476" mdef="383" />
+		<unlockable val="true" />
+	</door>
+	<door id="21240004" name="Devil_004">
+		<position x="51110" y="206106" z="-3912" />
+		<minpos x="51105" y="206102" z="-4031" />
+		<maxpos x="51270" y="206110" z="-3786" />
+		<stats hp="150000" pdef="476" mdef="383" />
+		<unlockable val="true" />
+	</door>
+	<door id="21240005" name="Devil_005">
+		<position x="52910" y="206720" z="-3692" />
+		<minpos x="52910" y="206638" z="-3808" />
+		<maxpos x="52910" y="206801" z="-3563" />
+		<stats hp="150000" pdef="476" mdef="383" />
+		<unlockable val="true" />
+	</door>
+	<door id="21240006" name="Devil_006">
+		<position x="52423" y="219103" z="-3209" />
+		<minpos x="52423" y="219032" z="-3312" />
+		<maxpos x="52423" y="219174" z="-3067" />
+		<stats hp="150000" pdef="1000000" mdef="383" />
+		<unlockable val="true" />
+	</door>
+	<door id="22250001" name="Eva_001">
+		<position x="86225" y="247062" z="-8584" />
+		<minpos x="86085" y="246961" z="-8845" />
+		<maxpos x="86364" y="247162" z="-8333" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250002" name="Eva_002">
+		<position x="88490" y="253870" z="-8584" />
+		<minpos x="88436" y="253707" z="-8845" />
+		<maxpos x="88546" y="254031" z="-8333" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250003" name="Eva_003">
+		<position x="76872" y="253953" z="-8584" />
+		<minpos x="76816" y="253788" z="-8856" />
+		<maxpos x="76928" y="254118" z="-8344" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250004" name="Eva_004">
+		<position x="79032" y="247128" z="-8583" />
+		<minpos x="78897" y="247031" z="-8838" />
+		<maxpos x="79164" y="247228" z="-8326" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250005" name="Eva_005">
+		<position x="82737" y="246602" z="-9092" />
+		<minpos x="82578" y="246602" z="-9359" />
+		<maxpos x="82896" y="246602" z="-8847" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250006" name="Eva_006">
+		<position x="87902" y="250377" z="-9092" />
+		<minpos x="87845" y="250218" z="-9361" />
+		<maxpos x="87963" y="250540" z="-8849" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250007" name="Eva_007">
+		<position x="85913" y="256377" z="-9092" />
+		<minpos x="85778" y="256278" z="-9352" />
+		<maxpos x="86047" y="256477" z="-8840" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250008" name="Eva_008">
+		<position x="79561" y="256348" z="-9092" />
+		<minpos x="79427" y="256253" z="-9348" />
+		<maxpos x="79699" y="256447" z="-8836" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250009" name="Eva_009">
+		<position x="77616" y="250360" z="-9093" />
+		<minpos x="77560" y="250195" z="-9360" />
+		<maxpos x="77671" y="250525" z="-8848" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250010" name="Eva_010">
+		<position x="80101" y="248387" z="-9610" />
+		<minpos x="79968" y="248290" z="-9883" />
+		<maxpos x="80233" y="248485" z="-9371" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250011" name="Eva_011">
+		<position x="85343" y="248343" z="-9610" />
+		<minpos x="85204" y="248243" z="-9869" />
+		<maxpos x="85481" y="248443" z="-9357" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250012" name="Eva_012">
+		<position x="87018" y="253388" z="-9610" />
+		<minpos x="86965" y="253223" z="-9875" />
+		<maxpos x="87076" y="253544" z="-9363" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250013" name="Eva_013">
+		<position x="82767" y="256485" z="-9610" />
+		<minpos x="82603" y="256484" z="-9873" />
+		<maxpos x="82932" y="256486" z="-9361" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250014" name="Eva_014">
+		<position x="78490" y="253390" z="-9610" />
+		<minpos x="78435" y="253230" z="-9884" />
+		<maxpos x="78548" y="253551" z="-9372" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250015" name="Eva_015">
+		<position x="79252" y="253096" z="-10118" />
+		<minpos x="79196" y="252936" z="-10386" />
+		<maxpos x="79308" y="253256" z="-9874" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250016" name="Eva_016">
+		<position x="79275" y="250855" z="-10118" />
+		<minpos x="79220" y="250697" z="-10386" />
+		<maxpos x="79328" y="251017" z="-9874" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250017" name="Eva_017">
+		<position x="80600" y="249045" z="-10118" />
+		<minpos x="80464" y="248949" z="-10370" />
+		<maxpos x="80735" y="249143" z="-9858" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250018" name="Eva_018">
+		<position x="82836" y="248341" z="-10118" />
+		<minpos x="82672" y="248340" z="-10391" />
+		<maxpos x="82999" y="248341" z="-9879" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250019" name="Eva_019">
+		<position x="84906" y="249034" z="-10116" />
+		<minpos x="84761" y="248927" z="-10379" />
+		<maxpos x="85050" y="249141" z="-9867" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250020" name="Eva_020">
+		<position x="86246" y="250887" z="-10118" />
+		<minpos x="86186" y="250724" z="-10368" />
+		<maxpos x="86307" y="251048" z="-9856" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250021" name="Eva_021">
+		<position x="86213" y="253196" z="-10118" />
+		<minpos x="86157" y="253034" z="-10380" />
+		<maxpos x="86268" y="253360" z="-9868" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250022" name="Eva_022">
+		<position x="84889" y="254972" z="-10118" />
+		<minpos x="84750" y="254873" z="-10376" />
+		<maxpos x="85027" y="255073" z="-9864" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250023" name="Eva_023">
+		<position x="82726" y="255659" z="-10118" />
+		<minpos x="82561" y="255659" z="-10387" />
+		<maxpos x="82891" y="255659" z="-9875" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250024" name="Eva_024">
+		<position x="80590" y="254949" z="-10118" />
+		<minpos x="80454" y="254851" z="-10372" />
+		<maxpos x="80727" y="255050" z="-9860" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="22250025" name="Eva_025">
+		<position x="81959" y="255493" z="-10734" />
+		<minpos x="81657" y="255478" z="-10888" />
+		<maxpos x="82264" y="255508" z="-10376" />
+		<stats hp="150000" pdef="476" mdef="383" />
+		<unlockable val="true" />
+	</door>
+	<door id="22250026" name="Eva_026">
+		<position x="83496" y="255494" z="-10734" />
+		<minpos x="83194" y="255479" z="-10891" />
+		<maxpos x="83795" y="255511" z="-10379" />
+		<stats hp="150000" pdef="476" mdef="383" />
+		<unlockable val="true" />
+	</door>
+	<door id="22250027" name="Eva_027">
+		<position x="83549" y="248505" z="-10734" />
+		<minpos x="83247" y="248490" z="-10886" />
+		<maxpos x="83848" y="248523" z="-10374" />
+		<stats hp="150000" pdef="476" mdef="383" />
+		<unlockable val="true" />
+	</door>
+	<door id="22250028" name="Eva_028">
+		<position x="82012" y="248506" z="-10734" />
+		<minpos x="81713" y="248490" z="-10888" />
+		<maxpos x="82312" y="248521" z="-10376" />
+		<stats hp="150000" pdef="476" mdef="383" />
+		<unlockable val="true" />
+	</door>
+	<door id="22250029" name="Eva_029">
+		<position x="82560" y="254715" z="-10880" />
+		<stats hp="187500" pdef="476" mdef="383" />
+		<unlockable val="true" />
+	</door>
+	<door id="23140001" name="frozen_barrier_s01">
+		<position x="113932" y="-126022" z="-3472" />
+		<minpos x="113857" y="-126163" z="-3663" />
+		<maxpos x="114018" y="-125900" z="-2639" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="23140002" name="frozen_barrier_s02">
+		<position x="115292" y="-125745" z="-3472" />
+		<minpos x="115218" y="-125871" z="-3663" />
+		<maxpos x="115377" y="-125612" z="-2639" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="23150001" name="Monastery_Silent_door01">
+		<position x="110717" y="-81568" z="-1536" />
+		<minpos x="110610" y="-81591" z="-1618" />
+		<maxpos x="110826" y="-81545" z="-1618" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="23150002" name="Monastery_Silent_door02">
+		<position x="114881" y="-71454" z="-496" />
+		<minpos x="114782" y="-71474" z="-578" />
+		<maxpos x="114981" y="-71425" z="-578" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="23150003" name="Monastary_Silent_br_door01">
+		<position x="112690" y="-78084" z="59" />
+		<minpos x="112641" y="-78096" z="59" />
+		<maxpos x="112816" y="-78064" z="59" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="23150004" name="Monastary_Silent_br_door02">
+		<position x="112910" y="-78084" z="59" />
+		<minpos x="112782" y="-78096" z="59" />
+		<maxpos x="112958" y="-78064" z="59" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="23180001" name="hubris_3F_001">
+		<position x="113876" y="16952" z="-1979" />
+		<minpos x="113814" y="16890" z="-2156" />
+		<maxpos x="113937" y="17013" z="-1801" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="23180002" name="hubris_3F_002">
+		<position x="113771" y="16849" z="-1979" />
+		<minpos x="113710" y="16788" z="-2156" />
+		<maxpos x="113833" y="16910" z="-1801" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="23180003" name="hubris_8F_001">
+		<position x="113252" y="15914" z="4114" />
+		<minpos x="113178" y="15874" z="3937" />
+		<maxpos x="113326" y="15954" z="4292" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="23180004" name="hubris_8F_002">
+		<position x="113117" y="15970" z="4115" />
+		<minpos x="113043" y="15930" z="3938" />
+		<maxpos x="113191" y="16010" z="4293" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="23180005" name="hubris_11F_002">
+		<position x="113263" y="15764" z="7145" />
+		<minpos x="113201" y="15703" z="6968" />
+		<maxpos x="113325" y="15826" z="7323" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="23180006" name="hubris_11F_001">
+		<position x="113367" y="15868" z="7145" />
+		<minpos x="113305" y="15806" z="6968" />
+		<maxpos x="113429" y="15930" z="7323" />
+		<stats hp="150000" pdef="476" mdef="383" />
+	</door>
+	<door id="24190001" name="aden_colosseum_001_001">
+		<position x="147086" y="46721" z="-3434" />
+		<minpos x="147075" y="46641" z="-3434" />
+		<maxpos x="147099" y="46800" z="-3178" />
+		<stats hp="550000" pdef="644" mdef="518" />
+	</door>
+	<door id="24190002" name="aden_colosseum_001_002">
+		<position x="148045" y="46721" z="-3435" />
+		<minpos x="148034" y="46642" z="-3435" />
+		<maxpos x="148057" y="46800" z="-3179" />
+		<stats hp="550000" pdef="644" mdef="518" />
+	</door>
+	<door id="24190003" name="aden_colosseum_002_001">
+		<position x="150951" y="46721" z="-3435" />
+		<minpos x="150939" y="46640" z="-3435" />
+		<maxpos x="150961" y="46797" z="-3179" />
+		<stats hp="550000" pdef="644" mdef="518" />
+	</door>
+	<door id="24190004" name="aden_colosseum_002_002">
+		<position x="151911" y="46721" z="-3435" />
+		<minpos x="151903" y="46644" z="-3435" />
+		<maxpos x="151918" y="46798" z="-3179" />
+		<stats hp="550000" pdef="644" mdef="518" />
+	</door>
+	<door id="24210004" name="valakas_door_01">
+		<position x="190917" y="-115528" z="-1519" />
+		<minpos x="190891" y="-115626" z="-1619" />
+		<maxpos x="190944" y="-115430" z="-1363" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24210005" name="valakas_door_02">
+		<position x="189479" y="-108511" z="-952" />
+		<minpos x="189380" y="-108551" z="-1056" />
+		<maxpos x="189579" y="-108473" z="-800" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="24210006" name="valakas_door_03">
+		<position x="191458" y="-108107" z="-955" />
+		<minpos x="191357" y="-108153" z="-1058" />
+		<maxpos x="191557" y="-108058" z="-802" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150001" name="royal_rush_door_2">
+		<position x="179512" y="-88979" z="-7067" />
+		<minpos x="179505" y="-89155" z="-7253" />
+		<maxpos x="179567" y="-88805" z="-6997" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150002" name="royal_rush_door_2a">
+		<position x="181248" y="-88979" z="-7066" />
+		<minpos x="181240" y="-89155" z="-7254" />
+		<maxpos x="181304" y="-88804" z="-6998" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150003" name="royal_rush_door_2b">
+		<position x="183053" y="-88979" z="-7071" />
+		<minpos x="183038" y="-89166" z="-7261" />
+		<maxpos x="183120" y="-88796" z="-7005" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150004" name="royal_rush_door_2c">
+		<position x="184884" y="-88968" z="-7054" />
+		<minpos x="184871" y="-89148" z="-7243" />
+		<maxpos x="184946" y="-88790" z="-6987" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150005" name="royal_rush_door_2d">
+		<position x="186685" y="-88965" z="-7072" />
+		<minpos x="186678" y="-89151" z="-7261" />
+		<maxpos x="186742" y="-88788" z="-7005" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150006" name="royal_rush_door_2e">
+		<position x="188472" y="-88968" z="-7070" />
+		<minpos x="188463" y="-89147" z="-7261" />
+		<maxpos x="188527" y="-88793" z="-7005" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150011" name="royal_rush_door_1">
+		<position x="181195" y="-85594" z="-7069" />
+		<minpos x="181184" y="-85775" z="-7261" />
+		<maxpos x="181256" y="-85412" z="-7005" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150012" name="royal_rush_door_1a">
+		<position x="182981" y="-85580" z="-7071" />
+		<minpos x="182970" y="-85759" z="-7259" />
+		<maxpos x="183045" y="-85399" z="-7003" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150013" name="royal_rush_door_1b">
+		<position x="184798" y="-85582" z="-7070" />
+		<minpos x="184787" y="-85759" z="-7259" />
+		<maxpos x="184857" y="-85401" z="-7003" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150014" name="royal_rush_door_1c">
+		<position x="186575" y="-85576" z="-7073" />
+		<minpos x="186560" y="-85758" z="-7265" />
+		<maxpos x="186643" y="-85390" z="-7009" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150015" name="royal_rush_door_1d">
+		<position x="188363" y="-85576" z="-7067" />
+		<minpos x="188344" y="-85772" z="-7259" />
+		<maxpos x="188426" y="-85383" z="-7003" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150016" name="royal_rush_door_1e">
+		<position x="190165" y="-85576" z="-7072" />
+		<minpos x="190151" y="-85760" z="-7265" />
+		<maxpos x="190232" y="-85393" z="-7009" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150021" name="royal_rush_door_4">
+		<position x="175610" y="-82701" z="-7061" />
+		<minpos x="175429" y="-82761" z="-7251" />
+		<maxpos x="175790" y="-82691" z="-6995" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150022" name="royal_rush_door_4a">
+		<position x="175610" y="-80956" z="-7070" />
+		<minpos x="175421" y="-81024" z="-7260" />
+		<maxpos x="175805" y="-80937" z="-7004" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150023" name="royal_rush_door_4b">
+		<position x="175601" y="-79162" z="-7069" />
+		<minpos x="175426" y="-79217" z="-7259" />
+		<maxpos x="175777" y="-79155" z="-7003" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150024" name="royal_rush_door_4c">
+		<position x="175602" y="-77330" z="-7074" />
+		<minpos x="175425" y="-77387" z="-7265" />
+		<maxpos x="175778" y="-77319" z="-7009" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150025" name="royal_rush_door_4d">
+		<position x="175597" y="-75538" z="-7069" />
+		<minpos x="175415" y="-75595" z="-7258" />
+		<maxpos x="175777" y="-75529" z="-7002" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150026" name="royal_rush_door_4e">
+		<position x="175588" y="-73721" z="-7067" />
+		<minpos x="175401" y="-73781" z="-7257" />
+		<maxpos x="175767" y="-73712" z="-7001" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150031" name="royal_rush_door_3">
+		<position x="173218" y="-86614" z="-7073" />
+		<minpos x="173033" y="-86673" z="-7268" />
+		<maxpos x="173400" y="-86604" z="-7012" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150032" name="royal_rush_door_3a">
+		<position x="173218" y="-84780" z="-7069" />
+		<minpos x="173032" y="-84846" z="-7268" />
+		<maxpos x="173404" y="-84768" z="-7012" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150033" name="royal_rush_door_3b">
+		<position x="173210" y="-82974" z="-7069" />
+		<minpos x="173034" y="-83033" z="-7259" />
+		<maxpos x="173388" y="-82966" z="-7003" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150034" name="royal_rush_door_3c">
+		<position x="173212" y="-81165" z="-7067" />
+		<minpos x="173034" y="-81221" z="-7254" />
+		<maxpos x="173388" y="-81152" z="-6998" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150035" name="royal_rush_door_3d">
+		<position x="173215" y="-79393" z="-7062" />
+		<minpos x="173035" y="-79450" z="-7253" />
+		<maxpos x="173391" y="-79384" z="-6997" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150036" name="royal_rush_door_3e">
+		<position x="173196" y="-77563" z="-7065" />
+		<minpos x="173019" y="-77621" z="-7253" />
+		<maxpos x="173369" y="-77558" z="-6997" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150042" name="Godad_Catacomb_door02b">
+		<position x="174064" y="-77591" z="-4968" />
+		<minpos x="173885" y="-77648" z="-5160" />
+		<maxpos x="174242" y="-77585" z="-4904" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150043" name="Godad_Catacomb_door02a">
+		<position x="174063" y="-80203" z="-4968" />
+		<minpos x="173884" y="-80260" z="-5160" />
+		<maxpos x="174241" y="-80197" z="-4904" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150045" name="Godad_Catacomb_door02c">
+		<position x="174063" y="-83355" z="-4961" />
+		<minpos x="173884" y="-83412" z="-5153" />
+		<maxpos x="174241" y="-83349" z="-4897" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150046" name="Godad_fritezzaroomDoor">
+		<position x="174237" y="-86037" z="-4923" />
+		<minpos x="173998" y="-86081" z="-5153" />
+		<maxpos x="174475" y="-85991" z="-4897" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150051" name="Godad_fritezza_door01b">
+		<position x="173133" y="-76024" z="-4884" />
+		<minpos x="173055" y="-76456" z="-5166" />
+		<maxpos x="173219" y="-75593" z="-4910" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150052" name="Godad_fritezza_door01c">
+		<position x="173402" y="-76721" z="-4884" />
+		<minpos x="173050" y="-77061" z="-5166" />
+		<maxpos x="173713" y="-76410" z="-4910" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150053" name="Godad_fritezza_door01e">
+		<position x="174100" y="-77007" z="-4884" />
+		<minpos x="173672" y="-77063" z="-5166" />
+		<maxpos x="174532" y="-76941" z="-4910" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150054" name="Godad_fritezza_door01d">
+		<position x="174792" y="-76730" z="-4884" />
+		<minpos x="174474" y="-77073" z="-5166" />
+		<maxpos x="175130" y="-76423" z="-4910" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150055" name="Godad_fritezza_door01f">
+		<position x="175076" y="-76037" z="-4884" />
+		<minpos x="175011" y="-76464" z="-5166" />
+		<maxpos x="175135" y="-75608" z="-4910" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150056" name="Godad_fritezza_door01h">
+		<position x="174805" y="-75336" z="-4884" />
+		<minpos x="174491" y="-75655" z="-5166" />
+		<maxpos x="175148" y="-74997" z="-4910" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150057" name="Godad_fritezza_door01g">
+		<position x="174108" y="-75056" z="-4884" />
+		<minpos x="173673" y="-75126" z="-5166" />
+		<maxpos x="174548" y="-74988" z="-4910" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150058" name="Godad_fritezza_door01a">
+		<position x="173416" y="-75326" z="-4884" />
+		<minpos x="173071" y="-75649" z="-5166" />
+		<maxpos x="173737" y="-74984" z="-4910" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150059" name="Gate_of_Errors1">
+	</door>
+	<door id="25150060" name="Gate_of_Errors0">
+	</door>
+	<door id="25150061" name="Godad_fritezza_door02_2c">
+		<position x="174507" y="-83018" z="-4891" />
+		<minpos x="174447" y="-83266" z="-5160" />
+		<maxpos x="174566" y="-82752" z="-4904" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150062" name="Godad_fritezza_door02_1c">
+		<position x="174631" y="-82513" z="-4891" />
+		<minpos x="174423" y="-82819" z="-5157" />
+		<maxpos x="174845" y="-82143" z="-4901" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150063" name="Godad_fritezza_door02b">
+		<position x="174766" y="-81794" z="-4877" />
+		<minpos x="174701" y="-82220" z="-5159" />
+		<maxpos x="174833" y="-81379" z="-4903" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150064" name="Godad_fritezza_door02_1b">
+		<position x="174641" y="-81073" z="-4891" />
+		<minpos x="174442" y="-81443" z="-5158" />
+		<maxpos x="174847" y="-80769" z="-4902" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150065" name="Godad_fritezza_door02_2b">
+		<position x="174508" y="-80552" z="-4891" />
+		<minpos x="174450" y="-80821" z="-5160" />
+		<maxpos x="174569" y="-80304" z="-4904" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150066" name="Godad_fritezza_door02_2d">
+		<position x="173635" y="-80552" z="-4891" />
+		<minpos x="173581" y="-80807" z="-5160" />
+		<maxpos x="173691" y="-80297" z="-4904" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150067" name="Godad_fritezza_door02_1d">
+		<position x="173511" y="-81056" z="-4891" />
+		<minpos x="173319" y="-81421" z="-5168" />
+		<maxpos x="173709" y="-80766" z="-4912" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150068" name="Godad_fritezza_door02a">
+		<position x="173376" y="-81776" z="-4877" />
+		<minpos x="173308" y="-82196" z="-5161" />
+		<maxpos x="173449" y="-81386" z="-4905" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150069" name="Godad_fritezza_door02_1a">
+		<position x="173501" y="-82497" z="-4891" />
+		<minpos x="173307" y="-82774" z="-5158" />
+		<maxpos x="173701" y="-82170" z="-4902" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+	<door id="25150070" name="Godad_fritezza_door02_2a">
+		<position x="173634" y="-83018" z="-4891" />
+		<minpos x="173574" y="-83268" z="-5160" />
+		<maxpos x="173692" y="-82763" z="-4904" />
+		<stats hp="126600" pdef="644" mdef="518" />
+	</door>
+</list>

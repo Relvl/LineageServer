@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<!-- Castle Artifact Pray Zones -->
+	<zone type="PrayerZone" shape="Cylinder" minZ="-2460" maxZ="-2440" rad="70"><!-- gludio_castle_artifact -->
+		<node X="-18118" Y="108106" />
+	</zone>
+	<zone type="PrayerZone" shape="Cylinder" minZ="-2650" maxZ="-2630" rad="70"><!-- dion_castle_artifact -->
+		<node X="22078" Y="161645" />
+	</zone>
+	<zone type="PrayerZone" shape="Cylinder" minZ="-2525" maxZ="-2505" rad="70"><!-- giran_castle_artifact -->
+		<node X="117816" Y="145090" />
+	</zone>
+	<zone type="PrayerZone" shape="Cylinder" minZ="-2250" maxZ="-2230" rad="70"><!-- oren_castle_artifact -->
+		<node X="83893" Y="37186" />
+	</zone>
+	<zone type="PrayerZone" shape="Cylinder" minZ="-345" maxZ="-325" rad="70"><!-- aden_castle_artifact -->
+		<node X="147465" Y="1662" />
+	</zone>
+	<zone type="PrayerZone" shape="Cylinder" minZ="-745" maxZ="-725" rad="70"><!-- innadril_castle_artifact -->
+		<node X="116029" Y="250423" />
+	</zone>
+	<zone type="PrayerZone" shape="Cylinder" minZ="-1510" maxZ="-1490" rad="110"><!-- goddard_castle_artifact_altar_of_water -->
+		<node X="148353" Y="-50457" />
+	</zone>
+	<zone type="PrayerZone" shape="Cylinder" minZ="-1510" maxZ="-1490" rad="110"><!-- goddard_castle_artifact_altar_of_fire -->
+		<node X="146601" Y="-50440" />
+	</zone>
+	<zone type="PrayerZone" shape="Cylinder" minZ="1087" maxZ="1107" rad="110"><!-- rune_castle_artifact -->
+		<node X="9132" Y="-49153" />
+	</zone>
+	<zone type="PrayerZone" shape="Cylinder" minZ="221" maxZ="241" rad="110"><!-- schuttgart_castle_artifact_altar_of_wind -->
+		<node X="78446" Y="-154520" />
+	</zone>
+	<zone type="PrayerZone" shape="Cylinder" minZ="221" maxZ="241" rad="110"><!-- schuttgart_castle_artifact_altar_of_earth -->
+		<node X="76668" Y="-154520" />
+	</zone>
+</list>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<list>
+	<!-- Fishing -->
+	<skill id='1312' lvl='1' minLvl='1' itemId='57' count='1000' isDwarf='false' />
+	<!-- Pumping -->
+	<skill id='1313' lvl='1' minLvl='1' itemId='57' count='10' isDwarf='false' />
+	<skill id='1313' lvl='2' minLvl='4' itemId='57' count='50' isDwarf='false' />
+	<skill id='1313' lvl='3' minLvl='7' itemId='57' count='200' isDwarf='false' />
+	<skill id='1313' lvl='4' minLvl='10' itemId='57' count='300' isDwarf='false' />
+	<skill id='1313' lvl='5' minLvl='13' itemId='57' count='500' isDwarf='false' />
+	<skill id='1313' lvl='6' minLvl='16' itemId='57' count='800' isDwarf='false' />
+	<skill id='1313' lvl='7' minLvl='19' itemId='57' count='1600' isDwarf='false' />
+	<skill id='1313' lvl='8' minLvl='22' itemId='57' count='2600' isDwarf='false' />
+	<skill id='1313' lvl='9' minLvl='25' itemId='57' count='4000' isDwarf='false' />
+	<skill id='1313' lvl='10' minLvl='28' itemId='57' count='6700' isDwarf='false' />
+	<skill id='1313' lvl='11' minLvl='31' itemId='57' count='8000' isDwarf='false' />
+	<skill id='1313' lvl='12' minLvl='34' itemId='57' count='10000' isDwarf='false' />
+	<skill id='1313' lvl='13' minLvl='37' itemId='57' count='16000' isDwarf='false' />
+	<skill id='1313' lvl='14' minLvl='40' itemId='57' count='23000' isDwarf='false' />
+	<skill id='1313' lvl='15' minLvl='43' itemId='57' count='30000' isDwarf='false' />
+	<skill id='1313' lvl='16' minLvl='46' itemId='57' count='40000' isDwarf='false' />
+	<skill id='1313' lvl='17' minLvl='49' itemId='57' count='53000' isDwarf='false' />
+	<skill id='1313' lvl='18' minLvl='52' itemId='57' count='66000' isDwarf='false' />
+	<skill id='1313' lvl='19' minLvl='55' itemId='57' count='80000' isDwarf='false' />
+	<skill id='1313' lvl='20' minLvl='58' itemId='57' count='93000' isDwarf='false' />
+	<skill id='1313' lvl='21' minLvl='61' itemId='57' count='100000' isDwarf='false' />
+	<skill id='1313' lvl='22' minLvl='64' itemId='57' count='120000' isDwarf='false' />
+	<skill id='1313' lvl='23' minLvl='67' itemId='57' count='130000' isDwarf='false' />
+	<skill id='1313' lvl='24' minLvl='70' itemId='57' count='140000' isDwarf='false' />
+	<skill id='1313' lvl='25' minLvl='73' itemId='57' count='160000' isDwarf='false' />
+	<skill id='1313' lvl='26' minLvl='76' itemId='57' count='173000' isDwarf='false' />
+	<skill id='1313' lvl='27' minLvl='79' itemId='57' count='200000' isDwarf='false' />
+	<!-- Reeling -->
+	<skill id='1314' lvl='1' minLvl='1' itemId='57' count='10' isDwarf='false' />
+	<skill id='1314' lvl='2' minLvl='4' itemId='57' count='50' isDwarf='false' />
+	<skill id='1314' lvl='3' minLvl='7' itemId='57' count='200' isDwarf='false' />
+	<skill id='1314' lvl='4' minLvl='10' itemId='57' count='300' isDwarf='false' />
+	<skill id='1314' lvl='5' minLvl='13' itemId='57' count='500' isDwarf='false' />
+	<skill id='1314' lvl='6' minLvl='16' itemId='57' count='800' isDwarf='false' />
+	<skill id='1314' lvl='7' minLvl='19' itemId='57' count='1600' isDwarf='false' />
+	<skill id='1314' lvl='8' minLvl='22' itemId='57' count='2600' isDwarf='false' />
+	<skill id='1314' lvl='9' minLvl='25' itemId='57' count='4000' isDwarf='false' />
+	<skill id='1314' lvl='10' minLvl='28' itemId='57' count='6700' isDwarf='false' />
+	<skill id='1314' lvl='11' minLvl='31' itemId='57' count='8000' isDwarf='false' />
+	<skill id='1314' lvl='12' minLvl='34' itemId='57' count='10000' isDwarf='false' />
+	<skill id='1314' lvl='13' minLvl='37' itemId='57' count='16000' isDwarf='false' />
+	<skill id='1314' lvl='14' minLvl='40' itemId='57' count='23000' isDwarf='false' />
+	<skill id='1314' lvl='15' minLvl='43' itemId='57' count='30000' isDwarf='false' />
+	<skill id='1314' lvl='16' minLvl='46' itemId='57' count='40000' isDwarf='false' />
+	<skill id='1314' lvl='17' minLvl='49' itemId='57' count='53000' isDwarf='false' />
+	<skill id='1314' lvl='18' minLvl='52' itemId='57' count='66000' isDwarf='false' />
+	<skill id='1314' lvl='19' minLvl='55' itemId='57' count='80000' isDwarf='false' />
+	<skill id='1314' lvl='20' minLvl='58' itemId='57' count='93000' isDwarf='false' />
+	<skill id='1314' lvl='21' minLvl='61' itemId='57' count='100000' isDwarf='false' />
+	<skill id='1314' lvl='22' minLvl='64' itemId='57' count='120000' isDwarf='false' />
+	<skill id='1314' lvl='23' minLvl='67' itemId='57' count='130000' isDwarf='false' />
+	<skill id='1314' lvl='24' minLvl='70' itemId='57' count='140000' isDwarf='false' />
+	<skill id='1314' lvl='25' minLvl='73' itemId='57' count='160000' isDwarf='false' />
+	<skill id='1314' lvl='26' minLvl='76' itemId='57' count='173000' isDwarf='false' />
+	<skill id='1314' lvl='27' minLvl='79' itemId='57' count='200000' isDwarf='false' />
+	<!-- Fishing Expertise -->
+	<skill id='1315' lvl='1' minLvl='1' itemId='57' count='10' isDwarf='false' />
+	<skill id='1315' lvl='2' minLvl='4' itemId='57' count='50' isDwarf='false' />
+	<skill id='1315' lvl='3' minLvl='7' itemId='57' count='200' isDwarf='false' />
+	<skill id='1315' lvl='4' minLvl='10' itemId='57' count='300' isDwarf='false' />
+	<skill id='1315' lvl='5' minLvl='13' itemId='57' count='500' isDwarf='false' />
+	<skill id='1315' lvl='6' minLvl='16' itemId='57' count='800' isDwarf='false' />
+	<skill id='1315' lvl='7' minLvl='19' itemId='57' count='1600' isDwarf='false' />
+	<skill id='1315' lvl='8' minLvl='22' itemId='57' count='2600' isDwarf='false' />
+	<skill id='1315' lvl='9' minLvl='25' itemId='57' count='4000' isDwarf='false' />
+	<skill id='1315' lvl='10' minLvl='28' itemId='57' count='6700' isDwarf='false' />
+	<skill id='1315' lvl='11' minLvl='31' itemId='57' count='8000' isDwarf='false' />
+	<skill id='1315' lvl='12' minLvl='34' itemId='57' count='10000' isDwarf='false' />
+	<skill id='1315' lvl='13' minLvl='37' itemId='57' count='16000' isDwarf='false' />
+	<skill id='1315' lvl='14' minLvl='40' itemId='57' count='23000' isDwarf='false' />
+	<skill id='1315' lvl='15' minLvl='43' itemId='57' count='30000' isDwarf='false' />
+	<skill id='1315' lvl='16' minLvl='46' itemId='57' count='40000' isDwarf='false' />
+	<skill id='1315' lvl='17' minLvl='49' itemId='57' count='53000' isDwarf='false' />
+	<skill id='1315' lvl='18' minLvl='52' itemId='57' count='66000' isDwarf='false' />
+	<skill id='1315' lvl='19' minLvl='55' itemId='57' count='80000' isDwarf='false' />
+	<skill id='1315' lvl='20' minLvl='58' itemId='57' count='93000' isDwarf='false' />
+	<skill id='1315' lvl='21' minLvl='61' itemId='57' count='100000' isDwarf='false' />
+	<skill id='1315' lvl='22' minLvl='64' itemId='57' count='120000' isDwarf='false' />
+	<skill id='1315' lvl='23' minLvl='67' itemId='57' count='130000' isDwarf='false' />
+	<skill id='1315' lvl='24' minLvl='70' itemId='57' count='140000' isDwarf='false' />
+	<skill id='1315' lvl='25' minLvl='73' itemId='57' count='160000' isDwarf='false' />
+	<skill id='1315' lvl='26' minLvl='76' itemId='57' count='173000' isDwarf='false' />
+	<skill id='1315' lvl='27' minLvl='79' itemId='57' count='200000' isDwarf='false' />
+	<!-- Expand Dwarven Craft -->
+	<skill id='1368' lvl='1' minLvl='5' itemId='7609' count='2000' isDwarf='true' />
+	<skill id='1368' lvl='2' minLvl='20' itemId='7609' count='4000' isDwarf='true' />
+	<skill id='1368' lvl='3' minLvl='28' itemId='7609' count='6000' isDwarf='true' />
+	<skill id='1368' lvl='4' minLvl='36' itemId='7609' count='10000' isDwarf='true' />
+	<skill id='1368' lvl='5' minLvl='43' itemId='7609' count='10000' isDwarf='true' />
+	<skill id='1368' lvl='6' minLvl='49' itemId='7609' count='10000' isDwarf='true' />
+	<skill id='1368' lvl='7' minLvl='55' itemId='7609' count='20000' isDwarf='true' />
+	<skill id='1368' lvl='8' minLvl='62' itemId='7609' count='20000' isDwarf='true' />
+	<!-- Expand Common Craft -->
+	<skill id='1369' lvl='1' minLvl='10' itemId='7609' count='2000' isDwarf='false' />
+	<skill id='1369' lvl='2' minLvl='20' itemId='7609' count='4000' isDwarf='false' />
+	<skill id='1369' lvl='3' minLvl='30' itemId='7609' count='6000' isDwarf='false' />
+	<skill id='1369' lvl='4' minLvl='40' itemId='7609' count='10000' isDwarf='false' />
+	<skill id='1369' lvl='5' minLvl='50' itemId='7609' count='10000' isDwarf='false' />
+	<skill id='1369' lvl='6' minLvl='60' itemId='7609' count='10000' isDwarf='false' />
+	<skill id='1369' lvl='7' minLvl='70' itemId='7609' count='20000' isDwarf='false' />
+	<skill id='1369' lvl='8' minLvl='80' itemId='7609' count='20000' isDwarf='false' />
+	<!-- Expand Trade -->
+	<skill id='1370' lvl='1' minLvl='40' itemId='7609' count='10000' isDwarf='false' />
+	<skill id='1370' lvl='2' minLvl='55' itemId='7609' count='20000' isDwarf='false' />
+	<skill id='1370' lvl='3' minLvl='65' itemId='7609' count='40000' isDwarf='false' />
+	<!-- Expand Storage -->
+	<skill id='1371' lvl='1' minLvl='10' itemId='7609' count='4000' isDwarf='false' />
+	<skill id='1371' lvl='2' minLvl='20' itemId='7609' count='8000' isDwarf='false' />
+	<skill id='1371' lvl='3' minLvl='30' itemId='7609' count='20000' isDwarf='false' />
+	<skill id='1371' lvl='4' minLvl='40' itemId='7609' count='20000' isDwarf='false' />
+	<skill id='1371' lvl='5' minLvl='50' itemId='7609' count='60000' isDwarf='false' />
+	<skill id='1371' lvl='6' minLvl='60' itemId='7609' count='60000' isDwarf='false' />
+	<skill id='1371' lvl='7' minLvl='70' itemId='7609' count='100000' isDwarf='false' />
+	<skill id='1371' lvl='8' minLvl='80' itemId='7609' count='100000' isDwarf='false' />
+	<!-- Expand Inventory -->
+	<skill id='1372' lvl='1' minLvl='10' itemId='7609' count='4000' isDwarf='false' />
+	<skill id='1372' lvl='2' minLvl='20' itemId='7609' count='8000' isDwarf='false' />
+	<skill id='1372' lvl='3' minLvl='30' itemId='7609' count='20000' isDwarf='false' />
+	<skill id='1372' lvl='4' minLvl='40' itemId='7609' count='20000' isDwarf='false' />
+	<skill id='1372' lvl='5' minLvl='50' itemId='7609' count='60000' isDwarf='false' />
+	<skill id='1372' lvl='6' minLvl='60' itemId='7609' count='60000' isDwarf='false' />
+	<skill id='1372' lvl='7' minLvl='70' itemId='7609' count='100000' isDwarf='false' />
+	<skill id='1372' lvl='8' minLvl='80' itemId='7609' count='100000' isDwarf='false' />
+</list>
