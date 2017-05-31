@@ -45,6 +45,7 @@
     </dependencies>
 
     <build>
+        <finalName>GAME.SERVER</finalName>
         <resources>
             <resource>
                 <directory>${project.basedir}/config/</directory>

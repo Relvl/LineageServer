@@ -66,9 +66,14 @@
     </dependencies>
 
     <build>
+        <finalName>LOGIN.SERVER</finalName>
         <resources>
             <resource>
                 <directory>${project.basedir}/config/</directory>
+                <includes>
+                    <include>log4j.xml</include>
+                    <include>log4j.dtd</include>
+                </includes>
             </resource>
             <resource>
                 <directory>${project.basedir}/src/main/resources/</directory>

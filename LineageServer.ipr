@@ -60,6 +60,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="commons" />
         <module name="gameserver" />
         <module name="loginserver" />
         <module name="mmocore" />
@@ -68,6 +69,7 @@
     <bytecodeTargetLevel>
       <module name="commons" target="1.8" />
       <module name="gameserver" target="1.8" />
+      <module name="lineage.server.startup.maven" target="1.5" />
       <module name="loginserver" target="1.8" />
       <module name="mmocore" target="1.8" />
     </bytecodeTargetLevel>
@@ -166,6 +168,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/commons/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -312,6 +315,7 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/LineageServer.iml" filepath="$PROJECT_DIR$/LineageServer.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons/commons.iml" filepath="$PROJECT_DIR$/commons/commons.iml" />
       <module fileurl="file://$PROJECT_DIR$/gameserver/gameserver.iml" filepath="$PROJECT_DIR$/gameserver/gameserver.iml" />
       <module fileurl="file://$PROJECT_DIR$/loginserver/loginserver.iml" filepath="$PROJECT_DIR$/loginserver/loginserver.iml" />
