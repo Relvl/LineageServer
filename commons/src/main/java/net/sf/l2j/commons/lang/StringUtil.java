@@ -14,6 +14,7 @@
  */
 package net.sf.l2j.commons.lang;
 
+import java.sql.ResultSet;
 import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Collections;
@@ -42,8 +43,9 @@ public final class StringUtil {
      */
     public static boolean isEmpty(String... strings) {
         for (String str : strings) {
-            if (str == null || str.isEmpty())
+            if (str == null || str.isEmpty()) {
                 return false;
+            }
         }
         return true;
     }
@@ -64,8 +66,9 @@ public final class StringUtil {
      * @return true if the String contains only numbers, false otherwise.
      */
     public static boolean isDigit(String text) {
-        if (text == null)
+        if (text == null) {
             return false;
+        }
 
         return text.matches("[0-9]+");
     }
@@ -75,12 +78,14 @@ public final class StringUtil {
      * @return true if the String contains only numbers and letters, false otherwise.
      */
     public static boolean isAlphaNumeric(String text) {
-        if (text == null)
+        if (text == null) {
             return false;
+        }
 
         for (char chars : text.toCharArray()) {
-            if (!Character.isLetterOrDigit(chars))
+            if (!Character.isLetterOrDigit(chars)) {
                 return false;
+            }
         }
         return true;
     }
@@ -139,18 +144,26 @@ public final class StringUtil {
         return isValidName(text, "^[A-Za-z0-9]{1,16}$");
     }
 
-    /**
-     * Format a given text to fit with logging "title" criterias, and send it.
-     *
-     * @param text : the String to format.
-     */
-    public static void printSection(String text) {
-        final StringBuilder sb = new StringBuilder(80);
-        for (int i = 0; i < (73 - text.length()); i++)
-            sb.append("-");
+    private final static char[] hexArray = "0123456789ABCDEF".toCharArray();
 
-        StringUtil.append(sb, "=[ ", text, " ]");
+    public static String bytesToHex(byte[] bytes) {
+        char[] hexChars = new char[bytes.length * 3 - 1];
+        for (int j = 0; j < bytes.length; j++) {
+            int v = bytes[j] & 0xFF;
+            hexChars[j * 3] = hexArray[v >>> 4];
+            hexChars[j * 3 + 1] = hexArray[v & 0x0F];
+            if (j < bytes.length - 1) { hexChars[j * 3 + 2] = ' '; }
+        }
+        return new String(hexChars);
+    }
 
-        LOG.info(sb.toString());
+    public static String objectToString(Object o) {
+        if (o.getClass() == byte[].class) {
+            return "[" + bytesToHex((byte[]) o) + "]";
+        }
+        if (o instanceof ResultSet) {
+            return "[REF_CURSOR]";
+        }
+        return String.valueOf(o);
     }
 }

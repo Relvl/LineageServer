@@ -1025,7 +1025,6 @@ public class Siege implements Siegable
 		if (launchTask)
 			startAutoTask(); // Prepare start siege task.
 			
-		StringUtil.printSection(getCastle().getName());
 		_log.info("SiegeManager: New date: " + getCastle().getSiegeDate().getTime());
 		_log.info("SiegeManager: New registration end date: " + getCastle().getSiegeRegistrationEndDate().getTime());
 	}

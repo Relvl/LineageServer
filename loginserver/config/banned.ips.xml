@@ -1,0 +1,3 @@
+<BannedIpAddresses>
+  <address ip="12.34.56.78" expired="2018-06-02T20:39:35.095" initiator="Console" reason="Just because"/>
+</BannedIpAddresses>

@@ -1,5 +1,8 @@
 package org.mmocore.network;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -10,6 +13,8 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.WritableByteChannel;
 
 public class MMOConnection<T extends MMOClient<?>> {
+    private static final Logger LOGGER = LoggerFactory.getLogger(MMOConnection.class);
+
     private final SelectorThread<T> _selectorThread;
 
     private final Socket _socket;
@@ -58,9 +63,9 @@ public class MMOConnection<T extends MMOClient<?>> {
 
     public final void sendPacket(final SendablePacket<T> sp) {
         sp._client = _client;
+        LOGGER.debug("Send: " + sp.getClass().getSimpleName());
 
-        if (_pendingClose)
-            return;
+        if (_pendingClose) { return; }
 
         synchronized (getSendQueue()) {
             _sendQueue.addLast(sp);
@@ -102,7 +107,8 @@ public class MMOConnection<T extends MMOClient<?>> {
         if (_primaryWriteBuffer == null) {
             _primaryWriteBuffer = _selectorThread.getPooledBuffer();
             _primaryWriteBuffer.put(buf);
-        } else {
+        }
+        else {
             final ByteBuffer temp = _selectorThread.getPooledBuffer();
             temp.put(buf);
 
@@ -114,7 +120,8 @@ public class MMOConnection<T extends MMOClient<?>> {
                 temp.put(_primaryWriteBuffer);
                 _selectorThread.recycleBuffer(_primaryWriteBuffer);
                 _primaryWriteBuffer = temp;
-            } else {
+            }
+            else {
                 _primaryWriteBuffer.limit(remaining);
                 temp.put(_primaryWriteBuffer);
                 _primaryWriteBuffer.limit(limit);
@@ -160,8 +167,7 @@ public class MMOConnection<T extends MMOClient<?>> {
     }
 
     public final void close(final SendablePacket<T>[] closeList) {
-        if (_pendingClose)
-            return;
+        if (_pendingClose) { return; }
 
         synchronized (getSendQueue()) {
             if (!_pendingClose) {

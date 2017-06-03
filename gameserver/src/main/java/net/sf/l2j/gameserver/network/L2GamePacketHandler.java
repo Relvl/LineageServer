@@ -811,8 +811,8 @@ public final class L2GamePacketHandler implements IPacketHandler<L2GameClient>, 
 
     // impl
     @Override
-    public L2GameClient create(MMOConnection<L2GameClient> con) {
-        return new L2GameClient(con);
+    public L2GameClient create(MMOConnection<L2GameClient> connection) {
+        return new L2GameClient(connection);
     }
 
     @Override

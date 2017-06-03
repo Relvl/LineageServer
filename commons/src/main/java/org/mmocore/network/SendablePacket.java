@@ -1,18 +1,6 @@
 package org.mmocore.network;
 
 public abstract class SendablePacket<T extends MMOClient<?>> extends AbstractPacket<T> {
-    protected final void putInt(final int value) {
-        _buf.putInt(value);
-    }
-
-    protected final void putDouble(final double value) {
-        _buf.putDouble(value);
-    }
-
-    protected final void putFloat(final float value) {
-        _buf.putFloat(value);
-    }
-
     protected final void writeC(final int data) {
         _buf.put((byte) data);
     }
