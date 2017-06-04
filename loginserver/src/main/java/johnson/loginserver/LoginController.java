@@ -3,10 +3,10 @@ package johnson.loginserver;
 import johnson.loginserver.crypt.ScrambledKeyPair;
 import johnson.loginserver.database.CreateAccountCall;
 import johnson.loginserver.database.LoginCall;
-import johnson.loginserver.network.gameserverpackets.ServerStatus;
-import johnson.loginserver.network.serverpackets.LoginFail.LoginFailReason;
-import johnson.loginserver.network.serverpackets.LoginOk;
-import johnson.loginserver.network.serverpackets.ServerList;
+import johnson.loginserver.network.client.login_to_client.List;
+import johnson.loginserver.network.gameserver.game_to_login.ServerStatus;
+import johnson.loginserver.network.client.login_to_client.LoginFail.LoginFailReason;
+import johnson.loginserver.network.client.login_to_client.LoginOk;
 import johnson.loginserver.security.SecurityController;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.commons.database.CallException;
@@ -150,7 +150,7 @@ public class LoginController {
 
         client.sendPacket(LoginServer.config.clientListener.showLicense ?
                         new LoginOk(client.getSessionKey()) :
-                        new ServerList(client)
+                        new List(client)
         );
 
         clients.put(login, client);

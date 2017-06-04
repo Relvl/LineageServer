@@ -2,11 +2,10 @@ package johnson.loginserver;
 
 import johnson.loginserver.crypt.LoginCrypt;
 import johnson.loginserver.crypt.ScrambledKeyPair;
-import johnson.loginserver.network.ABaseLoginServerPacket;
-import johnson.loginserver.network.serverpackets.LoginFail;
-import johnson.loginserver.network.serverpackets.LoginFail.LoginFailReason;
-import johnson.loginserver.network.serverpackets.PlayFail;
-import johnson.loginserver.network.serverpackets.PlayFail.PlayFailReason;
+import johnson.loginserver.network.client.login_to_client.LoginFail;
+import johnson.loginserver.network.client.login_to_client.LoginFail.LoginFailReason;
+import johnson.loginserver.network.client.login_to_client.PlayFail;
+import johnson.loginserver.network.client.login_to_client.PlayFail.PlayFailReason;
 import net.sf.l2j.commons.random.Rnd;
 import org.mmocore.network.MMOClient;
 import org.mmocore.network.MMOConnection;
@@ -163,7 +162,7 @@ public final class L2LoginClient extends MMOClient<MMOConnection<L2LoginClient>>
         return loginTimestamp;
     }
 
-    public L2LoginClient sendPacket(ABaseLoginServerPacket lsp) {
+    public L2LoginClient sendPacket(SendablePacket<L2LoginClient> lsp) {
         getConnection().sendPacket(lsp);
         return this;
     }
@@ -176,7 +175,7 @@ public final class L2LoginClient extends MMOClient<MMOConnection<L2LoginClient>>
         this.close(new PlayFail(reason));
     }
 
-    public void close(ABaseLoginServerPacket lsp) {
+    public void close(SendablePacket<L2LoginClient> lsp) {
         getConnection().close(lsp);
     }
 

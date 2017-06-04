@@ -1,6 +1,6 @@
 package johnson.loginserver;
 
-import johnson.loginserver.network.gameserverpackets.ServerStatus;
+import johnson.loginserver.network.gameserver.game_to_login.ServerStatus;
 import net.sf.l2j.commons.DefaultConstructor;
 import net.sf.l2j.commons.database.annotation.OrmParamCursor;
 

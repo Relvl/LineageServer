@@ -1,9 +1,9 @@
 package johnson.loginserver;
 
-import johnson.loginserver.network.clientpackets.AuthGameGuard;
-import johnson.loginserver.network.clientpackets.RequestAuthLogin;
-import johnson.loginserver.network.clientpackets.RequestServerList;
-import johnson.loginserver.network.clientpackets.RequestServerLogin;
+import johnson.loginserver.network.client.client_to_login.AuthGameGuard;
+import johnson.loginserver.network.client.client_to_login.RequestAuth;
+import johnson.loginserver.network.client.client_to_login.RequestServerList;
+import johnson.loginserver.network.client.client_to_login.RequestServer;
 import org.mmocore.network.IPacketHandler;
 import org.mmocore.network.ReceivablePacket;
 import org.slf4j.Logger;
@@ -29,13 +29,13 @@ public final class L2LoginPacketHandler implements IPacketHandler<L2LoginClient>
                 break;
 
             case AUTHED_GG:
-                if (opcode == 0x00) { return new RequestAuthLogin(); }
+                if (opcode == 0x00) { return new RequestAuth(); }
                 else { debugOpcode(opcode, client.getState()); }
                 break;
 
             case AUTHED_LOGIN:
                 if (opcode == 0x05) { return new RequestServerList(); }
-                else if (opcode == 0x02) { return new RequestServerLogin(); }
+                else if (opcode == 0x02) { return new RequestServer(); }
                 else { debugOpcode(opcode, client.getState()); }
                 break;
         }

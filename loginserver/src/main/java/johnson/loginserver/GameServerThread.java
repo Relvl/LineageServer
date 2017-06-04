@@ -1,8 +1,8 @@
 package johnson.loginserver;
 
-import johnson.loginserver.network.gameserverpackets.*;
-import johnson.loginserver.network.loginserverpackets.*;
-import johnson.loginserver.network.serverpackets.ServerBasePacket;
+import johnson.loginserver.network.gameserver.game_to_login.*;
+import johnson.loginserver.network.gameserver.login_to_game.*;
+import johnson.loginserver.network.gameserver.ABaseServerPacket;
 import johnson.loginserver.security.SecurityController;
 import net.sf.l2j.NewCrypt;
 import org.slf4j.Logger;
@@ -77,7 +77,7 @@ public class GameServerThread extends Thread {
         // Ensure no further processing for this connection if server is considered as banned.
         if (GameServerThread.isBannedGameserverIP(_connectionIPAddress)) {
             LOGGER.info("GameServer with banned IP {} tries to register.", _connectionIPAddress);
-            forceClose(LoginServerFail.REASON_IP_BANNED);
+            forceClose(LoginAFailServer.REASON_IP_BANNED);
             return;
         }
 
@@ -151,7 +151,7 @@ public class GameServerThread extends Thread {
 
                     default:
                         LOGGER.warn("Unknown Opcode (" + Integer.toHexString(packetType).toUpperCase() + ") from GameServer, closing connection.");
-                        forceClose(LoginServerFail.NOT_AUTHED);
+                        forceClose(LoginAFailServer.NOT_AUTHED);
                 }
 
             }
@@ -191,7 +191,7 @@ public class GameServerThread extends Thread {
                 _accountsOnGameServer.add(account);
         }
         else {
-            forceClose(LoginServerFail.NOT_AUTHED);
+            forceClose(LoginAFailServer.NOT_AUTHED);
         }
     }
 
@@ -202,7 +202,7 @@ public class GameServerThread extends Thread {
             _accountsOnGameServer.remove(plo.getAccount());
         }
         else {
-            forceClose(LoginServerFail.NOT_AUTHED);
+            forceClose(LoginAFailServer.NOT_AUTHED);
         }
     }
 
@@ -214,7 +214,7 @@ public class GameServerThread extends Thread {
             LOGGER.info("Changed {} access level to {}.", cal.getAccount(), cal.getLevel());
         }
         else {
-            forceClose(LoginServerFail.NOT_AUTHED);
+            forceClose(LoginAFailServer.NOT_AUTHED);
         }
     }
 
@@ -232,7 +232,7 @@ public class GameServerThread extends Thread {
             }
         }
         else {
-            forceClose(LoginServerFail.NOT_AUTHED);
+            forceClose(LoginAFailServer.NOT_AUTHED);
         }
     }
 
@@ -241,7 +241,7 @@ public class GameServerThread extends Thread {
             new ServerStatus(data, getServerId()); // will do the actions by itself
         }
         else {
-            forceClose(LoginServerFail.NOT_AUTHED);
+            forceClose(LoginAFailServer.NOT_AUTHED);
         }
     }
 
@@ -257,7 +257,7 @@ public class GameServerThread extends Thread {
                 // check to see if this GS is already connected
                 synchronized (gsi) {
                     if (gsi.isAuthed()) {
-                        forceClose(LoginServerFail.REASON_ALREADY_LOGGED8IN);
+                        forceClose(LoginAFailServer.REASON_ALREADY_LOGGED8IN);
                     }
                     else {
                         attachGameServerInfo(gsi, gameServerAuth);
@@ -265,11 +265,11 @@ public class GameServerThread extends Thread {
                 }
             }
             else {
-                forceClose(LoginServerFail.REASON_WRONG_HEXID);
+                forceClose(LoginAFailServer.REASON_WRONG_HEXID);
             }
         }
         else {
-            forceClose(LoginServerFail.REASON_WRONG_HEXID);
+            forceClose(LoginAFailServer.REASON_WRONG_HEXID);
         }
     }
 
@@ -297,7 +297,7 @@ public class GameServerThread extends Thread {
     }
 
     private void forceClose(int reason) {
-        sendPacket(new LoginServerFail(reason));
+        sendPacket(new LoginAFailServer(reason));
 
         try {
             _connection.close();
@@ -309,7 +309,7 @@ public class GameServerThread extends Thread {
     /**
      * @param sl
      */
-    private void sendPacket(ServerBasePacket sl) {
+    private void sendPacket(ABaseServerPacket sl) {
         try {
             byte[] data = sl.getContent();
             NewCrypt.appendChecksum(data);

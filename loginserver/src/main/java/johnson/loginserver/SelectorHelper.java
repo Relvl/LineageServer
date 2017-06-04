@@ -1,6 +1,6 @@
 package johnson.loginserver;
 
-import johnson.loginserver.network.serverpackets.Init;
+import johnson.loginserver.network.client.login_to_client.Init;
 import johnson.loginserver.security.SecurityController;
 import net.sf.l2j.util.IPv4Filter;
 import org.mmocore.network.*;

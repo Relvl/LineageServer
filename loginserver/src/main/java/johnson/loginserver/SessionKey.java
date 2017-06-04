@@ -1,7 +1,7 @@
 package johnson.loginserver;
 
-import johnson.loginserver.network.serverpackets.LoginOk;
-import johnson.loginserver.network.serverpackets.PlayOk;
+import johnson.loginserver.network.client.login_to_client.LoginOk;
+import johnson.loginserver.network.client.login_to_client.PlayOk;
 
 /**
  * This class is used to represent session keys used by the client to authenticate in the gameserver
