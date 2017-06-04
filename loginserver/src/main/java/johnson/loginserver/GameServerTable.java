@@ -1,55 +1,25 @@
 package johnson.loginserver;
 
 import johnson.loginserver.database.GetGameserversCall;
-import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.commons.database.CallException;
+import net.sf.l2j.commons.random.Rnd;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.math.BigInteger;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.spec.RSAKeyGenParameterSpec;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class GameServerTable {
     private static final Logger LOGGER = LoggerFactory.getLogger(GameServerTable.class);
+    private static final int RSA_KEYS = 10;
 
-    // RSA Config
-    private static final int KEYS_SIZE = 10;
-    // Game Server Table
-    private final Map<Integer, GameServerInfo> gameServerTable = new ConcurrentHashMap<>();
-    private KeyPair[] _keyPairs;
+    private final Map<Integer, GameServerInfo> gameServerTable = new HashMap<>();
+    private final KeyPair[] keyPairs;
 
     protected GameServerTable() {
-        loadRegisteredGameServers();
-        initRSAKeys();
-        LOGGER.info("Cached {} RSA keys for gameserver communication.", _keyPairs.length);
-    }
-
-    private static byte[] stringToHex(String string) {
-        return new BigInteger(string, 16).toByteArray();
-    }
-
-    public static GameServerTable getInstance() {
-        return SingletonHolder.instance;
-    }
-
-    private void initRSAKeys() {
-        try {
-            KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
-            keyGen.initialize(new RSAKeyGenParameterSpec(512, RSAKeyGenParameterSpec.F4));
-
-            _keyPairs = new KeyPair[KEYS_SIZE];
-            for (int i = 0; i < KEYS_SIZE; i++)
-                _keyPairs[i] = keyGen.genKeyPair();
-        } catch (Exception e) {
-            LOGGER.error("GameServerTable: Error loading RSA keys for Game Server communication!", e);
-        }
-    }
-
-    private void loadRegisteredGameServers() {
         try (GetGameserversCall call = new GetGameserversCall()) {
             call.execute();
             for (GameServerInfo serverInfo : call.getServers()) {
@@ -59,19 +29,25 @@ public class GameServerTable {
         } catch (CallException e) {
             LOGGER.error("GameServerTable: Error loading registered game servers!", e);
         }
+
+        keyPairs = new KeyPair[RSA_KEYS];
+        try {
+            KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+            keyGen.initialize(new RSAKeyGenParameterSpec(512, RSAKeyGenParameterSpec.F4));
+            for (int i = 0; i < RSA_KEYS; i++)
+                keyPairs[i] = keyGen.genKeyPair();
+        } catch (Exception e) {
+            LOGGER.error("GameServerTable: Error loading RSA keys for Game Server communication!", e);
+        }
     }
 
-    public Map<Integer, GameServerInfo> getRegisteredGameServers() {
-        return gameServerTable;
-    }
+    public Map<Integer, GameServerInfo> getRegisteredGameServers() { return gameServerTable; }
 
-    public GameServerInfo getRegisteredGameServerById(int id) {
-        return gameServerTable.get(id);
-    }
+    public GameServerInfo getGameServer(int id) { return gameServerTable.get(id); }
 
-    public KeyPair getKeyPair() {
-        return _keyPairs[Rnd.get(10)];
-    }
+    public KeyPair getRandomKeyPair() { return keyPairs[Rnd.get(10)]; }
+
+    public static GameServerTable getInstance() { return SingletonHolder.instance; }
 
     private static class SingletonHolder {
         protected static final GameServerTable instance = new GameServerTable();

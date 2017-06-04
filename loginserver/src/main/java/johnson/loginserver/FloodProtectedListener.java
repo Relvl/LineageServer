@@ -1,18 +1,7 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package johnson.loginserver;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -20,15 +9,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- * @author -Wooden-
- */
-@SuppressWarnings("resource")
 public abstract class FloodProtectedListener extends Thread {
-    private final Logger _log = Logger.getLogger(FloodProtectedListener.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(FloodProtectedListener.class);
+
     private final Map<String, ForeignConnection> _floodProtection = new HashMap<>();
     private final String _listenIp;
     private final int _port;
@@ -66,16 +50,16 @@ public abstract class FloodProtectedListener extends Thread {
                             connection.close();
                             fConnection.connectionNumber -= 1;
                             if (!fConnection.isFlooding) {
-                                _log.warning("Potential Flood from " + connection.getInetAddress().getHostAddress());
+                                LOGGER.warn("Potential Flood from {}", connection.getInetAddress().getHostAddress());
                             }
                             fConnection.isFlooding = true;
                             continue;
                         }
 
-                        if (fConnection.isFlooding) // if connection was flooding server but now passed the check
-                        {
+                        // if connection was flooding server but now passed the check
+                        if (fConnection.isFlooding) {
                             fConnection.isFlooding = false;
-                            _log.info(connection.getInetAddress().getHostAddress() + " is not considered as flooding anymore.");
+                            LOGGER.info("{} is not considered as flooding anymore.", connection.getInetAddress().getHostAddress());
                         }
                         fConnection.lastConnection = System.currentTimeMillis();
                     }
@@ -90,15 +74,13 @@ public abstract class FloodProtectedListener extends Thread {
                     if (connection != null) {
                         connection.close();
                     }
-                } catch (Exception e2) {
-                }
+                } catch (Exception ignored) {}
 
                 if (isInterrupted()) {
-                    // shutdown?
                     try {
                         _serverSocket.close();
                     } catch (IOException io) {
-                        _log.log(Level.INFO, "", io);
+                        LOGGER.error("", io);
                     }
                     break;
                 }
@@ -120,7 +102,7 @@ public abstract class FloodProtectedListener extends Thread {
             }
         }
         else {
-            _log.warning("Removing a flood protection for a GameServer that was not in the connection map??? :" + ip);
+            LOGGER.warn("Removing a flood protection for a GameServer that was not in the connection map??? :{}", ip);
         }
     }
 
@@ -137,9 +119,6 @@ public abstract class FloodProtectedListener extends Thread {
         public long lastConnection;
         public boolean isFlooding = false;
 
-        /**
-         * @param time
-         */
         public ForeignConnection(long time) {
             lastConnection = time;
             connectionNumber = 1;

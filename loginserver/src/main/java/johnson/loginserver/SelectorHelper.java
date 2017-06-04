@@ -1,6 +1,7 @@
 package johnson.loginserver;
 
 import johnson.loginserver.network.serverpackets.Init;
+import johnson.loginserver.security.SecurityController;
 import net.sf.l2j.util.IPv4Filter;
 import org.mmocore.network.*;
 
@@ -27,12 +28,12 @@ public class SelectorHelper implements IMMOExecutor<L2LoginClient>, IClientFacto
     @Override
     public L2LoginClient create(MMOConnection<L2LoginClient> connection) {
         L2LoginClient client = new L2LoginClient(connection);
-        // Сразу после подключения ЛС должен инициировать процедуру логина, отправив Init.
+        // РЎСЂР°Р·Сѓ РїРѕСЃР»Рµ РїРѕРґРєР»СЋС‡РµРЅРёСЏ Р›РЎ РґРѕР»Р¶РµРЅ РёРЅРёС†РёРёСЂРѕРІР°С‚СЊ РїСЂРѕС†РµРґСѓСЂСѓ Р»РѕРіРёРЅР°, РѕС‚РїСЂР°РІРёРІ Init.
         return client.sendPacket(new Init(client));
     }
 
     @Override
     public boolean accept(SocketChannel sc) {
-        return ipv4filter.accept(sc) && !LoginController.getInstance().isBannedAddress(sc.socket().getInetAddress());
+        return ipv4filter.accept(sc) && !SecurityController.getInstance().isBannedAddress(sc.socket().getInetAddress());
     }
 }

@@ -337,8 +337,6 @@ public final class SelectorThread<T extends MMOClient<?>> extends Thread {
             buf.limit(pos + dataSize);
             final ReceivablePacket<T> cp = _packetHandler.handlePacket(buf, client);
 
-            LOGGER.debug("Read: " + cp.getClass().getSimpleName());
-
             if (cp != null) {
                 cp._buf = buf;
                 cp._sbuf = STRING_BUFFER;

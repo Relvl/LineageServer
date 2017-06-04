@@ -1,23 +1,12 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package johnson.loginserver;
 
 import johnson.loginserver.network.gameserverpackets.*;
 import johnson.loginserver.network.loginserverpackets.*;
 import johnson.loginserver.network.serverpackets.ServerBasePacket;
+import johnson.loginserver.security.SecurityController;
 import net.sf.l2j.NewCrypt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;
@@ -32,14 +21,10 @@ import java.security.interfaces.RSAPublicKey;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.logging.Logger;
 
-/**
- * @author -Wooden-
- * @author KenM
- */
 public class GameServerThread extends Thread {
-    protected static final Logger _log = Logger.getLogger(GameServerThread.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(GameServerThread.class);
+
     private final Socket _connection;
     private final RSAPublicKey _publicKey;
     private final RSAPrivateKey _privateKey;
@@ -64,7 +49,7 @@ public class GameServerThread extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        KeyPair pair = GameServerTable.getInstance().getKeyPair();
+        KeyPair pair = GameServerTable.getInstance().getRandomKeyPair();
         _privateKey = (RSAPrivateKey) pair.getPrivate();
         _publicKey = (RSAPublicKey) pair.getPublic();
         _blowfish = new NewCrypt("_;v.]05-31!|+-%xT!^[$\00");
@@ -82,7 +67,7 @@ public class GameServerThread extends Thread {
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
-        return LoginController.getInstance().isBannedAddress(netAddress);
+        return SecurityController.getInstance().isBannedAddress(netAddress);
     }
 
     @Override
@@ -91,7 +76,7 @@ public class GameServerThread extends Thread {
 
         // Ensure no further processing for this connection if server is considered as banned.
         if (GameServerThread.isBannedGameserverIP(_connectionIPAddress)) {
-            _log.info("GameServer with banned IP " + _connectionIPAddress + " tries to register.");
+            LOGGER.info("GameServer with banned IP {} tries to register.", _connectionIPAddress);
             forceClose(LoginServerFail.REASON_IP_BANNED);
             return;
         }
@@ -122,7 +107,7 @@ public class GameServerThread extends Thread {
                 }
 
                 if (receivedBytes != length - 2) {
-                    _log.warning("Incomplete packet is sent to the server, closing connection.");
+                    LOGGER.warn("Incomplete packet is sent to the server, closing connection.");
                     break;
                 }
 
@@ -130,7 +115,7 @@ public class GameServerThread extends Thread {
                 data = _blowfish.decrypt(data);
                 checksumOk = NewCrypt.verifyChecksum(data);
                 if (!checksumOk) {
-                    _log.warning("Incorrect packet checksum, closing connection.");
+                    LOGGER.warn("Incorrect packet checksum, closing connection.");
                     return;
                 }
 
@@ -165,18 +150,18 @@ public class GameServerThread extends Thread {
                         break;
 
                     default:
-                        _log.warning("Unknown Opcode (" + Integer.toHexString(packetType).toUpperCase() + ") from GameServer, closing connection.");
+                        LOGGER.warn("Unknown Opcode (" + Integer.toHexString(packetType).toUpperCase() + ") from GameServer, closing connection.");
                         forceClose(LoginServerFail.NOT_AUTHED);
                 }
 
             }
         } catch (IOException e) {
             String serverName = (getServerId() != -1 ? "[" + getServerId() + "] " : "(" + _connectionIPAddress + ")");
-            _log.info("GameServer " + serverName + ": " + e.getMessage() + ".");
+            LOGGER.info("GameServer {}: {}.", serverName, e.getMessage());
         } finally {
             if (isAuthed()) {
                 _gsi.setDown();
-                _log.info("GameServer [" + getServerId() + "] " + " is now set as disconnected.");
+                LOGGER.info("GameServer [{}]  is now set as disconnected.", getServerId());
             }
             LoginServer.getInstance().getGameServerListener().removeGameServer(this);
             LoginServer.getInstance().getGameServerListener().removeFloodProtection(_connectionIp);
@@ -226,7 +211,7 @@ public class GameServerThread extends Thread {
             final ChangeAccessLevel cal = new ChangeAccessLevel(data);
 
             LoginController.getInstance().setAccountAccessLevel(cal.getAccount(), cal.getLevel());
-            _log.info("Changed " + cal.getAccount() + " access level to " + cal.getLevel() + ".");
+            LOGGER.info("Changed {} access level to {}.", cal.getAccount(), cal.getLevel());
         }
         else {
             forceClose(LoginServerFail.NOT_AUTHED);
@@ -239,7 +224,7 @@ public class GameServerThread extends Thread {
             final SessionKey key = LoginController.getInstance().getKeyForAccount(par.getAccount());
 
             if (key != null && key.equals(par.getKey())) {
-                LoginController.getInstance().removeAuthedLoginClient(par.getAccount());
+                LoginController.getInstance().removeClient(par.getAccount());
                 sendPacket(new PlayerAuthResponse(par.getAccount(), true));
             }
             else {
@@ -264,7 +249,7 @@ public class GameServerThread extends Thread {
         final int id = gameServerAuth.getDesiredID();
         final byte[] hexId = gameServerAuth.getHexID();
 
-        GameServerInfo gsi = GameServerTable.getInstance().getRegisteredGameServerById(id);
+        GameServerInfo gsi = GameServerTable.getInstance().getGameServer(id);
         // is there a gameserver registered with this id?
         if (gsi != null) {
             // does the hex id match?
@@ -317,7 +302,7 @@ public class GameServerThread extends Thread {
         try {
             _connection.close();
         } catch (IOException e) {
-            _log.finer("GameServerThread: Failed disconnecting banned server, server already disconnected.");
+            LOGGER.warn("GameServerThread: Failed disconnecting banned server, server already disconnected.");
         }
     }
 
@@ -338,7 +323,7 @@ public class GameServerThread extends Thread {
                 _out.flush();
             }
         } catch (IOException e) {
-            _log.severe("IOException while sending packet " + sl.getClass().getSimpleName() + ".");
+            LOGGER.error("IOException while sending packet {}.", sl.getClass().getSimpleName());
         }
     }
 
@@ -361,7 +346,7 @@ public class GameServerThread extends Thread {
             try {
                 _gsi.setExternalIp(InetAddress.getByName(gameExternalHost).getHostAddress());
             } catch (UnknownHostException e) {
-                _log.warning("Couldn't resolve hostname \"" + gameExternalHost + "\"");
+                LOGGER.warn("Couldn't resolve hostname \"{}\"", gameExternalHost);
             }
         }
         else {
@@ -372,15 +357,15 @@ public class GameServerThread extends Thread {
             try {
                 _gsi.setInternalIp(InetAddress.getByName(gameInternalHost).getHostAddress());
             } catch (UnknownHostException e) {
-                _log.warning("Couldn't resolve hostname \"" + gameInternalHost + "\"");
+                LOGGER.warn("Couldn't resolve hostname \"{}\"", gameInternalHost);
             }
         }
         else {
             _gsi.setInternalIp(_connectionIp);
         }
 
-        _log.info("Hooked gameserver: [" + getServerId() + "] ");
-        _log.info("Internal/External IP(s): " + ((oldInternal == null) ? gameInternalHost : oldInternal) + "/" + ((oldExternal == null) ? gameExternalHost : oldExternal));
+        LOGGER.info("Hooked gameserver: [{}] ", getServerId());
+        LOGGER.info("Internal/External IP(s): {}/{}", (oldInternal == null) ? gameInternalHost : oldInternal, (oldExternal == null) ? gameExternalHost : oldExternal);
     }
 
     /**

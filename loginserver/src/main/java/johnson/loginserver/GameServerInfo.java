@@ -1,7 +1,7 @@
 package johnson.loginserver;
 
 import johnson.loginserver.network.gameserverpackets.ServerStatus;
-import net.sf.l2j.commons.database.annotation.OrmCursorElement;
+import net.sf.l2j.commons.DefaultConstructor;
 import net.sf.l2j.commons.database.annotation.OrmParamCursor;
 
 /**
@@ -25,7 +25,7 @@ public class GameServerInfo {
     private boolean isShowingBrackets;
     private int maxPlayers;
 
-    @OrmCursorElement
+    @DefaultConstructor
     public GameServerInfo() {
         this.id = -1;
         this.hexId = null;

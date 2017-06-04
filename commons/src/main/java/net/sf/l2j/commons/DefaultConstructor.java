@@ -1,4 +1,4 @@
-package net.sf.l2j.commons.database.annotation;
+package net.sf.l2j.commons;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,5 +10,5 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.CONSTRUCTOR)
-public @interface OrmCursorElement {
+public @interface DefaultConstructor {
 }

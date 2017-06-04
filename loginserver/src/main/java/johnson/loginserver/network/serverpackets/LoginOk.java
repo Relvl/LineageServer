@@ -15,11 +15,12 @@
 package johnson.loginserver.network.serverpackets;
 
 import johnson.loginserver.SessionKey;
+import johnson.loginserver.network.ABaseLoginServerPacket;
 
 /**
  * Format: dddddddd f: the session key d: ? d: ? d: ? d: ? d: ? d: ? b: 16 bytes - unknown
  */
-public final class LoginOk extends L2LoginServerPacket {
+public final class LoginOk extends ABaseLoginServerPacket {
     private final int _loginOk1, _loginOk2;
 
     public LoginOk(SessionKey sessionKey) {

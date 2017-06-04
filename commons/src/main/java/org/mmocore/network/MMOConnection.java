@@ -63,7 +63,6 @@ public class MMOConnection<T extends MMOClient<?>> {
 
     public final void sendPacket(final SendablePacket<T> sp) {
         sp._client = _client;
-        LOGGER.debug("Send: " + sp.getClass().getSimpleName());
 
         if (_pendingClose) { return; }
 

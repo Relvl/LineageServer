@@ -13,6 +13,7 @@ public enum ESqlTypeMapping {
     UNKNOWN(Types.OTHER, "getObject"),
     INT(Types.INTEGER, "getInt"),
     BYTEA(Types.BINARY, "getBytes"),
+    VARCHAR(Types.VARCHAR, "getString"),
     CURSOR(Types.OTHER, "getObject");
 
     private static final Map<Class<?>, ESqlTypeMapping> MAPPING = new HashMap<>();

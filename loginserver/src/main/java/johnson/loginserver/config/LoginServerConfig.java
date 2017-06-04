@@ -1,12 +1,9 @@
 package johnson.loginserver.config;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import net.sf.l2j.commons.serialize.Serializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,14 +17,7 @@ import java.io.IOException;
 public class LoginServerConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginServerConfig.class);
     private static final File CONFIG_FILE = new File("./config/config.xml");
-    private static final ObjectMapper MAPPER = new XmlMapper();
     private static final boolean SAVE_LOG_FILE_ON_ERROR = true;
-
-    static {
-        MAPPER.enable(SerializationFeature.INDENT_OUTPUT);
-        MAPPER.registerModule(new JavaTimeModule());
-        MAPPER.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-    }
 
     /**  */
     @JacksonXmlProperty(localName = "Protocol", isAttribute = true)
@@ -47,7 +37,7 @@ public class LoginServerConfig {
     @JsonIgnore
     public static LoginServerConfig load() {
         try {
-            return MAPPER.readValue(CONFIG_FILE, LoginServerConfig.class);
+            return Serializer.MAPPER.readValue(CONFIG_FILE, LoginServerConfig.class);
         } catch (IOException e) {
             LOGGER.error("---------------------------------------");
             LOGGER.error("Failed to load config.xml", e);
@@ -67,7 +57,7 @@ public class LoginServerConfig {
     public void save() {
         try {
             LOGGER.info("Saving config.xml");
-            MAPPER.writeValue(CONFIG_FILE, this);
+            Serializer.MAPPER.writeValue(CONFIG_FILE, this);
         } catch (IOException e) {
             LOGGER.error("---------------------------------------");
             LOGGER.error("Failed to save config.xml", e);

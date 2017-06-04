@@ -15,8 +15,9 @@
 package johnson.loginserver.network.serverpackets;
 
 import johnson.loginserver.SessionKey;
+import johnson.loginserver.network.ABaseLoginServerPacket;
 
-public final class PlayOk extends L2LoginServerPacket {
+public final class PlayOk extends ABaseLoginServerPacket {
     private final int _playOk1, _playOk2;
 
     public PlayOk(SessionKey sessionKey) {

@@ -20,7 +20,7 @@ public class GetGameserversCall extends IndexedCall {
     private List<GameServerInfo> servers = new ArrayList<>();
 
     public GetGameserversCall() {
-        super("public.GetGameServers", 0, true);
+        super("login_server.GetGameServers", 0, true);
     }
 
     public List<GameServerInfo> getServers() {

@@ -14,10 +14,11 @@
  */
 package johnson.loginserver.network.serverpackets;
 
-import johnson.loginserver.L2LoginClient;
-import johnson.loginserver.network.gameserverpackets.ServerStatus;
-import johnson.loginserver.GameServerTable;
 import johnson.loginserver.GameServerInfo;
+import johnson.loginserver.GameServerTable;
+import johnson.loginserver.L2LoginClient;
+import johnson.loginserver.network.ABaseLoginServerPacket;
+import johnson.loginserver.network.gameserverpackets.ServerStatus;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -29,7 +30,7 @@ import java.util.List;
  * server is down d: 2nd bit: clock 3rd bit: wont dsiplay server name 4th bit: test server (used by client?) c: 0 if you dont want to display brackets in front of sever name ] Server will be considered as Good when the number of online players is less than half the maximum. as Normal between half
  * and 4/5 and Full when there's more than 4/5 of the maximum number of players
  */
-public final class ServerList extends L2LoginServerPacket {
+public final class ServerList extends ABaseLoginServerPacket {
     private final List<ServerData> servers;
     private final int lastServer;
 
@@ -40,10 +41,12 @@ public final class ServerList extends L2LoginServerPacket {
             if (gsi.getStatus() == ServerStatus.STATUS_GM_ONLY && client.getAccessLevel() > 0) {
                 // Server is GM-Only but you've got GM Status
                 addServer(client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost(), gsi.getPort(), gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), gsi.getStatus(), gsi.getId());
-            } else if (gsi.getStatus() != ServerStatus.STATUS_GM_ONLY) {
+            }
+            else if (gsi.getStatus() != ServerStatus.STATUS_GM_ONLY) {
                 // Server is not GM-Only
                 addServer(client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost(), gsi.getPort(), gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), gsi.getStatus(), gsi.getId());
-            } else {
+            }
+            else {
                 // Server's GM-Only and you've got no GM-Status
                 addServer(client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost(), gsi.getPort(), gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), ServerStatus.STATUS_DOWN, gsi.getId());
             }

@@ -2,7 +2,7 @@ package johnson.loginserver;
 
 import johnson.loginserver.crypt.LoginCrypt;
 import johnson.loginserver.crypt.ScrambledKeyPair;
-import johnson.loginserver.network.serverpackets.L2LoginServerPacket;
+import johnson.loginserver.network.ABaseLoginServerPacket;
 import johnson.loginserver.network.serverpackets.LoginFail;
 import johnson.loginserver.network.serverpackets.LoginFail.LoginFailReason;
 import johnson.loginserver.network.serverpackets.PlayFail;
@@ -55,7 +55,7 @@ public final class L2LoginClient extends MMOClient<MMOConnection<L2LoginClient>>
         this.loginCrypt.setKey(blowfishKey);
     }
 
-    /** @deprecated Не очень хорошая идея ходить через локал - можно чего-то не заметить. */
+    /** @deprecated РќРµ РѕС‡РµРЅСЊ С…РѕСЂРѕС€Р°СЏ РёРґРµСЏ С…РѕРґРёС‚СЊ С‡РµСЂРµР· Р»РѕРєР°Р» - РјРѕР¶РЅРѕ С‡РµРіРѕ-С‚Рѕ РЅРµ Р·Р°РјРµС‚РёС‚СЊ. */
     @Deprecated
     public boolean usesInternalIP() {
         return isInternalIp;
@@ -163,20 +163,20 @@ public final class L2LoginClient extends MMOClient<MMOConnection<L2LoginClient>>
         return loginTimestamp;
     }
 
-    public L2LoginClient sendPacket(L2LoginServerPacket lsp) {
+    public L2LoginClient sendPacket(ABaseLoginServerPacket lsp) {
         getConnection().sendPacket(lsp);
         return this;
     }
 
     public void close(LoginFailReason reason) {
-        getConnection().close(new LoginFail(reason));
+        this.close(new LoginFail(reason));
     }
 
     public void close(PlayFailReason reason) {
-        getConnection().close(new PlayFail(reason));
+        this.close(new PlayFail(reason));
     }
 
-    public void close(L2LoginServerPacket lsp) {
+    public void close(ABaseLoginServerPacket lsp) {
         getConnection().close(lsp);
     }
 
@@ -185,7 +185,7 @@ public final class L2LoginClient extends MMOClient<MMOConnection<L2LoginClient>>
         LOGGER.debug("DISCONNECTED: {}", toString());
 
         if (!hasJoinedGS() || (getLoginTimestamp() + LoginServer.config.clientListener.loginTimeout) < System.currentTimeMillis()) {
-            LoginController.getInstance().removeAuthedLoginClient(getAccount());
+            LoginController.getInstance().removeClient(getAccount());
         }
     }
 

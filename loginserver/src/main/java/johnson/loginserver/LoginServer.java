@@ -1,6 +1,7 @@
 package johnson.loginserver;
 
 import johnson.loginserver.config.LoginServerConfig;
+import johnson.loginserver.security.SecurityController;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.SystemExitReason;
 import org.mmocore.network.SelectorConfig;
@@ -8,10 +9,7 @@ import org.mmocore.network.SelectorThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.LineNumberReader;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -36,10 +34,9 @@ public class LoginServer {
         L2DatabaseFactory.DATABASE_MAX_CONNECTIONS = config.database.maxConnections;
         L2DatabaseFactory.getInstance();
 
-        LoginController.load();
+        SecurityController.getInstance();
+        LoginController.getInstance();
         GameServerTable.getInstance();
-
-        loadBanFile();
 
         InetAddress bindAddress = null;
         if (!"*".equals(config.clientListener.host)) {
@@ -90,53 +87,6 @@ public class LoginServer {
 
     public static LoginServer getInstance() {
         return serverInstance;
-    }
-
-    private static void loadBanFile() {
-        File banFile = new File("config/banned_ip.cfg");
-        if (banFile.exists() && banFile.isFile()) {
-            try (LineNumberReader reader = new LineNumberReader(new FileReader(banFile))) {
-                String line;
-                String[] parts;
-
-                while ((line = reader.readLine()) != null) {
-                    line = line.trim();
-                    // check if this line isnt a comment line
-                    if (line.length() > 0 && line.charAt(0) != '#') {
-                        // split comments if any
-                        parts = line.split("#");
-
-                        // discard comments in the line, if any
-                        line = parts[0];
-                        parts = line.split(" ");
-
-                        String address = parts[0];
-                        long duration = 0;
-
-                        if (parts.length > 1) {
-                            try {
-                                duration = Long.parseLong(parts[1]);
-                            } catch (NumberFormatException e) {
-                                LOGGER.error("Skipped: Incorrect ban duration ({}) on banned_ip.cfg. Line: {}", parts[1], reader.getLineNumber());
-                                continue;
-                            }
-                        }
-
-                        try {
-                            LoginController.getInstance().addBanForAddress(address, duration);
-                        } catch (UnknownHostException e) {
-                            LOGGER.error("Skipped: Invalid address ({}) on banned_ip.cfg. Line: {}", parts[0], reader.getLineNumber());
-                        }
-                    }
-                }
-            } catch (IOException e) {
-                LOGGER.error("Error while reading banned_ip.cfg.");
-            }
-            LOGGER.info("Loaded {} IP(s) from banned_ip.cfg.", LoginController.getInstance().getBannedIps().size());
-        }
-        else {
-            LOGGER.warn("banned_ip.cfg is missing. Ban listing is skipped.");
-        }
     }
 
     public GameServerListener getGameServerListener() {

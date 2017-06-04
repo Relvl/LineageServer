@@ -1,20 +1,8 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package johnson.loginserver.network.serverpackets;
 
-public final class PlayFail extends L2LoginServerPacket {
+import johnson.loginserver.network.ABaseLoginServerPacket;
+
+public final class PlayFail extends ABaseLoginServerPacket {
     private final PlayFailReason _reason;
 
     public PlayFail(PlayFailReason reason) {
@@ -27,7 +15,7 @@ public final class PlayFail extends L2LoginServerPacket {
         writeC(_reason.getCode());
     }
 
-    public static enum PlayFailReason {
+    public enum PlayFailReason {
         REASON_SYSTEM_ERROR(0x01),
         REASON_USER_OR_PASS_WRONG(0x02),
         REASON3(0x03),

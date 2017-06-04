@@ -41,5 +41,5 @@ public class LoginServerFail extends ServerBasePacket {
     public byte[] getContent() {
         return getBytes();
     }
-	
+
 }

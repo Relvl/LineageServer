@@ -1,55 +1,29 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package johnson.loginserver.network.gameserverpackets;
 
 import johnson.loginserver.SessionKey;
-import johnson.loginserver.network.clientpackets.ClientBasePacket;
+import johnson.loginserver.network.AClientBasePacket;
 
-/**
- * @author -Wooden-
- */
-public class PlayerAuthRequest extends ClientBasePacket {
+public class PlayerAuthRequest extends AClientBasePacket {
 
-    private final String _account;
-    private final SessionKey _sessionKey;
+    private final String login;
+    private final SessionKey sessionKey;
 
-    /**
-     * @param decrypt
-     */
     public PlayerAuthRequest(byte[] decrypt) {
         super(decrypt);
-        _account = readS();
+        login = readS();
         int playKey1 = readD();
         int playKey2 = readD();
         int loginKey1 = readD();
         int loginKey2 = readD();
-        _sessionKey = new SessionKey(loginKey1, loginKey2, playKey1, playKey2);
+        sessionKey = new SessionKey(loginKey1, loginKey2, playKey1, playKey2);
     }
 
-    /**
-     * @return Returns the account.
-     */
     public String getAccount() {
-        return _account;
+        return login;
     }
 
-    /**
-     * @return Returns the key.
-     */
     public SessionKey getKey() {
-        return _sessionKey;
+        return sessionKey;
     }
 
 }
