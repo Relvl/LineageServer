@@ -3,12 +3,12 @@ package johnson.loginserver.network.gameserver.game_to_login;
 import johnson.loginserver.SessionKey;
 import johnson.loginserver.network.gameserver.ABaseClientPacket;
 
-public class PlayerAuthRequest extends ABaseClientPacket {
+public class PlayerAuthRequestPacket extends ABaseClientPacket {
 
     private final String login;
     private final SessionKey sessionKey;
 
-    public PlayerAuthRequest(byte[] decrypt) {
+    public PlayerAuthRequestPacket(byte[] decrypt) {
         super(decrypt);
         login = readS();
         int playKey1 = readD();

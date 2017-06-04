@@ -4,7 +4,7 @@ import johnson.loginserver.crypt.ScrambledKeyPair;
 import johnson.loginserver.database.CreateAccountCall;
 import johnson.loginserver.database.LoginCall;
 import johnson.loginserver.network.client.login_to_client.List;
-import johnson.loginserver.network.gameserver.game_to_login.ServerStatus;
+import johnson.loginserver.network.gameserver.game_to_login.ServerStatusPacket;
 import johnson.loginserver.network.client.login_to_client.LoginFail.LoginFailReason;
 import johnson.loginserver.network.client.login_to_client.LoginOk;
 import johnson.loginserver.security.SecurityController;
@@ -195,7 +195,7 @@ public class LoginController {
         GameServerInfo gsi = GameServerTable.getInstance().getGameServer(serverId);
         int access = client.getAccessLevel();
         if (gsi != null && gsi.isAuthed()) {
-            boolean loginOk = (gsi.getCurrentPlayerCount() < gsi.getMaxPlayers() && gsi.getStatus() != ServerStatus.STATUS_GM_ONLY) || access > 0;
+            boolean loginOk = (gsi.getCurrentPlayerCount() < gsi.getMaxPlayers() && gsi.getStatus() != ServerStatusPacket.STATUS_GM_ONLY) || access > 0;
 
             if (loginOk && client.getLastServer() != serverId) {
                 // FIXME@SQL gameservers

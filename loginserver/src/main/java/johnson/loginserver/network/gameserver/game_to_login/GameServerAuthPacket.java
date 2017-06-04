@@ -2,7 +2,7 @@ package johnson.loginserver.network.gameserver.game_to_login;
 
 import johnson.loginserver.network.gameserver.ABaseClientPacket;
 
-public class GameServerAuth extends ABaseClientPacket {
+public class GameServerAuthPacket extends ABaseClientPacket {
     private final byte[] hexId;
     private final int desiredId;
     private final boolean hostReserved;
@@ -12,7 +12,7 @@ public class GameServerAuth extends ABaseClientPacket {
     private final String externalHost;
     private final String internalHost;
 
-    public GameServerAuth(byte[] decrypt) {
+    public GameServerAuthPacket(byte[] decrypt) {
         super(decrypt);
 
         desiredId = readC();

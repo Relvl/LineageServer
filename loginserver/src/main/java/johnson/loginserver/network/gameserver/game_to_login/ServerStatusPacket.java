@@ -4,7 +4,7 @@ import johnson.loginserver.GameServerInfo;
 import johnson.loginserver.GameServerTable;
 import johnson.loginserver.network.gameserver.ABaseClientPacket;
 
-public class ServerStatus extends ABaseClientPacket {
+public class ServerStatusPacket extends ABaseClientPacket {
 
     public static final int SERVER_LIST_STATUS = 0x01;
     public static final int SERVER_LIST_CLOCK = 0x02;
@@ -22,7 +22,7 @@ public class ServerStatus extends ABaseClientPacket {
     public static final int ON = 0x01;
     public static final int OFF = 0x00;
 
-    public ServerStatus(byte[] decrypt, int serverId) {
+    public ServerStatusPacket(byte[] decrypt, int serverId) {
         super(decrypt);
 
         GameServerInfo gsi = GameServerTable.getInstance().getGameServer(serverId);

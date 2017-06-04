@@ -5,10 +5,10 @@ import johnson.loginserver.network.gameserver.ABaseClientPacket;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerInGame extends ABaseClientPacket {
+public class PlayerInGamePacket extends ABaseClientPacket {
     private final List<String> accounts;
 
-    public PlayerInGame(byte[] decrypt) {
+    public PlayerInGamePacket(byte[] decrypt) {
         super(decrypt);
         accounts = new ArrayList<>();
         int size = readH();

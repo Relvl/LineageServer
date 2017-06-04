@@ -19,10 +19,11 @@ import johnson.loginserver.network.gameserver.ABaseServerPacket;
 /**
  * @author -Wooden-
  */
-public class KickPlayer extends ABaseServerPacket {
-    public KickPlayer(String account) {
-        writeC(0x04);
+public class PlayerAuthResponsePacket extends ABaseServerPacket {
+    public PlayerAuthResponsePacket(String account, boolean response) {
+        writeC(0x03);
         writeS(account);
+        writeC(response ? 1 : 0);
     }
 
     @Override

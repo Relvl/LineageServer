@@ -6,9 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -18,43 +15,18 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SecurityController {
     private static final Logger LOGGER = LoggerFactory.getLogger(SecurityController.class);
 
-    private final Map<InetAddress, Long> bannedIps = new ConcurrentHashMap<>();
+    private final BannedIpAddresses bannedIpAddresses = BannedIpAddresses.load();
     private final Map<InetAddress, FailedLoginAttempt> bruteProtection = new ConcurrentHashMap<>();
 
     private SecurityController() {
-        for (BannedIpAddresses.BannedAddressEntry entry : BannedIpAddresses.load().getAddresses()) {
-            try {
-                long duration = ChronoUnit.MILLIS.between(LocalDateTime.now(), entry.getExpired());
-                if (duration <= 0) { continue; }
-                InetAddress address = InetAddress.getByName(entry.getIp());
-                addBannedIpAddress(address, duration);
-            } catch (UnknownHostException e) {
-                LOGGER.error("Failed to load banned IP address {}", entry.getIp(), e);
-            }
-        }
-        LOGGER.info("{} loaded with {} banned IPs.", getClass().getSimpleName(), bannedIps.size());
+        LOGGER.info("{} loaded with {} banned IPs.", getClass().getSimpleName(), bannedIpAddresses.getSize());
     }
 
-    public void addBannedIpAddress(InetAddress address, long duration) {
-        if (!bannedIps.containsKey(address)) {
-            bannedIps.put(address, System.currentTimeMillis() + duration);
-        }
-        else {
-            LOGGER.warn("IP address {} allready banned.", address.toString());
-        }
+    public void addBannedIpAddress(InetAddress address, long duration, String initiator, String reason) {
+        bannedIpAddresses.addBannedIp(address, duration, initiator, reason);
     }
 
-    public boolean isBannedAddress(InetAddress address) {
-        Long expiration = bannedIps.get(address);
-        if (expiration != null) {
-            if (expiration > 0 && System.currentTimeMillis() > expiration) {
-                bannedIps.remove(address);
-                return false;
-            }
-            return true;
-        }
-        return false;
-    }
+    public boolean isBannedAddress(InetAddress address) { return bannedIpAddresses.isIpBanned(address); }
 
     /** TODO Это не полная проверка. Нужно прикрутить еще защиту от брута с нескольких IP, и обход с корректным логином на другую учетку. */
     public void handleIncorrectLognis(InetAddress address, String password) {
@@ -67,17 +39,18 @@ public class SecurityController {
         }
         if (failedAttempt.getCount() >= LoginServer.config.clientListener.loginsTryBeforeBan) {
             LOGGER.info("Banning '{}' for {} seconds due to {} invalid user/pass attempts", address.getHostAddress(), LoginServer.config.clientListener.loginsBlockAfterBan, failedAttempt.getCount());
-            addBannedIpAddress(address, LoginServer.config.clientListener.loginsBlockAfterBan * 1000);
+            addBannedIpAddress(
+                    address,
+                    LoginServer.config.clientListener.loginsBlockAfterBan * 1000,
+                    "LoginServer",
+                    "Too many failed login attempts"
+            );
         }
     }
 
-    public void handleCorrectLogin(InetAddress address) {
-        bruteProtection.remove(address);
-    }
+    public void handleCorrectLogin(InetAddress address) { bruteProtection.remove(address); }
 
-    public static SecurityController getInstance() {
-        return SingletonHolder.instance;
-    }
+    public static SecurityController getInstance() { return SingletonHolder.instance; }
 
     private static final class SingletonHolder {
         private static final SecurityController instance = new SecurityController();

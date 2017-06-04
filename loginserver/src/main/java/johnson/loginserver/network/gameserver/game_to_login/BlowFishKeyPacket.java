@@ -8,11 +8,11 @@ import javax.crypto.Cipher;
 import java.security.GeneralSecurityException;
 import java.security.interfaces.RSAPrivateKey;
 
-public class BlowFishKey extends ABaseClientPacket {
-    private static final Logger LOGGER = LoggerFactory.getLogger(BlowFishKey.class);
+public class BlowFishKeyPacket extends ABaseClientPacket {
+    private static final Logger LOGGER = LoggerFactory.getLogger(BlowFishKeyPacket.class);
     byte[] key;
 
-    public BlowFishKey(byte[] decrypt, RSAPrivateKey privateKey) {
+    public BlowFishKeyPacket(byte[] decrypt, RSAPrivateKey privateKey) {
         super(decrypt);
         int size = readD();
         byte[] tempKey = readB(size);

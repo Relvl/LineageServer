@@ -3,9 +3,9 @@ package johnson.loginserver.network.gameserver.login_to_game;
 import johnson.loginserver.LoginServer;
 import johnson.loginserver.network.gameserver.ABaseServerPacket;
 
-public class InitLS extends ABaseServerPacket {
+public class InitLSPacket extends ABaseServerPacket {
 
-    public InitLS(byte[] publickey) {
+    public InitLSPacket(byte[] publickey) {
         writeC(0x00);
         writeD(LoginServer.config.protocolRevision);
         writeD(publickey.length);

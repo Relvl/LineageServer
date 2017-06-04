@@ -3,7 +3,7 @@ package johnson.loginserver.network.client.login_to_client;
 import johnson.loginserver.GameServerInfo;
 import johnson.loginserver.GameServerTable;
 import johnson.loginserver.L2LoginClient;
-import johnson.loginserver.network.gameserver.game_to_login.ServerStatus;
+import johnson.loginserver.network.gameserver.game_to_login.ServerStatusPacket;
 import org.mmocore.network.SendablePacket;
 
 import java.net.InetAddress;
@@ -23,17 +23,17 @@ public final class List extends SendablePacket<L2LoginClient> {
         this.servers = new ArrayList<>();
         this.lastServer = client.getLastServer();
         for (GameServerInfo gsi : GameServerTable.getInstance().getRegisteredGameServers().values()) {
-            if (gsi.getStatus() == ServerStatus.STATUS_GM_ONLY && client.getAccessLevel() > 0) {
+            if (gsi.getStatus() == ServerStatusPacket.STATUS_GM_ONLY && client.getAccessLevel() > 0) {
                 // Server is GM-Only but you've got GM Status
                 addServer(client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost(), gsi.getPort(), gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), gsi.getStatus(), gsi.getId());
             }
-            else if (gsi.getStatus() != ServerStatus.STATUS_GM_ONLY) {
+            else if (gsi.getStatus() != ServerStatusPacket.STATUS_GM_ONLY) {
                 // Server is not GM-Only
                 addServer(client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost(), gsi.getPort(), gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), gsi.getStatus(), gsi.getId());
             }
             else {
                 // Server's GM-Only and you've got no GM-Status
-                addServer(client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost(), gsi.getPort(), gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), ServerStatus.STATUS_DOWN, gsi.getId());
+                addServer(client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost(), gsi.getPort(), gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), ServerStatusPacket.STATUS_DOWN, gsi.getId());
             }
         }
     }
@@ -70,7 +70,7 @@ public final class List extends SendablePacket<L2LoginClient> {
             writeC(server._pvp ? 0x01 : 0x00);
             writeH(server._currentPlayers);
             writeH(server._maxPlayers);
-            writeC(server._status == ServerStatus.STATUS_DOWN ? 0x00 : 0x01);
+            writeC(server._status == ServerStatusPacket.STATUS_DOWN ? 0x00 : 0x01);
             int bits = 0;
             if (server._testServer) {
                 bits |= 0x04;

@@ -2,12 +2,12 @@ package johnson.loginserver.network.gameserver.game_to_login;
 
 import johnson.loginserver.network.gameserver.ABaseClientPacket;
 
-public class ChangeAccessLevel extends ABaseClientPacket {
+public class ChangeAccessLevelPacket extends ABaseClientPacket {
 
     private final int level;
     private final String login;
 
-    public ChangeAccessLevel(byte[] decrypt) {
+    public ChangeAccessLevelPacket(byte[] decrypt) {
         super(decrypt);
         level = readD();
         login = readS();

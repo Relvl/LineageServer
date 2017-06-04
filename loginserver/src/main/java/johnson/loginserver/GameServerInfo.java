@@ -1,6 +1,6 @@
 package johnson.loginserver;
 
-import johnson.loginserver.network.gameserver.game_to_login.ServerStatus;
+import johnson.loginserver.network.gameserver.game_to_login.ServerStatusPacket;
 import net.sf.l2j.commons.DefaultConstructor;
 import net.sf.l2j.commons.database.annotation.OrmParamCursor;
 
@@ -30,7 +30,7 @@ public class GameServerInfo {
         this.id = -1;
         this.hexId = null;
         this.gst = null;
-        this.status = ServerStatus.STATUS_DOWN;
+        this.status = ServerStatusPacket.STATUS_DOWN;
     }
 
     public int getId() {
@@ -144,7 +144,7 @@ public class GameServerInfo {
         setAuthed(false);
         setPort(0);
         setGameServerThread(null);
-        setStatus(ServerStatus.STATUS_DOWN);
+        setStatus(ServerStatusPacket.STATUS_DOWN);
     }
 
     @Override
