@@ -32,7 +32,9 @@ import java.util.logging.Logger;
  * It has static final fields initialized from configuration files.<br>
  *
  * @author mkizub
+ * @deprecated Потому что гладиолус...
  */
+@Deprecated
 public final class Config {
     public static final String CLANS_FILE = "./config/clans.properties";
     public static final String EVENTS_FILE = "./config/events.properties";
@@ -969,7 +971,7 @@ public final class Config {
             // HexID
             ExProperties hexid = load(HEXID_FILE);
             SERVER_ID = Integer.parseInt(hexid.getProperty("ServerID"));
-            HEX_ID = new BigInteger(hexid.getProperty("HexID"), 16).toByteArray();
+            HEX_ID = hexid.getProperty("HexID").getBytes();
 
             // NPCs / Monsters
             ExProperties npcs = load(NPCS_FILE);

@@ -51,22 +51,21 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 public class GameServer {
-    public static final Calendar dateTimeServerStarted = Calendar.getInstance();
     private static final Logger _log = Logger.getLogger(GameServer.class.getName());
-    public static GameServer gameServer;
+    public static GameServer instance;
+
     private final SelectorThread<L2GameClient> _selectorThread;
     private final L2GamePacketHandler _gamePacketHandler;
     private final DeadLockDetector _deadDetectThread;
     private final LoginServerThread _loginThread;
 
     public GameServer() throws Exception {
-        gameServer = this;
+        instance = this;
 
         IdFactory.getInstance();
         ThreadPoolManager.getInstance();
@@ -276,7 +275,7 @@ public class GameServer {
         XMLDocumentFactory.getInstance();
         L2DatabaseFactory.getInstance();
 
-        gameServer = new GameServer();
+        instance = new GameServer();
     }
 
     public long getUsedMemoryMB() {

@@ -20,11 +20,9 @@ import java.util.logging.LogRecord;
 /**
  * @author zabbix
  */
-public class AuditFilter implements Filter
-{
-	@Override
-	public boolean isLoggable(LogRecord record)
-	{
-		return record.getLoggerName().equalsIgnoreCase("audit");
-	}
+public class AuditFilter implements Filter {
+    @Override
+    public boolean isLoggable(LogRecord record) {
+        return record.getLoggerName().equalsIgnoreCase("audit");
+    }
 }

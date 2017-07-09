@@ -1,12 +1,3 @@
-//   Copyright (c) 1999 CERN - European Organization for Nuclear Research.
-
-//   Permission to use, copy, modify, distribute and sell this software
-//   and its documentation for any purpose is hereby granted without fee,
-//   provided that the above copyright notice appear in all copies and
-//   that both that copyright notice and this permission notice appear in
-//   supporting documentation. CERN makes no representations about the
-//   suitability of this software for any purpose. It is provided "as is"
-//   without expressed or implied warranty.
 package net.sf.l2j.commons.math;
 
 import java.util.Arrays;
@@ -27,11 +18,8 @@ import java.util.Arrays;
  * @author wolfgang.hoschek@cern.ch
  * @version 1.0, 09/24/99
  */
-public final class PrimeFinder
-{
-	/**
-	 * The largest prime this class can generate; currently equal to <tt>Integer.MAX_VALUE</tt>.
-	 */
+public final class PrimeFinder {
+	/** The largest prime this class can generate; currently equal to <tt>Integer.MAX_VALUE</tt>. */
 	public static final int LARGEST_PRIME = Integer.MAX_VALUE; // yes, it is prime.
 	
 	/**
@@ -41,8 +29,7 @@ public final class PrimeFinder
 	 * "rounding to a prime" upon hashtable construction, it will later expand to prime capacities such that there exist no better primes. In total these are about 32*10=320 numbers -> 1 KB of static memory needed. If you are stingy, then delete every second or fourth chunk.
 	 */
 	
-	private static final int[] PRIME_CAPACITIES =
-	{
+	private static final int[] PRIME_CAPACITIES = {
 		// chunk #0
 		LARGEST_PRIME,
 		
@@ -310,29 +297,27 @@ public final class PrimeFinder
 		800076929,
 		1600153859
 	};
-	
-	static
-	{ // initializer
+
+	static {
+		// initializer
 		// The above prime numbers are formatted for human readability.
 		// To find numbers fast, we sort them once and for all.
-		
 		Arrays.sort(PRIME_CAPACITIES);
 	}
-	
-	/**
-	 * Returns a prime number which is <code>&gt;= desiredCapacity</code> and very close to <code>desiredCapacity</code> (within 11% if <code>desiredCapacity &gt;= 1000</code>).
-	 * @param desiredCapacity the capacity desired by the user.
-	 * @return the capacity which should be used for a hashtable.
-	 */
-	public static final int nextPrime(int desiredCapacity)
-	{
-		int i = Arrays.binarySearch(PRIME_CAPACITIES, desiredCapacity);
-		if (i < 0)
-		{
-			// desired capacity not found, choose next prime greater
-			// than desired capacity
-			i = -i - 1; // remember the semantics of binarySearch...
-		}
-		return PRIME_CAPACITIES[i];
-	}
+
+    /**
+     * Returns a prime number which is <code>&gt;= desiredCapacity</code> and very close to <code>desiredCapacity</code> (within 11% if <code>desiredCapacity &gt;= 1000</code>).
+     *
+     * @param desiredCapacity the capacity desired by the user.
+     * @return the capacity which should be used for a hashtable.
+     */
+    public static int nextPrime(int desiredCapacity) {
+        int i = Arrays.binarySearch(PRIME_CAPACITIES, desiredCapacity);
+        if (i < 0) {
+            // desired capacity not found, choose next prime greater
+            // than desired capacity
+            i = -i - 1; // remember the semantics of binarySearch...
+        }
+        return PRIME_CAPACITIES[i];
+    }
 }

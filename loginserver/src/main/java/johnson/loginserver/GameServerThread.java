@@ -75,7 +75,7 @@ public class GameServerThread extends Thread {
         _connectionIPAddress = _connection.getInetAddress().getHostAddress();
 
         // Ensure no further processing for this connection if server is considered as banned.
-        if (GameServerThread.isBannedGameserverIP(_connectionIPAddress)) {
+        if (isBannedGameserverIP(_connectionIPAddress)) {
             LOGGER.info("GameServer with banned IP {} tries to register.", _connectionIPAddress);
             forceClose(LoginAFailServerPacket.REASON_IP_BANNED);
             return;
@@ -156,7 +156,7 @@ public class GameServerThread extends Thread {
 
             }
         } catch (IOException e) {
-            String serverName = (getServerId() != -1 ? "[" + getServerId() + "] " : "(" + _connectionIPAddress + ")");
+            String serverName = getServerId() != -1 ? "[" + getServerId() + "] " : "(" + _connectionIPAddress + ")";
             LOGGER.info("GameServer {}: {}.", serverName, e.getMessage());
         } finally {
             if (isAuthed()) {
@@ -169,7 +169,7 @@ public class GameServerThread extends Thread {
     }
 
     private void onReceiveBlowfishKey(byte[] data) {
-        final BlowFishKeyPacket bfk = new BlowFishKeyPacket(data, _privateKey);
+        BlowFishKeyPacket bfk = new BlowFishKeyPacket(data, _privateKey);
 
         _blowfishKey = bfk.getKey();
         _blowfish = new NewCrypt(_blowfishKey);
@@ -185,7 +185,7 @@ public class GameServerThread extends Thread {
 
     private void onReceivePlayerInGame(byte[] data) {
         if (isAuthed()) {
-            final PlayerInGamePacket pig = new PlayerInGamePacket(data);
+            PlayerInGamePacket pig = new PlayerInGamePacket(data);
 
             for (String account : pig.getAccounts())
                 _accountsOnGameServer.add(account);
@@ -197,7 +197,7 @@ public class GameServerThread extends Thread {
 
     private void onReceivePlayerLogOut(byte[] data) {
         if (isAuthed()) {
-            final PlayerLogoutPacket plo = new PlayerLogoutPacket(data);
+            PlayerLogoutPacket plo = new PlayerLogoutPacket(data);
 
             _accountsOnGameServer.remove(plo.getAccount());
         }
@@ -208,9 +208,9 @@ public class GameServerThread extends Thread {
 
     private void onReceiveChangeAccessLevel(byte[] data) {
         if (isAuthed()) {
-            final ChangeAccessLevelPacket cal = new ChangeAccessLevelPacket(data);
+            ChangeAccessLevelPacket cal = new ChangeAccessLevelPacket(data);
 
-            LoginController.getInstance().setAccountAccessLevel(cal.getAccount(), cal.getLevel());
+            LoginController.setAccountAccessLevel(cal.getAccount(), cal.getLevel());
             LOGGER.info("Changed {} access level to {}.", cal.getAccount(), cal.getLevel());
         }
         else {
@@ -220,8 +220,8 @@ public class GameServerThread extends Thread {
 
     private void onReceivePlayerAuthRequest(byte[] data) {
         if (isAuthed()) {
-            final PlayerAuthRequestPacket par = new PlayerAuthRequestPacket(data);
-            final SessionKey key = LoginController.getInstance().getKeyForAccount(par.getAccount());
+            PlayerAuthRequestPacket par = new PlayerAuthRequestPacket(data);
+            SessionKey key = LoginController.getInstance().getKeyForAccount(par.getAccount());
 
             if (key != null && key.equals(par.getKey())) {
                 LoginController.getInstance().removeClient(par.getAccount());
@@ -246,13 +246,15 @@ public class GameServerThread extends Thread {
     }
 
     private void handleRegProcess(GameServerAuthPacket gameServerAuthPacket) {
-        final int id = gameServerAuthPacket.getDesiredID();
-        final byte[] hexId = gameServerAuthPacket.getHexID();
+        int id = gameServerAuthPacket.getDesiredID();
+        byte[] hexId = gameServerAuthPacket.getHexID();
 
         GameServerInfo gsi = GameServerTable.getInstance().getGameServer(id);
         // is there a gameserver registered with this id?
         if (gsi != null) {
             // does the hex id match?
+            System.out.println(">>> GS: " + Arrays.toString(gsi.getHexId()));
+            System.out.println(">>> HI: " + Arrays.toString(hexId));
             if (Arrays.equals(gsi.getHexId(), hexId)) {
                 // check to see if this GS is already connected
                 synchronized (gsi) {
@@ -365,14 +367,14 @@ public class GameServerThread extends Thread {
         }
 
         LOGGER.info("Hooked gameserver: [{}] ", getServerId());
-        LOGGER.info("Internal/External IP(s): {}/{}", (oldInternal == null) ? gameInternalHost : oldInternal, (oldExternal == null) ? gameExternalHost : oldExternal);
+        LOGGER.info("Internal/External IP(s): {}/{}", oldInternal == null ? gameInternalHost : oldInternal, oldExternal == null ? gameExternalHost : oldExternal);
     }
 
     /**
      * @return the isAuthed.
      */
     public boolean isAuthed() {
-        return (_gsi == null) ? false : _gsi.isAuthed();
+        return _gsi == null ? false : _gsi.isAuthed();
     }
 
     public GameServerInfo getGameServerInfo() {
@@ -394,6 +396,6 @@ public class GameServerThread extends Thread {
      * @return the server id.
      */
     private int getServerId() {
-        return (_gsi == null) ? -1 : _gsi.getId();
+        return _gsi == null ? -1 : _gsi.getId();
     }
 }

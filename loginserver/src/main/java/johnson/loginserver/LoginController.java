@@ -169,7 +169,7 @@ public class LoginController {
         return clients.containsKey(account) ? clients.get(account).getSessionKey() : null;
     }
 
-    public boolean isAccountInAnyGameServer(String account) {
+    public static boolean isAccountInAnyGameServer(String account) {
         Collection<GameServerInfo> serverList = GameServerTable.getInstance().getRegisteredGameServers().values();
         for (GameServerInfo gsi : serverList) {
             GameServerThread gst = gsi.getGameServerThread();
@@ -180,7 +180,7 @@ public class LoginController {
         return false;
     }
 
-    public GameServerInfo getAccountOnGameServer(String account) {
+    public static GameServerInfo getAccountOnGameServer(String account) {
         Collection<GameServerInfo> serverList = GameServerTable.getInstance().getRegisteredGameServers().values();
         for (GameServerInfo gsi : serverList) {
             GameServerThread gst = gsi.getGameServerThread();
@@ -191,11 +191,11 @@ public class LoginController {
         return null;
     }
 
-    public boolean isLoginPossible(L2LoginClient client, int serverId) {
+    public static boolean isLoginPossible(L2LoginClient client, int serverId) {
         GameServerInfo gsi = GameServerTable.getInstance().getGameServer(serverId);
         int access = client.getAccessLevel();
         if (gsi != null && gsi.isAuthed()) {
-            boolean loginOk = (gsi.getCurrentPlayerCount() < gsi.getMaxPlayers() && gsi.getStatus() != ServerStatusPacket.STATUS_GM_ONLY) || access > 0;
+            boolean loginOk = gsi.getCurrentPlayerCount() < gsi.getMaxPlayers() && gsi.getStatus() != ServerStatusPacket.STATUS_GM_ONLY || access > 0;
 
             if (loginOk && client.getLastServer() != serverId) {
                 // FIXME@SQL gameservers
@@ -214,7 +214,7 @@ public class LoginController {
         return false;
     }
 
-    public void setAccountAccessLevel(String account, int banLevel) {
+    public static void setAccountAccessLevel(String account, int banLevel) {
         // FIXME@SQL gameservers
         try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE accounts SET access_level=? WHERE login=?");
@@ -232,7 +232,7 @@ public class LoginController {
     }
 
     public static LoginController getInstance() {
-        return SingletonHolder.instance;
+        return SingletonHolder.INSTANCE;
     }
 
     /** @deprecated Заменить на ThreadPoolManager. */
@@ -255,7 +255,7 @@ public class LoginController {
 
                 try {
                     Thread.sleep(LoginServer.config.clientListener.loginTimeout / 2);
-                } catch (InterruptedException e) {
+                } catch (InterruptedException ignored) {
                     return;
                 }
             }
@@ -263,6 +263,6 @@ public class LoginController {
     }
 
     private static final class SingletonHolder {
-        private static final LoginController instance = new LoginController();
+        private static final LoginController INSTANCE = new LoginController();
     }
 }

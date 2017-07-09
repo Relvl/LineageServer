@@ -21,7 +21,7 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.L2GameClient;
-import net.sf.l2j.gameserver.network.L2GameClient.GameClientState;
+import net.sf.l2j.gameserver.network.GameClientState;
 import net.sf.l2j.gameserver.network.gameserverpackets.*;
 import net.sf.l2j.gameserver.network.loginserverpackets.*;
 import net.sf.l2j.gameserver.network.serverpackets.AuthLoginFail;

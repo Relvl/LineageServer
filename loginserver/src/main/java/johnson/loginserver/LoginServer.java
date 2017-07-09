@@ -35,8 +35,8 @@ public class LoginServer {
         L2DatabaseFactory.getInstance();
 
         SecurityController.getInstance();
-        LoginController.getInstance();
         GameServerTable.getInstance();
+        LoginController.getInstance();
 
         InetAddress bindAddress = null;
         if (!"*".equals(config.clientListener.host)) {

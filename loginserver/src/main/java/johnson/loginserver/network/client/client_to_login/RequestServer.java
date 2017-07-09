@@ -28,7 +28,7 @@ public class RequestServer extends ReceivablePacket<L2LoginClient> {
     public void run() {
         if (!LoginServer.config.clientListener.showLicense || getClient().getSessionKey().checkLoginPair(sKey1, sKey2)) {
 
-            if (LoginController.getInstance().isLoginPossible(getClient(), serverId)) {
+            if (LoginController.isLoginPossible(getClient(), serverId)) {
                 getClient().setJoinedGS(true);
                 getClient().sendPacket(new PlayOk(getClient().getSessionKey()));
             }

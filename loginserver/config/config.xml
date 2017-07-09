@@ -7,7 +7,7 @@
         <MaxConnections>10</MaxConnections>
         <MaxIdleTime>0</MaxIdleTime>
     </Database>
-    <GameServerListener Host="*" Port="9013"/>
+    <GameServerListener Host="*" Port="9014"/>
     <ClientListener Host="*" Port="2106">
         <ShowLicense>true</ShowLicense>
         <AutoCreateAccounts>false</AutoCreateAccounts>

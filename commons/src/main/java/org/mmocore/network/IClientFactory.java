@@ -1,7 +1,6 @@
 package org.mmocore.network;
 
-/**  */
+@FunctionalInterface
 public interface IClientFactory<T extends MMOClient<?>> {
-    /**  */
-    T create(final MMOConnection<T> connection);
+    T create(MMOConnection<T> connection);
 }
