@@ -283,8 +283,6 @@ public final class Config {
 
     @Deprecated
     public static boolean ACCEPT_NEW_GAMESERVER;
-    public static int REQUEST_ID;
-    public static boolean ACCEPT_ALTERNATE_ID;
 
     @Deprecated
     public static int LOGIN_TRY_BEFORE_BAN;
@@ -1199,9 +1197,6 @@ public final class Config {
             GAME_SERVER_LOGIN_PORT = server.getProperty("LoginPort", 9014);
             GAME_SERVER_LOGIN_HOST = server.getProperty("LoginHost", "127.0.0.1");
 
-            REQUEST_ID = server.getProperty("RequestServerID", 0);
-            ACCEPT_ALTERNATE_ID = server.getProperty("AcceptAlternateID", true);
-
             DATABASE_URL = server.getProperty("URL", "jdbc:mysql://localhost/acis");
             DATABASE_LOGIN = server.getProperty("Login", "root");
             DATABASE_PASSWORD = server.getProperty("Password", "");
@@ -1348,8 +1343,6 @@ public final class Config {
             DEVELOPER = server.getProperty("Developer", false);
             PACKET_HANDLER_DEBUG = server.getProperty("PacketHandlerDebug", false);
             ACCEPT_NEW_GAMESERVER = server.getProperty("AcceptNewGameServer", true);
-            REQUEST_ID = server.getProperty("RequestServerID", 0);
-            ACCEPT_ALTERNATE_ID = server.getProperty("AcceptAlternateID", true);
 
             LOGIN_TRY_BEFORE_BAN = server.getProperty("LoginTryBeforeBan", 10);
             LOGIN_BLOCK_AFTER_BAN = server.getProperty("LoginBlockAfterBan", 600);
@@ -1376,27 +1369,6 @@ public final class Config {
             MAX_CONNECTION_PER_IP = server.getProperty("MaxConnectionPerIP", 50);
         } else
             _log.severe("Couldn't load configs: server mode wasn't set.");
-    }
-
-    public static void saveHexid(int serverId, String string) {
-        Config.saveHexid(serverId, string, HEXID_FILE);
-    }
-
-    public static void saveHexid(int serverId, String hexId, String fileName) {
-        try {
-            Properties hexSetting = new Properties();
-            File file = new File(fileName);
-            file.createNewFile();
-
-            OutputStream out = new FileOutputStream(file);
-            hexSetting.setProperty("ServerID", String.valueOf(serverId));
-            hexSetting.setProperty("HexID", hexId);
-            hexSetting.store(out, "the hexID to auth into login");
-            out.close();
-        } catch (Exception e) {
-            _log.warning("Failed to save hex id to " + fileName + " file.");
-            e.printStackTrace();
-        }
     }
 
     /**

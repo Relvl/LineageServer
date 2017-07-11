@@ -1,30 +1,29 @@
 <LoginServerConfig Protocol="258">
-    <Database>
-        <Driver>org.postgresql.Driver</Driver>
-        <URL>jdbc:postgresql://localhost:5432/newera_login</URL>
-        <User>postgres</User>
-        <Password>postgres</Password>
-        <MaxConnections>10</MaxConnections>
-        <MaxIdleTime>0</MaxIdleTime>
-    </Database>
-    <GameServerListener Host="*" Port="9014"/>
-    <ClientListener Host="*" Port="2106">
-        <ShowLicense>true</ShowLicense>
-        <AutoCreateAccounts>false</AutoCreateAccounts>
-        <LoginsTryBeforeBan>10</LoginsTryBeforeBan>
-        <LoginsBlockAfterBan>600</LoginsBlockAfterBan>
-        <LoginTimeout>60000</LoginTimeout>
-    </ClientListener>
-    <FloodProtection Enabled="true">
-        <FastConnectionLimit>15</FastConnectionLimit>
-        <FastConnectionTime>350</FastConnectionTime>
-        <NormalConnectionTime>700</NormalConnectionTime>
-        <MaxConnectionsPerIP>10</MaxConnectionsPerIP>
-    </FloodProtection>
-    <MMOCore>
-        <SelectorSleepTime>20</SelectorSleepTime>
-        <MaxSendPerPass>12</MaxSendPerPass>
-        <MaxReadPerPass>12</MaxReadPerPass>
-        <HelperBufferCount>20</HelperBufferCount>
-    </MMOCore>
+  <Database>
+    <Driver>org.postgresql.Driver</Driver>
+    <URL>jdbc:postgresql://localhost:5432/newera_login</URL>
+    <User>postgres</User>
+    <Password>postgres</Password>
+    <MaxConnections>10</MaxConnections>
+    <MaxIdleTime>0</MaxIdleTime>
+  </Database>
+  <GameServerListener Host="*" Port="9013"/>
+  <ClientListener Host="*" Port="2106">
+    <AutoCreateAccounts>false</AutoCreateAccounts>
+    <LoginsTryBeforeBan>10</LoginsTryBeforeBan>
+    <LoginsBlockAfterBan>600</LoginsBlockAfterBan>
+    <LoginTimeout>60000</LoginTimeout>
+  </ClientListener>
+  <FloodProtection Enabled="true">
+    <FastConnectionLimit>15</FastConnectionLimit>
+    <FastConnectionTime>350</FastConnectionTime>
+    <NormalConnectionTime>700</NormalConnectionTime>
+    <MaxConnectionsPerIP>10</MaxConnectionsPerIP>
+  </FloodProtection>
+  <MMOCore>
+    <SelectorSleepTime>20</SelectorSleepTime>
+    <MaxSendPerPass>12</MaxSendPerPass>
+    <MaxReadPerPass>12</MaxReadPerPass>
+    <HelperBufferCount>20</HelperBufferCount>
+  </MMOCore>
 </LoginServerConfig>

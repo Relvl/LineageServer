@@ -2,6 +2,7 @@ package johnson.loginserver;
 
 import johnson.loginserver.network.gameserver.game_to_login.ServerStatusPacket;
 import net.sf.l2j.commons.DefaultConstructor;
+import net.sf.l2j.commons.EServerStatus;
 import net.sf.l2j.commons.database.annotation.OrmParamCursor;
 
 /**
@@ -14,7 +15,7 @@ public class GameServerInfo {
     private final byte[] hexId;
 
     private GameServerThread gst;
-    private int status;
+    private EServerStatus status;
     private boolean isAuthed;
     private String internalIp;
     private String externalIp;
@@ -30,7 +31,7 @@ public class GameServerInfo {
         this.id = -1;
         this.hexId = null;
         this.gst = null;
-        this.status = ServerStatusPacket.STATUS_DOWN;
+        this.status = EServerStatus.STATUS_DOWN;
     }
 
     public int getId() {
@@ -57,11 +58,12 @@ public class GameServerInfo {
         this.gst = gst;
     }
 
-    public int getStatus() {
+    public EServerStatus getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(EServerStatus status) {
+        System.out.println(">>> status: " + status);
         this.status = status;
     }
 
@@ -144,7 +146,7 @@ public class GameServerInfo {
         setAuthed(false);
         setPort(0);
         setGameServerThread(null);
-        setStatus(ServerStatusPacket.STATUS_DOWN);
+        setStatus(EServerStatus.STATUS_DOWN);
     }
 
     @Override

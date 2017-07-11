@@ -16,6 +16,7 @@ package net.sf.l2j.gameserver;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.commons.EServerStatus;
 import net.sf.l2j.gameserver.datatables.BufferTable;
 import net.sf.l2j.gameserver.datatables.ServerMemo;
 import net.sf.l2j.gameserver.instancemanager.*;
@@ -25,7 +26,6 @@ import net.sf.l2j.gameserver.model.entity.Hero;
 import net.sf.l2j.gameserver.model.olympiad.Olympiad;
 import net.sf.l2j.gameserver.network.L2GameClient;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.gameserverpackets.ServerStatus;
 import net.sf.l2j.gameserver.network.serverpackets.ServerClose;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.gameserver.taskmanager.ItemsOnGroundTaskManager;
@@ -317,7 +317,7 @@ public class Shutdown extends Thread {
                         break;
                     case 60:
                         // avoids new players from logging in
-                        LoginServerThread.getInstance().setServerStatus(ServerStatus.STATUS_DOWN);
+                        LoginServerThread.getInstance().setServerStatus(EServerStatus.STATUS_DOWN);
                         SendServerQuit(60);
                         break;
                     case 30:
@@ -349,8 +349,8 @@ public class Shutdown extends Thread {
 
                 if (_shutdownMode == ABORT) {
                     // Rehabilitate previous server status if shutdown is aborted.
-                    if (LoginServerThread.getInstance().getServerStatus() == ServerStatus.STATUS_DOWN) {
-                        LoginServerThread.getInstance().setServerStatus((Config.SERVER_GMONLY) ? ServerStatus.STATUS_GM_ONLY : ServerStatus.STATUS_AUTO);
+                    if (LoginServerThread.getInstance().getServerStatus() == EServerStatus.STATUS_DOWN) {
+                        LoginServerThread.getInstance().setServerStatus((Config.SERVER_GMONLY) ? EServerStatus.STATUS_GM_ONLY : EServerStatus.STATUS_AUTO);
                     }
 
                     break;

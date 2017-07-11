@@ -1,3 +1,4 @@
 <BannedIpAddresses>
-  <address ip="1.2.3.4" expired="2017-06-04T12:57:44.29" initiator="Test console" reason="Just..."/>
+  <size>0</size>
+  <addresses/>
 </BannedIpAddresses>

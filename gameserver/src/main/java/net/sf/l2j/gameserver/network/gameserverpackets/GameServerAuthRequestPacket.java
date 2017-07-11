@@ -1,13 +1,12 @@
 package net.sf.l2j.gameserver.network.gameserverpackets;
 
-public class AuthRequest extends GameServerBasePacket {
+public class GameServerAuthRequestPacket extends GameServerBasePacket {
     /**
      * Format: cccSddb c desired ID c accept alternative ID c reserve Host s ExternalHostName s InetranlHostName d max players d hexid size b hexid
      */
-    public AuthRequest(int id, boolean acceptAlternate, byte[] hexid, String externalHost, String internalHost, int port, boolean reserveHost, int maxplayer) {
+    public GameServerAuthRequestPacket(int desiredId, byte[] hexid, String externalHost, String internalHost, int port, boolean reserveHost, int maxplayer) {
         writeC(0x01);
-        writeC(id);
-        writeC(acceptAlternate ? 0x01 : 0x00);
+        writeC(desiredId);
         writeC(reserveHost ? 0x01 : 0x00);
         writeS(externalHost);
         writeS(internalHost);

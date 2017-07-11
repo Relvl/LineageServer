@@ -28,7 +28,6 @@ public final class L2LoginClient extends MMOClient<MMOConnection<L2LoginClient>>
     private final long loginTimestamp;
     private ELoginClientState state;
     private String account;
-    private int accessLevel;
     private int lastServer;
 
     @Deprecated
@@ -122,14 +121,6 @@ public final class L2LoginClient extends MMOClient<MMOConnection<L2LoginClient>>
         this.account = account;
     }
 
-    public int getAccessLevel() {
-        return accessLevel;
-    }
-
-    public void setAccessLevel(int accessLevel) {
-        this.accessLevel = accessLevel;
-    }
-
     public int getLastServer() {
         return lastServer;
     }
@@ -168,6 +159,7 @@ public final class L2LoginClient extends MMOClient<MMOConnection<L2LoginClient>>
     }
 
     public void close(LoginFailReason reason) {
+        LOGGER.info("Client '{}' kicked. Reason: {}", account, reason);
         this.close(new LoginFail(reason));
     }
 
@@ -183,16 +175,16 @@ public final class L2LoginClient extends MMOClient<MMOConnection<L2LoginClient>>
     public void onDisconnection() {
         LOGGER.debug("DISCONNECTED: {}", toString());
 
-        if (!hasJoinedGS() || (getLoginTimestamp() + LoginServer.config.clientListener.loginTimeout) < System.currentTimeMillis()) {
-            LoginController.getInstance().removeClient(getAccount());
+        if (!hasJoinedGS() || (loginTimestamp + LoginServer.config.clientListener.loginTimeout) < System.currentTimeMillis()) {
+            LoginController.getInstance().removeClient(account);
         }
     }
 
     @Override
     public String toString() {
         InetAddress address = getConnection().getInetAddress();
-        if (getState() == ELoginClientState.AUTHED_LOGIN) {
-            return "[" + getAccount() + " (" + (address == null ? "disconnected" : address.getHostAddress()) + ")]";
+        if (state == ELoginClientState.AUTHED_LOGIN) {
+            return "[" + account + " (" + (address == null ? "disconnected" : address.getHostAddress()) + ")]";
         }
         return "[" + (address == null ? "disconnected" : address.getHostAddress()) + "]";
     }

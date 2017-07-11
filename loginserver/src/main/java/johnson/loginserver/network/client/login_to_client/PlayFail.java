@@ -16,21 +16,28 @@ public final class PlayFail extends SendablePacket<L2LoginClient> {
         writeC(reason.getCode());
     }
 
+    @Override
+    public String toString() {
+        return "PlayFail{" +
+                "reason=" + reason +
+                '}';
+    }
+
     public enum PlayFailReason {
         REASON_SYSTEM_ERROR(0x01),
         REASON_USER_OR_PASS_WRONG(0x02),
         REASON3(0x03),
         REASON4(0x04),
-        REASON_TOO_MANY_PLAYERS(0x0f);
+        REASON_TOO_MANY_PLAYERS(0x0F);
 
-        private final int _code;
+        private final int code;
 
         PlayFailReason(int code) {
-            _code = code;
+            this.code = code;
         }
 
-        public final int getCode() {
-            return _code;
+        public int getCode() {
+            return code;
         }
     }
 }

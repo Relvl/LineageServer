@@ -3,7 +3,7 @@ package johnson.loginserver.network.client.login_to_client;
 import johnson.loginserver.GameServerInfo;
 import johnson.loginserver.GameServerTable;
 import johnson.loginserver.L2LoginClient;
-import johnson.loginserver.network.gameserver.game_to_login.ServerStatusPacket;
+import net.sf.l2j.commons.EServerStatus;
 import org.mmocore.network.SendablePacket;
 
 import java.net.InetAddress;
@@ -23,22 +23,22 @@ public final class List extends SendablePacket<L2LoginClient> {
         this.servers = new ArrayList<>();
         this.lastServer = client.getLastServer();
         for (GameServerInfo gsi : GameServerTable.getInstance().getRegisteredGameServers().values()) {
+            /* TODO! Вернуть это, когда будет готово isGm
             if (gsi.getStatus() == ServerStatusPacket.STATUS_GM_ONLY && client.getAccessLevel() > 0) {
                 // Server is GM-Only but you've got GM Status
                 addServer(client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost(), gsi.getPort(), gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), gsi.getStatus(), gsi.getId());
             }
-            else if (gsi.getStatus() != ServerStatusPacket.STATUS_GM_ONLY) {
-                // Server is not GM-Only
+            else */
+            if (gsi.getStatus() != EServerStatus.STATUS_GM_ONLY) {
                 addServer(client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost(), gsi.getPort(), gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), gsi.getStatus(), gsi.getId());
             }
             else {
-                // Server's GM-Only and you've got no GM-Status
-                addServer(client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost(), gsi.getPort(), gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), ServerStatusPacket.STATUS_DOWN, gsi.getId());
+                addServer(client.usesInternalIP() ? gsi.getInternalHost() : gsi.getExternalHost(), gsi.getPort(), gsi.isPvp(), gsi.isTestServer(), gsi.getCurrentPlayerCount(), gsi.getMaxPlayers(), gsi.isShowingBrackets(), gsi.isShowingClock(), EServerStatus.STATUS_DOWN, gsi.getId());
             }
         }
     }
 
-    public void addServer(String ip, int port, boolean pvp, boolean testServer, int currentPlayer, int maxPlayer, boolean brackets, boolean clock, int status, int server_id) {
+    public void addServer(String ip, int port, boolean pvp, boolean testServer, int currentPlayer, int maxPlayer, boolean brackets, boolean clock, EServerStatus status, int server_id) {
         servers.add(new ServerData(ip, port, pvp, testServer, currentPlayer, maxPlayer, brackets, clock, status, server_id));
     }
 
@@ -70,7 +70,7 @@ public final class List extends SendablePacket<L2LoginClient> {
             writeC(server._pvp ? 0x01 : 0x00);
             writeH(server._currentPlayers);
             writeH(server._maxPlayers);
-            writeC(server._status == ServerStatusPacket.STATUS_DOWN ? 0x00 : 0x01);
+            writeC(server._status == EServerStatus.STATUS_DOWN ? 0x00 : 0x01);
             int bits = 0;
             if (server._testServer) {
                 bits |= 0x04;
@@ -83,7 +83,7 @@ public final class List extends SendablePacket<L2LoginClient> {
         }
     }
 
-    class ServerData {
+    private static class ServerData {
         protected String _ip;
         protected int _port;
         protected boolean _pvp;
@@ -92,10 +92,10 @@ public final class List extends SendablePacket<L2LoginClient> {
         protected boolean _testServer;
         protected boolean _brackets;
         protected boolean _clock;
-        protected int _status;
+        protected EServerStatus _status;
         protected int _serverId;
 
-        ServerData(String pIp, int pPort, boolean pPvp, boolean pTestServer, int pCurrentPlayers, int pMaxPlayers, boolean pBrackets, boolean pClock, int pStatus, int pServer_id) {
+        ServerData(String pIp, int pPort, boolean pPvp, boolean pTestServer, int pCurrentPlayers, int pMaxPlayers, boolean pBrackets, boolean clock, EServerStatus status, int serverId) {
             _ip = pIp;
             _port = pPort;
             _pvp = pPvp;
@@ -103,9 +103,9 @@ public final class List extends SendablePacket<L2LoginClient> {
             _currentPlayers = pCurrentPlayers;
             _maxPlayers = pMaxPlayers;
             _brackets = pBrackets;
-            _clock = pClock;
-            _status = pStatus;
-            _serverId = pServer_id;
+            _clock = clock;
+            _status = status;
+            _serverId = serverId;
         }
     }
 }

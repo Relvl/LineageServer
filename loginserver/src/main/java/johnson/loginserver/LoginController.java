@@ -3,12 +3,9 @@ package johnson.loginserver;
 import johnson.loginserver.crypt.ScrambledKeyPair;
 import johnson.loginserver.database.CreateAccountCall;
 import johnson.loginserver.database.LoginCall;
-import johnson.loginserver.network.client.login_to_client.List;
-import johnson.loginserver.network.gameserver.game_to_login.ServerStatusPacket;
 import johnson.loginserver.network.client.login_to_client.LoginFail.LoginFailReason;
 import johnson.loginserver.network.client.login_to_client.LoginOk;
 import johnson.loginserver.security.SecurityController;
-import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.commons.database.CallException;
 import net.sf.l2j.commons.random.Rnd;
 import org.slf4j.Logger;
@@ -19,8 +16,6 @@ import java.net.InetAddress;
 import java.security.GeneralSecurityException;
 import java.security.KeyPairGenerator;
 import java.security.spec.RSAKeyGenParameterSpec;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -42,14 +37,16 @@ public class LoginController {
             this.keyPairs = new ScrambledKeyPair[10];
             KeyPairGenerator keygen = KeyPairGenerator.getInstance("RSA");
             keygen.initialize(new RSAKeyGenParameterSpec(1024, RSAKeyGenParameterSpec.F4));
-            for (int i = 0; i < 10; i++)
-                this.keyPairs[i] = new ScrambledKeyPair(keygen.generateKeyPair());
-            Cipher.getInstance("RSA/ECB/nopadding").init(Cipher.DECRYPT_MODE, this.keyPairs[0].getKeyPair().getPrivate());
+            for (int i = 0; i < 10; i++) {
+                keyPairs[i] = new ScrambledKeyPair(keygen.generateKeyPair());
+            }
+            Cipher.getInstance("RSA/ECB/nopadding").init(Cipher.DECRYPT_MODE, keyPairs[0].getKeyPair().getPrivate());
 
             this.blowfishKeys = new byte[BLOWFISH_KEYS][16];
             for (int i = 0; i < BLOWFISH_KEYS; i++) {
-                for (int j = 0; j < this.blowfishKeys[i].length; j++)
-                    this.blowfishKeys[i][j] = (byte) (Rnd.get(255) + 1);
+                for (int j = 0; j < blowfishKeys[i].length; j++) {
+                    blowfishKeys[i][j] = (byte) (Rnd.get(255) + 1);
+                }
             }
         } catch (GeneralSecurityException e) {
             LOGGER.error("Failed to make security keys.", e);
@@ -72,67 +69,65 @@ public class LoginController {
         try (LoginCall call = new LoginCall(login, password)) {
             call.execute();
 
-            // Пароль не верный.
-            if (call.getAccountId() == null) {
-                SecurityController.getInstance().handleIncorrectLognis(address, password);
-                client.close(LoginFailReason.REASON_USER_OR_PASS_WRONG);
-                return;
-            }
+            if (call.getAccountId() != null) {
 
-            // Пароль верный.
-            if (call.getAccountId() > 0) {
-                // TODO Проверка на баны.
-                // client.close(new AccountKicked(AccountKickedReason.REASON_PERMANENTLY_BANNED));
+                // Аккант не существует.
+                if (call.getAccountId() < 0) {
+                    if (LoginServer.config.clientListener.autoCreateAccounts) {
+                        try (CreateAccountCall createAccountCall = new CreateAccountCall(login, password)) {
+                            call.execute();
+                            // Аккаунт создан
+                            if (createAccountCall.getAccountId() > 0) {
+                                onAuthLoginSuccess(client, login, 0);
+                                return;
+                            }
+                            // Не удалось создать аккаунт.
+                            else {
+                                LOGGER.warn("Failed to create new account '{}'.", login);
+                            }
+                        }
+                    }
+                }
+                // Пароль верный, аккаунт найден.
+                else {
+                    // TODO Проверка на баны.
+                    // client.close(new AccountKicked(AccountKickedReason.REASON_PERMANENTLY_BANNED));
 
-                // Аккаунт уже в игре.
-                if (isAccountInAnyGameServer(login)) {
-                    // Выкидываем старого клиента.
-                    GameServerInfo gsi;
-                    if ((gsi = getAccountOnGameServer(login)) != null) {
+                    // Аккаунт уже в игре.
+                    if (isAccountInAnyGameServer(login)) {
+                        // Выкидываем старого клиента.
+                        GameServerInfo gsi = getAccountOnGameServer(login);
+                        if (gsi != null) {
+                            client.close(LoginFailReason.REASON_ACCOUNT_IN_USE);
+                            if (gsi.isAuthed()) {
+                                gsi.getGameServerThread().kickPlayer(login);
+                            }
+                        }
+                        return;
+                    }
+
+                    // Аккаунт уже прошел авторизацию ранее. TODO Как минимум странно...
+                    if (clients.put(login, client) != null) {
+                        // Выкидываем старого клиента.
+                        L2LoginClient oldClient;
+                        if ((oldClient = getClient(login)) != null) {
+                            oldClient.close(LoginFailReason.REASON_ACCOUNT_IN_USE);
+                            clients.remove(login);
+                        }
                         client.close(LoginFailReason.REASON_ACCOUNT_IN_USE);
-                        if (gsi.isAuthed()) {
-                            gsi.getGameServerThread().kickPlayer(login);
-                        }
+                        return;
                     }
+
+                    onAuthLoginSuccess(client, login, call.getLastServer());
                     return;
                 }
 
-                // Аккаунт уже прошел авторизацию ранее. TODO Как минимум странно...
-                if (clients.put(login, client) != null) {
-                    // Выкидываем старого клиента.
-                    L2LoginClient oldClient;
-                    if ((oldClient = getClient(login)) != null) {
-                        oldClient.close(LoginFailReason.REASON_ACCOUNT_IN_USE);
-                        clients.remove(login);
-                    }
-                    client.close(LoginFailReason.REASON_ACCOUNT_IN_USE);
-                    return;
-                }
-
-                onAuthLoginSuccess(client, login, call.getLastServer());
-                return;
             }
-
-            // Аккант не существует.
-            if (call.getAccountId() < 0) {
-                if (LoginServer.config.clientListener.autoCreateAccounts) {
-                    try (CreateAccountCall createAccountCall = new CreateAccountCall(login, password)) {
-                        call.execute();
-                        // Аккаунт создан
-                        if (createAccountCall.getAccountId() > 0) {
-                            onAuthLoginSuccess(client, login, 0);
-                            return;
-                        }
-                        // Не удалось создать аккаунт.
-                        else {
-                            LOGGER.warn("Failed to create new account '{}'.", login);
-                        }
-                    }
-                }
-            }
-
         } catch (CallException e) {
-            LOGGER.warn("Could not check password ({}):", login, e);
+            LOGGER.warn("Could not login account: {}", login, e);
+            SecurityController.getInstance().handleIncorrectLognis(address, password);
+            client.close(LoginFailReason.REASON_SYSTEM_ERROR);
+            return;
         }
 
         SecurityController.getInstance().handleIncorrectLognis(address, password);
@@ -145,13 +140,8 @@ public class LoginController {
         client.setAccount(login);
         client.setSessionKey(new SessionKey(Rnd.nextInt(), Rnd.nextInt(), Rnd.nextInt(), Rnd.nextInt()));
         client.setState(ELoginClientState.AUTHED_LOGIN);
-        client.setAccessLevel(0);
         client.setLastServer(lastServer);
-
-        client.sendPacket(LoginServer.config.clientListener.showLicense ?
-                        new LoginOk(client.getSessionKey()) :
-                        new List(client)
-        );
+        client.sendPacket(new LoginOk(client.getSessionKey()));
 
         clients.put(login, client);
     }
@@ -189,42 +179,6 @@ public class LoginController {
             }
         }
         return null;
-    }
-
-    public static boolean isLoginPossible(L2LoginClient client, int serverId) {
-        GameServerInfo gsi = GameServerTable.getInstance().getGameServer(serverId);
-        int access = client.getAccessLevel();
-        if (gsi != null && gsi.isAuthed()) {
-            boolean loginOk = gsi.getCurrentPlayerCount() < gsi.getMaxPlayers() && gsi.getStatus() != ServerStatusPacket.STATUS_GM_ONLY || access > 0;
-
-            if (loginOk && client.getLastServer() != serverId) {
-                // FIXME@SQL gameservers
-                try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
-                    PreparedStatement statement = con.prepareStatement("UPDATE accounts SET lastServer = ? WHERE login = ?");
-                    statement.setInt(1, serverId);
-                    statement.setString(2, client.getAccount());
-                    statement.executeUpdate();
-                    statement.close();
-                } catch (Exception e) {
-                    LOGGER.warn("Could not set lastServer: {}", e.getMessage(), e);
-                }
-            }
-            return loginOk;
-        }
-        return false;
-    }
-
-    public static void setAccountAccessLevel(String account, int banLevel) {
-        // FIXME@SQL gameservers
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
-            PreparedStatement statement = con.prepareStatement("UPDATE accounts SET access_level=? WHERE login=?");
-            statement.setInt(1, banLevel);
-            statement.setString(2, account);
-            statement.executeUpdate();
-            statement.close();
-        } catch (Exception e) {
-            LOGGER.warn("Could not set accessLevel: {}", e.getMessage(), e);
-        }
     }
 
     public ScrambledKeyPair getScrambledRSAKeyPair() {

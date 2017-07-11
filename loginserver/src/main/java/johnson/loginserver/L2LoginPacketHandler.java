@@ -2,8 +2,8 @@ package johnson.loginserver;
 
 import johnson.loginserver.network.client.client_to_login.AuthGameGuard;
 import johnson.loginserver.network.client.client_to_login.RequestAuth;
-import johnson.loginserver.network.client.client_to_login.RequestServerList;
 import johnson.loginserver.network.client.client_to_login.RequestServer;
+import johnson.loginserver.network.client.client_to_login.RequestServerList;
 import org.mmocore.network.IPacketHandler;
 import org.mmocore.network.ReceivablePacket;
 import org.slf4j.Logger;

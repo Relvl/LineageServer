@@ -106,9 +106,6 @@ public class LoginServerConfig {
         @JacksonXmlProperty(localName = "Port", isAttribute = true)
         public Integer port = 2106;
         /**  */
-        @JacksonXmlProperty(localName = "ShowLicense")
-        public Boolean showLicense = true;
-        /**  */
         @JacksonXmlProperty(localName = "AutoCreateAccounts")
         public Boolean autoCreateAccounts = false;
         /**  */

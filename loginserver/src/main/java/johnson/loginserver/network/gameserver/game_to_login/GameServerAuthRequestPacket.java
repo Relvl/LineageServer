@@ -2,22 +2,20 @@ package johnson.loginserver.network.gameserver.game_to_login;
 
 import johnson.loginserver.network.gameserver.ABaseClientPacket;
 
-public class GameServerAuthPacket extends ABaseClientPacket {
+public class GameServerAuthRequestPacket extends ABaseClientPacket {
     private final byte[] hexId;
     private final int desiredId;
     private final boolean hostReserved;
-    private final boolean acceptAlternativeId;
     private final int maxPlayers;
     private final int port;
     private final String externalHost;
     private final String internalHost;
 
-    public GameServerAuthPacket(byte[] decrypt) {
+    public GameServerAuthRequestPacket(byte[] decrypt) {
         super(decrypt);
 
         desiredId = readC();
-        acceptAlternativeId = (readC() != 0);
-        hostReserved = (readC() != 0);
+        hostReserved = readC() != 0;
         externalHost = readS();
         internalHost = readS();
         port = readH();
@@ -30,16 +28,8 @@ public class GameServerAuthPacket extends ABaseClientPacket {
         return hexId;
     }
 
-    public boolean getHostReserved() {
-        return hostReserved;
-    }
-
     public int getDesiredID() {
         return desiredId;
-    }
-
-    public boolean acceptAlternateID() {
-        return acceptAlternativeId;
     }
 
     public int getMaxPlayers() {

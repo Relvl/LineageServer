@@ -1,12 +1,12 @@
 package net.sf.l2j.commons.database;
 
 import net.sf.l2j.L2DatabaseFactory;
-import net.sf.l2j.commons.lang.StringUtil;
-import net.sf.l2j.commons.reflection.FieldAccessor;
-import net.sf.l2j.commons.reflection.ReflectionManager;
 import net.sf.l2j.commons.database.annotation.OrmParamCursor;
 import net.sf.l2j.commons.database.annotation.OrmParamIn;
 import net.sf.l2j.commons.database.annotation.OrmParamOut;
+import net.sf.l2j.commons.lang.StringUtil;
+import net.sf.l2j.commons.reflection.FieldAccessor;
+import net.sf.l2j.commons.reflection.ReflectionManager;
 import org.slf4j.Logger;
 
 import java.sql.CallableStatement;
@@ -180,4 +180,8 @@ public abstract class IndexedCall implements AutoCloseable {
     }
 
     public abstract Logger getLogger();
+
+    public Integer getResultCode() {
+        return 0;
+    }
 }

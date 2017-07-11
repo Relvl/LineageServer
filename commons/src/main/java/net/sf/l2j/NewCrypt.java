@@ -32,10 +32,10 @@ public class NewCrypt {
     }
 
     public static boolean verifyChecksum(byte[] raw) {
-        return NewCrypt.verifyChecksum(raw, 0, raw.length);
+        return verifyChecksum(raw, 0, raw.length);
     }
 
-    public static boolean verifyChecksum(byte[] raw, final int offset, final int size) {
+    public static boolean verifyChecksum(byte[] raw, int offset, int size) {
         // check if size is multiple of 4 and if there is more then only the checksum
         if ((size & 3) != 0 || size <= 4) {
             return false;
@@ -64,10 +64,10 @@ public class NewCrypt {
     }
 
     public static void appendChecksum(byte[] raw) {
-        NewCrypt.appendChecksum(raw, 0, raw.length);
+        appendChecksum(raw, 0, raw.length);
     }
 
-    public static void appendChecksum(byte[] raw, final int offset, final int size) {
+    public static void appendChecksum(byte[] raw, int offset, int size) {
         long chksum = 0;
         int count = size - 4;
         long ecx;
@@ -102,7 +102,7 @@ public class NewCrypt {
      * @param key The 4 bytes (int) XOR key
      */
     public static void encXORPass(byte[] raw, int key) {
-        NewCrypt.encXORPass(raw, 0, raw.length, key);
+        encXORPass(raw, 0, raw.length, key);
     }
 
     /**
@@ -115,7 +115,7 @@ public class NewCrypt {
      * @param size   Length of the data to be encrypted
      * @param key    The 4 bytes (int) XOR key
      */
-    public static void encXORPass(byte[] raw, final int offset, final int size, int key) {
+    public static void encXORPass(byte[] raw, int offset, int size, int key) {
         int stop = size - 8;
         int pos = 4 + offset;
         int edx;
@@ -153,7 +153,7 @@ public class NewCrypt {
         return result;
     }
 
-    public void decrypt(byte[] raw, final int offset, final int size) throws IOException {
+    public void decrypt(byte[] raw, int offset, int size) throws IOException {
         byte[] result = new byte[size];
         int count = size / 8;
 
@@ -173,7 +173,7 @@ public class NewCrypt {
         return result;
     }
 
-    public void crypt(byte[] raw, final int offset, final int size) throws IOException {
+    public void crypt(byte[] raw, int offset, int size) throws IOException {
         int count = size / 8;
         byte[] result = new byte[size];
 

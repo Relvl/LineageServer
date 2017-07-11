@@ -39,9 +39,6 @@ public class SessionKey {
      */
     public boolean equals(SessionKey key) {
         // when server doesnt show licence it deosnt send the {@link LoginOk LoginOk} packet, client doesnt have this part of the key then.
-        if (LoginServer.config.clientListener.showLicense) {
-            return (playOkID1 == key.playOkID1 && loginOkID1 == key.loginOkID1 && playOkID2 == key.playOkID2 && loginOkID2 == key.loginOkID2);
-        }
-        return (playOkID1 == key.playOkID1 && playOkID2 == key.playOkID2);
+        return (playOkID1 == key.playOkID1 && loginOkID1 == key.loginOkID1 && playOkID2 == key.playOkID2 && loginOkID2 == key.loginOkID2);
     }
 }
