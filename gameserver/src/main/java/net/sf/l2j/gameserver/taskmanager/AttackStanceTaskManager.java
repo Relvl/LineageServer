@@ -23,7 +23,7 @@ import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2CubicInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.AutoAttackStop;
+import net.sf.l2j.gameserver.network.client.game_to_client.AutoAttackStop;
 
 /**
  * Turns off attack stance of {@link L2Character} after PERIOD ms.

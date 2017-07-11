@@ -20,8 +20,8 @@ import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
-import net.sf.l2j.gameserver.network.serverpackets.NpcSay;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcSay;
 
 /**
  * @author Kerberos

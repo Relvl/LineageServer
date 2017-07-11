@@ -14,7 +14,6 @@
  */
 package net.sf.l2j.gameserver.model;
 
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,8 +22,8 @@ import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.handler.SkillHandler;
 import net.sf.l2j.gameserver.model.actor.L2Character;
-import net.sf.l2j.gameserver.network.serverpackets.MagicSkillLaunched;
-import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
+import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillLaunched;
+import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillUse;
 import net.sf.l2j.gameserver.skills.effects.EffectChanceSkillTrigger;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
 

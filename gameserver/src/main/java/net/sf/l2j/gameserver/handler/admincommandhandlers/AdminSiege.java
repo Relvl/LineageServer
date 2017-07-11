@@ -29,8 +29,8 @@ import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.model.entity.ClanHall;
 import net.sf.l2j.gameserver.model.zone.type.L2ClanHallZone;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 /**
  * This class handles all siege commands

@@ -24,9 +24,9 @@ import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.cache.HtmCache;
 import net.sf.l2j.gameserver.model.Announcement;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.clientpackets.Say2;
-import net.sf.l2j.gameserver.network.serverpackets.CreatureSay;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.client_to_game.Say2;
+import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 import net.sf.l2j.gameserver.util.Broadcast;
 import net.sf.l2j.gameserver.xmlfactory.XMLDocumentFactory;
 

@@ -18,8 +18,8 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Vehicle;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.DeleteObject;
-import net.sf.l2j.gameserver.network.serverpackets.SpawnItemPoly;
+import net.sf.l2j.gameserver.network.client.game_to_client.DeleteObject;
+import net.sf.l2j.gameserver.network.client.game_to_client.SpawnItemPoly;
 
 public class PcKnownList extends PlayableKnownList
 {

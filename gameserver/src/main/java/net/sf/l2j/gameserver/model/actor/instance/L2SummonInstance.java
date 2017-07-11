@@ -25,7 +25,7 @@ import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Summon;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
-import net.sf.l2j.gameserver.network.serverpackets.SetSummonRemainTime;
+import net.sf.l2j.gameserver.network.client.game_to_client.SetSummonRemainTime;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillSummon;
 import net.sf.l2j.gameserver.taskmanager.DecayTaskManager;
 

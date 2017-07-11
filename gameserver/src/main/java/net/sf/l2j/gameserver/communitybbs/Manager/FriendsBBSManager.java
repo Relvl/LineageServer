@@ -29,8 +29,8 @@ import net.sf.l2j.gameserver.model.BlockList;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.FriendList;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.FriendList;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 public class FriendsBBSManager extends BaseBBSManager
 {

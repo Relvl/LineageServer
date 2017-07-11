@@ -21,7 +21,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Duel;
-import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
+import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
 
 public final class DuelManager
 {

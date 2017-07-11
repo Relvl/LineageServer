@@ -29,9 +29,9 @@ import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.itemcontainer.PcInventory;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
-import net.sf.l2j.gameserver.network.serverpackets.StatusUpdate;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
+import net.sf.l2j.gameserver.network.client.game_to_client.StatusUpdate;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.util.Util;
 
 public class TradeList

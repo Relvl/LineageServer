@@ -40,7 +40,7 @@ import net.sf.l2j.gameserver.model.item.type.WeaponType;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.model.zone.type.L2MotherTreeZone;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.skills.effects.EffectTemplate;
 import net.sf.l2j.gameserver.taskmanager.GameTimeTaskManager;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;

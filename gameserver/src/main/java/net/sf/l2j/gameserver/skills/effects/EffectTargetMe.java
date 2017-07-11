@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.skills.effects;
 import net.sf.l2j.gameserver.ai.CtrlIntention;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.MyTargetSelected;
+import net.sf.l2j.gameserver.network.client.game_to_client.MyTargetSelected;
 import net.sf.l2j.gameserver.skills.Env;
 import net.sf.l2j.gameserver.templates.skills.L2EffectType;
 

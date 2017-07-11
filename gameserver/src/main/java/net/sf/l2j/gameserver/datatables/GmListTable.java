@@ -21,9 +21,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
-import net.sf.l2j.gameserver.network.serverpackets.PlaySound;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 /**
  * This class stores references to all online game masters. (access level > 100)

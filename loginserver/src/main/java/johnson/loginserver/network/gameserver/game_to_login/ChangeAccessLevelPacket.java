@@ -1,8 +1,8 @@
 package johnson.loginserver.network.gameserver.game_to_login;
 
-import johnson.loginserver.network.gameserver.ABaseClientPacket;
+import net.sf.l2j.network.ABaseReceivablePacket;
 
-public class ChangeAccessLevelPacket extends ABaseClientPacket {
+public class ChangeAccessLevelPacket extends ABaseReceivablePacket {
 
     private final int level;
     private final String login;

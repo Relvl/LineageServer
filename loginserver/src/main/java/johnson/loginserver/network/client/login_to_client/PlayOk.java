@@ -1,7 +1,7 @@
 package johnson.loginserver.network.client.login_to_client;
 
 import johnson.loginserver.L2LoginClient;
-import johnson.loginserver.SessionKey;
+import net.sf.l2j.commons.SessionKey;
 import org.mmocore.network.SendablePacket;
 
 public final class PlayOk extends SendablePacket<L2LoginClient> {

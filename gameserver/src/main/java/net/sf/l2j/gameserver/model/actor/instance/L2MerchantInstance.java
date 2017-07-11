@@ -21,10 +21,10 @@ import net.sf.l2j.gameserver.datatables.BuyListTable;
 import net.sf.l2j.gameserver.datatables.MultisellData;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.buylist.NpcBuyList;
-import net.sf.l2j.gameserver.network.serverpackets.BuyList;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
-import net.sf.l2j.gameserver.network.serverpackets.SellList;
-import net.sf.l2j.gameserver.network.serverpackets.ShopPreviewList;
+import net.sf.l2j.gameserver.network.client.game_to_client.BuyList;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.SellList;
+import net.sf.l2j.gameserver.network.client.game_to_client.ShopPreviewList;
 
 /**
  * L2Merchant type, it got buy/sell methods && bypasses.<br>

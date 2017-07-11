@@ -19,8 +19,8 @@ import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
-import net.sf.l2j.gameserver.network.serverpackets.MoveToPawn;
+import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
+import net.sf.l2j.gameserver.network.client.game_to_client.MoveToPawn;
 
 /**
  * This class manages all Castle Siege Artefacts.

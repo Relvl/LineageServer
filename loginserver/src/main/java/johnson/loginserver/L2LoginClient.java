@@ -6,6 +6,7 @@ import johnson.loginserver.network.client.login_to_client.LoginFail;
 import johnson.loginserver.network.client.login_to_client.LoginFail.LoginFailReason;
 import johnson.loginserver.network.client.login_to_client.PlayFail;
 import johnson.loginserver.network.client.login_to_client.PlayFail.PlayFailReason;
+import net.sf.l2j.commons.SessionKey;
 import net.sf.l2j.commons.random.Rnd;
 import org.mmocore.network.MMOClient;
 import org.mmocore.network.MMOConnection;

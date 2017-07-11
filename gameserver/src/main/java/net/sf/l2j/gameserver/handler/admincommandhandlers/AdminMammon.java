@@ -20,7 +20,7 @@ import net.sf.l2j.gameserver.instancemanager.AutoSpawnManager.AutoSpawnInstance;
 import net.sf.l2j.gameserver.instancemanager.SevenSigns;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 /**
  * Admin Command Handler for Mammon NPCs

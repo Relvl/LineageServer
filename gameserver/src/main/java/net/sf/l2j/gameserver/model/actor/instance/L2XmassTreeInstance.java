@@ -21,7 +21,7 @@ import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
+import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
 
 /**
  * @author Drunkard Zabb0x Lets drink2code!

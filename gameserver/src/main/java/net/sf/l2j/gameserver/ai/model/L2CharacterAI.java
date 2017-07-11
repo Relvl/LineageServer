@@ -32,7 +32,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2DoorInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
 import net.sf.l2j.gameserver.model.item.instance.ItemInstance.ItemLocation;
-import net.sf.l2j.gameserver.network.serverpackets.AutoAttackStop;
+import net.sf.l2j.gameserver.network.client.game_to_client.AutoAttackStop;
 import net.sf.l2j.gameserver.taskmanager.AttackStanceTaskManager;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
 import net.sf.l2j.gameserver.util.Util;

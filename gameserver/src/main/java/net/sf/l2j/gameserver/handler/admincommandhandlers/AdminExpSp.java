@@ -20,7 +20,7 @@ import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 
 /**
  * This class handles following admin commands: <li>add_exp_sp_to_character <i>shows menu for add or remove</i> <li>add_exp_sp exp sp <i>Adds exp & sp to target, displays menu if a parameter is missing</i> <li>remove_exp_sp exp sp <i>Removes exp & sp from target, displays menu if a parameter is

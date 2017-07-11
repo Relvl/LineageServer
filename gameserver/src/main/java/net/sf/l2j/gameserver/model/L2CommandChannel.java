@@ -21,11 +21,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.CreatureSay;
-import net.sf.l2j.gameserver.network.serverpackets.ExCloseMPCC;
-import net.sf.l2j.gameserver.network.serverpackets.ExOpenMPCC;
-import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExCloseMPCC;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExOpenMPCC;
+import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 /**
  * @author chris_00

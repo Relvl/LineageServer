@@ -30,7 +30,7 @@ import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.entity.Auction;
 import net.sf.l2j.gameserver.model.entity.Auction.Bidder;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 
 public final class L2AuctioneerInstance extends L2NpcInstance
 {

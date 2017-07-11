@@ -24,10 +24,10 @@ import net.sf.l2j.gameserver.model.olympiad.OlympiadGameTask;
 import net.sf.l2j.gameserver.model.zone.L2SpawnZone;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.ExOlympiadMatchEnd;
-import net.sf.l2j.gameserver.network.serverpackets.ExOlympiadUserInfo;
-import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExOlympiadMatchEnd;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExOlympiadUserInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 /**
  * An olympiad stadium

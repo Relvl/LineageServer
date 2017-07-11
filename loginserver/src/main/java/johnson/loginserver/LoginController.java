@@ -6,6 +6,7 @@ import johnson.loginserver.database.LoginCall;
 import johnson.loginserver.network.client.login_to_client.LoginFail.LoginFailReason;
 import johnson.loginserver.network.client.login_to_client.LoginOk;
 import johnson.loginserver.security.SecurityController;
+import net.sf.l2j.commons.SessionKey;
 import net.sf.l2j.commons.database.CallException;
 import net.sf.l2j.commons.random.Rnd;
 import org.slf4j.Logger;

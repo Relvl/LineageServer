@@ -25,9 +25,9 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.entity.Siegable;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
-import net.sf.l2j.gameserver.network.serverpackets.MoveToPawn;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
+import net.sf.l2j.gameserver.network.client.game_to_client.MoveToPawn;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 public class L2SiegeFlagInstance extends L2Npc
 {

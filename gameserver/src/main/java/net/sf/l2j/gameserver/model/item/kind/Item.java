@@ -35,7 +35,7 @@ import net.sf.l2j.gameserver.model.item.type.ItemType;
 import net.sf.l2j.gameserver.model.item.type.MaterialType;
 import net.sf.l2j.gameserver.model.item.type.WeaponType;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.skills.Env;
 import net.sf.l2j.gameserver.skills.basefuncs.Func;

@@ -29,9 +29,9 @@ import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.zone.type.L2OlympiadStadiumZone;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.ExOlympiadUserInfo;
-import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExOlympiadUserInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 /**
  * @author GodKratos, Pere, DS

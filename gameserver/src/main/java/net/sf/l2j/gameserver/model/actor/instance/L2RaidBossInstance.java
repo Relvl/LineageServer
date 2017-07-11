@@ -27,8 +27,8 @@ import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.entity.Hero;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.PlaySound;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 /**
  * This class manages all RaidBoss. In a group mob, there are one master called RaidBoss and several slaves called Minions.

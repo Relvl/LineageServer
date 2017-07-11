@@ -27,7 +27,7 @@ import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.zone.L2ZoneType;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
-import net.sf.l2j.gameserver.network.serverpackets.EtcStatusUpdate;
+import net.sf.l2j.gameserver.network.client.game_to_client.EtcStatusUpdate;
 
 /**
  * another type of damage zone with skills

@@ -19,7 +19,7 @@ import net.sf.l2j.gameserver.handler.IUserCommandHandler;
 import net.sf.l2j.gameserver.instancemanager.GrandBossManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
 
 public class Escape implements IUserCommandHandler
 {

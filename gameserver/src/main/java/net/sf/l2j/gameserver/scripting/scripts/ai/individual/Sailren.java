@@ -26,9 +26,9 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2GrandBossInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.zone.type.L2BossZone;
-import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
-import net.sf.l2j.gameserver.network.serverpackets.SocialAction;
-import net.sf.l2j.gameserver.network.serverpackets.SpecialCamera;
+import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillUse;
+import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
+import net.sf.l2j.gameserver.network.client.game_to_client.SpecialCamera;
 import net.sf.l2j.gameserver.scripting.scripts.ai.AbstractNpcAI;
 import net.sf.l2j.gameserver.templates.StatsSet;
 

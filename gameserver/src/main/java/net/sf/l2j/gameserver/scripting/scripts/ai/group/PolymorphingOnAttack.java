@@ -21,8 +21,8 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.clientpackets.Say2;
-import net.sf.l2j.gameserver.network.serverpackets.CreatureSay;
+import net.sf.l2j.gameserver.network.client.client_to_game.Say2;
+import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
 import net.sf.l2j.gameserver.scripting.EventType;
 import net.sf.l2j.gameserver.scripting.scripts.ai.AbstractNpcAI;
 

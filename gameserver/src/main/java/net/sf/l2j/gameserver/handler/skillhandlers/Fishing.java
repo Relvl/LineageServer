@@ -34,7 +34,7 @@ import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.model.zone.type.L2FishingZone;
 import net.sf.l2j.gameserver.model.zone.type.L2WaterZone;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
+import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
 import net.sf.l2j.gameserver.util.Util;
 

@@ -20,8 +20,8 @@ import java.util.List;
 import net.sf.l2j.gameserver.datatables.SpawnTable;
 import net.sf.l2j.gameserver.model.L2Spawn;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
-import net.sf.l2j.gameserver.network.clientpackets.Say2;
-import net.sf.l2j.gameserver.network.serverpackets.NpcSay;
+import net.sf.l2j.gameserver.network.client.client_to_game.Say2;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcSay;
 
 /**
  * @author DS

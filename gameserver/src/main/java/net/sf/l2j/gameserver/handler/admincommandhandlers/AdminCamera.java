@@ -17,10 +17,10 @@ package net.sf.l2j.gameserver.handler.admincommandhandlers;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.CameraMode;
-import net.sf.l2j.gameserver.network.serverpackets.ExShowScreenMessage;
-import net.sf.l2j.gameserver.network.serverpackets.NormalCamera;
-import net.sf.l2j.gameserver.network.serverpackets.SpecialCamera;
+import net.sf.l2j.gameserver.network.client.game_to_client.CameraMode;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExShowScreenMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.NormalCamera;
+import net.sf.l2j.gameserver.network.client.game_to_client.SpecialCamera;
 
 public class AdminCamera implements IAdminCommandHandler
 {

@@ -22,9 +22,9 @@ import net.sf.l2j.gameserver.instancemanager.BoatManager;
 import net.sf.l2j.gameserver.model.VehiclePathPoint;
 import net.sf.l2j.gameserver.model.actor.instance.L2BoatInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.clientpackets.Say2;
-import net.sf.l2j.gameserver.network.serverpackets.CreatureSay;
-import net.sf.l2j.gameserver.network.serverpackets.PlaySound;
+import net.sf.l2j.gameserver.network.client.client_to_game.Say2;
+import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
 
 /**
  * @author DS

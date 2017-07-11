@@ -23,7 +23,7 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.StatusUpdate;
+import net.sf.l2j.gameserver.network.client.game_to_client.StatusUpdate;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
 
 /**

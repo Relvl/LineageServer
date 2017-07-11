@@ -17,8 +17,8 @@ package net.sf.l2j.gameserver.handler.admincommandhandlers;
 import net.sf.l2j.gameserver.datatables.GmListTable;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.clientpackets.Say2;
-import net.sf.l2j.gameserver.network.serverpackets.CreatureSay;
+import net.sf.l2j.gameserver.network.client.client_to_game.Say2;
+import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
 
 /**
  * This class handles following admin commands:

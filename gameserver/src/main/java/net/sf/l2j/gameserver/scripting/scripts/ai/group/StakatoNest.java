@@ -20,7 +20,7 @@ import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2MonsterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
+import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillUse;
 import net.sf.l2j.gameserver.scripting.scripts.ai.AbstractNpcAI;
 
 /**

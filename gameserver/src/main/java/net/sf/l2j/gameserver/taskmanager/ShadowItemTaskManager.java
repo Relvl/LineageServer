@@ -25,8 +25,8 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.listeners.OnEquipListener;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 /**
  * Updates the timer and removes the {@link ItemInstance} as a shadow item.

@@ -23,16 +23,16 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
-import net.sf.l2j.gameserver.network.serverpackets.BuyListSeed;
-import net.sf.l2j.gameserver.network.serverpackets.ExShowCropInfo;
-import net.sf.l2j.gameserver.network.serverpackets.ExShowCropSetting;
-import net.sf.l2j.gameserver.network.serverpackets.ExShowManorDefaultInfo;
-import net.sf.l2j.gameserver.network.serverpackets.ExShowProcureCropDetail;
-import net.sf.l2j.gameserver.network.serverpackets.ExShowSeedInfo;
-import net.sf.l2j.gameserver.network.serverpackets.ExShowSeedSetting;
-import net.sf.l2j.gameserver.network.serverpackets.ExShowSellCropList;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
+import net.sf.l2j.gameserver.network.client.game_to_client.BuyListSeed;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExShowCropInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExShowCropSetting;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExShowManorDefaultInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExShowProcureCropDetail;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExShowSeedInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExShowSeedSetting;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExShowSellCropList;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 public class L2ManorManagerInstance extends L2MerchantInstance
 {

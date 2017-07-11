@@ -40,9 +40,9 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
 import net.sf.l2j.gameserver.model.base.ClassId;
 import net.sf.l2j.gameserver.network.L2GameClient;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.GMViewItemList;
-import net.sf.l2j.gameserver.network.serverpackets.HennaInfo;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.GMViewItemList;
+import net.sf.l2j.gameserver.network.client.game_to_client.HennaInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 import net.sf.l2j.gameserver.util.Util;
 
 public class AdminEditChar implements IAdminCommandHandler

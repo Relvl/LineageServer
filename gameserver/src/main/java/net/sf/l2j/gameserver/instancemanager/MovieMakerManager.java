@@ -6,8 +6,8 @@ import java.util.Map;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
-import net.sf.l2j.gameserver.network.serverpackets.SpecialCamera;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.SpecialCamera;
 
 /**
  * @author KKnD

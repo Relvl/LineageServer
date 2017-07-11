@@ -18,10 +18,10 @@ import net.sf.l2j.gameserver.ai.CtrlIntention;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
-import net.sf.l2j.gameserver.network.serverpackets.ShowTownMap;
-import net.sf.l2j.gameserver.network.serverpackets.StaticObject;
+import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.ShowTownMap;
+import net.sf.l2j.gameserver.network.client.game_to_client.StaticObject;
 
 /**
  * GODSON ROX!

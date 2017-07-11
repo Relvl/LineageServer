@@ -27,8 +27,8 @@ import net.sf.l2j.gameserver.model.L2TeleportLocation;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 
 /**
  * @author NightMarez

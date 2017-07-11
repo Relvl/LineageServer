@@ -32,8 +32,8 @@ import net.sf.l2j.gameserver.model.itemcontainer.listeners.BowRodListener;
 import net.sf.l2j.gameserver.model.itemcontainer.listeners.ItemPassiveSkillsListener;
 import net.sf.l2j.gameserver.model.tradelist.TradeItem;
 import net.sf.l2j.gameserver.model.tradelist.TradeList;
-import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
-import net.sf.l2j.gameserver.network.serverpackets.StatusUpdate;
+import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
+import net.sf.l2j.gameserver.network.client.game_to_client.StatusUpdate;
 import net.sf.l2j.gameserver.taskmanager.ShadowItemTaskManager;
 
 public class PcInventory extends Inventory

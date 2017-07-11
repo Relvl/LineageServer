@@ -35,8 +35,8 @@ import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
-import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
+import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
+import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
 import net.sf.l2j.gameserver.taskmanager.MovementTaskManager;
 import net.sf.l2j.gameserver.util.Util;
 

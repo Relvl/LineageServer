@@ -27,7 +27,7 @@ import net.sf.l2j.gameserver.instancemanager.DimensionalRiftManager;
 import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.Earthquake;
+import net.sf.l2j.gameserver.network.client.game_to_client.Earthquake;
 
 /**
  * Thanks to L2Fortress and balancer.ru - kombat

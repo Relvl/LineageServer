@@ -43,18 +43,18 @@ import net.sf.l2j.gameserver.model.itemcontainer.ClanWarehouse;
 import net.sf.l2j.gameserver.model.itemcontainer.ItemContainer;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.ItemList;
-import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
-import net.sf.l2j.gameserver.network.serverpackets.PledgeReceiveSubPledgeCreated;
-import net.sf.l2j.gameserver.network.serverpackets.PledgeShowInfoUpdate;
-import net.sf.l2j.gameserver.network.serverpackets.PledgeShowMemberListAll;
-import net.sf.l2j.gameserver.network.serverpackets.PledgeShowMemberListDeleteAll;
-import net.sf.l2j.gameserver.network.serverpackets.PledgeShowMemberListUpdate;
-import net.sf.l2j.gameserver.network.serverpackets.PledgeSkillList;
-import net.sf.l2j.gameserver.network.serverpackets.PledgeSkillListAdd;
-import net.sf.l2j.gameserver.network.serverpackets.SkillCoolTime;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
-import net.sf.l2j.gameserver.network.serverpackets.UserInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.ItemList;
+import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
+import net.sf.l2j.gameserver.network.client.game_to_client.PledgeReceiveSubPledgeCreated;
+import net.sf.l2j.gameserver.network.client.game_to_client.PledgeShowInfoUpdate;
+import net.sf.l2j.gameserver.network.client.game_to_client.PledgeShowMemberListAll;
+import net.sf.l2j.gameserver.network.client.game_to_client.PledgeShowMemberListDeleteAll;
+import net.sf.l2j.gameserver.network.client.game_to_client.PledgeShowMemberListUpdate;
+import net.sf.l2j.gameserver.network.client.game_to_client.PledgeSkillList;
+import net.sf.l2j.gameserver.network.client.game_to_client.PledgeSkillListAdd;
+import net.sf.l2j.gameserver.network.client.game_to_client.SkillCoolTime;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.UserInfo;
 
 public class L2Clan
 {

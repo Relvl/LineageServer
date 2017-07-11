@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.RadarControl;
+import net.sf.l2j.gameserver.network.client.game_to_client.RadarControl;
 
 /**
  * @author dalrond

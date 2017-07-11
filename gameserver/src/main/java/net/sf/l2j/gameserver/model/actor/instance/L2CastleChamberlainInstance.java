@@ -27,13 +27,13 @@ import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
-import net.sf.l2j.gameserver.network.serverpackets.ExShowCropInfo;
-import net.sf.l2j.gameserver.network.serverpackets.ExShowCropSetting;
-import net.sf.l2j.gameserver.network.serverpackets.ExShowManorDefaultInfo;
-import net.sf.l2j.gameserver.network.serverpackets.ExShowSeedInfo;
-import net.sf.l2j.gameserver.network.serverpackets.ExShowSeedSetting;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExShowCropInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExShowCropSetting;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExShowManorDefaultInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExShowSeedInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExShowSeedSetting;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 
 /**
  * Castle Chamberlains implementation, used for:

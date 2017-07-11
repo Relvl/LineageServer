@@ -18,7 +18,7 @@ import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
-import net.sf.l2j.gameserver.network.serverpackets.UserInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.UserInfo;
 
 public class ObjectPoly
 {

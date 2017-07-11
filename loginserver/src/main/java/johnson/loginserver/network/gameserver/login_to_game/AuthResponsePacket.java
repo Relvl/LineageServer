@@ -1,8 +1,8 @@
 package johnson.loginserver.network.gameserver.login_to_game;
 
-import johnson.loginserver.network.gameserver.ABaseServerPacket;
+import net.sf.l2j.network.ABaseSendablePacket;
 
-public class AuthResponsePacket extends ABaseServerPacket {
+public class AuthResponsePacket extends ABaseSendablePacket {
     public AuthResponsePacket(int serverId) {
         writeC(0x02);
         writeC(serverId);

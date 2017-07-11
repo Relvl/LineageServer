@@ -21,7 +21,7 @@ import net.sf.l2j.gameserver.datatables.AugmentationData.AugStat;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.SkillCoolTime;
+import net.sf.l2j.gameserver.network.client.game_to_client.SkillCoolTime;
 import net.sf.l2j.gameserver.skills.Stats;
 import net.sf.l2j.gameserver.skills.basefuncs.FuncAdd;
 import net.sf.l2j.gameserver.skills.basefuncs.LambdaConst;

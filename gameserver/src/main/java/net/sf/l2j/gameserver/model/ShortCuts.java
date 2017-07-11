@@ -26,8 +26,8 @@ import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
-import net.sf.l2j.gameserver.network.serverpackets.ExAutoSoulShot;
-import net.sf.l2j.gameserver.network.serverpackets.ShortCutInit;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExAutoSoulShot;
+import net.sf.l2j.gameserver.network.client.game_to_client.ShortCutInit;
 
 public class ShortCuts
 {

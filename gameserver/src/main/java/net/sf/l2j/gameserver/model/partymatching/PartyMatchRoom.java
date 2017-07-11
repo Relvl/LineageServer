@@ -20,8 +20,8 @@ import java.util.List;
 import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.ExManagePartyRoomMember;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExManagePartyRoomMember;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 /**
  * @author Gnacik

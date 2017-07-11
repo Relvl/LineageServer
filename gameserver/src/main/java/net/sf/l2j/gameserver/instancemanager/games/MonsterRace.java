@@ -37,10 +37,10 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.zone.type.L2DerbyTrackZone;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.DeleteObject;
-import net.sf.l2j.gameserver.network.serverpackets.MonRaceInfo;
-import net.sf.l2j.gameserver.network.serverpackets.PlaySound;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.DeleteObject;
+import net.sf.l2j.gameserver.network.client.game_to_client.MonRaceInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.util.Broadcast;
 
 public class MonsterRace

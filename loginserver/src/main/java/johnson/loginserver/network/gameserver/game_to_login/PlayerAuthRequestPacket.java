@@ -1,9 +1,9 @@
 package johnson.loginserver.network.gameserver.game_to_login;
 
-import johnson.loginserver.SessionKey;
-import johnson.loginserver.network.gameserver.ABaseClientPacket;
+import net.sf.l2j.commons.SessionKey;
+import net.sf.l2j.network.ABaseReceivablePacket;
 
-public class PlayerAuthRequestPacket extends ABaseClientPacket {
+public class PlayerAuthRequestPacket extends ABaseReceivablePacket {
 
     private final String login;
     private final SessionKey sessionKey;

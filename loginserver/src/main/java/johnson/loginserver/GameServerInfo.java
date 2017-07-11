@@ -1,6 +1,5 @@
 package johnson.loginserver;
 
-import johnson.loginserver.network.gameserver.game_to_login.ServerStatusPacket;
 import net.sf.l2j.commons.DefaultConstructor;
 import net.sf.l2j.commons.EServerStatus;
 import net.sf.l2j.commons.database.annotation.OrmParamCursor;
@@ -63,7 +62,6 @@ public class GameServerInfo {
     }
 
     public void setStatus(EServerStatus status) {
-        System.out.println(">>> status: " + status);
         this.status = status;
     }
 

@@ -1,15 +1,15 @@
 package johnson.loginserver.network.gameserver.game_to_login;
 
-import johnson.loginserver.network.gameserver.ABaseClientPacket;
+import net.sf.l2j.network.ABaseReceivablePacket;
 
-public class GameServerAuthRequestPacket extends ABaseClientPacket {
-    private final byte[] hexId;
+public class GameServerAuthRequestPacket extends ABaseReceivablePacket {
     private final int desiredId;
     private final boolean hostReserved;
-    private final int maxPlayers;
-    private final int port;
     private final String externalHost;
     private final String internalHost;
+    private final int port;
+    private final int maxPlayers;
+    private final byte[] hexId;
 
     public GameServerAuthRequestPacket(byte[] decrypt) {
         super(decrypt);

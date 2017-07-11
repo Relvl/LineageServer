@@ -22,9 +22,9 @@ import net.sf.l2j.gameserver.ai.CtrlIntention;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
-import net.sf.l2j.gameserver.network.serverpackets.AbstractNpcInfo.NpcInfo;
-import net.sf.l2j.gameserver.network.serverpackets.NpcSay;
-import net.sf.l2j.gameserver.network.serverpackets.SocialAction;
+import net.sf.l2j.gameserver.network.client.game_to_client.AbstractNpcInfo.NpcInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcSay;
+import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 
 /**
  * A tamed beast behaves a lot like a pet and has an owner. Some points :

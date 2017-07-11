@@ -19,9 +19,9 @@ import net.sf.l2j.gameserver.model.L2CharPosition;
 import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.L2Vehicle;
 import net.sf.l2j.gameserver.model.actor.template.CharTemplate;
-import net.sf.l2j.gameserver.network.serverpackets.VehicleDeparture;
-import net.sf.l2j.gameserver.network.serverpackets.VehicleInfo;
-import net.sf.l2j.gameserver.network.serverpackets.VehicleStarted;
+import net.sf.l2j.gameserver.network.client.game_to_client.VehicleDeparture;
+import net.sf.l2j.gameserver.network.client.game_to_client.VehicleInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.VehicleStarted;
 
 /**
  * @author Maktakien, reworked by DS

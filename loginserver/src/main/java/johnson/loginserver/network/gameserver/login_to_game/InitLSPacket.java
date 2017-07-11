@@ -1,9 +1,9 @@
 package johnson.loginserver.network.gameserver.login_to_game;
 
 import johnson.loginserver.LoginServer;
-import johnson.loginserver.network.gameserver.ABaseServerPacket;
+import net.sf.l2j.network.ABaseSendablePacket;
 
-public class InitLSPacket extends ABaseServerPacket {
+public class InitLSPacket extends ABaseSendablePacket {
 
     public InitLSPacket(byte[] publickey) {
         writeC(0x00);

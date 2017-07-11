@@ -27,7 +27,6 @@ import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
-import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.datatables.MapRegionTable.TeleportWhereType;
@@ -49,10 +48,10 @@ import net.sf.l2j.gameserver.model.actor.instance.L2ControlTowerInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2FlameTowerInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.PlaySound;
-import net.sf.l2j.gameserver.network.serverpackets.SiegeInfo;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
-import net.sf.l2j.gameserver.network.serverpackets.UserInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.SiegeInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.UserInfo;
 import net.sf.l2j.gameserver.util.Broadcast;
 
 public class Siege implements Siegable

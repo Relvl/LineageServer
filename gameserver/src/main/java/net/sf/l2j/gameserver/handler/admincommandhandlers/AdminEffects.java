@@ -26,17 +26,17 @@ import net.sf.l2j.gameserver.model.actor.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2ChestInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.AbstractNpcInfo.NpcInfo;
-import net.sf.l2j.gameserver.network.serverpackets.Earthquake;
-import net.sf.l2j.gameserver.network.serverpackets.ExRedSky;
-import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
-import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
-import net.sf.l2j.gameserver.network.serverpackets.PlaySound;
-import net.sf.l2j.gameserver.network.serverpackets.SignsSky;
-import net.sf.l2j.gameserver.network.serverpackets.SocialAction;
-import net.sf.l2j.gameserver.network.serverpackets.StopMove;
-import net.sf.l2j.gameserver.network.serverpackets.SunRise;
-import net.sf.l2j.gameserver.network.serverpackets.SunSet;
+import net.sf.l2j.gameserver.network.client.game_to_client.AbstractNpcInfo.NpcInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.Earthquake;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExRedSky;
+import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
+import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillUse;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.SignsSky;
+import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
+import net.sf.l2j.gameserver.network.client.game_to_client.StopMove;
+import net.sf.l2j.gameserver.network.client.game_to_client.SunRise;
+import net.sf.l2j.gameserver.network.client.game_to_client.SunSet;
 import net.sf.l2j.gameserver.util.Broadcast;
 
 /**

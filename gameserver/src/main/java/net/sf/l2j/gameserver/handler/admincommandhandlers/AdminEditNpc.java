@@ -32,7 +32,7 @@ import net.sf.l2j.gameserver.model.buylist.NpcBuyList;
 import net.sf.l2j.gameserver.model.buylist.Product;
 import net.sf.l2j.gameserver.model.item.DropCategory;
 import net.sf.l2j.gameserver.model.item.DropData;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 import net.sf.l2j.gameserver.scripting.EventType;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;

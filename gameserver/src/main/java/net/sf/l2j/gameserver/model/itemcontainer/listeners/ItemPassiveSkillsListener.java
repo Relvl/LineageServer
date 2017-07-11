@@ -21,7 +21,7 @@ import net.sf.l2j.gameserver.model.holder.IntIntHolder;
 import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
-import net.sf.l2j.gameserver.network.serverpackets.SkillCoolTime;
+import net.sf.l2j.gameserver.network.client.game_to_client.SkillCoolTime;
 
 public class ItemPassiveSkillsListener implements OnEquipListener
 {

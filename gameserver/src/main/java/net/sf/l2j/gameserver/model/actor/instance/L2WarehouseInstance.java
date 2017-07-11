@@ -21,11 +21,11 @@ import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.itemcontainer.PcFreight;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
-import net.sf.l2j.gameserver.network.serverpackets.EnchantResult;
-import net.sf.l2j.gameserver.network.serverpackets.PackageToList;
-import net.sf.l2j.gameserver.network.serverpackets.WarehouseDepositList;
-import net.sf.l2j.gameserver.network.serverpackets.WarehouseWithdrawList;
+import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
+import net.sf.l2j.gameserver.network.client.game_to_client.EnchantResult;
+import net.sf.l2j.gameserver.network.client.game_to_client.PackageToList;
+import net.sf.l2j.gameserver.network.client.game_to_client.WarehouseDepositList;
+import net.sf.l2j.gameserver.network.client.game_to_client.WarehouseWithdrawList;
 
 public class L2WarehouseInstance extends L2NpcInstance
 {

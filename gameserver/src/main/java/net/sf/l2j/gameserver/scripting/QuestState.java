@@ -30,16 +30,16 @@ import net.sf.l2j.gameserver.model.item.DropData;
 import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.PcInventory;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.ExShowQuestMark;
-import net.sf.l2j.gameserver.network.serverpackets.InventoryUpdate;
-import net.sf.l2j.gameserver.network.serverpackets.PlaySound;
-import net.sf.l2j.gameserver.network.serverpackets.QuestList;
-import net.sf.l2j.gameserver.network.serverpackets.StatusUpdate;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
-import net.sf.l2j.gameserver.network.serverpackets.TutorialCloseHtml;
-import net.sf.l2j.gameserver.network.serverpackets.TutorialEnableClientEvent;
-import net.sf.l2j.gameserver.network.serverpackets.TutorialShowHtml;
-import net.sf.l2j.gameserver.network.serverpackets.TutorialShowQuestionMark;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExShowQuestMark;
+import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.QuestList;
+import net.sf.l2j.gameserver.network.client.game_to_client.StatusUpdate;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.TutorialCloseHtml;
+import net.sf.l2j.gameserver.network.client.game_to_client.TutorialEnableClientEvent;
+import net.sf.l2j.gameserver.network.client.game_to_client.TutorialShowHtml;
+import net.sf.l2j.gameserver.network.client.game_to_client.TutorialShowQuestionMark;
 
 /**
  * @author Luis Arias

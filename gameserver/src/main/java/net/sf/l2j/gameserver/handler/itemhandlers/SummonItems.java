@@ -37,11 +37,11 @@ import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.item.SummonItem;
 import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.MagicSkillLaunched;
-import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
-import net.sf.l2j.gameserver.network.serverpackets.PetItemList;
-import net.sf.l2j.gameserver.network.serverpackets.SetupGauge;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillLaunched;
+import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillUse;
+import net.sf.l2j.gameserver.network.client.game_to_client.PetItemList;
+import net.sf.l2j.gameserver.network.client.game_to_client.SetupGauge;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.util.Broadcast;
 
 public class SummonItems implements IItemHandler

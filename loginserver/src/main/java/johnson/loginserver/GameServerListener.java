@@ -6,24 +6,25 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 public class GameServerListener extends FloodProtectedListener {
     private static final Logger LOGGER = LoggerFactory.getLogger(GameServerListener.class);
-    private static List<GameServerThread> _gameServers = new ArrayList<>();
+    private static final Collection<GameServerThread> GAME_SERVER_THREADS = new ArrayList<>();
 
     public GameServerListener() throws IOException {
         super(LoginServer.config.gameServerListener.host, LoginServer.config.gameServerListener.port);
     }
 
-    @Override
-    public void addClient(Socket s) {
-        LOGGER.trace("Received gameserver connection from: {}", s.getInetAddress().getHostAddress());
-        GameServerThread gst = new GameServerThread(s);
-        _gameServers.add(gst);
+    public static void removeGameServer(GameServerThread gst) {
+        GAME_SERVER_THREADS.remove(gst);
     }
 
-    public void removeGameServer(GameServerThread gst) {
-        _gameServers.remove(gst);
+    @Override
+    public void addClient(Socket socket) {
+        LOGGER.info("Received gameserver connection from: {}", socket.getInetAddress().getHostAddress());
+        GameServerThread gst = new GameServerThread(socket);
+        gst.start();
+        GAME_SERVER_THREADS.add(gst);
     }
 }

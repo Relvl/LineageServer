@@ -1,23 +1,23 @@
 package johnson.loginserver.network.gameserver.game_to_login;
 
-import johnson.loginserver.network.gameserver.ABaseClientPacket;
+import net.sf.l2j.network.ABaseReceivablePacket;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerInGamePacket extends ABaseClientPacket {
-    private final List<String> accounts;
+public class PlayerInGamePacket extends ABaseReceivablePacket {
+    private final List<String> logins;
 
     public PlayerInGamePacket(byte[] decrypt) {
         super(decrypt);
-        accounts = new ArrayList<>();
+        logins = new ArrayList<>();
         int size = readH();
         for (int i = 0; i < size; i++) {
-            accounts.add(readS());
+            logins.add(readS());
         }
     }
 
-    public List<String> getAccounts() {
-        return accounts;
+    public List<String> getLogins() {
+        return logins;
     }
 }

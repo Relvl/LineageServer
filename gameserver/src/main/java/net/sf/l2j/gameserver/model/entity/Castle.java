@@ -46,9 +46,9 @@ import net.sf.l2j.gameserver.model.zone.type.L2CastleTeleportZone;
 import net.sf.l2j.gameserver.model.zone.type.L2CastleZone;
 import net.sf.l2j.gameserver.model.zone.type.L2SiegeZone;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.PlaySound;
-import net.sf.l2j.gameserver.network.serverpackets.PledgeShowInfoUpdate;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.PledgeShowInfoUpdate;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 public class Castle
 {

@@ -36,10 +36,10 @@ import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.Earthquake;
-import net.sf.l2j.gameserver.network.serverpackets.ExRedSky;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
-import net.sf.l2j.gameserver.network.serverpackets.UserInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.Earthquake;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExRedSky;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.UserInfo;
 import net.sf.l2j.gameserver.util.Broadcast;
 
 public class CursedWeapon

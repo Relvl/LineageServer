@@ -25,9 +25,9 @@ import net.sf.l2j.gameserver.model.olympiad.Olympiad;
 import net.sf.l2j.gameserver.model.olympiad.OlympiadGameManager;
 import net.sf.l2j.gameserver.model.olympiad.OlympiadGameTask;
 import net.sf.l2j.gameserver.model.olympiad.OlympiadManager;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
-import net.sf.l2j.gameserver.network.serverpackets.ExHeroList;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExHeroList;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 
 /**
  * Olympiad Npcs

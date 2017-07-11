@@ -26,7 +26,7 @@ import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
-import net.sf.l2j.gameserver.network.serverpackets.ItemList;
+import net.sf.l2j.gameserver.network.client.game_to_client.ItemList;
 
 /**
  * This class handles following admin commands: - enchant_armor

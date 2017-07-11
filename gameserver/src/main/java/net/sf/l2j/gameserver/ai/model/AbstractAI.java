@@ -28,13 +28,13 @@ import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
-import net.sf.l2j.gameserver.network.serverpackets.AutoAttackStart;
-import net.sf.l2j.gameserver.network.serverpackets.AutoAttackStop;
-import net.sf.l2j.gameserver.network.serverpackets.Die;
-import net.sf.l2j.gameserver.network.serverpackets.MoveToLocation;
-import net.sf.l2j.gameserver.network.serverpackets.StopMove;
-import net.sf.l2j.gameserver.network.serverpackets.StopRotation;
+import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
+import net.sf.l2j.gameserver.network.client.game_to_client.AutoAttackStart;
+import net.sf.l2j.gameserver.network.client.game_to_client.AutoAttackStop;
+import net.sf.l2j.gameserver.network.client.game_to_client.Die;
+import net.sf.l2j.gameserver.network.client.game_to_client.MoveToLocation;
+import net.sf.l2j.gameserver.network.client.game_to_client.StopMove;
+import net.sf.l2j.gameserver.network.client.game_to_client.StopRotation;
 import net.sf.l2j.gameserver.taskmanager.AttackStanceTaskManager;
 
 abstract class AbstractAI implements Ctrl

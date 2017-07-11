@@ -23,7 +23,7 @@ import net.sf.l2j.gameserver.model.VehiclePathPoint;
 import net.sf.l2j.gameserver.model.actor.instance.L2BoatInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.template.CharTemplate;
-import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
+import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
 import net.sf.l2j.gameserver.templates.StatsSet;
 
 public class BoatManager

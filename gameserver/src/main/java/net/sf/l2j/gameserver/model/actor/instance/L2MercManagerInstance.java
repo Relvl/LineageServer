@@ -20,8 +20,8 @@ import net.sf.l2j.gameserver.datatables.BuyListTable;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.buylist.NpcBuyList;
-import net.sf.l2j.gameserver.network.serverpackets.BuyList;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.BuyList;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 
 public final class L2MercManagerInstance extends L2NpcInstance
 {

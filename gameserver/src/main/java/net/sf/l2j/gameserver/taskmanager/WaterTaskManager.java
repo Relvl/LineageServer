@@ -20,7 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 /**
  * Updates {@link L2PcInstance} drown timer and reduces {@link L2PcInstance} HP, when drowning.

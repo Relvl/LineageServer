@@ -19,10 +19,10 @@ import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.instancemanager.games.MonsterRace;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.DeleteObject;
-import net.sf.l2j.gameserver.network.serverpackets.MonRaceInfo;
-import net.sf.l2j.gameserver.network.serverpackets.PlaySound;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.DeleteObject;
+import net.sf.l2j.gameserver.network.client.game_to_client.MonRaceInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 public class AdminMonsterRace implements IAdminCommandHandler
 {

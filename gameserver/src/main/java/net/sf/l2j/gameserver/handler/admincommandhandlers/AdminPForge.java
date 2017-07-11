@@ -19,8 +19,8 @@ import java.util.StringTokenizer;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.AdminForgePacket;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.AdminForgePacket;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 
 /**
  * This class handles commands for gm to forge packets

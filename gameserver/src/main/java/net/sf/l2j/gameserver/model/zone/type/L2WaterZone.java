@@ -19,8 +19,8 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.zone.L2ZoneType;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
-import net.sf.l2j.gameserver.network.serverpackets.AbstractNpcInfo.NpcInfo;
-import net.sf.l2j.gameserver.network.serverpackets.ServerObjectInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.AbstractNpcInfo.NpcInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.ServerObjectInfo;
 
 public class L2WaterZone extends L2ZoneType
 {

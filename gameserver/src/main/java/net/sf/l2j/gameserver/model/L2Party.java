@@ -36,16 +36,16 @@ import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
 import net.sf.l2j.gameserver.model.partymatching.PartyMatchRoom;
 import net.sf.l2j.gameserver.model.partymatching.PartyMatchRoomList;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.CreatureSay;
-import net.sf.l2j.gameserver.network.serverpackets.ExCloseMPCC;
-import net.sf.l2j.gameserver.network.serverpackets.ExOpenMPCC;
-import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
-import net.sf.l2j.gameserver.network.serverpackets.PartyMemberPosition;
-import net.sf.l2j.gameserver.network.serverpackets.PartySmallWindowAdd;
-import net.sf.l2j.gameserver.network.serverpackets.PartySmallWindowAll;
-import net.sf.l2j.gameserver.network.serverpackets.PartySmallWindowDelete;
-import net.sf.l2j.gameserver.network.serverpackets.PartySmallWindowDeleteAll;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExCloseMPCC;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExOpenMPCC;
+import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
+import net.sf.l2j.gameserver.network.client.game_to_client.PartyMemberPosition;
+import net.sf.l2j.gameserver.network.client.game_to_client.PartySmallWindowAdd;
+import net.sf.l2j.gameserver.network.client.game_to_client.PartySmallWindowAll;
+import net.sf.l2j.gameserver.network.client.game_to_client.PartySmallWindowDelete;
+import net.sf.l2j.gameserver.network.client.game_to_client.PartySmallWindowDeleteAll;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.util.Util;
 
 /**

@@ -29,7 +29,7 @@ import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2ClanHallManagerInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.skills.Env;
 import net.sf.l2j.gameserver.skills.Formulas;
 import net.sf.l2j.gameserver.templates.skills.L2EffectType;

@@ -28,11 +28,11 @@ import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.entity.ClanHall;
 import net.sf.l2j.gameserver.model.entity.ClanHall.ClanHallFunction;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
-import net.sf.l2j.gameserver.network.serverpackets.ClanHallDecoration;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
-import net.sf.l2j.gameserver.network.serverpackets.WarehouseDepositList;
-import net.sf.l2j.gameserver.network.serverpackets.WarehouseWithdrawList;
+import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
+import net.sf.l2j.gameserver.network.client.game_to_client.ClanHallDecoration;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.WarehouseDepositList;
+import net.sf.l2j.gameserver.network.client.game_to_client.WarehouseWithdrawList;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
 
 public class L2ClanHallManagerInstance extends L2MerchantInstance

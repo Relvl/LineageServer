@@ -23,7 +23,7 @@ import net.sf.l2j.gameserver.model.actor.knownlist.ObjectKnownList;
 import net.sf.l2j.gameserver.model.actor.poly.ObjectPoly;
 import net.sf.l2j.gameserver.model.actor.position.ObjectPosition;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
+import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
 
 /**
  * Mother class of all interactive objects in the world (PC, NPC, Item...)

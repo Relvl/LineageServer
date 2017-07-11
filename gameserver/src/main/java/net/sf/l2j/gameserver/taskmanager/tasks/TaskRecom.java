@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.serverpackets.UserInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.UserInfo;
 import net.sf.l2j.gameserver.taskmanager.TaskManager;
 import net.sf.l2j.gameserver.taskmanager.TaskManager.ExecutedTask;
 

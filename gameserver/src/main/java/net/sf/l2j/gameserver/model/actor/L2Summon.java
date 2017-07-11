@@ -43,19 +43,19 @@ import net.sf.l2j.gameserver.model.item.type.ActionType;
 import net.sf.l2j.gameserver.model.itemcontainer.PetInventory;
 import net.sf.l2j.gameserver.model.olympiad.OlympiadGameManager;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.AbstractNpcInfo.SummonInfo;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
-import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
-import net.sf.l2j.gameserver.network.serverpackets.MoveToPawn;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
-import net.sf.l2j.gameserver.network.serverpackets.PetDelete;
-import net.sf.l2j.gameserver.network.serverpackets.PetInfo;
-import net.sf.l2j.gameserver.network.serverpackets.PetItemList;
-import net.sf.l2j.gameserver.network.serverpackets.PetStatusShow;
-import net.sf.l2j.gameserver.network.serverpackets.PetStatusUpdate;
-import net.sf.l2j.gameserver.network.serverpackets.RelationChanged;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
-import net.sf.l2j.gameserver.network.serverpackets.TeleportToLocation;
+import net.sf.l2j.gameserver.network.client.game_to_client.AbstractNpcInfo.SummonInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
+import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
+import net.sf.l2j.gameserver.network.client.game_to_client.MoveToPawn;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.PetDelete;
+import net.sf.l2j.gameserver.network.client.game_to_client.PetInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.PetItemList;
+import net.sf.l2j.gameserver.network.client.game_to_client.PetStatusShow;
+import net.sf.l2j.gameserver.network.client.game_to_client.PetStatusUpdate;
+import net.sf.l2j.gameserver.network.client.game_to_client.RelationChanged;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.TeleportToLocation;
 
 public abstract class L2Summon extends L2Playable
 {

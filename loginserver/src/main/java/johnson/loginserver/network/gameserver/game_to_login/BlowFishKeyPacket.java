@@ -1,6 +1,6 @@
 package johnson.loginserver.network.gameserver.game_to_login;
 
-import johnson.loginserver.network.gameserver.ABaseClientPacket;
+import net.sf.l2j.network.ABaseReceivablePacket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,19 +8,21 @@ import javax.crypto.Cipher;
 import java.security.GeneralSecurityException;
 import java.security.interfaces.RSAPrivateKey;
 
-public class BlowFishKeyPacket extends ABaseClientPacket {
+public class BlowFishKeyPacket extends ABaseReceivablePacket {
     private static final Logger LOGGER = LoggerFactory.getLogger(BlowFishKeyPacket.class);
     byte[] key;
 
     public BlowFishKeyPacket(byte[] decrypt, RSAPrivateKey privateKey) {
         super(decrypt);
+
         int size = readD();
-        byte[] tempKey = readB(size);
+        byte[] encryptedKey = readB(size);
+
+
         try {
-            byte[] tempDecryptKey;
             Cipher rsaCipher = Cipher.getInstance("RSA/ECB/nopadding");
             rsaCipher.init(Cipher.DECRYPT_MODE, privateKey);
-            tempDecryptKey = rsaCipher.doFinal(tempKey);
+            byte[] tempDecryptKey = rsaCipher.doFinal(encryptedKey);
             // there are nulls before the key we must remove them
             int i = 0;
             int len = tempDecryptKey.length;

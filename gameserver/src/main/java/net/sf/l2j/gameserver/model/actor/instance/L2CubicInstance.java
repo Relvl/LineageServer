@@ -37,7 +37,7 @@ import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.MagicSkillUse;
+import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillUse;
 import net.sf.l2j.gameserver.skills.Formulas;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillDrain;
 import net.sf.l2j.gameserver.taskmanager.AttackStanceTaskManager;

@@ -17,8 +17,8 @@ package net.sf.l2j.gameserver.skills.effects;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2SiegeSummonInstance;
-import net.sf.l2j.gameserver.network.serverpackets.StartRotation;
-import net.sf.l2j.gameserver.network.serverpackets.StopRotation;
+import net.sf.l2j.gameserver.network.client.game_to_client.StartRotation;
+import net.sf.l2j.gameserver.network.client.game_to_client.StopRotation;
 import net.sf.l2j.gameserver.skills.Env;
 import net.sf.l2j.gameserver.templates.skills.L2EffectType;
 

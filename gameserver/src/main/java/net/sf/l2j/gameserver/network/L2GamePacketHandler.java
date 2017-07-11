@@ -2,7 +2,7 @@ package net.sf.l2j.gameserver.network;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.lang.HexUtil;
-import net.sf.l2j.gameserver.network.clientpackets.*;
+import net.sf.l2j.gameserver.network.client.client_to_game.*;
 import org.mmocore.network.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

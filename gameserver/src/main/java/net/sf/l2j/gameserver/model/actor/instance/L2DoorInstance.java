@@ -36,12 +36,12 @@ import net.sf.l2j.gameserver.model.entity.ClanHall;
 import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
-import net.sf.l2j.gameserver.network.serverpackets.ConfirmDlg;
-import net.sf.l2j.gameserver.network.serverpackets.DoorInfo;
-import net.sf.l2j.gameserver.network.serverpackets.DoorStatusUpdate;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
+import net.sf.l2j.gameserver.network.client.game_to_client.ConfirmDlg;
+import net.sf.l2j.gameserver.network.client.game_to_client.DoorInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.DoorStatusUpdate;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 public class L2DoorInstance extends L2Character
 {

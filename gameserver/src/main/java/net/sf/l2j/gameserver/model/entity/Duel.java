@@ -26,15 +26,15 @@ import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.ActionFailed;
-import net.sf.l2j.gameserver.network.serverpackets.ExDuelEnd;
-import net.sf.l2j.gameserver.network.serverpackets.ExDuelReady;
-import net.sf.l2j.gameserver.network.serverpackets.ExDuelStart;
-import net.sf.l2j.gameserver.network.serverpackets.ExDuelUpdateUserInfo;
-import net.sf.l2j.gameserver.network.serverpackets.L2GameServerPacket;
-import net.sf.l2j.gameserver.network.serverpackets.PlaySound;
-import net.sf.l2j.gameserver.network.serverpackets.SocialAction;
-import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExDuelEnd;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExDuelReady;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExDuelStart;
+import net.sf.l2j.gameserver.network.client.game_to_client.ExDuelUpdateUserInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 public class Duel
 {

@@ -43,7 +43,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2SepulcherNpcInstance;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.NpcHtmlMessage;
+import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 import net.sf.l2j.gameserver.scripting.QuestState;
 import net.sf.l2j.gameserver.util.Util;
 

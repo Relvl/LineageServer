@@ -19,7 +19,7 @@ import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.serverpackets.ChooseInventoryItem;
+import net.sf.l2j.gameserver.network.client.game_to_client.ChooseInventoryItem;
 
 public class EnchantScrolls implements IItemHandler
 {

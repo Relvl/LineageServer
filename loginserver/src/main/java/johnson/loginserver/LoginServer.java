@@ -47,14 +47,14 @@ public class LoginServer {
             }
         }
 
-        final SelectorConfig selectorConfig = new SelectorConfig();
+        SelectorConfig selectorConfig = new SelectorConfig();
         selectorConfig.MAX_READ_PER_PASS = config.mmoCore.maxReadPerPass;
         selectorConfig.MAX_SEND_PER_PASS = config.mmoCore.maxSendPerPass;
         selectorConfig.SLEEP_TIME = config.mmoCore.selectorSleepTime;
         selectorConfig.HELPER_BUFFER_COUNT = config.mmoCore.helperBufferCount;
 
-        final L2LoginPacketHandler lph = new L2LoginPacketHandler();
-        final SelectorHelper selectorHelper = new SelectorHelper();
+        L2LoginPacketHandler lph = new L2LoginPacketHandler();
+        SelectorHelper selectorHelper = new SelectorHelper();
         try {
             selectorThread = new SelectorThread<>(selectorConfig, selectorHelper, lph, selectorHelper, selectorHelper);
         } catch (IOException e) {

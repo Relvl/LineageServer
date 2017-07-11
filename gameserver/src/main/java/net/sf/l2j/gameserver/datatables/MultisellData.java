@@ -30,7 +30,7 @@ import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.multisell.Entry;
 import net.sf.l2j.gameserver.model.multisell.Ingredient;
 import net.sf.l2j.gameserver.model.multisell.ListContainer;
-import net.sf.l2j.gameserver.network.serverpackets.MultiSellList;
+import net.sf.l2j.gameserver.network.client.game_to_client.MultiSellList;
 import net.sf.l2j.gameserver.xmlfactory.XMLDocumentFactory;
 
 import org.w3c.dom.Document;
