@@ -223,10 +223,6 @@ public class LoginServerThread extends AServerCommunicationThread {
         return accountsInGameServer.put(account, client) == null;
     }
 
-    public void sendAccessLevel(String account, int level) {
-        sendPacket(new ChangeAccountAccessLevelPacket(account, level));
-    }
-
     public void doKickPlayer(String account) {
         if (accountsInGameServer.get(account) != null) {
             accountsInGameServer.get(account).closeNow();

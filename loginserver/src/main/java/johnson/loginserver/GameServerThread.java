@@ -110,7 +110,7 @@ public class GameServerThread extends AServerCommunicationThread {
                 onReceivePlayerLogOut(incoming);
                 break;
             case 0x04:
-                onReceiveChangeAccessLevel(incoming);
+                // access level
                 break;
             case 0x05:
                 onReceivePlayerAuthRequest(incoming);
@@ -181,28 +181,6 @@ public class GameServerThread extends AServerCommunicationThread {
         }
         PlayerLogoutFromGamePacket packet = new PlayerLogoutFromGamePacket(data);
         accountsOnGameServer.remove(packet.getLogin());
-    }
-
-    private void onReceiveChangeAccessLevel(byte[] data) {
-        if (!isAuthed()) {
-            forceClose(EGameServerLoginFailReason.REASON_NOT_AUTHED);
-            return;
-        }
-        ChangeAccountAccessLevelPacket packet = new ChangeAccountAccessLevelPacket(data);
-
-        // FIXME@SQL gameservers
-        try (
-                Connection con = L2DatabaseFactory.getInstance().getConnection();
-                PreparedStatement statement = con.prepareStatement("UPDATE accounts SET access_level=? WHERE login=?")
-        ) {
-            statement.setInt(1, packet.getLevel());
-            statement.setString(2, packet.getLogin());
-            statement.executeUpdate();
-            statement.close();
-        } catch (SQLException e) {
-            LOGGER.warn("Could not set accessLevel: {}", e.getMessage(), e);
-        }
-        LOGGER.info("Changed {} access level to {}.", packet.getLogin(), packet.getLevel());
     }
 
     private void onReceivePlayerAuthRequest(byte[] data) {
