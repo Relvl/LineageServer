@@ -17,7 +17,7 @@ public class RequestAuth extends ReceivablePacket<L2LoginClient> {
 
     @Override
     public boolean read() {
-        if (_buf.remaining() >= 128) {
+        if (buffer.remaining() >= 128) {
             readB(raw);
             return true;
         }

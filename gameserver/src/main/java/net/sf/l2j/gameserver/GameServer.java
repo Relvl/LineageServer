@@ -186,7 +186,6 @@ public class GameServer {
 
         _log.config("AutoSpawnHandler: Loaded " + AutoSpawnManager.getInstance().size() + " handlers.");
         _log.config("AdminCommandHandler: Loaded " + AdminCommandHandler.getInstance().size() + " handlers.");
-        _log.config("ChatHandler: Loaded " + ChatHandler.getInstance().size() + " handlers.");
         _log.config("ItemHandler: Loaded " + ItemHandler.getInstance().size() + " handlers.");
         _log.config("SkillHandler: Loaded " + SkillHandler.getInstance().size() + " handlers.");
         _log.config("UserCommandHandler: Loaded " + UserCommandHandler.getInstance().size() + " handlers.");

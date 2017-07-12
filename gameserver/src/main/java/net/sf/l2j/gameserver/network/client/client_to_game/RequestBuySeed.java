@@ -46,7 +46,7 @@ public class RequestBuySeed extends L2GameClientPacket
 		_manorId = readD();
 		
 		int count = readD();
-		if (count <= 0 || count > Config.MAX_ITEM_IN_PACKET || count * BATCH_LENGTH != _buf.remaining())
+		if (count <= 0 || count > Config.MAX_ITEM_IN_PACKET || count * BATCH_LENGTH != buffer.remaining())
 			return;
 		
 		_seeds = new Seed[count];

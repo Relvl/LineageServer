@@ -14,65 +14,55 @@
  */
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
+import net.sf.l2j.gameserver.EChatType;
+import net.sf.l2j.gameserver.network.SystemMessageId;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.l2j.gameserver.network.SystemMessageId;
+public class CreatureSay extends L2GameServerPacket {
+    private final int objectId;
+    private final EChatType chatType;
+    private String charName;
+    private int charId;
+    private String text;
+    private int npcString = -1;
+    private List<String> parameters;
 
-public class CreatureSay extends L2GameServerPacket
-{
-	private final int _objectId;
-	private final int _textType;
-	private String _charName = null;
-	private int _charId = 0;
-	private String _text = null;
-	private int _npcString = -1;
-	private List<String> _parameters;
-	
-	public CreatureSay(int objectId, int messageType, String charName, String text)
-	{
-		_objectId = objectId;
-		_textType = messageType;
-		_charName = charName;
-		_text = text;
-	}
-	
-	public CreatureSay(int objectId, int messageType, int charId, SystemMessageId sysString)
-	{
-		_objectId = objectId;
-		_textType = messageType;
-		_charId = charId;
-		_npcString = sysString.getId();
-	}
-	
-	public void addStringParameter(String text)
-	{
-		if (_parameters == null)
-			_parameters = new ArrayList<>();
-		
-		_parameters.add(text);
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
-		writeC(0x4a);
-		writeD(_objectId);
-		writeD(_textType);
-		if (_charName != null)
-			writeS(_charName);
-		else
-			writeD(_charId);
-		writeD(_npcString); // High Five NPCString ID
-		if (_text != null)
-			writeS(_text);
-		else
-		{
-			if (_parameters != null)
-			{
-				for (String s : _parameters)
-					writeS(s);
-			}
-		}
-	}
+    public CreatureSay(int objectId, EChatType chatType, String charName, String text) {
+        this.objectId = objectId;
+        this.chatType = chatType;
+        this.charName = charName;
+        this.text = text;
+    }
+
+    public CreatureSay(int objectId, EChatType chatType, int charId, SystemMessageId sysString) {
+        this.objectId = objectId;
+        this.chatType = chatType;
+        this.charId = charId;
+        this.npcString = sysString.getId();
+    }
+
+    public void addStringParameter(String param) {
+        if (parameters == null) {
+            parameters = new ArrayList<>();
+        }
+        parameters.add(param);
+    }
+
+    @Override
+    protected void writeImpl() {
+        writeC(0x4a);
+        writeD(objectId);
+        writeD(chatType.getCode());
+        if (charName != null) { writeS(charName); }
+        else { writeD(charId); }
+        writeD(npcString); // High Five NPCString ID
+        if (text != null) { writeS(text); }
+        else {
+            if (parameters != null) {
+                for (String s : parameters) { writeS(s); }
+            }
+        }
+    }
 }

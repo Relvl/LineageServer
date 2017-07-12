@@ -22,7 +22,7 @@ public class RequestServer extends ReceivablePacket<L2LoginClient> {
 
     @Override
     public boolean read() {
-        if (_buf.remaining() >= 9) {
+        if (buffer.remaining() >= 9) {
             sKey1 = readD();
             sKey2 = readD();
             serverId = readC();

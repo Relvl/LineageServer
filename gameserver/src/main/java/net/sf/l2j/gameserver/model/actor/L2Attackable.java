@@ -24,6 +24,7 @@ import java.util.logging.Level;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
+import net.sf.l2j.gameserver.EChatType;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.CtrlEvent;
 import net.sf.l2j.gameserver.ai.CtrlIntention;
@@ -168,7 +169,7 @@ public class L2Attackable extends L2Npc
 							_commandChannelTimer = new CommandChannelTimer(this);
 							_commandChannelLastAttack = System.currentTimeMillis();
 							ThreadPoolManager.getInstance().scheduleGeneral(_commandChannelTimer, 10000); // check for last attack
-							_firstCommandChannelAttacked.broadcastToChannelMembers(new CreatureSay(0, Say2.PARTYROOM_ALL, "", "You have looting rights!")); // TODO: retail msg
+							_firstCommandChannelAttacked.broadcastToChannelMembers(new CreatureSay(0, EChatType.PARTYROOM_ALL, "", "You have looting rights!")); // TODO: retail msg
 						}
 					}
 				}

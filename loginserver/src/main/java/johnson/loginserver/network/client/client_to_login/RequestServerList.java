@@ -11,7 +11,7 @@ public class RequestServerList extends ReceivablePacket<L2LoginClient> {
 
     @Override
     public boolean read() {
-        if (super._buf.remaining() >= 8) {
+        if (super.buffer.remaining() >= 8) {
             sKey1 = readD(); // loginOk 1
             sKey2 = readD(); // loginOk 2
             return true;

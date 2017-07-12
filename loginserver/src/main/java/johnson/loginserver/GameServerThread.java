@@ -1,7 +1,6 @@
 package johnson.loginserver;
 
 import johnson.loginserver.security.SecurityController;
-import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.NewCrypt;
 import net.sf.l2j.commons.EGameServerLoginFailReason;
 import net.sf.l2j.commons.SessionKey;
@@ -19,9 +18,6 @@ import java.net.UnknownHostException;
 import java.security.KeyPair;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;

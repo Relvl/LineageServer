@@ -34,10 +34,22 @@ import net.sf.l2j.gameserver.util.FloodProtectors.Action;
 import net.sf.l2j.gameserver.util.GMAudit;
 
 import java.util.StringTokenizer;
-import java.util.logging.Level;
 
 public final class RequestBypassToServer extends L2GameClientPacket {
     private String _command;
+
+    private static void playerHelp(L2PcInstance activeChar, String path) {
+        if (path.indexOf("..") != -1) { return; }
+
+        final StringTokenizer st = new StringTokenizer(path);
+        final String[] cmd = st.nextToken().split("#");
+
+        final NpcHtmlMessage html = new NpcHtmlMessage(0);
+        html.setFile("data/html/help/" + cmd[0]);
+        if (cmd.length > 1) { html.setItemId(Integer.parseInt(cmd[1])); }
+        html.disableValidation();
+        activeChar.sendPacket(html);
+    }
 
     @Override
     protected void readImpl() {
@@ -67,13 +79,13 @@ public final class RequestBypassToServer extends L2GameClientPacket {
                         activeChar.sendMessage("The command " + command.substring(6) + " doesn't exist.");
                     }
 
-                    _log.warning("No handler registered for admin command '" + command + "'");
+                    _log.warn("No handler registered for admin command '{}'", command);
                     return;
                 }
 
                 if (!AdminCommandAccessRights.getInstance().hasAccess(command, activeChar.getAccessLevel())) {
                     activeChar.sendMessage("You don't have the access rights to use this command.");
-                    _log.warning(activeChar.getName() + " tried to use admin command " + command + " without proper Access Level.");
+                    _log.warn("{} tried to use admin command {} without proper Access Level.", activeChar.getName(), command);
                     return;
                 }
 
@@ -155,20 +167,7 @@ public final class RequestBypassToServer extends L2GameClientPacket {
                 activeChar.enterOlympiadObserverMode(arenaId);
             }
         } catch (Exception e) {
-            _log.log(Level.WARNING, "Bad RequestBypassToServer: ", e);
+            _log.error("Bad RequestBypassToServer: ", e);
         }
-    }
-
-    private static void playerHelp(L2PcInstance activeChar, String path) {
-        if (path.indexOf("..") != -1) { return; }
-
-        final StringTokenizer st = new StringTokenizer(path);
-        final String[] cmd = st.nextToken().split("#");
-
-        final NpcHtmlMessage html = new NpcHtmlMessage(0);
-        html.setFile("data/html/help/" + cmd[0]);
-        if (cmd.length > 1) { html.setItemId(Integer.parseInt(cmd[1])); }
-        html.disableValidation();
-        activeChar.sendPacket(html);
     }
 }

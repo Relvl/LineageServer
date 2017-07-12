@@ -338,13 +338,13 @@ public final class SelectorThread<T extends MMOClient<?>> extends Thread {
             final ReceivablePacket<T> cp = _packetHandler.handlePacket(buf, client);
 
             if (cp != null) {
-                cp._buf = buf;
+                cp.buffer = buf;
                 cp._sbuf = STRING_BUFFER;
-                cp._client = client;
+                cp.client = client;
 
                 if (cp.read()) { _executor.execute(cp); }
 
-                cp._buf = null;
+                cp.buffer = null;
                 cp._sbuf = null;
             }
             buf.limit(limit);
@@ -458,11 +458,11 @@ public final class SelectorThread<T extends MMOClient<?>> extends Thread {
         WRITE_BUFFER.position(dataPos);
 
         // set the write buffer
-        sp._buf = WRITE_BUFFER;
+        sp.buffer = WRITE_BUFFER;
         // write content to buffer
         sp.write();
         // delete the write buffer
-        sp._buf = null;
+        sp.buffer = null;
 
         // size (inclusive header)
         int dataSize = WRITE_BUFFER.position() - dataPos;

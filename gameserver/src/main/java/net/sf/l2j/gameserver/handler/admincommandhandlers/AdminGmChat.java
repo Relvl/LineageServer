@@ -14,10 +14,10 @@
  */
 package net.sf.l2j.gameserver.handler.admincommandhandlers;
 
+import net.sf.l2j.gameserver.EChatType;
 import net.sf.l2j.gameserver.datatables.GmListTable;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.client.client_to_game.Say2;
 import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
 
 /**
@@ -42,7 +42,7 @@ public class AdminGmChat implements IAdminCommandHandler
 		{
 			try
 			{
-				GmListTable.broadcastToGMs(new CreatureSay(0, Say2.ALLIANCE, activeChar.getName(), command.substring((command.startsWith("admin_gmchat_menu")) ? 18 : 13)));
+				GmListTable.broadcastToGMs(new CreatureSay(0, EChatType.ALLIANCE, activeChar.getName(), command.substring((command.startsWith("admin_gmchat_menu")) ? 18 : 13)));
 			}
 			catch (StringIndexOutOfBoundsException e)
 			{

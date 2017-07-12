@@ -34,7 +34,7 @@ public final class SetPrivateStoreListBuy extends L2GameClientPacket
 	protected void readImpl()
 	{
 		int count = readD();
-		if (count < 1 || count > Config.MAX_ITEM_IN_PACKET || count * BATCH_LENGTH != _buf.remaining())
+		if (count < 1 || count > Config.MAX_ITEM_IN_PACKET || count * BATCH_LENGTH != buffer.remaining())
 			return;
 		
 		_items = new Item[count];

@@ -3,11 +3,10 @@ package org.mmocore.network;
 import java.nio.ByteBuffer;
 
 public abstract class AbstractPacket<T extends MMOClient<?>> {
-    protected ByteBuffer _buf;
+    protected ByteBuffer buffer;
+    protected T client;
 
-    T _client;
-
-    public final T getClient() {
-        return _client;
+    public T getClient() {
+        return client;
     }
 }

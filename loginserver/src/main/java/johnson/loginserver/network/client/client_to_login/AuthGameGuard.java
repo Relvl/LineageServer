@@ -11,7 +11,7 @@ public class AuthGameGuard extends ReceivablePacket<L2LoginClient> {
 
     @Override
     protected boolean read() {
-        if (super._buf.remaining() >= 20) {
+        if (super.buffer.remaining() >= 20) {
             sessionId = readD();
             // Это типа ключи для ГГ?
             readD();
