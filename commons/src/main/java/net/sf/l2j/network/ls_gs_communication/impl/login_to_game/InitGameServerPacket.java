@@ -14,6 +14,11 @@ public class InitGameServerPacket extends AServerCommunicationPacket {
     private int revision;
     private byte[] publicKey;
 
+    /** Конструктор для принимаемого пакета. */
+    public InitGameServerPacket(byte[] readBuffer) {
+        super(readBuffer);
+    }
+
     /** Конструктор для отправляемого пакета. */
     public InitGameServerPacket(int revision, byte[] publicKey) {
         this.revision = revision;

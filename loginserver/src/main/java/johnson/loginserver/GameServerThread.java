@@ -1,13 +1,13 @@
 package johnson.loginserver;
 
-import johnson.loginserver.network.gameserver.game_to_login.*;
-import johnson.loginserver.network.gameserver.login_to_game.*;
 import johnson.loginserver.security.SecurityController;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.NewCrypt;
 import net.sf.l2j.commons.EGameServerLoginFailReason;
 import net.sf.l2j.commons.SessionKey;
 import net.sf.l2j.network.ls_gs_communication.AServerCommunicationThread;
+import net.sf.l2j.network.ls_gs_communication.impl.game_to_login.*;
+import net.sf.l2j.network.ls_gs_communication.impl.login_to_game.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -78,7 +78,7 @@ public class GameServerThread extends AServerCommunicationThread {
         }
 
         try {
-            sendPacket(new InitLSPacket(publicKey.getModulus().toByteArray()));
+            sendPacket(new InitGameServerPacket(LoginServer.config.protocolRevision, publicKey.getModulus().toByteArray()));
             doThreadLoop(socket);
 
         } catch (IOException e) {
@@ -125,20 +125,20 @@ public class GameServerThread extends AServerCommunicationThread {
     }
 
     private void onReceiveBlowfishKey(byte[] data) {
-        BlowFishKeyPacket packet = new BlowFishKeyPacket(data, privateKey);
-        blowfishCrypt = new NewCrypt(packet.getKey());
+        BlowFishKeyInitPacket packet = new BlowFishKeyInitPacket(data, privateKey);
+        blowfishCrypt = new NewCrypt(packet.getBlowFishKey());
     }
 
     private void onGameServerAuth(byte[] data) {
         GameServerAuthRequestPacket packet = new GameServerAuthRequestPacket(data);
-        GameServerInfo gsi = GameServerTable.getInstance().getGameServer(packet.getDesiredID());
+        GameServerInfo gsi = GameServerTable.getInstance().getGameServer(packet.getDesiredId());
 
         if (gsi == null) {
             forceClose(EGameServerLoginFailReason.REASON_WRONG_HEXID);
             return;
         }
 
-        if (!Arrays.equals(gsi.getHexId(), packet.getHexID())) {
+        if (!Arrays.equals(gsi.getHexId(), packet.getHexId())) {
             forceClose(EGameServerLoginFailReason.REASON_WRONG_HEXID);
             return;
         }
@@ -159,7 +159,7 @@ public class GameServerThread extends AServerCommunicationThread {
         }
 
         if (isAuthed()) {
-            sendPacket(new AuthResponsePacket(gameServerInfo.getId()));
+            sendPacket(new LoginServerAuthResponsePacket(gameServerInfo.getId()));
         }
     }
 
@@ -168,7 +168,7 @@ public class GameServerThread extends AServerCommunicationThread {
             forceClose(EGameServerLoginFailReason.REASON_NOT_AUTHED);
             return;
         }
-        PlayerInGamePacket packet = new PlayerInGamePacket(data);
+        PlayerInGameServerPacket packet = new PlayerInGameServerPacket(data);
         for (String account : packet.getLogins()) {
             accountsOnGameServer.add(account);
         }
@@ -179,8 +179,8 @@ public class GameServerThread extends AServerCommunicationThread {
             forceClose(EGameServerLoginFailReason.REASON_NOT_AUTHED);
             return;
         }
-        PlayerLogoutPacket packet = new PlayerLogoutPacket(data);
-        accountsOnGameServer.remove(packet.getAccount());
+        PlayerLogoutFromGamePacket packet = new PlayerLogoutFromGamePacket(data);
+        accountsOnGameServer.remove(packet.getLogin());
     }
 
     private void onReceiveChangeAccessLevel(byte[] data) {
@@ -188,7 +188,7 @@ public class GameServerThread extends AServerCommunicationThread {
             forceClose(EGameServerLoginFailReason.REASON_NOT_AUTHED);
             return;
         }
-        ChangeAccessLevelPacket packet = new ChangeAccessLevelPacket(data);
+        ChangeAccountAccessLevelPacket packet = new ChangeAccountAccessLevelPacket(data);
 
         // FIXME@SQL gameservers
         try (
@@ -196,13 +196,13 @@ public class GameServerThread extends AServerCommunicationThread {
                 PreparedStatement statement = con.prepareStatement("UPDATE accounts SET access_level=? WHERE login=?")
         ) {
             statement.setInt(1, packet.getLevel());
-            statement.setString(2, packet.getAccount());
+            statement.setString(2, packet.getLogin());
             statement.executeUpdate();
             statement.close();
         } catch (SQLException e) {
             LOGGER.warn("Could not set accessLevel: {}", e.getMessage(), e);
         }
-        LOGGER.info("Changed {} access level to {}.", packet.getAccount(), packet.getLevel());
+        LOGGER.info("Changed {} access level to {}.", packet.getLogin(), packet.getLevel());
     }
 
     private void onReceivePlayerAuthRequest(byte[] data) {
@@ -211,14 +211,14 @@ public class GameServerThread extends AServerCommunicationThread {
             return;
         }
         PlayerAuthRequestPacket packet = new PlayerAuthRequestPacket(data);
-        SessionKey key = LoginController.getInstance().getKeyForAccount(packet.getAccount());
+        SessionKey key = LoginController.getInstance().getKeyForAccount(packet.getLogin());
 
-        if (key != null && key.equals(packet.getKey())) {
-            LoginController.getInstance().removeClient(packet.getAccount());
-            sendPacket(new PlayerAuthResponsePacket(packet.getAccount(), true));
+        if (key != null && key.equals(packet.getSessionKey())) {
+            LoginController.getInstance().removeClient(packet.getLogin());
+            sendPacket(new PlayerAuthResponsePacket(packet.getLogin(), true));
         }
         else {
-            sendPacket(new PlayerAuthResponsePacket(packet.getAccount(), false));
+            sendPacket(new PlayerAuthResponsePacket(packet.getLogin(), false));
         }
     }
 
@@ -227,7 +227,7 @@ public class GameServerThread extends AServerCommunicationThread {
             forceClose(EGameServerLoginFailReason.REASON_NOT_AUTHED);
             return;
         }
-        ServerStatusPacket packet = new ServerStatusPacket(data);
+        GameServerStatusPacket packet = new GameServerStatusPacket(data);
         GameServerInfo gsi = GameServerTable.getInstance().getGameServer(getServerId());
         if (gsi != null) {
             gsi.setShowingBrackets(packet.isBracket());
@@ -247,7 +247,7 @@ public class GameServerThread extends AServerCommunicationThread {
     }
 
     private void forceClose(EGameServerLoginFailReason reason) {
-        sendPacket(new LoginFailPacket(reason));
+        sendPacket(new GameServerLoginFailPacket(reason));
         try {
             socket.close();
         } catch (IOException e) {
@@ -256,8 +256,8 @@ public class GameServerThread extends AServerCommunicationThread {
     }
 
     /** По сути чисто ради того, чтобы выкинуть старый клиент при повторном логине. */
-    public void kickPlayer(String account) {
-        sendPacket(new KickPlayerPacket(account));
+    public void kickPlayer(String login) {
+        sendPacket(new KickPlayerFromGamePacket(login));
     }
 
     public void setGameHosts(String gameExternalHost, String gameInternalHost) {

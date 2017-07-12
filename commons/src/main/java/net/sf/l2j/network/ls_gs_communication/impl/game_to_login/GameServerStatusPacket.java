@@ -13,6 +13,15 @@ public class GameServerStatusPacket extends AServerCommunicationPacket {
     private int maxPlayers;
     private EServerStatus serverStatus;
 
+    /** Конструктор для отправляемого пакета. */
+    public GameServerStatusPacket() {
+    }
+
+    /** Конструктор для принимаемого пакета. */
+    public GameServerStatusPacket(byte[] readBuffer) {
+        super(readBuffer);
+    }
+
     /** Чтение тела пакета. */
     @Override
     protected void doRead() {

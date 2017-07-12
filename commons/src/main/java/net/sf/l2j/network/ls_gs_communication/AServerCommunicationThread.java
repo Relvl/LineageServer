@@ -1,7 +1,6 @@
 package net.sf.l2j.network.ls_gs_communication;
 
 import net.sf.l2j.NewCrypt;
-import net.sf.l2j.network.ABaseSendablePacket;
 import org.slf4j.Logger;
 
 import java.io.IOException;
@@ -27,9 +26,9 @@ public abstract class AServerCommunicationThread extends Thread {
         super(name);
     }
 
-    protected void sendPacket(ABaseSendablePacket serverPacket) {
+    protected void sendPacket(AServerCommunicationPacket serverPacket) {
         try {
-            byte[] data = serverPacket.getContent();
+            byte[] data = serverPacket.getSendableBuffer();
             NewCrypt.appendChecksum(data);
             data = blowfishCrypt.crypt(data);
 

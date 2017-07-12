@@ -9,6 +9,11 @@ import net.sf.l2j.network.ls_gs_communication.AServerCommunicationPacket;
 public class GameServerLoginFailPacket extends AServerCommunicationPacket {
     private EGameServerLoginFailReason reason;
 
+    /** Конструктор для принимаемого пакета. */
+    public GameServerLoginFailPacket(byte[] readBuffer) {
+        super(readBuffer);
+    }
+
     /** Конструктор для отправляемого пакета. */
     public GameServerLoginFailPacket(EGameServerLoginFailReason reason) {
         this.reason = reason;

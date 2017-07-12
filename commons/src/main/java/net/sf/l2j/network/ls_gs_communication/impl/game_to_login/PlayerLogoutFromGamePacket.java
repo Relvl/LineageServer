@@ -8,6 +8,11 @@ import net.sf.l2j.network.ls_gs_communication.AServerCommunicationPacket;
 public class PlayerLogoutFromGamePacket extends AServerCommunicationPacket {
     private String login;
 
+    /** Конструктор для принимаемого пакета. */
+    public PlayerLogoutFromGamePacket(byte[] readBuffer) {
+        super(readBuffer);
+    }
+
     /** Конструктор для отправляемого пакета. */
     public PlayerLogoutFromGamePacket(String login) {
         this.login = login;

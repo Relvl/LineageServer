@@ -10,6 +10,11 @@ public class PlayerAuthRequestPacket extends AServerCommunicationPacket {
     private String login;
     private SessionKey sessionKey;
 
+    /** Конструктор для принимаемого пакета. */
+    public PlayerAuthRequestPacket(byte[] readBuffer) {
+        super(readBuffer);
+    }
+
     /** Конструктор для отправляемого пакета. */
     public PlayerAuthRequestPacket(String login, SessionKey sessionKey) {
         this.login = login;
@@ -36,6 +41,14 @@ public class PlayerAuthRequestPacket extends AServerCommunicationPacket {
         writeD(sessionKey.playOkID2);
         writeD(sessionKey.loginOkID1);
         writeD(sessionKey.loginOkID2);
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public SessionKey getSessionKey() {
+        return sessionKey;
     }
 
     @Override

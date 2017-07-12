@@ -8,6 +8,11 @@ import net.sf.l2j.network.ls_gs_communication.AServerCommunicationPacket;
 public class LoginServerAuthResponsePacket extends AServerCommunicationPacket {
     private int serverId;
 
+    /** Конструктор для принимаемого пакета. */
+    public LoginServerAuthResponsePacket(byte[] readBuffer) {
+        super(readBuffer);
+    }
+
     /** Конструктор для отправляемого пакета. */
     public LoginServerAuthResponsePacket(int serverId) {
         this.serverId = serverId;

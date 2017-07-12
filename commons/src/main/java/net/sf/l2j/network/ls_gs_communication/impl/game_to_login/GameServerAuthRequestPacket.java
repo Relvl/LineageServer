@@ -16,6 +16,15 @@ public class GameServerAuthRequestPacket extends AServerCommunicationPacket {
     private int maxPlayers;
     private byte[] hexId;
 
+    /** Конструктор для принимаемого пакета. */
+    public GameServerAuthRequestPacket(byte[] readBuffer) {
+        super(readBuffer);
+    }
+
+    /** Конструктор для отправляемого пакета. */
+    public GameServerAuthRequestPacket() {
+    }
+
     /** Чтение тела пакета. */
     @Override
     protected void doRead() {

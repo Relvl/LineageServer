@@ -9,8 +9,12 @@ import net.sf.l2j.network.ls_gs_communication.AServerCommunicationPacket;
  * @author Johnson / 12.07.2017
  */
 public class KickPlayerFromGamePacket extends AServerCommunicationPacket {
-
     private String login;
+
+    /** Конструктор для принимаемого пакета. */
+    public KickPlayerFromGamePacket(byte[] readBuffer) {
+        super(readBuffer);
+    }
 
     /** Конструктор для отправляемого пакета. */
     public KickPlayerFromGamePacket(String login) {

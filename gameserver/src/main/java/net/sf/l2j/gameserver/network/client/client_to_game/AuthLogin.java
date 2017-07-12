@@ -1,7 +1,7 @@
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
+import net.sf.l2j.commons.SessionKey;
 import net.sf.l2j.gameserver.LoginServerThread;
-import net.sf.l2j.gameserver.SessionKey;
 
 public final class AuthLogin extends L2GameClientPacket {
     private String loginName;

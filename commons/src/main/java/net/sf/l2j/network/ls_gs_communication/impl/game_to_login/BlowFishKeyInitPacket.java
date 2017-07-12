@@ -14,7 +14,7 @@ import java.util.Arrays;
  * @author Johnson / 12.07.2017
  */
 public class BlowFishKeyInitPacket extends AServerCommunicationPacket {
-    private static final Cipher RSA_CIPHER;
+    private static Cipher RSA_CIPHER;
 
     static {
         try {

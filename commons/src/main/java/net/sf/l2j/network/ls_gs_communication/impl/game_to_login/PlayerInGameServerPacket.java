@@ -3,6 +3,7 @@ package net.sf.l2j.network.ls_gs_communication.impl.game_to_login;
 import net.sf.l2j.network.ls_gs_communication.AServerCommunicationPacket;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -11,9 +12,19 @@ import java.util.List;
 public class PlayerInGameServerPacket extends AServerCommunicationPacket {
     private List<String> logins;
 
+    /** Конструктор для принимаемого пакета. */
+    public PlayerInGameServerPacket(byte[] readBuffer) {
+        super(readBuffer);
+    }
+
     /** Конструктор для отправляемого пакета. */
     public PlayerInGameServerPacket(List<String> logins) {
         this.logins = logins;
+    }
+
+    /** Конструктор для отправляемого пакета. */
+    public PlayerInGameServerPacket(String login) {
+        this.logins = Collections.singletonList(login);
     }
 
     /** Чтение тела пакета. */

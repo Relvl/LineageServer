@@ -9,6 +9,11 @@ public class PlayerAuthResponsePacket extends AServerCommunicationPacket {
     private String login;
     private boolean authed;
 
+    /** Конструктор для принимаемого пакета. */
+    public PlayerAuthResponsePacket(byte[] readBuffer) {
+        super(readBuffer);
+    }
+
     /** Конструктор для отправляемого пакета. */
     public PlayerAuthResponsePacket(String login, boolean authed) {
         this.login = login;
@@ -36,5 +41,13 @@ public class PlayerAuthResponsePacket extends AServerCommunicationPacket {
 
     public boolean isAuthed() {
         return authed;
+    }
+
+    @Override
+    public String toString() {
+        return "PlayerAuthResponsePacket{" +
+                "login='" + login + '\'' +
+                ", authed=" + authed +
+                '}';
     }
 }

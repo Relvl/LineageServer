@@ -9,6 +9,11 @@ public class ChangeAccountAccessLevelPacket extends AServerCommunicationPacket {
     private String login;
     private int level;
 
+    /** Конструктор для принимаемого пакета. */
+    public ChangeAccountAccessLevelPacket(byte[] readBuffer) {
+        super(readBuffer);
+    }
+
     /** Конструктор для отправляемого пакета. */
     public ChangeAccountAccessLevelPacket(String login, int level) {
         this.login = login;
@@ -28,6 +33,14 @@ public class ChangeAccountAccessLevelPacket extends AServerCommunicationPacket {
         writeC(0x04);
         writeD(level);
         writeS(login);
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public int getLevel() {
+        return level;
     }
 
     @Override

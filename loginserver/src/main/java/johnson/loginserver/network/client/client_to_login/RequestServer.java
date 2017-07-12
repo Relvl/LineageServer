@@ -7,7 +7,6 @@ import johnson.loginserver.database.SetAccountLastServerCall;
 import johnson.loginserver.network.client.login_to_client.LoginFail.LoginFailReason;
 import johnson.loginserver.network.client.login_to_client.PlayFail.PlayFailReason;
 import johnson.loginserver.network.client.login_to_client.PlayOk;
-import johnson.loginserver.network.gameserver.game_to_login.ServerStatusPacket;
 import net.sf.l2j.commons.EServerStatus;
 import net.sf.l2j.commons.database.CallException;
 import org.mmocore.network.ReceivablePacket;

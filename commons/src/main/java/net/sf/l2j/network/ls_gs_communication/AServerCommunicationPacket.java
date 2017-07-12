@@ -33,6 +33,9 @@ public abstract class AServerCommunicationPacket {
         this.outputStream = null;
         this.readBuffer = readBuffer;
         this.off = 1; // skip packet type id
+
+        //noinspection AbstractMethodCallInConstructor,OverridableMethodCallDuringObjectConstruction,OverriddenMethodCallDuringObjectConstruction
+        doRead();
     }
 
     /** Чтение тела пакета. */
@@ -41,7 +44,8 @@ public abstract class AServerCommunicationPacket {
     /** Запись тела пакета. */
     protected abstract void doWrite();
 
-    public byte[] getSenableBuffer() {
+    public byte[] getSendableBuffer() {
+        doWrite();
         writeD(0x00); // reserve for checksum
         int padding = outputStream.size() % 8;
         if (padding != 0) {

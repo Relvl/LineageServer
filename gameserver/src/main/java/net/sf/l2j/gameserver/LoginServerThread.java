@@ -3,6 +3,7 @@ package net.sf.l2j.gameserver;
 import net.sf.l2j.Config;
 import net.sf.l2j.NewCrypt;
 import net.sf.l2j.commons.EServerStatus;
+import net.sf.l2j.commons.SessionKey;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -10,9 +11,9 @@ import net.sf.l2j.gameserver.network.GameClientState;
 import net.sf.l2j.gameserver.network.L2GameClient;
 import net.sf.l2j.gameserver.network.client.game_to_client.AuthLoginFail;
 import net.sf.l2j.gameserver.network.client.game_to_client.CharSelectInfo;
-import net.sf.l2j.gameserver.network.login_server.game_to_login.*;
-import net.sf.l2j.gameserver.network.login_server.login_to_game.*;
 import net.sf.l2j.network.ls_gs_communication.AServerCommunicationThread;
+import net.sf.l2j.network.ls_gs_communication.impl.game_to_login.*;
+import net.sf.l2j.network.ls_gs_communication.impl.login_to_game.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -113,15 +114,15 @@ public class LoginServerThread extends AServerCommunicationThread {
     protected void doProcessIncomindData(int packetType, byte[] incoming) {
         switch (packetType) {
             case 0x00: // InitLSPacket
-                InitLSPacket init = new InitLSPacket(incoming);
+                InitGameServerPacket init = new InitGameServerPacket(incoming);
                 if (init.getRevision() != REVISION) {
-                    LOGGER.warn("/!\\ Revision mismatch between LS and GS /!\\");
+                    LOGGER.warn("/!\\ Revision mismatch between LS({}) and GS({}) /!\\", init.getRevision(), REVISION);
                     break;
                 }
 
                 try {
                     KeyFactory kfac = KeyFactory.getInstance("RSA");
-                    BigInteger modulus = new BigInteger(init.getRSAKey());
+                    BigInteger modulus = new BigInteger(init.getPublicKey());
                     publicKey = (RSAPublicKey) kfac.generatePublic(new RSAPublicKeySpec(modulus, RSAKeyGenParameterSpec.F4));
                 } catch (GeneralSecurityException e) {
                     LOGGER.warn("Troubles while init the public key send by login", e);
@@ -129,21 +130,28 @@ public class LoginServerThread extends AServerCommunicationThread {
                 }
 
                 // send the blowfish key through the rsa encryption
-                BlowFishKey bfk = new BlowFishKey(blowfishKey, publicKey);
+                BlowFishKeyInitPacket bfk = new BlowFishKeyInitPacket(blowfishKey, publicKey);
                 sendPacket(bfk);
 
                 // now, only accept paket with the new encryption
                 blowfishCrypt = new NewCrypt(blowfishKey);
 
-                GameServerAuthRequestPacket ar = new GameServerAuthRequestPacket(desiredId, hexID, gameExternalHost, gameInternalHost, gamePort, reserveHost, Config.MAXIMUM_ONLINE_USERS);
+                GameServerAuthRequestPacket ar = new GameServerAuthRequestPacket();
+                ar.setDesiredId(desiredId);
+                ar.setHexId(hexID);
+                ar.setExternalHost(gameExternalHost);
+                ar.setInternalHost(gameInternalHost);
+                ar.setPort(gamePort);
+                ar.setHostReserved(reserveHost);
+                ar.setMaxPlayers(Config.MAXIMUM_ONLINE_USERS);
                 sendPacket(ar);
                 break;
             case 0x01: // LoginFailPacket
-                LoginFailPacket lsf = new LoginFailPacket(incoming);
+                GameServerLoginFailPacket lsf = new GameServerLoginFailPacket(incoming);
                 LOGGER.info("Registeration Failed: {}", lsf.getReason().getText());
                 break;
             case 0x02: // AuthResponsePacket
-                AuthResponsePacket aresp = new AuthResponsePacket(incoming);
+                LoginServerAuthResponsePacket aresp = new LoginServerAuthResponsePacket(incoming);
                 LOGGER.info("Registered on login as server: [{}] ", aresp.getServerId());
                 sendServerStatus(EServerStatus.STATUS_AUTO);
                 Collection<L2PcInstance> players = L2World.getInstance().getPlayers();
@@ -151,12 +159,12 @@ public class LoginServerThread extends AServerCommunicationThread {
                     List<String> playerList = new ArrayList<>();
                     for (L2PcInstance player : players) { playerList.add(player.getAccountName()); }
 
-                    sendPacket(new PlayerInGame(playerList));
+                    sendPacket(new PlayerInGameServerPacket(playerList));
                 }
                 break;
             case 0x03: // PlayerAuthResponsePacket
                 PlayerAuthResponsePacket par = new PlayerAuthResponsePacket(incoming);
-                String account = par.getAccount();
+                String account = par.getLogin();
                 WaitingClient wcToRemove = null;
                 synchronized (waitingClients) {
                     for (WaitingClient wc : waitingClients) {
@@ -168,7 +176,7 @@ public class LoginServerThread extends AServerCommunicationThread {
 
                 if (wcToRemove != null) {
                     if (par.isAuthed()) {
-                        PlayerInGame pig = new PlayerInGame(par.getAccount());
+                        PlayerInGameServerPacket pig = new PlayerInGameServerPacket(par.getLogin());
                         sendPacket(pig);
                         wcToRemove.gameClient.setState(GameClientState.AUTHED);
                         wcToRemove.gameClient.setSessionId(wcToRemove.session);
@@ -185,8 +193,8 @@ public class LoginServerThread extends AServerCommunicationThread {
                 }
                 break;
             case 0x04: // KickPlayerPacket
-                KickPlayerPacket kp = new KickPlayerPacket(incoming);
-                doKickPlayer(kp.getAccount());
+                KickPlayerFromGamePacket kp = new KickPlayerFromGamePacket(incoming);
+                doKickPlayer(kp.getLogin());
                 break;
         }
     }
@@ -196,16 +204,14 @@ public class LoginServerThread extends AServerCommunicationThread {
         synchronized (waitingClients) {
             waitingClients.add(wc);
         }
-        PlayerAuthRequest par = new PlayerAuthRequest(acc, key);
-        sendPacket(par);
+        sendPacket(new PlayerAuthRequestPacket(acc, key));
     }
 
     public void sendLogout(String account) {
         if (account == null) {
             return;
         }
-        PlayerLogout pl = new PlayerLogout(account);
-        sendPacket(pl);
+        sendPacket(new PlayerLogoutFromGamePacket(account));
         accountsInGameServer.remove(account);
     }
 
@@ -218,8 +224,7 @@ public class LoginServerThread extends AServerCommunicationThread {
     }
 
     public void sendAccessLevel(String account, int level) {
-        ChangeAccessLevelPacket cal = new ChangeAccessLevelPacket(account, level);
-        sendPacket(cal);
+        sendPacket(new ChangeAccountAccessLevelPacket(account, level));
     }
 
     public void doKickPlayer(String account) {
@@ -230,7 +235,7 @@ public class LoginServerThread extends AServerCommunicationThread {
     }
 
     public void sendServerStatus(EServerStatus status) {
-        ServerStatusPacket statusPacket = new ServerStatusPacket();
+        GameServerStatusPacket statusPacket = new GameServerStatusPacket();
         statusPacket.setIsBracket(Config.SERVER_LIST_BRACKET);
         statusPacket.setIsClock(Config.SERVER_LIST_CLOCK);
         statusPacket.setIsTestServer(Config.SERVER_LIST_TESTSERVER);
