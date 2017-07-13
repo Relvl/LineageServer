@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.model.actor.instance;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.EChatType;
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
@@ -248,11 +248,11 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance {
      */
     protected void sitCastAndFollow(L2Skill skill, L2Character target) {
         stopMove(null);
-        getAI().setIntention(CtrlIntention.IDLE);
+        getAI().setIntention(EIntention.IDLE);
 
         setTarget(target);
         doCast(skill);
-        getAI().setIntention(CtrlIntention.FOLLOW, _owner);
+        getAI().setIntention(EIntention.FOLLOW, _owner);
     }
 
     private static class FoodCheck implements Runnable {
@@ -329,7 +329,7 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance {
                 if (owner.getFirstEffect(buffToGive) == null) { _tamedBeast.sitCastAndFollow(buffToGive, owner); }
             }
 
-            getAI().setIntention(CtrlIntention.FOLLOW, _tamedBeast.getOwner());
+            getAI().setIntention(EIntention.FOLLOW, _tamedBeast.getOwner());
         }
     }
 }

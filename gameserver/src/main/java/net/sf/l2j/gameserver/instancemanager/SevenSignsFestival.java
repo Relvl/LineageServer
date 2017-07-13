@@ -20,7 +20,7 @@ import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.EChatType;
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.*;
 import net.sf.l2j.gameserver.model.*;
 import net.sf.l2j.gameserver.model.L2Party.MessageType;
@@ -29,7 +29,8 @@ import net.sf.l2j.gameserver.model.actor.instance.L2FestivalMonsterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.base.Experience;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
 import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillUse;
@@ -2925,7 +2926,7 @@ public class SevenSignsFestival implements SpawnListener {
 
         // Remove any unused blood offerings from online players.
         for (L2PcInstance player : L2World.getInstance().getPlayers()) {
-            ItemInstance bloodOfferings = player.getInventory().getItemByItemId(FESTIVAL_OFFERING_ID);
+            L2ItemInstance bloodOfferings = player.getInventory().getItemByItemId(FESTIVAL_OFFERING_ID);
             if (bloodOfferings != null) { player.destroyItem("SevenSigns", bloodOfferings, null, false); }
         }
 
@@ -3676,14 +3677,14 @@ public class SevenSignsFestival implements SpawnListener {
                         y -= Rnd.get(FESTIVAL_MAX_OFFSET_Y);
                     }
 
-                    participant.getAI().setIntention(CtrlIntention.IDLE);
+                    participant.getAI().setIntention(EIntention.IDLE);
                     participant.teleToLocation(x, y, _startLocation._z, 20);
 
                     // Remove all buffs from all participants on entry. Works like the skill Cancel.
                     participant.stopAllEffectsExceptThoseThatLastThroughDeath();
 
                     // Remove any stray blood offerings in inventory
-                    ItemInstance bloodOfferings = participant.getInventory().getItemByItemId(FESTIVAL_OFFERING_ID);
+                    L2ItemInstance bloodOfferings = participant.getInventory().getItemByItemId(FESTIVAL_OFFERING_ID);
                     if (bloodOfferings != null) {
                         participant.destroyItem("SevenSigns", bloodOfferings, null, true);
                     }
@@ -3746,9 +3747,9 @@ public class SevenSignsFestival implements SpawnListener {
                 if (festivalMob.isDead()) { continue; }
 
                 // Only move monsters that are idle or doing their usual functions.
-                CtrlIntention currIntention = festivalMob.getAI().getIntention();
+                EIntention currIntention = festivalMob.getAI().getIntention();
 
-                if (currIntention != CtrlIntention.IDLE && currIntention != CtrlIntention.ACTIVE) { continue; }
+                if (currIntention != EIntention.IDLE && currIntention != EIntention.ACTIVE) { continue; }
 
                 int x = _startLocation._x;
                 int y = _startLocation._y;
@@ -3767,10 +3768,10 @@ public class SevenSignsFestival implements SpawnListener {
                     y -= Rnd.get(FESTIVAL_MAX_OFFSET_Y);
                 }
 
-                L2CharPosition moveTo = new L2CharPosition(x, y, _startLocation._z, Rnd.get(65536));
+                L2Position moveTo = new L2Position(x, y, _startLocation._z, Rnd.get(65536));
 
                 festivalMob.setRunning();
-                festivalMob.getAI().setIntention(CtrlIntention.MOVE_TO, moveTo);
+                festivalMob.getAI().setIntention(EIntention.MOVE_TO, moveTo);
             }
         }
 
@@ -3908,7 +3909,7 @@ public class SevenSignsFestival implements SpawnListener {
 
                 if (isRemoving) { _originalLocations.remove(participant.getObjectId()); }
 
-                participant.getAI().setIntention(CtrlIntention.IDLE);
+                participant.getAI().setIntention(EIntention.IDLE);
                 participant.teleToLocation(origPosition._x, origPosition._y, origPosition._z, 20);
                 participant.sendMessage("You have been removed from the festival arena.");
             } catch (Exception e) {

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
@@ -121,7 +121,7 @@ public abstract class AbstractNpcAI extends Quest
 	{
 		npc.setIsRunning(true);
 		npc.addDamageHate(playable, 0, (aggro <= 0) ? 999 : aggro);
-		npc.getAI().setIntention(CtrlIntention.ATTACK, playable);
+		npc.getAI().setIntention(EIntention.ATTACK, playable);
 	}
 	
 	/**

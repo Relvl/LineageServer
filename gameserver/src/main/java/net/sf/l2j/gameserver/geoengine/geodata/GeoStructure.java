@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.geoengine.geodata;
 
-import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.world.L2World;
 
 /**
  * @author Hasha

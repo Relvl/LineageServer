@@ -30,7 +30,7 @@ import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.L2Character;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 
 /**
  * @author Hasha
@@ -41,7 +41,7 @@ public abstract class PathFinding
 	
 	private static PathFinding _pathFinding;
 	
-	private static List<ItemInstance> _debugItems;
+	private static List<L2ItemInstance> _debugItems;
 	
 	/**
 	 * Initializes pathfinding.
@@ -178,7 +178,7 @@ public abstract class PathFinding
 	 */
 	public static final void dropDebugItem(int id, int count, Location loc)
 	{
-		final ItemInstance item = new ItemInstance(IdFactory.getInstance().getNextId(), id);
+		final L2ItemInstance item = new L2ItemInstance(IdFactory.getInstance().getNextId(), id);
 		item.setCount(count);
 		item.spawnMe(loc.getX(), loc.getY(), loc.getZ());
 		_debugItems.add(item);
@@ -189,7 +189,7 @@ public abstract class PathFinding
 	 */
 	public static final void clearDebugItems()
 	{
-		for (ItemInstance item : _debugItems)
+		for (L2ItemInstance item : _debugItems)
 		{
 			if (item == null)
 				continue;

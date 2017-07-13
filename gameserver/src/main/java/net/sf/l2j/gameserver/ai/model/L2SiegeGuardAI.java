@@ -18,10 +18,10 @@ import java.util.List;
 
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlEvent;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.ECtrlEvent;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
-import net.sf.l2j.gameserver.model.L2CharPosition;
+import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
@@ -67,11 +67,11 @@ public class L2SiegeGuardAI extends L2AttackableAI
 			return false;
 		
 		// Check if the target isn't in silent move mode AND too far
-		if (player.isSilentMoving() && !_actor.isInsideRadius(player, 250, false, false))
+		if (player.isSilentMoving() && !actor.isInsideRadius(player, 250, false, false))
 			return false;
 		
 		// Los Check Here
-		return (_actor.isAutoAttackable(target) && PathFinding.getInstance().canSeeTarget(_actor, target));
+		return (actor.isAutoAttackable(target) && PathFinding.getInstance().canSeeTarget(actor, target));
 	}
 	
 	/**
@@ -83,23 +83,23 @@ public class L2SiegeGuardAI extends L2AttackableAI
 	 * @param arg1 The second parameter of the Intention
 	 */
 	@Override
-	synchronized void changeIntention(CtrlIntention intention, Object arg0, Object arg1)
+protected 	synchronized void changeIntention(EIntention intention, Object arg0, Object arg1)
 	{
 		// Active becomes idle if only a summon is present
-		if (intention == CtrlIntention.IDLE)
+		if (intention == EIntention.IDLE)
 		{
 			// Check if actor is not dead
-			if (!_actor.isAlikeDead())
+			if (!actor.isAlikeDead())
 			{
 				// If its _knownPlayer isn't empty, set the Intention to ACTIVE
 				if (!getActiveChar().getKnownList().getKnownType(L2PcInstance.class).isEmpty())
-					intention = CtrlIntention.ACTIVE;
+					intention = EIntention.ACTIVE;
 			}
 			
-			if (intention == CtrlIntention.IDLE)
+			if (intention == EIntention.IDLE)
 			{
 				// Set the Intention of this L2AttackableAI to IDLE
-				super.changeIntention(CtrlIntention.IDLE, null, null);
+				super.changeIntention(EIntention.IDLE, null, null);
 				
 				// Stop AI task and detach AI from NPC
 				if (_aiTask != null)
@@ -109,7 +109,7 @@ public class L2SiegeGuardAI extends L2AttackableAI
 				}
 				
 				// Cancel the AI
-				_actor.detachAI();
+				actor.detachAI();
 				return;
 			}
 		}
@@ -146,7 +146,7 @@ public class L2SiegeGuardAI extends L2AttackableAI
 		// A L2Attackable isn't aggressive during 10s after its spawn because _globalAggro is set to -10
 		if (_globalAggro >= 0)
 		{
-			final L2Attackable npc = (L2Attackable) _actor;
+			final L2Attackable npc = (L2Attackable) actor;
 			for (L2Character target : npc.getKnownList().getKnownTypeInRadius(L2Character.class, npc.getClanRange()))
 			{
 				if (autoAttackCondition(target)) // check aggression
@@ -158,17 +158,17 @@ public class L2SiegeGuardAI extends L2AttackableAI
 			}
 			
 			// Chose a target from its aggroList
-			final L2Character hated = (L2Character) ((_actor.isConfused()) ? getTarget() : npc.getMostHated());
+			final L2Character hated = (L2Character) ((actor.isConfused()) ? getTarget() : npc.getMostHated());
 			if (hated != null)
 			{
 				// Get the hate level of the L2Attackable against this L2Character target contained in _aggroList
 				if (npc.getHating(hated) + _globalAggro > 0)
 				{
 					// Set the L2Character movement type to run and send Server->Client packet ChangeMoveType to all others L2PcInstance
-					_actor.setRunning();
+					actor.setRunning();
 					
 					// Set the AI Intention to ATTACK
-					setIntention(CtrlIntention.ATTACK, hated);
+					setIntention(EIntention.ATTACK, hated);
 				}
 				return;
 			}
@@ -206,7 +206,7 @@ public class L2SiegeGuardAI extends L2AttackableAI
 			attackTarget = targetReconsider(actor.getClanRange(), false);
 			if (attackTarget == null)
 			{
-				setIntention(CtrlIntention.ACTIVE);
+				setIntention(EIntention.ACTIVE);
 				actor.setWalking();
 				return;
 			}
@@ -228,12 +228,12 @@ public class L2SiegeGuardAI extends L2AttackableAI
 			if (!Util.contains(clans, cha.getClans()))
 				continue;
 			
-			if (cha.getAI()._intention == CtrlIntention.IDLE || cha.getAI()._intention == CtrlIntention.ACTIVE)
+			if (cha.getAI().intention == EIntention.IDLE || cha.getAI().intention == EIntention.ACTIVE)
 			{
 				if (attackTarget.isInsideRadius(cha, cha.getClanRange(), true, false) && PathFinding.getInstance().canSeeTarget(cha, attackTarget))
 				{
 					// Notify the L2Object AI with EVT_AGGRESSION
-					cha.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, getTarget(), 1);
+					cha.getAI().notifyEvent(ECtrlEvent.EVT_AGGRESSION, getTarget(), 1);
 					return;
 				}
 			}
@@ -265,7 +265,7 @@ public class L2SiegeGuardAI extends L2AttackableAI
 		{
 			actor.getKnownList().removeKnownObject(attackTarget);
 			actor.setTarget(null);
-			setIntention(CtrlIntention.IDLE, null, null);
+			setIntention(EIntention.IDLE, null, null);
 			return;
 		}
 		
@@ -308,7 +308,7 @@ public class L2SiegeGuardAI extends L2AttackableAI
 							L2Object oldTarget = actor.getTarget();
 							actor.setTarget(cha);
 							clientStopMoving(null);
-							_actor.doCast(sk);
+							this.actor.doCast(sk);
 							actor.setTarget(oldTarget);
 							return;
 						}
@@ -332,7 +332,7 @@ public class L2SiegeGuardAI extends L2AttackableAI
 					if (attackTarget.getFirstEffect(sk) == null)
 					{
 						clientStopMoving(null);
-						_actor.doCast(sk);
+						this.actor.doCast(sk);
 						return;
 					}
 				}
@@ -375,7 +375,7 @@ public class L2SiegeGuardAI extends L2AttackableAI
 			
 			// Any AI type, even healer or mage, will try to melee attack if it can't do anything else (desesperate situation).
 			if (attackTarget != null)
-				_actor.doAttack(attackTarget);
+				this.actor.doAttack(attackTarget);
 			
 			return;
 		}
@@ -427,7 +427,7 @@ public class L2SiegeGuardAI extends L2AttackableAI
 			
 			if (PathFinding.getInstance().canMoveToTarget(actor.getX(), actor.getY(), actor.getZ(), posX, posY, posZ))
 			{
-				setIntention(CtrlIntention.MOVE_TO, new L2CharPosition(posX, posY, posZ, 0));
+				setIntention(EIntention.MOVE_TO, new L2Position(posX, posY, posZ, 0));
 				return;
 			}
 		}
@@ -440,7 +440,7 @@ public class L2SiegeGuardAI extends L2AttackableAI
 			return;
 		
 		clientStopMoving(null);
-		_actor.doAttack((L2Character) getTarget());
+		this.actor.doAttack((L2Character) getTarget());
 	}
 	
 	/**
@@ -461,14 +461,14 @@ public class L2SiegeGuardAI extends L2AttackableAI
 		me.addDamageHate(target, 0, aggro);
 		
 		// Set the actor AI Intention to ATTACK
-		if (getIntention() != CtrlIntention.ATTACK)
+		if (getIntention() != EIntention.ATTACK)
 		{
 			// Set the L2Character movement type to run and send Server->Client packet ChangeMoveType to all others L2PcInstance
-			_actor.setRunning();
+			actor.setRunning();
 			
 			// Check if the L2SiegeGuardInstance is not too far from its home location
 			if (Math.sqrt(me.getPlanDistanceSq(me.getSpawn().getLocx(), me.getSpawn().getLocy())) > 1800)
-				setIntention(CtrlIntention.ATTACK, target);
+				setIntention(EIntention.ATTACK, target);
 		}
 	}
 	
@@ -528,11 +528,11 @@ public class L2SiegeGuardAI extends L2AttackableAI
 	public void stopAITask()
 	{
 		super.stopAITask();
-		_actor.detachAI();
+		actor.detachAI();
 	}
 	
 	private L2SiegeGuardInstance getActiveChar()
 	{
-		return (L2SiegeGuardInstance) _actor;
+		return (L2SiegeGuardInstance) actor;
 	}
 }

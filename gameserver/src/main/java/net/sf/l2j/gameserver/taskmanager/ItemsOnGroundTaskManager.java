@@ -27,11 +27,11 @@ import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.instancemanager.CursedWeaponsManager;
-import net.sf.l2j.gameserver.model.L2World;
-import net.sf.l2j.gameserver.model.L2WorldRegion;
+import net.sf.l2j.gameserver.model.world.L2World;
+import net.sf.l2j.gameserver.model.world.L2WorldRegion;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 
 /**
  * Destroys item on ground after specified time. When server is about to shutdown/restart, saves all dropped items in to SQL. Loads them during server start.
@@ -45,7 +45,7 @@ public final class ItemsOnGroundTaskManager implements Runnable
 	private static final String DELETE_ITEMS = "DELETE FROM items_on_ground";
 	private static final String SAVE_ITEMS = "INSERT INTO items_on_ground(object_id,item_id,count,enchant_level,x,y,z,time) VALUES(?,?,?,?,?,?,?,?)";
 	
-	private final Map<ItemInstance, Long> _items = new ConcurrentHashMap<>();
+	private final Map<L2ItemInstance, Long> _items = new ConcurrentHashMap<>();
 	
 	public static final ItemsOnGroundTaskManager getInstance()
 	{
@@ -73,7 +73,7 @@ public final class ItemsOnGroundTaskManager implements Runnable
 				// TODO: maybe add destroy item check here and remove mercenary ticket handling system
 				
 				// Create new item.
-				final ItemInstance item = new ItemInstance(result.getInt(1), result.getInt(2));
+				final L2ItemInstance item = new L2ItemInstance(result.getInt(1), result.getInt(2));
 				L2World.getInstance().addObject(item);
 				
 				// Check and set count.
@@ -124,11 +124,11 @@ public final class ItemsOnGroundTaskManager implements Runnable
 	}
 	
 	/**
-	 * Adds {@link ItemInstance} to the ItemAutoDestroyTask.
-	 * @param item : {@link ItemInstance} to be added and checked.
+	 * Adds {@link L2ItemInstance} to the ItemAutoDestroyTask.
+	 * @param item : {@link L2ItemInstance} to be added and checked.
 	 * @param actor : {@link L2Character} who dropped the item.
 	 */
-	public final void add(ItemInstance item, L2Character actor)
+	public final void add(L2ItemInstance item, L2Character actor)
 	{
 		// Actor doesn't exist or item is protected, do not store item to destroy task (e.g. tickets for castle mercenaries -> handled by other manager)
 		if (actor == null || item.isDestroyProtected())
@@ -161,10 +161,10 @@ public final class ItemsOnGroundTaskManager implements Runnable
 	}
 	
 	/**
-	 * Removes {@link ItemInstance} from the ItemAutoDestroyTask.
-	 * @param item : {@link ItemInstance} to be removed.
+	 * Removes {@link L2ItemInstance} from the ItemAutoDestroyTask.
+	 * @param item : {@link L2ItemInstance} to be removed.
 	 */
-	public final void remove(ItemInstance item)
+	public final void remove(L2ItemInstance item)
 	{
 		_items.remove(item);
 	}
@@ -180,7 +180,7 @@ public final class ItemsOnGroundTaskManager implements Runnable
 		final long time = System.currentTimeMillis();
 		
 		// Loop all items.
-		for (Entry<ItemInstance, Long> entry : _items.entrySet())
+		for (Entry<L2ItemInstance, Long> entry : _items.entrySet())
 		{
 			// Get and validate destroy time.
 			final long destroyTime = entry.getValue();
@@ -194,7 +194,7 @@ public final class ItemsOnGroundTaskManager implements Runnable
 				continue;
 			
 			// Destroy item and remove from task.
-			final ItemInstance item = entry.getKey();
+			final L2ItemInstance item = entry.getKey();
 			L2World.getInstance().removeVisibleObject(item, item.getWorldRegion());
 			L2World.getInstance().removeObject(item);
 			_items.remove(item);
@@ -224,10 +224,10 @@ public final class ItemsOnGroundTaskManager implements Runnable
 			final long time = System.currentTimeMillis();
 			
 			PreparedStatement statement = con.prepareStatement(SAVE_ITEMS);
-			for (Entry<ItemInstance, Long> entry : _items.entrySet())
+			for (Entry<L2ItemInstance, Long> entry : _items.entrySet())
 			{
 				// Get item and destroy time interval.
-				final ItemInstance item = entry.getKey();
+				final L2ItemInstance item = entry.getKey();
 				
 				// Cursed Items not saved to ground, prevent double save.
 				if (CursedWeaponsManager.getInstance().isCursed(item.getItemId()))

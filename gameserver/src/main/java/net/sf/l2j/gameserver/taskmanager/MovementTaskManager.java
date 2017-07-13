@@ -21,7 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlEvent;
+import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.ai.model.L2CharacterAI;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 
@@ -103,7 +103,7 @@ public final class MovementTaskManager extends Thread
 						{
 							try
 							{
-								ai.notifyEvent(CtrlEvent.EVT_ARRIVED);
+								ai.notifyEvent(ECtrlEvent.EVT_ARRIVED);
 							}
 							catch (final Throwable e)
 							{

@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.model.actor.knownlist;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.instance.L2GuardInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2MonsterInstance;
@@ -43,8 +43,8 @@ public class GuardKnownList extends AttackableKnownList
 			if (((L2PcInstance) object).getKarma() > 0)
 			{
 				// Set the L2GuardInstance Intention to ACTIVE
-				if (guard.getAI().getIntention() == CtrlIntention.IDLE)
-					guard.getAI().setIntention(CtrlIntention.ACTIVE, null);
+				if (guard.getAI().getIntention() == EIntention.IDLE)
+					guard.getAI().setIntention(EIntention.ACTIVE, null);
 			}
 		}
 		else if ((Config.GUARD_ATTACK_AGGRO_MOB && guard.isInActiveRegion()) && object instanceof L2MonsterInstance)
@@ -53,8 +53,8 @@ public class GuardKnownList extends AttackableKnownList
 			if (((L2MonsterInstance) object).isAggressive())
 			{
 				// Set the L2GuardInstance Intention to ACTIVE
-				if (guard.getAI().getIntention() == CtrlIntention.IDLE)
-					guard.getAI().setIntention(CtrlIntention.ACTIVE, null);
+				if (guard.getAI().getIntention() == EIntention.IDLE)
+					guard.getAI().setIntention(EIntention.ACTIVE, null);
 			}
 		}
 		return true;
@@ -73,7 +73,7 @@ public class GuardKnownList extends AttackableKnownList
 		if (guard.gotNoTarget())
 		{
 			if (guard.hasAI())
-				guard.getAI().setIntention(CtrlIntention.IDLE, null);
+				guard.getAI().setIntention(EIntention.IDLE, null);
 		}
 		return true;
 	}

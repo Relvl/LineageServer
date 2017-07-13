@@ -18,16 +18,16 @@ import java.util.StringTokenizer;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.lang.StringUtil;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.SkillTable.FrequentSkill;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.CoupleManager;
 import net.sf.l2j.gameserver.model.L2Skill;
-import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.entity.Couple;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
 import net.sf.l2j.gameserver.network.client.game_to_client.ConfirmDlg;
 import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillUse;
@@ -55,7 +55,7 @@ public class L2WeddingManagerInstance extends L2NpcInstance
 		{
 			// Calculate the distance between the L2PcInstance and the L2Npc
 			if (!canInteract(player))
-				player.getAI().setIntention(CtrlIntention.INTERACT, this);
+				player.getAI().setIntention(EIntention.INTERACT, this);
 			else
 			{
 				// Rotate the player to face the instance
@@ -162,11 +162,11 @@ public class L2WeddingManagerInstance extends L2NpcInstance
 	 */
 	private static boolean wearsFormalWear(L2PcInstance p1, L2PcInstance p2)
 	{
-		ItemInstance fw1 = p1.getChestArmorInstance();
+		L2ItemInstance fw1 = p1.getChestArmorInstance();
 		if (fw1 == null || fw1.getItemId() != 6408)
 			return false;
 		
-		ItemInstance fw2 = p2.getChestArmorInstance();
+		L2ItemInstance fw2 = p2.getChestArmorInstance();
 		if (fw2 == null || fw2.getItemId() != 6408)
 			return false;
 		

@@ -27,7 +27,7 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.cache.HtmCache;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.DropData;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.PcInventory;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ExShowQuestMark;
@@ -502,7 +502,7 @@ public final class QuestState
 	{
 		int count = 0;
 		
-		for (ItemInstance item : _player.getInventory().getItems())
+		for (L2ItemInstance item : _player.getInventory().getItems())
 			if (item != null && item.getItemId() == itemId)
 				count += item.getCount();
 		
@@ -525,7 +525,7 @@ public final class QuestState
 	 */
 	public int getEnchantLevel(int itemId)
 	{
-		final ItemInstance enchanteditem = _player.getInventory().getItemByItemId(itemId);
+		final L2ItemInstance enchanteditem = _player.getInventory().getItemByItemId(itemId);
 		if (enchanteditem == null)
 			return 0;
 		
@@ -555,7 +555,7 @@ public final class QuestState
 			return;
 		
 		// Add items to player's inventory.
-		final ItemInstance item = _player.getInventory().addItem("Quest", itemId, itemCount, _player, _player);
+		final L2ItemInstance item = _player.getInventory().addItem("Quest", itemId, itemCount, _player, _player);
 		if (item == null)
 			return;
 		
@@ -601,7 +601,7 @@ public final class QuestState
 	public void takeItems(int itemId, int itemCount)
 	{
 		// Find item in player's inventory.
-		final ItemInstance item = _player.getInventory().getItemByItemId(itemId);
+		final L2ItemInstance item = _player.getInventory().getItemByItemId(itemId);
 		if (item == null)
 			return;
 		
@@ -612,9 +612,9 @@ public final class QuestState
 		// Disarm item, if equipped.
 		if (item.isEquipped())
 		{
-			ItemInstance[] unequiped = _player.getInventory().unEquipItemInBodySlotAndRecord(item.getItem().getBodyPart());
+			L2ItemInstance[] unequiped = _player.getInventory().unEquipItemInBodySlotAndRecord(item.getItem().getBodyPart());
 			InventoryUpdate iu = new InventoryUpdate();
-			for (ItemInstance itm : unequiped)
+			for (L2ItemInstance itm : unequiped)
 				iu.addModifiedItem(itm);
 			
 			_player.sendPacket(iu);

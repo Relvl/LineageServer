@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.model.item;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 
 /**
@@ -56,28 +56,28 @@ public final class ArmorSet
 		int gloves = 0;
 		int feet = 0;
 		
-		final ItemInstance legsItem = inv.getPaperdollItem(Inventory.PAPERDOLL_LEGS);
+		final L2ItemInstance legsItem = inv.getPaperdollItem(Inventory.PAPERDOLL_LEGS);
 		if (legsItem != null)
 			legs = legsItem.getItemId();
 		
 		if (_set[1] != 0 && _set[1] != legs)
 			return false;
 		
-		final ItemInstance headItem = inv.getPaperdollItem(Inventory.PAPERDOLL_HEAD);
+		final L2ItemInstance headItem = inv.getPaperdollItem(Inventory.PAPERDOLL_HEAD);
 		if (headItem != null)
 			head = headItem.getItemId();
 		
 		if (_set[2] != 0 && _set[2] != head)
 			return false;
 		
-		final ItemInstance glovesItem = inv.getPaperdollItem(Inventory.PAPERDOLL_GLOVES);
+		final L2ItemInstance glovesItem = inv.getPaperdollItem(Inventory.PAPERDOLL_GLOVES);
 		if (glovesItem != null)
 			gloves = glovesItem.getItemId();
 		
 		if (_set[3] != 0 && _set[3] != gloves)
 			return false;
 		
-		final ItemInstance feetItem = inv.getPaperdollItem(Inventory.PAPERDOLL_FEET);
+		final L2ItemInstance feetItem = inv.getPaperdollItem(Inventory.PAPERDOLL_FEET);
 		if (feetItem != null)
 			feet = feetItem.getItemId();
 		
@@ -118,7 +118,7 @@ public final class ArmorSet
 	
 	public boolean containShield(L2PcInstance player)
 	{
-		final ItemInstance shieldItem = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
+		final L2ItemInstance shieldItem = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
 		if (shieldItem != null && shieldItem.getItemId() == _shield)
 			return true;
 		
@@ -152,7 +152,7 @@ public final class ArmorSet
 	{
 		final Inventory inv = player.getInventory();
 		
-		final ItemInstance chestItem = inv.getPaperdollItem(Inventory.PAPERDOLL_CHEST);
+		final L2ItemInstance chestItem = inv.getPaperdollItem(Inventory.PAPERDOLL_CHEST);
 		if (chestItem.getEnchantLevel() < 6)
 			return false;
 		
@@ -161,28 +161,28 @@ public final class ArmorSet
 		int gloves = 0;
 		int feet = 0;
 		
-		final ItemInstance legsItem = inv.getPaperdollItem(Inventory.PAPERDOLL_LEGS);
+		final L2ItemInstance legsItem = inv.getPaperdollItem(Inventory.PAPERDOLL_LEGS);
 		if (legsItem != null && legsItem.getEnchantLevel() > 5)
 			legs = legsItem.getItemId();
 		
 		if (_set[1] != 0 && _set[1] != legs)
 			return false;
 		
-		final ItemInstance headItem = inv.getPaperdollItem(Inventory.PAPERDOLL_HEAD);
+		final L2ItemInstance headItem = inv.getPaperdollItem(Inventory.PAPERDOLL_HEAD);
 		if (headItem != null && headItem.getEnchantLevel() > 5)
 			head = headItem.getItemId();
 		
 		if (_set[2] != 0 && _set[2] != head)
 			return false;
 		
-		final ItemInstance glovesItem = inv.getPaperdollItem(Inventory.PAPERDOLL_GLOVES);
+		final L2ItemInstance glovesItem = inv.getPaperdollItem(Inventory.PAPERDOLL_GLOVES);
 		if (glovesItem != null && glovesItem.getEnchantLevel() > 5)
 			gloves = glovesItem.getItemId();
 		
 		if (_set[3] != 0 && _set[3] != gloves)
 			return false;
 		
-		final ItemInstance feetItem = inv.getPaperdollItem(Inventory.PAPERDOLL_FEET);
+		final L2ItemInstance feetItem = inv.getPaperdollItem(Inventory.PAPERDOLL_FEET);
 		if (feetItem != null && feetItem.getEnchantLevel() > 5)
 			feet = feetItem.getItemId();
 		

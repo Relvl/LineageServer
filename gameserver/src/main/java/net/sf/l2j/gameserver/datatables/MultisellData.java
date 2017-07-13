@@ -23,7 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
@@ -94,13 +94,13 @@ public class MultisellData
 			if (player == null)
 				return list;
 			
-			ItemInstance[] items;
+			L2ItemInstance[] items;
 			if (listTemplate.getMaintainEnchantment())
 				items = player.getInventory().getUniqueItemsByEnchantLevel(false, false, false);
 			else
 				items = player.getInventory().getUniqueItems(false, false, false);
 			
-			for (ItemInstance item : items)
+			for (L2ItemInstance item : items)
 			{
 				// only do the matchup on equipable items that are not currently equipped
 				// so for each appropriate item, produce a set of entries for the multisell list.

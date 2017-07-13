@@ -18,11 +18,11 @@ import java.util.List;
 
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.model.L2AttackableAI;
-import net.sf.l2j.gameserver.model.L2CharPosition;
-import net.sf.l2j.gameserver.model.L2World;
-import net.sf.l2j.gameserver.model.L2WorldRegion;
+import net.sf.l2j.gameserver.model.L2Position;
+import net.sf.l2j.gameserver.model.world.L2World;
+import net.sf.l2j.gameserver.model.world.L2WorldRegion;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
@@ -50,7 +50,7 @@ public final class L2GuardInstance extends L2Attackable
 		@Override
 		public void run()
 		{
-			if (getAI().getIntention() == CtrlIntention.IDLE)
+			if (getAI().getIntention() == EIntention.IDLE)
 				returnHome();
 		}
 	}
@@ -89,7 +89,7 @@ public final class L2GuardInstance extends L2Attackable
 		if (!isInsideRadius(getSpawn().getLocx(), getSpawn().getLocy(), L2Npc.INTERACTION_DISTANCE, false))
 		{
 			clearAggroList();
-			getAI().setIntention(CtrlIntention.MOVE_TO, new L2CharPosition(getSpawn().getLocx(), getSpawn().getLocy(), getSpawn().getLocz(), 0));
+			getAI().setIntention(EIntention.MOVE_TO, new L2Position(getSpawn().getLocx(), getSpawn().getLocy(), getSpawn().getLocz(), 0));
 		}
 	}
 	
@@ -129,7 +129,7 @@ public final class L2GuardInstance extends L2Attackable
 			if (!canInteract(player))
 			{
 				// Set the L2PcInstance Intention to INTERACT
-				player.getAI().setIntention(CtrlIntention.INTERACT, this);
+				player.getAI().setIntention(EIntention.INTERACT, this);
 			}
 			else
 			{

@@ -19,7 +19,7 @@ import java.util.List;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.SkillTable.FrequentSkill;
 import net.sf.l2j.gameserver.instancemanager.GrandBossManager;
 import net.sf.l2j.gameserver.model.L2Skill;
@@ -153,7 +153,7 @@ public class QueenAnt extends AbstractNpcAI
 				if (nurse == null || nurse.isDead() || nurse.isCastingNow())
 					continue;
 				
-				notCasting = nurse.getAI().getIntention() != CtrlIntention.CAST;
+				notCasting = nurse.getAI().getIntention() != EIntention.CAST;
 				if (larvaNeedHeal)
 				{
 					if (nurse.getTarget() != _larva || notCasting)
@@ -231,7 +231,7 @@ public class QueenAnt extends AbstractNpcAI
 		if (caller == null || npc == null)
 			return super.onFactionCall(npc, caller, attacker, isPet);
 		
-		if (!npc.isCastingNow() && npc.getAI().getIntention() != CtrlIntention.CAST)
+		if (!npc.isCastingNow() && npc.getAI().getIntention() != EIntention.CAST)
 		{
 			if (caller.getCurrentHp() < caller.getMaxHp())
 			{

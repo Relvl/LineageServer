@@ -22,7 +22,7 @@ import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillUse;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
@@ -34,7 +34,7 @@ import net.sf.l2j.gameserver.util.Util;
 public class PetFood implements IItemHandler
 {
 	@Override
-	public void useItem(L2Playable playable, ItemInstance item, boolean forceUse)
+	public void useItem(L2Playable playable, L2ItemInstance item, boolean forceUse)
 	{
 		int itemId = item.getItemId();
 		switch (itemId)
@@ -60,7 +60,7 @@ public class PetFood implements IItemHandler
 		}
 	}
 	
-	public boolean useFood(L2Playable activeChar, int magicId, ItemInstance item)
+	public boolean useFood(L2Playable activeChar, int magicId, L2ItemInstance item)
 	{
 		L2Skill skill = SkillTable.getInstance().getInfo(magicId, 1);
 		if (skill != null)

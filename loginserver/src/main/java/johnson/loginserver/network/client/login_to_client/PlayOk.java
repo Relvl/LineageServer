@@ -9,8 +9,8 @@ public final class PlayOk extends SendablePacket<L2LoginClient> {
     private final int playOk2;
 
     public PlayOk(SessionKey sessionKey) {
-        playOk1 = sessionKey.playOkID1;
-        playOk2 = sessionKey.playOkID2;
+        playOk1 = sessionKey.getPlayOkID1();
+        playOk2 = sessionKey.getPlayOkID2();
     }
 
     @Override

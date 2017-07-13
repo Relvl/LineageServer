@@ -35,7 +35,7 @@ public abstract class L2PlayableAI extends L2CharacterAI
 		if (target instanceof L2Playable)
 		{
 			final L2PcInstance targetPlayer = target.getActingPlayer();
-			final L2PcInstance actorPlayer = _actor.getActingPlayer();
+			final L2PcInstance actorPlayer = actor.getActingPlayer();
 			
 			if (!target.isInsideZone(ZoneId.PVP))
 			{
@@ -79,7 +79,7 @@ public abstract class L2PlayableAI extends L2CharacterAI
 		if (target instanceof L2Playable && skill.isOffensive())
 		{
 			final L2PcInstance targetPlayer = target.getActingPlayer();
-			final L2PcInstance actorPlayer = _actor.getActingPlayer();
+			final L2PcInstance actorPlayer = actor.getActingPlayer();
 			
 			if (!target.isInsideZone(ZoneId.PVP))
 			{
@@ -88,7 +88,7 @@ public abstract class L2PlayableAI extends L2CharacterAI
 					// If attacker have karma, level >= 10 and target have Newbie Protection Buff
 					actorPlayer.sendPacket(SystemMessageId.TARGET_IS_INCORRECT);
 					clientActionFailed();
-					_actor.setIsCastingNow(false);
+					actor.setIsCastingNow(false);
 					return;
 				}
 				
@@ -97,7 +97,7 @@ public abstract class L2PlayableAI extends L2CharacterAI
 					// If target have karma, level >= 10 and actor have Newbie Protection Buff
 					actorPlayer.sendPacket(SystemMessageId.TARGET_IS_INCORRECT);
 					clientActionFailed();
-					_actor.setIsCastingNow(false);
+					actor.setIsCastingNow(false);
 					return;
 				}
 			}
@@ -106,7 +106,7 @@ public abstract class L2PlayableAI extends L2CharacterAI
 			{
 				actorPlayer.sendPacket(SystemMessageId.TARGET_IS_INCORRECT);
 				clientActionFailed();
-				_actor.setIsCastingNow(false);
+				actor.setIsCastingNow(false);
 				return;
 			}
 			
@@ -114,7 +114,7 @@ public abstract class L2PlayableAI extends L2CharacterAI
 			{
 				actorPlayer.sendPacket(SystemMessageId.TARGET_IS_INCORRECT);
 				clientActionFailed();
-				_actor.setIsCastingNow(false);
+				actor.setIsCastingNow(false);
 				return;
 			}
 		}

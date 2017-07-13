@@ -19,20 +19,19 @@ import java.util.List;
 import java.util.logging.Level;
 
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.model.L2CharacterAI;
 import net.sf.l2j.gameserver.datatables.MapRegionTable;
-import net.sf.l2j.gameserver.model.L2CharPosition;
-import net.sf.l2j.gameserver.model.L2World;
-import net.sf.l2j.gameserver.model.L2WorldRegion;
-import net.sf.l2j.gameserver.model.Location;
-import net.sf.l2j.gameserver.model.VehiclePathPoint;
+import net.sf.l2j.gameserver.model.*;
+import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.knownlist.VehicleKnownList;
 import net.sf.l2j.gameserver.model.actor.stat.VehicleStat;
 import net.sf.l2j.gameserver.model.actor.template.CharTemplate;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
+import net.sf.l2j.gameserver.model.world.L2World;
+import net.sf.l2j.gameserver.model.world.L2WorldRegion;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
@@ -98,10 +97,10 @@ public abstract class L2Vehicle extends L2Character
 			if (point.rotationSpeed > 0)
 				getStat().setRotationSpeed(point.rotationSpeed);
 			
-			getAI().setIntention(CtrlIntention.MOVE_TO, new L2CharPosition(point.x, point.y, point.z, 0));
+			getAI().setIntention(EIntention.MOVE_TO, new L2Position(point.x, point.y, point.z, 0));
 			return;
 		}
-		getAI().setIntention(CtrlIntention.ACTIVE);
+		getAI().setIntention(EIntention.ACTIVE);
 	}
 	
 	@Override
@@ -279,7 +278,7 @@ public abstract class L2Vehicle extends L2Character
 			{
 				if (itemId > 0)
 				{
-					final ItemInstance ticket = player.getInventory().getItemByItemId(itemId);
+					final L2ItemInstance ticket = player.getInventory().getItemByItemId(itemId);
 					if (ticket == null || player.getInventory().destroyItem("Boat", ticket, count, player, this) == null)
 					{
 						player.sendPacket(SystemMessageId.NOT_CORRECT_BOAT_TICKET);
@@ -324,7 +323,7 @@ public abstract class L2Vehicle extends L2Character
 		
 		setIsTeleporting(true);
 		
-		getAI().setIntention(CtrlIntention.ACTIVE);
+		getAI().setIntention(EIntention.ACTIVE);
 		
 		for (L2PcInstance player : _passengers)
 		{
@@ -340,12 +339,12 @@ public abstract class L2Vehicle extends L2Character
 	}
 	
 	@Override
-	public void stopMove(L2CharPosition pos)
+	public void stopMove(L2Position pos)
 	{
 		_move = null;
 		if (pos != null)
 		{
-			setXYZ(pos.x, pos.y, pos.z);
+			setXYZ(pos.posX, pos.posY, pos.posZ);
 			setHeading(pos.heading);
 			revalidateZone(true);
 		}
@@ -410,7 +409,7 @@ public abstract class L2Vehicle extends L2Character
 	}
 	
 	@Override
-	public ItemInstance getActiveWeaponInstance()
+	public L2ItemInstance getActiveWeaponInstance()
 	{
 		return null;
 	}
@@ -422,7 +421,7 @@ public abstract class L2Vehicle extends L2Character
 	}
 	
 	@Override
-	public ItemInstance getSecondaryWeaponInstance()
+	public L2ItemInstance getSecondaryWeaponInstance()
 	{
 		return null;
 	}

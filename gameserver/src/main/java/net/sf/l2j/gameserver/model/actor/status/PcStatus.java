@@ -16,7 +16,7 @@ package net.sf.l2j.gameserver.model.actor.status;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.instancemanager.DuelManager;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
@@ -186,7 +186,7 @@ public class PcStatus extends PlayableStatus
 					
 					if (attacker != null)
 					{
-						attacker.getAI().setIntention(CtrlIntention.ACTIVE);
+						attacker.getAI().setIntention(EIntention.ACTIVE);
 						attacker.sendPacket(ActionFailed.STATIC_PACKET);
 					}
 					
@@ -211,7 +211,7 @@ public class PcStatus extends PlayableStatus
 				getActiveChar().setIsDead(true);
 				
 				if (getActiveChar().getPet() != null)
-					getActiveChar().getPet().getAI().setIntention(CtrlIntention.IDLE, null);
+					getActiveChar().getPet().getAI().setIntention(EIntention.IDLE, null);
 				
 				return;
 			}

@@ -14,8 +14,8 @@
  */
 package net.sf.l2j.gameserver.handler.skillhandlers;
 
-import net.sf.l2j.gameserver.ai.CtrlEvent;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.ECtrlEvent;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.instancemanager.DuelManager;
@@ -143,11 +143,11 @@ public class Continuous implements ISkillHandler
 				if (skill.getSkillType() == L2SkillType.AGGDEBUFF)
 				{
 					if (target instanceof L2Attackable)
-						target.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, activeChar, (int) skill.getPower());
+						target.getAI().notifyEvent(ECtrlEvent.EVT_AGGRESSION, activeChar, (int) skill.getPower());
 					else if (target instanceof L2Playable)
 					{
 						if (target.getTarget() == activeChar)
-							target.getAI().setIntention(CtrlIntention.ATTACK, activeChar);
+							target.getAI().setIntention(EIntention.ATTACK, activeChar);
 						else
 							target.setTarget(activeChar);
 					}

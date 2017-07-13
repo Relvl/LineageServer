@@ -19,10 +19,10 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.datatables.ArmorSetsTable;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.model.L2Skill;
-import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.ArmorSet;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
@@ -66,8 +66,8 @@ public final class RequestEnchantItem extends AbstractEnchantPacket
 			return;
 		}
 		
-		ItemInstance item = activeChar.getInventory().getItemByObjectId(_objectId);
-		ItemInstance scroll = activeChar.getActiveEnchantItem();
+		L2ItemInstance item = activeChar.getInventory().getItemByObjectId(_objectId);
+		L2ItemInstance scroll = activeChar.getActiveEnchantItem();
 		
 		if (item == null || scroll == null)
 		{
@@ -164,7 +164,7 @@ public final class RequestEnchantItem extends AbstractEnchantPacket
 					else if (it instanceof Armor && item.getEnchantLevel() == 6)
 					{
 						// Checks if player is wearing a chest item
-						final ItemInstance chestItem = activeChar.getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
+						final L2ItemInstance chestItem = activeChar.getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
 						if (chestItem != null)
 						{
 							final ArmorSet armorSet = ArmorSetsTable.getInstance().getSet(chestItem.getItemId());
@@ -207,7 +207,7 @@ public final class RequestEnchantItem extends AbstractEnchantPacket
 					else if (it instanceof Armor && item.getEnchantLevel() >= 6)
 					{
 						// Checks if player is wearing a chest item
-						final ItemInstance chestItem = activeChar.getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
+						final L2ItemInstance chestItem = activeChar.getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
 						if (chestItem != null)
 						{
 							final ArmorSet armorSet = ArmorSetsTable.getInstance().getSet(chestItem.getItemId());
@@ -245,7 +245,7 @@ public final class RequestEnchantItem extends AbstractEnchantPacket
 					if (count < 1)
 						count = 1;
 					
-					ItemInstance destroyItem = activeChar.getInventory().destroyItem("Enchant", item, activeChar, null);
+					L2ItemInstance destroyItem = activeChar.getInventory().destroyItem("Enchant", item, activeChar, null);
 					if (destroyItem == null)
 					{
 						// unable to destroy item, cheater ?

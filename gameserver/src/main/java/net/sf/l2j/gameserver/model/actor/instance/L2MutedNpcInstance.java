@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.model.actor.instance;
 
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
@@ -48,7 +48,7 @@ public final class L2MutedNpcInstance extends L2NpcInstance
 				if (Math.abs(player.getZ() - getZ()) < 400) // this max heigth difference might need some tweaking
 				{
 					// Set the L2PcInstance Intention to ATTACK
-					player.getAI().setIntention(CtrlIntention.ATTACK, this);
+					player.getAI().setIntention(EIntention.ATTACK, this);
 				}
 				else
 				{
@@ -62,7 +62,7 @@ public final class L2MutedNpcInstance extends L2NpcInstance
 				if (!canInteract(player))
 				{
 					// Notify the L2PcInstance AI with INTERACT
-					player.getAI().setIntention(CtrlIntention.INTERACT, this);
+					player.getAI().setIntention(EIntention.INTERACT, this);
 				}
 				else
 				{

@@ -13,7 +13,7 @@
 package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
@@ -294,7 +294,7 @@ public class Q223_TestOfTheChampion extends Quest
 						
 						collector.setRunning();
 						collector.addDamageHate(originalKiller, 0, 999);
-						collector.getAI().setIntention(CtrlIntention.ATTACK, originalKiller);
+						collector.getAI().setIntention(EIntention.ATTACK, originalKiller);
 					}
 					npc.setScriptValue(1);
 				}
@@ -312,7 +312,7 @@ public class Q223_TestOfTheChampion extends Quest
 						
 						collector.setRunning();
 						collector.addDamageHate(originalKiller, 0, 999);
-						collector.getAI().setIntention(CtrlIntention.ATTACK, originalKiller);
+						collector.getAI().setIntention(EIntention.ATTACK, originalKiller);
 					}
 					npc.setScriptValue(1);
 				}

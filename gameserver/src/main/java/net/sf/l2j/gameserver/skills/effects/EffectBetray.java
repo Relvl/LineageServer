@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.skills.effects;
 
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.actor.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -45,7 +45,7 @@ final class EffectBetray extends L2Effect
 		if (getEffector() instanceof L2PcInstance && getEffected() instanceof L2Summon)
 		{
 			L2PcInstance targetOwner = getEffected().getActingPlayer();
-			getEffected().getAI().setIntention(CtrlIntention.ATTACK, targetOwner);
+			getEffected().getAI().setIntention(EIntention.ATTACK, targetOwner);
 			return true;
 		}
 		return false;
@@ -55,7 +55,7 @@ final class EffectBetray extends L2Effect
 	@Override
 	public void onExit()
 	{
-		getEffected().getAI().setIntention(CtrlIntention.IDLE);
+		getEffected().getAI().setIntention(EIntention.IDLE);
 	}
 	
 	@Override

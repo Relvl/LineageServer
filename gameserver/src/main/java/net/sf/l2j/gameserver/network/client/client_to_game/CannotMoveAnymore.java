@@ -14,8 +14,8 @@
  */
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
-import net.sf.l2j.gameserver.ai.CtrlEvent;
-import net.sf.l2j.gameserver.model.L2CharPosition;
+import net.sf.l2j.gameserver.ai.ECtrlEvent;
+import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.network.client.game_to_client.StopMove;
 import net.sf.l2j.gameserver.network.client.game_to_client.StopRotation;
@@ -43,11 +43,11 @@ public final class CannotMoveAnymore extends L2GameClientPacket
 		if (player == null)
 			return;
 		
-		player.stopMove(new L2CharPosition(_x, _y, _z, _heading));
+		player.stopMove(new L2Position(_x, _y, _z, _heading));
 		player.broadcastPacket(new StopMove(player));
 		player.broadcastPacket(new StopRotation(player.getObjectId(), _heading, 0));
 		
 		if (player.hasAI())
-			player.getAI().notifyEvent(CtrlEvent.EVT_ARRIVED_BLOCKED, new L2CharPosition(_x, _y, _z, _heading));
+			player.getAI().notifyEvent(ECtrlEvent.EVT_ARRIVED_BLOCKED, new L2Position(_x, _y, _z, _heading));
 	}
 }

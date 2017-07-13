@@ -23,7 +23,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2MercManagerInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2MerchantInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.network.client.game_to_client.ItemList;
 import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 import net.sf.l2j.gameserver.network.client.game_to_client.StatusUpdate;
@@ -94,7 +94,7 @@ public final class RequestSellItem extends L2GameClientPacket
 		// Proceed the sell
 		for (IntIntHolder i : _items)
 		{
-			ItemInstance item = player.checkItemManipulation(i.getId(), i.getValue());
+			L2ItemInstance item = player.checkItemManipulation(i.getId(), i.getValue());
 			if (item == null || (!item.isSellable()))
 				continue;
 			

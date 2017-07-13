@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlEvent;
+import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.handler.SkillHandler;
@@ -586,7 +586,7 @@ public class L2CubicInstance
 					if (Formulas.calcCubicSkillSuccess(activeCubic, target, skill, shld, bss))
 					{
 						if (target instanceof L2Attackable)
-							target.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, activeCubic.getOwner(), (int) ((150 * skill.getPower()) / (target.getLevel() + 7)));
+							target.getAI().notifyEvent(ECtrlEvent.EVT_AGGRESSION, activeCubic.getOwner(), (int) ((150 * skill.getPower()) / (target.getLevel() + 7)));
 						
 						skill.getEffects(activeCubic, target, null);
 					}

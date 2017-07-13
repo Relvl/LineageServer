@@ -5,7 +5,7 @@ import net.sf.l2j.NewCrypt;
 import net.sf.l2j.commons.EServerStatus;
 import net.sf.l2j.commons.SessionKey;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.GameClientState;
 import net.sf.l2j.gameserver.network.L2GameClient;
@@ -180,7 +180,7 @@ public class LoginServerThread extends AServerCommunicationThread {
                         sendPacket(pig);
                         wcToRemove.gameClient.setState(GameClientState.AUTHED);
                         wcToRemove.gameClient.setSessionId(wcToRemove.session);
-                        CharSelectInfo cl = new CharSelectInfo(wcToRemove.account, wcToRemove.gameClient.getSessionId().playOkID1);
+                        CharSelectInfo cl = new CharSelectInfo(wcToRemove.account, wcToRemove.gameClient.getSessionId().getPlayOkID1());
                         wcToRemove.gameClient.getConnection().sendPacket(cl);
                         wcToRemove.gameClient.setCharSelection(cl.getCharInfo());
                     }

@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.skills.effects;
 
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -42,7 +42,7 @@ public class EffectRelax extends L2Effect
 		if (getEffected() instanceof L2PcInstance)
 			((L2PcInstance) getEffected()).sitDown(false);
 		else
-			getEffected().getAI().setIntention(CtrlIntention.REST);
+			getEffected().getAI().setIntention(EIntention.REST);
 		
 		return super.onStart();
 	}

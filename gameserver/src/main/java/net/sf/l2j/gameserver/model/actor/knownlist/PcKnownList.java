@@ -31,7 +31,7 @@ public class PcKnownList extends PlayableKnownList
 	/**
 	 * Add a visible L2Object to L2PcInstance _knownObjects and _knownPlayer (if necessary) and send Server-Client Packets needed to inform the L2PcInstance of its state and actions in progress.<BR>
 	 * <BR>
-	 * <B><U> object is a ItemInstance </U> :</B><BR>
+	 * <B><U> object is a L2ItemInstance </U> :</B><BR>
 	 * <BR>
 	 * <li>Send Server-Client Packet DropItem/SpawnItem to the L2PcInstance</li><BR>
 	 * <BR>

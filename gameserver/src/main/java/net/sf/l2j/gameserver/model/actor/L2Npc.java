@@ -19,7 +19,7 @@ import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.EChatType;
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.cache.HtmCache;
 import net.sf.l2j.gameserver.datatables.*;
 import net.sf.l2j.gameserver.datatables.SkillTable.FrequentSkill;
@@ -36,9 +36,11 @@ import net.sf.l2j.gameserver.model.actor.status.NpcStatus;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate.AIType;
 import net.sf.l2j.gameserver.model.entity.Castle;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
+import net.sf.l2j.gameserver.model.world.L2World;
+import net.sf.l2j.gameserver.model.world.L2WorldRegion;
 import net.sf.l2j.gameserver.model.zone.type.L2TownZone;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.AbstractNpcInfo.NpcInfo;
@@ -360,7 +362,7 @@ public class L2Npc extends L2Character {
         else {
             // Check if the player is attackable (without a forced attack) and isn't dead
             if (isAutoAttackable(player)) {
-                if (!isAlikeDead()) { player.getAI().setIntention(CtrlIntention.ATTACK, this); }
+                if (!isAlikeDead()) { player.getAI().setIntention(EIntention.ATTACK, this); }
                 else {
                     // Rotate the player to face the instance
                     player.sendPacket(new MoveToPawn(player, this, L2Npc.INTERACTION_DISTANCE));
@@ -368,14 +370,14 @@ public class L2Npc extends L2Character {
                     // Send ActionFailed to the player in order to avoid he stucks
                     player.sendPacket(ActionFailed.STATIC_PACKET);
 
-                    player.getAI().setIntention(CtrlIntention.FOLLOW, this);
+                    player.getAI().setIntention(EIntention.FOLLOW, this);
                 }
             }
             else {
                 // Calculate the distance between the L2PcInstance and the L2Npc
                 if (!canInteract(player)) {
                     // Notify the L2PcInstance AI with INTERACT
-                    player.getAI().setIntention(CtrlIntention.INTERACT, this);
+                    player.getAI().setIntention(EIntention.INTERACT, this);
                 }
                 else {
                     // Rotate the player to face the instance
@@ -748,7 +750,7 @@ public class L2Npc extends L2Character {
      * <BR>
      */
     @Override
-    public ItemInstance getActiveWeaponInstance() {
+    public L2ItemInstance getActiveWeaponInstance() {
         return null;
     }
 
@@ -772,7 +774,7 @@ public class L2Npc extends L2Character {
      * Return null (regular NPCs don't have weapons instancies).
      */
     @Override
-    public ItemInstance getSecondaryWeaponInstance() {
+    public L2ItemInstance getSecondaryWeaponInstance() {
         return null;
     }
 
@@ -933,7 +935,7 @@ public class L2Npc extends L2Character {
 
             Lottery.getInstance().increasePrize(price);
 
-            ItemInstance item = new ItemInstance(IdFactory.getInstance().getNextId(), 4442);
+            L2ItemInstance item = new L2ItemInstance(IdFactory.getInstance().getNextId(), 4442);
             item.setCount(1);
             item.setCustomType1(lotonumber);
             item.setEnchantLevel(enchant);
@@ -951,7 +953,7 @@ public class L2Npc extends L2Character {
             final int lotoNumber = Lottery.getInstance().getId();
 
             final StringBuilder sb = new StringBuilder();
-            for (ItemInstance item : player.getInventory().getItems()) {
+            for (L2ItemInstance item : player.getInventory().getItems()) {
                 if (item == null) { continue; }
 
                 if (item.getItemId() == 4442 && item.getCustomType1() < lotoNumber) {
@@ -990,7 +992,7 @@ public class L2Npc extends L2Character {
         else if (val > 24) // >24 - check lottery ticket by item object id
         {
             int lotonumber = Lottery.getInstance().getId();
-            ItemInstance item = player.getInventory().getItemByObjectId(val);
+            L2ItemInstance item = player.getInventory().getItemByObjectId(val);
             if (item == null || item.getItemId() != 4442 || item.getCustomType1() >= lotonumber) { return; }
             int[] check = Lottery.checkTicket(item);
 

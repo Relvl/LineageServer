@@ -14,8 +14,8 @@
  */
 package net.sf.l2j.gameserver.model.actor.knownlist;
 
-import net.sf.l2j.gameserver.ai.CtrlEvent;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.ECtrlEvent;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2FriendlyMobInstance;
@@ -41,8 +41,8 @@ public class FriendlyMobKnownList extends AttackableKnownList
 			final L2FriendlyMobInstance monster = (L2FriendlyMobInstance) _activeObject;
 			
 			// AI is idle, set AI
-			if (monster.getAI().getIntention() == CtrlIntention.IDLE)
-				monster.getAI().setIntention(CtrlIntention.ACTIVE, null);
+			if (monster.getAI().getIntention() == EIntention.IDLE)
+				monster.getAI().setIntention(EIntention.ACTIVE, null);
 		}
 		
 		return true;
@@ -62,7 +62,7 @@ public class FriendlyMobKnownList extends AttackableKnownList
 		
 		if (monster.hasAI())
 		{
-			monster.getAI().notifyEvent(CtrlEvent.EVT_FORGET_OBJECT, object);
+			monster.getAI().notifyEvent(ECtrlEvent.EVT_FORGET_OBJECT, object);
 			if (monster.getTarget() == (L2Character) object)
 				monster.setTarget(null);
 		}
@@ -71,7 +71,7 @@ public class FriendlyMobKnownList extends AttackableKnownList
 		{
 			monster.clearAggroList();
 			if (monster.hasAI())
-				monster.getAI().setIntention(CtrlIntention.IDLE, null);
+				monster.getAI().setIntention(EIntention.IDLE, null);
 		}
 		
 		return true;

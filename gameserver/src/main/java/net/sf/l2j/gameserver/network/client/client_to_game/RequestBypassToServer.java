@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.Config;
@@ -20,7 +6,7 @@ import net.sf.l2j.gameserver.datatables.AdminCommandAccessRights;
 import net.sf.l2j.gameserver.handler.AdminCommandHandler;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2OlympiadManagerInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -36,15 +22,15 @@ import net.sf.l2j.gameserver.util.GMAudit;
 import java.util.StringTokenizer;
 
 public final class RequestBypassToServer extends L2GameClientPacket {
-    private String _command;
+    private String command;
 
     private static void playerHelp(L2PcInstance activeChar, String path) {
         if (path.indexOf("..") != -1) { return; }
 
-        final StringTokenizer st = new StringTokenizer(path);
-        final String[] cmd = st.nextToken().split("#");
+        StringTokenizer st = new StringTokenizer(path);
+        String[] cmd = st.nextToken().split("#");
 
-        final NpcHtmlMessage html = new NpcHtmlMessage(0);
+        NpcHtmlMessage html = new NpcHtmlMessage(0);
         html.setFile("data/html/help/" + cmd[0]);
         if (cmd.length > 1) { html.setItemId(Integer.parseInt(cmd[1])); }
         html.disableValidation();
@@ -53,25 +39,27 @@ public final class RequestBypassToServer extends L2GameClientPacket {
 
     @Override
     protected void readImpl() {
-        _command = readS();
+        command = readS();
     }
 
     @Override
     protected void runImpl() {
         if (!FloodProtectors.performAction(getClient(), Action.SERVER_BYPASS)) { return; }
 
-        final L2PcInstance activeChar = getClient().getActiveChar();
+        L2PcInstance activeChar = getClient().getActiveChar();
         if (activeChar == null) { return; }
 
-        if (_command.isEmpty()) {
-            _log.info(activeChar.getName() + " sent an empty requestBypass packet.");
+        if (command.isEmpty()) {
+            _log.info("{} sent an empty requestBypass packet.", activeChar.getName());
             activeChar.logout();
             return;
         }
 
+        System.out.println(">>> RequestBypassToServer: " + command);
+
         try {
-            if (_command.startsWith("admin_")) {
-                String command = _command.split(" ")[0];
+            if (command.startsWith("admin_")) {
+                String command = this.command.split(" ")[0];
 
                 IAdminCommandHandler ach = AdminCommandHandler.getInstance().getAdminCommandHandler(command);
                 if (ach == null) {
@@ -90,27 +78,27 @@ public final class RequestBypassToServer extends L2GameClientPacket {
                 }
 
                 if (Config.GMAUDIT) {
-                    GMAudit.auditGMAction(activeChar.getName() + " [" + activeChar.getObjectId() + "]", _command, (activeChar.getTarget() != null ? activeChar.getTarget().getName() : "no-target"));
+                    GMAudit.auditGMAction(activeChar.getName() + " [" + activeChar.getObjectId() + "]", this.command, activeChar.getTarget() != null ? activeChar.getTarget().getName() : "no-target");
                 }
 
-                ach.useAdminCommand(_command, activeChar);
+                ach.useAdminCommand(this.command, activeChar);
             }
-            else if (_command.startsWith("player_help ")) {
-                playerHelp(activeChar, _command.substring(12));
+            else if (command.startsWith("player_help ")) {
+                playerHelp(activeChar, command.substring(12));
             }
-            else if (_command.startsWith("npc_")) {
-                if (!activeChar.validateBypass(_command)) { return; }
+            else if (command.startsWith("npc_")) {
+                if (!activeChar.validateBypass(command)) { return; }
 
-                int endOfId = _command.indexOf('_', 5);
+                int endOfId = command.indexOf('_', 5);
                 String id;
-                if (endOfId > 0) { id = _command.substring(4, endOfId); }
-                else { id = _command.substring(4); }
+                if (endOfId > 0) { id = command.substring(4, endOfId); }
+                else { id = command.substring(4); }
 
                 try {
-                    final L2Object object = L2World.getInstance().getObject(Integer.parseInt(id));
+                    L2Object object = L2World.getInstance().getObject(Integer.parseInt(id));
 
                     if (object != null && object instanceof L2Npc && endOfId > 0 && ((L2Npc) object).canInteract(activeChar)) {
-                        ((L2Npc) object).onBypassFeedback(activeChar, _command.substring(endOfId + 1));
+                        ((L2Npc) object).onBypassFeedback(activeChar, command.substring(endOfId + 1));
                     }
 
                     activeChar.sendPacket(ActionFailed.STATIC_PACKET);
@@ -118,39 +106,38 @@ public final class RequestBypassToServer extends L2GameClientPacket {
                 }
             }
             // Navigate throught Manor windows
-            else if (_command.startsWith("manor_menu_select?")) {
+            else if (command.startsWith("manor_menu_select?")) {
                 L2Object object = activeChar.getTarget();
-                if (object instanceof L2Npc) { ((L2Npc) object).onBypassFeedback(activeChar, _command); }
+                if (object instanceof L2Npc) { ((L2Npc) object).onBypassFeedback(activeChar, command); }
             }
-            else if (_command.startsWith("bbs_") || _command.startsWith("_bbs") || _command.startsWith("_friend") || _command.startsWith("_mail") || _command.startsWith("_block")) {
-                CommunityBoard.getInstance().handleCommands(getClient(), _command);
+            else if (command.startsWith("bbs_") || command.startsWith("_bbs") || command.startsWith("_friend") || command.startsWith("_mail") || command.startsWith("_block")) {
+                CommunityBoard.getInstance().handleCommands(getClient(), command);
             }
-            else if (_command.startsWith("Quest ")) {
-                if (!activeChar.validateBypass(_command)) { return; }
+            else if (command.startsWith("Quest ")) {
+                if (!activeChar.validateBypass(command)) { return; }
 
-                String[] str = _command.substring(6).trim().split(" ", 2);
+                String[] str = command.substring(6).trim().split(" ", 2);
                 if (str.length == 1) { activeChar.processQuestEvent(str[0], ""); }
                 else { activeChar.processQuestEvent(str[0], str[1]); }
             }
-            else if (_command.startsWith("_match")) {
-                String params = _command.substring(_command.indexOf("?") + 1);
+            else if (command.startsWith("_match")) {
+                String params = command.substring(command.indexOf("?") + 1);
                 StringTokenizer st = new StringTokenizer(params, "&");
                 int heroclass = Integer.parseInt(st.nextToken().split("=")[1]);
                 int heropage = Integer.parseInt(st.nextToken().split("=")[1]);
                 int heroid = Hero.getInstance().getHeroByClass(heroclass);
                 if (heroid > 0) { Hero.getInstance().showHeroFights(activeChar, heroclass, heroid, heropage); }
             }
-            else if (_command.startsWith("_diary")) {
-                String params = _command.substring(_command.indexOf("?") + 1);
+            else if (command.startsWith("_diary")) {
+                String params = command.substring(command.indexOf("?") + 1);
                 StringTokenizer st = new StringTokenizer(params, "&");
                 int heroclass = Integer.parseInt(st.nextToken().split("=")[1]);
                 int heropage = Integer.parseInt(st.nextToken().split("=")[1]);
                 int heroid = Hero.getInstance().getHeroByClass(heroclass);
                 if (heroid > 0) { Hero.getInstance().showHeroDiary(activeChar, heroclass, heroid, heropage); }
             }
-            else if (_command.startsWith("arenachange")) // change
-            {
-                final boolean isManager = activeChar.getCurrentFolkNPC() instanceof L2OlympiadManagerInstance;
+            else if (command.startsWith("arenachange")) {
+                boolean isManager = activeChar.getCurrentFolkNPC() instanceof L2OlympiadManagerInstance;
                 if (!isManager) {
                     // Without npc, command can be used only in observer mode on arena
                     if (!activeChar.inObserverMode() || activeChar.isInOlympiadMode() || activeChar.getOlympiadGameId() < 0) {
@@ -163,7 +150,7 @@ public final class RequestBypassToServer extends L2GameClientPacket {
                     return;
                 }
 
-                final int arenaId = Integer.parseInt(_command.substring(12).trim());
+                int arenaId = Integer.parseInt(command.substring(12).trim());
                 activeChar.enterOlympiadObserverMode(arenaId);
             }
         } catch (Exception e) {

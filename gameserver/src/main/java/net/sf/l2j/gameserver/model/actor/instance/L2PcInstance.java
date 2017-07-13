@@ -18,8 +18,8 @@ import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlEvent;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.ECtrlEvent;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.NextAction;
 import net.sf.l2j.gameserver.ai.model.L2CharacterAI;
 import net.sf.l2j.gameserver.ai.model.L2PlayerAI;
@@ -54,7 +54,7 @@ import net.sf.l2j.gameserver.model.holder.IntIntHolder;
 import net.sf.l2j.gameserver.model.holder.SkillUseHolder;
 import net.sf.l2j.gameserver.model.item.Henna;
 import net.sf.l2j.gameserver.model.item.RecipeList;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
@@ -72,6 +72,8 @@ import net.sf.l2j.gameserver.model.partymatching.PartyMatchRoom;
 import net.sf.l2j.gameserver.model.partymatching.PartyMatchRoomList;
 import net.sf.l2j.gameserver.model.partymatching.PartyMatchWaitingList;
 import net.sf.l2j.gameserver.model.tradelist.TradeList;
+import net.sf.l2j.gameserver.model.world.L2World;
+import net.sf.l2j.gameserver.model.world.L2WorldRegion;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.model.zone.type.L2BossZone;
 import net.sf.l2j.gameserver.network.L2GameClient;
@@ -283,7 +285,7 @@ public final class L2PcInstance extends L2Playable {
     private L2Party _party;
     private L2PcInstance _activeRequester;
     private long _requestExpireTime;
-    private ItemInstance _arrowItem;
+    private L2ItemInstance _arrowItem;
     private ScheduledFuture<?> _protectTask;
     private long _recentFakeDeathEndTime;
     private boolean _isFakeDeath;
@@ -291,11 +293,11 @@ public final class L2PcInstance extends L2Playable {
     private int _expertiseIndex;
     private int _expertiseArmorPenalty;
     private boolean _expertiseWeaponPenalty;
-    private ItemInstance _activeEnchantItem;
+    private L2ItemInstance _activeEnchantItem;
     private int _team;
     private int _alliedVarkaKetra; // lvl of alliance with ketra orcs or varka silenos, used in quests and aggro checks [-5,-1] varka, 0 neutral, [1,5] ketra
     private Location _fishingLoc;
-    private ItemInstance _lure;
+    private L2ItemInstance _lure;
     private L2Fishing _fishCombat;
     private FishData _fish;
     private Forum _forumMail;
@@ -1514,7 +1516,7 @@ public final class L2PcInstance extends L2Playable {
         int armorPenalty = 0;
         boolean weaponPenalty = false;
 
-        for (ItemInstance item : getInventory().getItems()) {
+        for (L2ItemInstance item : getInventory().getItems()) {
             if (item != null && item.isEquipped() && item.getItemType() != EtcItemType.ARROW && item.getItem().getCrystalType().getId() > getExpertiseIndex()) {
                 if (item.isWeapon()) { weaponPenalty = true; }
                 else { armorPenalty += (item.getItem().getBodyPart() == Item.SLOT_FULL_ARMOR) ? 2 : 1; }
@@ -1537,7 +1539,7 @@ public final class L2PcInstance extends L2Playable {
             sendSkillList();
             sendPacket(new EtcStatusUpdate(this));
 
-            ItemInstance weapon = getInventory().getPaperdollItem(Inventory.PAPERDOLL_RHAND);
+            L2ItemInstance weapon = getInventory().getPaperdollItem(Inventory.PAPERDOLL_RHAND);
             if (weapon != null) {
                 if (_expertiseWeaponPenalty) { ItemPassiveSkillsListener.getInstance().onUnequip(0, weapon, this); }
                 else { ItemPassiveSkillsListener.getInstance().onEquip(0, weapon, this); }
@@ -1555,8 +1557,8 @@ public final class L2PcInstance extends L2Playable {
      * @param item        The item to charge/discharge.
      * @param abortAttack If true, the current attack will be aborted in order to equip the item.
      */
-    public void useEquippableItem(ItemInstance item, boolean abortAttack) {
-        ItemInstance[] items = null;
+    public void useEquippableItem(L2ItemInstance item, boolean abortAttack) {
+        L2ItemInstance[] items = null;
         boolean isEquipped = item.isEquipped();
         int oldInvLimit = getInventoryLimit();
         SystemMessage sm = null;
@@ -1675,11 +1677,11 @@ public final class L2PcInstance extends L2Playable {
         return getStat().getExp();
     }
 
-    public ItemInstance getActiveEnchantItem() {
+    public L2ItemInstance getActiveEnchantItem() {
         return _activeEnchantItem;
     }
 
-    public void setActiveEnchantItem(ItemInstance scroll) {
+    public void setActiveEnchantItem(L2ItemInstance scroll) {
         _activeEnchantItem = scroll;
     }
 
@@ -1923,7 +1925,7 @@ public final class L2PcInstance extends L2Playable {
             broadcastPacket(new ChangeWaitType(this, ChangeWaitType.WT_SITTING));
 
             // Schedule a sit down task to wait for the animation to finish
-            getAI().setIntention(CtrlIntention.REST);
+            getAI().setIntention(EIntention.REST);
             ThreadPoolManager.getInstance().scheduleGeneral(new SitDownTask(), 2500);
             setIsParalyzed(true);
         }
@@ -1973,9 +1975,9 @@ public final class L2PcInstance extends L2Playable {
 
         // Player wants to sit on a throne but is out of radius, move to the throne delaying the sit action.
         if (isThrone && !sittingState && !isInsideRadius(target, L2Npc.INTERACTION_DISTANCE, false, false)) {
-            getAI().setIntention(CtrlIntention.MOVE_TO, new L2CharPosition(target.getX(), target.getY(), target.getZ(), 0));
+            getAI().setIntention(EIntention.MOVE_TO, new L2Position(target.getX(), target.getY(), target.getZ(), 0));
 
-            NextAction nextAction = new NextAction(CtrlEvent.EVT_ARRIVED, CtrlIntention.MOVE_TO, new Runnable() {
+            NextAction nextAction = new NextAction(ECtrlEvent.EVT_ARRIVED, EIntention.MOVE_TO, new Runnable() {
                 @Override
                 public void run() {
                     if (getMountType() != 0) { return; }
@@ -2021,7 +2023,7 @@ public final class L2PcInstance extends L2Playable {
         }
         // Player is moving, wait the current action is done, then sit.
         else {
-            NextAction nextAction = new NextAction(CtrlEvent.EVT_ARRIVED, CtrlIntention.MOVE_TO, new Runnable() {
+            NextAction nextAction = new NextAction(ECtrlEvent.EVT_ARRIVED, EIntention.MOVE_TO, new Runnable() {
                 @Override
                 public void run() {
                     if (getMountType() != 0) { return; }
@@ -2171,7 +2173,7 @@ public final class L2PcInstance extends L2Playable {
         }
 
         if (count > 0) {
-            ItemInstance adenaItem = _inventory.getAdenaInstance();
+            L2ItemInstance adenaItem = _inventory.getAdenaInstance();
             if (!_inventory.reduceAdena(process, count, this, reference)) { return false; }
 
             // Send update packet
@@ -2225,7 +2227,7 @@ public final class L2PcInstance extends L2Playable {
         }
 
         if (count > 0) {
-            ItemInstance ancientAdenaItem = _inventory.getAncientAdenaInstance();
+            L2ItemInstance ancientAdenaItem = _inventory.getAncientAdenaInstance();
             if (!_inventory.reduceAncientAdena(process, count, this, reference)) { return false; }
 
             InventoryUpdate iu = new InventoryUpdate();
@@ -2248,11 +2250,11 @@ public final class L2PcInstance extends L2Playable {
      * Adds item to inventory and send InventoryUpdate packet to the L2PcInstance.
      *
      * @param process     String Identifier of process triggering this action
-     * @param item        ItemInstance to be added
+     * @param item        L2ItemInstance to be added
      * @param reference   L2Object Object referencing current action like NPC selling item or previous item in transformation
      * @param sendMessage boolean Specifies whether to send message to Client about this action
      */
-    public void addItem(String process, ItemInstance item, L2Object reference, boolean sendMessage) {
+    public void addItem(String process, L2ItemInstance item, L2Object reference, boolean sendMessage) {
         if (item.getCount() > 0) {
             // Sends message to client if requested
             if (sendMessage) {
@@ -2266,7 +2268,7 @@ public final class L2PcInstance extends L2Playable {
             }
 
             // Add the item to inventory
-            ItemInstance newitem = _inventory.addItem(process, item, this, reference);
+            L2ItemInstance newitem = _inventory.addItem(process, item, this, reference);
 
             // Send inventory update packet
             InventoryUpdate playerIU = new InventoryUpdate();
@@ -2297,9 +2299,9 @@ public final class L2PcInstance extends L2Playable {
      * @param count       int Quantity of items to be added
      * @param reference   L2Object Object referencing current action like NPC selling item or previous item in transformation
      * @param sendMessage boolean Specifies whether to send message to Client about this action
-     * @return The created ItemInstance.
+     * @return The created L2ItemInstance.
      */
-    public ItemInstance addItem(String process, int itemId, int count, L2Object reference, boolean sendMessage) {
+    public L2ItemInstance addItem(String process, int itemId, int count, L2Object reference, boolean sendMessage) {
         if (count > 0) {
             // Retrieve the template of the item.
             Item item = ItemTable.getInstance().getTemplate(itemId);
@@ -2330,14 +2332,14 @@ public final class L2PcInstance extends L2Playable {
 
             // If the item is herb type, dont add it to inventory.
             if (item.getItemType() == EtcItemType.HERB) {
-                ItemInstance herb = new ItemInstance(0, itemId);
+                L2ItemInstance herb = new L2ItemInstance(0, itemId);
 
                 IItemHandler handler = ItemHandler.getInstance().getItemHandler(herb.getEtcItem());
                 if (handler != null) { handler.useItem(this, herb, false); }
             }
             else {
                 // Add the item to inventory
-                ItemInstance createdItem = _inventory.addItem(process, itemId, count, this, reference);
+                L2ItemInstance createdItem = _inventory.addItem(process, itemId, count, this, reference);
 
                 // Cursed Weapon
                 if (CursedWeaponsManager.getInstance().isCursed(createdItem.getItemId())) {
@@ -2358,12 +2360,12 @@ public final class L2PcInstance extends L2Playable {
      * Destroy item from inventory and send InventoryUpdate packet to the L2PcInstance.
      *
      * @param process     String Identifier of process triggering this action
-     * @param item        ItemInstance to be destroyed
+     * @param item        L2ItemInstance to be destroyed
      * @param reference   L2Object Object referencing current action like NPC selling item or previous item in transformation
      * @param sendMessage boolean Specifies whether to send message to Client about this action
      * @return boolean informing if the action was successfull
      */
-    public boolean destroyItem(String process, ItemInstance item, L2Object reference, boolean sendMessage) {
+    public boolean destroyItem(String process, L2ItemInstance item, L2Object reference, boolean sendMessage) {
         return destroyItem(process, item, item.getCount(), reference, sendMessage);
     }
 
@@ -2371,13 +2373,13 @@ public final class L2PcInstance extends L2Playable {
      * Destroy item from inventory and send InventoryUpdate packet to the L2PcInstance.
      *
      * @param process     String Identifier of process triggering this action
-     * @param item        ItemInstance to be destroyed
+     * @param item        L2ItemInstance to be destroyed
      * @param count       int Quantity of ancient adena to be reduced
      * @param reference   L2Object Object referencing current action like NPC selling item or previous item in transformation
      * @param sendMessage boolean Specifies whether to send message to Client about this action
      * @return boolean informing if the action was successfull
      */
-    public boolean destroyItem(String process, ItemInstance item, int count, L2Object reference, boolean sendMessage) {
+    public boolean destroyItem(String process, L2ItemInstance item, int count, L2Object reference, boolean sendMessage) {
         item = _inventory.destroyItem(process, item, count, this, reference);
 
         if (item == null) {
@@ -2418,7 +2420,7 @@ public final class L2PcInstance extends L2Playable {
      */
     @Override
     public boolean destroyItem(String process, int objectId, int count, L2Object reference, boolean sendMessage) {
-        ItemInstance item = _inventory.getItemByObjectId(objectId);
+        L2ItemInstance item = _inventory.getItemByObjectId(objectId);
 
         if (item == null) {
             if (sendMessage) { sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS); }
@@ -2439,7 +2441,7 @@ public final class L2PcInstance extends L2Playable {
      * @return boolean informing if the action was successfull
      */
     public boolean destroyItemWithoutTrace(String process, int objectId, int count, L2Object reference, boolean sendMessage) {
-        ItemInstance item = _inventory.getItemByObjectId(objectId);
+        L2ItemInstance item = _inventory.getItemByObjectId(objectId);
 
         if (item == null || item.getCount() < count) {
             if (sendMessage) { sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS); }
@@ -2464,7 +2466,7 @@ public final class L2PcInstance extends L2Playable {
     public boolean destroyItemByItemId(String process, int itemId, int count, L2Object reference, boolean sendMessage) {
         if (itemId == 57) { return reduceAdena(process, count, reference, sendMessage); }
 
-        ItemInstance item = _inventory.getItemByItemId(itemId);
+        L2ItemInstance item = _inventory.getItemByItemId(itemId);
 
         if (item == null || item.getCount() < count || _inventory.destroyItemByItemId(process, itemId, count, this, reference) == null) {
             if (sendMessage) { sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS); }
@@ -2500,13 +2502,13 @@ public final class L2PcInstance extends L2Playable {
      * @param count     int Quantity of items to be transfered
      * @param target    Inventory the Inventory target.
      * @param reference L2Object Object referencing current action like NPC selling item or previous item in transformation
-     * @return ItemInstance corresponding to the new item or the updated item in inventory
+     * @return L2ItemInstance corresponding to the new item or the updated item in inventory
      */
-    public ItemInstance transferItem(String process, int objectId, int count, Inventory target, L2Object reference) {
-        ItemInstance oldItem = checkItemManipulation(objectId, count);
+    public L2ItemInstance transferItem(String process, int objectId, int count, Inventory target, L2Object reference) {
+        L2ItemInstance oldItem = checkItemManipulation(objectId, count);
         if (oldItem == null) { return null; }
 
-        ItemInstance newItem = getInventory().transferItem(process, objectId, count, target, this, reference);
+        L2ItemInstance newItem = getInventory().transferItem(process, objectId, count, target, this, reference);
         if (newItem == null) { return null; }
 
         // Send inventory update packet
@@ -2549,13 +2551,13 @@ public final class L2PcInstance extends L2Playable {
      * Drop item from inventory and send InventoryUpdate packet to the L2PcInstance.
      *
      * @param process     String Identifier of process triggering this action
-     * @param item        ItemInstance to be dropped
+     * @param item        L2ItemInstance to be dropped
      * @param reference   L2Object Object referencing current action like NPC selling item or previous item in transformation
      * @param sendMessage boolean Specifies whether to send message to Client about this action
      * @param protectItem whether or not dropped item must be protected temporary against other players
      * @return boolean informing if the action was successfull
      */
-    public boolean dropItem(String process, ItemInstance item, L2Object reference, boolean sendMessage, boolean protectItem) {
+    public boolean dropItem(String process, L2ItemInstance item, L2Object reference, boolean sendMessage, boolean protectItem) {
         item = _inventory.dropItem(process, item, this, reference);
 
         if (item == null) {
@@ -2587,7 +2589,7 @@ public final class L2PcInstance extends L2Playable {
         return true;
     }
 
-    public boolean dropItem(String process, ItemInstance item, L2Object reference, boolean sendMessage) {
+    public boolean dropItem(String process, L2ItemInstance item, L2Object reference, boolean sendMessage) {
         return dropItem(process, item, reference, sendMessage, false);
     }
 
@@ -2603,11 +2605,11 @@ public final class L2PcInstance extends L2Playable {
      * @param reference   L2Object Object referencing current action like NPC selling item or previous item in transformation
      * @param sendMessage boolean Specifies whether to send message to Client about this action
      * @param protectItem boolean Activates drop protection on that item if true
-     * @return ItemInstance corresponding to the new item or the updated item in inventory
+     * @return L2ItemInstance corresponding to the new item or the updated item in inventory
      */
-    public ItemInstance dropItem(String process, int objectId, int count, int x, int y, int z, L2Object reference, boolean sendMessage, boolean protectItem) {
-        ItemInstance invitem = _inventory.getItemByObjectId(objectId);
-        ItemInstance item = _inventory.dropItem(process, objectId, count, this, reference);
+    public L2ItemInstance dropItem(String process, int objectId, int count, int x, int y, int z, L2Object reference, boolean sendMessage, boolean protectItem) {
+        L2ItemInstance invitem = _inventory.getItemByObjectId(objectId);
+        L2ItemInstance item = _inventory.dropItem(process, objectId, count, this, reference);
 
         if (item == null) {
             if (sendMessage) { sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS); }
@@ -2638,10 +2640,10 @@ public final class L2PcInstance extends L2Playable {
         return item;
     }
 
-    public ItemInstance checkItemManipulation(int objectId, int count) {
+    public L2ItemInstance checkItemManipulation(int objectId, int count) {
         if (L2World.getInstance().getObject(objectId) == null) { return null; }
 
-        ItemInstance item = getInventory().getItemByObjectId(objectId);
+        L2ItemInstance item = getInventory().getItemByObjectId(objectId);
 
         if (item == null || item.getOwnerId() != getObjectId()) { return null; }
 
@@ -2815,7 +2817,7 @@ public final class L2PcInstance extends L2Playable {
         else {
             // Check if this L2PcInstance has a Private Store
             if (isInStoreMode()) {
-                player.getAI().setIntention(CtrlIntention.INTERACT, this);
+                player.getAI().setIntention(EIntention.INTERACT, this);
                 return;
             }
 
@@ -2828,7 +2830,7 @@ public final class L2PcInstance extends L2Playable {
                 }
 
                 if (PathFinding.getInstance().canSeeTarget(player, this)) {
-                    player.getAI().setIntention(CtrlIntention.ATTACK, this);
+                    player.getAI().setIntention(EIntention.ATTACK, this);
                     player.onActionRequest();
                 }
             }
@@ -2837,7 +2839,7 @@ public final class L2PcInstance extends L2Playable {
                 player.sendPacket(ActionFailed.STATIC_PACKET);
 
                 if (player != this && PathFinding.getInstance().canSeeTarget(player, this)) {
-                    player.getAI().setIntention(CtrlIntention.FOLLOW, this);
+                    player.getAI().setIntention(EIntention.FOLLOW, this);
                 }
             }
         }
@@ -3072,7 +3074,7 @@ public final class L2PcInstance extends L2Playable {
      * Manage Pickup Task.
      * <ul>
      * <li>Send StopMove to this L2PcInstance</li>
-     * <li>Remove the ItemInstance from the world and send GetItem packets</li>
+     * <li>Remove the L2ItemInstance from the world and send GetItem packets</li>
      * <li>Send a System Message to the L2PcInstance : YOU_PICKED_UP_S1_ADENA or YOU_PICKED_UP_S1_S2</li>
      * <li>Add the Item to the L2PcInstance inventory</li>
      * <li>Send InventoryUpdate to this L2PcInstance with NewItem (use a new slot) or ModifiedItem (increase amount)</li>
@@ -3080,23 +3082,23 @@ public final class L2PcInstance extends L2Playable {
      * </ul>
      * <FONT COLOR=#FF0000><B> <U>Caution</U> : If a Party is in progress, distribute Items between party members</B></FONT>
      *
-     * @param object The ItemInstance to pick up
+     * @param object The L2ItemInstance to pick up
      */
     @Override
     public void doPickupItem(L2Object object) {
         if (isAlikeDead() || isFakeDeath()) { return; }
 
         // Set the AI Intention to IDLE
-        getAI().setIntention(CtrlIntention.IDLE);
+        getAI().setIntention(EIntention.IDLE);
 
-        // Check if the L2Object to pick up is a ItemInstance
-        if (!(object instanceof ItemInstance)) {
+        // Check if the L2Object to pick up is a L2ItemInstance
+        if (!(object instanceof L2ItemInstance)) {
             // dont try to pickup anything that is not an item :)
             _log.warning(getName() + " tried to pickup a wrong target: " + object);
             return;
         }
 
-        ItemInstance target = (ItemInstance) object;
+        L2ItemInstance target = (L2ItemInstance) object;
 
         // Send ActionFailed to this L2PcInstance
         sendPacket(ActionFailed.STATIC_PACKET);
@@ -3145,7 +3147,7 @@ public final class L2PcInstance extends L2Playable {
                 target.resetOwnerTimer();
             }
 
-            // Remove the ItemInstance from the world and send GetItem packets
+            // Remove the L2ItemInstance from the world and send GetItem packets
             target.pickupMe(this);
 
             // item must be removed from ItemsOnGroundManager if is active
@@ -3368,7 +3370,7 @@ public final class L2PcInstance extends L2Playable {
      * Return the active weapon instance (always equipped in the right hand).
      */
     @Override
-    public ItemInstance getActiveWeaponInstance() {
+    public L2ItemInstance getActiveWeaponInstance() {
         return getInventory().getPaperdollItem(Inventory.PAPERDOLL_RHAND);
     }
 
@@ -3377,19 +3379,19 @@ public final class L2PcInstance extends L2Playable {
      */
     @Override
     public Weapon getActiveWeaponItem() {
-        ItemInstance weapon = getActiveWeaponInstance();
+        L2ItemInstance weapon = getActiveWeaponInstance();
 
         if (weapon == null) { return getFistsWeaponItem(); }
 
         return (Weapon) weapon.getItem();
     }
 
-    public ItemInstance getChestArmorInstance() {
+    public L2ItemInstance getChestArmorInstance() {
         return getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
     }
 
     public Armor getActiveChestArmorItem() {
-        ItemInstance armor = getChestArmorInstance();
+        L2ItemInstance armor = getChestArmorInstance();
 
         if (armor == null) { return null; }
 
@@ -3397,21 +3399,21 @@ public final class L2PcInstance extends L2Playable {
     }
 
     public boolean isWearingHeavyArmor() {
-        ItemInstance armor = getChestArmorInstance();
+        L2ItemInstance armor = getChestArmorInstance();
 
         return armor.getItemType() == ArmorType.HEAVY;
 
     }
 
     public boolean isWearingLightArmor() {
-        ItemInstance armor = getChestArmorInstance();
+        L2ItemInstance armor = getChestArmorInstance();
 
         return armor.getItemType() == ArmorType.LIGHT;
 
     }
 
     public boolean isWearingMagicArmor() {
-        ItemInstance armor = getChestArmorInstance();
+        L2ItemInstance armor = getChestArmorInstance();
 
         return armor.getItemType() == ArmorType.MAGIC;
 
@@ -3471,7 +3473,7 @@ public final class L2PcInstance extends L2Playable {
      * Return the secondary weapon instance (always equipped in the left hand).
      */
     @Override
-    public ItemInstance getSecondaryWeaponInstance() {
+    public L2ItemInstance getSecondaryWeaponInstance() {
         return getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
     }
 
@@ -3480,7 +3482,7 @@ public final class L2PcInstance extends L2Playable {
      */
     @Override
     public Item getSecondaryWeaponItem() {
-        ItemInstance item = getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
+        L2ItemInstance item = getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
         if (item != null) { return item.getItem(); }
 
         return null;
@@ -3616,7 +3618,7 @@ public final class L2PcInstance extends L2Playable {
                 int dropCount = 0;
                 int itemDropPercent = 0;
 
-                for (ItemInstance itemDrop : getInventory().getItems()) {
+                for (L2ItemInstance itemDrop : getInventory().getItems()) {
                     // Don't drop those following things
                     if (!itemDrop.isDropable() || itemDrop.isShadowItem() || itemDrop.getItemId() == 57 || itemDrop.getItem().getType2() == Item.TYPE2_QUEST || getPet() != null && getPet().getControlItemId() == itemDrop.getItemId() || Arrays.binarySearch(Config.KARMA_LIST_NONDROPPABLE_ITEMS, itemDrop.getItemId()) >= 0 || Arrays.binarySearch(Config.KARMA_LIST_NONDROPPABLE_PET_ITEMS, itemDrop.getItemId()) >= 0) {
                         continue;
@@ -4137,7 +4139,7 @@ public final class L2PcInstance extends L2Playable {
      */
     @Override
     protected void reduceArrowCount() {
-        ItemInstance arrows = getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
+        L2ItemInstance arrows = getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
 
         if (arrows == null) {
             getInventory().unEquipItemInSlot(Inventory.PAPERDOLL_LHAND);
@@ -4150,7 +4152,7 @@ public final class L2PcInstance extends L2Playable {
         if (arrows.getCount() > 1) {
             synchronized (arrows) {
                 arrows.changeCountWithoutTrace(-1, this, null);
-                arrows.setLastChange(ItemInstance.MODIFIED);
+                arrows.setLastChange(L2ItemInstance.MODIFIED);
 
                 // could do also without saving, but let's save approx 1 of 10
                 if (Rnd.get(10) < 1) { arrows.updateDatabase(); }
@@ -4180,7 +4182,7 @@ public final class L2PcInstance extends L2Playable {
     protected boolean checkAndEquipArrows() {
         // Check if nothing is equipped in left hand
         if (getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND) == null) {
-            // Get the ItemInstance of the arrows needed for this bow
+            // Get the L2ItemInstance of the arrows needed for this bow
             _arrowItem = getInventory().findArrowForBow(getActiveWeaponItem());
 
             if (_arrowItem != null) {
@@ -4191,7 +4193,7 @@ public final class L2PcInstance extends L2Playable {
                 sendPacket(new ItemList(this, false));
             }
         }
-        // Get the ItemInstance of arrows equipped in left hand
+        // Get the L2ItemInstance of arrows equipped in left hand
         else { _arrowItem = getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND); }
 
         return _arrowItem != null;
@@ -4207,11 +4209,11 @@ public final class L2PcInstance extends L2Playable {
         if (isCursedWeaponEquipped()) { return false; }
 
         // Unequip the weapon
-        ItemInstance wpn = getInventory().getPaperdollItem(Inventory.PAPERDOLL_RHAND);
+        L2ItemInstance wpn = getInventory().getPaperdollItem(Inventory.PAPERDOLL_RHAND);
         if (wpn != null) {
-            ItemInstance[] unequipped = getInventory().unEquipItemInBodySlotAndRecord(wpn.getItem().getBodyPart());
+            L2ItemInstance[] unequipped = getInventory().unEquipItemInBodySlotAndRecord(wpn.getItem().getBodyPart());
             InventoryUpdate iu = new InventoryUpdate();
-            for (ItemInstance itm : unequipped) { iu.addModifiedItem(itm); }
+            for (L2ItemInstance itm : unequipped) { iu.addModifiedItem(itm); }
             sendPacket(iu);
 
             abortAttack();
@@ -4230,11 +4232,11 @@ public final class L2PcInstance extends L2Playable {
         }
 
         // Unequip the shield
-        ItemInstance sld = getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
+        L2ItemInstance sld = getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
         if (sld != null) {
-            ItemInstance[] unequipped = getInventory().unEquipItemInBodySlotAndRecord(sld.getItem().getBodyPart());
+            L2ItemInstance[] unequipped = getInventory().unEquipItemInBodySlotAndRecord(sld.getItem().getBodyPart());
             InventoryUpdate iu = new InventoryUpdate();
-            for (ItemInstance itm : unequipped) { iu.addModifiedItem(itm); }
+            for (L2ItemInstance itm : unequipped) { iu.addModifiedItem(itm); }
             sendPacket(iu);
 
             abortAttack();
@@ -5595,7 +5597,7 @@ public final class L2PcInstance extends L2Playable {
         }
 
         // Players wearing Formal Wear cannot use skills.
-        ItemInstance formal = getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
+        L2ItemInstance formal = getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
         if (formal != null && formal.getItem().getBodyPart() == Item.SLOT_ALLDRESS) {
             sendPacket(SystemMessageId.CANNOT_USE_ITEMS_SKILLS_WITH_FORMALWEAR);
             sendPacket(ActionFailed.STATIC_PACKET);
@@ -5648,7 +5650,7 @@ public final class L2PcInstance extends L2Playable {
         }
 
         // Notify the AI with CAST and target
-        getAI().setIntention(CtrlIntention.CAST, skill, target);
+        getAI().setIntention(EIntention.CAST, skill, target);
         return true;
     }
 
@@ -6333,7 +6335,7 @@ public final class L2PcInstance extends L2Playable {
      * @return the modifier corresponding to the Enchant Effect of the Active Weapon (Min : 127).
      */
     public int getEnchantEffect() {
-        ItemInstance wpn = getActiveWeaponInstance();
+        L2ItemInstance wpn = getActiveWeaponInstance();
 
         if (wpn == null) { return 0; }
 
@@ -6377,13 +6379,13 @@ public final class L2PcInstance extends L2Playable {
 
     @Override
     public boolean isChargedShot(ShotType type) {
-        ItemInstance weapon = getActiveWeaponInstance();
+        L2ItemInstance weapon = getActiveWeaponInstance();
         return weapon != null && weapon.isChargedShot(type);
     }
 
     @Override
     public void setChargedShot(ShotType type, boolean charged) {
-        ItemInstance weapon = getActiveWeaponInstance();
+        L2ItemInstance weapon = getActiveWeaponInstance();
         if (weapon != null) { weapon.setChargedShot(type, charged); }
     }
 
@@ -6392,7 +6394,7 @@ public final class L2PcInstance extends L2Playable {
         if (_activeSoulShots.isEmpty()) { return; }
 
         for (int itemId : _activeSoulShots) {
-            ItemInstance item = getInventory().getItemByItemId(itemId);
+            L2ItemInstance item = getInventory().getItemByItemId(itemId);
             if (item != null) {
                 if (magic && item.getItem().getDefaultAction() == ActionType.spiritshot) {
                     IItemHandler handler = ItemHandler.getInstance().getItemHandler(item.getEtcItem());
@@ -6548,7 +6550,7 @@ public final class L2PcInstance extends L2Playable {
         getAppearance().setVisible();
         setIsInvul(false);
 
-        if (hasAI()) { getAI().setIntention(CtrlIntention.IDLE); }
+        if (hasAI()) { getAI().setIntention(EIntention.IDLE); }
 
         // prevent receive falling damage
         setFalling();
@@ -6571,7 +6573,7 @@ public final class L2PcInstance extends L2Playable {
         getAppearance().setVisible();
         setIsInvul(false);
 
-        if (hasAI()) { getAI().setIntention(CtrlIntention.IDLE); }
+        if (hasAI()) { getAI().setIntention(EIntention.IDLE); }
 
         _savedLocation.setXYZ(getX(), getY(), getZ());
         broadcastUserInfo();
@@ -6867,7 +6869,7 @@ public final class L2PcInstance extends L2Playable {
     }
 
     public void sendSkillList() {
-        ItemInstance formal = getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
+        L2ItemInstance formal = getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
         boolean isWearingFormalWear = formal != null && formal.getItem().getBodyPart() == Item.SLOT_ALLDRESS;
 
         boolean isDisabled = false;
@@ -7080,7 +7082,7 @@ public final class L2PcInstance extends L2Playable {
 
         try {
             // Remove active item skills before saving char to database because next time when choosing this class, worn items can be different
-            for (ItemInstance item : getInventory().getAugmentedItems()) {
+            for (L2ItemInstance item : getInventory().getAugmentedItems()) {
                 if (item != null && item.isEquipped()) { item.getAugmentation().removeBonus(this); }
             }
 
@@ -7491,7 +7493,7 @@ public final class L2PcInstance extends L2Playable {
      * @return true if it the item can be manipulated, false ovtherwise.
      */
     public boolean validateItemManipulation(int objectId) {
-        ItemInstance item = getInventory().getItemByObjectId(objectId);
+        L2ItemInstance item = getInventory().getItemByObjectId(objectId);
 
         // You don't own the item, or item is null.
         if (item == null || item.getOwnerId() != getObjectId()) { return false; }
@@ -7924,11 +7926,11 @@ public final class L2PcInstance extends L2Playable {
         return _fishingLoc;
     }
 
-    public ItemInstance getLure() {
+    public L2ItemInstance getLure() {
         return _lure;
     }
 
-    public void setLure(ItemInstance lure) {
+    public void setLure(L2ItemInstance lure) {
         _lure = lure;
     }
 
@@ -8367,7 +8369,7 @@ public final class L2PcInstance extends L2Playable {
 
     public void checkItemRestriction() {
         for (int i = 0; i < Inventory.PAPERDOLL_TOTALSLOTS; i++) {
-            ItemInstance equippedItem = getInventory().getPaperdollItem(i);
+            L2ItemInstance equippedItem = getInventory().getPaperdollItem(i);
             if (equippedItem != null && !equippedItem.getItem().checkCondition(this, this, false)) {
                 getInventory().unEquipItemInSlot(i);
 
@@ -8905,7 +8907,7 @@ public final class L2PcInstance extends L2Playable {
         public void run() {
             setIsSitting(false);
             setIsParalyzed(false);
-            getAI().setIntention(CtrlIntention.IDLE);
+            getAI().setIntention(EIntention.IDLE);
         }
     }
 
@@ -8941,7 +8943,7 @@ public final class L2PcInstance extends L2Playable {
                 int[] foodIds = getPetData(getMountNpcId()).getFood();
                 if (foodIds.length == 0) { return; }
 
-                ItemInstance food = null;
+                L2ItemInstance food = null;
                 for (int id : foodIds) {
                     food = getInventory().getItemByItemId(id);
                     if (food != null) { break; }
@@ -9020,5 +9022,10 @@ public final class L2PcInstance extends L2Playable {
         public void run() {
             clearCharges();
         }
+    }
+
+    @Override
+    public boolean isPlayer() {
+        return true;
     }
 }

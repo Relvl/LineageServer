@@ -17,13 +17,13 @@ package net.sf.l2j.gameserver.model.actor.instance;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.EChatType;
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.DoorTable;
 import net.sf.l2j.gameserver.instancemanager.FourSepulchersManager;
-import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
 import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
 import net.sf.l2j.gameserver.network.client.game_to_client.MoveToPawn;
@@ -93,7 +93,7 @@ public class L2SepulcherNpcInstance extends L2NpcInstance {
                 // Check the height difference, this max heigth difference might need some tweaking
                 if (Math.abs(player.getZ() - getZ()) < 400) {
                     // Set the L2PcInstance Intention to ATTACK
-                    player.getAI().setIntention(CtrlIntention.ATTACK, this);
+                    player.getAI().setIntention(EIntention.ATTACK, this);
                 }
                 else {
                     // Send ActionFailed (target is out of attack range) to the L2PcInstance player
@@ -104,7 +104,7 @@ public class L2SepulcherNpcInstance extends L2NpcInstance {
                 // Calculate the distance between the L2PcInstance and the L2NpcInstance
                 if (!canInteract(player)) {
                     // Notify the L2PcInstance AI with INTERACT
-                    player.getAI().setIntention(CtrlIntention.INTERACT, this);
+                    player.getAI().setIntention(EIntention.INTERACT, this);
                 }
                 else {
                     // Rotate the player to face the instance
@@ -220,7 +220,7 @@ public class L2SepulcherNpcInstance extends L2NpcInstance {
             showChatWindow(player, val);
         }
         else if (command.startsWith("open_gate")) {
-            ItemInstance hallsKey = player.getInventory().getItemByItemId(HALLS_KEY);
+            L2ItemInstance hallsKey = player.getInventory().getItemByItemId(HALLS_KEY);
             if (hallsKey == null) { showHtmlFile(player, "Gatekeeper-no.htm"); }
             else if (FourSepulchersManager.getInstance().isAttackTime()) {
                 switch (getNpcId()) {

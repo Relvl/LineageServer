@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ExConfirmVariationItem;
 
@@ -40,7 +40,7 @@ public final class RequestConfirmTargetItem extends AbstractRefinePacket
 		if (activeChar == null)
 			return;
 		
-		final ItemInstance item = activeChar.getInventory().getItemByObjectId(_itemObjId);
+		final L2ItemInstance item = activeChar.getInventory().getItemByObjectId(_itemObjId);
 		if (item == null)
 			return;
 		

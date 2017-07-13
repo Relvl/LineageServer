@@ -12,8 +12,8 @@
  */
 package net.sf.l2j.gameserver.scripting.quests;
 
-import net.sf.l2j.gameserver.ai.CtrlIntention;
-import net.sf.l2j.gameserver.model.L2CharPosition;
+import net.sf.l2j.gameserver.ai.EIntention;
+import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.scripting.Quest;
@@ -100,33 +100,33 @@ public class Q021_HiddenTruth extends Quest
 		}
 		else if (event.equalsIgnoreCase("1"))
 		{
-			_vonHellmannPage.getAI().setIntention(CtrlIntention.MOVE_TO, new L2CharPosition(52373, -54296, -3136, 0));
+			_vonHellmannPage.getAI().setIntention(EIntention.MOVE_TO, new L2Position(52373, -54296, -3136, 0));
 			_vonHellmannPage.broadcastNpcSay("Follow me...");
 			startQuestTimer("2", 5000, _vonHellmannPage, player, false);
 			return null;
 		}
 		else if (event.equalsIgnoreCase("2"))
 		{
-			_vonHellmannPage.getAI().setIntention(CtrlIntention.MOVE_TO, new L2CharPosition(52279, -53064, -3161, 0));
+			_vonHellmannPage.getAI().setIntention(EIntention.MOVE_TO, new L2Position(52279, -53064, -3161, 0));
 			startQuestTimer("3", 12000, _vonHellmannPage, player, false);
 			return null;
 		}
 		else if (event.equalsIgnoreCase("3"))
 		{
-			_vonHellmannPage.getAI().setIntention(CtrlIntention.MOVE_TO, new L2CharPosition(51909, -51725, -3125, 0));
+			_vonHellmannPage.getAI().setIntention(EIntention.MOVE_TO, new L2Position(51909, -51725, -3125, 0));
 			startQuestTimer("4", 15000, _vonHellmannPage, player, false);
 			return null;
 		}
 		else if (event.equalsIgnoreCase("4"))
 		{
-			_vonHellmannPage.getAI().setIntention(CtrlIntention.MOVE_TO, new L2CharPosition(52438, -51240, -3097, 0));
+			_vonHellmannPage.getAI().setIntention(EIntention.MOVE_TO, new L2Position(52438, -51240, -3097, 0));
 			_vonHellmannPage.broadcastNpcSay("This where that here...");
 			startQuestTimer("5", 5000, _vonHellmannPage, player, false);
 			return null;
 		}
 		else if (event.equalsIgnoreCase("5"))
 		{
-			_vonHellmannPage.getAI().setIntention(CtrlIntention.MOVE_TO, new L2CharPosition(52143, -51418, -3085, 0));
+			_vonHellmannPage.getAI().setIntention(EIntention.MOVE_TO, new L2Position(52143, -51418, -3085, 0));
 			_vonHellmannPage.broadcastNpcSay("I want to speak to you...");
 			return null;
 		}

@@ -15,10 +15,10 @@
 package net.sf.l2j.gameserver.model.actor.instance;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.model.L2CharacterAI;
 import net.sf.l2j.gameserver.ai.model.L2SiegeGuardAI;
-import net.sf.l2j.gameserver.model.L2CharPosition;
+import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
@@ -101,7 +101,7 @@ public final class L2SiegeGuardInstance extends L2Attackable
 			clearAggroList();
 			
 			if (hasAI())
-				getAI().setIntention(CtrlIntention.MOVE_TO, new L2CharPosition(getSpawn().getLocx(), getSpawn().getLocy(), getSpawn().getLocz(), 0));
+				getAI().setIntention(EIntention.MOVE_TO, new L2Position(getSpawn().getLocx(), getSpawn().getLocy(), getSpawn().getLocz(), 0));
 		}
 	}
 	
@@ -119,13 +119,13 @@ public final class L2SiegeGuardInstance extends L2Attackable
 			if (isAutoAttackable(player))
 			{
 				if (!isAlikeDead() && (Math.abs(player.getZ() - getZ()) < 600)) // this max heigth difference might need some tweaking
-					player.getAI().setIntention(CtrlIntention.ATTACK, this);
+					player.getAI().setIntention(EIntention.ATTACK, this);
 			}
 			else
 			{
 				// Notify the L2PcInstance AI with INTERACT
 				if (!canInteract(player))
-					player.getAI().setIntention(CtrlIntention.INTERACT, this);
+					player.getAI().setIntention(EIntention.INTERACT, this);
 				else
 				{
 					// Rotate the player to face the instance

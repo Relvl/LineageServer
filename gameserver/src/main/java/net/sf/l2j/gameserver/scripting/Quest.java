@@ -42,7 +42,7 @@ import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.zone.L2ZoneType;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
@@ -1170,7 +1170,7 @@ public class Quest
 		}
 	}
 	
-	public final boolean notifyItemUse(ItemInstance item, L2PcInstance player, L2Object target)
+	public final boolean notifyItemUse(L2ItemInstance item, L2PcInstance player, L2Object target)
 	{
 		String res = null;
 		try
@@ -1184,7 +1184,7 @@ public class Quest
 		return showResult(null, player, res);
 	}
 	
-	public String onItemUse(ItemInstance item, L2PcInstance player, L2Object target)
+	public String onItemUse(L2ItemInstance item, L2PcInstance player, L2Object target)
 	{
 		return null;
 	}

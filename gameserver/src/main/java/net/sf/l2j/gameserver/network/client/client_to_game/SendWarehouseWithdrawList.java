@@ -5,7 +5,7 @@ import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.ClanWarehouse;
 import net.sf.l2j.gameserver.model.itemcontainer.ItemContainer;
 import net.sf.l2j.gameserver.model.itemcontainer.PcWarehouse;
@@ -89,7 +89,7 @@ public final class SendWarehouseWithdrawList extends L2GameClientPacket {
 
         for (IntIntHolder i : _items) {
             // Calculate needed slots
-            ItemInstance item = warehouse.getItemByObjectId(i.getId());
+            L2ItemInstance item = warehouse.getItemByObjectId(i.getId());
             if (item == null || item.getCount() < i.getValue()) {
                 Util.handleIllegalPlayerAction(player, player.getName() + " of account " + player.getAccountName() + " tried to withdraw non-existent item from warehouse.", Config.DEFAULT_PUNISH);
                 return;
@@ -116,13 +116,13 @@ public final class SendWarehouseWithdrawList extends L2GameClientPacket {
         // Proceed to the transfer
         InventoryUpdate playerIU = new InventoryUpdate();
         for (IntIntHolder i : _items) {
-            ItemInstance oldItem = warehouse.getItemByObjectId(i.getId());
+            L2ItemInstance oldItem = warehouse.getItemByObjectId(i.getId());
             if (oldItem == null || oldItem.getCount() < i.getValue()) {
                 _log.warn("Error withdrawing a warehouse object for {} (olditem == null)", player.getName());
                 return;
             }
 
-            ItemInstance newItem = warehouse.transferItem(warehouse.getName(), i.getId(), i.getValue(), player.getInventory(), player, manager);
+            L2ItemInstance newItem = warehouse.transferItem(warehouse.getName(), i.getId(), i.getValue(), player.getInventory(), player, manager);
             if (newItem == null) {
                 _log.warn("Error withdrawing a warehouse object for {} (newitem == null)", player.getName());
                 return;

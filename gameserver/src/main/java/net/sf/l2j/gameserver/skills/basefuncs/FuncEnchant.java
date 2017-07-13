@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.skills.basefuncs;
 
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.type.WeaponType;
 import net.sf.l2j.gameserver.skills.Env;
 import net.sf.l2j.gameserver.skills.Stats;
@@ -32,7 +32,7 @@ public class FuncEnchant extends Func
 		if (cond != null && !cond.test(env))
 			return;
 		
-		final ItemInstance item = (ItemInstance) funcOwner;
+		final L2ItemInstance item = (L2ItemInstance) funcOwner;
 		
 		int enchant = item.getEnchantLevel();
 		if (enchant <= 0)

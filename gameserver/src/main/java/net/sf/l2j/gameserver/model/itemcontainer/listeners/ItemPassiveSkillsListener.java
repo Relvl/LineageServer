@@ -18,7 +18,7 @@ import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.network.client.game_to_client.SkillCoolTime;
@@ -33,7 +33,7 @@ public class ItemPassiveSkillsListener implements OnEquipListener
 	}
 	
 	@Override
-	public void onEquip(int slot, ItemInstance item, L2Playable actor)
+	public void onEquip(int slot, L2ItemInstance item, L2Playable actor)
 	{
 		final L2PcInstance player = (L2PcInstance) actor;
 		final Item it = item.getItem();
@@ -104,7 +104,7 @@ public class ItemPassiveSkillsListener implements OnEquipListener
 	}
 	
 	@Override
-	public void onUnequip(int slot, ItemInstance item, L2Playable actor)
+	public void onUnequip(int slot, L2ItemInstance item, L2Playable actor)
 	{
 		final L2PcInstance player = (L2PcInstance) actor;
 		final Item it = item.getItem();
@@ -142,7 +142,7 @@ public class ItemPassiveSkillsListener implements OnEquipListener
 				{
 					boolean found = false;
 					
-					for (ItemInstance pItem : player.getInventory().getPaperdollItems())
+					for (L2ItemInstance pItem : player.getInventory().getPaperdollItems())
 					{
 						if (pItem != null && it.getItemId() == pItem.getItemId())
 						{

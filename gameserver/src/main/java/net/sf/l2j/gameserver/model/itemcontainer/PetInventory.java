@@ -15,11 +15,11 @@
 package net.sf.l2j.gameserver.model.itemcontainer;
 
 import net.sf.l2j.gameserver.datatables.ItemTable;
-import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance.ItemLocation;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance.ItemLocation;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
 
@@ -64,7 +64,7 @@ public class PetInventory extends Inventory
 		getOwner().updateAndBroadcastStatus(1);
 	}
 	
-	public boolean validateCapacity(ItemInstance item)
+	public boolean validateCapacity(L2ItemInstance item)
 	{
 		int slots = 0;
 		
@@ -80,7 +80,7 @@ public class PetInventory extends Inventory
 		return (_items.size() + slots <= _owner.getInventoryLimit());
 	}
 	
-	public boolean validateWeight(ItemInstance item, long count)
+	public boolean validateWeight(L2ItemInstance item, long count)
 	{
 		int weight = 0;
 		
@@ -116,7 +116,7 @@ public class PetInventory extends Inventory
 		super.restore();
 		
 		// check for equipped items from other pets
-		for (ItemInstance item : _items)
+		for (L2ItemInstance item : _items)
 		{
 			if (item.isEquipped())
 			{
@@ -137,7 +137,7 @@ public class PetInventory extends Inventory
 			if (petOwner != null)
 			{
 				// Transfer each item to master's inventory.
-				for (ItemInstance item : _items)
+				for (L2ItemInstance item : _items)
 				{
 					getOwner().transferItem("return", item.getObjectId(), item.getCount(), petOwner.getInventory(), petOwner, getOwner());
 					L2World.getInstance().removeObject(item);

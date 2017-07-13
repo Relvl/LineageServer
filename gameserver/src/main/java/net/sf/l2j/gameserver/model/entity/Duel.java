@@ -20,7 +20,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Future;
 
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.instancemanager.DuelManager;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -290,7 +290,7 @@ public class Duel
 			for (L2PcInstance partyPlayer : _playerA.getParty().getPartyMembers())
 			{
 				partyPlayer.abortCast();
-				partyPlayer.getAI().setIntention(CtrlIntention.ACTIVE);
+				partyPlayer.getAI().setIntention(EIntention.ACTIVE);
 				partyPlayer.setTarget(null);
 				partyPlayer.sendPacket(ActionFailed.STATIC_PACKET);
 			}
@@ -298,7 +298,7 @@ public class Duel
 			for (L2PcInstance partyPlayer : _playerB.getParty().getPartyMembers())
 			{
 				partyPlayer.abortCast();
-				partyPlayer.getAI().setIntention(CtrlIntention.ACTIVE);
+				partyPlayer.getAI().setIntention(EIntention.ACTIVE);
 				partyPlayer.setTarget(null);
 				partyPlayer.sendPacket(ActionFailed.STATIC_PACKET);
 			}
@@ -307,9 +307,9 @@ public class Duel
 		{
 			_playerA.abortCast();
 			_playerB.abortCast();
-			_playerA.getAI().setIntention(CtrlIntention.ACTIVE);
+			_playerA.getAI().setIntention(EIntention.ACTIVE);
 			_playerA.setTarget(null);
-			_playerB.getAI().setIntention(CtrlIntention.ACTIVE);
+			_playerB.getAI().setIntention(EIntention.ACTIVE);
 			_playerB.setTarget(null);
 			_playerA.sendPacket(ActionFailed.STATIC_PACKET);
 			_playerB.sendPacket(ActionFailed.STATIC_PACKET);

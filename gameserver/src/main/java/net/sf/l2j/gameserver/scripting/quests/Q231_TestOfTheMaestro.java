@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.scripting.quests;
 
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -123,15 +123,15 @@ public class Q231_TestOfTheMaestro extends Quest
 		{
 			final L2Attackable bugbear1 = (L2Attackable) addSpawn(KING_BUGBEAR, 140333, -194153, -3138, 0, false, 200000, true);
 			bugbear1.addDamageHate(player, 0, 999);
-			bugbear1.getAI().setIntention(CtrlIntention.ATTACK, player);
+			bugbear1.getAI().setIntention(EIntention.ATTACK, player);
 			
 			final L2Attackable bugbear2 = (L2Attackable) addSpawn(KING_BUGBEAR, 140395, -194147, -3146, 0, false, 200000, true);
 			bugbear2.addDamageHate(player, 0, 999);
-			bugbear2.getAI().setIntention(CtrlIntention.ATTACK, player);
+			bugbear2.getAI().setIntention(EIntention.ATTACK, player);
 			
 			final L2Attackable bugbear3 = (L2Attackable) addSpawn(KING_BUGBEAR, 140304, -194082, -3157, 0, false, 200000, true);
 			bugbear3.addDamageHate(player, 0, 999);
-			bugbear3.getAI().setIntention(CtrlIntention.ATTACK, player);
+			bugbear3.getAI().setIntention(EIntention.ATTACK, player);
 			
 			return null;
 		}

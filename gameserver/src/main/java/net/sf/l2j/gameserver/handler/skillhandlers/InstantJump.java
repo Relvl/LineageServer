@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.handler.skillhandlers;
 
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
@@ -69,7 +69,7 @@ public class InstantJump implements ISkillHandler
 		y = (int) (py + (25 * Math.sin(ph)));
 		z = target.getZ();
 		
-		activeChar.getAI().setIntention(CtrlIntention.IDLE);
+		activeChar.getAI().setIntention(EIntention.IDLE);
 		activeChar.broadcastPacket(new FlyToLocation(activeChar, x, y, z, FlyType.DUMMY));
 		activeChar.abortAttack();
 		activeChar.abortCast();

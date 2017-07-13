@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 
 public final class WarehouseDepositList extends L2GameServerPacket
@@ -29,7 +29,7 @@ public final class WarehouseDepositList extends L2GameServerPacket
 	public static final int FREIGHT = 4; // not sure
 	
 	private final int _playerAdena;
-	private final List<ItemInstance> _items;
+	private final List<L2ItemInstance> _items;
 	private final int _whType;
 	
 	public WarehouseDepositList(L2PcInstance player, int type)
@@ -39,7 +39,7 @@ public final class WarehouseDepositList extends L2GameServerPacket
 		_items = new ArrayList<>();
 		
 		final boolean isPrivate = _whType == PRIVATE;
-		for (ItemInstance temp : player.getInventory().getAvailableItems(true, isPrivate))
+		for (L2ItemInstance temp : player.getInventory().getAvailableItems(true, isPrivate))
 		{
 			if (temp != null && temp.isDepositable(isPrivate))
 				_items.add(temp);
@@ -54,7 +54,7 @@ public final class WarehouseDepositList extends L2GameServerPacket
 		writeD(_playerAdena);
 		writeH(_items.size());
 		
-		for (ItemInstance temp : _items)
+		for (L2ItemInstance temp : _items)
 		{
 			if (temp == null || temp.getItem() == null)
 				continue;

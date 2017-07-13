@@ -23,12 +23,14 @@ import net.sf.l2j.gameserver.communitybbs.Manager.ForumsBBSManager;
 import net.sf.l2j.gameserver.datatables.*;
 import net.sf.l2j.gameserver.geoengine.GeoData;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
-import net.sf.l2j.gameserver.handler.*;
+import net.sf.l2j.gameserver.handler.AdminCommandHandler;
+import net.sf.l2j.gameserver.handler.SkillHandler;
+import net.sf.l2j.gameserver.handler.UserCommandHandler;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.instancemanager.*;
 import net.sf.l2j.gameserver.instancemanager.games.MonsterRace;
 import net.sf.l2j.gameserver.model.L2Manor;
-import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.entity.Hero;
 import net.sf.l2j.gameserver.model.olympiad.Olympiad;
 import net.sf.l2j.gameserver.model.olympiad.OlympiadGameManager;
@@ -109,13 +111,7 @@ public class GameServer {
         PartyMatchRoomList.getInstance();
         RaidBossPointsManager.getInstance();
 
-        if (Config.ENABLE_COMMUNITY_BOARD) // Forums has to be loaded before clan data
-        {
-            ForumsBBSManager.getInstance().initRoot();
-        }
-        else {
-            _log.config("Community server is disabled.");
-        }
+        ForumsBBSManager.getInstance().initRoot();
 
         CrestCache.getInstance();
         ClanTable.getInstance();
@@ -186,7 +182,6 @@ public class GameServer {
 
         _log.config("AutoSpawnHandler: Loaded " + AutoSpawnManager.getInstance().size() + " handlers.");
         _log.config("AdminCommandHandler: Loaded " + AdminCommandHandler.getInstance().size() + " handlers.");
-        _log.config("ItemHandler: Loaded " + ItemHandler.getInstance().size() + " handlers.");
         _log.config("SkillHandler: Loaded " + SkillHandler.getInstance().size() + " handlers.");
         _log.config("UserCommandHandler: Loaded " + UserCommandHandler.getInstance().size() + " handlers.");
 

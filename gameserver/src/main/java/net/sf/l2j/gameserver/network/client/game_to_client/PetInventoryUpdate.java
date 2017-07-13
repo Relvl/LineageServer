@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.l2j.gameserver.model.item.instance.ItemInfo;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 
 /**
@@ -38,34 +38,34 @@ public class PetInventoryUpdate extends L2GameServerPacket
 		this(new ArrayList<ItemInfo>());
 	}
 	
-	public void addItem(ItemInstance item)
+	public void addItem(L2ItemInstance item)
 	{
 		if (item != null)
 			_items.add(new ItemInfo(item));
 	}
 	
-	public void addNewItem(ItemInstance item)
+	public void addNewItem(L2ItemInstance item)
 	{
 		if (item != null)
 			_items.add(new ItemInfo(item, 1));
 	}
 	
-	public void addModifiedItem(ItemInstance item)
+	public void addModifiedItem(L2ItemInstance item)
 	{
 		if (item != null)
 			_items.add(new ItemInfo(item, 2));
 	}
 	
-	public void addRemovedItem(ItemInstance item)
+	public void addRemovedItem(L2ItemInstance item)
 	{
 		if (item != null)
 			_items.add(new ItemInfo(item, 3));
 	}
 	
-	public void addItems(List<ItemInstance> items)
+	public void addItems(List<L2ItemInstance> items)
 	{
 		if (items != null)
-			for (ItemInstance item : items)
+			for (L2ItemInstance item : items)
 				if (item != null)
 					_items.add(new ItemInfo(item));
 	}

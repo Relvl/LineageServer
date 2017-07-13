@@ -20,7 +20,7 @@ import net.sf.l2j.commons.config.ExProperties;
 import net.sf.l2j.gameserver.geoengine.converter.blocks.*;
 import net.sf.l2j.gameserver.geoengine.geodata.GeoFormat;
 import net.sf.l2j.gameserver.geoengine.geodata.GeoStructure;
-import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.world.L2World;
 
 import java.io.*;
 import java.nio.ByteOrder;

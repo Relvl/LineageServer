@@ -14,8 +14,8 @@
  */
 package net.sf.l2j.gameserver.model.actor.knownlist;
 
-import net.sf.l2j.gameserver.ai.CtrlEvent;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.ECtrlEvent;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.model.L2CharacterAI;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Character;
@@ -42,8 +42,8 @@ public class MonsterKnownList extends AttackableKnownList
 			final L2CharacterAI ai = ((L2MonsterInstance) _activeObject).getAI();
 			
 			// AI exists and is idle, set active
-			if (ai != null && ai.getIntention() == CtrlIntention.IDLE)
-				ai.setIntention(CtrlIntention.ACTIVE, null);
+			if (ai != null && ai.getIntention() == EIntention.IDLE)
+				ai.setIntention(EIntention.ACTIVE, null);
 		}
 		
 		return true;
@@ -63,7 +63,7 @@ public class MonsterKnownList extends AttackableKnownList
 		
 		// monster has AI, inform about lost object
 		if (monster.hasAI())
-			monster.getAI().notifyEvent(CtrlEvent.EVT_FORGET_OBJECT, object);
+			monster.getAI().notifyEvent(ECtrlEvent.EVT_FORGET_OBJECT, object);
 		
 		// clear agro list
 		if (monster.isVisible() && getKnownType(L2PcInstance.class).isEmpty())

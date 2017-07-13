@@ -13,7 +13,7 @@
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
 import net.sf.l2j.gameserver.datatables.CharNameTable;
-import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.world.L2World;
 
 /**
  * Support for "Chat with Friends" dialog. <BR>

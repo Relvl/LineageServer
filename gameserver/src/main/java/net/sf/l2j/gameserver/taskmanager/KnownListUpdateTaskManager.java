@@ -17,8 +17,8 @@ package net.sf.l2j.gameserver.taskmanager;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.L2World;
-import net.sf.l2j.gameserver.model.L2WorldRegion;
+import net.sf.l2j.gameserver.model.world.L2World;
+import net.sf.l2j.gameserver.model.world.L2WorldRegion;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
@@ -91,7 +91,7 @@ public final class KnownListUpdateTaskManager implements Runnable
 						// The other iteration performs object add.
 						else
 						{
-							for (L2WorldRegion surroundingRegion : region.getSurroundingRegions())
+							for (L2WorldRegion surroundingRegion : region.getNeighbors())
 							{
 								// Object is a monster and surrounding region does not contain playable, skip.
 								if (isAttackable && !surroundingRegion.isActive())

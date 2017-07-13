@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.skills.effects;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.Location;
@@ -82,7 +82,7 @@ public class EffectWarp extends L2Effect
 		}
 		
 		// TODO: check if this AI intention is retail-like. This stops player's previous movement
-		_actor.getAI().setIntention(CtrlIntention.IDLE);
+		_actor.getAI().setIntention(EIntention.IDLE);
 		
 		_actor.broadcastPacket(new FlyToLocation(_actor, x, y, z, FlyType.DUMMY));
 		_actor.abortAttack();

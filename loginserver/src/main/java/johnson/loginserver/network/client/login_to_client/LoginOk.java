@@ -9,8 +9,8 @@ public final class LoginOk extends SendablePacket<L2LoginClient> {
     private final int loginOk2;
 
     public LoginOk(SessionKey sessionKey) {
-        loginOk1 = sessionKey.loginOkID1;
-        loginOk2 = sessionKey.loginOkID2;
+        loginOk1 = sessionKey.getLoginOkID1();
+        loginOk2 = sessionKey.getLoginOkID2();
     }
 
     @Override

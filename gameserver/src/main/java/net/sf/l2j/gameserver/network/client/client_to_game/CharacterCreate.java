@@ -23,10 +23,10 @@ import net.sf.l2j.gameserver.datatables.SkillTreeTable;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.L2ShortCut;
 import net.sf.l2j.gameserver.model.L2SkillLearn;
-import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.template.PcTemplate;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.network.client.game_to_client.CharCreateFail;
 import net.sf.l2j.gameserver.network.client.game_to_client.CharCreateOk;
@@ -153,7 +153,7 @@ public final class CharacterCreate extends L2GameClientPacket
 		
 		for (Item ia : template.getItems())
 		{
-			ItemInstance item = newChar.getInventory().addItem("Init", ia.getItemId(), 1, newChar, null);
+			L2ItemInstance item = newChar.getInventory().addItem("Init", ia.getItemId(), 1, newChar, null);
 			if (item.getItemId() == 5588) // tutorial book shortcut
 				newChar.registerShortCut(new L2ShortCut(11, 0, 1, item.getObjectId(), -1, 1));
 			
@@ -187,7 +187,7 @@ public final class CharacterCreate extends L2GameClientPacket
 		newChar.setOnlineStatus(true, false);
 		newChar.deleteMe();
 		
-		final CharSelectInfo cl = new CharSelectInfo(getClient().getAccountName(), getClient().getSessionId().playOkID1);
+		final CharSelectInfo cl = new CharSelectInfo(getClient().getAccountName(), getClient().getSessionId().getPlayOkID1());
 		getClient().getConnection().sendPacket(cl);
 		getClient().setCharSelection(cl.getCharInfo());
 	}

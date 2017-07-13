@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.model.actor.knownlist;
 
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2SiegeGuardInstance;
@@ -47,8 +47,8 @@ public class SiegeGuardKnownList extends AttackableKnownList
 			if (player != null && (player.getClan() == null || castle.getSiege().getAttackerClan(player.getClan()) != null))
 			{
 				// try to set AI to attack
-				if (guard.getAI().getIntention() == CtrlIntention.IDLE)
-					guard.getAI().setIntention(CtrlIntention.ACTIVE, null);
+				if (guard.getAI().getIntention() == EIntention.IDLE)
+					guard.getAI().setIntention(EIntention.ACTIVE, null);
 			}
 		}
 		return true;

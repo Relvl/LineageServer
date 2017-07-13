@@ -19,7 +19,7 @@ import java.util.List;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.instancemanager.GrandBossManager;
@@ -267,7 +267,7 @@ public class Baium extends AbstractNpcAI
 					if (newVictim != null && victim != newVictim)
 					{
 						angel.addDamageHate(newVictim, 0, 10000);
-						angel.getAI().setIntention(CtrlIntention.ATTACK, newVictim);
+						angel.getAI().setIntention(EIntention.ATTACK, newVictim);
 					}
 				}
 			}
@@ -442,12 +442,12 @@ public class Baium extends AbstractNpcAI
 		// Adapt the skill range, because Baium is fat.
 		if (Util.checkIfInRange(skill.getCastRange() + npc.getCollisionRadius(), npc, _actualVictim, true))
 		{
-			npc.getAI().setIntention(CtrlIntention.IDLE);
+			npc.getAI().setIntention(EIntention.IDLE);
 			npc.setTarget(skill.getId() == 4135 ? npc : _actualVictim);
 			npc.doCast(skill);
 		}
 		else
-			npc.getAI().setIntention(CtrlIntention.FOLLOW, _actualVictim, null);
+			npc.getAI().setIntention(EIntention.FOLLOW, _actualVictim, null);
 	}
 	
 	/**

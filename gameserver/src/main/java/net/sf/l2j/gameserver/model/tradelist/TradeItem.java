@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.model.tradelist;
 
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 
 public class TradeItem
@@ -25,7 +25,7 @@ public class TradeItem
 	private int _count;
 	private int _price;
 	
-	public TradeItem(ItemInstance item, int count, int price)
+	public TradeItem(L2ItemInstance item, int count, int price)
 	{
 		_objectId = item.getObjectId();
 		_item = item.getItem();

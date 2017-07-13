@@ -12,7 +12,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2SummonInstance;
 import net.sf.l2j.gameserver.model.entity.DimensionalRift;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.partymatching.PartyMatchRoom;
 import net.sf.l2j.gameserver.model.partymatching.PartyMatchRoomList;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -485,7 +485,7 @@ public class L2Party {
      * @param player
      * @param item
      */
-    public void distributeItem(L2PcInstance player, ItemInstance item) {
+    public void distributeItem(L2PcInstance player, L2ItemInstance item) {
         if (item.getItemId() == 57) {
             distributeAdena(player, item.getCount(), player);
             ItemTable.getInstance().destroyItem("Party", item, player, null);

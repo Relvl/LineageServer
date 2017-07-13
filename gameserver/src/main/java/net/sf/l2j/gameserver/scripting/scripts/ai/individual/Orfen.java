@@ -16,10 +16,10 @@ package net.sf.l2j.gameserver.scripting.scripts.ai.individual;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.instancemanager.GrandBossManager;
-import net.sf.l2j.gameserver.model.L2CharPosition;
+import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2Spawn;
@@ -191,7 +191,7 @@ public class Orfen extends AbstractNpcAI
 			
 			if (callerId != RIBA_IREN && (caller.getCurrentHp() / caller.getMaxHp() < 0.5) && Rnd.get(10) < chance)
 			{
-				npc.getAI().setIntention(CtrlIntention.IDLE, null, null);
+				npc.getAI().setIntention(EIntention.IDLE, null, null);
 				npc.setTarget(caller);
 				npc.doCast(SkillTable.getInstance().getInfo(4516, 1));
 			}
@@ -261,7 +261,7 @@ public class Orfen extends AbstractNpcAI
 	private static void goTo(L2Npc npc, SpawnLocation index)
 	{
 		((L2Attackable) npc).clearAggroList();
-		npc.getAI().setIntention(CtrlIntention.IDLE, null, null);
+		npc.getAI().setIntention(EIntention.IDLE, null, null);
 		
 		// Edit the spawn location in case server crashes.
 		L2Spawn spawn = npc.getSpawn();
@@ -272,7 +272,7 @@ public class Orfen extends AbstractNpcAI
 		if (index.getX() == 43728) // Hack !
 			npc.teleToLocation(index.getX(), index.getY(), index.getZ(), 0);
 		else
-			npc.getAI().setIntention(CtrlIntention.MOVE_TO, new L2CharPosition(index.getX(), index.getY(), index.getZ(), 0));
+			npc.getAI().setIntention(EIntention.MOVE_TO, new L2Position(index.getX(), index.getY(), index.getZ(), 0));
 	}
 	
 	private void spawnBoss(L2GrandBossInstance npc)

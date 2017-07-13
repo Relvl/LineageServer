@@ -17,11 +17,11 @@ package net.sf.l2j.gameserver.model.actor.instance;
 import java.util.concurrent.ScheduledFuture;
 
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.model.L2CharacterAI;
 import net.sf.l2j.gameserver.ai.model.L2DoorAI;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
-import net.sf.l2j.gameserver.model.L2CharPosition;
+import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
@@ -33,7 +33,7 @@ import net.sf.l2j.gameserver.model.actor.status.DoorStatus;
 import net.sf.l2j.gameserver.model.actor.template.CharTemplate;
 import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.model.entity.ClanHall;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
@@ -278,7 +278,7 @@ public class L2DoorInstance extends L2Character
 	}
 	
 	@Override
-	public ItemInstance getActiveWeaponInstance()
+	public L2ItemInstance getActiveWeaponInstance()
 	{
 		return null;
 	}
@@ -290,7 +290,7 @@ public class L2DoorInstance extends L2Character
 	}
 	
 	@Override
-	public ItemInstance getSecondaryWeaponInstance()
+	public L2ItemInstance getSecondaryWeaponInstance()
 	{
 		return null;
 	}
@@ -315,10 +315,10 @@ public class L2DoorInstance extends L2Character
 			if (isAutoAttackable(player))
 			{
 				if (Math.abs(player.getZ() - getZ()) < 400) // this max heigth difference might need some tweaking
-					player.getAI().setIntention(CtrlIntention.ATTACK, this);
+					player.getAI().setIntention(EIntention.ATTACK, this);
 			}
 			else if (!isInsideRadius(player, L2Npc.INTERACTION_DISTANCE, false, false))
-				player.getAI().setIntention(CtrlIntention.INTERACT, this);
+				player.getAI().setIntention(EIntention.INTERACT, this);
 			else if (player.getClan() != null && getClanHall() != null && player.getClanId() == getClanHall().getOwnerId())
 			{
 				player.gatesRequest(this);
@@ -551,7 +551,7 @@ public class L2DoorInstance extends L2Character
 	}
 	
 	@Override
-	public void stopMove(L2CharPosition pos)
+	public void stopMove(L2Position pos)
 	{
 	}
 	

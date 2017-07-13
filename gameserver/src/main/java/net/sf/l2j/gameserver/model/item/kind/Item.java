@@ -26,7 +26,7 @@ import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.type.ActionType;
 import net.sf.l2j.gameserver.model.item.type.ArmorType;
 import net.sf.l2j.gameserver.model.item.type.CrystalType;
@@ -419,11 +419,11 @@ public abstract class Item
 	
 	/**
 	 * Get the functions used by this item.
-	 * @param item : ItemInstance pointing out the item
+	 * @param item : L2ItemInstance pointing out the item
 	 * @param player : L2Character pointing out the player
 	 * @return the list of functions
 	 */
-	public final List<Func> getStatFuncs(ItemInstance item, L2Character player)
+	public final List<Func> getStatFuncs(L2ItemInstance item, L2Character player)
 	{
 		if (_funcTemplates == null || _funcTemplates.isEmpty())
 			return Collections.emptyList();

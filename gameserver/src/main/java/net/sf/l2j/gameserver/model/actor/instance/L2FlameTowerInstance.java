@@ -16,7 +16,7 @@ package net.sf.l2j.gameserver.model.actor.instance;
 
 import java.util.List;
 
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.instancemanager.ZoneManager;
 import net.sf.l2j.gameserver.model.actor.L2Character;
@@ -70,7 +70,7 @@ public class L2FlameTowerInstance extends L2Npc
 			if (isAutoAttackable(player) && Math.abs(player.getZ() - getZ()) < 100 && PathFinding.getInstance().canSeeTarget(player, this))
 			{
 				// Notify the L2PcInstance AI with INTERACT
-				player.getAI().setIntention(CtrlIntention.ATTACK, this);
+				player.getAI().setIntention(EIntention.ATTACK, this);
 			}
 			else
 			{

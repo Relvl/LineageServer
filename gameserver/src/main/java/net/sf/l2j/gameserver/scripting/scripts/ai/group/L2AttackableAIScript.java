@@ -14,8 +14,8 @@
  */
 package net.sf.l2j.gameserver.scripting.scripts.ai.group;
 
-import net.sf.l2j.gameserver.ai.CtrlEvent;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.ECtrlEvent;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.instancemanager.DimensionalRiftManager;
 import net.sf.l2j.gameserver.model.L2Object;
@@ -95,7 +95,7 @@ public final class L2AttackableAIScript extends Quest
 		
 		if (skillAggroPoints > 0)
 		{
-			if (attackable.hasAI() && (attackable.getAI().getIntention() == CtrlIntention.ATTACK))
+			if (attackable.hasAI() && (attackable.getAI().getIntention() == EIntention.ATTACK))
 			{
 				L2Object npcTarget = attackable.getTarget();
 				for (L2Object skillTarget : targets)
@@ -128,7 +128,7 @@ public final class L2AttackableAIScript extends Quest
 		}
 		
 		// When a faction member calls for help, attack the caller's attacker.
-		npc.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, originalAttackTarget, 1);
+		npc.getAI().notifyEvent(ECtrlEvent.EVT_AGGRESSION, originalAttackTarget, 1);
 		return null;
 	}
 	
@@ -156,7 +156,7 @@ public final class L2AttackableAIScript extends Quest
 			L2Attackable attackable = (L2Attackable) npc;
 			L2Character originalAttacker = isPet ? attacker.getPet() : attacker;
 			
-			attackable.getAI().notifyEvent(CtrlEvent.EVT_ATTACKED, originalAttacker);
+			attackable.getAI().notifyEvent(ECtrlEvent.EVT_ATTACKED, originalAttacker);
 			attackable.addDamageHate(originalAttacker, damage, (damage * 100) / (attackable.getLevel() + 7));
 		}
 		return null;

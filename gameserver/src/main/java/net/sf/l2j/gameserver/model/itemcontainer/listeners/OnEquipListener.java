@@ -15,11 +15,11 @@
 package net.sf.l2j.gameserver.model.itemcontainer.listeners;
 
 import net.sf.l2j.gameserver.model.actor.L2Playable;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 
 public interface OnEquipListener
 {
-	public void onEquip(int slot, ItemInstance item, L2Playable actor);
+	public void onEquip(int slot, L2ItemInstance item, L2Playable actor);
 	
-	public void onUnequip(int slot, ItemInstance item, L2Playable actor);
+	public void onUnequip(int slot, L2ItemInstance item, L2Playable actor);
 }

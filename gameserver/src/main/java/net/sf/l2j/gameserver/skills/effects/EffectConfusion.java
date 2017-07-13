@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
@@ -90,7 +90,7 @@ public class EffectConfusion extends L2Effect
 		
 		// Attacking the target
 		getEffected().setTarget(target);
-		getEffected().getAI().setIntention(CtrlIntention.ATTACK, target);
+		getEffected().getAI().setIntention(EIntention.ATTACK, target);
 		
 		// Add aggro to that target aswell. The aggro power is random.
 		int aggro = (5 + Rnd.get(5)) * getEffector().getLevel();

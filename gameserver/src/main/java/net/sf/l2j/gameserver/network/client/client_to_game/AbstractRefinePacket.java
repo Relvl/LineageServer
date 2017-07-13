@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.item.type.CrystalType;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -133,7 +133,7 @@ public abstract class AbstractRefinePacket extends L2GameClientPacket
 	/*
 	 * Checks player, source item, lifestone and gemstone validity for augmentation process
 	 */
-	protected static final boolean isValid(L2PcInstance player, ItemInstance item, ItemInstance refinerItem, ItemInstance gemStones)
+	protected static final boolean isValid(L2PcInstance player, L2ItemInstance item, L2ItemInstance refinerItem, L2ItemInstance gemStones)
 	{
 		if (!isValid(player, item, refinerItem))
 			return false;
@@ -142,7 +142,7 @@ public abstract class AbstractRefinePacket extends L2GameClientPacket
 		if (gemStones.getOwnerId() != player.getObjectId())
 			return false;
 		// .. and located in inventory
-		if (gemStones.getLocation() != ItemInstance.ItemLocation.INVENTORY)
+		if (gemStones.getLocation() != L2ItemInstance.ItemLocation.INVENTORY)
 			return false;
 		
 		final CrystalType grade = item.getItem().getCrystalType();
@@ -164,7 +164,7 @@ public abstract class AbstractRefinePacket extends L2GameClientPacket
 	 * @param refinerItem The augmentation stone.
 	 * @return true if all checks are successfully passed, false otherwise.
 	 */
-	protected static final boolean isValid(L2PcInstance player, ItemInstance item, ItemInstance refinerItem)
+	protected static final boolean isValid(L2PcInstance player, L2ItemInstance item, L2ItemInstance refinerItem)
 	{
 		if (!isValid(player, item))
 			return false;
@@ -174,7 +174,7 @@ public abstract class AbstractRefinePacket extends L2GameClientPacket
 			return false;
 		
 		// Lifestone must be located in inventory
-		if (refinerItem.getLocation() != ItemInstance.ItemLocation.INVENTORY)
+		if (refinerItem.getLocation() != L2ItemInstance.ItemLocation.INVENTORY)
 			return false;
 		
 		final LifeStone ls = _lifeStones.get(refinerItem.getItemId());
@@ -191,7 +191,7 @@ public abstract class AbstractRefinePacket extends L2GameClientPacket
 	/*
 	 * Check both player and source item conditions for augmentation process
 	 */
-	protected static final boolean isValid(L2PcInstance player, ItemInstance item)
+	protected static final boolean isValid(L2PcInstance player, L2ItemInstance item)
 	{
 		if (!isValid(player))
 			return false;

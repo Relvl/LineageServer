@@ -18,7 +18,7 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.ItemContainer;
 import net.sf.l2j.gameserver.model.itemcontainer.PcWarehouse;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -92,7 +92,7 @@ public final class SendWarehouseDepositList extends L2GameClientPacket {
         int slots = 0;
 
         for (IntIntHolder i : _items) {
-            ItemInstance item = player.checkItemManipulation(i.getId(), i.getValue());
+            L2ItemInstance item = player.checkItemManipulation(i.getId(), i.getValue());
             if (item == null) {
                 _log.warn("Error depositing a warehouse object for char {} (validity check)", player.getName());
                 return;
@@ -124,7 +124,7 @@ public final class SendWarehouseDepositList extends L2GameClientPacket {
         InventoryUpdate playerIU = new InventoryUpdate();
         for (IntIntHolder i : _items) {
             // Check validity of requested item
-            ItemInstance oldItem = player.checkItemManipulation(i.getId(), i.getValue());
+            L2ItemInstance oldItem = player.checkItemManipulation(i.getId(), i.getValue());
             if (oldItem == null) {
                 _log.warn("Error depositing a warehouse object for char {} (olditem == null)", player.getName());
                 return;
@@ -132,7 +132,7 @@ public final class SendWarehouseDepositList extends L2GameClientPacket {
 
             if (!oldItem.isDepositable(isPrivate) || !oldItem.isAvailable(player, true, isPrivate)) { continue; }
 
-            final ItemInstance newItem = player.getInventory().transferItem(warehouse.getName(), i.getId(), i.getValue(), warehouse, player, manager);
+            final L2ItemInstance newItem = player.getInventory().transferItem(warehouse.getName(), i.getId(), i.getValue(), warehouse, player, manager);
             if (newItem == null) {
                 _log.warn("Error depositing a warehouse object for char {} (newitem == null)", player.getName());
                 continue;

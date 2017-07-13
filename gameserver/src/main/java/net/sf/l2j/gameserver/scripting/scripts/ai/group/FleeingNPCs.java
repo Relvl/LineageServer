@@ -15,8 +15,8 @@
 package net.sf.l2j.gameserver.scripting.scripts.ai.group;
 
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
-import net.sf.l2j.gameserver.model.L2CharPosition;
+import net.sf.l2j.gameserver.ai.EIntention;
+import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.scripting.EventType;
@@ -51,16 +51,16 @@ public class FleeingNPCs extends AbstractNpcAI
 	{
 		if (npc.getNpcId() >= 18150 && npc.getNpcId() <= 18157)
 		{
-			npc.getAI().setIntention(CtrlIntention.MOVE_TO, new L2CharPosition((npc.getX() + Rnd.get(-40, 40)), (npc.getY() + Rnd.get(-40, 40)), npc.getZ(), npc.getHeading()));
-			npc.getAI().setIntention(CtrlIntention.IDLE, null, null);
+			npc.getAI().setIntention(EIntention.MOVE_TO, new L2Position((npc.getX() + Rnd.get(-40, 40)), (npc.getY() + Rnd.get(-40, 40)), npc.getZ(), npc.getHeading()));
+			npc.getAI().setIntention(EIntention.IDLE, null, null);
 			return null;
 		}
 		else if (npc.getNpcId() == 20432)
 		{
 			if (Rnd.get(3) == 2)
-				npc.getAI().setIntention(CtrlIntention.MOVE_TO, new L2CharPosition((npc.getX() + Rnd.get(-200, 200)), (npc.getY() + Rnd.get(-200, 200)), npc.getZ(), npc.getHeading()));
+				npc.getAI().setIntention(EIntention.MOVE_TO, new L2Position((npc.getX() + Rnd.get(-200, 200)), (npc.getY() + Rnd.get(-200, 200)), npc.getZ(), npc.getHeading()));
 			
-			npc.getAI().setIntention(CtrlIntention.IDLE, null, null);
+			npc.getAI().setIntention(EIntention.IDLE, null, null);
 			return null;
 		}
 		return super.onAttack(npc, attacker, damage, isPet);

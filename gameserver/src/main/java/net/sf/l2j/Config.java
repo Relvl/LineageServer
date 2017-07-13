@@ -416,7 +416,6 @@ public final class Config {
     public static int MIN_MONSTER_ANIMATION;
     public static int MAX_MONSTER_ANIMATION;
 
-    public static boolean GRIDS_ALWAYS_ON;
     public static int GRID_NEIGHBOR_TURNON_TIME;
     public static int GRID_NEIGHBOR_TURNOFF_TIME;
 
@@ -704,12 +703,6 @@ public final class Config {
     public static boolean LOG_CHAT;
     public static boolean LOG_ITEMS;
     public static boolean GMAUDIT;
-
-    /**
-     * Community Board
-     */
-    public static boolean ENABLE_COMMUNITY_BOARD;
-    public static String BBS_DEFAULT;
 
     /**
      * Flood Protectors
@@ -1062,7 +1055,6 @@ public final class Config {
             MIN_MONSTER_ANIMATION = npcs.getProperty("MinMonsterAnimation", 10);
             MAX_MONSTER_ANIMATION = npcs.getProperty("MaxMonsterAnimation", 40);
 
-            GRIDS_ALWAYS_ON = npcs.getProperty("GridsAlwaysOn", false);
             GRID_NEIGHBOR_TURNON_TIME = npcs.getProperty("GridNeighborTurnOnTime", 1);
             GRID_NEIGHBOR_TURNOFF_TIME = npcs.getProperty("GridNeighborTurnOffTime", 90);
 
@@ -1306,9 +1298,6 @@ public final class Config {
             LOG_CHAT = server.getProperty("LogChat", false);
             LOG_ITEMS = server.getProperty("LogItems", false);
             GMAUDIT = server.getProperty("GMAudit", false);
-
-            ENABLE_COMMUNITY_BOARD = server.getProperty("EnableCommunityBoard", false);
-            BBS_DEFAULT = server.getProperty("BBSDefault", "_bbshome");
 
             ROLL_DICE_TIME = server.getProperty("RollDiceTime", 4200);
             HERO_VOICE_TIME = server.getProperty("HeroVoiceTime", 10000);

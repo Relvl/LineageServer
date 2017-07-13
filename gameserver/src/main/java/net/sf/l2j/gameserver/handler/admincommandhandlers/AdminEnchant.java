@@ -21,7 +21,7 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.ArmorSet;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
@@ -123,7 +123,7 @@ public class AdminEnchant implements IAdminCommandHandler
 		
 		final L2PcInstance player = (L2PcInstance) target;
 		
-		final ItemInstance item = player.getInventory().getPaperdollItem(armorType);
+		final L2ItemInstance item = player.getInventory().getPaperdollItem(armorType);
 		if (item != null && item.getLocationSlot() == armorType)
 		{
 			final Item it = item.getItem();
@@ -168,7 +168,7 @@ public class AdminEnchant implements IAdminCommandHandler
 					if (oldEnchant >= 6 && currentEnchant < 6)
 					{
 						// Checks if player is wearing a chest item
-						final ItemInstance chestItem = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
+						final L2ItemInstance chestItem = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
 						if (chestItem != null)
 						{
 							final ArmorSet armorSet = ArmorSetsTable.getInstance().getSet(chestItem.getItemId());
@@ -191,7 +191,7 @@ public class AdminEnchant implements IAdminCommandHandler
 					else if (oldEnchant < 6 && currentEnchant >= 6)
 					{
 						// Checks if player is wearing a chest item
-						final ItemInstance chestItem = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
+						final L2ItemInstance chestItem = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
 						if (chestItem != null)
 						{
 							final ArmorSet armorSet = ArmorSetsTable.getInstance().getSet(chestItem.getItemId());

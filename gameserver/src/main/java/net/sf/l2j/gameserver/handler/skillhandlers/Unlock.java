@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.handler.skillhandlers;
 
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
@@ -71,7 +71,7 @@ public class Unlock implements ISkillHandler
 			else
 			{
 				chest.addDamageHate(activeChar, 0, 999);
-				chest.getAI().setIntention(CtrlIntention.ATTACK, activeChar);
+				chest.getAI().setIntention(EIntention.ATTACK, activeChar);
 			}
 		}
 		else

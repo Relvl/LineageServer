@@ -14,9 +14,9 @@
  */
 package net.sf.l2j.gameserver.ai.model;
 
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.IntentionCommand;
-import net.sf.l2j.gameserver.model.L2CharPosition;
+import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2Skill.SkillTargetType;
@@ -34,7 +34,7 @@ public class L2PlayerAI extends L2PlayableAI
 		super(player);
 	}
 	
-	void setNextIntention(CtrlIntention intention, Object arg0, Object arg1)
+	void setNextIntention(EIntention intention, Object arg0, Object arg1)
 	{
 		_nextIntention = new IntentionCommand(intention, arg0, arg1);
 	}
@@ -53,11 +53,11 @@ public class L2PlayerAI extends L2PlayableAI
 	 * @param arg1 The second parameter of the Intention
 	 */
 	@Override
-	synchronized void changeIntention(CtrlIntention intention, Object arg0, Object arg1)
+protected 	synchronized void changeIntention(EIntention intention, Object arg0, Object arg1)
 	{
 		// do nothing unless CAST intention
 		// however, forget interrupted actions when starting to use an offensive skill
-		if (intention != CtrlIntention.CAST || (arg0 != null && ((L2Skill) arg0).isOffensive()))
+		if (intention != EIntention.CAST || (arg0 != null && ((L2Skill) arg0).isOffensive()))
 		{
 			_nextIntention = null;
 			super.changeIntention(intention, arg0, arg1);
@@ -65,14 +65,14 @@ public class L2PlayerAI extends L2PlayableAI
 		}
 		
 		// do nothing if next intention is same as current one.
-		if (intention == _intention && arg0 == _intentionArg0 && arg1 == _intentionArg1)
+		if (intention == this.intention && arg0 == intentionArg0 && arg1 == intentionArg1)
 		{
 			super.changeIntention(intention, arg0, arg1);
 			return;
 		}
 		
 		// save current intention so it can be used after cast
-		setNextIntention(_intention, _intentionArg0, _intentionArg1);
+		setNextIntention(this.intention, intentionArg0, intentionArg1);
 		super.changeIntention(intention, arg0, arg1);
 	}
 	
@@ -109,21 +109,21 @@ public class L2PlayerAI extends L2PlayableAI
 	@Override
 	protected void onEvtFinishCasting()
 	{
-		if (getIntention() == CtrlIntention.CAST)
+		if (getIntention() == EIntention.CAST)
 		{
-			if (_nextIntention != null && _nextIntention.getCtrlIntention() != CtrlIntention.CAST) // previous state shouldn't be casting
+			if (_nextIntention != null && _nextIntention.getCtrlIntention() != EIntention.CAST) // previous state shouldn't be casting
 				setIntention(_nextIntention.getCtrlIntention(), _nextIntention.getFirstArgument(), _nextIntention.getSecondArgument());
 			else
-				setIntention(CtrlIntention.IDLE);
+				setIntention(EIntention.IDLE);
 		}
 	}
 	
 	@Override
 	protected void onIntentionRest()
 	{
-		if (getIntention() != CtrlIntention.REST)
+		if (getIntention() != EIntention.REST)
 		{
-			changeIntention(CtrlIntention.REST, null, null);
+			changeIntention(EIntention.REST, null, null);
 			setTarget(null);
 			clientStopMoving(null);
 		}
@@ -132,7 +132,7 @@ public class L2PlayerAI extends L2PlayableAI
 	@Override
 	protected void onIntentionActive()
 	{
-		setIntention(CtrlIntention.IDLE);
+		setIntention(EIntention.IDLE);
 	}
 	
 	/**
@@ -145,39 +145,39 @@ public class L2PlayerAI extends L2PlayableAI
 	 * <BR>
 	 */
 	@Override
-	protected void onIntentionMoveTo(L2CharPosition pos)
+	protected void onIntentionMoveTo(L2Position pos)
 	{
-		if (getIntention() == CtrlIntention.REST)
+		if (getIntention() == EIntention.REST)
 		{
 			// Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor
 			clientActionFailed();
 			return;
 		}
 		
-		if (_actor.isAllSkillsDisabled() || _actor.isCastingNow() || _actor.isAttackingNow())
+		if (actor.isAllSkillsDisabled() || actor.isCastingNow() || actor.isAttackingNow())
 		{
 			clientActionFailed();
-			setNextIntention(CtrlIntention.MOVE_TO, pos, null);
+			setNextIntention(EIntention.MOVE_TO, pos, null);
 			return;
 		}
 		
 		// Set the Intention of this AbstractAI to MOVE_TO
-		changeIntention(CtrlIntention.MOVE_TO, pos, null);
+		changeIntention(EIntention.MOVE_TO, pos, null);
 		
 		// Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
 		clientStopAutoAttack();
 		
 		// Abort the attack of the L2Character and send Server->Client ActionFailed packet
-		_actor.abortAttack();
+		actor.abortAttack();
 		
 		// Move the actor to Location (x,y,z) server side AND client side by sending Server->Client packet MoveToLocation (broadcast)
-		moveTo(pos.x, pos.y, pos.z);
+		moveTo(pos.posX, pos.posY, pos.posZ);
 	}
 	
 	@Override
 	protected void clientNotifyDead()
 	{
-		_clientMoving = false;
+		actorMoving = false;
 		
 		super.clientNotifyDead();
 	}
@@ -195,22 +195,22 @@ public class L2PlayerAI extends L2PlayableAI
 			return;
 		}
 		
-		if (maybeMoveToPawn(target, _actor.getPhysicalAttackRange()))
+		if (maybeMoveToPawn(target, actor.getPhysicalAttackRange()))
 			return;
 		
 		clientStopMoving(null);
-		_actor.doAttack(target);
+		actor.doAttack(target);
 	}
 	
 	private void thinkCast()
 	{
 		L2Character target = (L2Character) getTarget();
 		
-		if (_skill.getTargetType() == SkillTargetType.TARGET_GROUND && _actor instanceof L2PcInstance)
+		if (currentlyCastingSkill.getTargetType() == SkillTargetType.TARGET_GROUND && actor instanceof L2PcInstance)
 		{
-			if (maybeMoveToPosition(((L2PcInstance) _actor).getCurrentSkillWorldPosition(), _skill.getCastRange()))
+			if (maybeMoveToPosition(((L2PcInstance) actor).getCurrentSkillWorldPosition(), currentlyCastingSkill.getCastRange()))
 			{
-				_actor.setIsCastingNow(false);
+				actor.setIsCastingNow(false);
 				return;
 			}
 		}
@@ -219,40 +219,40 @@ public class L2PlayerAI extends L2PlayableAI
 			if (checkTargetLost(target))
 			{
 				// Notify the target
-				if (_skill.isOffensive() && getTarget() != null)
+				if (currentlyCastingSkill.isOffensive() && getTarget() != null)
 					setTarget(null);
 				
-				_actor.setIsCastingNow(false);
+				actor.setIsCastingNow(false);
 				return;
 			}
 			
-			if (target != null && maybeMoveToPawn(target, _skill.getCastRange()))
+			if (target != null && maybeMoveToPawn(target, currentlyCastingSkill.getCastRange()))
 			{
-				_actor.setIsCastingNow(false);
+				actor.setIsCastingNow(false);
 				return;
 			}
 		}
 		
-		if (!_skill.isToggle())
+		if (!currentlyCastingSkill.isToggle())
 			clientStopMoving(null);
 		
-		L2Object oldTarget = _actor.getTarget();
+		L2Object oldTarget = actor.getTarget();
 		if (oldTarget != null && target != null && oldTarget != target)
 		{
 			// Replace the current target by the cast target
-			_actor.setTarget(getTarget());
+			actor.setTarget(getTarget());
 			// Launch the Cast of the skill
-			_actor.doCast(_skill);
+			actor.doCast(currentlyCastingSkill);
 			// Restore the initial target
-			_actor.setTarget(oldTarget);
+			actor.setTarget(oldTarget);
 		}
 		else
-			_actor.doCast(_skill);
+			actor.doCast(currentlyCastingSkill);
 	}
 	
 	private void thinkPickUp()
 	{
-		if (_actor.isAllSkillsDisabled() || _actor.isCastingNow())
+		if (actor.isAllSkillsDisabled() || actor.isCastingNow())
 			return;
 		
 		final L2Object target = getTarget();
@@ -262,13 +262,13 @@ public class L2PlayerAI extends L2PlayableAI
 		if (maybeMoveToPawn(target, 36))
 			return;
 		
-		setIntention(CtrlIntention.IDLE);
-		_actor.getActingPlayer().doPickupItem(target);
+		setIntention(EIntention.IDLE);
+		actor.getActingPlayer().doPickupItem(target);
 	}
 	
 	private void thinkInteract()
 	{
-		if (_actor.isAllSkillsDisabled() || _actor.isCastingNow())
+		if (actor.isAllSkillsDisabled() || actor.isCastingNow())
 			return;
 		
 		L2Object target = getTarget();
@@ -279,16 +279,16 @@ public class L2PlayerAI extends L2PlayableAI
 			return;
 		
 		if (!(target instanceof L2StaticObjectInstance))
-			_actor.getActingPlayer().doInteract((L2Character) target);
+			actor.getActingPlayer().doInteract((L2Character) target);
 		
-		setIntention(CtrlIntention.IDLE);
+		setIntention(EIntention.IDLE);
 	}
 	
 	@Override
 	protected void onEvtThink()
 	{
 		// Check if the actor can't use skills and if a thinking action isn't already in progress
-		if (_thinking && getIntention() != CtrlIntention.CAST) // casting must always continue
+		if (_thinking && getIntention() != EIntention.CAST) // casting must always continue
 			return;
 		
 		// Start thinking action

@@ -5,5 +5,5 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
 @FunctionalInterface
 public interface IChatHandler {
-    void handleChat(EChatType type, L2PcInstance activeChar, String params, String text);
+    void handleChat(EChatType type, L2PcInstance activeChar, String tellTarget, String text);
 }

@@ -16,9 +16,9 @@ package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.EChatType;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.model.L2SummonAI;
-import net.sf.l2j.gameserver.model.L2CharPosition;
+import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
@@ -155,7 +155,7 @@ public final class RequestActionUse extends L2GameClientPacket {
                 if (pet.isAttackingDisabled()) {
                     if (pet.getAttackEndTime() <= System.currentTimeMillis()) { return; }
 
-                    pet.getAI().setIntention(CtrlIntention.ATTACK, target);
+                    pet.getAI().setIntention(EIntention.ATTACK, target);
                 }
 
                 if (pet instanceof L2PetInstance && (pet.getLevel() - activeChar.getLevel() > 20)) {
@@ -170,23 +170,23 @@ public final class RequestActionUse extends L2GameClientPacket {
                 // Summons can attack NPCs even when the owner cannot.
                 if (!target.isAutoAttackable(activeChar) && !_ctrlPressed && (!(target instanceof L2NpcInstance))) {
                     pet.setFollowStatus(false);
-                    pet.getAI().setIntention(CtrlIntention.FOLLOW, target);
+                    pet.getAI().setIntention(EIntention.FOLLOW, target);
                     activeChar.sendPacket(SystemMessageId.INCORRECT_TARGET);
                     return;
                 }
 
                 if (target instanceof L2DoorInstance) {
                     if (((L2DoorInstance) target).isAttackable(activeChar) && pet.getNpcId() != L2SiegeSummonInstance.SWOOP_CANNON_ID) {
-                        pet.getAI().setIntention(CtrlIntention.ATTACK, target);
+                        pet.getAI().setIntention(EIntention.ATTACK, target);
                     }
                 }
                 // siege golem AI doesn't support attacking other than doors at the moment
                 else if (pet.getNpcId() != L2SiegeSummonInstance.SIEGE_GOLEM_ID) {
                     if (L2Character.isInsidePeaceZone(pet, target)) {
                         pet.setFollowStatus(false);
-                        pet.getAI().setIntention(CtrlIntention.FOLLOW, target);
+                        pet.getAI().setIntention(EIntention.FOLLOW, target);
                     }
-                    else { pet.getAI().setIntention(CtrlIntention.ATTACK, target); }
+                    else { pet.getAI().setIntention(EIntention.ATTACK, target); }
                 }
                 break;
 
@@ -199,7 +199,7 @@ public final class RequestActionUse extends L2GameClientPacket {
                     return;
                 }
 
-                pet.getAI().setIntention(CtrlIntention.ACTIVE, null);
+                pet.getAI().setIntention(EIntention.ACTIVE, null);
                 break;
 
             case 19: // Returns pet to control item
@@ -298,7 +298,7 @@ public final class RequestActionUse extends L2GameClientPacket {
                 }
 
                 pet.setFollowStatus(false);
-                pet.getAI().setIntention(CtrlIntention.MOVE_TO, new L2CharPosition(target.getX(), target.getY(), target.getZ(), 0));
+                pet.getAI().setIntention(EIntention.MOVE_TO, new L2Position(target.getX(), target.getY(), target.getZ(), 0));
                 break;
 
             case 61: // Private Store Package Sell

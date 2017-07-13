@@ -18,7 +18,7 @@ import net.sf.l2j.gameserver.model.L2ShortCut;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 
 public class ShortCutInit extends L2GameServerPacket
 {
@@ -56,7 +56,7 @@ public class ShortCutInit extends L2GameServerPacket
 					}
 					else
 					{
-						final ItemInstance item = _activeChar.getInventory().getItemByObjectId(sc.getId());
+						final L2ItemInstance item = _activeChar.getInventory().getItemByObjectId(sc.getId());
 						if (item == null || !item.isEtcItem())
 						{
 							writeD(0x00); // Remaining time

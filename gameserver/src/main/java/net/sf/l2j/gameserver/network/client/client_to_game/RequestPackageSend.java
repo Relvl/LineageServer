@@ -4,7 +4,7 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.ItemContainer;
 import net.sf.l2j.gameserver.model.itemcontainer.PcFreight;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -74,7 +74,7 @@ public final class RequestPackageSend extends L2GameClientPacket {
             int count = i.getValue();
 
             // Check validity of requested item
-            ItemInstance item = player.checkItemManipulation(i.getId(), count);
+            L2ItemInstance item = player.checkItemManipulation(i.getId(), count);
             if (item == null) {
                 i.setId(0);
                 i.setValue(0);
@@ -113,7 +113,7 @@ public final class RequestPackageSend extends L2GameClientPacket {
             // check for an invalid item
             if (objectId == 0 && count == 0) { continue; }
 
-            ItemInstance oldItem = player.getInventory().getItemByObjectId(objectId);
+            L2ItemInstance oldItem = player.getInventory().getItemByObjectId(objectId);
             if (oldItem == null) {
                 _log.warn("Error depositing a warehouse object for char " + player.getName() + " (olditem == null)");
                 continue;
@@ -121,7 +121,7 @@ public final class RequestPackageSend extends L2GameClientPacket {
 
             if (oldItem.isHeroItem()) { continue; }
 
-            ItemInstance newItem = player.getInventory().transferItem("Warehouse", objectId, count, warehouse, player, player.getCurrentFolkNPC());
+            L2ItemInstance newItem = player.getInventory().transferItem("Warehouse", objectId, count, warehouse, player, player.getCurrentFolkNPC());
             if (newItem == null) {
                 _log.warn("Error depositing a warehouse object for char " + player.getName() + " (newitem == null)");
                 continue;

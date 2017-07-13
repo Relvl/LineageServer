@@ -24,7 +24,7 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.geoengine.geodata.GeoDriverArray;
 import net.sf.l2j.gameserver.geoengine.geodata.GeoStructure;
 import net.sf.l2j.gameserver.geoengine.geodata.NullDriver;
-import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.Location;
 
 /**

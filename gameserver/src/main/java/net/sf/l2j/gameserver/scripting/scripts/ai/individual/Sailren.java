@@ -19,7 +19,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.instancemanager.GrandBossManager;
 import net.sf.l2j.gameserver.model.SpawnLocation;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
@@ -106,7 +106,7 @@ public class Sailren extends AbstractNpcAI
 			for (int i = 0; i < 3; i++)
 			{
 				final L2Npc temp = addSpawn(VELOCIRAPTOR, SAILREN_LOC, true, 0, false);
-				temp.getAI().setIntention(CtrlIntention.ACTIVE);
+				temp.getAI().setIntention(EIntention.ACTIVE);
 				temp.setRunning();
 				_mobs.add(temp);
 			}
@@ -206,7 +206,7 @@ public class Sailren extends AbstractNpcAI
 				{
 					final L2Npc temp = addSpawn(PTEROSAUR, SAILREN_LOC, false, 0, false);
 					temp.setRunning();
-					temp.getAI().setIntention(CtrlIntention.ATTACK, killer);
+					temp.getAI().setIntention(EIntention.ATTACK, killer);
 					_mobs.add(temp);
 				}
 				break;
@@ -217,7 +217,7 @@ public class Sailren extends AbstractNpcAI
 				{
 					final L2Npc temp = addSpawn(TREX, SAILREN_LOC, false, 0, false);
 					temp.setRunning();
-					temp.getAI().setIntention(CtrlIntention.ATTACK, killer);
+					temp.getAI().setIntention(EIntention.ATTACK, killer);
 					temp.broadcastNpcSay("?");
 					_mobs.add(temp);
 				}

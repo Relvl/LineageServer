@@ -21,7 +21,7 @@ import java.util.Map;
 import net.sf.l2j.gameserver.instancemanager.CastleManorManager.CropProcure;
 import net.sf.l2j.gameserver.model.L2Manor;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 
 /**
  * format(packet 0xFE) ch dd [ddddcdcdddc] c - id h - sub id d - manor id d - size [ d - Object id d - crop id d - seed level c d - reward 1 id c d - reward 2 id d - manor d - buy residual d - buy price d - reward ]
@@ -30,7 +30,7 @@ import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
 public class ExShowSellCropList extends L2GameServerPacket
 {
 	private int _manorId = 1;
-	private final Map<Integer, ItemInstance> _cropsItems;
+	private final Map<Integer, L2ItemInstance> _cropsItems;
 	private final Map<Integer, CropProcure> _castleCrops;
 	
 	public ExShowSellCropList(L2PcInstance player, int manorId, List<CropProcure> crops)
@@ -42,7 +42,7 @@ public class ExShowSellCropList extends L2GameServerPacket
 		List<Integer> allCrops = L2Manor.getInstance().getAllCrops();
 		for (int cropId : allCrops)
 		{
-			ItemInstance item = player.getInventory().getItemByItemId(cropId);
+			L2ItemInstance item = player.getInventory().getItemByItemId(cropId);
 			if (item != null)
 				_cropsItems.put(cropId, item);
 		}
@@ -63,7 +63,7 @@ public class ExShowSellCropList extends L2GameServerPacket
 		writeD(_manorId); // manor id
 		writeD(_cropsItems.size()); // size
 		
-		for (ItemInstance item : _cropsItems.values())
+		for (L2ItemInstance item : _cropsItems.values())
 		{
 			writeD(item.getObjectId()); // Object id
 			writeD(item.getItemId()); // crop id

@@ -26,23 +26,16 @@ import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.EChatType;
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlEvent;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.ECtrlEvent;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.model.L2AttackableAI;
 import net.sf.l2j.gameserver.ai.model.L2CharacterAI;
 import net.sf.l2j.gameserver.ai.model.L2SiegeGuardAI;
 import net.sf.l2j.gameserver.datatables.HerbDropTable;
 import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.instancemanager.CursedWeaponsManager;
-import net.sf.l2j.gameserver.model.AbsorbInfo;
-import net.sf.l2j.gameserver.model.AggroInfo;
-import net.sf.l2j.gameserver.model.L2CharPosition;
-import net.sf.l2j.gameserver.model.L2CommandChannel;
-import net.sf.l2j.gameserver.model.L2Manor;
-import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.L2Party;
-import net.sf.l2j.gameserver.model.L2Skill;
-import net.sf.l2j.gameserver.model.RewardInfo;
+import net.sf.l2j.gameserver.model.*;
+import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.actor.instance.L2MonsterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2SummonInstance;
@@ -52,9 +45,8 @@ import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
 import net.sf.l2j.gameserver.model.item.DropCategory;
 import net.sf.l2j.gameserver.model.item.DropData;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.client.client_to_game.Say2;
 import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.scripting.EventType;
@@ -69,7 +61,7 @@ public class L2Attackable extends L2Npc
 	private final Set<L2Character> _attackByList = ConcurrentHashMap.newKeySet();
 	
 	private final Map<L2Character, AggroInfo> _aggroList = new ConcurrentHashMap<>();
-	private final Map<Integer, AbsorbInfo> _absorbersList = new ConcurrentHashMap<>();
+	private final Map<Integer, SoulCrystalAbsorbInfo> _absorbersList = new ConcurrentHashMap<>();
 	
 	private final List<IntIntHolder> _sweepItems = new ArrayList<>();
 	private final List<IntIntHolder> _harvestItems = new ArrayList<>();
@@ -562,7 +554,7 @@ public class L2Attackable extends L2Npc
 		// for now hard code damage hate caused by an L2Attackable
 		else
 		{
-			getAI().notifyEvent(CtrlEvent.EVT_ATTACKED, attacker);
+			getAI().notifyEvent(ECtrlEvent.EVT_ATTACKED, attacker);
 			addDamageHate(attacker, damage, (damage * 100) / (getLevel() + 7));
 		}
 	}
@@ -607,8 +599,8 @@ public class L2Attackable extends L2Npc
 		else
 		{
 			// Set the intention to the L2Attackable to ACTIVE
-			if (aggro > 0 && getAI().getIntention() == CtrlIntention.IDLE)
-				getAI().setIntention(CtrlIntention.ACTIVE);
+			if (aggro > 0 && getAI().getIntention() == EIntention.IDLE)
+				getAI().setIntention(EIntention.ACTIVE);
 		}
 	}
 	
@@ -623,7 +615,7 @@ public class L2Attackable extends L2Npc
 		{
 			stopHating(target);
 			setTarget(null);
-			getAI().setIntention(CtrlIntention.IDLE);
+			getAI().setIntention(EIntention.IDLE);
 			return;
 		}
 		
@@ -647,7 +639,7 @@ public class L2Attackable extends L2Npc
 			{
 				((L2AttackableAI) getAI()).setGlobalAggro(-25);
 				clearAggroList();
-				getAI().setIntention(CtrlIntention.ACTIVE);
+				getAI().setIntention(EIntention.ACTIVE);
 				setWalking();
 			}
 			return;
@@ -665,7 +657,7 @@ public class L2Attackable extends L2Npc
 			{
 				((L2AttackableAI) getAI()).setGlobalAggro(-25);
 				clearAggroList();
-				getAI().setIntention(CtrlIntention.ACTIVE);
+				getAI().setIntention(EIntention.ACTIVE);
 				setWalking();
 			}
 		}
@@ -1062,7 +1054,7 @@ public class L2Attackable extends L2Npc
 	 * <li>Get all possible drops of this L2Attackable from L2NpcTemplate and add it Quest drops</li>
 	 * <li>For each possible drops (base + quests), calculate which one must be dropped (random)</li>
 	 * <li>Get each Item quantity dropped (random)</li>
-	 * <li>Create this or these ItemInstance corresponding to each Item Identifier dropped</li>
+	 * <li>Create this or these L2ItemInstance corresponding to each Item Identifier dropped</li>
 	 * <li>If the autoLoot mode is actif and if the L2Character that has killed the L2Attackable is a L2PcInstance, give this or these Item(s) to the L2PcInstance that has killed the L2Attackable</li>
 	 * <li>If the autoLoot mode isn't actif or if the L2Character that has killed the L2Attackable is not a L2PcInstance, add this or these Item(s) in the world as a visible object at the position where mob was last</li>
 	 * </ul>
@@ -1192,11 +1184,11 @@ public class L2Attackable extends L2Npc
 	 * @param item The ItemHolder.
 	 * @return the dropped item instance.
 	 */
-	public ItemInstance dropItem(L2PcInstance mainDamageDealer, IntIntHolder item)
+	public L2ItemInstance dropItem(L2PcInstance mainDamageDealer, IntIntHolder item)
 	{
 		int randDropLim = 70;
 		
-		ItemInstance ditem = null;
+		L2ItemInstance ditem = null;
 		for (int i = 0; i < item.getValue(); i++)
 		{
 			// Randomize drop position
@@ -1206,7 +1198,7 @@ public class L2Attackable extends L2Npc
 			
 			if (ItemTable.getInstance().getTemplate(item.getId()) != null)
 			{
-				// Init the dropped ItemInstance and add it in the world as a visible object at the position where mob was last
+				// Init the dropped L2ItemInstance and add it in the world as a visible object at the position where mob was last
 				ditem = ItemTable.getInstance().createItem("Loot", item.getId(), item.getValue(), mainDamageDealer, this);
 				ditem.getDropProtection().protect(mainDamageDealer);
 				ditem.dropMe(this, newX, newY, newZ);
@@ -1256,7 +1248,7 @@ public class L2Attackable extends L2Npc
 		if (target == null)
 			return;
 		
-		getAI().setIntention(CtrlIntention.CAST, skill, target);
+		getAI().setIntention(EIntention.CAST, skill, target);
 	}
 	
 	public void returnHome()
@@ -1264,7 +1256,7 @@ public class L2Attackable extends L2Npc
 		clearAggroList();
 		
 		if (hasAI() && getSpawn() != null)
-			getAI().setIntention(CtrlIntention.MOVE_TO, new L2CharPosition(getSpawn().getLocx(), getSpawn().getLocy(), getSpawn().getLocz(), 0));
+			getAI().setIntention(EIntention.MOVE_TO, new L2Position(getSpawn().getLocx(), getSpawn().getLocy(), getSpawn().getLocz(), 0));
 	}
 	
 	public final Set<L2Character> getAttackByList()
@@ -1325,7 +1317,7 @@ public class L2Attackable extends L2Npc
 	/**
 	 * @return the active weapon of this L2Attackable (= null).
 	 */
-	public ItemInstance getActiveWeapon()
+	public L2ItemInstance getActiveWeapon()
 	{
 		return null;
 	}
@@ -1414,16 +1406,16 @@ public class L2Attackable extends L2Npc
 	/**
 	 * Adds an attacker that successfully absorbed the soul of this L2Attackable into the _absorbersList.
 	 * @param user : The L2PcInstance who attacked the monster.
-	 * @param crystal : The ItemInstance which was used to register.
+	 * @param crystal : The L2ItemInstance which was used to register.
 	 */
-	public void addAbsorber(L2PcInstance user, ItemInstance crystal)
+	public void addAbsorber(L2PcInstance user, L2ItemInstance crystal)
 	{
 		// If the L2Character attacker isn't already in the _absorbersList of this L2Attackable, add it
-		AbsorbInfo ai = _absorbersList.get(user.getObjectId());
+		SoulCrystalAbsorbInfo ai = _absorbersList.get(user.getObjectId());
 		if (ai == null)
 		{
 			// Create absorb info.
-			_absorbersList.put(user.getObjectId(), new AbsorbInfo(crystal.getObjectId()));
+			_absorbersList.put(user.getObjectId(), new SoulCrystalAbsorbInfo(crystal.getObjectId()));
 		}
 		else
 		{
@@ -1435,8 +1427,8 @@ public class L2Attackable extends L2Npc
 	
 	public void registerAbsorber(L2PcInstance user)
 	{
-		// Get AbsorbInfo for user.
-		AbsorbInfo ai = _absorbersList.get(user.getObjectId());
+		// Get SoulCrystalAbsorbInfo for user.
+		SoulCrystalAbsorbInfo ai = _absorbersList.get(user.getObjectId());
 		if (ai == null)
 			return;
 		
@@ -1444,7 +1436,7 @@ public class L2Attackable extends L2Npc
 		if (user.getInventory().getItemByObjectId(ai.getItemId()) == null)
 			return;
 		
-		// Register AbsorbInfo.
+		// Register SoulCrystalAbsorbInfo.
 		if (!ai.isRegistered())
 		{
 			ai.setAbsorbedHpPercent((int) ((100 * getCurrentHp()) / getMaxHp()));
@@ -1457,7 +1449,7 @@ public class L2Attackable extends L2Npc
 		_absorbersList.clear();
 	}
 	
-	public AbsorbInfo getAbsorbInfo(int npcObjectId)
+	public SoulCrystalAbsorbInfo getAbsorbInfo(int npcObjectId)
 	{
 		return _absorbersList.get(npcObjectId);
 	}

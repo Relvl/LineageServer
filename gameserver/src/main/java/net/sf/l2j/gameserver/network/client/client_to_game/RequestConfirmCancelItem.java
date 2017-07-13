@@ -16,7 +16,7 @@ package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ExConfirmCancelItem;
 import net.sf.l2j.gameserver.util.Util;
@@ -42,7 +42,7 @@ public final class RequestConfirmCancelItem extends L2GameClientPacket
 		if (activeChar == null)
 			return;
 		
-		final ItemInstance item = activeChar.getInventory().getItemByObjectId(_objectId);
+		final L2ItemInstance item = activeChar.getInventory().getItemByObjectId(_objectId);
 		if (item == null)
 			return;
 		

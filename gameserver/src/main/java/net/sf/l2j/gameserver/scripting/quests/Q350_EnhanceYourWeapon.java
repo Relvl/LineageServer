@@ -14,12 +14,12 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.datatables.SoulCrystalsTable;
-import net.sf.l2j.gameserver.model.AbsorbInfo;
+import net.sf.l2j.gameserver.model.SoulCrystalAbsorbInfo;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.soulcrystal.LevelingInfo;
 import net.sf.l2j.gameserver.model.soulcrystal.SoulCrystalData;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -103,7 +103,7 @@ public class Q350_EnhanceYourWeapon extends Quest
 			
 			case STATE_STARTED:
 				// Check inventory for soul crystals.
-				for (ItemInstance item : player.getInventory().getItems())
+				for (L2ItemInstance item : player.getInventory().getItems())
 				{
 					// Crystal found, show "how to" html.
 					if (SoulCrystalsTable.getSoulCrystalInfos().get(item.getItemId()) != null)
@@ -118,7 +118,7 @@ public class Q350_EnhanceYourWeapon extends Quest
 	}
 	
 	@Override
-	public String onItemUse(ItemInstance item, L2PcInstance user, L2Object target)
+	public String onItemUse(L2ItemInstance item, L2PcInstance user, L2Object target)
 	{
 		// Caster is dead.
 		if (user.isDead())
@@ -184,10 +184,10 @@ public class Q350_EnhanceYourWeapon extends Quest
 	private static void tryToStageCrystal(L2PcInstance player, L2Attackable mob, LevelingInfo npcInfo, int chance)
 	{
 		SoulCrystalData crystalData = null;
-		ItemInstance crystalItem = null;
+		L2ItemInstance crystalItem = null;
 		
 		// Iterate through player's inventory to find crystal(s).
-		for (ItemInstance item : player.getInventory().getItems())
+		for (L2ItemInstance item : player.getInventory().getItems())
 		{
 			SoulCrystalData data = SoulCrystalsTable.getSoulCrystalInfos().get(item.getItemId());
 			if (data == null)
@@ -199,8 +199,8 @@ public class Q350_EnhanceYourWeapon extends Quest
 				// Leveling requires soul crystal being used?
 				if (npcInfo.skillRequired())
 				{
-					// Absorb list contains killer and his AbsorbInfo is registered.
-					final AbsorbInfo ai = mob.getAbsorbInfo(player.getObjectId());
+					// Absorb list contains killer and his SoulCrystalAbsorbInfo is registered.
+					final SoulCrystalAbsorbInfo ai = mob.getAbsorbInfo(player.getObjectId());
 					if (ai != null && ai.isRegistered())
 						player.sendPacket(SystemMessageId.SOUL_CRYSTAL_ABSORBING_FAILED_RESONATION);
 				}
@@ -221,8 +221,8 @@ public class Q350_EnhanceYourWeapon extends Quest
 		// Leveling requires soul crystal being used?
 		if (npcInfo.skillRequired())
 		{
-			// Absorb list doesn't contain killer or his AbsorbInfo is not registered.
-			final AbsorbInfo ai = mob.getAbsorbInfo(player.getObjectId());
+			// Absorb list doesn't contain killer or his SoulCrystalAbsorbInfo is not registered.
+			final SoulCrystalAbsorbInfo ai = mob.getAbsorbInfo(player.getObjectId());
 			if (ai == null || !ai.isRegistered())
 				return;
 			

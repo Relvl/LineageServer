@@ -23,7 +23,7 @@ import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.ShotType;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.type.WeaponType;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
@@ -49,7 +49,7 @@ public class Pdam implements ISkillHandler
 		
 		final boolean ss = activeChar.isChargedShot(ShotType.SOULSHOT);
 		
-		final ItemInstance weapon = activeChar.getActiveWeaponInstance();
+		final L2ItemInstance weapon = activeChar.getActiveWeaponInstance();
 		
 		for (L2Object obj : targets)
 		{

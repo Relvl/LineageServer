@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.handler.skillhandlers;
 
-import net.sf.l2j.gameserver.ai.CtrlEvent;
+import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
@@ -68,7 +68,7 @@ public class Spoil implements ISkillHandler
 			else
 				activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_RESISTED_YOUR_S2).addCharName(target).addSkillName(skill.getId()));
 			
-			target.getAI().notifyEvent(CtrlEvent.EVT_ATTACKED, activeChar);
+			target.getAI().notifyEvent(ECtrlEvent.EVT_ATTACKED, activeChar);
 		}
 	}
 	

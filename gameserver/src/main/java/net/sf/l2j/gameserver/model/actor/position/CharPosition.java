@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.model.actor.position;
 
-import net.sf.l2j.gameserver.model.L2WorldRegion;
+import net.sf.l2j.gameserver.model.world.L2WorldRegion;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 
 /**

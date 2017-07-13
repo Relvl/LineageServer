@@ -34,7 +34,7 @@ import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.Earthquake;
 import net.sf.l2j.gameserver.network.client.game_to_client.ExRedSky;
@@ -49,7 +49,7 @@ public class CursedWeapon
 	private final String _name;
 	
 	private final int _itemId;
-	private ItemInstance _item = null;
+	private L2ItemInstance _item = null;
 	
 	private int _playerId = 0;
 	protected L2PcInstance _player = null;
@@ -466,7 +466,7 @@ public class CursedWeapon
 		return false;
 	}
 	
-	public void activate(L2PcInstance player, ItemInstance item)
+	public void activate(L2PcInstance player, L2ItemInstance item)
 	{
 		// if the player is mounted, attempt to unmount first and pick it if successful.
 		if (player.isMounted() && !player.dismount())
@@ -723,7 +723,7 @@ public class CursedWeapon
 		_player = player;
 	}
 	
-	public void setItem(ItemInstance item)
+	public void setItem(L2ItemInstance item)
 	{
 		_item = item;
 	}

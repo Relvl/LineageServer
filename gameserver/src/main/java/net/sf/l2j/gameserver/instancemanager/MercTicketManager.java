@@ -26,12 +26,12 @@ import java.util.logging.Logger;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
-import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2SiegeGuardInstance;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.entity.Castle;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 
 /**
  * This class is similar to the SiegeGuardManager, except it handles the loading of the mercenary tickets that are dropped on castle floors by the castle lords.<br>
@@ -51,7 +51,7 @@ public class MercTicketManager
 		return SingletonHolder._instance;
 	}
 	
-	private static final List<ItemInstance> _droppedTickets = new CopyOnWriteArrayList<>();
+	private static final List<L2ItemInstance> _droppedTickets = new CopyOnWriteArrayList<>();
 	
 	// max tickets per merc type = 10 + (castleid * 2)?
 	// max tickets per castle = 40 + (castleid * 20)?
@@ -708,8 +708,8 @@ public class MercTicketManager
 						{
 							itemId = ITEM_IDS[i];
 							// create the ticket in the gameworld
-							ItemInstance dropticket = new ItemInstance(IdFactory.getInstance().getNextId(), itemId);
-							dropticket.setLocation(ItemInstance.ItemLocation.INVENTORY);
+							L2ItemInstance dropticket = new L2ItemInstance(IdFactory.getInstance().getNextId(), itemId);
+							dropticket.setLocation(L2ItemInstance.ItemLocation.INVENTORY);
 							dropticket.setDestroyProtected(true);
 							dropticket.dropMe(null, x, y, z);
 							L2World.getInstance().addObject(dropticket);
@@ -748,7 +748,7 @@ public class MercTicketManager
 			return true;
 		
 		int count = 0;
-		for (ItemInstance ticket : _droppedTickets)
+		for (L2ItemInstance ticket : _droppedTickets)
 		{
 			if (ticket != null && ticket.getItemId() == itemId)
 				count++;
@@ -775,7 +775,7 @@ public class MercTicketManager
 			return true;
 		
 		int count = 0;
-		for (ItemInstance ticket : _droppedTickets)
+		for (L2ItemInstance ticket : _droppedTickets)
 		{
 			if ((ticket != null) && (getTicketCastleId(ticket.getItemId()) == castleId))
 				count++;
@@ -794,7 +794,7 @@ public class MercTicketManager
 	
 	public boolean isTooCloseToAnotherTicket(int x, int y, int z)
 	{
-		for (ItemInstance item : _droppedTickets)
+		for (L2ItemInstance item : _droppedTickets)
 		{
 			double dx = x - item.getX();
 			double dy = y - item.getY();
@@ -838,8 +838,8 @@ public class MercTicketManager
 				castle.getSiege().getSiegeGuardManager().hireMerc(x, y, z, heading, NPC_IDS[i]);
 				
 				// create the ticket in the gameworld
-				ItemInstance dropticket = new ItemInstance(IdFactory.getInstance().getNextId(), itemId);
-				dropticket.setLocation(ItemInstance.ItemLocation.INVENTORY);
+				L2ItemInstance dropticket = new L2ItemInstance(IdFactory.getInstance().getNextId(), itemId);
+				dropticket.setLocation(L2ItemInstance.ItemLocation.INVENTORY);
 				dropticket.setDestroyProtected(true);
 				dropticket.dropMe(activeChar, x, y, z);
 				L2World.getInstance().addObject(dropticket); // add to the world
@@ -873,10 +873,10 @@ public class MercTicketManager
 	 */
 	public void deleteTickets(int castleId)
 	{
-		Iterator<ItemInstance> it = _droppedTickets.iterator();
+		Iterator<L2ItemInstance> it = _droppedTickets.iterator();
 		while (it.hasNext())
 		{
-			ItemInstance item = it.next();
+			L2ItemInstance item = it.next();
 			if (item != null && getTicketCastleId(item.getItemId()) == castleId)
 			{
 				item.decayMe();
@@ -890,7 +890,7 @@ public class MercTicketManager
 	 * remove a single ticket and its associated spawn from the world (used when the castle lord picks up a ticket, for example)
 	 * @param item
 	 */
-	public void removeTicket(ItemInstance item)
+	public void removeTicket(L2ItemInstance item)
 	{
 		int itemId = item.getItemId();
 		int npcId = -1;

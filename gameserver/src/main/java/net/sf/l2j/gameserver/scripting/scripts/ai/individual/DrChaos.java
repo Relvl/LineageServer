@@ -15,9 +15,9 @@
 package net.sf.l2j.gameserver.scripting.scripts.ai.individual;
 
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.instancemanager.GrandBossManager;
-import net.sf.l2j.gameserver.model.L2CharPosition;
+import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2GrandBossInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -140,7 +140,7 @@ public class DrChaos extends AbstractNpcAI
 		else if (event.equalsIgnoreCase("4"))
 		{
 			npc.broadcastPacket(new SpecialCamera(npc.getObjectId(), 1, -150, 10, 3500, 5000, 0, 0, 1, 0));
-			npc.getAI().setIntention(CtrlIntention.MOVE_TO, new L2CharPosition(95928, -110671, -3340, 0));
+			npc.getAI().setIntention(EIntention.MOVE_TO, new L2Position(95928, -110671, -3340, 0));
 		}
 		else if (event.equalsIgnoreCase("5"))
 		{
@@ -282,7 +282,7 @@ public class DrChaos extends AbstractNpcAI
 			cancelQuestTimer("paranoia_activity", npc, null);
 			
 			// Makes the NPC moves near the Strange Box speaking.
-			npc.getAI().setIntention(CtrlIntention.MOVE_TO, new L2CharPosition(96323, -110914, -3328, 0));
+			npc.getAI().setIntention(EIntention.MOVE_TO, new L2Position(96323, -110914, -3328, 0));
 			npc.broadcastNpcSay("Fools! Why haven't you fled yet? Prepare to learn a lesson!");
 			
 			// Delayed animation timers.

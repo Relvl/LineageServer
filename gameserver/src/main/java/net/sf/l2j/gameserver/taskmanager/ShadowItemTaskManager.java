@@ -22,21 +22,21 @@ import java.util.concurrent.ConcurrentHashMap;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.listeners.OnEquipListener;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 /**
- * Updates the timer and removes the {@link ItemInstance} as a shadow item.
+ * Updates the timer and removes the {@link L2ItemInstance} as a shadow item.
  * @author Hasha
  */
 public class ShadowItemTaskManager implements Runnable, OnEquipListener
 {
 	private static final int DELAY = 1; // 1 second
 	
-	private final Map<ItemInstance, L2PcInstance> _shadowItems = new ConcurrentHashMap<>();
+	private final Map<L2ItemInstance, L2PcInstance> _shadowItems = new ConcurrentHashMap<>();
 	
 	public static final ShadowItemTaskManager getInstance()
 	{
@@ -50,7 +50,7 @@ public class ShadowItemTaskManager implements Runnable, OnEquipListener
 	}
 	
 	@Override
-	public final void onEquip(int slot, ItemInstance item, L2Playable playable)
+	public final void onEquip(int slot, L2ItemInstance item, L2Playable playable)
 	{
 		// Must be a shadow item.
 		if (!item.isShadowItem())
@@ -64,7 +64,7 @@ public class ShadowItemTaskManager implements Runnable, OnEquipListener
 	}
 	
 	@Override
-	public final void onUnequip(int slot, ItemInstance item, L2Playable actor)
+	public final void onUnequip(int slot, L2ItemInstance item, L2Playable actor)
 	{
 		// Must be a shadow item.
 		if (!item.isShadowItem())
@@ -91,10 +91,10 @@ public class ShadowItemTaskManager implements Runnable, OnEquipListener
 			return;
 		
 		// For all items.
-		for (Entry<ItemInstance, L2PcInstance> entry : _shadowItems.entrySet())
+		for (Entry<L2ItemInstance, L2PcInstance> entry : _shadowItems.entrySet())
 		{
 			// Get item and player.
-			final ItemInstance item = entry.getKey();
+			final L2ItemInstance item = entry.getKey();
 			final L2PcInstance player = entry.getValue();
 			
 			// Decrease item mana.

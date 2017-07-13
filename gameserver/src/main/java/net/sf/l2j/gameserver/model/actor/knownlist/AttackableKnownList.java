@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.model.actor.knownlist;
 
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Character;
@@ -44,7 +44,7 @@ public class AttackableKnownList extends NpcKnownList
 		
 		// check AI for players and set AI to idle
 		if (attackable.hasAI() && getKnownType(L2PcInstance.class).isEmpty())
-			attackable.getAI().setIntention(CtrlIntention.IDLE, null);
+			attackable.getAI().setIntention(EIntention.IDLE, null);
 		
 		return true;
 	}

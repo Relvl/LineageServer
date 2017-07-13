@@ -14,8 +14,8 @@
  */
 package net.sf.l2j.gameserver.handler.skillhandlers;
 
-import net.sf.l2j.gameserver.ai.CtrlEvent;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.ECtrlEvent;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.model.L2AttackableAI;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.model.L2Effect;
@@ -169,7 +169,7 @@ public class Disablers implements ISkillHandler
 				
 				case AGGDAMAGE:
 					if (target instanceof L2Attackable)
-						target.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, activeChar, (int) ((150 * skill.getPower()) / (target.getLevel() + 7)));
+						target.getAI().notifyEvent(ECtrlEvent.EVT_AGGRESSION, activeChar, (int) ((150 * skill.getPower()) / (target.getLevel() + 7)));
 					
 					skill.getEffects(activeChar, target, new Env(shld, ss, sps, bsps));
 					break;
@@ -201,7 +201,7 @@ public class Disablers implements ISkillHandler
 							{
 								((L2AttackableAI) targ.getAI()).setGlobalAggro(-25);
 								targ.clearAggroList();
-								targ.getAI().setIntention(CtrlIntention.ACTIVE);
+								targ.getAI().setIntention(EIntention.ACTIVE);
 								targ.setWalking();
 							}
 						}
@@ -212,7 +212,7 @@ public class Disablers implements ISkillHandler
 						if (activeChar instanceof L2PcInstance)
 							activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_RESISTED_YOUR_S2).addCharName(target).addSkillName(skill));
 						
-						target.getAI().notifyEvent(CtrlEvent.EVT_ATTACKED, activeChar);
+						target.getAI().notifyEvent(ECtrlEvent.EVT_ATTACKED, activeChar);
 					}
 					break;
 				
@@ -235,11 +235,11 @@ public class Disablers implements ISkillHandler
 							if (activeChar instanceof L2PcInstance)
 								activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_RESISTED_YOUR_S2).addCharName(target).addSkillName(skill));
 							
-							target.getAI().notifyEvent(CtrlEvent.EVT_ATTACKED, activeChar);
+							target.getAI().notifyEvent(ECtrlEvent.EVT_ATTACKED, activeChar);
 						}
 					}
 					else
-						target.getAI().notifyEvent(CtrlEvent.EVT_ATTACKED, activeChar);
+						target.getAI().notifyEvent(ECtrlEvent.EVT_ATTACKED, activeChar);
 					break;
 				
 				case ERASE:

@@ -21,7 +21,7 @@ package net.sf.l2j.gameserver.skills.effects;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.l2j.gameserver.ai.CtrlEvent;
+import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.L2Effect;
@@ -160,7 +160,7 @@ public class EffectSignetMDam extends L2Effect
 					caster.sendDamageMessage(target, mdam, mcrit, false, false);
 					target.reduceCurrentHp(mdam, caster, getSkill());
 				}
-				target.getAI().notifyEvent(CtrlEvent.EVT_ATTACKED, caster);
+				target.getAI().notifyEvent(ECtrlEvent.EVT_ATTACKED, caster);
 			}
 		}
 		return true;

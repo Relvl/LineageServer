@@ -19,12 +19,12 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.datatables.SkillTable.FrequentSkill;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.instancemanager.GrandBossManager;
-import net.sf.l2j.gameserver.model.L2CharPosition;
+import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
@@ -354,7 +354,7 @@ public class Antharas extends AbstractNpcAI
 				int posY = y + Rnd.get(-1400, 1400);
 				
 				if (PathFinding.getInstance().canMoveToTarget(x, y, z, posX, posY, z))
-					npc.getAI().setIntention(CtrlIntention.MOVE_TO, new L2CharPosition(posX, posY, z, 0));
+					npc.getAI().setIntention(EIntention.MOVE_TO, new L2Position(posX, posY, z, 0));
 			}
 			return;
 		}
@@ -364,12 +364,12 @@ public class Antharas extends AbstractNpcAI
 		// Cast the skill or follow the target.
 		if (Util.checkIfInRange((skill.getCastRange() < 600) ? 600 : skill.getCastRange(), npc, _actualVictim, true))
 		{
-			npc.getAI().setIntention(CtrlIntention.IDLE);
+			npc.getAI().setIntention(EIntention.IDLE);
 			npc.setTarget(_actualVictim);
 			npc.doCast(skill);
 		}
 		else
-			npc.getAI().setIntention(CtrlIntention.FOLLOW, _actualVictim, null);
+			npc.getAI().setIntention(EIntention.FOLLOW, _actualVictim, null);
 	}
 	
 	/**

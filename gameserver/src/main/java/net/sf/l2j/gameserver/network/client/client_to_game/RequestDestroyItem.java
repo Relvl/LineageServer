@@ -5,7 +5,7 @@ import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.datatables.PetDataTable;
 import net.sf.l2j.gameserver.instancemanager.CursedWeaponsManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
 import net.sf.l2j.gameserver.network.client.game_to_client.StatusUpdate;
@@ -34,7 +34,7 @@ public final class RequestDestroyItem extends L2GameClientPacket {
             return;
         }
 
-        ItemInstance itemToRemove = activeChar.getInventory().getItemByObjectId(_objectId);
+        L2ItemInstance itemToRemove = activeChar.getInventory().getItemByObjectId(_objectId);
         if (itemToRemove == null) { return; }
 
         if (_count < 1 || _count > itemToRemove.getCount()) {
@@ -72,9 +72,9 @@ public final class RequestDestroyItem extends L2GameClientPacket {
         }
 
         if (itemToRemove.isEquipped() && (!itemToRemove.isStackable() || (itemToRemove.isStackable() && _count >= itemToRemove.getCount()))) {
-            ItemInstance[] unequipped = activeChar.getInventory().unEquipItemInSlotAndRecord(itemToRemove.getLocationSlot());
+            L2ItemInstance[] unequipped = activeChar.getInventory().unEquipItemInSlotAndRecord(itemToRemove.getLocationSlot());
             InventoryUpdate iu = new InventoryUpdate();
-            for (ItemInstance item : unequipped) {
+            for (L2ItemInstance item : unequipped) {
                 item.unChargeAllShots();
                 iu.addModifiedItem(item);
             }
@@ -101,7 +101,7 @@ public final class RequestDestroyItem extends L2GameClientPacket {
             }
         }
 
-        ItemInstance removedItem = activeChar.getInventory().destroyItem("Destroy", _objectId, _count, activeChar, null);
+        L2ItemInstance removedItem = activeChar.getInventory().destroyItem("Destroy", _objectId, _count, activeChar, null);
         if (removedItem == null) { return; }
 
         InventoryUpdate iu = new InventoryUpdate();

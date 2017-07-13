@@ -24,7 +24,7 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.instance.L2ManorManagerInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Castle;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
@@ -124,11 +124,11 @@ public class RequestBuyProcure extends L2GameClientPacket
 		for (Procure i : _items)
 		{
 			// check if player have correct items count
-			ItemInstance item = player.getInventory().getItemByItemId(i.getItemId());
+			L2ItemInstance item = player.getInventory().getItemByItemId(i.getItemId());
 			if (item == null || item.getCount() < i.getCount())
 				continue;
 			
-			ItemInstance iteme = player.getInventory().destroyItemByItemId("Manor", i.getItemId(), i.getCount(), player, manager);
+			L2ItemInstance iteme = player.getInventory().destroyItemByItemId("Manor", i.getItemId(), i.getCount(), player, manager);
 			if (iteme == null)
 				continue;
 			

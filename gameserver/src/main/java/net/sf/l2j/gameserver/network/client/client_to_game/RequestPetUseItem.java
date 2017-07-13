@@ -5,7 +5,7 @@ import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.handler.ItemHandler;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.PetItemList;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
@@ -23,7 +23,7 @@ public final class RequestPetUseItem extends L2GameClientPacket {
         L2PcInstance activeChar = getClient().getActiveChar();
         if (activeChar == null || !activeChar.hasPet()) { return; }
         L2PetInstance pet = (L2PetInstance) activeChar.getPet();
-        ItemInstance item = pet.getInventory().getItemByObjectId(objectId);
+        L2ItemInstance item = pet.getInventory().getItemByObjectId(objectId);
         if (item == null) { return; }
 
         if (activeChar.isAlikeDead() || pet.isDead()) {

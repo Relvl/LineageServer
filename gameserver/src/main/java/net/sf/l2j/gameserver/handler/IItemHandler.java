@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.handler;
 import java.util.logging.Logger;
 
 import net.sf.l2j.gameserver.model.actor.L2Playable;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 
 /**
  * Mother class of all itemHandlers.
@@ -29,8 +29,8 @@ public interface IItemHandler
 	/**
 	 * Launch task associated to the item.
 	 * @param playable L2Playable designating the player
-	 * @param item ItemInstance designating the item to use
+	 * @param item L2ItemInstance designating the item to use
 	 * @param forceUse ctrl hold on item use
 	 */
-	public void useItem(L2Playable playable, ItemInstance item, boolean forceUse);
+	public void useItem(L2Playable playable, L2ItemInstance item, boolean forceUse);
 }

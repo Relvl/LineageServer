@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.model.itemcontainer;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance.ItemLocation;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance.ItemLocation;
 
 public class PcWarehouse extends Warehouse
 {

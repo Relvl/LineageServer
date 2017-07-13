@@ -13,7 +13,7 @@
 package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -512,7 +512,7 @@ public class Q337_AudienceWithTheLandDragon extends Quest
 							L2Npc mob = addSpawn(npcInfo[5], npc.getX() + Rnd.get(-150, 150), npc.getY() + Rnd.get(-150, 150), npc.getZ(), npc.getHeading(), true, 60000, false);
 							mob.setRunning();
 							((L2Attackable) mob).addDamageHate(attacker, 0, 500);
-							mob.getAI().setIntention(CtrlIntention.ATTACK, attacker);
+							mob.getAI().setIntention(EIntention.ATTACK, attacker);
 						}
 						
 						if (npcId == ABYSSAL_JEWEL_3)

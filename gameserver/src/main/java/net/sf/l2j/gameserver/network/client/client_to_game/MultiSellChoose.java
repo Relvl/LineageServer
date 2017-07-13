@@ -20,7 +20,7 @@ import net.sf.l2j.gameserver.datatables.MultisellData;
 import net.sf.l2j.gameserver.model.L2Augmentation;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
@@ -187,7 +187,7 @@ public class MultiSellChoose extends L2GameClientPacket {
 
         for (Ingredient e : entry.getIngredients()) {
             if (e.getItemId() != 65336) {
-                ItemInstance itemToTake = inv.getItemByItemId(e.getItemId());
+                L2ItemInstance itemToTake = inv.getItemByItemId(e.getItemId());
 
                 if (itemToTake == null) {
                     // this is a cheat, transaction will be aborted
@@ -210,7 +210,7 @@ public class MultiSellChoose extends L2GameClientPacket {
                         // a) if enchantment is maintained, then get a list of items that exactly match this enchantment
                         if (maintainEnchantment) {
                             // loop through this list and remove (one by one) each item until the required amount is taken.
-                            ItemInstance[] inventoryContents = inv.getAllItemsByItemId(e.getItemId(), e.getEnchantmentLevel());
+                            L2ItemInstance[] inventoryContents = inv.getAllItemsByItemId(e.getItemId(), e.getEnchantmentLevel());
                             for (int i = 0; i < (e.getItemCount() * _amount); i++) {
                                 if (inventoryContents[i].isAugmented()) {
                                     augmentation.add(inventoryContents[i].getAugmentation());
@@ -224,12 +224,12 @@ public class MultiSellChoose extends L2GameClientPacket {
                         // b) enchantment is not maintained. Get the instances with the LOWEST enchantment level
                         {
                             for (int i = 1; i <= (e.getItemCount() * _amount); i++) {
-                                ItemInstance[] inventoryContents = inv.getAllItemsByItemId(e.getItemId());
+                                L2ItemInstance[] inventoryContents = inv.getAllItemsByItemId(e.getItemId());
 
                                 itemToTake = inventoryContents[0];
                                 // get item with the LOWEST enchantment level from the inventory (0 is the lowest)
                                 if (itemToTake.getEnchantLevel() > 0) {
-                                    for (ItemInstance item : inventoryContents) {
+                                    for (L2ItemInstance item : inventoryContents) {
                                         if (item.getEnchantLevel() < itemToTake.getEnchantLevel()) {
                                             itemToTake = item;
                                             // nothing will have enchantment less than 0. If a zero-enchanted
@@ -260,7 +260,7 @@ public class MultiSellChoose extends L2GameClientPacket {
             }
             else {
                 for (int i = 0; i < (e.getItemCount() * _amount); i++) {
-                    ItemInstance product = inv.addItem("Multisell", e.getItemId(), 1, player, player.getTarget());
+                    L2ItemInstance product = inv.addItem("Multisell", e.getItemId(), 1, player, player.getTarget());
                     if (product == null) { continue; }
 
                     if (maintainEnchantment) {

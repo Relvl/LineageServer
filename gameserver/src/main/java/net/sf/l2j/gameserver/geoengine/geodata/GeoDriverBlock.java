@@ -28,7 +28,7 @@ import net.sf.l2j.gameserver.geoengine.geodata.blocks.ComplexBlock;
 import net.sf.l2j.gameserver.geoengine.geodata.blocks.FlatBlock;
 import net.sf.l2j.gameserver.geoengine.geodata.blocks.MultilayerBlock;
 import net.sf.l2j.gameserver.geoengine.geodata.blocks.NullBlock;
-import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.world.L2World;
 
 /**
  * @author Hasha

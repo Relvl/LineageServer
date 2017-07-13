@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.skills.effects;
 
-import net.sf.l2j.gameserver.ai.CtrlEvent;
+import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2EffectPointInstance;
@@ -74,7 +74,7 @@ public class EffectSignetAntiSummon extends L2Effect
 				getEffector().reduceCurrentMp(mpConsume);
 				
 				owner.getPet().unSummon(owner);
-				owner.getAI().notifyEvent(CtrlEvent.EVT_ATTACKED, getEffector());
+				owner.getAI().notifyEvent(ECtrlEvent.EVT_ATTACKED, getEffector());
 			}
 		}
 		return true;

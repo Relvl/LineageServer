@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
@@ -41,7 +41,7 @@ public class RequestUnEquipItem extends L2GameClientPacket
 		if (activeChar == null)
 			return;
 		
-		ItemInstance item = activeChar.getInventory().getPaperdollItemByL2ItemId(_slot);
+		L2ItemInstance item = activeChar.getInventory().getPaperdollItemByL2ItemId(_slot);
 		if (item == null)
 			return;
 		
@@ -59,11 +59,11 @@ public class RequestUnEquipItem extends L2GameClientPacket
 		if (activeChar.isCastingNow() || activeChar.isCastingSimultaneouslyNow())
 			return;
 		
-		ItemInstance[] unequipped = activeChar.getInventory().unEquipItemInBodySlotAndRecord(_slot);
+		L2ItemInstance[] unequipped = activeChar.getInventory().unEquipItemInBodySlotAndRecord(_slot);
 		
 		// show the update in the inventory
 		InventoryUpdate iu = new InventoryUpdate();
-		for (ItemInstance itm : unequipped)
+		for (L2ItemInstance itm : unequipped)
 		{
 			itm.unChargeAllShots();
 			iu.addModifiedItem(itm);

@@ -7,7 +7,7 @@ import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
 
 public class ChatHandlerPartyRoomCommander implements IChatHandler {
     @Override
-    public void handleChat(EChatType type, L2PcInstance activeChar, String params, String text) {
+    public void handleChat(EChatType type, L2PcInstance activeChar, String tellTarget, String text) {
         if (!activeChar.isInParty() || !activeChar.getParty().isInCommandChannel() || !activeChar.getParty().getCommandChannel().getChannelLeader().equals(activeChar)) {
             return;
         }

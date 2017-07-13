@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.handler.skillhandlers;
 
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.model.L2Manor;
 import net.sf.l2j.gameserver.model.L2Object;
@@ -78,7 +78,7 @@ public class Sow implements ISkillHandler
 		else
 			player.getParty().broadcastToPartyMembers(sm);
 		
-		target.getAI().setIntention(CtrlIntention.IDLE);
+		target.getAI().setIntention(EIntention.IDLE);
 	}
 	
 	private static boolean calcSuccess(L2Character activeChar, L2Character target, int seedId)

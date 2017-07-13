@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.network.client.game_to_client;
 import java.util.List;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 
 public class WarehouseWithdrawList extends L2GameServerPacket
@@ -29,7 +29,7 @@ public class WarehouseWithdrawList extends L2GameServerPacket
 	
 	private int _whType;
 	private int _playerAdena;
-	private List<ItemInstance> _items;
+	private List<L2ItemInstance> _items;
 	
 	public WarehouseWithdrawList(L2PcInstance player, int type)
 	{
@@ -49,7 +49,7 @@ public class WarehouseWithdrawList extends L2GameServerPacket
 		writeD(_playerAdena);
 		writeH(_items.size());
 		
-		for (ItemInstance temp : _items)
+		for (L2ItemInstance temp : _items)
 		{
 			if (temp.getItem() == null)
 				continue;

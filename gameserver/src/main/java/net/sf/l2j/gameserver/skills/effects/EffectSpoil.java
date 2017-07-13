@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.skills.effects;
 
-import net.sf.l2j.gameserver.ai.CtrlEvent;
+import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.actor.instance.L2MonsterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -65,7 +65,7 @@ public class EffectSpoil extends L2Effect
 			target.setSpoilerId(getEffector().getObjectId());
 			getEffector().sendPacket(SystemMessage.getSystemMessage(SystemMessageId.SPOIL_SUCCESS));
 		}
-		target.getAI().notifyEvent(CtrlEvent.EVT_ATTACKED, getEffector());
+		target.getAI().notifyEvent(ECtrlEvent.EVT_ATTACKED, getEffector());
 		return true;
 	}
 	

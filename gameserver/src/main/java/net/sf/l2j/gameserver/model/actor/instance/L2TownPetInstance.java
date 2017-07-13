@@ -16,8 +16,8 @@ package net.sf.l2j.gameserver.model.actor.instance;
 
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
-import net.sf.l2j.gameserver.model.L2CharPosition;
+import net.sf.l2j.gameserver.ai.EIntention;
+import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
@@ -44,7 +44,7 @@ public class L2TownPetInstance extends L2NpcInstance
 		else
 		{
 			if (!canInteract(player))
-				player.getAI().setIntention(CtrlIntention.INTERACT, this);
+				player.getAI().setIntention(EIntention.INTERACT, this);
 			else
 			{
 				// Rotate the player to face the instance
@@ -73,7 +73,7 @@ public class L2TownPetInstance extends L2NpcInstance
 			randomY = spawnY + Rnd.get(150) - 75;
 			
 			if ((randomX != getX()) && (randomY != getY()))
-				getAI().setIntention(CtrlIntention.MOVE_TO, new L2CharPosition(randomX, randomY, getZ(), 0));
+				getAI().setIntention(EIntention.MOVE_TO, new L2Position(randomX, randomY, getZ(), 0));
 		}
 	}
 }

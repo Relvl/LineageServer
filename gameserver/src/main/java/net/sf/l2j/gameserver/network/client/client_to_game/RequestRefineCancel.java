@@ -16,7 +16,7 @@ package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ExVariationCancelResult;
 import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
@@ -44,7 +44,7 @@ public final class RequestRefineCancel extends L2GameClientPacket
 		if (activeChar == null)
 			return;
 		
-		final ItemInstance targetItem = activeChar.getInventory().getItemByObjectId(_targetItemObjId);
+		final L2ItemInstance targetItem = activeChar.getInventory().getItemByObjectId(_targetItemObjId);
 		if (targetItem == null)
 		{
 			activeChar.sendPacket(new ExVariationCancelResult(0));

@@ -40,10 +40,10 @@ import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.model.L2Clan;
-import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.model.olympiad.Olympiad;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -623,12 +623,12 @@ public class Hero
 					
 					for (int i = 0; i < Inventory.PAPERDOLL_TOTALSLOTS; i++)
 					{
-						ItemInstance equippedItem = player.getInventory().getPaperdollItem(i);
+						L2ItemInstance equippedItem = player.getInventory().getPaperdollItem(i);
 						if ((equippedItem != null) && equippedItem.isHeroItem())
 							player.getInventory().unEquipItemInSlot(i);
 					}
 					
-					for (ItemInstance item : player.getInventory().getAvailableItems(false, false))
+					for (L2ItemInstance item : player.getInventory().getAvailableItems(false, false))
 					{
 						if ((item != null) && item.isHeroItem())
 						{

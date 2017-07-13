@@ -29,11 +29,11 @@ import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance.ItemLocation;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance.ItemLocation;
 import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.EtcItem;
 import net.sf.l2j.gameserver.model.item.kind.Item;
@@ -142,18 +142,18 @@ public class ItemTable
 	}
 	
 	/**
-	 * Create the ItemInstance corresponding to the Item Identifier and quantitiy add logs the activity.
+	 * Create the L2ItemInstance corresponding to the Item Identifier and quantitiy add logs the activity.
 	 * @param process : String Identifier of process triggering this action
 	 * @param itemId : int Item Identifier of the item to be created
 	 * @param count : int Quantity of items to be created for stackable items
 	 * @param actor : L2PcInstance Player requesting the item creation
 	 * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
-	 * @return ItemInstance corresponding to the new item
+	 * @return L2ItemInstance corresponding to the new item
 	 */
-	public ItemInstance createItem(String process, int itemId, int count, L2PcInstance actor, L2Object reference)
+	public L2ItemInstance createItem(String process, int itemId, int count, L2PcInstance actor, L2Object reference)
 	{
-		// Create and Init the ItemInstance corresponding to the Item Identifier
-		ItemInstance item = new ItemInstance(IdFactory.getInstance().getNextId(), itemId);
+		// Create and Init the L2ItemInstance corresponding to the Item Identifier
+		L2ItemInstance item = new L2ItemInstance(IdFactory.getInstance().getNextId(), itemId);
 		
 		if (process.equalsIgnoreCase("loot"))
 		{
@@ -177,7 +177,7 @@ public class ItemTable
 			}
 		}
 		
-		// Add the ItemInstance object to _allObjects of L2world
+		// Add the L2ItemInstance object to _allObjects of L2world
 		L2World.getInstance().addObject(item);
 		
 		// Set Item parameters
@@ -203,32 +203,32 @@ public class ItemTable
 	/**
 	 * Dummy item is created by setting the ID of the object in the world at null value
 	 * @param itemId : int designating the item
-	 * @return ItemInstance designating the dummy item created
+	 * @return L2ItemInstance designating the dummy item created
 	 */
-	public ItemInstance createDummyItem(int itemId)
+	public L2ItemInstance createDummyItem(int itemId)
 	{
 		final Item item = getTemplate(itemId);
 		if (item == null)
 			return null;
 		
-		return new ItemInstance(0, item);
+		return new L2ItemInstance(0, item);
 	}
 	
 	/**
-	 * Destroys the ItemInstance.
+	 * Destroys the L2ItemInstance.
 	 * @param process : String Identifier of process triggering this action
-	 * @param item : ItemInstance The instance of object to delete
+	 * @param item : L2ItemInstance The instance of object to delete
 	 * @param actor : L2PcInstance Player requesting the item destroy
 	 * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
 	 */
-	public void destroyItem(String process, ItemInstance item, L2PcInstance actor, L2Object reference)
+	public void destroyItem(String process, L2ItemInstance item, L2PcInstance actor, L2Object reference)
 	{
 		synchronized (item)
 		{
 			item.setCount(0);
 			item.setOwnerId(0);
 			item.setLocation(ItemLocation.VOID);
-			item.setLastChange(ItemInstance.REMOVED);
+			item.setLastChange(L2ItemInstance.REMOVED);
 			
 			L2World.getInstance().removeObject(item);
 			IdFactory.getInstance().releaseId(item.getObjectId());
@@ -275,9 +275,9 @@ public class ItemTable
 	
 	protected static class ResetOwner implements Runnable
 	{
-		ItemInstance _item;
+		L2ItemInstance _item;
 		
-		public ResetOwner(ItemInstance item)
+		public ResetOwner(L2ItemInstance item)
 		{
 			_item = item;
 		}

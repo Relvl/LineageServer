@@ -10,7 +10,7 @@ import net.sf.l2j.gameserver.datatables.SkillTable.FrequentSkill;
 import net.sf.l2j.gameserver.instancemanager.*;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2Clan.SubPledge;
-import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.Race;
 import net.sf.l2j.gameserver.model.entity.ClanHall;
@@ -193,14 +193,14 @@ public class EnterWorld extends L2GameClientPacket {
         activeChar.sendPacket(new QuestList(activeChar));
 
         // Unread mails make a popup appears.
-        if (Config.ENABLE_COMMUNITY_BOARD && MailBBSManager.getInstance().checkUnreadMail(activeChar) > 0) {
+        if (MailBBSManager.getInstance().checkUnreadMail(activeChar) > 0) {
             activeChar.sendPacket(SystemMessageId.NEW_MAIL);
             activeChar.sendPacket(new PlaySound("systemmsg_e.1233"));
             activeChar.sendPacket(ExMailArrived.STATIC_PACKET);
         }
 
         // Clan notice, if active.
-        if (Config.ENABLE_COMMUNITY_BOARD && clan != null && clan.isNoticeEnabled()) {
+        if (clan != null && clan.isNoticeEnabled()) {
             NpcHtmlMessage html = new NpcHtmlMessage(0);
             html.setFile("data/html/clan_notice.htm");
             html.replace("%clan_name%", clan.getName());

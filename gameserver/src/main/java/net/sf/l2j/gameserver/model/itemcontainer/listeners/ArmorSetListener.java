@@ -20,7 +20,7 @@ import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.ArmorSet;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 
 public class ArmorSetListener implements OnEquipListener
@@ -33,7 +33,7 @@ public class ArmorSetListener implements OnEquipListener
 	}
 	
 	@Override
-	public void onEquip(int slot, ItemInstance item, L2Playable actor)
+	public void onEquip(int slot, L2ItemInstance item, L2Playable actor)
 	{
 		if (!item.isEquipable())
 			return;
@@ -41,7 +41,7 @@ public class ArmorSetListener implements OnEquipListener
 		final L2PcInstance player = (L2PcInstance) actor;
 		
 		// Checks if player is wearing a chest item
-		final ItemInstance chestItem = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
+		final L2ItemInstance chestItem = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
 		if (chestItem == null)
 			return;
 		
@@ -103,7 +103,7 @@ public class ArmorSetListener implements OnEquipListener
 	}
 	
 	@Override
-	public void onUnequip(int slot, ItemInstance item, L2Playable actor)
+	public void onUnequip(int slot, L2ItemInstance item, L2Playable actor)
 	{
 		final L2PcInstance player = (L2PcInstance) actor;
 		
@@ -125,7 +125,7 @@ public class ArmorSetListener implements OnEquipListener
 		}
 		else
 		{
-			final ItemInstance chestItem = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
+			final L2ItemInstance chestItem = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
 			if (chestItem == null)
 				return;
 			

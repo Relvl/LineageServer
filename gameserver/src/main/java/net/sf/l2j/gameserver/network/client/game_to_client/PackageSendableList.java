@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 
 /**
@@ -22,10 +22,10 @@ import net.sf.l2j.gameserver.model.item.kind.Item;
  */
 public class PackageSendableList extends L2GameServerPacket
 {
-	private final ItemInstance[] _items;
+	private final L2ItemInstance[] _items;
 	private final int _playerObjId;
 	
-	public PackageSendableList(ItemInstance[] items, int playerObjId)
+	public PackageSendableList(L2ItemInstance[] items, int playerObjId)
 	{
 		_items = items;
 		_playerObjId = playerObjId;
@@ -39,7 +39,7 @@ public class PackageSendableList extends L2GameServerPacket
 		writeD(getClient().getActiveChar().getAdena());
 		writeD(_items.length);
 		
-		for (ItemInstance temp : _items)
+		for (L2ItemInstance temp : _items)
 		{
 			if (temp == null || temp.getItem() == null)
 				continue;

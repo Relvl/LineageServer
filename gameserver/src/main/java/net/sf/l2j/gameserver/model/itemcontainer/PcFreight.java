@@ -19,8 +19,8 @@ import java.util.List;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance.ItemLocation;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance.ItemLocation;
 
 public class PcFreight extends ItemContainer
 {
@@ -64,7 +64,7 @@ public class PcFreight extends ItemContainer
 	public int getSize()
 	{
 		int size = 0;
-		for (ItemInstance item : _items)
+		for (L2ItemInstance item : _items)
 		{
 			if (item.getLocationSlot() == 0 || _activeLocationId == 0 || item.getLocationSlot() == _activeLocationId)
 				size++;
@@ -74,13 +74,13 @@ public class PcFreight extends ItemContainer
 	
 	/**
 	 * Returns the list of items in inventory
-	 * @return ItemInstance : items in inventory
+	 * @return L2ItemInstance : items in inventory
 	 */
 	@Override
-	public List<ItemInstance> getItems()
+	public List<L2ItemInstance> getItems()
 	{
-		List<ItemInstance> list = new ArrayList<>();
-		for (ItemInstance item : _items)
+		List<L2ItemInstance> list = new ArrayList<>();
+		for (L2ItemInstance item : _items)
 		{
 			if (item.getLocationSlot() == 0 || item.getLocationSlot() == _activeLocationId)
 				list.add(item);
@@ -91,12 +91,12 @@ public class PcFreight extends ItemContainer
 	/**
 	 * Returns the item from inventory by using its <B>itemId</B>
 	 * @param itemId : int designating the ID of the item
-	 * @return ItemInstance designating the item or null if not found in inventory
+	 * @return L2ItemInstance designating the item or null if not found in inventory
 	 */
 	@Override
-	public ItemInstance getItemByItemId(int itemId)
+	public L2ItemInstance getItemByItemId(int itemId)
 	{
-		for (ItemInstance item : _items)
+		for (L2ItemInstance item : _items)
 		{
 			if (item.getItemId() == itemId && (item.getLocationSlot() == 0 || _activeLocationId == 0 || item.getLocationSlot() == _activeLocationId))
 				return item;
@@ -106,10 +106,10 @@ public class PcFreight extends ItemContainer
 	
 	/**
 	 * Adds item to PcFreight for further adjustments.
-	 * @param item : ItemInstance to be added from inventory
+	 * @param item : L2ItemInstance to be added from inventory
 	 */
 	@Override
-	protected void addItem(ItemInstance item)
+	protected void addItem(L2ItemInstance item)
 	{
 		super.addItem(item);
 		if (_activeLocationId > 0)

@@ -18,7 +18,7 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.datatables.HennaTable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.Henna;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.util.Util;
 
@@ -56,7 +56,7 @@ public final class RequestHennaEquip extends L2GameClientPacket
 			return;
 		}
 		
-		final ItemInstance ownedDyes = activeChar.getInventory().getItemByItemId(henna.getDyeId());
+		final L2ItemInstance ownedDyes = activeChar.getInventory().getItemByItemId(henna.getDyeId());
 		final int count = (ownedDyes == null) ? 0 : ownedDyes.getCount();
 		
 		if (count < Henna.getAmountDyeRequire())

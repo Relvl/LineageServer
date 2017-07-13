@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.model.actor.instance;
 
 import net.sf.l2j.gameserver.ai.model.L2BoatAI;
-import net.sf.l2j.gameserver.model.L2CharPosition;
+import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.Location;
 import net.sf.l2j.gameserver.model.actor.L2Vehicle;
 import net.sf.l2j.gameserver.model.actor.template.CharTemplate;
@@ -64,7 +64,7 @@ public class L2BoatInstance extends L2Vehicle
 	}
 	
 	@Override
-	public void stopMove(L2CharPosition pos)
+	public void stopMove(L2Position pos)
 	{
 		super.stopMove(pos);
 		

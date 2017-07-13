@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.L2Party.MessageType;
@@ -28,7 +28,7 @@ import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.zone.type.L2OlympiadStadiumZone;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ExOlympiadMode;
@@ -229,7 +229,7 @@ public abstract class AbstractOlympiadGame
 			player.disableAutoShotsAll();
 			
 			// Discharge any active shots
-			ItemInstance item = player.getActiveWeaponInstance();
+			L2ItemInstance item = player.getActiveWeaponInstance();
 			if (item != null)
 				item.unChargeAllShots();
 			
@@ -279,7 +279,7 @@ public abstract class AbstractOlympiadGame
 			player.setTarget(null);
 			player.abortAttack();
 			player.abortCast();
-			player.getAI().setIntention(CtrlIntention.IDLE);
+			player.getAI().setIntention(EIntention.IDLE);
 			
 			if (player.isDead())
 				player.setIsDead(false);
@@ -290,7 +290,7 @@ public abstract class AbstractOlympiadGame
 				summon.setTarget(null);
 				summon.abortAttack();
 				summon.abortCast();
-				summon.getAI().setIntention(CtrlIntention.IDLE);
+				summon.getAI().setIntention(EIntention.IDLE);
 			}
 			
 			player.setCurrentCp(player.getMaxCp());
@@ -374,7 +374,7 @@ public abstract class AbstractOlympiadGame
 				if (it == null || it.length != 2)
 					continue;
 				
-				final ItemInstance item = player.getInventory().addItem("Olympiad", it[0], it[1], player, null);
+				final L2ItemInstance item = player.getInventory().addItem("Olympiad", it[0], it[1], player, null);
 				if (item == null)
 					continue;
 				

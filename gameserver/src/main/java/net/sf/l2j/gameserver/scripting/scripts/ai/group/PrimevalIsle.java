@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.scripting.scripts.ai.group;
 
-import net.sf.l2j.gameserver.ai.CtrlEvent;
+import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.datatables.SpawnTable;
 import net.sf.l2j.gameserver.model.L2Skill;
@@ -139,7 +139,7 @@ public class PrimevalIsle extends AbstractNpcAI
 			if (obj.isDead() || obj == npc)
 				continue;
 			
-			obj.getAI().notifyEvent(CtrlEvent.EVT_AGGRESSION, originalAttacker, 1);
+			obj.getAI().notifyEvent(ECtrlEvent.EVT_AGGRESSION, originalAttacker, 1);
 		}
 		
 		return null;

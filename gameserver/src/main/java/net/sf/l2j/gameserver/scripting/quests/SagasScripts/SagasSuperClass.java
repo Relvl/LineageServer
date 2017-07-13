@@ -21,11 +21,11 @@ import java.util.Map;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.L2Skill;
-import net.sf.l2j.gameserver.model.L2World;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
@@ -237,7 +237,7 @@ public class SagasSuperClass extends Quest
 				
 				// Attack player
 				((L2Attackable) Archon).addDamageHate(st2.getPlayer(), 0, 99999);
-				Archon.getAI().setIntention(CtrlIntention.ATTACK, st2.getPlayer(), null);
+				Archon.getAI().setIntention(EIntention.ATTACK, st2.getPlayer(), null);
 			}
 			else
 			{
@@ -492,7 +492,7 @@ public class SagasSuperClass extends Quest
 			{
 				// Attack player
 				((L2Attackable) npc).addDamageHate(st.getPlayer(), 0, 99999);
-				npc.getAI().setIntention(CtrlIntention.ATTACK, st.getPlayer(), null);
+				npc.getAI().setIntention(EIntention.ATTACK, st.getPlayer(), null);
 				
 				npc.broadcastNpcSay(Text[0].replace("PLAYERNAME", player.getName()));
 				return null;
@@ -520,7 +520,7 @@ public class SagasSuperClass extends Quest
 				if (_SpawnList.containsKey(Mob_2) && _SpawnList.get(Mob_2) == player.getObjectId())
 				{
 					((L2Attackable) npc).addDamageHate(Mob_2, 0, 99999);
-					npc.getAI().setIntention(CtrlIntention.ATTACK, Mob_2, null);
+					npc.getAI().setIntention(EIntention.ATTACK, Mob_2, null);
 					
 					npc.broadcastNpcSay(Text[14]);
 				}

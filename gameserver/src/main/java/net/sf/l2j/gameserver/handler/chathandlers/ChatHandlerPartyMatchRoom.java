@@ -9,7 +9,7 @@ import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
 
 public class ChatHandlerPartyMatchRoom implements IChatHandler {
     @Override
-    public void handleChat(EChatType type, L2PcInstance activeChar, String params, String text) {
+    public void handleChat(EChatType type, L2PcInstance activeChar, String tellTarget, String text) {
         if (!activeChar.isInPartyMatchRoom()) { return; }
 
         PartyMatchRoom room = PartyMatchRoomList.getInstance().getPlayerRoom(activeChar);

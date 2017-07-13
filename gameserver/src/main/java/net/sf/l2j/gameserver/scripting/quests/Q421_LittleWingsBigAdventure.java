@@ -13,7 +13,7 @@
 package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
@@ -22,7 +22,7 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2MonsterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -74,7 +74,7 @@ public class Q421_LittleWingsBigAdventure extends Quest
 				// Find the level of the flute.
 				for (int i = 3500; i < 3503; i++)
 				{
-					final ItemInstance item = player.getInventory().getItemByItemId(i);
+					final L2ItemInstance item = player.getInventory().getItemByItemId(i);
 					if (item != null && item.getEnchantLevel() >= 55)
 					{
 						st.setState(STATE_STARTED);
@@ -135,7 +135,7 @@ public class Q421_LittleWingsBigAdventure extends Quest
 					// Find the level of the hatchling.
 					for (int i = 3500; i < 3503; i++)
 					{
-						final ItemInstance item = player.getInventory().getItemByItemId(i);
+						final L2ItemInstance item = player.getInventory().getItemByItemId(i);
 						if (item != null && item.getEnchantLevel() >= 55)
 							return "30610-04.htm";
 					}
@@ -191,7 +191,7 @@ public class Q421_LittleWingsBigAdventure extends Quest
 							
 							for (int i = 3500; i < 3503; i++)
 							{
-								final ItemInstance item = player.getInventory().getItemByItemId(i);
+								final L2ItemInstance item = player.getInventory().getItemByItemId(i);
 								if (item != null && item.getObjectId() == st.getInt("summonOid"))
 								{
 									st.takeItems(i, 1);
@@ -290,7 +290,7 @@ public class Q421_LittleWingsBigAdventure extends Quest
 			
 			newNpc.setRunning();
 			newNpc.addDamageHate(originalKiller, 0, 999);
-			newNpc.getAI().setIntention(CtrlIntention.ATTACK, originalKiller);
+			newNpc.getAI().setIntention(EIntention.ATTACK, originalKiller);
 		}
 		
 		return super.onKill(npc, killer, isPet);

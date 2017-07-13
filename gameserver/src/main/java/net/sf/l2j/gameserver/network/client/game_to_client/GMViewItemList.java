@@ -18,12 +18,12 @@ import java.util.List;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 
 public class GMViewItemList extends L2GameServerPacket
 {
-	private final List<ItemInstance> _items;
+	private final List<L2ItemInstance> _items;
 	private final int _limit;
 	private final String _playerName;
 	
@@ -50,7 +50,7 @@ public class GMViewItemList extends L2GameServerPacket
 		writeH(0x01); // show window ??
 		writeH(_items.size());
 		
-		for (ItemInstance temp : _items)
+		for (L2ItemInstance temp : _items)
 		{
 			if (temp.getItem() == null)
 				continue;

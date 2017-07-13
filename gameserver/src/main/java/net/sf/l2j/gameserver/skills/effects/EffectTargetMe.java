@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.skills.effects;
 
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.client.game_to_client.MyTargetSelected;
@@ -45,7 +45,7 @@ public class EffectTargetMe extends L2Effect
 		{
 			// add an INTENTION_ATTACK, but only if victim got attacker as target
 			if ((getEffected().getAI() == null || getEffected().getAI().getNextIntention() == null) && getEffected().getTarget() == getEffector())
-				getEffected().getAI().setIntention(CtrlIntention.ATTACK, getEffector());
+				getEffected().getAI().setIntention(EIntention.ATTACK, getEffector());
 			
 			// target the agressor
 			getEffected().setTarget(getEffector());

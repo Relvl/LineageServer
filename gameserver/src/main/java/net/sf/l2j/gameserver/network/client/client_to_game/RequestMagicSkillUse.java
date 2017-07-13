@@ -15,8 +15,8 @@
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.ai.CtrlEvent;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.ECtrlEvent;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.NextAction;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.model.L2Skill;
@@ -75,7 +75,7 @@ public final class RequestMagicSkillUse extends L2GameClientPacket {
         }
 
         if (activeChar.isAttackingNow()) {
-            activeChar.getAI().setNextAction(new NextAction(CtrlEvent.EVT_READY_TO_ACT, CtrlIntention.CAST, () -> activeChar.useMagic(skill, _ctrlPressed, _shiftPressed)));
+            activeChar.getAI().setNextAction(new NextAction(ECtrlEvent.EVT_READY_TO_ACT, EIntention.CAST, () -> activeChar.useMagic(skill, _ctrlPressed, _shiftPressed)));
         }
         else { activeChar.useMagic(skill, _ctrlPressed, _shiftPressed); }
     }

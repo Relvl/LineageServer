@@ -20,7 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 
 /**
@@ -74,7 +74,7 @@ public final class RandomAnimationTaskManager implements Runnable
 			if (character.isMob())
 			{
 				// Cancel further animation timers until intention is changed to ACTIVE again.
-				if (character.getAI().getIntention() != CtrlIntention.ACTIVE)
+				if (character.getAI().getIntention() != EIntention.ACTIVE)
 				{
 					_characters.remove(character);
 					continue;

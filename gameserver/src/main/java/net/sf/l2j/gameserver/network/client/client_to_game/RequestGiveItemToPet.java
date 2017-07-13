@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.network.client.client_to_game;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.EnchantResult;
 
@@ -51,7 +51,7 @@ public final class RequestGiveItemToPet extends L2GameClientPacket {
             return;
         }
 
-        final ItemInstance item = player.getInventory().getItemByObjectId(_objectId);
+        final L2ItemInstance item = player.getInventory().getItemByObjectId(_objectId);
         if (item == null || item.isAugmented()) { return; }
 
         if (item.isHeroItem() || !item.isDropable() || !item.isDestroyable() || !item.isTradable()) {

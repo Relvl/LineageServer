@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.model.actor.instance;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.EChatType;
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.instancemanager.SevenSigns;
 import net.sf.l2j.gameserver.model.L2Skill;
@@ -74,7 +74,7 @@ public class L2CabaleBufferInstance extends L2NpcInstance {
             // Calculate the distance between the L2PcInstance and the L2Npc
             if (!canInteract(player)) {
                 // Notify the L2PcInstance AI with INTERACT
-                player.getAI().setIntention(CtrlIntention.INTERACT, this);
+                player.getAI().setIntention(EIntention.INTERACT, this);
             }
             else {
                 // Rotate the player to face the instance

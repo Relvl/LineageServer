@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.model.actor.instance;
 
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.ai.CtrlIntention;
+import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2SiegeClan;
@@ -97,7 +97,7 @@ public class L2SiegeFlagInstance extends L2Npc
 		else
 		{
 			if (isAutoAttackable(player) && Math.abs(player.getZ() - getZ()) < 100)
-				player.getAI().setIntention(CtrlIntention.ATTACK, this);
+				player.getAI().setIntention(EIntention.ATTACK, this);
 			else
 			{
 				// Rotate the player to face the instance

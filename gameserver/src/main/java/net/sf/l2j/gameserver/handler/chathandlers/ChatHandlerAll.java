@@ -10,7 +10,7 @@ import net.sf.l2j.gameserver.util.FloodProtectors.Action;
 
 public class ChatHandlerAll implements IChatHandler {
     @Override
-    public void handleChat(EChatType type, L2PcInstance activeChar, String params, String text) {
+    public void handleChat(EChatType type, L2PcInstance activeChar, String tellTarget, String text) {
         if (!FloodProtectors.performAction(activeChar.getClient(), Action.GLOBAL_CHAT)) { return; }
 
         CreatureSay cs = new CreatureSay(activeChar.getObjectId(), type, activeChar.getName(), text);

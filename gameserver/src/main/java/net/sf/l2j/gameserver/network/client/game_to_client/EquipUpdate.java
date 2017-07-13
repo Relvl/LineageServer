@@ -14,15 +14,15 @@
  */
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 
 public class EquipUpdate extends L2GameServerPacket
 {
-	private final ItemInstance _item;
+	private final L2ItemInstance _item;
 	private final int _change;
 	
-	public EquipUpdate(ItemInstance item, int change)
+	public EquipUpdate(L2ItemInstance item, int change)
 	{
 		_item = item;
 		_change = change;

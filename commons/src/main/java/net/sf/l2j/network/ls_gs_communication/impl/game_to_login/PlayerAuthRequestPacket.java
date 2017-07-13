@@ -37,10 +37,10 @@ public class PlayerAuthRequestPacket extends AServerCommunicationPacket {
     protected void doWrite() {
         writeC(0x05);
         writeS(login);
-        writeD(sessionKey.playOkID1);
-        writeD(sessionKey.playOkID2);
-        writeD(sessionKey.loginOkID1);
-        writeD(sessionKey.loginOkID2);
+        writeD(sessionKey.getPlayOkID1());
+        writeD(sessionKey.getPlayOkID2());
+        writeD(sessionKey.getLoginOkID1());
+        writeD(sessionKey.getLoginOkID2());
     }
 
     public String getLogin() {

@@ -53,7 +53,7 @@ public class CharacterSelected extends L2GameClientPacket {
                     sendPacket(new SignsSky());
 
                     client.setState(GameClientState.IN_GAME);
-                    CharSelected cs = new CharSelected(cha, client.getSessionId().playOkID1);
+                    CharSelected cs = new CharSelected(cha, client.getSessionId().getPlayOkID1());
                     sendPacket(cs);
                 }
             } finally {

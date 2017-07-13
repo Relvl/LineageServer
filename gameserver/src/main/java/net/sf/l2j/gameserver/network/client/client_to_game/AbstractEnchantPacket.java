@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.item.type.CrystalType;
@@ -47,7 +47,7 @@ public abstract class AbstractEnchantPacket extends L2GameClientPacket
 		 * @param enchantItem : The item to enchant.
 		 * @return true if support item can be used for this item
 		 */
-		public final boolean isValid(ItemInstance enchantItem)
+		public final boolean isValid(L2ItemInstance enchantItem)
 		{
 			if (enchantItem == null)
 				return false;
@@ -109,7 +109,7 @@ public abstract class AbstractEnchantPacket extends L2GameClientPacket
 		 * @param enchantItem : The item to enchant.
 		 * @return the enchant chance under double format (0.7 / 0.35 / 0.44324...).
 		 */
-		public final double getChance(ItemInstance enchantItem)
+		public final double getChance(L2ItemInstance enchantItem)
 		{
 			if (!isValid(enchantItem))
 				return -1;
@@ -189,7 +189,7 @@ public abstract class AbstractEnchantPacket extends L2GameClientPacket
 	 * @param scroll The instance of item to make checks on.
 	 * @return enchant template for scroll.
 	 */
-	protected static final EnchantScroll getEnchantScroll(ItemInstance scroll)
+	protected static final EnchantScroll getEnchantScroll(L2ItemInstance scroll)
 	{
 		return _scrolls.get(scroll.getItemId());
 	}
@@ -198,13 +198,13 @@ public abstract class AbstractEnchantPacket extends L2GameClientPacket
 	 * @param item The instance of item to make checks on.
 	 * @return true if item can be enchanted.
 	 */
-	protected static final boolean isEnchantable(ItemInstance item)
+	protected static final boolean isEnchantable(L2ItemInstance item)
 	{
 		if (item.isHeroItem() || item.isShadowItem() || item.isEtcItem() || item.getItem().getItemType() == WeaponType.FISHINGROD)
 			return false;
 		
 		// only equipped items or in inventory can be enchanted
-		if (item.getLocation() != ItemInstance.ItemLocation.INVENTORY && item.getLocation() != ItemInstance.ItemLocation.PAPERDOLL)
+		if (item.getLocation() != L2ItemInstance.ItemLocation.INVENTORY && item.getLocation() != L2ItemInstance.ItemLocation.PAPERDOLL)
 			return false;
 		
 		return true;

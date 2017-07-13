@@ -22,7 +22,7 @@ import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.type.ActionType;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
@@ -43,10 +43,10 @@ public final class UseItem extends L2GameClientPacket
 	/** Weapon Equip Task */
 	public static class WeaponEquipTask implements Runnable
 	{
-		ItemInstance item;
+		L2ItemInstance item;
 		L2PcInstance activeChar;
 		
-		public WeaponEquipTask(ItemInstance it, L2PcInstance character)
+		public WeaponEquipTask(L2ItemInstance it, L2PcInstance character)
 		{
 			item = it;
 			activeChar = character;
@@ -90,7 +90,7 @@ public final class UseItem extends L2GameClientPacket
 			return;
 		}
 		
-		final ItemInstance item = activeChar.getInventory().getItemByObjectId(_objectId);
+		final L2ItemInstance item = activeChar.getInventory().getItemByObjectId(_objectId);
 		if (item == null)
 			return;
 		

@@ -32,7 +32,7 @@ import net.sf.l2j.gameserver.model.L2ClanMember;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Castle;
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 
 public class CastleManager
 {
@@ -282,7 +282,7 @@ public class CastleManager
 		if (player != null)
 		{
 			// Circlets removal for all members
-			ItemInstance circlet = player.getInventory().getItemByItemId(circletId);
+			L2ItemInstance circlet = player.getInventory().getItemByItemId(circletId);
 			if (circlet != null)
 			{
 				if (circlet.isEquipped())
@@ -294,7 +294,7 @@ public class CastleManager
 			// If the actual checked player is the clan leader, check for crown
 			if (player.isClanLeader())
 			{
-				ItemInstance crown = player.getInventory().getItemByItemId(6841);
+				L2ItemInstance crown = player.getInventory().getItemByItemId(6841);
 				if (crown != null)
 				{
 					if (crown.isEquipped())

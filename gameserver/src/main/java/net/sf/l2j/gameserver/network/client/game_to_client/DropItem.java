@@ -14,14 +14,14 @@
  */
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
-import net.sf.l2j.gameserver.model.item.instance.ItemInstance;
+import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 
 public class DropItem extends L2GameServerPacket
 {
-	private final ItemInstance _item;
+	private final L2ItemInstance _item;
 	private final int _charObjId;
 	
-	public DropItem(ItemInstance item, int playerObjId)
+	public DropItem(L2ItemInstance item, int playerObjId)
 	{
 		_item = item;
 		_charObjId = playerObjId;
