@@ -1,0 +1,6 @@
+<LoginServerConfigImpl>
+  <AutoCreateAccounts>false</AutoCreateAccounts>
+  <LoginsTryBeforeBan>10</LoginsTryBeforeBan>
+  <LoginsBlockAfterBan>600</LoginsBlockAfterBan>
+  <LoginTimeout>60000</LoginTimeout>
+</LoginServerConfigImpl>

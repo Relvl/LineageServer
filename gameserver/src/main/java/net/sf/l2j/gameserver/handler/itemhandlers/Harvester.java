@@ -16,7 +16,6 @@ package net.sf.l2j.gameserver.handler.itemhandlers;
 
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.handler.IItemHandler;
-import net.sf.l2j.gameserver.instancemanager.CastleManorManager;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2MonsterInstance;
@@ -27,32 +26,23 @@ import net.sf.l2j.gameserver.network.SystemMessageId;
 /**
  * @author l3x
  */
-public class Harvester implements IItemHandler
-{
-	@Override
-	public void useItem(L2Playable playable, L2ItemInstance item, boolean forceUse)
-	{
-		if (!(playable instanceof L2PcInstance))
-			return;
-		
-		if (CastleManorManager.getInstance().isDisabled())
-			return;
-		
-		if (!(playable.getTarget() instanceof L2MonsterInstance))
-		{
-			playable.sendPacket(SystemMessageId.INCORRECT_TARGET);
-			return;
-		}
-		
-		final L2MonsterInstance _target = (L2MonsterInstance) playable.getTarget();
-		if (_target == null || !_target.isDead())
-		{
-			playable.sendPacket(SystemMessageId.INCORRECT_TARGET);
-			return;
-		}
-		
-		final L2Skill skill = SkillTable.getInstance().getInfo(2098, 1);
-		if (skill != null)
-			playable.useMagic(skill, false, false);
-	}
+public class Harvester implements IItemHandler {
+    @Override
+    public void useItem(L2Playable playable, L2ItemInstance item, boolean forceUse) {
+        if (!(playable instanceof L2PcInstance)) { return; }
+
+        if (!(playable.getTarget() instanceof L2MonsterInstance)) {
+            playable.sendPacket(SystemMessageId.INCORRECT_TARGET);
+            return;
+        }
+
+        final L2MonsterInstance _target = (L2MonsterInstance) playable.getTarget();
+        if (_target == null || !_target.isDead()) {
+            playable.sendPacket(SystemMessageId.INCORRECT_TARGET);
+            return;
+        }
+
+        final L2Skill skill = SkillTable.getInstance().getInfo(2098, 1);
+        if (skill != null) { playable.useMagic(skill, false, false); }
+    }
 }

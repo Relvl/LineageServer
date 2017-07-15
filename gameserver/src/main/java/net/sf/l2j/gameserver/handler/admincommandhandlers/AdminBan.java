@@ -14,11 +14,10 @@
  */
 package net.sf.l2j.gameserver.handler.admincommandhandlers;
 
-import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
-import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 
 import java.sql.Connection;
@@ -84,9 +83,10 @@ public class AdminBan implements IAdminCommandHandler {
                 activeChar.sendMessage(name + " is chat banned for " + (delay > 0 ? delay + " minutes." : "ever !"));
             }
             else { activeChar.sendMessage(name + "'s chat ban have been lifted."); }
-        } catch (SQLException se) {
+        }
+        catch (SQLException se) {
             activeChar.sendMessage("SQLException while chat-banning player");
-            if (Config.DEBUG) { se.printStackTrace(); }
+            se.printStackTrace();
         }
     }
 
@@ -108,9 +108,10 @@ public class AdminBan implements IAdminCommandHandler {
             else {
                 activeChar.sendMessage(name + " have been jailed for " + (delay > 0 ? delay + " minutes." : "ever!"));
             }
-        } catch (SQLException se) {
+        }
+        catch (SQLException se) {
             activeChar.sendMessage("SQLException while jailing player");
-            if (Config.DEBUG) { se.printStackTrace(); }
+            se.printStackTrace();
         }
     }
 
@@ -128,9 +129,10 @@ public class AdminBan implements IAdminCommandHandler {
             statement.close();
             if (count == 0) { activeChar.sendMessage("Character isn't found."); }
             else { activeChar.sendMessage(name + " have been unjailed."); }
-        } catch (SQLException se) {
+        }
+        catch (SQLException se) {
             activeChar.sendMessage("SQLException while jailing player");
-            if (Config.DEBUG) { se.printStackTrace(); }
+            se.printStackTrace();
         }
     }
 
@@ -155,9 +157,10 @@ public class AdminBan implements IAdminCommandHandler {
                 }
 
                 activeChar.sendMessage(player + " now has an access level of " + lvl + ".");
-            } catch (SQLException se) {
+            }
+            catch (SQLException se) {
                 activeChar.sendMessage("SQLException while changing character's access level");
-                if (Config.DEBUG) { se.printStackTrace(); }
+                se.printStackTrace();
 
                 return false;
             }
@@ -182,7 +185,8 @@ public class AdminBan implements IAdminCommandHandler {
             if (st.hasMoreTokens()) {
                 try {
                     duration = Integer.parseInt(st.nextToken());
-                } catch (NumberFormatException nfe) {
+                }
+                catch (NumberFormatException nfe) {
                     activeChar.sendMessage("Invalid number format used: " + nfe);
                     return false;
                 }

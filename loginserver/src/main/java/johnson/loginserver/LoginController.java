@@ -49,7 +49,8 @@ public class LoginController {
                     blowfishKeys[i][j] = (byte) (Rnd.get(255) + 1);
                 }
             }
-        } catch (GeneralSecurityException e) {
+        }
+        catch (GeneralSecurityException e) {
             LOGGER.error("Failed to make security keys.", e);
             throw new RuntimeException(e);
         }
@@ -57,6 +58,32 @@ public class LoginController {
         purgeThread = new PurgeThread();
         purgeThread.setDaemon(true);
         purgeThread.start();
+    }
+
+    public static boolean isAccountInAnyGameServer(String account) {
+        Collection<GameServerInfo> serverList = GameServerTable.getInstance().getRegisteredGameServers().values();
+        for (GameServerInfo gsi : serverList) {
+            GameServerThread gst = gsi.getGameServerThread();
+            if (gst != null && gst.hasAccountOnGameServer(account)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static GameServerInfo getAccountOnGameServer(String account) {
+        Collection<GameServerInfo> serverList = GameServerTable.getInstance().getRegisteredGameServers().values();
+        for (GameServerInfo gsi : serverList) {
+            GameServerThread gst = gsi.getGameServerThread();
+            if (gst != null && gst.hasAccountOnGameServer(account)) {
+                return gsi;
+            }
+        }
+        return null;
+    }
+
+    public static LoginController getInstance() {
+        return SingletonHolder.INSTANCE;
     }
 
     public byte[] getBlowfishKey() {
@@ -74,7 +101,7 @@ public class LoginController {
 
                 // Аккант не существует.
                 if (call.getAccountId() < 0) {
-                    if (LoginServer.config.clientListener.autoCreateAccounts) {
+                    if (LoginServer.CONFIG.loginServer.autoCreateAccounts) {
                         try (CreateAccountCall createAccountCall = new CreateAccountCall(login, password)) {
                             call.execute();
                             // Аккаунт создан
@@ -124,7 +151,8 @@ public class LoginController {
                 }
 
             }
-        } catch (CallException e) {
+        }
+        catch (CallException e) {
             LOGGER.warn("Could not login account: {}", login, e);
             SecurityController.getInstance().handleIncorrectLognis(address, password);
             client.close(LoginFailReason.REASON_SYSTEM_ERROR);
@@ -160,34 +188,12 @@ public class LoginController {
         return clients.containsKey(account) ? clients.get(account).getSessionKey() : null;
     }
 
-    public static boolean isAccountInAnyGameServer(String account) {
-        Collection<GameServerInfo> serverList = GameServerTable.getInstance().getRegisteredGameServers().values();
-        for (GameServerInfo gsi : serverList) {
-            GameServerThread gst = gsi.getGameServerThread();
-            if (gst != null && gst.hasAccountOnGameServer(account)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static GameServerInfo getAccountOnGameServer(String account) {
-        Collection<GameServerInfo> serverList = GameServerTable.getInstance().getRegisteredGameServers().values();
-        for (GameServerInfo gsi : serverList) {
-            GameServerThread gst = gsi.getGameServerThread();
-            if (gst != null && gst.hasAccountOnGameServer(account)) {
-                return gsi;
-            }
-        }
-        return null;
-    }
-
     public ScrambledKeyPair getScrambledRSAKeyPair() {
         return keyPairs[Rnd.get(10)];
     }
 
-    public static LoginController getInstance() {
-        return SingletonHolder.INSTANCE;
+    private static final class SingletonHolder {
+        private static final LoginController INSTANCE = new LoginController();
     }
 
     /** @deprecated Заменить на ThreadPoolManager. */
@@ -203,21 +209,18 @@ public class LoginController {
                 for (L2LoginClient client : clients.values()) {
                     if (client == null) { continue; }
 
-                    if ((client.getLoginTimestamp() + LoginServer.config.clientListener.loginTimeout) < System.currentTimeMillis()) {
+                    if ((client.getLoginTimestamp() + LoginServer.CONFIG.loginServer.loginTimeout) < System.currentTimeMillis()) {
                         client.close(LoginFailReason.REASON_ACCESS_FAILED);
                     }
                 }
 
                 try {
-                    Thread.sleep(LoginServer.config.clientListener.loginTimeout / 2);
-                } catch (InterruptedException ignored) {
+                    Thread.sleep(LoginServer.CONFIG.loginServer.loginTimeout / 2);
+                }
+                catch (InterruptedException ignored) {
                     return;
                 }
             }
         }
-    }
-
-    private static final class SingletonHolder {
-        private static final LoginController INSTANCE = new LoginController();
     }
 }

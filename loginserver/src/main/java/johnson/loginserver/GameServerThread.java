@@ -41,7 +41,8 @@ public class GameServerThread extends AServerCommunicationThread {
         try {
             inputStream = this.socket.getInputStream();
             outputStream = new BufferedOutputStream(this.socket.getOutputStream());
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             LOGGER.error("", e);
         }
 
@@ -56,7 +57,8 @@ public class GameServerThread extends AServerCommunicationThread {
         InetAddress netAddress = null;
         try {
             netAddress = InetAddress.getByName(ipAddress);
-        } catch (UnknownHostException e) {
+        }
+        catch (UnknownHostException e) {
             LOGGER.error("", e);
         }
         return SecurityController.getInstance().isBannedAddress(netAddress);
@@ -74,13 +76,14 @@ public class GameServerThread extends AServerCommunicationThread {
         }
 
         try {
-            sendPacket(new InitGameServerPacket(LoginServer.config.protocolRevision, publicKey.getModulus().toByteArray()));
+            sendPacket(new InitGameServerPacket(LoginServer.CONFIG.network.communicationProtocol, publicKey.getModulus().toByteArray()));
             doThreadLoop(socket);
-
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             String serverName = getServerId() == -1 ? '(' + connectionIPAddress + ')' : "[" + getServerId() + "] ";
             LOGGER.info("GameServer {}: {}.", serverName, e.getMessage());
-        } finally {
+        }
+        finally {
             if (isAuthed()) {
                 gameServerInfo.setDown();
                 LOGGER.info("GameServer [{}]  is now set as disconnected.", getServerId());
@@ -224,7 +227,8 @@ public class GameServerThread extends AServerCommunicationThread {
         sendPacket(new GameServerLoginFailPacket(reason));
         try {
             socket.close();
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             LOGGER.warn("GameServerThread: Failed disconnecting banned server, server already disconnected.", e);
         }
     }
@@ -247,7 +251,8 @@ public class GameServerThread extends AServerCommunicationThread {
         else {
             try {
                 gameServerInfo.setExternalIp(InetAddress.getByName(gameExternalHost).getHostAddress());
-            } catch (UnknownHostException ignored) {
+            }
+            catch (UnknownHostException ignored) {
                 LOGGER.warn("Couldn't resolve hostname \"{}\"", gameExternalHost);
             }
         }
@@ -258,7 +263,8 @@ public class GameServerThread extends AServerCommunicationThread {
         else {
             try {
                 gameServerInfo.setInternalIp(InetAddress.getByName(gameInternalHost).getHostAddress());
-            } catch (UnknownHostException ignored) {
+            }
+            catch (UnknownHostException ignored) {
                 LOGGER.warn("Couldn't resolve hostname \"{}\"", gameInternalHost);
             }
         }

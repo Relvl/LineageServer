@@ -22,6 +22,8 @@ public class SecurityController {
         LOGGER.info("{} loaded with {} banned IPs.", getClass().getSimpleName(), bannedIpAddresses.getSize());
     }
 
+    public static SecurityController getInstance() { return SingletonHolder.instance; }
+
     public void addBannedIpAddress(InetAddress address, long duration, String initiator, String reason) {
         bannedIpAddresses.addBannedIp(address, duration, initiator, reason);
     }
@@ -37,11 +39,11 @@ public class SecurityController {
         else {
             failedAttempt.increaseCounter(password);
         }
-        if (failedAttempt.getCount() >= LoginServer.config.clientListener.loginsTryBeforeBan) {
-            LOGGER.info("Banning '{}' for {} seconds due to {} invalid user/pass attempts", address.getHostAddress(), LoginServer.config.clientListener.loginsBlockAfterBan, failedAttempt.getCount());
+        if (failedAttempt.getCount() >= LoginServer.CONFIG.loginServer.loginsTryBeforeBan) {
+            LOGGER.info("Banning '{}' for {} seconds due to {} invalid user/pass attempts", address.getHostAddress(), LoginServer.CONFIG.loginServer.loginsBlockAfterBan, failedAttempt.getCount());
             addBannedIpAddress(
                     address,
-                    LoginServer.config.clientListener.loginsBlockAfterBan * 1000,
+                    LoginServer.CONFIG.loginServer.loginsBlockAfterBan * 1000,
                     "LoginServer",
                     "Too many failed login attempts"
             );
@@ -49,8 +51,6 @@ public class SecurityController {
     }
 
     public void handleCorrectLogin(InetAddress address) { bruteProtection.remove(address); }
-
-    public static SecurityController getInstance() { return SingletonHolder.instance; }
 
     private static final class SingletonHolder {
         private static final SecurityController instance = new SecurityController();

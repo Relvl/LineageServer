@@ -14,7 +14,6 @@
  */
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
-import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.network.L2GameClient;
 import org.mmocore.network.SendablePacket;
 
@@ -28,12 +27,10 @@ public abstract class L2GameServerPacket extends SendablePacket<L2GameClient> {
 
     @Override
     protected void write() {
-        if (Config.PACKET_HANDLER_DEBUG)
-            _log.info(getType());
-
         try {
             writeImpl();
-        } catch (Throwable t) {
+        }
+        catch (Throwable t) {
             _log.severe("Client: " + getClient().toString() + " - Failed writing: " + getType());
             t.printStackTrace();
         }

@@ -97,10 +97,6 @@ public class ValidatePosition extends L2GameClientPacket {
                     realZ = _z;
                 }
                 else {
-                    if (Config.DEVELOPER) {
-                        _log.info(activeChar.getName() + ": Synchronizing position Server --> Client");
-                    }
-
                     activeChar.sendPacket(new ValidateLocation(activeChar));
                 }
             }

@@ -37,13 +37,13 @@ public abstract class FloodProtectedListener extends Thread {
         while (true) {
             try {
                 connection = serverSocket.accept();
-                if (LoginServer.config.floodProtection.enabled) {
+                if (LoginServer.CONFIG.floodProtection.enabled) {
                     ForeignConnection fConnection = _floodProtection.get(connection.getInetAddress().getHostAddress());
                     if (fConnection != null) {
                         fConnection.connectionNumber += 1;
-                        if ((fConnection.connectionNumber > LoginServer.config.floodProtection.fastConnectionLimit && (System.currentTimeMillis() - fConnection.lastConnection) < LoginServer.config.floodProtection.normalConnectionTime) ||
-                                (System.currentTimeMillis() - fConnection.lastConnection) < LoginServer.config.floodProtection.fastConnectionTime ||
-                                fConnection.connectionNumber > LoginServer.config.floodProtection.maxConnectionsPerIP
+                        if ((fConnection.connectionNumber > LoginServer.CONFIG.floodProtection.fastConnectionLimit && (System.currentTimeMillis() - fConnection.lastConnection) < LoginServer.CONFIG.floodProtection.normalConnectionTime) ||
+                                (System.currentTimeMillis() - fConnection.lastConnection) < LoginServer.CONFIG.floodProtection.fastConnectionTime ||
+                                fConnection.connectionNumber > LoginServer.CONFIG.floodProtection.maxConnectionsPerIP
                                 ) {
 
                             fConnection.lastConnection = System.currentTimeMillis();
@@ -91,7 +91,7 @@ public abstract class FloodProtectedListener extends Thread {
     public abstract void addClient(Socket socket);
 
     public void removeFloodProtection(String ip) {
-        if (!LoginServer.config.floodProtection.enabled) {
+        if (!LoginServer.CONFIG.floodProtection.enabled) {
             return;
         }
         ForeignConnection fConnection = _floodProtection.get(ip);

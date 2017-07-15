@@ -14,7 +14,6 @@
  */
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
-import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.L2GameClient;
 import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
@@ -32,7 +31,8 @@ public abstract class L2GameClientPacket extends ReceivablePacket<L2GameClient> 
         try {
             readImpl();
             return true;
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             _log.error("Client: {} - Failed reading: {} ; {}", getClient(), getType(), e, e);
 
             if (e instanceof BufferUnderflowException) // only one allowed per client per minute
@@ -53,12 +53,10 @@ public abstract class L2GameClientPacket extends ReceivablePacket<L2GameClient> 
                 L2PcInstance actor = getClient().getActiveChar();
                 if (actor != null && actor.isSpawnProtected()) {
                     actor.onActionRequest();
-                    if (Config.DEBUG) {
-                        _log.info("Spawn protection for player " + actor.getName() + " removed by packet: " + getType());
-                    }
                 }
             }
-        } catch (Throwable t) {
+        }
+        catch (Throwable t) {
             _log.error("Client: {} - Failed reading: {} ; {}", getClient(), getType(), t, t);
 
             if (this instanceof EnterWorld) { getClient().closeNow(); }

@@ -1,6 +1,7 @@
 package net.sf.l2j;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import net.sf.l2j.commons.config.DatabaseConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,13 +10,7 @@ import java.sql.SQLException;
 
 public class L2DatabaseFactory {
     private static final Logger LOGGER = LoggerFactory.getLogger(L2DatabaseFactory.class);
-
-    public static String DATABASE_DRIVER;
-    public static String DATABASE_URL;
-    public static String DATABASE_LOGIN;
-    public static String DATABASE_PASSWORD;
-    public static int DATABASE_MAX_CONNECTIONS;
-    public static int DATABASE_MAX_IDLE_TIME;
+    public static DatabaseConfig config = new DatabaseConfig();
 
     private ComboPooledDataSource _source;
 
@@ -26,7 +21,7 @@ public class L2DatabaseFactory {
 
             _source.setInitialPoolSize(10);
             _source.setMinPoolSize(10);
-            _source.setMaxPoolSize(Math.max(10, DATABASE_MAX_CONNECTIONS));
+            _source.setMaxPoolSize(Math.max(10, config.maxConnections));
 
             // try to obtain connections indefinitely (0 = never quit)
             _source.setAcquireRetryAttempts(0);
@@ -43,7 +38,7 @@ public class L2DatabaseFactory {
             _source.setTestConnectionOnCheckin(false);
 
             _source.setIdleConnectionTestPeriod(3600); // test idle connection every 60 sec
-            _source.setMaxIdleTime(DATABASE_MAX_IDLE_TIME); // 0 = idle connections never expire
+            _source.setMaxIdleTime(config.maxIdleTime); // 0 = idle connections never expire
             // *THANKS* to connection testing configured above but I prefer to disconnect all connections not used for more than 1 hour
 
             // enables statement caching, there is a "semi-bug" in c3p0 0.9.0 but in 0.9.0.2 and later it's fixed
@@ -53,16 +48,18 @@ public class L2DatabaseFactory {
             // thus making acquire errors "FATAL" ... we don't want that it should be possible to recover
             _source.setBreakAfterAcquireFailure(false);
 
-            _source.setDriverClass(DATABASE_DRIVER);
-            _source.setJdbcUrl(DATABASE_URL);
-            _source.setUser(DATABASE_LOGIN);
-            _source.setPassword(DATABASE_PASSWORD);
+            _source.setDriverClass(config.driver);
+            _source.setJdbcUrl(config.url);
+            _source.setUser(config.user);
+            _source.setPassword(config.password);
 
 			/* Test the connection */
             _source.getConnection().close();
-        } catch (SQLException x) {
+        }
+        catch (SQLException x) {
             throw x;
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             throw new SQLException("could not init DB connection:" + e);
         }
     }
@@ -75,7 +72,8 @@ public class L2DatabaseFactory {
         try {
             _source.close();
             _source = null;
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             LOGGER.error("Cannot close data source", e);
         }
     }
@@ -85,7 +83,8 @@ public class L2DatabaseFactory {
         while (con == null) {
             try {
                 con = _source.getConnection();
-            } catch (SQLException e) {
+            }
+            catch (SQLException e) {
                 LOGGER.warn("L2DatabaseFactory: getConnection() failed, trying again ", e);
             }
         }
@@ -98,7 +97,8 @@ public class L2DatabaseFactory {
         static {
             try {
                 _instance = new L2DatabaseFactory();
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 throw new ExceptionInInitializerError(e);
             }
         }

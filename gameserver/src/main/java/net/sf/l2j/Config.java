@@ -210,7 +210,6 @@ public final class Config {
     /**
      * Wedding system
      */
-    public static boolean ALLOW_WEDDING;
     public static int WEDDING_PRICE;
     public static boolean WEDDING_SAMESEX;
     public static boolean WEDDING_FORMALWEAR;
@@ -228,7 +227,6 @@ public final class Config {
     /**
      * Fishing tournament
      */
-    public static boolean ALT_FISH_CHAMPIONSHIP_ENABLED;
     public static int ALT_FISH_CHAMPIONSHIP_REWARD_ITEM;
     public static int ALT_FISH_CHAMPIONSHIP_REWARD_1;
     public static int ALT_FISH_CHAMPIONSHIP_REWARD_2;
@@ -573,15 +571,6 @@ public final class Config {
     public static String GAME_SERVER_LOGIN_HOST;
 
     /**
-     * Access to database
-     */
-    public static String DATABASE_URL;
-    public static String DATABASE_LOGIN;
-    public static String DATABASE_PASSWORD;
-    public static int DATABASE_MAX_CONNECTIONS;
-    public static int DATABASE_MAX_IDLE_TIME;
-
-    /**
      * serverList & Test
      */
     public static boolean SERVER_LIST_BRACKET;
@@ -613,7 +602,6 @@ public final class Config {
     /**
      * Items Management
      */
-    public static boolean ALLOW_DISCARDITEM;
     public static boolean MULTIPLE_ITEM_DROP;
     public static int HERB_AUTO_DESTROY_TIME;
     public static int ITEM_AUTO_DESTROY_TIME;
@@ -669,31 +657,13 @@ public final class Config {
     /**
      * Allow types
      */
-    public static boolean ALLOW_FREIGHT;
-    public static boolean ALLOW_WAREHOUSE;
     public static boolean ALLOW_WEAR;
     public static int WEAR_DELAY;
     public static int WEAR_PRICE;
-    public static boolean ALLOW_LOTTERY;
-    public static boolean ALLOW_WATER;
-    public static boolean ALLOWFISHING;
-    public static boolean ALLOW_BOAT;
-    public static boolean ALLOW_CURSED_WEAPONS;
-    public static boolean ALLOW_MANOR;
-    public static boolean ENABLE_FALLING_DAMAGE;
-
-    /**
-     * Debug & Dev
-     */
-    public static boolean ALT_DEV_NO_SPAWNS;
-    public static boolean DEBUG;
-    public static boolean DEVELOPER;
-    public static boolean PACKET_HANDLER_DEBUG;
 
     /**
      * Deadlock Detector
      */
-    public static boolean DEADLOCK_DETECTOR;
     public static int DEADLOCK_CHECK_INTERVAL;
     public static boolean RESTART_ON_DEADLOCK;
 
@@ -921,7 +891,6 @@ public final class Config {
             RIFT_ENTER_COST_HERO = events.getProperty("HeroCost", 33);
             RIFT_BOSS_ROOM_TIME_MUTIPLY = events.getProperty("BossRoomTimeMultiply", 1.);
 
-            ALLOW_WEDDING = events.getProperty("AllowWedding", false);
             WEDDING_PRICE = events.getProperty("WeddingPrice", 1000000);
             WEDDING_SAMESEX = events.getProperty("WeddingAllowSameSex", false);
             WEDDING_FORMALWEAR = events.getProperty("WeddingFormalWear", true);
@@ -933,7 +902,6 @@ public final class Config {
             ALT_LOTTERY_3_NUMBER_RATE = events.getProperty("AltLottery3NumberRate", 0.2);
             ALT_LOTTERY_2_AND_1_NUMBER_PRIZE = events.getProperty("AltLottery2and1NumberPrize", 200);
 
-            ALT_FISH_CHAMPIONSHIP_ENABLED = events.getProperty("AltFishChampionshipEnabled", true);
             ALT_FISH_CHAMPIONSHIP_REWARD_ITEM = events.getProperty("AltFishChampionshipRewardItemId", 57);
             ALT_FISH_CHAMPIONSHIP_REWARD_1 = events.getProperty("AltFishChampionshipReward1", 800000);
             ALT_FISH_CHAMPIONSHIP_REWARD_2 = events.getProperty("AltFishChampionshipReward2", 500000);
@@ -1189,18 +1157,6 @@ public final class Config {
             GAME_SERVER_LOGIN_PORT = server.getProperty("LoginPort", 9014);
             GAME_SERVER_LOGIN_HOST = server.getProperty("LoginHost", "127.0.0.1");
 
-            DATABASE_URL = server.getProperty("URL", "jdbc:mysql://localhost/acis");
-            DATABASE_LOGIN = server.getProperty("Login", "root");
-            DATABASE_PASSWORD = server.getProperty("Password", "");
-            DATABASE_MAX_CONNECTIONS = server.getProperty("MaximumDbConnections", 10);
-            DATABASE_MAX_IDLE_TIME = server.getProperty("MaximumDbIdleTime", 0);
-
-            L2DatabaseFactory.DATABASE_URL = DATABASE_URL;
-            L2DatabaseFactory.DATABASE_LOGIN = DATABASE_LOGIN;
-            L2DatabaseFactory.DATABASE_PASSWORD = DATABASE_PASSWORD;
-            L2DatabaseFactory.DATABASE_MAX_CONNECTIONS = DATABASE_MAX_CONNECTIONS;
-            L2DatabaseFactory.DATABASE_MAX_IDLE_TIME = DATABASE_MAX_IDLE_TIME;
-
             SERVER_LIST_BRACKET = server.getProperty("ServerListBrackets", false);
             SERVER_LIST_CLOCK = server.getProperty("ServerListClock", false);
             SERVER_GMONLY = server.getProperty("ServerGMOnly", false);
@@ -1220,7 +1176,6 @@ public final class Config {
             AUTO_LOOT_HERBS = server.getProperty("AutoLootHerbs", false);
             AUTO_LOOT_RAID = server.getProperty("AutoLootRaid", false);
 
-            ALLOW_DISCARDITEM = server.getProperty("AllowDiscardItem", true);
             MULTIPLE_ITEM_DROP = server.getProperty("MultipleItemDrop", true);
             HERB_AUTO_DESTROY_TIME = server.getProperty("AutoDestroyHerbTime", 15) * 1000;
             ITEM_AUTO_DESTROY_TIME = server.getProperty("AutoDestroyItemTime", 600) * 1000;
@@ -1271,27 +1226,10 @@ public final class Config {
             KARMA_RATE_DROP_EQUIP = server.getProperty("KarmaRateDropEquip", 40);
             KARMA_RATE_DROP_EQUIP_WEAPON = server.getProperty("KarmaRateDropEquipWeapon", 10);
 
-            ALLOW_FREIGHT = server.getProperty("AllowFreight", true);
-            ALLOW_WAREHOUSE = server.getProperty("AllowWarehouse", true);
             ALLOW_WEAR = server.getProperty("AllowWear", true);
             WEAR_DELAY = server.getProperty("WearDelay", 5);
             WEAR_PRICE = server.getProperty("WearPrice", 10);
-            ALLOW_LOTTERY = server.getProperty("AllowLottery", true);
-            ALLOW_WATER = server.getProperty("AllowWater", true);
-            ALLOWFISHING = server.getProperty("AllowFishing", false);
-            ALLOW_MANOR = server.getProperty("AllowManor", true);
-            ALLOW_BOAT = server.getProperty("AllowBoat", true);
-            ALLOW_CURSED_WEAPONS = server.getProperty("AllowCursedWeapons", true);
 
-            String str = server.getProperty("EnableFallingDamage", "auto");
-            ENABLE_FALLING_DAMAGE = "auto".equalsIgnoreCase(str) ? GEODATA > 0 : Boolean.parseBoolean(str);
-
-            ALT_DEV_NO_SPAWNS = server.getProperty("NoSpawns", false);
-            DEBUG = server.getProperty("Debug", false);
-            DEVELOPER = server.getProperty("Developer", false);
-            PACKET_HANDLER_DEBUG = server.getProperty("PacketHandlerDebug", false);
-
-            DEADLOCK_DETECTOR = server.getProperty("DeadLockDetector", false);
             DEADLOCK_CHECK_INTERVAL = server.getProperty("DeadLockCheckInterval", 20);
             RESTART_ON_DEADLOCK = server.getProperty("RestartOnDeadlock", false);
 
@@ -1328,9 +1266,6 @@ public final class Config {
             LOGIN_BIND_ADDRESS = server.getProperty("LoginserverHostname", "*");
             PORT_LOGIN = server.getProperty("LoginserverPort", 2106);
 
-            DEBUG = server.getProperty("Debug", false);
-            DEVELOPER = server.getProperty("Developer", false);
-            PACKET_HANDLER_DEBUG = server.getProperty("PacketHandlerDebug", false);
             ACCEPT_NEW_GAMESERVER = server.getProperty("AcceptNewGameServer", true);
 
             LOGIN_TRY_BEFORE_BAN = server.getProperty("LoginTryBeforeBan", 10);
@@ -1340,12 +1275,6 @@ public final class Config {
 
             INTERNAL_HOSTNAME = server.getProperty("InternalHostname", "localhost");
             EXTERNAL_HOSTNAME = server.getProperty("ExternalHostname", "localhost");
-
-            DATABASE_URL = server.getProperty("URL", "jdbc:mysql://localhost/acis");
-            DATABASE_LOGIN = server.getProperty("Login", "root");
-            DATABASE_PASSWORD = server.getProperty("Password", "");
-            DATABASE_MAX_CONNECTIONS = server.getProperty("MaximumDbConnections", 10);
-            DATABASE_MAX_IDLE_TIME = server.getProperty("MaximumDbIdleTime", 0);
 
             SHOW_LICENCE = server.getProperty("ShowLicence", true);
 

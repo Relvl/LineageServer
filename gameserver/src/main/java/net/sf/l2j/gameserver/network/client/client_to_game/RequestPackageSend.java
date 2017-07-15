@@ -38,7 +38,7 @@ public final class RequestPackageSend extends L2GameClientPacket {
 
     @Override
     protected void runImpl() {
-        if (_items == null || _items.isEmpty() || !Config.ALLOW_FREIGHT) { return; }
+        if (_items == null || _items.isEmpty()) { return; }
 
         L2PcInstance player = getClient().getActiveChar();
         if (player == null) { return; }

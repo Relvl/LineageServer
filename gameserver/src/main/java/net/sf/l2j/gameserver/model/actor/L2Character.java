@@ -2731,9 +2731,6 @@ public abstract class L2Character extends L2Object {
             distance = Math.sqrt(dx * dx + dy * dy);
         }
 
-        // debug distance
-        if (Config.DEBUG) { _log.fine("distance to target:" + distance); }
-
         double cos;
         double sin;
 

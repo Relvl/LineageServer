@@ -13,7 +13,7 @@ public class GameServerListener extends FloodProtectedListener {
     private static final Collection<GameServerThread> GAME_SERVER_THREADS = new ArrayList<>();
 
     public GameServerListener() throws IOException {
-        super(LoginServer.config.gameServerListener.host, LoginServer.config.gameServerListener.port);
+        super(LoginServer.CONFIG.network.communicationHost, LoginServer.CONFIG.network.communicationPort);
     }
 
     public static void removeGameServer(GameServerThread gst) {

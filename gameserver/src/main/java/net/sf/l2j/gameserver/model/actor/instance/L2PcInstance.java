@@ -1240,7 +1240,7 @@ public final class L2PcInstance extends L2Playable {
 
         getWorldRegion().revalidateZones(this);
 
-        if (Config.ALLOW_WATER) { checkWaterState(); }
+        checkWaterState();
 
         if (isInsideZone(ZoneId.SIEGE)) {
             if (_lastCompassZone == ExSetCompassZoneCode.SIEGEWARZONE2) { return; }

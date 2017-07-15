@@ -30,7 +30,7 @@ public class BannedIpAddresses {
     private static final File CONFIG_FILE = new File("./config/banned.ips.xml");
 
     @JsonIgnore
-    private Map<InetAddress, BannedAddressEntry> entries = new HashMap<>();
+    private final Map<InetAddress, BannedAddressEntry> entries = new HashMap<>();
 
     @JacksonXmlProperty(localName = "address")
     @JacksonXmlElementWrapper(useWrapping = false)
@@ -40,7 +40,7 @@ public class BannedIpAddresses {
 
     @JacksonXmlProperty(localName = "address")
     @JacksonXmlElementWrapper(useWrapping = false)
-    private void setBannedList(Collection<BannedAddressEntry> list) {
+    private void setBannedList(Iterable<BannedAddressEntry> list) {
         boolean needToResave = false;
         for (BannedAddressEntry entry : list) {
             try {
@@ -85,6 +85,7 @@ public class BannedIpAddresses {
         return false;
     }
 
+    @JsonIgnore
     public int getSize() {
         return entries.size();
     }

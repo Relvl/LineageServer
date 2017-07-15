@@ -176,7 +176,7 @@ public final class L2LoginClient extends MMOClient<MMOConnection<L2LoginClient>>
     public void onDisconnection() {
         LOGGER.debug("DISCONNECTED: {}", toString());
 
-        if (!hasJoinedGS() || (loginTimestamp + LoginServer.config.clientListener.loginTimeout) < System.currentTimeMillis()) {
+        if (!hasJoinedGS() || (loginTimestamp + LoginServer.CONFIG.loginServer.loginTimeout) < System.currentTimeMillis()) {
             LoginController.getInstance().removeClient(account);
         }
     }

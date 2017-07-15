@@ -1,6 +1,5 @@
 package net.sf.l2j.gameserver.network;
 
-import net.sf.l2j.Config;
 import net.sf.l2j.commons.lang.HexUtil;
 import net.sf.l2j.gameserver.network.client.client_to_game.*;
 import org.mmocore.network.*;
@@ -249,8 +248,6 @@ public final class L2GamePacketHandler implements IPacketHandler<L2GameClient>, 
     @Deprecated
     private static void printDebug(int opcode, ByteBuffer buf, GameClientState state, L2GameClient client) {
         client.onUnknownPacket();
-        if (!Config.PACKET_HANDLER_DEBUG) { return; }
-
         int size = buf.remaining();
         LOGGER.warn("Unknown Packet: 0x{} on State: {} Client: {}", Integer.toHexString(opcode), state, client);
         byte[] array = new byte[size];
@@ -261,8 +258,6 @@ public final class L2GamePacketHandler implements IPacketHandler<L2GameClient>, 
     @Deprecated
     private static void printDebugDoubleOpcode(int id2, ByteBuffer buf, GameClientState state, L2GameClient client) {
         client.onUnknownPacket();
-        if (!Config.PACKET_HANDLER_DEBUG) { return; }
-
         int size = buf.remaining();
         LOGGER.warn("Unknown Packet: 0xD0{}:{} on State: {} Client: {}", Integer.toHexString(0xD0), Integer.toHexString(id2), state, client);
         byte[] array = new byte[size];
@@ -312,7 +307,8 @@ public final class L2GamePacketHandler implements IPacketHandler<L2GameClient>, 
 
         try {
             return packetClass.getConstructor().newInstance();
-        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+        }
+        catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             LOGGER.error("", e);
             return null;
         }

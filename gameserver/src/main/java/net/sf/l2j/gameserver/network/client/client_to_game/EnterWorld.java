@@ -10,13 +10,13 @@ import net.sf.l2j.gameserver.datatables.SkillTable.FrequentSkill;
 import net.sf.l2j.gameserver.instancemanager.*;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2Clan.SubPledge;
-import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.Race;
 import net.sf.l2j.gameserver.model.entity.ClanHall;
 import net.sf.l2j.gameserver.model.entity.Couple;
 import net.sf.l2j.gameserver.model.entity.Siege;
 import net.sf.l2j.gameserver.model.olympiad.Olympiad;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
@@ -159,8 +159,7 @@ public class EnterWorld extends L2GameClientPacket {
 
         activeChar.spawnMe(activeChar.getX(), activeChar.getY(), activeChar.getZ());
 
-        // engage and notify Partner
-        if (Config.ALLOW_WEDDING) { engage(activeChar); }
+        engage(activeChar);
 
         // Announcements, welcome & Seven signs period messages
         activeChar.sendPacket(SystemMessageId.WELCOME_TO_LINEAGE);

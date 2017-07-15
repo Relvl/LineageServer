@@ -94,9 +94,6 @@ public final class L2SiegeGuardInstance extends L2Attackable
 		
 		if (!isInsideRadius(getSpawn().getLocx(), getSpawn().getLocy(), 40, false))
 		{
-			if (Config.DEBUG)
-				_log.fine(getObjectId() + ": moving home");
-			
 			setIsReturningToSpawnPoint(true);
 			clearAggroList();
 			
