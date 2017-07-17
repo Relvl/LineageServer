@@ -18,7 +18,7 @@ import java.util.List;
 
 import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
-import net.sf.l2j.gameserver.model.Location;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
 public class AdminPathNode implements IAdminCommandHandler

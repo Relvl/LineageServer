@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.handler.admincommandhandlers;
 
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
@@ -21,21 +7,12 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.taskmanager.DecayTaskManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.logging.Logger;
-
-/**
- * This class handles following admin commands:<br>
- * - res = resurrects a player<br>
- * - res_monster = resurrects a Npc/Monster/...
- */
 public class AdminRes implements IAdminCommandHandler {
-    private static final String[] ADMIN_COMMANDS =
-            {
-                    "admin_res",
-                    "admin_res_monster"
-            };
-    private static Logger _log = Logger.getLogger(AdminRes.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(AdminRes.class);
+    private static final String[] ADMIN_COMMANDS = {"admin_res", "admin_res_monster"};
 
     private static void handleRes(L2PcInstance activeChar) {
         handleRes(activeChar, null);
@@ -70,7 +47,7 @@ public class AdminRes implements IAdminCommandHandler {
 
         doResurrect((L2Character) obj);
 
-        _log.fine("GM: " + activeChar.getName() + "(" + activeChar.getObjectId() + ") resurrected character " + obj.getObjectId());
+        LOGGER.info("GM: {}({}) resurrected character {}", activeChar.getName(), activeChar.getObjectId(), obj.getObjectId());
     }
 
     private static void handleNonPlayerRes(L2PcInstance activeChar) {
@@ -81,13 +58,9 @@ public class AdminRes implements IAdminCommandHandler {
         L2Object obj = activeChar.getTarget();
 
         try {
-            int radius = 0;
-
             if (!radiusStr.isEmpty()) {
-                radius = Integer.parseInt(radiusStr);
-
+                int radius = Integer.parseInt(radiusStr);
                 for (L2Character knownChar : activeChar.getKnownList().getKnownTypeInRadius(L2Character.class, radius)) { if (!(knownChar instanceof L2PcInstance)) { doResurrect(knownChar); } }
-
                 activeChar.sendMessage("Resurrected all non-players within a " + radius + " unit radius.");
             }
         }

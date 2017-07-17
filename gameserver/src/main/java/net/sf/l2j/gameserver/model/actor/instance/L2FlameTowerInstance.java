@@ -22,7 +22,7 @@ import net.sf.l2j.gameserver.instancemanager.ZoneManager;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
-import net.sf.l2j.gameserver.model.zone.L2CastleZoneType;
+import net.sf.l2j.gameserver.model.zone.ACastleZoneType;
 import net.sf.l2j.gameserver.model.zone.L2ZoneType;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
@@ -113,8 +113,8 @@ public class L2FlameTowerInstance extends L2Npc
 			for (int i = 0; i < maxIndex; i++)
 			{
 				final L2ZoneType zone = ZoneManager.getInstance().getZoneById(_zoneList.get(i));
-				if (zone != null && zone instanceof L2CastleZoneType)
-					((L2CastleZoneType) zone).setEnabled(state);
+				if (zone != null && zone instanceof ACastleZoneType)
+					((ACastleZoneType) zone).setEnabled(state);
 			}
 		}
 	}

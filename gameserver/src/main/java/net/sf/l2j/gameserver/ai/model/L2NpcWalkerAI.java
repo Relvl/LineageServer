@@ -17,10 +17,10 @@ package net.sf.l2j.gameserver.ai.model;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.NpcWalkerRoutesTable;
-import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.L2NpcWalkerNode;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcWalkerInstance;
+import net.sf.l2j.gameserver.model.location.HeadedLocation;
 
 import java.util.List;
 
@@ -70,8 +70,8 @@ public class L2NpcWalkerAI extends L2CharacterAI implements Runnable {
      * @param blockedAtPos ignoring it
      */
     @Override
-    protected void onEvtArrivedBlocked(L2Position blockedAtPos) {
-        LOGGER.warn("NpcWalker ID: {}: Blocked at coords: {}, {}, {}. Teleporting to next point.", getActor().getNpcId(), blockedAtPos.posX, blockedAtPos.posY, blockedAtPos.posZ);
+    protected void onEvtArrivedBlocked(HeadedLocation blockedAtPos) {
+        LOGGER.warn("NpcWalker ID: {}: Blocked at coords: {}, {}, {}. Teleporting to next point.", getActor().getNpcId(), blockedAtPos.getX(), blockedAtPos.getY(), blockedAtPos.getZ());
 
         getActor().teleToLocation(_currentNode.getMoveX(), _currentNode.getMoveY(), _currentNode.getMoveZ(), 0);
         super.onEvtArrivedBlocked(blockedAtPos);
@@ -97,7 +97,7 @@ public class L2NpcWalkerAI extends L2CharacterAI implements Runnable {
         else { getActor().setWalking(); }
 
         _walkingToNextPoint = true;
-        setIntention(EIntention.MOVE_TO, new L2Position(_currentNode.getMoveX(), _currentNode.getMoveY(), _currentNode.getMoveZ(), 0));
+        setIntention(EIntention.MOVE_TO, new HeadedLocation(_currentNode.getMoveX(), _currentNode.getMoveY(), _currentNode.getMoveZ(), 0));
     }
 
     @Override

@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.model;
 
 import net.sf.l2j.L2DatabaseFactory;
@@ -20,6 +6,8 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,11 +16,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class BlockList {
-    private static Logger _log = Logger.getLogger(BlockList.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(BlockList.class);
     private static Map<Integer, List<Integer>> _offlineList = new HashMap<>();
 
     private final L2PcInstance _owner;
@@ -62,8 +48,9 @@ public class BlockList {
 
             rset.close();
             statement.close();
-        } catch (Exception e) {
-            _log.log(Level.WARNING, "Error found in " + ObjId + " friendlist while loading BlockList: " + e.getMessage(), e);
+        }
+        catch (Exception e) {
+            LOGGER.error("Error found in {} friendlist while loading BlockList: {}", ObjId, e.getMessage(), e);
         }
         return list;
     }
@@ -193,8 +180,9 @@ public class BlockList {
             }
             statement.execute();
             statement.close();
-        } catch (Exception e) {
-            _log.log(Level.WARNING, "Could not add/remove block player: " + e.getMessage(), e);
+        }
+        catch (Exception e) {
+            LOGGER.error("Could not add/remove block player: {}", e.getMessage(), e);
         }
     }
 

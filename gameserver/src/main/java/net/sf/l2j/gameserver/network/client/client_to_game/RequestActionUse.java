@@ -18,12 +18,12 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.EChatType;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.model.L2SummonAI;
-import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.*;
+import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
 import net.sf.l2j.gameserver.network.client.game_to_client.NpcSay;
@@ -298,7 +298,7 @@ public final class RequestActionUse extends L2GameClientPacket {
                 }
 
                 pet.setFollowStatus(false);
-                pet.getAI().setIntention(EIntention.MOVE_TO, new L2Position(target.getX(), target.getY(), target.getZ(), 0));
+                pet.getAI().setIntention(EIntention.MOVE_TO, new HeadedLocation(target.getX(), target.getY(), target.getZ(), 0));
                 break;
 
             case 61: // Private Store Package Sell

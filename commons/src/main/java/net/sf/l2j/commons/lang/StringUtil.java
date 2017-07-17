@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.commons.lang;
 
 import java.sql.ResultSet;
@@ -20,7 +6,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -32,8 +17,7 @@ public final class StringUtil {
 
     public static final String LETTERS = LOWER_CASE_LETTERS + UPPER_CASE_LETTERS;
     public static final String LETTERS_AND_DIGITS = LETTERS + DIGITS;
-
-    private static final Logger LOG = Logger.getLogger(StringUtil.class.getName());
+    private static final char[] hexArray = "0123456789ABCDEF".toCharArray();
 
     /**
      * Checks each String passed as parameter. If at least one is empty or null, than return false.
@@ -57,8 +41,7 @@ public final class StringUtil {
      * @param content : parameters to append.
      */
     public static void append(StringBuilder sb, Object... content) {
-        for (Object obj : content)
-            sb.append((obj == null) ? null : obj.toString());
+        for (Object obj : content) { sb.append((obj == null) ? null : obj.toString()); }
     }
 
     /**
@@ -103,12 +86,11 @@ public final class StringUtil {
      * @return an anagram of the given string.
      */
     public static String scrambleString(String string) {
-        final List<String> letters = Arrays.asList(string.split(""));
+        List<String> letters = Arrays.asList(string.split(""));
         Collections.shuffle(letters);
 
-        final StringBuilder sb = new StringBuilder(string.length());
-        for (String c : letters)
-            sb.append(c);
+        StringBuilder sb = new StringBuilder(string.length());
+        for (String c : letters) { sb.append(c); }
 
         return sb.toString();
     }
@@ -124,7 +106,8 @@ public final class StringUtil {
         Pattern pattern;
         try {
             pattern = Pattern.compile(regex);
-        } catch (PatternSyntaxException e) // case of illegal pattern
+        }
+        catch (PatternSyntaxException e) // case of illegal pattern
         {
             pattern = Pattern.compile(".*");
         }
@@ -143,8 +126,6 @@ public final class StringUtil {
     public static boolean isValidPlayerName(String text) {
         return isValidName(text, "^[A-Za-z0-9]{1,16}$");
     }
-
-    private final static char[] hexArray = "0123456789ABCDEF".toCharArray();
 
     public static String bytesToHex(byte[] bytes) {
         char[] hexChars = new char[bytes.length * 3 - 1];

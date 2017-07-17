@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.datatables;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.ClanHallManager;
-import net.sf.l2j.gameserver.model.Location;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2DoorInstance;
 import net.sf.l2j.gameserver.model.actor.template.CharTemplate;
 import net.sf.l2j.gameserver.model.entity.Castle;

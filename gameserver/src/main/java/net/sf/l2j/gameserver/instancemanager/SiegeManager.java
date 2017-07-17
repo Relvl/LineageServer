@@ -31,7 +31,7 @@ import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
-import net.sf.l2j.gameserver.model.Location;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.TowerSpawn;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Castle;

@@ -24,7 +24,7 @@ import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.instancemanager.GrandBossManager;
 import net.sf.l2j.gameserver.model.L2Skill;
-import net.sf.l2j.gameserver.model.SpawnLocation;
+import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
@@ -63,13 +63,13 @@ public class Baium extends AbstractNpcAI
 	public static final byte DEAD = 2; // baium has been killed and has not yet spawned. Entry is locked.
 	
 	// Archangels spawns
-	private static final SpawnLocation[] ANGEL_LOCATION =
+	private static final HeadedLocation[] ANGEL_LOCATION =
 	{
-		new SpawnLocation(114239, 17168, 10080, 63544),
-		new SpawnLocation(115780, 15564, 10080, 13620),
-		new SpawnLocation(114880, 16236, 10080, 5400),
-		new SpawnLocation(115168, 17200, 10080, 0),
-		new SpawnLocation(115792, 16608, 10080, 0)
+		new HeadedLocation(114239, 17168, 10080, 63544),
+		new HeadedLocation(115780, 15564, 10080, 13620),
+		new HeadedLocation(114880, 16236, 10080, 5400),
+		new HeadedLocation(115168, 17200, 10080, 0),
+		new HeadedLocation(115792, 16608, 10080, 0)
 	};
 	
 	private L2Character _actualVictim;
@@ -127,7 +127,7 @@ public class Baium extends AbstractNpcAI
 			startQuestTimer("skill_range", 2000, baium, null, true);
 			
 			// Spawns angels
-			for (SpawnLocation loc : ANGEL_LOCATION)
+			for (HeadedLocation loc : ANGEL_LOCATION)
 			{
 				L2Npc angel = addSpawn(ARCHANGEL, loc.getX(), loc.getY(), loc.getZ(), loc.getHeading(), false, 0, true);
 				((L2Attackable) angel).setIsRaidMinion(true);
@@ -177,7 +177,7 @@ public class Baium extends AbstractNpcAI
 				npc.broadcastPacket(new SocialAction(npc, 1));
 				
 				// Spawn angels
-				for (SpawnLocation loc : ANGEL_LOCATION)
+				for (HeadedLocation loc : ANGEL_LOCATION)
 				{
 					L2Npc angel = addSpawn(ARCHANGEL, loc.getX(), loc.getY(), loc.getZ(), loc.getHeading(), false, 0, true);
 					((L2Attackable) angel).setIsRaidMinion(true);

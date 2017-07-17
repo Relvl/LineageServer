@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.datatables;
 
 import net.sf.l2j.Config;
@@ -21,22 +7,17 @@ import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.network.client.client_to_game.AbstractRefinePacket;
 import net.sf.l2j.gameserver.skills.Stats;
 import net.sf.l2j.gameserver.xmlfactory.XMLDocumentFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import java.io.File;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- * This class manages the augmentation data and can also create new augmentations.
- *
- * @author durgus, edited by Gigiikun
- */
 public class AugmentationData {
-    private static final Logger _log = Logger.getLogger(AugmentationData.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(AugmentationData.class);
     // stats
     private static final int STAT_START = 1;
     private static final int STAT_END = 14560;
@@ -94,7 +75,7 @@ public class AugmentationData {
         load();
 
         // Use size*4: since theres 4 blocks of stat-data with equivalent size
-        _log.info("AugmentationData: Loaded " + _augStats.length + " sets of " + (_augStats[0].size() * 4) + " augmentation stats.");
+        LOGGER.info("AugmentationData: Loaded " + _augStats.length + " sets of " + (_augStats[0].size() * 4) + " augmentation stats.");
 
         int blue = 0, purple = 0, red = 0;
         for (int i = 0; i < 10; i++) {
@@ -102,14 +83,13 @@ public class AugmentationData {
             purple += _purpleSkills[i].size();
             red += _redSkills[i].size();
         }
-        _log.info("AugmentationData: Loaded " + blue + " blue, " + purple + " purple and " + red + " red Life-Stone skills.");
+        LOGGER.info("AugmentationData: Loaded " + blue + " blue, " + purple + " purple and " + red + " red Life-Stone skills.");
     }
 
     public static final AugmentationData getInstance() {
         return SingletonHolder._instance;
     }
 
-    @SuppressWarnings("unchecked")
     private final void load() {
         // Load the skillmap
         try {
@@ -142,12 +122,12 @@ public class AugmentationData {
                                 }
                             }
                             if (skillId == 0) {
-                                _log.log(Level.SEVERE, "AugmentationData: Bad skillId in augmentation_skillmap.xml for id:" + augmentationId);
+                                LOGGER.error("AugmentationData: Bad skillId in augmentation_skillmap.xml for id:" + augmentationId);
                                 badAugmantData++;
                                 continue;
                             }
                             else if (skillLvL == 0) {
-                                _log.log(Level.SEVERE, "AugmentationData: Bad skillLevel in augmentation_skillmap.xml for id:" + augmentationId);
+                                LOGGER.error("AugmentationData: Bad skillLevel in augmentation_skillmap.xml for id:" + augmentationId);
                                 badAugmantData++;
                                 continue;
                             }
@@ -163,10 +143,12 @@ public class AugmentationData {
                     }
                 }
             }
-            if (badAugmantData != 0) { _log.info("AugmentationData: " + badAugmantData + " bad skill(s) were skipped."); }
+            if (badAugmantData != 0) {
+                LOGGER.info("AugmentationData: {} bad skill(s) were skipped.", badAugmantData);
+            }
         }
         catch (Exception e) {
-            _log.log(Level.SEVERE, "AugmentationData: Error parsing augmentation_skillmap.xml: ", e);
+            LOGGER.error("AugmentationData: Error parsing augmentation_skillmap.xml: ", e);
             return;
         }
 
@@ -213,7 +195,7 @@ public class AugmentationData {
                 }
             }
             catch (Exception e) {
-                _log.log(Level.SEVERE, "AugmentationData: Error parsing augmentation_stats" + i + ".xml.", e);
+                LOGGER.error("AugmentationData: Error parsing augmentation_stats" + i + ".xml.", e);
                 return;
             }
         }

@@ -32,6 +32,8 @@ import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.item.type.WeaponType;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
+import net.sf.l2j.gameserver.model.location.Location;
+import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.world.L2WorldRegion;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
@@ -79,7 +81,7 @@ public abstract class L2Character extends L2Object {
     protected CharEffectList _effects = new CharEffectList(this);
     /** Movement data of this L2Character */
     protected MoveData _move;
-    protected L2CharacterAI _ai;
+    protected L2CharacterAI ai;
     /** Future Skill Cast */
     protected Future<?> _skillCast;
     protected Future<?> _skillCast2;
@@ -1359,7 +1361,7 @@ public abstract class L2Character extends L2Object {
     }
 
     public void detachAI() {
-        _ai = null;
+        ai = null;
     }
 
     protected void calculateRewards(L2Character killer) {
@@ -1392,12 +1394,12 @@ public abstract class L2Character extends L2Object {
      * @return the L2CharacterAI of the L2Character and if its null create a new one.
      */
     public L2CharacterAI getAI() {
-        L2CharacterAI ai = _ai;
+        L2CharacterAI ai = this.ai;
         if (ai == null) {
             synchronized (this) {
-                if (_ai == null) { _ai = new L2CharacterAI(this); }
+                if (this.ai == null) { this.ai = new L2CharacterAI(this); }
 
-                return _ai;
+                return this.ai;
             }
         }
         return ai;
@@ -1407,14 +1409,14 @@ public abstract class L2Character extends L2Object {
         L2CharacterAI oldAI = getAI();
         if (oldAI != null && oldAI != newAI && oldAI instanceof L2AttackableAI) { oldAI.stopAITask(); }
 
-        _ai = newAI;
+        ai = newAI;
     }
 
     /**
      * @return True if the L2Character has a L2CharacterAI.
      */
     public boolean hasAI() {
-        return _ai != null;
+        return ai != null;
     }
 
     /**
@@ -2591,15 +2593,15 @@ public abstract class L2Character extends L2Object {
      *
      * @param pos
      */
-    public void stopMove(L2Position pos) {
+    public void stopMove(HeadedLocation pos) {
         // Delete movement data of the L2Character
         _move = null;
 
         // Set the current position (x,y,z), its current L2WorldRegion if necessary and its heading
         // All data are contained in a L2Position object
         if (pos != null) {
-            getPosition().setXYZ(pos.posX, pos.posY, pos.posZ);
-            setHeading(pos.heading);
+            getPosition().setXYZ(pos.getX(), pos.getY(), pos.getZ());
+            setHeading(pos.getHeading());
             revalidateZone(true);
         }
         broadcastPacket(new StopMove(this));

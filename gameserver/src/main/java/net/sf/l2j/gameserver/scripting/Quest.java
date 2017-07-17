@@ -37,7 +37,7 @@ import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2Spawn;
-import net.sf.l2j.gameserver.model.SpawnLocation;
+import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -614,7 +614,7 @@ public class Quest
 	 * @param isSummonSpawn if true, spawn with animation (if any exists).
 	 * @return instance of the newly spawned npc with summon animation.
 	 */
-	public L2Npc addSpawn(int npcId, SpawnLocation loc, boolean randomOffset, long despawnDelay, boolean isSummonSpawn)
+	public L2Npc addSpawn(int npcId, HeadedLocation loc, boolean randomOffset, long despawnDelay, boolean isSummonSpawn)
 	{
 		return addSpawn(npcId, loc.getX(), loc.getY(), loc.getZ(), loc.getHeading(), randomOffset, despawnDelay, isSummonSpawn);
 	}

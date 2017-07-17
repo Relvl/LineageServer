@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.skills.effects;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.model.L2Effect;
-import net.sf.l2j.gameserver.model.Location;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.network.client.game_to_client.FlyToLocation;
 import net.sf.l2j.gameserver.network.client.game_to_client.FlyToLocation.FlyType;
 import net.sf.l2j.gameserver.network.client.game_to_client.ValidateLocation;

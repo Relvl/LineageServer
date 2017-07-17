@@ -60,9 +60,6 @@ public final class Say2 extends L2GameClientPacket {
             }
         }
 
-        CreatureSay cs = new CreatureSay(activeChar.getObjectId(), EChatType.PARTYROOM_COMMANDER, activeChar.getName(), text);
-        activeChar.sendPacket(cs);
-
         if (chatType == EChatType.PETITION_PLAYER && activeChar.isGM()) { chatType = EChatType.PETITION_GM; }
 
         try {

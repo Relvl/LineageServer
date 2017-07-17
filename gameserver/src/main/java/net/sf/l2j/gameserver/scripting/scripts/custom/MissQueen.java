@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.scripting.scripts.custom;
 
-import net.sf.l2j.gameserver.model.SpawnLocation;
+import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.scripting.Quest;
@@ -29,19 +29,19 @@ public class MissQueen extends Quest
 	private static final int COUPON_TWO = 7833;
 	
 	// Miss Queen locations
-	private static final SpawnLocation[] LOCATIONS =
+	private static final HeadedLocation[] LOCATIONS =
 	{
-		new SpawnLocation(116224, -181728, -1378, 0),
-		new SpawnLocation(114885, -178092, -832, 0),
-		new SpawnLocation(45472, 49312, -3072, 53000),
-		new SpawnLocation(47648, 51296, -2994, 38500),
-		new SpawnLocation(11340, 15972, -4582, 14000),
-		new SpawnLocation(10968, 17540, -4572, 55000),
-		new SpawnLocation(-14048, 123184, -3120, 32000),
-		new SpawnLocation(-44979, -113508, -199, 32000),
-		new SpawnLocation(-84119, 243254, -3730, 8000),
-		new SpawnLocation(-84336, 242156, -3730, 24500),
-		new SpawnLocation(-82032, 150160, -3127, 16500)
+		new HeadedLocation(116224, -181728, -1378, 0),
+		new HeadedLocation(114885, -178092, -832, 0),
+		new HeadedLocation(45472, 49312, -3072, 53000),
+		new HeadedLocation(47648, 51296, -2994, 38500),
+		new HeadedLocation(11340, 15972, -4582, 14000),
+		new HeadedLocation(10968, 17540, -4572, 55000),
+		new HeadedLocation(-14048, 123184, -3120, 32000),
+		new HeadedLocation(-44979, -113508, -199, 32000),
+		new HeadedLocation(-84119, 243254, -3730, 8000),
+		new HeadedLocation(-84336, 242156, -3730, 24500),
+		new HeadedLocation(-82032, 150160, -3127, 16500)
 	};
 	
 	public MissQueen()
@@ -49,7 +49,7 @@ public class MissQueen extends Quest
 		super(-1, "custom");
 		
 		// Spawn the 11 NPCs.
-		for (SpawnLocation loc : LOCATIONS)
+		for (HeadedLocation loc : LOCATIONS)
 			addSpawn(31760, loc, false, 0, false);
 		
 		addStartNpc(31760);

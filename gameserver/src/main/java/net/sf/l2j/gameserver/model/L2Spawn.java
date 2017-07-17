@@ -506,6 +506,6 @@ public class L2Spawn
 	@Override
 	public String toString()
 	{
-		return "L2Spawn [_template=" + getNpcId() + ", _locX=" + _locX + ", _locY=" + _locY + ", _locZ=" + _locZ + ", _heading=" + _heading + "]";
+		return "L2Spawn [_template=" + getNpcId() + ", _locX=" + _locX + ", _locY=" + _locY + ", _locZ=" + _locZ + ", heading=" + _heading + "]";
 	}
 }

@@ -41,7 +41,7 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2SiegeClan;
 import net.sf.l2j.gameserver.model.L2SiegeClan.SiegeClanType;
 import net.sf.l2j.gameserver.model.L2Spawn;
-import net.sf.l2j.gameserver.model.Location;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.TowerSpawn;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2ControlTowerInstance;

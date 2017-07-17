@@ -24,6 +24,8 @@ import net.sf.l2j.gameserver.model.actor.instance.L2DoorInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance.ItemLocation;
+import net.sf.l2j.gameserver.model.location.Location;
+import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.network.client.game_to_client.AutoAttackStop;
 import net.sf.l2j.gameserver.taskmanager.AttackStanceTaskManager;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
@@ -212,9 +214,10 @@ public class L2CharacterAI extends AbstractAI {
      * <li>Set the Intention of this AI to MOVE_TO</li>
      * <li>Move the actor to Location (x,y,z) server side AND client side by sending Server->Client packet MoveToLocation (broadcast)</li>
      * </ul>
+     * @param pos
      */
     @Override
-    protected void onIntentionMoveTo(L2Position pos) {
+    protected void onIntentionMoveTo(HeadedLocation pos) {
         if (getIntention() == EIntention.REST) {
             // Cancel action client side by sending Server->Client packet ActionFailed to the L2PcInstance actor
             clientActionFailed();
@@ -237,7 +240,7 @@ public class L2CharacterAI extends AbstractAI {
         actor.abortAttack();
 
         // Move the actor to Location (x,y,z) server side AND client side by sending Server->Client packet MoveToLocation (broadcast)
-        moveTo(pos.posX, pos.posY, pos.posZ);
+        moveTo(pos.getX(), pos.getY(), pos.getZ());
     }
 
     /**
@@ -552,9 +555,10 @@ public class L2CharacterAI extends AbstractAI {
      * <li>If the Intention was MOVE_TO, set the Intention to ACTIVE</li>
      * <li>Launch actions corresponding to the Event Think</li>
      * </ul>
+     * @param blockedAtPos
      */
     @Override
-    protected void onEvtArrivedBlocked(L2Position blockedAtPos) {
+    protected void onEvtArrivedBlocked(HeadedLocation blockedAtPos) {
         // If the Intention was MOVE_TO, set the Intention to ACTIVE
         if (getIntention() == EIntention.MOVE_TO || getIntention() == EIntention.CAST) { setIntention(EIntention.ACTIVE); }
 

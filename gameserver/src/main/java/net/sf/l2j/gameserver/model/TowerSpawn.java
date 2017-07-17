@@ -14,6 +14,8 @@
  */
 package net.sf.l2j.gameserver.model;
 
+import net.sf.l2j.gameserver.model.location.Location;
+
 import java.util.List;
 
 /**

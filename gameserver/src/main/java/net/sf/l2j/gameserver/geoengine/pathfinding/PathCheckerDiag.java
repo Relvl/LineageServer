@@ -22,8 +22,8 @@ import net.sf.l2j.gameserver.datatables.DoorTable;
 import net.sf.l2j.gameserver.geoengine.GeoData;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.geoengine.geodata.GeoStructure;
-import net.sf.l2j.gameserver.geoengine.pathfinding.nodes.GeoLocation;
-import net.sf.l2j.gameserver.model.Location;
+import net.sf.l2j.gameserver.model.location.GeoLocation;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 
 /**

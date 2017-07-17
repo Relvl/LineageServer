@@ -37,8 +37,8 @@ public class L2NpcWalkerInstance extends L2NpcInstance
 	public void setAI(L2CharacterAI newAI)
 	{
 		// AI can't be detached, npc must move with the same AI instance.
-		if (!(_ai instanceof L2NpcWalkerAI))
-			_ai = newAI;
+		if (!(ai instanceof L2NpcWalkerAI))
+			ai = newAI;
 	}
 	
 	@Override
@@ -55,7 +55,7 @@ public class L2NpcWalkerInstance extends L2NpcInstance
 	@Override
 	public L2NpcWalkerAI getAI()
 	{
-		return (L2NpcWalkerAI) _ai;
+		return (L2NpcWalkerAI) ai;
 	}
 	
 	@Override

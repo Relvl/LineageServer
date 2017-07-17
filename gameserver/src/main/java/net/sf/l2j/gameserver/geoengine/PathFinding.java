@@ -28,7 +28,7 @@ import net.sf.l2j.gameserver.geoengine.pathfinding.PathCheckerDiag;
 import net.sf.l2j.gameserver.geoengine.pathfinding.PathCheckerStd;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.Location;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 

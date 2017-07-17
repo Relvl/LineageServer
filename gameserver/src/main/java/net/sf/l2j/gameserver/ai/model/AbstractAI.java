@@ -5,11 +5,11 @@ import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.NextAction;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
 import net.sf.l2j.gameserver.taskmanager.AttackStanceTaskManager;
 import org.slf4j.Logger;
@@ -81,7 +81,7 @@ abstract class AbstractAI {
                 onIntentionCast((L2Skill) arg0, (L2Object) arg1);
                 break;
             case MOVE_TO:
-                onIntentionMoveTo((L2Position) arg0);
+                onIntentionMoveTo((HeadedLocation) arg0);
                 break;
             case FOLLOW:
                 onIntentionFollow((L2Character) arg0);
@@ -163,7 +163,7 @@ abstract class AbstractAI {
                 }
                 break;
             case EVT_ARRIVED_BLOCKED:
-                onEvtArrivedBlocked((L2Position) arg0);
+                onEvtArrivedBlocked((HeadedLocation) arg0);
                 break;
             case EVT_FORGET_OBJECT:
                 onEvtForgetObject((L2Object) arg0);
@@ -198,7 +198,7 @@ abstract class AbstractAI {
 
     protected abstract void onIntentionCast(L2Skill skill, L2Object target);
 
-    protected abstract void onIntentionMoveTo(L2Position destination);
+    protected abstract void onIntentionMoveTo(HeadedLocation destination);
 
     protected abstract void onIntentionFollow(L2Character target);
 
@@ -232,7 +232,7 @@ abstract class AbstractAI {
 
     protected abstract void onEvtArrived();
 
-    protected abstract void onEvtArrivedBlocked(L2Position blockedAtPos);
+    protected abstract void onEvtArrivedBlocked(HeadedLocation blockedAtPos);
 
     protected abstract void onEvtForgetObject(L2Object object);
 
@@ -287,7 +287,7 @@ abstract class AbstractAI {
         actor.broadcastPacket(new MoveToLocation(actor));
     }
 
-    protected void clientStopMoving(L2Position pos) {
+    protected void clientStopMoving(HeadedLocation pos) {
         if (actor.isMoving()) { actor.stopMove(pos); }
 
         if (actorMoving || pos != null) {
@@ -295,7 +295,7 @@ abstract class AbstractAI {
             actor.broadcastPacket(new StopMove(actor));
 
             if (pos != null) {
-                actor.broadcastPacket(new StopRotation(actor.getObjectId(), pos.heading, 0));
+                actor.broadcastPacket(new StopRotation(actor.getObjectId(), pos.getHeading(), 0));
             }
         }
     }

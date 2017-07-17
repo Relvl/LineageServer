@@ -2,25 +2,18 @@ package net.sf.l2j.gameserver.idfactory;
 
 import net.sf.l2j.commons.math.PrimeFinder;
 import net.sf.l2j.gameserver.ThreadPoolManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.BitSet;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class BitSetIDFactory extends IdFactory {
-    private static Logger _log = Logger.getLogger(BitSetIDFactory.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(BitSetIDFactory.class);
 
     private BitSet _freeIds;
     private AtomicInteger _freeIdCount;
     private AtomicInteger _nextFreeId;
-
-    protected class BitSetCapacityCheck implements Runnable {
-        @Override
-        public void run() {
-            if (reachingBitSetCapacity()) { increaseBitSetCapacity(); }
-        }
-    }
 
     protected BitSetIDFactory() {
         super();
@@ -38,7 +31,7 @@ public class BitSetIDFactory extends IdFactory {
             for (int usedObjectId : extractUsedObjectIDTable()) {
                 int objectID = usedObjectId - FIRST_OID;
                 if (objectID < 0) {
-                    _log.warning("Object ID " + usedObjectId + " in DB is less than minimum ID of " + FIRST_OID);
+                    LOGGER.warn("Object ID {} in DB is less than minimum ID of " + FIRST_OID, usedObjectId);
                     continue;
                 }
                 _freeIds.set(usedObjectId - FIRST_OID);
@@ -48,10 +41,11 @@ public class BitSetIDFactory extends IdFactory {
             _nextFreeId = new AtomicInteger(_freeIds.nextClearBit(0));
             _initialized = true;
 
-            _log.info("IDFactory: " + _freeIds.size() + " id's available.");
-        } catch (Exception e) {
+            LOGGER.info("IDFactory: {} id's available.", _freeIds.size());
+        }
+        catch (Exception e) {
             _initialized = false;
-            _log.log(Level.SEVERE, "BitSet ID Factory could not be initialized correctly: " + e.getMessage(), e);
+            LOGGER.error("BitSet ID Factory could not be initialized correctly: {}", e.getMessage(), e);
         }
     }
 
@@ -61,7 +55,9 @@ public class BitSetIDFactory extends IdFactory {
             _freeIds.clear(objectID - FIRST_OID);
             _freeIdCount.incrementAndGet();
         }
-        else { _log.warning("BitSet ID Factory: release objectID " + objectID + " failed (< " + FIRST_OID + ")"); }
+        else {
+            LOGGER.warn("BitSet ID Factory: release objectID {} failed (< " + FIRST_OID + ")", objectID);
+        }
     }
 
     @Override
@@ -101,5 +97,12 @@ public class BitSetIDFactory extends IdFactory {
         BitSet newBitSet = new BitSet(PrimeFinder.nextPrime(usedIdCount() * 11 / 10));
         newBitSet.or(_freeIds);
         _freeIds = newBitSet;
+    }
+
+    protected class BitSetCapacityCheck implements Runnable {
+        @Override
+        public void run() {
+            if (reachingBitSetCapacity()) { increaseBitSetCapacity(); }
+        }
     }
 }

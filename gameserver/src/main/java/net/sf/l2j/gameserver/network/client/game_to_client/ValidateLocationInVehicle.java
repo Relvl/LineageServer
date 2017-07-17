@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
-import net.sf.l2j.gameserver.model.Location;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
 public class ValidateLocationInVehicle extends L2GameServerPacket

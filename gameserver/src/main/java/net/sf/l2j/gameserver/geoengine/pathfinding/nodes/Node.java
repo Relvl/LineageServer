@@ -14,6 +14,8 @@
  */
 package net.sf.l2j.gameserver.geoengine.pathfinding.nodes;
 
+import net.sf.l2j.gameserver.model.location.GeoLocation;
+
 /**
  * @author Hasha
  */

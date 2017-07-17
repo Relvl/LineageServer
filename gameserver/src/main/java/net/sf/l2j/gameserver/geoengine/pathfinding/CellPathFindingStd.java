@@ -24,10 +24,10 @@ import net.sf.l2j.Config;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.geoengine.GeoData;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
-import net.sf.l2j.gameserver.geoengine.pathfinding.nodes.GeoLocation;
+import net.sf.l2j.gameserver.model.location.GeoLocation;
 import net.sf.l2j.gameserver.geoengine.pathfinding.nodes.Node;
 import net.sf.l2j.gameserver.geoengine.pathfinding.nodes.NodeBufferStd;
-import net.sf.l2j.gameserver.model.Location;
+import net.sf.l2j.gameserver.model.location.Location;
 
 /**
  * @author Hasha

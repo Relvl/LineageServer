@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.l2j.gameserver.instancemanager.CursedWeaponsManager;
-import net.sf.l2j.gameserver.model.Location;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.CursedWeapon;
 import net.sf.l2j.gameserver.network.client.game_to_client.ExCursedWeaponLocation;

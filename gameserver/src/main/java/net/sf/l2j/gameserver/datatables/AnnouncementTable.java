@@ -9,6 +9,8 @@ import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
 import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 import net.sf.l2j.gameserver.util.Broadcast;
 import net.sf.l2j.gameserver.xmlfactory.XMLDocumentFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
@@ -17,11 +19,9 @@ import java.io.FileWriter;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Logger;
 
 public class AnnouncementTable {
-    private static final Logger _log = Logger.getLogger(AnnouncementTable.class.getName());
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(AnnouncementTable.class);
     private static final String HEADER = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> \n<!-- \n@param String message - the message to be announced \n@param Boolean critical - type of announcement (true = critical,false = normal) \n@param Boolean auto - when the announcement will be displayed (true = auto,false = on player login) \n@param Integer initial_delay - time delay for the first announce (used only if auto=true;value in seconds) \n@param Integer delay - time delay for the announces following the first announce (used only if auto=true;value in seconds) \n@param Integer limit - limit of announces (used only if auto=true, 0 = unlimited) \n--> \n";
     private static final String DATA_XML_ANNOUNCEMENTS_XML = "./data/xml/announcements.xml";
 
@@ -32,7 +32,7 @@ public class AnnouncementTable {
     }
 
     public static AnnouncementTable getInstance() {
-        return SingletonHolder._instance;
+        return SingletonHolder.INSTANCE;
     }
 
     public static void handleAnnounce(String command, int lengthToTrim, boolean critical) {
@@ -61,7 +61,7 @@ public class AnnouncementTable {
                 if (d.getNodeName().equalsIgnoreCase("announcement")) {
                     String message = d.getAttributes().getNamedItem("message").getNodeValue();
                     if (message == null || message.isEmpty()) {
-                        _log.warning("AnnouncementTable: The message is empty. Ignoring it!");
+                        LOGGER.warn("AnnouncementTable: The message is empty. Ignoring it!");
                         continue;
                     }
 
@@ -84,9 +84,9 @@ public class AnnouncementTable {
             }
         }
         catch (Exception e) {
-            _log.warning("AnnouncementTable: Error loading from file:" + e.getMessage());
+            LOGGER.error("AnnouncementTable: Error loading from file:{}", e.getMessage());
         }
-        _log.info("AnnouncementTable: Loaded " + announcements.size() + " announcements.");
+        LOGGER.info("AnnouncementTable: Loaded {} announcements.", announcements.size());
     }
 
     public void showAnnouncements(L2PcInstance activeChar, boolean autoOrNot) {
@@ -148,11 +148,11 @@ public class AnnouncementTable {
             fw.write(sb.toString());
         }
         catch (Exception e) {
-            e.printStackTrace();
+           LOGGER.error("", e);
         }
     }
 
-    private static class SingletonHolder {
-        protected static final AnnouncementTable _instance = new AnnouncementTable();
+    private static final class SingletonHolder {
+        private static final AnnouncementTable INSTANCE = new AnnouncementTable();
     }
 }

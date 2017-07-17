@@ -18,8 +18,8 @@ import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.instancemanager.ZoneManager;
-import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.zone.L2ZoneType;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
@@ -81,7 +81,9 @@ public class AdminZone implements IAdminCommandHandler {
         StringTokenizer st = new StringTokenizer(command, " ");
         String actualCommand = st.nextToken(); // Get actual command
 
-        if (actualCommand.equalsIgnoreCase("admin_zone_check")) { showHtml(activeChar); }
+        if (actualCommand.equalsIgnoreCase("admin_zone_check")) {
+            showHtml(activeChar);
+        }
         else if (actualCommand.equalsIgnoreCase("admin_zone_visual")) {
             try {
                 String next = st.nextToken();
@@ -98,9 +100,12 @@ public class AdminZone implements IAdminCommandHandler {
                 }
                 else {
                     int zoneId = Integer.parseInt(next);
-                    ZoneManager.getInstance().getZoneById(zoneId).visualizeZone(activeChar.getZ());
+                    L2ZoneType zoneType = ZoneManager.getInstance().getZoneById(zoneId);
+                    activeChar.sendMessage("Zone class: " + zoneType.getClass().getSimpleName());
+                    zoneType.visualizeZone(activeChar.getZ());
                 }
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 activeChar.sendMessage("Invalid parameter for //zone_visual.");
             }
         }

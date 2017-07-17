@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.scripting.scripts.teleports;
 
-import net.sf.l2j.gameserver.model.Location;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.PcInventory;

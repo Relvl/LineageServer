@@ -20,13 +20,13 @@ import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.instancemanager.DimensionalRiftManager;
-import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.L2Skill.SkillTargetType;
 import net.sf.l2j.gameserver.model.actor.*;
 import net.sf.l2j.gameserver.model.actor.instance.*;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate.AIType;
+import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.scripting.EventType;
 import net.sf.l2j.gameserver.scripting.Quest;
@@ -196,7 +196,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
      * @param arg1      The second parameter of the Intention
      */
     @Override
-   protected synchronized void changeIntention(EIntention intention, Object arg0, Object arg1) {
+    protected synchronized void changeIntention(EIntention intention, Object arg0, Object arg1) {
         if (intention == EIntention.IDLE || intention == EIntention.ACTIVE) {
             // Check if actor is not dead
             L2Attackable npc = getActiveChar();
@@ -695,7 +695,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
             final int posZ = npc.getZ() + 30;
 
             if (PathFinding.getInstance().canMoveToTarget(npc.getX(), npc.getY(), npc.getZ(), posX, posY, posZ)) {
-                setIntention(EIntention.MOVE_TO, new L2Position(posX, posY, posZ, 0));
+                setIntention(EIntention.MOVE_TO, new HeadedLocation(posX, posY, posZ, 0));
                 return;
             }
         }
@@ -1172,7 +1172,8 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
                     thinkCast();
                     break;
             }
-        } finally {
+        }
+        finally {
             // Stop thinking action.
             _thinking = false;
         }

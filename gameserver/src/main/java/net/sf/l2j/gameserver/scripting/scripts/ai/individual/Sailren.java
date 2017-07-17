@@ -21,7 +21,7 @@ import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.instancemanager.GrandBossManager;
-import net.sf.l2j.gameserver.model.SpawnLocation;
+import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2GrandBossInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -51,7 +51,7 @@ public class Sailren extends AbstractNpcAI
 	
 	private static final long INTERVAL_CHECK = 600000L; // 10 minutes
 	
-	private static final SpawnLocation SAILREN_LOC = new SpawnLocation(27549, -6638, -2008, 0);
+	private static final HeadedLocation SAILREN_LOC = new HeadedLocation(27549, -6638, -2008, 0);
 	
 	private final List<L2Npc> _mobs = new CopyOnWriteArrayList<>();
 	private static long _lastAttackTime = 0;

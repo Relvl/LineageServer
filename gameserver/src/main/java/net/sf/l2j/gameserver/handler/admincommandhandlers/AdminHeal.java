@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.handler.admincommandhandlers;
 
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
@@ -20,18 +6,15 @@ import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class handles following admin commands: - heal = restores HP/MP/CP on target, name or radius
  */
 public class AdminHeal implements IAdminCommandHandler {
-    private static final String[] ADMIN_COMMANDS =
-            {
-                    "admin_heal"
-            };
-    private static Logger _log = Logger.getLogger(AdminHeal.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(AdminHeal.class);
+    private static final String[] ADMIN_COMMANDS = {"admin_heal"};
 
     private static void handleRes(L2PcInstance activeChar) {
         handleRes(activeChar, null);
@@ -66,7 +49,7 @@ public class AdminHeal implements IAdminCommandHandler {
 
             if (target instanceof L2PcInstance) { target.setCurrentCp(target.getMaxCp()); }
 
-            _log.fine("GM: " + activeChar.getName() + "(" + activeChar.getObjectId() + ") healed character " + target.getName());
+            LOGGER.info("GM: {}({}) healed character {}", activeChar.getName(), activeChar.getObjectId(), target.getName());
         }
         else { activeChar.sendPacket(SystemMessageId.INCORRECT_TARGET); }
     }

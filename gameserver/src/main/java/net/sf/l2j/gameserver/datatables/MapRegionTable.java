@@ -18,7 +18,7 @@ import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.ClanHallManager;
 import net.sf.l2j.gameserver.instancemanager.SevenSigns;
 import net.sf.l2j.gameserver.instancemanager.ZoneManager;
-import net.sf.l2j.gameserver.model.Location;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -412,7 +412,7 @@ public class MapRegionTable {
      * @return a L2TownZone based on the overall list of zones, matching a 3D location.
      */
     public static final L2TownZone getTown(int x, int y, int z) {
-        for (L2ZoneType temp : ZoneManager.getInstance().getZones(x, y, z)) {
+        for (L2ZoneType temp : ZoneManager.getZones(x, y, z)) {
             if (temp instanceof L2TownZone) { return (L2TownZone) temp; }
         }
         return null;

@@ -35,7 +35,6 @@ import net.sf.l2j.gameserver.datatables.HerbDropTable;
 import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.instancemanager.CursedWeaponsManager;
 import net.sf.l2j.gameserver.model.*;
-import net.sf.l2j.gameserver.model.L2Position;
 import net.sf.l2j.gameserver.model.actor.instance.L2MonsterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2SummonInstance;
@@ -46,6 +45,7 @@ import net.sf.l2j.gameserver.model.holder.IntIntHolder;
 import net.sf.l2j.gameserver.model.item.DropCategory;
 import net.sf.l2j.gameserver.model.item.DropData;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
@@ -114,15 +114,15 @@ public class L2Attackable extends L2Npc
 	@Override
 	public L2CharacterAI getAI()
 	{
-		L2CharacterAI ai = _ai;
+		L2CharacterAI ai = this.ai;
 		if (ai == null)
 		{
 			synchronized (this)
 			{
-				if (_ai == null)
-					_ai = new L2AttackableAI(this);
+				if (this.ai == null)
+					this.ai = new L2AttackableAI(this);
 				
-				return _ai;
+				return this.ai;
 			}
 		}
 		return ai;
@@ -1256,7 +1256,7 @@ public class L2Attackable extends L2Npc
 		clearAggroList();
 		
 		if (hasAI() && getSpawn() != null)
-			getAI().setIntention(EIntention.MOVE_TO, new L2Position(getSpawn().getLocx(), getSpawn().getLocy(), getSpawn().getLocz(), 0));
+			getAI().setIntention(EIntention.MOVE_TO, new HeadedLocation(getSpawn().getLocx(), getSpawn().getLocy(), getSpawn().getLocz(), 0));
 	}
 	
 	public final Set<L2Character> getAttackByList()

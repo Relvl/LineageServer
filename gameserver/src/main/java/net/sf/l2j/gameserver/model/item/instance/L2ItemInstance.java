@@ -16,6 +16,7 @@ import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
 import net.sf.l2j.gameserver.model.item.type.ItemType;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.world.L2WorldRegion;
 import net.sf.l2j.gameserver.network.SystemMessageId;

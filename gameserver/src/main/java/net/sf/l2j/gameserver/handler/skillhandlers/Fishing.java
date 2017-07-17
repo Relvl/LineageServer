@@ -22,7 +22,7 @@ import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.instancemanager.ZoneManager;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
-import net.sf.l2j.gameserver.model.Location;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
@@ -115,7 +115,7 @@ public class Fishing implements ISkillHandler {
         L2FishingZone aimingTo = null;
         L2WaterZone water = null;
         boolean canFish = false;
-        for (L2ZoneType zone : ZoneManager.getInstance().getZones(x, y)) {
+        for (L2ZoneType zone : ZoneManager.getZones(x, y)) {
             if (zone instanceof L2FishingZone) {
                 aimingTo = (L2FishingZone) zone;
                 continue;

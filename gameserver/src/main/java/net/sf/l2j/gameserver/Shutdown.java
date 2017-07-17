@@ -20,10 +20,10 @@ import net.sf.l2j.commons.EServerStatus;
 import net.sf.l2j.gameserver.datatables.BufferTable;
 import net.sf.l2j.gameserver.datatables.ServerMemo;
 import net.sf.l2j.gameserver.instancemanager.*;
-import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Hero;
 import net.sf.l2j.gameserver.model.olympiad.Olympiad;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.L2GameClient;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ServerClose;
@@ -31,37 +31,28 @@ import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.taskmanager.ItemsOnGroundTaskManager;
 import net.sf.l2j.gameserver.taskmanager.MovementTaskManager;
 import net.sf.l2j.gameserver.util.Broadcast;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class provides functions for shutting down and restarting the server. It closes all client connections and saves data.
  */
 public class Shutdown extends Thread {
-    private static Logger _log = Logger.getLogger(Shutdown.class.getName());
-    private static Shutdown _counterInstance = null;
-
-    private int _secondsShut;
-    private int _shutdownMode;
-
     public static final int SIGTERM = 0;
     public static final int GM_SHUTDOWN = 1;
     public static final int GM_RESTART = 2;
     public static final int ABORT = 3;
-    private static final String[] MODE_TEXT =
-            {
-                    "SIGTERM",
-                    "shutting down",
-                    "restarting",
-                    "aborting"
-            };
 
-    private static void SendServerQuit(int seconds) {
-        SystemMessage sysm = SystemMessage.getSystemMessage(SystemMessageId.THE_SERVER_WILL_BE_COMING_DOWN_IN_S1_SECONDS);
-        sysm.addNumber(seconds);
-        Broadcast.toAllOnlinePlayers(sysm);
-    }
+    private static final Logger LOGGER = LoggerFactory.getLogger(Shutdown.class);
+    private static final String[] MODE_TEXT = {
+            "SIGTERM",
+            "shutting down",
+            "restarting",
+            "aborting"
+    };
+    private static Shutdown _counterInstance = null;
+    private int _secondsShut;
+    private int _shutdownMode;
 
     /**
      * Default constucter is only used internal to create the shutdown-hook instance
@@ -86,6 +77,41 @@ public class Shutdown extends Thread {
         else { _shutdownMode = GM_SHUTDOWN; }
     }
 
+    private static void SendServerQuit(int seconds) {
+        SystemMessage sysm = SystemMessage.getSystemMessage(SystemMessageId.THE_SERVER_WILL_BE_COMING_DOWN_IN_S1_SECONDS);
+        sysm.addNumber(seconds);
+        Broadcast.toAllOnlinePlayers(sysm);
+    }
+
+    /**
+     * Disconnects all clients from the server
+     */
+    private static void disconnectAllCharacters() {
+        for (L2PcInstance player : L2World.getInstance().getPlayers()) {
+            try {
+                L2GameClient client = player.getClient();
+                if (client != null && !client.isDetached()) {
+                    client.close(ServerClose.STATIC_PACKET);
+                    client.setActiveChar(null);
+                    player.setClient(null);
+                }
+                player.deleteMe();
+            }
+            catch (Throwable t) {
+                LOGGER.warn("Failed to logout chararacter: {}", player, t);
+            }
+        }
+    }
+
+    /**
+     * get the shutdown-hook instance the shutdown-hook instance is created by the first call of this function, but it has to be registrered externaly.
+     *
+     * @return instance of Shutdown, to be used as shutdown hook
+     */
+    public static Shutdown getInstance() {
+        return SingletonHolder._instance;
+    }
+
     /**
      * this function is called, when a new thread starts if this thread is the thread of getInstance, then this is the shutdown hook and we save all data and disconnect all clients. after this thread ends, the server will completely exit if this is not the thread of getInstance, then this is a
      * countdown thread. we start the countdown, and when we finished it, and it was not aborted, we tell the shutdown-hook why we call exit, and then call exit when the exit status of the server is 1, startServer.sh / startServer.bat will restart the server.
@@ -96,25 +122,29 @@ public class Shutdown extends Thread {
             // disconnect players
             try {
                 disconnectAllCharacters();
-                _log.info("All players have been disconnected.");
-            } catch (Throwable t) {
+                LOGGER.info("All players have been disconnected.");
+            }
+            catch (Throwable t) {
             }
 
             // ensure all services are stopped
             try {
                 MovementTaskManager.getInstance().interrupt();
-            } catch (Throwable t) {
+            }
+            catch (Throwable t) {
             }
 
             // stop all threadpolls
             try {
                 ThreadPoolManager.getInstance().shutdown();
-            } catch (Throwable t) {
+            }
+            catch (Throwable t) {
             }
 
             try {
                 LoginServerThread.getInstance().interrupt();
-            } catch (Throwable t) {
+            }
+            catch (Throwable t) {
             }
 
             // Seven Signs data is now saved along with Festival data.
@@ -125,59 +155,62 @@ public class Shutdown extends Thread {
             // Save Seven Signs data && status.
             SevenSigns.getInstance().saveSevenSignsData();
             SevenSigns.getInstance().saveSevenSignsStatus();
-            _log.info("Seven Signs Festival, general data && status have been saved.");
+            LOGGER.info("Seven Signs Festival, general data && status have been saved.");
 
             // Four Sepulchers, stop any working task.
             FourSepulchersManager.getInstance().stop();
 
             // Save raidbosses status
             RaidBossSpawnManager.getInstance().cleanUp();
-            _log.info("Raid Bosses data has been saved.");
+            LOGGER.info("Raid Bosses data has been saved.");
 
             // Save grandbosses status
             GrandBossManager.getInstance().cleanUp();
-            _log.info("World Bosses data has been saved.");
+            LOGGER.info("World Bosses data has been saved.");
 
             // Save olympiads
             Olympiad.getInstance().saveOlympiadStatus();
-            _log.info("Olympiad data has been saved.");
+            LOGGER.info("Olympiad data has been saved.");
 
             // Save Hero data
             Hero.getInstance().shutdown();
-            _log.info("Hero data has been saved.");
+            LOGGER.info("Hero data has been saved.");
 
             // Save all manor data
             CastleManorManager.getInstance().save();
-            _log.info("Manors data has been saved.");
+            LOGGER.info("Manors data has been saved.");
 
             // Save Fishing tournament data
             FishingChampionshipManager.getInstance().shutdown();
-            _log.info("Fishing Championship data has been saved.");
+            LOGGER.info("Fishing Championship data has been saved.");
 
             // Schemes save.
             BufferTable.getInstance().saveSchemes();
-            _log.info("BufferTable data has been saved.");
+            LOGGER.info("BufferTable data has been saved.");
 
             // Save server memos.
             ServerMemo.getInstance().storeMe();
-            _log.info("ServerMemo data has been saved.");
+            LOGGER.info("ServerMemo data has been saved.");
 
             // Save items on ground before closing
             ItemsOnGroundTaskManager.getInstance().save();
 
             try {
                 Thread.sleep(5000);
-            } catch (InterruptedException e) {
+            }
+            catch (InterruptedException e) {
             }
 
             try {
                 GameServer.instance.getSelectorThread().shutdown();
-            } catch (Throwable t) {
+            }
+            catch (Throwable t) {
             }
 
             try {
                 L2DatabaseFactory.getInstance().shutdown();
-            } catch (Throwable t) {
+            }
+            catch (Throwable t) {
             }
 
             // server will quit, when this function ends.
@@ -217,10 +250,10 @@ public class Shutdown extends Thread {
         else { _shutdownMode = GM_SHUTDOWN; }
 
         if (activeChar != null) {
-            _log.warning("GM: " + activeChar.getName() + " (" + activeChar.getObjectId() + ") issued shutdown command, " + MODE_TEXT[_shutdownMode] + " in " + seconds + " seconds.");
+            LOGGER.warn("GM: {} ({}) issued shutdown command, {} in {} seconds.", activeChar.getName(), activeChar.getObjectId(), MODE_TEXT[_shutdownMode], seconds);
         }
         else if (!ghostEntity.isEmpty()) {
-            _log.warning("Entity: " + ghostEntity + " issued shutdown command, " + MODE_TEXT[_shutdownMode] + " in " + seconds + " seconds.");
+            LOGGER.warn("Entity: {} issued shutdown command, {} in {} seconds.", ghostEntity, MODE_TEXT[_shutdownMode], seconds);
         }
 
         if (_shutdownMode > 0) {
@@ -261,7 +294,7 @@ public class Shutdown extends Thread {
      */
     public void abort(L2PcInstance activeChar) {
         if (_counterInstance != null) {
-            _log.warning("GM: " + activeChar.getName() + " (" + activeChar.getObjectId() + ") issued shutdown abort, " + MODE_TEXT[_shutdownMode] + " has been stopped.");
+            LOGGER.warn("GM: {} ({}) issued shutdown abort, {} has been stopped.", activeChar.getName(), activeChar.getObjectId(), MODE_TEXT[_shutdownMode]);
             _counterInstance._abort();
 
             Broadcast.announceToOnlinePlayers("Server aborts " + MODE_TEXT[_shutdownMode] + " and continues normal operation.");
@@ -356,36 +389,9 @@ public class Shutdown extends Thread {
                     break;
                 }
             }
-        } catch (InterruptedException e) {
         }
-    }
-
-    /**
-     * Disconnects all clients from the server
-     */
-    private static void disconnectAllCharacters() {
-        for (L2PcInstance player : L2World.getInstance().getPlayers()) {
-            try {
-                L2GameClient client = player.getClient();
-                if (client != null && !client.isDetached()) {
-                    client.close(ServerClose.STATIC_PACKET);
-                    client.setActiveChar(null);
-                    player.setClient(null);
-                }
-                player.deleteMe();
-            } catch (Throwable t) {
-                _log.log(Level.WARNING, "Failed to logout chararacter: " + player, t);
-            }
+        catch (InterruptedException e) {
         }
-    }
-
-    /**
-     * get the shutdown-hook instance the shutdown-hook instance is created by the first call of this function, but it has to be registrered externaly.
-     *
-     * @return instance of Shutdown, to be used as shutdown hook
-     */
-    public static Shutdown getInstance() {
-        return SingletonHolder._instance;
     }
 
     private static class SingletonHolder {

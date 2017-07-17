@@ -22,14 +22,18 @@ import net.sf.l2j.gameserver.EChatType;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.*;
-import net.sf.l2j.gameserver.model.*;
+import net.sf.l2j.gameserver.model.L2Clan;
+import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.L2Party.MessageType;
+import net.sf.l2j.gameserver.model.L2Spawn;
+import net.sf.l2j.gameserver.model.SpawnListener;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2FestivalMonsterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.base.Experience;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
@@ -1596,7 +1600,7 @@ public class SevenSignsFestival implements SpawnListener {
     protected static final int[][][] FESTIVAL_DAWN_CHEST_SPAWNS =
             {
                     {
-			/* Level 31 and Below */
+            /* Level 31 and Below */
                             {
                                     -78999,
                                     112957,
@@ -1686,7 +1690,7 @@ public class SevenSignsFestival implements SpawnListener {
                             },
                     },
                     {
-			/* Level 42 and Below */
+            /* Level 42 and Below */
                             {
                                     -76119,
                                     110383,
@@ -3716,10 +3720,8 @@ public class SevenSignsFestival implements SpawnListener {
                     y -= Rnd.get(FESTIVAL_MAX_OFFSET_Y);
                 }
 
-                L2Position moveTo = new L2Position(x, y, _startLocation._z, Rnd.get(65536));
-
                 festivalMob.setRunning();
-                festivalMob.getAI().setIntention(EIntention.MOVE_TO, moveTo);
+                festivalMob.getAI().setIntention(EIntention.MOVE_TO, new HeadedLocation(x, y, _startLocation._z, Rnd.get(65536)));
             }
         }
 
