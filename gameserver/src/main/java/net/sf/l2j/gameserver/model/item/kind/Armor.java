@@ -14,6 +14,7 @@
  */
 package net.sf.l2j.gameserver.model.item.kind;
 
+import net.sf.l2j.gameserver.model.item.EItemBodyPart;
 import net.sf.l2j.gameserver.model.item.type.ArmorType;
 import net.sf.l2j.gameserver.templates.StatsSet;
 
@@ -36,21 +37,25 @@ public final class Armor extends Item {
         super(set);
         _type = ArmorType.valueOf(set.getString("armor_type", "none").toUpperCase());
 
-        int _bodyPart = getBodyPart();
-        if (_bodyPart == Item.SLOT_NECK ||
-                _bodyPart == Item.SLOT_FACE ||
-                _bodyPart == Item.SLOT_HAIR ||
-                _bodyPart == Item.SLOT_HAIRALL ||
-                (_bodyPart & Item.SLOT_L_EAR) != 0 ||
-                (_bodyPart & Item.SLOT_L_FINGER) != 0 ||
-                (_bodyPart & Item.SLOT_BACK) != 0
-                ) {
+        if (EItemBodyPart.isInAtLeastOneBodyPart(getBodyPart(),
+                EItemBodyPart.SLOT_NECK,
+                EItemBodyPart.SLOT_FACE,
+                EItemBodyPart.SLOT_HAIR,
+                EItemBodyPart.SLOT_HAIRALL,
+                EItemBodyPart.SLOT_L_EAR,
+                EItemBodyPart.SLOT_R_EAR,
+                EItemBodyPart.SLOT_L_FINGER,
+                EItemBodyPart.SLOT_R_FINGER,
+                EItemBodyPart.SLOT_BACK
+        )) {
             _type1 = Item.TYPE1_WEAPON_RING_EARRING_NECKLACE;
             _type2 = Item.TYPE2_ACCESSORY;
         }
         else {
-            if (_type == ArmorType.NONE && getBodyPart() == Item.SLOT_L_HAND) // retail define shield as NONE
-            { _type = ArmorType.SHIELD; }
+            // retail define shield as NONE
+            if (_type == ArmorType.NONE && getBodyPart() == EItemBodyPart.SLOT_L_HAND) {
+                _type = ArmorType.SHIELD;
+            }
 
             _type1 = Item.TYPE1_SHIELD_ARMOR;
             _type2 = Item.TYPE2_SHIELD_ARMOR;

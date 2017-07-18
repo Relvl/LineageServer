@@ -41,10 +41,9 @@ public class CharSelectInfoPackage {
     public CharSelectInfoPackage(int objectId, String name) {
         _objectId = objectId;
         _name = name;
-        int[][] _paperdoll = PcInventory.restoreVisibleInventory(objectId);
-        for (int i = 0; i < _paperdoll.length; i++) {
-            int[] data = _paperdoll[i];
-            paperdoll.put(EPaperdollSlot.getByIndex(i), data);
+        int[][] restoreVisibleInventory = PcInventory.restoreVisibleInventory(objectId);
+        for (int i = 0; i < restoreVisibleInventory.length; i++) {
+            paperdoll.put(EPaperdollSlot.getByIndex(i), restoreVisibleInventory[i]);
         }
     }
 

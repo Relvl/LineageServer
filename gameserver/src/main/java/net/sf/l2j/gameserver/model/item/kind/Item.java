@@ -1,12 +1,12 @@
 package net.sf.l2j.gameserver.model.item.kind;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
+import net.sf.l2j.gameserver.model.item.EItemBodyPart;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.type.*;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -35,37 +35,6 @@ public abstract class Item {
     public static final int TYPE2_MONEY = 4;
     public static final int TYPE2_OTHER = 5;
 
-    public static final int SLOT_NONE = 0x0000;
-    public static final int SLOT_UNDERWEAR = 0x0001;
-    public static final int SLOT_R_EAR = 0x0002;
-    public static final int SLOT_L_EAR = 0x0004;
-    public static final int SLOT_NECK = 0x0008;
-    public static final int SLOT_R_FINGER = 0x0010;
-    public static final int SLOT_L_FINGER = 0x0020;
-    public static final int SLOT_HEAD = 0x0040;
-    public static final int SLOT_R_HAND = 0x0080;
-    public static final int SLOT_L_HAND = 0x0100;
-    public static final int SLOT_GLOVES = 0x0200;
-    public static final int SLOT_CHEST = 0x0400;
-    public static final int SLOT_LEGS = 0x0800;
-    public static final int SLOT_FEET = 0x1000;
-    public static final int SLOT_BACK = 0x2000;
-    public static final int SLOT_LR_HAND = 0x4000;
-    public static final int SLOT_FULL_ARMOR = 0x8000;
-    public static final int SLOT_FACE = 0x010000;
-    public static final int SLOT_ALLDRESS = 0x020000;
-    public static final int SLOT_HAIR = 0x040000;
-    public static final int SLOT_HAIRALL = 0x080000;
-
-    public static final int SLOT_WOLF = -100;
-    public static final int SLOT_HATCHLING = -101;
-    public static final int SLOT_STRIDER = -102;
-    public static final int SLOT_BABYPET = -103;
-
-    public static final int SLOT_LR_EAR = SLOT_R_EAR | SLOT_L_EAR;
-    public static final int SLOT_LR_FINGER = SLOT_R_FINGER | SLOT_L_FINGER;
-    public static final int SLOT_ALLWEAPON = SLOT_LR_HAND | SLOT_R_HAND;
-
     private final int _itemId;
     private final String _name;
     protected int _type1; // needed for item list (inventory)
@@ -75,7 +44,7 @@ public abstract class Item {
     private final MaterialType _materialType;
     private final CrystalType _crystalType;
     private final int _duration;
-    private final int bodyPart;
+    private final EItemBodyPart bodyPart;
     private final int _referencePrice;
     private final int _crystalCount;
 
@@ -105,7 +74,7 @@ public abstract class Item {
         _weight = set.getInteger("weight", 0);
         _materialType = set.getEnum("material", MaterialType.class, MaterialType.STEEL);
         _duration = set.getInteger("duration", -1);
-        bodyPart = ItemTable._slots.get(set.getString("bodypart", "none"));
+        bodyPart = EItemBodyPart.getByCode(set.getString("bodypart", "none"));
         _referencePrice = set.getInteger("price", 0);
         _crystalType = set.getEnum("crystal_type", CrystalType.class, CrystalType.NONE);
         _crystalCount = set.getInteger("crystal_count", 0);
@@ -240,10 +209,10 @@ public abstract class Item {
             switch (_type2) {
                 case TYPE2_SHIELD_ARMOR:
                 case TYPE2_ACCESSORY:
-                    return _crystalCount + getCrystalType().getCrystalEnchantBonusArmor() * (3 * enchantLevel - 6);
+                    return _crystalCount + _crystalType.getCrystalEnchantBonusArmor() * (3 * enchantLevel - 6);
 
                 case TYPE2_WEAPON:
-                    return _crystalCount + getCrystalType().getCrystalEnchantBonusWeapon() * (2 * enchantLevel - 3);
+                    return _crystalCount + _crystalType.getCrystalEnchantBonusWeapon() * (2 * enchantLevel - 3);
 
                 default:
                     return _crystalCount;
@@ -253,9 +222,9 @@ public abstract class Item {
             switch (_type2) {
                 case TYPE2_SHIELD_ARMOR:
                 case TYPE2_ACCESSORY:
-                    return _crystalCount + getCrystalType().getCrystalEnchantBonusArmor() * enchantLevel;
+                    return _crystalCount + _crystalType.getCrystalEnchantBonusArmor() * enchantLevel;
                 case TYPE2_WEAPON:
-                    return _crystalCount + getCrystalType().getCrystalEnchantBonusWeapon() * enchantLevel;
+                    return _crystalCount + _crystalType.getCrystalEnchantBonusWeapon() * enchantLevel;
                 default:
                     return _crystalCount;
             }
@@ -273,7 +242,7 @@ public abstract class Item {
     /**
      * @return int the part of the body used with the item.
      */
-    public final int getBodyPart() {
+    public final EItemBodyPart getBodyPart() {
         return bodyPart;
     }
 
@@ -299,14 +268,14 @@ public abstract class Item {
     }
 
     public boolean isEquipable() {
-        return getBodyPart() != 0 && !(getItemType() instanceof EtcItemType);
+        return bodyPart != EItemBodyPart.SLOT_NONE && !(getItemType() instanceof EtcItemType);
     }
 
     /**
      * @return int the price of reference of the item
      */
     public final int getReferencePrice() {
-        return (isConsumable() ? (int) (_referencePrice * Config.RATE_CONSUMABLE_COST) : _referencePrice);
+        return isConsumable() ? (int) (_referencePrice * Config.RATE_CONSUMABLE_COST) : _referencePrice;
     }
 
     /**
@@ -364,15 +333,15 @@ public abstract class Item {
     public final List<Func> getStatFuncs(L2ItemInstance item, L2Character player) {
         if (_funcTemplates == null || _funcTemplates.isEmpty()) { return Collections.emptyList(); }
 
-        final List<Func> funcs = new ArrayList<>(_funcTemplates.size());
+        List<Func> funcs = new ArrayList<>(_funcTemplates.size());
 
-        final Env env = new Env();
+        Env env = new Env();
         env.setCharacter(player);
         env.setTarget(player);
         env.setItem(item);
 
         for (FuncTemplate t : _funcTemplates) {
-            final Func f = t.getFunc(env, item);
+            Func f = t.getFunc(env, item);
             if (f != null) { funcs.add(f); }
         }
         return funcs;
@@ -406,7 +375,7 @@ public abstract class Item {
 
     public boolean checkCondition(L2Character activeChar, L2Object target, boolean sendMessage) {
         // Don't allow hero equipment and restricted items during Olympiad
-        if ((isOlyRestrictedItem() || isHeroItem()) && ((activeChar instanceof L2PcInstance) && activeChar.getActingPlayer().isInOlympiadMode())) {
+        if ((_isOlyRestricted || _heroItem) && (activeChar instanceof L2PcInstance) && activeChar.getActingPlayer().isInOlympiadMode()) {
             if (isEquipable()) { activeChar.getActingPlayer().sendPacket(SystemMessageId.THIS_ITEM_CANT_BE_EQUIPPED_FOR_THE_OLYMPIAD_EVENT); }
             else { activeChar.getActingPlayer().sendPacket(SystemMessageId.THIS_ITEM_IS_NOT_AVAILABLE_FOR_THE_OLYMPIAD_EVENT); }
 
@@ -415,7 +384,7 @@ public abstract class Item {
 
         if (_preConditions == null) { return true; }
 
-        final Env env = new Env();
+        Env env = new Env();
         env.setCharacter(activeChar);
         if (target instanceof L2Character) { env.setTarget((L2Character) target); }
 
@@ -451,7 +420,7 @@ public abstract class Item {
     }
 
     public boolean isQuestItem() {
-        return (getItemType() == EtcItemType.QUEST);
+        return getItemType() == EtcItemType.QUEST;
     }
 
     public final boolean isHeroItem() {
@@ -463,15 +432,15 @@ public abstract class Item {
     }
 
     public boolean isPetItem() {
-        return (getItemType() == ArmorType.PET || getItemType() == WeaponType.PET);
+        return getItemType() == ArmorType.PET || getItemType() == WeaponType.PET;
     }
 
     public boolean isPotion() {
-        return (getItemType() == EtcItemType.POTION);
+        return getItemType() == EtcItemType.POTION;
     }
 
     public boolean isElixir() {
-        return (getItemType() == EtcItemType.ELIXIR);
+        return getItemType() == EtcItemType.ELIXIR;
     }
 
     public ActionType getDefaultAction() {

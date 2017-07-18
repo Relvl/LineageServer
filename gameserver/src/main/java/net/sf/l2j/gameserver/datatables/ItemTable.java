@@ -44,39 +44,10 @@ public class ItemTable {
     private static final Logger _log = Logger.getLogger(ItemTable.class.getName());
     private static final Logger _logItems = Logger.getLogger("item");
 
-    public static final Map<String, Integer> _slots = new HashMap<>();
-
     private Item[] _allTemplates;
     private static final Map<Integer, Armor> _armors = new HashMap<>();
     private static final Map<Integer, EtcItem> _etcItems = new HashMap<>();
     private static final Map<Integer, Weapon> _weapons = new HashMap<>();
-
-    static {
-        _slots.put("none", Item.SLOT_NONE);
-        _slots.put("underwear", Item.SLOT_UNDERWEAR);
-        _slots.put("rear;lear", Item.SLOT_LR_EAR);
-        _slots.put("neck", Item.SLOT_NECK);
-        _slots.put("rfinger;lfinger", Item.SLOT_LR_FINGER);
-        _slots.put("head", Item.SLOT_HEAD);
-        _slots.put("rhand", Item.SLOT_R_HAND);
-        _slots.put("lhand", Item.SLOT_L_HAND);
-        _slots.put("gloves", Item.SLOT_GLOVES);
-        _slots.put("chest", Item.SLOT_CHEST);
-        _slots.put("legs", Item.SLOT_LEGS);
-        _slots.put("feet", Item.SLOT_FEET);
-        _slots.put("back", Item.SLOT_BACK);
-        _slots.put("lrhand", Item.SLOT_LR_HAND);
-        _slots.put("fullarmor", Item.SLOT_FULL_ARMOR);
-        _slots.put("face", Item.SLOT_FACE);
-        _slots.put("alldress", Item.SLOT_ALLDRESS);
-        _slots.put("hair", Item.SLOT_HAIR);
-        _slots.put("hairall", Item.SLOT_HAIRALL);
-
-        _slots.put("wolf", Item.SLOT_WOLF); // for wolf
-        _slots.put("hatchling", Item.SLOT_HATCHLING); // for hatchling
-        _slots.put("strider", Item.SLOT_STRIDER); // for strider
-        _slots.put("babypet", Item.SLOT_BABYPET); // for babypet
-    }
 
     public static ItemTable getInstance() {
         return SingletonHolder._instance;

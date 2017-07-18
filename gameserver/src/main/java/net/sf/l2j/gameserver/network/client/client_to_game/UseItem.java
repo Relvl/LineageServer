@@ -106,7 +106,7 @@ public final class UseItem extends L2GameClientPacket {
         }
 
 		/*
-		 * The player can't use pet items if no pet is currently summoned. If a pet is summoned and player uses the item directly, it will be used by the pet.
+         * The player can't use pet items if no pet is currently summoned. If a pet is summoned and player uses the item directly, it will be used by the pet.
 		 */
         if (item.isPetItem()) {
             // If no pet, cancels the use
@@ -159,9 +159,9 @@ public final class UseItem extends L2GameClientPacket {
             }
 
             switch (item.getItem().getBodyPart()) {
-                case Item.SLOT_LR_HAND:
-                case Item.SLOT_L_HAND:
-                case Item.SLOT_R_HAND: {
+                case SLOT_LR_HAND:
+                case SLOT_L_HAND:
+                case SLOT_R_HAND: {
                     if (activeChar.isMounted()) {
                         activeChar.sendPacket(SystemMessageId.CANNOT_EQUIP_ITEM_DUE_TO_BAD_CONDITION);
                         return;

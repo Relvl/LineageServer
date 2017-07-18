@@ -13,6 +13,7 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.ShotType;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EItemBodyPart;
 import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.EtcItem;
 import net.sf.l2j.gameserver.model.item.kind.Item;
@@ -306,7 +307,7 @@ public final class L2ItemInstance extends L2Object {
      * @return boolean
      */
     public boolean isEquipable() {
-        return !(_item.getBodyPart() == 0 || _item.getItemType() == EtcItemType.ARROW || _item.getItemType() == EtcItemType.LURE);
+        return !(_item.getBodyPart() == EItemBodyPart.SLOT_NONE || _item.getItemType() == EtcItemType.ARROW || _item.getItemType() == EtcItemType.LURE);
     }
 
     /**

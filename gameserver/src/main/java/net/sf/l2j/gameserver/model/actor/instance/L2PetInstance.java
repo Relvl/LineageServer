@@ -36,6 +36,7 @@ import net.sf.l2j.gameserver.model.actor.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance.TimeStamp;
 import net.sf.l2j.gameserver.model.actor.stat.PetStat;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
+import net.sf.l2j.gameserver.model.item.EItemBodyPart;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
@@ -712,7 +713,8 @@ public class L2PetInstance extends L2Summon {
         // Then drop inventory.
         if (!isDead()) {
             if (_inventory != null) {
-                _inventory.deleteMe(); }
+                _inventory.deleteMe();
+            }
         }
 
         // Finally drop pet itself.
@@ -910,14 +912,10 @@ public class L2PetInstance extends L2Summon {
     }
 
     public boolean canWear(Item item) {
-        if (PetDataTable.isHatchling(getNpcId()) && item.getBodyPart() == Item.SLOT_HATCHLING) { return true; }
-
-        if (PetDataTable.isWolf(getNpcId()) && item.getBodyPart() == Item.SLOT_WOLF) { return true; }
-
-        if (PetDataTable.isStrider(getNpcId()) && item.getBodyPart() == Item.SLOT_STRIDER) { return true; }
-
-        if (PetDataTable.isBaby(getNpcId()) && item.getBodyPart() == Item.SLOT_BABYPET) { return true; }
-
+        if (PetDataTable.isHatchling(getNpcId()) && item.getBodyPart() == EItemBodyPart.SLOT_HATCHLING) { return true; }
+        if (PetDataTable.isWolf(getNpcId()) && item.getBodyPart() == EItemBodyPart.SLOT_WOLF) { return true; }
+        if (PetDataTable.isStrider(getNpcId()) && item.getBodyPart() == EItemBodyPart.SLOT_STRIDER) { return true; }
+        if (PetDataTable.isBaby(getNpcId()) && item.getBodyPart() == EItemBodyPart.SLOT_BABYPET) { return true; }
         return false;
     }
 

@@ -17,6 +17,7 @@ package net.sf.l2j.gameserver.model.itemcontainer;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance.ItemLocation;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
@@ -557,7 +558,7 @@ public class PcInventory extends Inventory {
     }
 
     public static int[][] restoreVisibleInventory(int objectId) {
-        int[][] paperdoll = new int[0x12][3];
+        int[][] paperdoll = new int[EPaperdollSlot.values().length][3];
         try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
             PreparedStatement statement2 = con.prepareStatement("SELECT object_id,item_id,loc_data,enchant_level FROM items WHERE owner_id=? AND loc='PAPERDOLL'");
             statement2.setInt(1, objectId);
