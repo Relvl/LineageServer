@@ -7,6 +7,8 @@ import net.sf.l2j.gameserver.model.actor.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
 import net.sf.l2j.gameserver.model.item.EItemBodyPart;
+import net.sf.l2j.gameserver.model.item.EItemType1;
+import net.sf.l2j.gameserver.model.item.EItemType2;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.type.*;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -24,21 +26,10 @@ import java.util.List;
 import java.util.logging.Logger;
 
 public abstract class Item {
-    public static final int TYPE1_WEAPON_RING_EARRING_NECKLACE = 0;
-    public static final int TYPE1_SHIELD_ARMOR = 1;
-    public static final int TYPE1_ITEM_QUESTITEM_ADENA = 4;
-
-    public static final int TYPE2_WEAPON = 0;
-    public static final int TYPE2_SHIELD_ARMOR = 1;
-    public static final int TYPE2_ACCESSORY = 2;
-    public static final int TYPE2_QUEST = 3;
-    public static final int TYPE2_MONEY = 4;
-    public static final int TYPE2_OTHER = 5;
-
     private final int _itemId;
     private final String _name;
-    protected int _type1; // needed for item list (inventory)
-    protected int _type2; // different lists for armor, weapon, etc
+    protected EItemType1 itemType1;
+    protected EItemType2 _type2; // different lists for armor, weapon, etc
     private final int _weight;
     private final boolean _stackable;
     private final MaterialType _materialType;
@@ -161,7 +152,7 @@ public abstract class Item {
     /**
      * @return int the type 2 of the item
      */
-    public final int getType2() {
+    public final EItemType2 getType2() {
         return _type2;
     }
 
@@ -249,8 +240,8 @@ public abstract class Item {
     /**
      * @return int the type 1 of the item
      */
-    public final int getType1() {
-        return _type1;
+    public final EItemType1 getType1() {
+        return itemType1;
     }
 
     /**

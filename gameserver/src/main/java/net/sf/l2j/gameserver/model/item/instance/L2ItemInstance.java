@@ -14,6 +14,8 @@ import net.sf.l2j.gameserver.model.ShotType;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.EItemBodyPart;
+import net.sf.l2j.gameserver.model.item.EItemType1;
+import net.sf.l2j.gameserver.model.item.EItemType2;
 import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.EtcItem;
 import net.sf.l2j.gameserver.model.item.kind.Item;
@@ -257,7 +259,7 @@ public final class L2ItemInstance extends L2Object {
      * @param count the new count to set
      */
     public void setCount(int count) {
-        if (getCount() == count) { return; }
+        if (_count == count) { return; }
 
         _count = count >= -1 ? count : 0;
         _storedInDb = false;
@@ -276,10 +278,12 @@ public final class L2ItemInstance extends L2Object {
     public void changeCount(String process, int count, L2PcInstance creator, L2Object reference) {
         if (count == 0) { return; }
 
-        if (count > 0 && getCount() > Integer.MAX_VALUE - count) { setCount(Integer.MAX_VALUE); }
-        else { setCount(getCount() + count); }
+        if (count > 0 && _count > Integer.MAX_VALUE - count) { setCount(Integer.MAX_VALUE); }
+        else {
+            setCount(_count + count);
+        }
 
-        if (getCount() < 0) { setCount(0); }
+        if (_count < 0) { setCount(0); }
 
         _storedInDb = false;
 
@@ -355,7 +359,7 @@ public final class L2ItemInstance extends L2Object {
     }
 
     public boolean isOlyRestrictedItem() {
-        return getItem().isOlyRestrictedItem();
+        return _item.isOlyRestrictedItem();
     }
 
     /**
@@ -540,12 +544,12 @@ public final class L2ItemInstance extends L2Object {
      */
     public boolean isAvailable(L2PcInstance player, boolean allowAdena, boolean allowNonTradable) {
         return !isEquipped() // Not equipped
-                && (getItem().getType2() != Item.TYPE2_QUEST) // Not Quest Item
-                && (getItem().getType2() != Item.TYPE2_MONEY || getItem().getType1() != Item.TYPE1_SHIELD_ARMOR) // not money, not shield
+                && (_item.getType2() != EItemType2.TYPE2_QUEST) // Not Quest Item
+                && (_item.getType2() != EItemType2.TYPE2_MONEY || _item.getType1() != EItemType1.SHIELD_ARMOR) // not money, not shield
                 && (player.getPet() == null || getObjectId() != player.getPet().getControlItemId()) // Not Control item of currently summoned pet
                 && (player.getActiveEnchantItem() != this) // Not momentarily used enchant scroll
-                && (allowAdena || getItemId() != 57) // Not adena
-                && (player.getCurrentSkill().getSkill() == null || player.getCurrentSkill().getSkill().getItemConsumeId() != getItemId()) && (!player.isCastingSimultaneouslyNow() || player.getLastSimultaneousSkillCast() == null || player.getLastSimultaneousSkillCast().getItemConsumeId() != getItemId()) && (allowNonTradable || isTradable());
+                && (allowAdena || _itemId != 57) // Not adena
+                && (player.getCurrentSkill().getSkill() == null || player.getCurrentSkill().getSkill().getItemConsumeId() != _itemId) && (!player.isCastingSimultaneouslyNow() || player.getLastSimultaneousSkillCast() == null || player.getLastSimultaneousSkillCast().getItemConsumeId() != _itemId) && (allowNonTradable || isTradable());
     }
 
     @Override
@@ -579,9 +583,9 @@ public final class L2ItemInstance extends L2Object {
             NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
             html.setFile("data/html/admin/iteminfo.htm");
             html.replace("%objid%", getObjectId());
-            html.replace("%itemid%", getItemId());
-            html.replace("%ownerid%", getOwnerId());
-            html.replace("%loc%", getLocation().toString());
+            html.replace("%itemid%", _itemId);
+            html.replace("%ownerid%", _ownerId);
+            html.replace("%loc%", _loc.toString());
             html.replace("%class%", getClass().getSimpleName());
             player.sendPacket(html);
         }
@@ -745,7 +749,7 @@ public final class L2ItemInstance extends L2Object {
      * @return Func[]
      */
     public List<Func> getStatFuncs(L2Character player) {
-        return getItem().getStatFuncs(this, player);
+        return _item.getStatFuncs(this, player);
     }
 
     /**
@@ -767,11 +771,11 @@ public final class L2ItemInstance extends L2Object {
 
         try {
             if (_existsInDb) {
-                if (_ownerId == 0 || _loc == ItemLocation.VOID || (getCount() == 0 && _loc != ItemLocation.LEASE)) { removeFromDb(); }
+                if (_ownerId == 0 || _loc == ItemLocation.VOID || (_count == 0 && _loc != ItemLocation.LEASE)) { removeFromDb(); }
                 else { updateInDb(); }
             }
             else {
-                if (_ownerId == 0 || _loc == ItemLocation.VOID || (getCount() == 0 && _loc != ItemLocation.LEASE)) { return; }
+                if (_ownerId == 0 || _loc == ItemLocation.VOID || (_count == 0 && _loc != ItemLocation.LEASE)) { return; }
 
                 insertIntoDb();
             }
@@ -819,7 +823,7 @@ public final class L2ItemInstance extends L2Object {
         }
 
         // if this item is a mercenary ticket, remove the spawns!
-        int itemId = getItemId();
+        int itemId = _itemId;
 
         if (MercTicketManager.getTicketCastleId(itemId) > 0) { MercTicketManager.getInstance().removeTicket(this); }
 
@@ -846,14 +850,14 @@ public final class L2ItemInstance extends L2Object {
         try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE items SET owner_id=?,count=?,loc=?,loc_data=?,enchant_level=?,custom_type1=?,custom_type2=?,mana_left=?,time=? WHERE object_id = ?");
             statement.setInt(1, _ownerId);
-            statement.setInt(2, getCount());
+            statement.setInt(2, _count);
             statement.setString(3, _loc.name());
             statement.setInt(4, paperdollSlot);
-            statement.setInt(5, getEnchantLevel());
-            statement.setInt(6, getCustomType1());
-            statement.setInt(7, getCustomType2());
+            statement.setInt(5, _enchantLevel);
+            statement.setInt(6, _type1);
+            statement.setInt(7, _type2);
             statement.setInt(8, _mana);
-            statement.setLong(9, getTime());
+            statement.setLong(9, _time);
             statement.setInt(10, getObjectId());
             statement.executeUpdate();
             _existsInDb = true;
@@ -875,15 +879,15 @@ public final class L2ItemInstance extends L2Object {
             PreparedStatement statement = con.prepareStatement("INSERT INTO items (owner_id,item_id,count,loc,loc_data,enchant_level,object_id,custom_type1,custom_type2,mana_left,time) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
             statement.setInt(1, _ownerId);
             statement.setInt(2, _itemId);
-            statement.setInt(3, getCount());
+            statement.setInt(3, _count);
             statement.setString(4, _loc.name());
             statement.setInt(5, paperdollSlot);
-            statement.setInt(6, getEnchantLevel());
+            statement.setInt(6, _enchantLevel);
             statement.setInt(7, getObjectId());
             statement.setInt(8, _type1);
             statement.setInt(9, _type2);
             statement.setInt(10, _mana);
-            statement.setLong(11, getTime());
+            statement.setLong(11, _time);
 
             statement.executeUpdate();
             _existsInDb = true;
@@ -989,27 +993,27 @@ public final class L2ItemInstance extends L2Object {
     }
 
     public boolean isPetItem() {
-        return getItem().isPetItem();
+        return _item.isPetItem();
     }
 
     public boolean isPotion() {
-        return getItem().isPotion();
+        return _item.isPotion();
     }
 
     public boolean isElixir() {
-        return getItem().isElixir();
+        return _item.isElixir();
     }
 
     public boolean isHerb() {
-        return getItem().getItemType() == EtcItemType.HERB;
+        return _item.getItemType() == EtcItemType.HERB;
     }
 
     public boolean isHeroItem() {
-        return getItem().isHeroItem();
+        return _item.isHeroItem();
     }
 
     public boolean isQuestItem() {
-        return getItem().isQuestItem();
+        return _item.isQuestItem();
     }
 
     @Override

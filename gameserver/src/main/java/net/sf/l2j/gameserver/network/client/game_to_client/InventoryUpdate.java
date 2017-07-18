@@ -73,7 +73,7 @@ public class InventoryUpdate extends L2GameServerPacket {
             writeH(item.getType2());
             writeH(temp.getCustomType1());
             writeH(temp.getEquipped());
-            writeD(item.getBodyPart().getMask());
+            writeD(item.getBodyPart());
             writeH(temp.getEnchant());
             writeH(temp.getCustomType2());
             writeD(temp.getAugmentationBoni());

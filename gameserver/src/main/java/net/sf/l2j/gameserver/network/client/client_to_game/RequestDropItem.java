@@ -1,8 +1,8 @@
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EItemType2;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
-import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
 import net.sf.l2j.gameserver.network.client.game_to_client.ItemList;
@@ -91,7 +91,7 @@ public final class RequestDropItem extends L2GameClientPacket {
             }
         }
 
-        if (Item.TYPE2_QUEST == item.getItem().getType2() && !activeChar.isGM()) {
+        if (item.getItem().getType2() == EItemType2.TYPE2_QUEST && !activeChar.isGM()) {
             activeChar.sendPacket(SystemMessageId.CANNOT_DISCARD_EXCHANGE_ITEM);
             return;
         }
@@ -101,7 +101,7 @@ public final class RequestDropItem extends L2GameClientPacket {
             return;
         }
 
-        if (item.isEquipped() && (!item.isStackable() || (item.isStackable() && _count >= item.getCount()))) {
+        if (item.isEquipped() && (!item.isStackable() || (item.isStackable() && (_count >= item.getCount())))) {
             L2ItemInstance[] unequipped = activeChar.getInventory().unEquipItemInBodySlotAndRecord(item.getItem().getBodyPart());
             InventoryUpdate iu = new InventoryUpdate();
             for (L2ItemInstance itm : unequipped) {

@@ -40,7 +40,7 @@ public class SellList extends L2GameServerPacket {
             writeD(temp.getCount());
             writeH(item.getType2());
             writeH(temp.getCustomType1());
-            writeD(item.getBodyPart().getMask());
+            writeD(item.getBodyPart());
             writeH(temp.getEnchantLevel());
             writeH(temp.getCustomType2());
             writeH(0x00);

@@ -17,7 +17,6 @@ package net.sf.l2j.gameserver.network.client.client_to_game;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.item.EItemBodyPart;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
-import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.item.type.CrystalType;
 import net.sf.l2j.gameserver.model.item.type.WeaponType;
@@ -50,12 +49,12 @@ public abstract class AbstractEnchantPacket extends L2GameClientPacket {
 
             // checking scroll type and configured maximum enchant level
             switch (enchantItem.getItem().getType2()) {
-                case Item.TYPE2_WEAPON:
+                case TYPE2_WEAPON:
                     if (!_isWeapon || (Config.ENCHANT_MAX_WEAPON > 0 && enchantItem.getEnchantLevel() >= Config.ENCHANT_MAX_WEAPON)) { return false; }
                     break;
 
-                case Item.TYPE2_SHIELD_ARMOR:
-                case Item.TYPE2_ACCESSORY:
+                case TYPE2_SHIELD_ARMOR:
+                case TYPE2_ACCESSORY:
                     if (_isWeapon || (Config.ENCHANT_MAX_ARMOR > 0 && enchantItem.getEnchantLevel() >= Config.ENCHANT_MAX_ARMOR)) { return false; }
                     break;
 

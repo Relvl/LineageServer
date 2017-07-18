@@ -28,7 +28,7 @@ public class PetItemList extends L2GameServerPacket {
             writeH(item.getType2());
             writeH(temp.getCustomType1());
             writeH(temp.isEquipped() ? 0x01 : 0x00);
-            writeD(item.getBodyPart().getMask());
+            writeD(item.getBodyPart());
             writeH(temp.getEnchantLevel());
             writeH(temp.getCustomType2());
         }

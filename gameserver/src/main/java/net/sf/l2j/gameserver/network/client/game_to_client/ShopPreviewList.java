@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.network.client.game_to_client;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.buylist.NpcBuyList;
 import net.sf.l2j.gameserver.model.buylist.Product;
-import net.sf.l2j.gameserver.model.item.kind.Item;
+import net.sf.l2j.gameserver.model.item.EItemType1;
 
 import java.util.Collection;
 
@@ -55,11 +55,11 @@ public class ShopPreviewList extends L2GameServerPacket {
                 writeD(product.getItemId());
                 writeH(product.getItem().getType2()); // item type2
 
-                if (product.getItem().getType1() != Item.TYPE1_ITEM_QUESTITEM_ADENA) {
-                    writeH(product.getItem().getBodyPart().getMask()); // slot
+                if (product.getItem().getType1() == EItemType1.ITEM_QUESTITEM_ADENA) {
+                    writeH(0x00); // slot
                 }
                 else {
-                    writeH(0x00); // slot
+                    writeH(product.getItem().getBodyPart()); // slot
                 }
 
                 writeD(Config.WEAR_PRICE);

@@ -1,33 +1,43 @@
 package org.mmocore.network;
 
+import net.sf.l2j.commons.ICodeProvider;
+
 public abstract class SendablePacket<T extends MMOClient<?>> extends AbstractPacket<T> {
-    protected final void writeC(final int data) {
+    protected final void writeC(int data) {
         buffer.put((byte) data);
     }
 
-    protected final void writeF(final double value) {
+    protected final void writeF(double value) {
         buffer.putDouble(value);
     }
 
-    protected final void writeH(final int value) {
+    protected final void writeH(int value) {
         buffer.putShort((short) value);
     }
 
-    protected final void writeD(final int value) {
+    protected final void writeH(ICodeProvider value) {
+        buffer.putShort((short) value.getCode());
+    }
+
+    protected final void writeD(int value) {
         buffer.putInt(value);
     }
 
-    protected final void writeQ(final long value) {
+    protected final void writeD(ICodeProvider value) {
+        buffer.putInt(value.getCode());
+    }
+
+    protected final void writeQ(long value) {
         buffer.putLong(value);
     }
 
-    protected final void writeB(final byte[] data) {
+    protected final void writeB(byte[] data) {
         buffer.put(data);
     }
 
-    protected final void writeS(final String text) {
+    protected final void writeS(String text) {
         if (text != null) {
-            final int len = text.length();
+            int len = text.length();
             for (int i = 0; i < len; i++) {
                 buffer.putChar(text.charAt(i));
             }

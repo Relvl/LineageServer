@@ -22,9 +22,9 @@ import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
+import net.sf.l2j.gameserver.model.item.EItemType2;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
-import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.type.ActionType;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
 import net.sf.l2j.gameserver.model.item.type.WeaponType;
@@ -67,7 +67,7 @@ public final class UseItem extends L2GameClientPacket {
 
     @Override
     protected void runImpl() {
-        final L2PcInstance activeChar = getClient().getActiveChar();
+        L2PcInstance activeChar = getClient().getActiveChar();
         if (activeChar == null) { return; }
 
         if (activeChar.isInStoreMode()) {
@@ -80,10 +80,10 @@ public final class UseItem extends L2GameClientPacket {
             return;
         }
 
-        final L2ItemInstance item = activeChar.getInventory().getItemByObjectId(_objectId);
+        L2ItemInstance item = activeChar.getInventory().getItemByObjectId(_objectId);
         if (item == null) { return; }
 
-        if (item.getItem().getType2() == Item.TYPE2_QUEST) {
+        if (item.getItem().getType2() == EItemType2.TYPE2_QUEST) {
             activeChar.sendPacket(SystemMessageId.CANNOT_USE_QUEST_ITEMS);
             return;
         }
@@ -91,10 +91,10 @@ public final class UseItem extends L2GameClientPacket {
         if (activeChar.isAlikeDead() || activeChar.isStunned() || activeChar.isSleeping() || activeChar.isParalyzed() || activeChar.isAfraid()) { return; }
 
         if (!Config.KARMA_PLAYER_CAN_TELEPORT && activeChar.getKarma() > 0) {
-            final IntIntHolder[] sHolders = item.getItem().getSkills();
+            IntIntHolder[] sHolders = item.getItem().getSkills();
             if (sHolders != null) {
                 for (IntIntHolder sHolder : sHolders) {
-                    final L2Skill skill = sHolder.getSkill();
+                    L2Skill skill = sHolder.getSkill();
                     if (skill != null && (skill.getSkillType() == L2SkillType.TELEPORT || skill.getSkillType() == L2SkillType.RECALL)) { return; }
                 }
             }
@@ -115,7 +115,7 @@ public final class UseItem extends L2GameClientPacket {
                 return;
             }
 
-            final L2PetInstance pet = ((L2PetInstance) activeChar.getPet());
+            L2PetInstance pet = (L2PetInstance) activeChar.getPet();
 
             if (!pet.canWear(item.getItem())) {
                 activeChar.sendPacket(SystemMessageId.PET_CANNOT_USE_ITEM);
@@ -161,7 +161,7 @@ public final class UseItem extends L2GameClientPacket {
             switch (item.getItem().getBodyPart()) {
                 case SLOT_LR_HAND:
                 case SLOT_L_HAND:
-                case SLOT_R_HAND: {
+                case SLOT_R_HAND:
                     if (activeChar.isMounted()) {
                         activeChar.sendPacket(SystemMessageId.CANNOT_EQUIP_ITEM_DUE_TO_BAD_CONDITION);
                         return;
@@ -171,14 +171,13 @@ public final class UseItem extends L2GameClientPacket {
                     if (activeChar.isCursedWeaponEquipped()) { return; }
 
                     break;
-                }
             }
 
             if (activeChar.isCursedWeaponEquipped() && item.getItemId() == 6408) // Don't allow to put formal wear
             { return; }
 
             if (activeChar.isAttackingNow()) {
-                ThreadPoolManager.getInstance().scheduleGeneral(new WeaponEquipTask(item, activeChar), (activeChar.getAttackEndTime() - System.currentTimeMillis()));
+                ThreadPoolManager.getInstance().scheduleGeneral(new WeaponEquipTask(item, activeChar), activeChar.getAttackEndTime() - System.currentTimeMillis());
                 return;
             }
 
@@ -196,7 +195,7 @@ public final class UseItem extends L2GameClientPacket {
                 return;
             }
 
-            final IItemHandler handler = ItemHandler.getInstance().getItemHandler(item.getEtcItem());
+            IItemHandler handler = ItemHandler.getInstance().getItemHandler(item.getEtcItem());
             if (handler != null) { handler.useItem(activeChar, item, _ctrlPressed); }
 
             for (Quest quest : item.getQuestEvents()) {

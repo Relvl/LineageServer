@@ -1,6 +1,5 @@
 package net.sf.l2j;
 
-import net.sf.l2j.gameserver.model.item.EItemSlot;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 
 import java.util.EnumMap;

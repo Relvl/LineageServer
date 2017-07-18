@@ -1,9 +1,11 @@
 package net.sf.l2j.gameserver.model.item;
 
+import net.sf.l2j.commons.ICodeProvider;
+
 /**
  * @author Johnson / 18.07.2017
  */
-public enum EItemBodyPart {
+public enum EItemBodyPart implements ICodeProvider {
     SLOT_NONE(0x0000, "none", 0x00),
     SLOT_UNDERWEAR(0x0001, "underwear", 0x00),
     SLOT_R_EAR(0x0002, "rear", 0x02),
@@ -31,22 +33,23 @@ public enum EItemBodyPart {
     SLOT_STRIDER(-102, "strider", 0x00),
     SLOT_BABYPET(-103, "babypet", 0x00),
 
-    SLOT_LR_EAR(SLOT_R_EAR.mask | SLOT_L_EAR.mask, "rear;lear", 0x00),
-    SLOT_LR_FINGER(SLOT_R_FINGER.mask | SLOT_L_FINGER.mask, "rfinger;lfinger", 0x00),
-    SLOT_ALLWEAPON(SLOT_LR_HAND.mask | SLOT_R_HAND.mask, "rhand;lhand", 0x00);
+    SLOT_LR_EAR(SLOT_R_EAR.code | SLOT_L_EAR.code, "rear;lear", 0x00),
+    SLOT_LR_FINGER(SLOT_R_FINGER.code | SLOT_L_FINGER.code, "rfinger;lfinger", 0x00),
+    SLOT_ALLWEAPON(SLOT_LR_HAND.code | SLOT_R_HAND.code, "rhand;lhand", 0x00);
 
-    private final int mask;
-    private final String code;
+    private final int code;
+    private final String value;
     private final int equipUpdatePacketValue;
 
-    EItemBodyPart(int mask, String code, int equipUpdatePacketValue) {
-        this.mask = mask;
+    EItemBodyPart(int code, String value, int equipUpdatePacketValue) {
         this.code = code;
+        this.value = value;
         this.equipUpdatePacketValue = equipUpdatePacketValue;
     }
 
-    public int getMask() {
-        return mask;
+    @Override
+    public int getCode() {
+        return code;
     }
 
     public int getEquipUpdatePacketValue() {
@@ -54,11 +57,11 @@ public enum EItemBodyPart {
     }
 
     public boolean isInBodyPart(int bodypart) {
-        return (mask & bodypart) != 0;
+        return (code & bodypart) != 0;
     }
 
     public boolean isInBodyPart(EItemBodyPart bodypart) {
-        return (mask & bodypart.mask) != 0;
+        return (code & bodypart.code) != 0;
     }
 
     public static boolean isInAtLeastOneBodyPart(EItemBodyPart bodypart, EItemBodyPart... bodyParts) {
@@ -74,7 +77,7 @@ public enum EItemBodyPart {
 
     public static EItemBodyPart getByCode(String code) {
         for (EItemBodyPart bodyPart : values()) {
-            if (bodyPart.code.equals(code)) {
+            if (bodyPart.value.equals(code)) {
                 return bodyPart;
             }
         }
@@ -83,7 +86,7 @@ public enum EItemBodyPart {
 
     public static EItemBodyPart getByMask(int mask) {
         for (EItemBodyPart bodyPart : values()) {
-            if (bodyPart.mask == mask) {
+            if (bodyPart.code == mask) {
                 return bodyPart;
             }
         }

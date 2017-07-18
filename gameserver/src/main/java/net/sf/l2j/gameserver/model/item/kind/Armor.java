@@ -1,20 +1,8 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.model.item.kind;
 
 import net.sf.l2j.gameserver.model.item.EItemBodyPart;
+import net.sf.l2j.gameserver.model.item.EItemType1;
+import net.sf.l2j.gameserver.model.item.EItemType2;
 import net.sf.l2j.gameserver.model.item.type.ArmorType;
 import net.sf.l2j.gameserver.templates.StatsSet;
 
@@ -48,8 +36,8 @@ public final class Armor extends Item {
                 EItemBodyPart.SLOT_R_FINGER,
                 EItemBodyPart.SLOT_BACK
         )) {
-            _type1 = Item.TYPE1_WEAPON_RING_EARRING_NECKLACE;
-            _type2 = Item.TYPE2_ACCESSORY;
+            itemType1 = EItemType1.WEAPON_RING_EARRING_NECKLACE;
+            _type2 = EItemType2.TYPE2_ACCESSORY;
         }
         else {
             // retail define shield as NONE
@@ -57,8 +45,8 @@ public final class Armor extends Item {
                 _type = ArmorType.SHIELD;
             }
 
-            _type1 = Item.TYPE1_SHIELD_ARMOR;
-            _type2 = Item.TYPE2_SHIELD_ARMOR;
+            itemType1 = EItemType1.SHIELD_ARMOR;
+            _type2 = EItemType2.TYPE2_SHIELD_ARMOR;
         }
     }
 
@@ -78,7 +66,7 @@ public final class Armor extends Item {
      * @return int : ID of the item
      */
     @Override
-    public final int getItemMask() {
-        return getItemType().mask();
+    public int getItemMask() {
+        return _type.mask();
     }
 }
