@@ -1,200 +1,183 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
+import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 
-public class GMViewCharacterInfo extends L2GameServerPacket
-{
-	private final L2PcInstance _activeChar;
-	
-	public GMViewCharacterInfo(L2PcInstance character)
-	{
-		_activeChar = character;
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
-		float moveMultiplier = _activeChar.getMovementSpeedMultiplier();
-		int _runSpd = (int) (_activeChar.getRunSpeed() / moveMultiplier);
-		int _walkSpd = (int) (_activeChar.getWalkSpeed() / moveMultiplier);
-		
-		writeC(0x8f);
-		
-		writeD(_activeChar.getX());
-		writeD(_activeChar.getY());
-		writeD(_activeChar.getZ());
-		writeD(_activeChar.getHeading());
-		writeD(_activeChar.getObjectId());
-		writeS(_activeChar.getName());
-		writeD(_activeChar.getRace().ordinal());
-		writeD(_activeChar.getAppearance().getSex() ? 1 : 0);
-		writeD(_activeChar.getClassId().getId());
-		writeD(_activeChar.getLevel());
-		writeQ(_activeChar.getExp());
-		writeD(_activeChar.getSTR());
-		writeD(_activeChar.getDEX());
-		writeD(_activeChar.getCON());
-		writeD(_activeChar.getINT());
-		writeD(_activeChar.getWIT());
-		writeD(_activeChar.getMEN());
-		writeD(_activeChar.getMaxHp());
-		writeD((int) _activeChar.getCurrentHp());
-		writeD(_activeChar.getMaxMp());
-		writeD((int) _activeChar.getCurrentMp());
-		writeD(_activeChar.getSp());
-		writeD(_activeChar.getCurrentLoad());
-		writeD(_activeChar.getMaxLoad());
-		writeD(0x28); // unknown
-		
-		writeD(_activeChar.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_HAIRALL));
-		writeD(_activeChar.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_REAR));
-		writeD(_activeChar.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_LEAR));
-		writeD(_activeChar.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_NECK));
-		writeD(_activeChar.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_RFINGER));
-		writeD(_activeChar.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_LFINGER));
-		writeD(_activeChar.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_HEAD));
-		writeD(_activeChar.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_RHAND));
-		writeD(_activeChar.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_LHAND));
-		writeD(_activeChar.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_GLOVES));
-		writeD(_activeChar.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_CHEST));
-		writeD(_activeChar.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_LEGS));
-		writeD(_activeChar.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_FEET));
-		writeD(_activeChar.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_BACK));
-		writeD(_activeChar.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_RHAND));
-		writeD(_activeChar.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_HAIR));
-		writeD(_activeChar.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_FACE));
-		
-		writeD(_activeChar.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_HAIRALL));
-		writeD(_activeChar.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_REAR));
-		writeD(_activeChar.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_LEAR));
-		writeD(_activeChar.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_NECK));
-		writeD(_activeChar.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_RFINGER));
-		writeD(_activeChar.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_LFINGER));
-		writeD(_activeChar.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_HEAD));
-		writeD(_activeChar.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_RHAND));
-		writeD(_activeChar.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_LHAND));
-		writeD(_activeChar.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_GLOVES));
-		writeD(_activeChar.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_CHEST));
-		writeD(_activeChar.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_LEGS));
-		writeD(_activeChar.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_FEET));
-		writeD(_activeChar.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_BACK));
-		writeD(_activeChar.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_RHAND));
-		writeD(_activeChar.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_HAIR));
-		writeD(_activeChar.getInventory().getPaperdollItemId(Inventory.PAPERDOLL_FACE));
-		
-		// c6 new h's
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		writeH(0x00);
-		// end of c6 new h's
-		
-		writeD(_activeChar.getPAtk(null));
-		writeD(_activeChar.getPAtkSpd());
-		writeD(_activeChar.getPDef(null));
-		writeD(_activeChar.getEvasionRate(null));
-		writeD(_activeChar.getAccuracy());
-		writeD(_activeChar.getCriticalHit(null, null));
-		writeD(_activeChar.getMAtk(null, null));
-		
-		writeD(_activeChar.getMAtkSpd());
-		writeD(_activeChar.getPAtkSpd());
-		
-		writeD(_activeChar.getMDef(null, null));
-		
-		writeD(_activeChar.getPvpFlag()); // 0-non-pvp 1-pvp = violett name
-		writeD(_activeChar.getKarma());
-		
-		writeD(_runSpd);
-		writeD(_walkSpd);
-		writeD(_runSpd); // swimspeed
-		writeD(_walkSpd); // swimspeed
-		writeD(_runSpd);
-		writeD(_walkSpd);
-		writeD(_runSpd);
-		writeD(_walkSpd);
-		writeF(moveMultiplier);
-		writeF(_activeChar.getAttackSpeedMultiplier()); // 2.9);//
-		writeF(_activeChar.getTemplate().getCollisionRadius()); // scale
-		writeF(_activeChar.getTemplate().getCollisionHeight()); // y offset ??!? fem dwarf 4033
-		writeD(_activeChar.getAppearance().getHairStyle());
-		writeD(_activeChar.getAppearance().getHairColor());
-		writeD(_activeChar.getAppearance().getFace());
-		writeD(_activeChar.isGM() ? 0x01 : 0x00); // builder level
-		
-		writeS(_activeChar.getTitle());
-		writeD(_activeChar.getClanId()); // pledge id
-		writeD(_activeChar.getClanCrestId()); // pledge crest id
-		writeD(_activeChar.getAllyId()); // ally id
-		writeC(_activeChar.getMountType()); // mount type
-		writeC(_activeChar.getPrivateStoreType().getId());
-		writeC(_activeChar.hasDwarvenCraft() ? 1 : 0);
-		writeD(_activeChar.getPkKills());
-		writeD(_activeChar.getPvpKills());
-		
-		writeH(_activeChar.getRecomLeft());
-		writeH(_activeChar.getRecomHave()); // Blue value for name (0 = white, 255 = pure blue)
-		writeD(_activeChar.getClassId().getId());
-		writeD(0x00); // special effects? circles around player...
-		writeD(_activeChar.getMaxCp());
-		writeD((int) _activeChar.getCurrentCp());
-		
-		writeC(_activeChar.isRunning() ? 0x01 : 0x00); // changes the Speed display on Status Window
-		
-		writeC(321);
-		
-		writeD(_activeChar.getPledgeClass()); // changes the text above CP on Status Window
-		
-		writeC(_activeChar.isNoble() ? 0x01 : 0x00);
-		writeC(_activeChar.isHero() ? 0x01 : 0x00);
-		
-		writeD(_activeChar.getAppearance().getNameColor());
-		writeD(_activeChar.getAppearance().getTitleColor());
-	}
+public class GMViewCharacterInfo extends L2GameServerPacket {
+    private final L2PcInstance player;
+
+    public GMViewCharacterInfo(L2PcInstance player) {
+        this.player = player;
+    }
+
+    @Override
+    protected final void writeImpl() {
+        float moveMultiplier = player.getMovementSpeedMultiplier();
+        int _runSpd = (int) (player.getRunSpeed() / moveMultiplier);
+        int _walkSpd = (int) (player.getWalkSpeed() / moveMultiplier);
+
+        writeC(0x8f);
+
+        writeD(player.getX());
+        writeD(player.getY());
+        writeD(player.getZ());
+        writeD(player.getHeading());
+        writeD(player.getObjectId());
+        writeS(player.getName());
+        writeD(player.getRace().ordinal());
+        writeD(player.getAppearance().getSex() ? 1 : 0);
+        writeD(player.getClassId().getId());
+        writeD(player.getLevel());
+        writeQ(player.getExp());
+        writeD(player.getSTR());
+        writeD(player.getDEX());
+        writeD(player.getCON());
+        writeD(player.getINT());
+        writeD(player.getWIT());
+        writeD(player.getMEN());
+        writeD(player.getMaxHp());
+        writeD((int) player.getCurrentHp());
+        writeD(player.getMaxMp());
+        writeD((int) player.getCurrentMp());
+        writeD(player.getSp());
+        writeD(player.getCurrentLoad());
+        writeD(player.getMaxLoad());
+        writeD(0x28); // unknown
+
+        writeD(player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_HAIRALL));
+        writeD(player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_REAR));
+        writeD(player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_LEAR));
+        writeD(player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_NECK));
+        writeD(player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_RFINGER));
+        writeD(player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_LFINGER));
+        writeD(player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_HEAD));
+        writeD(player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_RHAND));
+        writeD(player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_LHAND));
+        writeD(player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_GLOVES));
+        writeD(player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_CHEST));
+        writeD(player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_LEGS));
+        writeD(player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_FEET));
+        writeD(player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_BACK));
+        writeD(player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_RHAND));
+        writeD(player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_HAIR));
+        writeD(player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_FACE));
+
+        writeD(player.getInventory().getPaperdollItemId(EPaperdollSlot.PAPERDOLL_HAIRALL));
+        writeD(player.getInventory().getPaperdollItemId(EPaperdollSlot.PAPERDOLL_REAR));
+        writeD(player.getInventory().getPaperdollItemId(EPaperdollSlot.PAPERDOLL_LEAR));
+        writeD(player.getInventory().getPaperdollItemId(EPaperdollSlot.PAPERDOLL_NECK));
+        writeD(player.getInventory().getPaperdollItemId(EPaperdollSlot.PAPERDOLL_RFINGER));
+        writeD(player.getInventory().getPaperdollItemId(EPaperdollSlot.PAPERDOLL_LFINGER));
+        writeD(player.getInventory().getPaperdollItemId(EPaperdollSlot.PAPERDOLL_HEAD));
+        writeD(player.getInventory().getPaperdollItemId(EPaperdollSlot.PAPERDOLL_RHAND));
+        writeD(player.getInventory().getPaperdollItemId(EPaperdollSlot.PAPERDOLL_LHAND));
+        writeD(player.getInventory().getPaperdollItemId(EPaperdollSlot.PAPERDOLL_GLOVES));
+        writeD(player.getInventory().getPaperdollItemId(EPaperdollSlot.PAPERDOLL_CHEST));
+        writeD(player.getInventory().getPaperdollItemId(EPaperdollSlot.PAPERDOLL_LEGS));
+        writeD(player.getInventory().getPaperdollItemId(EPaperdollSlot.PAPERDOLL_FEET));
+        writeD(player.getInventory().getPaperdollItemId(EPaperdollSlot.PAPERDOLL_BACK));
+        writeD(player.getInventory().getPaperdollItemId(EPaperdollSlot.PAPERDOLL_RHAND));
+        writeD(player.getInventory().getPaperdollItemId(EPaperdollSlot.PAPERDOLL_HAIR));
+        writeD(player.getInventory().getPaperdollItemId(EPaperdollSlot.PAPERDOLL_FACE));
+
+        // c6 new h's
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        writeH(0x00);
+        // end of c6 new h's
+
+        writeD(player.getPAtk(null));
+        writeD(player.getPAtkSpd());
+        writeD(player.getPDef(null));
+        writeD(player.getEvasionRate(null));
+        writeD(player.getAccuracy());
+        writeD(player.getCriticalHit(null, null));
+        writeD(player.getMAtk(null, null));
+
+        writeD(player.getMAtkSpd());
+        writeD(player.getPAtkSpd());
+
+        writeD(player.getMDef(null, null));
+
+        writeD(player.getPvpFlag()); // 0-non-pvp 1-pvp = violett name
+        writeD(player.getKarma());
+
+        writeD(_runSpd);
+        writeD(_walkSpd);
+        writeD(_runSpd); // swimspeed
+        writeD(_walkSpd); // swimspeed
+        writeD(_runSpd);
+        writeD(_walkSpd);
+        writeD(_runSpd);
+        writeD(_walkSpd);
+        writeF(moveMultiplier);
+        writeF(player.getAttackSpeedMultiplier()); // 2.9);//
+        writeF(player.getTemplate().getCollisionRadius()); // scale
+        writeF(player.getTemplate().getCollisionHeight()); // y offset ??!? fem dwarf 4033
+        writeD(player.getAppearance().getHairStyle());
+        writeD(player.getAppearance().getHairColor());
+        writeD(player.getAppearance().getFace());
+        writeD(player.isGM() ? 0x01 : 0x00); // builder level
+
+        writeS(player.getTitle());
+        writeD(player.getClanId()); // pledge id
+        writeD(player.getClanCrestId()); // pledge crest id
+        writeD(player.getAllyId()); // ally id
+        writeC(player.getMountType()); // mount type
+        writeC(player.getPrivateStoreType().getId());
+        writeC(player.hasDwarvenCraft() ? 1 : 0);
+        writeD(player.getPkKills());
+        writeD(player.getPvpKills());
+
+        writeH(player.getRecomLeft());
+        writeH(player.getRecomHave()); // Blue value for name (0 = white, 255 = pure blue)
+        writeD(player.getClassId().getId());
+        writeD(0x00); // special effects? circles around player...
+        writeD(player.getMaxCp());
+        writeD((int) player.getCurrentCp());
+
+        writeC(player.isRunning() ? 0x01 : 0x00); // changes the Speed display on Status Window
+
+        writeC(321);
+
+        writeD(player.getPledgeClass()); // changes the text above CP on Status Window
+
+        writeC(player.isNoble() ? 0x01 : 0x00);
+        writeC(player.isHero() ? 0x01 : 0x00);
+
+        writeD(player.getAppearance().getNameColor());
+        writeD(player.getAppearance().getTitleColor());
+    }
 }

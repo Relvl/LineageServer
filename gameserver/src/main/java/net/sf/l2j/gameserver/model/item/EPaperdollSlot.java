@@ -20,7 +20,9 @@ public enum EPaperdollSlot {
     PAPERDOLL_BACK,
     PAPERDOLL_FACE,
     PAPERDOLL_HAIR,
-    PAPERDOLL_HAIRALL,
-    PAPERDOLL_TOTALSLOTS;
+    PAPERDOLL_HAIRALL;
 
+    public static EPaperdollSlot getByIndex(int index) {
+        return index >= 0 && index < values().length ? values()[index] : null;
+    }
 }

@@ -5,6 +5,7 @@ import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.datatables.PetDataTable;
 import net.sf.l2j.gameserver.instancemanager.CursedWeaponsManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
@@ -72,7 +73,7 @@ public final class RequestDestroyItem extends L2GameClientPacket {
         }
 
         if (itemToRemove.isEquipped() && (!itemToRemove.isStackable() || (itemToRemove.isStackable() && _count >= itemToRemove.getCount()))) {
-            L2ItemInstance[] unequipped = activeChar.getInventory().unEquipItemInSlotAndRecord(itemToRemove.getLocationSlot());
+            L2ItemInstance[] unequipped = activeChar.getInventory().unEquipItemInSlotAndRecord(EPaperdollSlot.getByIndex(itemToRemove.getLocationSlot()));
             InventoryUpdate iu = new InventoryUpdate();
             for (L2ItemInstance item : unequipped) {
                 item.unChargeAllShots();
@@ -96,7 +97,8 @@ public final class RequestDestroyItem extends L2GameClientPacket {
                 statement.setInt(1, _objectId);
                 statement.execute();
                 statement.close();
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 _log.error("could not delete pet objectid: ", e);
             }
         }

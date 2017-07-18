@@ -23,6 +23,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2MerchantInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.buylist.NpcBuyList;
 import net.sf.l2j.gameserver.model.buylist.Product;
+import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -35,7 +36,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class RequestPreviewItem extends L2GameClientPacket {
-    private Map<Integer, Integer> _itemList;
+    private Map<EPaperdollSlot, Integer> _itemList;
     @SuppressWarnings("unused")
     private int _unk;
     private int _listId;
@@ -111,8 +112,8 @@ public final class RequestPreviewItem extends L2GameClientPacket {
             final Item template = product.getItem();
             if (template == null) { continue; }
 
-            final int slot = Inventory.getPaperdollIndex(template.getBodyPart());
-            if (slot < 0) { continue; }
+            EPaperdollSlot slot = Inventory.getPaperdollIndex(template.getBodyPart());
+            if (slot == null) { continue; }
 
             if (_itemList.containsKey(slot)) {
                 activeChar.sendPacket(SystemMessageId.YOU_CAN_NOT_TRY_THOSE_ITEMS_ON_AT_THE_SAME_TIME);
@@ -153,7 +154,8 @@ public final class RequestPreviewItem extends L2GameClientPacket {
             try {
                 activeChar.sendPacket(SystemMessageId.NO_LONGER_TRYING_ON);
                 activeChar.sendPacket(new UserInfo(activeChar));
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 _log.error("", e);
             }
         }

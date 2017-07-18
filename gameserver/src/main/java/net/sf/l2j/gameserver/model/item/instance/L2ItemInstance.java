@@ -7,7 +7,10 @@ import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.instancemanager.MercTicketManager;
-import net.sf.l2j.gameserver.model.*;
+import net.sf.l2j.gameserver.model.DropProtection;
+import net.sf.l2j.gameserver.model.L2Augmentation;
+import net.sf.l2j.gameserver.model.L2Object;
+import net.sf.l2j.gameserver.model.ShotType;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.kind.Armor;
@@ -60,8 +63,8 @@ public final class L2ItemInstance extends L2Object {
     private boolean _decrease;
     /** Location of the item : Inventory, PaperDoll, WareHouse */
     private ItemLocation _loc;
-    /** Slot where item is stored */
-    private int _locData;
+    /** TODO! Это и слот на хранении, и слот на кукле. Дурость, надо переделать на раздельное. */
+    private int paperdollSlot;
     private int _enchantLevel;
     private L2Augmentation _augmentation;
     /** Shadow item */
@@ -122,7 +125,14 @@ public final class L2ItemInstance extends L2Object {
      */
     public static L2ItemInstance restoreFromDb(int ownerId, ResultSet rs) {
         L2ItemInstance inst = null;
-        int objectId, item_id, loc_data, enchant_level, custom_type1, custom_type2, manaLeft, count;
+        int objectId;
+        int item_id;
+        int paperdollSlot;
+        int enchant_level;
+        int custom_type1;
+        int custom_type2;
+        int manaLeft;
+        int count;
         long time;
         ItemLocation loc;
         try {
@@ -130,7 +140,7 @@ public final class L2ItemInstance extends L2Object {
             item_id = rs.getInt("item_id");
             count = rs.getInt("count");
             loc = ItemLocation.valueOf(rs.getString("loc"));
-            loc_data = rs.getInt("loc_data");
+            paperdollSlot = rs.getInt("loc_data");
             enchant_level = rs.getInt("enchant_level");
             custom_type1 = rs.getInt("custom_type1");
             custom_type2 = rs.getInt("custom_type2");
@@ -155,7 +165,7 @@ public final class L2ItemInstance extends L2Object {
         inst._type1 = custom_type1;
         inst._type2 = custom_type2;
         inst._loc = loc;
-        inst._locData = loc_data;
+        inst.paperdollSlot = paperdollSlot;
         inst._existsInDb = true;
         inst._storedInDb = true;
 
@@ -214,19 +224,10 @@ public final class L2ItemInstance extends L2Object {
         _storedInDb = false;
     }
 
-    /**
-     * Sets the location of the item.<BR>
-     * <BR>
-     * <U><I>Remark :</I></U> If loc and loc_data different from database, say datas not up-to-date
-     *
-     * @param loc      : ItemLocation (enumeration)
-     * @param loc_data : int designating the slot where the item is stored or the village for freights
-     */
-    public void setLocation(ItemLocation loc, int loc_data) {
-        if (loc == _loc && loc_data == _locData) { return; }
-
+    public void setLocation(ItemLocation loc, int paperdollSlot) {
+        if (loc == _loc && paperdollSlot == this.paperdollSlot) { return; }
         _loc = loc;
-        _locData = loc_data;
+        this.paperdollSlot = paperdollSlot;
         _storedInDb = false;
     }
 
@@ -234,11 +235,7 @@ public final class L2ItemInstance extends L2Object {
         return _loc;
     }
 
-    /**
-     * Sets the location of the item
-     *
-     * @param loc : ItemLocation (enumeration)
-     */
+    @Deprecated
     public void setLocation(ItemLocation loc) {
         setLocation(loc, 0);
     }
@@ -328,7 +325,7 @@ public final class L2ItemInstance extends L2Object {
      */
     public int getLocationSlot() {
         assert _loc == ItemLocation.PAPERDOLL || _loc == ItemLocation.PET_EQUIP || _loc == ItemLocation.FREIGHT;
-        return _locData;
+        return paperdollSlot;
     }
 
     /**
@@ -850,7 +847,7 @@ public final class L2ItemInstance extends L2Object {
             statement.setInt(1, _ownerId);
             statement.setInt(2, getCount());
             statement.setString(3, _loc.name());
-            statement.setInt(4, _locData);
+            statement.setInt(4, paperdollSlot);
             statement.setInt(5, getEnchantLevel());
             statement.setInt(6, getCustomType1());
             statement.setInt(7, getCustomType2());
@@ -879,7 +876,7 @@ public final class L2ItemInstance extends L2Object {
             statement.setInt(2, _itemId);
             statement.setInt(3, getCount());
             statement.setString(4, _loc.name());
-            statement.setInt(5, _locData);
+            statement.setInt(5, paperdollSlot);
             statement.setInt(6, getEnchantLevel());
             statement.setInt(7, getObjectId());
             statement.setInt(8, _type1);

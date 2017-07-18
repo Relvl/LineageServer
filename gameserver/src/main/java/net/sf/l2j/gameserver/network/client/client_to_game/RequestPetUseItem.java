@@ -5,6 +5,7 @@ import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.handler.ItemHandler;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
+import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.PetItemList;
@@ -43,8 +44,12 @@ public final class RequestPetUseItem extends L2GameClientPacket {
                 return;
             }
 
-            if (item.isEquipped()) { pet.getInventory().unEquipItemInSlot(item.getLocationSlot()); }
-            else { pet.getInventory().equipPetItem(item); }
+            if (item.isEquipped()) {
+                pet.getInventory().unEquipItemInSlot(EPaperdollSlot.getByIndex(item.getLocationSlot()));
+            }
+            else {
+                pet.getInventory().equipPetItem(item);
+            }
 
             activeChar.sendPacket(new PetItemList(pet));
             pet.updateAndBroadcastStatus(1);

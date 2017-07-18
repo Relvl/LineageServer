@@ -38,6 +38,7 @@ import net.sf.l2j.gameserver.model.entity.Hero;
 import net.sf.l2j.gameserver.model.entity.Siege;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
 import net.sf.l2j.gameserver.model.holder.SkillUseHolder;
+import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.Henna;
 import net.sf.l2j.gameserver.model.item.RecipeList;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
@@ -50,8 +51,8 @@ import net.sf.l2j.gameserver.model.item.type.EtcItemType;
 import net.sf.l2j.gameserver.model.item.type.WeaponType;
 import net.sf.l2j.gameserver.model.itemcontainer.*;
 import net.sf.l2j.gameserver.model.itemcontainer.listeners.ItemPassiveSkillsListener;
-import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.memo.PlayerMemo;
 import net.sf.l2j.gameserver.model.olympiad.OlympiadGameManager;
 import net.sf.l2j.gameserver.model.olympiad.OlympiadGameTask;
@@ -1447,10 +1448,16 @@ public final class L2PcInstance extends L2Playable {
             sendSkillList();
             sendPacket(new EtcStatusUpdate(this));
 
-            L2ItemInstance weapon = getInventory().getPaperdollItem(Inventory.PAPERDOLL_RHAND);
+            L2ItemInstance weapon = inventory.getPaperdollItem(EPaperdollSlot.PAPERDOLL_RHAND);
             if (weapon != null) {
-                if (_expertiseWeaponPenalty) { ItemPassiveSkillsListener.getInstance().onUnequip(0, weapon, this); }
-                else { ItemPassiveSkillsListener.getInstance().onEquip(0, weapon, this); }
+                if (_expertiseWeaponPenalty) {
+                    // TODO! Какого хрена? Почему в рубашку?!
+                    ItemPassiveSkillsListener.getInstance().onUnequip(EPaperdollSlot.PAPERDOLL_UNDER, weapon, this);
+                }
+                else {
+                    // TODO! Какого хрена? Почему в рубашку?!
+                    ItemPassiveSkillsListener.getInstance().onEquip(EPaperdollSlot.PAPERDOLL_UNDER, weapon, this);
+                }
             }
         }
     }
@@ -2194,7 +2201,7 @@ public final class L2PcInstance extends L2Playable {
                 CursedWeaponsManager.getInstance().activate(this, newitem);
             }
             // If you pickup arrows and a bow is equipped, try to equip them if no arrows is currently equipped.
-            else if (item.getItem().getItemType() == EtcItemType.ARROW && getAttackType() == WeaponType.BOW && getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND) == null) {
+            else if (item.getItem().getItemType() == EtcItemType.ARROW && getAttackType() == WeaponType.BOW && getInventory().getPaperdollItem(EPaperdollSlot.PAPERDOLL_LHAND) == null) {
                 checkAndEquipArrows();
             }
         }
@@ -2255,7 +2262,7 @@ public final class L2PcInstance extends L2Playable {
                     CursedWeaponsManager.getInstance().activate(this, createdItem);
                 }
                 // If you pickup arrows and a bow is equipped, try to equip them if no arrows is currently equipped.
-                else if (item.getItemType() == EtcItemType.ARROW && getAttackType() == WeaponType.BOW && getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND) == null) {
+                else if (item.getItemType() == EtcItemType.ARROW && getAttackType() == WeaponType.BOW && getInventory().getPaperdollItem(EPaperdollSlot.PAPERDOLL_LHAND) == null) {
                     checkAndEquipArrows();
                 }
 
@@ -3280,7 +3287,7 @@ public final class L2PcInstance extends L2Playable {
      */
     @Override
     public L2ItemInstance getActiveWeaponInstance() {
-        return getInventory().getPaperdollItem(Inventory.PAPERDOLL_RHAND);
+        return getInventory().getPaperdollItem(EPaperdollSlot.PAPERDOLL_RHAND);
     }
 
     /**
@@ -3296,7 +3303,7 @@ public final class L2PcInstance extends L2Playable {
     }
 
     public L2ItemInstance getChestArmorInstance() {
-        return getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
+        return getInventory().getPaperdollItem(EPaperdollSlot.PAPERDOLL_CHEST);
     }
 
     public Armor getActiveChestArmorItem() {
@@ -3383,7 +3390,7 @@ public final class L2PcInstance extends L2Playable {
      */
     @Override
     public L2ItemInstance getSecondaryWeaponInstance() {
-        return getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
+        return getInventory().getPaperdollItem(EPaperdollSlot.PAPERDOLL_LHAND);
     }
 
     /**
@@ -3391,7 +3398,7 @@ public final class L2PcInstance extends L2Playable {
      */
     @Override
     public Item getSecondaryWeaponItem() {
-        L2ItemInstance item = getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
+        L2ItemInstance item = getInventory().getPaperdollItem(EPaperdollSlot.PAPERDOLL_LHAND);
         if (item != null) { return item.getItem(); }
 
         return null;
@@ -3536,7 +3543,7 @@ public final class L2PcInstance extends L2Playable {
                     if (itemDrop.isEquipped()) {
                         // Set proper chance according to Item type of equipped Item
                         itemDropPercent = itemDrop.getItem().getType2() == Item.TYPE2_WEAPON ? dropEquipWeapon : dropEquip;
-                        getInventory().unEquipItemInSlot(itemDrop.getLocationSlot());
+                        getInventory().unEquipItemInSlot(EPaperdollSlot.getByIndex(itemDrop.getLocationSlot()));
                     }
                     else {
                         itemDropPercent = dropItem; // Item in inventory
@@ -4048,10 +4055,10 @@ public final class L2PcInstance extends L2Playable {
      */
     @Override
     protected void reduceArrowCount() {
-        L2ItemInstance arrows = getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
+        L2ItemInstance arrows = getInventory().getPaperdollItem(EPaperdollSlot.PAPERDOLL_LHAND);
 
         if (arrows == null) {
-            getInventory().unEquipItemInSlot(Inventory.PAPERDOLL_LHAND);
+            getInventory().unEquipItemInSlot(EPaperdollSlot.PAPERDOLL_LHAND);
             _arrowItem = null;
             sendPacket(new ItemList(this, false));
             return;
@@ -4072,7 +4079,7 @@ public final class L2PcInstance extends L2Playable {
             // Destroy entire item and save to database
             inventory.destroyItem("Consume", arrows, this, null);
 
-            getInventory().unEquipItemInSlot(Inventory.PAPERDOLL_LHAND);
+            getInventory().unEquipItemInSlot(EPaperdollSlot.PAPERDOLL_LHAND);
             _arrowItem = null;
 
             sendPacket(new ItemList(this, false));
@@ -4090,20 +4097,20 @@ public final class L2PcInstance extends L2Playable {
     @Override
     protected boolean checkAndEquipArrows() {
         // Check if nothing is equipped in left hand
-        if (getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND) == null) {
+        if (getInventory().getPaperdollItem(EPaperdollSlot.PAPERDOLL_LHAND) == null) {
             // Get the L2ItemInstance of the arrows needed for this bow
             _arrowItem = getInventory().findArrowForBow(getActiveWeaponItem());
 
             if (_arrowItem != null) {
                 // Equip arrows needed in left hand
-                getInventory().setPaperdollItem(Inventory.PAPERDOLL_LHAND, _arrowItem);
+                getInventory().setPaperdollItem(EPaperdollSlot.PAPERDOLL_LHAND, _arrowItem);
 
                 // Send ItemList to this L2PcINstance to update left hand equipement
                 sendPacket(new ItemList(this, false));
             }
         }
         // Get the L2ItemInstance of arrows equipped in left hand
-        else { _arrowItem = getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND); }
+        else { _arrowItem = getInventory().getPaperdollItem(EPaperdollSlot.PAPERDOLL_LHAND); }
 
         return _arrowItem != null;
     }
@@ -4118,7 +4125,7 @@ public final class L2PcInstance extends L2Playable {
         if (isCursedWeaponEquipped()) { return false; }
 
         // Unequip the weapon
-        L2ItemInstance wpn = getInventory().getPaperdollItem(Inventory.PAPERDOLL_RHAND);
+        L2ItemInstance wpn = getInventory().getPaperdollItem(EPaperdollSlot.PAPERDOLL_RHAND);
         if (wpn != null) {
             L2ItemInstance[] unequipped = getInventory().unEquipItemInBodySlotAndRecord(wpn.getItem().getBodyPart());
             InventoryUpdate iu = new InventoryUpdate();
@@ -4141,7 +4148,7 @@ public final class L2PcInstance extends L2Playable {
         }
 
         // Unequip the shield
-        L2ItemInstance sld = getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
+        L2ItemInstance sld = getInventory().getPaperdollItem(EPaperdollSlot.PAPERDOLL_LHAND);
         if (sld != null) {
             L2ItemInstance[] unequipped = getInventory().unEquipItemInBodySlotAndRecord(sld.getItem().getBodyPart());
             InventoryUpdate iu = new InventoryUpdate();
@@ -5522,7 +5529,7 @@ public final class L2PcInstance extends L2Playable {
         }
 
         // Players wearing Formal Wear cannot use skills.
-        L2ItemInstance formal = getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
+        L2ItemInstance formal = getInventory().getPaperdollItem(EPaperdollSlot.PAPERDOLL_CHEST);
         if (formal != null && formal.getItem().getBodyPart() == Item.SLOT_ALLDRESS) {
             sendPacket(SystemMessageId.CANNOT_USE_ITEMS_SKILLS_WITH_FORMALWEAR);
             sendPacket(ActionFailed.STATIC_PACKET);
@@ -6016,7 +6023,8 @@ public final class L2PcInstance extends L2Playable {
 
             // Duel
             if (_isInDuel && targetPlayer._isInDuel && _duelId == targetPlayer._duelId) {
-                return true; }
+                return true;
+            }
 
             boolean isCtrlPressed = _currentSkill != null && _currentSkill.isCtrlPressed();
 
@@ -6774,7 +6782,7 @@ public final class L2PcInstance extends L2Playable {
     }
 
     public void sendSkillList() {
-        L2ItemInstance formal = getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST);
+        L2ItemInstance formal = getInventory().getPaperdollItem(EPaperdollSlot.PAPERDOLL_CHEST);
         boolean isWearingFormalWear = formal != null && formal.getItem().getBodyPart() == Item.SLOT_ALLDRESS;
 
         boolean isDisabled = false;
@@ -8279,10 +8287,10 @@ public final class L2PcInstance extends L2Playable {
     }
 
     public void checkItemRestriction() {
-        for (int i = 0; i < Inventory.PAPERDOLL_TOTALSLOTS; i++) {
-            L2ItemInstance equippedItem = getInventory().getPaperdollItem(i);
+        for (EPaperdollSlot paperdollSlot : EPaperdollSlot.values()) {
+            L2ItemInstance equippedItem = getInventory().getPaperdollItem(paperdollSlot);
             if (equippedItem != null && !equippedItem.getItem().checkCondition(this, this, false)) {
-                getInventory().unEquipItemInSlot(i);
+                getInventory().unEquipItemInSlot(paperdollSlot);
 
                 InventoryUpdate iu = new InventoryUpdate();
                 iu.addModifiedItem(equippedItem);

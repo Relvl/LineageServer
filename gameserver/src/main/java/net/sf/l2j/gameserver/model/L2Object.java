@@ -205,8 +205,8 @@ public abstract class L2Object {
         return _name;
     }
 
-    public void setName(String value) {
-        _name = value;
+    public void setName(String name) {
+        _name = name;
     }
 
     public final int getObjectId() {

@@ -152,6 +152,7 @@ public final class L2GamePacketHandler implements IPacketHandler<L2GameClient>, 
         PACKETS_IN_GAME.put(0x93, RequestPrivateStoreQuitBuy.class);
         PACKETS_IN_GAME.put(0x94, SetPrivateStoreMsgBuy.class);
         PACKETS_IN_GAME.put(0x96, RequestPrivateStoreSell.class);
+        // TODO 0x9D - RequestSkillCoolTime
         PACKETS_IN_GAME.put(0x9E, RequestPackageSendableItemList.class);
         PACKETS_IN_GAME.put(0x9F, RequestPackageSend.class);
         PACKETS_IN_GAME.put(0xA0, RequestBlock.class);

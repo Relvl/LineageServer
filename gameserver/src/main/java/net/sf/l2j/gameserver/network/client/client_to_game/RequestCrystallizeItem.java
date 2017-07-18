@@ -15,11 +15,12 @@
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.gameserver.model.L2Skill;
-import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.type.CrystalType;
 import net.sf.l2j.gameserver.model.itemcontainer.PcInventory;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
 import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
@@ -113,7 +114,7 @@ public final class RequestCrystallizeItem extends L2GameClientPacket {
 
         // unequip if needed
         if (itemToRemove.isEquipped()) {
-            L2ItemInstance[] unequipped = activeChar.getInventory().unEquipItemInSlotAndRecord(itemToRemove.getLocationSlot());
+            L2ItemInstance[] unequipped = activeChar.getInventory().unEquipItemInSlotAndRecord(EPaperdollSlot.getByIndex(itemToRemove.getLocationSlot()));
             InventoryUpdate iu = new InventoryUpdate();
             for (L2ItemInstance item : unequipped) { iu.addModifiedItem(item); }
 

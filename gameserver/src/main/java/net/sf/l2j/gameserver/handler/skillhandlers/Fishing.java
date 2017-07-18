@@ -22,13 +22,13 @@ import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.instancemanager.ZoneManager;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Skill;
-import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.item.type.WeaponType;
-import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.zone.L2ZoneType;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.model.zone.type.L2FishingZone;
@@ -66,14 +66,14 @@ public class Fishing implements ISkillHandler {
         }
 
         // Baits arent equipped
-        L2ItemInstance lure = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
+        L2ItemInstance lure = player.getInventory().getPaperdollItem(EPaperdollSlot.PAPERDOLL_LHAND);
         if (lure == null) {
             player.sendPacket(SystemMessageId.BAIT_ON_HOOK_BEFORE_FISHING);
             return;
         }
 
         player.setLure(lure);
-        L2ItemInstance lure2 = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
+        L2ItemInstance lure2 = player.getInventory().getPaperdollItem(EPaperdollSlot.PAPERDOLL_LHAND);
 
         // Not enough baits
         if (lure2 == null || lure2.getCount() < 1) {
@@ -99,7 +99,7 @@ public class Fishing implements ISkillHandler {
         }
 
 		/*
-		 * If fishing is enabled, decide where will the hook be cast...
+         * If fishing is enabled, decide where will the hook be cast...
 		 */
         int rnd = Rnd.get(150) + 50;
         double angle = Util.convertHeadingToDegree(player.getHeading());
@@ -109,7 +109,7 @@ public class Fishing implements ISkillHandler {
         int x = player.getX() + (int) (cos * rnd);
         int y = player.getY() + (int) (sin * rnd);
         int z = player.getZ() + 50;
-		/*
+        /*
 		 * ...and if the spot is in a fishing zone. If it is, it will position the hook on the water surface. If not, you have to be GM to proceed past here... in that case, the hook will be positioned using the old Z lookup method.
 		 */
         L2FishingZone aimingTo = null;
@@ -164,7 +164,7 @@ public class Fishing implements ISkillHandler {
         }
 
         // Has enough bait, consume 1 and update inventory. Start fishing follows.
-        lure2 = player.getInventory().destroyItem("Consume", player.getInventory().getPaperdollObjectId(Inventory.PAPERDOLL_LHAND), 1, player, null);
+        lure2 = player.getInventory().destroyItem("Consume", player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_LHAND), 1, player, null);
         InventoryUpdate iu = new InventoryUpdate();
         iu.addModifiedItem(lure2);
         player.sendPacket(iu);
