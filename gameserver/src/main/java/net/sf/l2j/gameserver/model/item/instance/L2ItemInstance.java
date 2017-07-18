@@ -14,6 +14,7 @@ import net.sf.l2j.gameserver.model.ShotType;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.EItemBodyPart;
+import net.sf.l2j.gameserver.model.item.EItemModifyState;
 import net.sf.l2j.gameserver.model.item.EItemType1;
 import net.sf.l2j.gameserver.model.item.EItemType2;
 import net.sf.l2j.gameserver.model.item.kind.Armor;
@@ -47,11 +48,6 @@ import java.util.logging.Logger;
  * This class manages items.
  */
 public final class L2ItemInstance extends L2Object {
-    public static final int UNCHANGED = 0;
-    public static final int ADDED = 1;
-    public static final int MODIFIED = 2;
-    public static final int REMOVED = 3;
-
     private static final Logger _logItems = Logger.getLogger("item");
 
     private final int _itemId;
@@ -76,7 +72,7 @@ public final class L2ItemInstance extends L2Object {
     private int _type1;
     private int _type2;
     private boolean _destroyProtected;
-    private int _lastChange = 2; // 1 added, 2 modified, 3 removed
+    private EItemModifyState itemModifyState = EItemModifyState.MODIFIED; // 1 added, 2 modified, 3 removed
     private boolean _existsInDb; // if a record exists in DB.
     private boolean _storedInDb; // if DB data is up-to-date.
     private ScheduledFuture<?> _itemLootShedule;
@@ -466,8 +462,8 @@ public final class L2ItemInstance extends L2Object {
     /**
      * @return the last change of the item.
      */
-    public int getLastChange() {
-        return _lastChange;
+    public EItemModifyState getModifyState() {
+        return itemModifyState;
     }
 
     /**
@@ -475,8 +471,8 @@ public final class L2ItemInstance extends L2Object {
      *
      * @param lastChange : int
      */
-    public void setLastChange(int lastChange) {
-        _lastChange = lastChange;
+    public void setModifyState(EItemModifyState lastChange) {
+        itemModifyState = lastChange;
     }
 
     /**

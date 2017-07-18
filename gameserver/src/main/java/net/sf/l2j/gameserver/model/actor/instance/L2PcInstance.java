@@ -4081,7 +4081,7 @@ public final class L2PcInstance extends L2Playable {
         if (arrows.getCount() > 1) {
             synchronized (arrows) {
                 arrows.changeCountWithoutTrace(-1, this, null);
-                arrows.setLastChange(L2ItemInstance.MODIFIED);
+                arrows.setModifyState(EItemModifyState.MODIFIED);
 
                 // could do also without saving, but let's save approx 1 of 10
                 if (Rnd.get(10) < 1) { arrows.updateDatabase(); }

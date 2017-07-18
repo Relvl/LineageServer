@@ -6,6 +6,7 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.EItemBodyPart;
+import net.sf.l2j.gameserver.model.item.EItemModifyState;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance.ItemLocation;
@@ -109,7 +110,7 @@ public abstract class Inventory extends ItemContainer {
             removeItem(item);
             item.setOwnerId(process, 0, actor, reference);
             item.setLocation(ItemLocation.VOID);
-            item.setLastChange(L2ItemInstance.REMOVED);
+            item.setModifyState(EItemModifyState.REMOVED);
 
             item.updateDatabase();
             refreshWeight();
@@ -138,7 +139,7 @@ public abstract class Inventory extends ItemContainer {
             // Directly drop entire item
             if (item.getCount() > count) {
                 item.changeCount(process, -count, actor, reference);
-                item.setLastChange(L2ItemInstance.MODIFIED);
+                item.setModifyState(EItemModifyState.MODIFIED);
                 item.updateDatabase();
 
                 item = ItemTable.getInstance().createItem(process, item.getItemId(), count, actor, reference);
@@ -260,7 +261,7 @@ public abstract class Inventory extends ItemContainer {
                 paperdoll.remove(slot);
                 // Put old item from paperdoll slot to base location
                 old.setLocation(getBaseLocation());
-                old.setLastChange(L2ItemInstance.MODIFIED);
+                old.setModifyState(EItemModifyState.MODIFIED);
 
                 // delete armor mask flag (in case of two-piece armor it does not matter, we need to deactivate mask too)
                 wornMask &= ~old.getItem().getItemMask();
@@ -277,7 +278,7 @@ public abstract class Inventory extends ItemContainer {
             if (item != null) {
                 paperdoll.put(slot, item);
                 item.setLocation(getEquipLocation(), slot.ordinal());
-                item.setLastChange(L2ItemInstance.MODIFIED);
+                item.setModifyState(EItemModifyState.MODIFIED);
 
                 // activate mask (check 2nd armor part for two-piece armors)
                 Item armor = item.getItem();

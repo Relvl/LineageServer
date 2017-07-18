@@ -1,5 +1,6 @@
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
+import net.sf.l2j.gameserver.model.item.EItemModifyState;
 import net.sf.l2j.gameserver.model.item.instance.ItemInfo;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
@@ -23,15 +24,15 @@ public class PetInventoryUpdate extends L2GameServerPacket {
     }
 
     public void addNewItem(L2ItemInstance item) {
-        if (item != null) { _items.add(new ItemInfo(item, 1)); }
+        if (item != null) { _items.add(new ItemInfo(item, EItemModifyState.ADDED)); }
     }
 
     public void addModifiedItem(L2ItemInstance item) {
-        if (item != null) { _items.add(new ItemInfo(item, 2)); }
+        if (item != null) { _items.add(new ItemInfo(item, EItemModifyState.MODIFIED)); }
     }
 
     public void addRemovedItem(L2ItemInstance item) {
-        if (item != null) { _items.add(new ItemInfo(item, 3)); }
+        if (item != null) { _items.add(new ItemInfo(item, EItemModifyState.REMOVED)); }
     }
 
     public void addItems(List<L2ItemInstance> items) {
@@ -47,7 +48,7 @@ public class PetInventoryUpdate extends L2GameServerPacket {
             if (temp == null || temp.getItem() == null) { continue; }
 
             Item item = temp.getItem();
-            writeH(temp.getChange());
+            writeH(temp.getModifyState());
             writeH(item.getType1());
             writeD(temp.getObjectId());
             writeD(item.getItemId());

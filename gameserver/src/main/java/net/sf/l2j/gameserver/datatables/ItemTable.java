@@ -21,6 +21,7 @@ import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EItemModifyState;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance.ItemLocation;
 import net.sf.l2j.gameserver.model.item.kind.Armor;
@@ -176,7 +177,7 @@ public class ItemTable {
             item.setCount(0);
             item.setOwnerId(0);
             item.setLocation(ItemLocation.VOID);
-            item.setLastChange(L2ItemInstance.REMOVED);
+            item.setModifyState(EItemModifyState.REMOVED);
 
             L2World.getInstance().removeObject(item);
             IdFactory.getInstance().releaseId(item.getObjectId());
