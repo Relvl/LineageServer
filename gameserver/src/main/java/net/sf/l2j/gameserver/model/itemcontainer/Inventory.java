@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.model.itemcontainer;
 
 import net.sf.l2j.L2DatabaseFactory;
@@ -19,6 +5,7 @@ import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance.ItemLocation;
 import net.sf.l2j.gameserver.model.item.kind.Item;
@@ -33,14 +20,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.logging.Level;
 
-/**
- * This class manages inventory
- *
- * @author Advi
- */
 public abstract class Inventory extends ItemContainer {
     public static final int PAPERDOLL_UNDER = 0;
     public static final int PAPERDOLL_LEAR = 1;
@@ -62,6 +45,8 @@ public abstract class Inventory extends ItemContainer {
     public static final int PAPERDOLL_TOTALSLOTS = 17;
 
     private final L2ItemInstance[] _paperdoll;
+    private final EnumMap<EPaperdollSlot, L2ItemInstance> paperdoll = new EnumMap<>(EPaperdollSlot.class);
+
     private final List<OnEquipListener> _paperdollListeners;
 
     // protected to be accessed from child classes only
