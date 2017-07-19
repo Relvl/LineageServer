@@ -16,10 +16,11 @@ package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.item.EItemBodyPart;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.EItemLocation;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.item.type.CrystalType;
-import net.sf.l2j.gameserver.model.item.type.WeaponType;
+import net.sf.l2j.gameserver.model.item.type.EWeaponType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -182,10 +183,10 @@ public abstract class AbstractEnchantPacket extends L2GameClientPacket {
      * @return true if item can be enchanted.
      */
     protected static final boolean isEnchantable(L2ItemInstance item) {
-        if (item.isHeroItem() || item.isShadowItem() || item.isEtcItem() || item.getItem().getItemType() == WeaponType.FISHINGROD) { return false; }
+        if (item.isHeroItem() || item.isShadowItem() || item.isEtcItem() || item.getItem().getItemType() == EWeaponType.FISHINGROD) { return false; }
 
         // only equipped items or in inventory can be enchanted
-        if (item.getLocation() != L2ItemInstance.ItemLocation.INVENTORY && item.getLocation() != L2ItemInstance.ItemLocation.PAPERDOLL) { return false; }
+        if (item.getLocation() != EItemLocation.INVENTORY && item.getLocation() != EItemLocation.PAPERDOLL) { return false; }
 
         return true;
     }

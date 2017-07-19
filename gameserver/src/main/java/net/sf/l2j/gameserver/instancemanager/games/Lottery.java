@@ -18,7 +18,7 @@ import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.util.Broadcast;

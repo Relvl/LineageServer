@@ -22,6 +22,8 @@ import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.handler.SkillHandler;
 import net.sf.l2j.gameserver.model.actor.L2Character;
+import net.sf.l2j.gameserver.model.skill.ESkillTargetType;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillLaunched;
 import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillUse;
 import net.sf.l2j.gameserver.skills.effects.EffectChanceSkillTrigger;
@@ -189,7 +191,7 @@ public class ChanceSkillList extends ConcurrentHashMap<IChanceSkillTrigger, Chan
 			L2Skill triggered = SkillTable.getInstance().getInfo(effect.getTriggeredChanceId(), effect.getTriggeredChanceLevel());
 			if (triggered == null)
 				return;
-			L2Character caster = triggered.getTargetType() == L2Skill.SkillTargetType.TARGET_SELF ? _owner : effect.getEffector();
+			L2Character caster = triggered.getTargetType() == ESkillTargetType.TARGET_SELF ? _owner : effect.getEffector();
 			
 			if (caster == null || triggered.getSkillType() == L2SkillType.NOTDONE || caster.isSkillDisabled(triggered))
 				return;

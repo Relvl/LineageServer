@@ -23,7 +23,7 @@ import net.sf.l2j.gameserver.instancemanager.FourSepulchersManager;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
 import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
 import net.sf.l2j.gameserver.network.client.game_to_client.MoveToPawn;

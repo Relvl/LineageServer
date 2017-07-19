@@ -28,7 +28,7 @@ import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2Clan.SubPledge;
 import net.sf.l2j.gameserver.model.L2ClanMember;
 import net.sf.l2j.gameserver.model.L2PledgeSkillLearn;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.base.ClassId;
 import net.sf.l2j.gameserver.model.base.PlayerClass;

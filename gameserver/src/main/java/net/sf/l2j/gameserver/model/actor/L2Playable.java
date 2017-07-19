@@ -18,7 +18,7 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.world.L2WorldRegion;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.knownlist.PlayableKnownList;

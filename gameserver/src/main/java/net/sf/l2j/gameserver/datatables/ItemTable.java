@@ -22,8 +22,8 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.EItemModifyState;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance.ItemLocation;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.EItemLocation;
 import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.EtcItem;
 import net.sf.l2j.gameserver.model.item.kind.Item;
@@ -176,7 +176,7 @@ public class ItemTable {
         synchronized (item) {
             item.setCount(0);
             item.setOwnerId(0);
-            item.setLocation(ItemLocation.VOID);
+            item.setLocation(EItemLocation.VOID);
             item.setModifyState(EItemModifyState.REMOVED);
 
             L2World.getInstance().removeObject(item);

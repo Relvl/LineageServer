@@ -17,7 +17,7 @@ package net.sf.l2j.log;
 import java.util.logging.Filter;
 import java.util.logging.LogRecord;
 
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 
 /**
  * @author Advi

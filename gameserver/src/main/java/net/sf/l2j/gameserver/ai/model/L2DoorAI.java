@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.ai.model;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2DoorInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2SiegeGuardInstance;

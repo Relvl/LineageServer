@@ -21,7 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.xmlfactory.XMLDocumentFactory;
 
 import org.w3c.dom.Document;

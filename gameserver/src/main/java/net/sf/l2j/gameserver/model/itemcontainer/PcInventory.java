@@ -18,8 +18,8 @@ import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance.ItemLocation;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.EItemLocation;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
 import net.sf.l2j.gameserver.model.itemcontainer.listeners.ArmorSetListener;
 import net.sf.l2j.gameserver.model.itemcontainer.listeners.BowRodListener;
@@ -61,13 +61,13 @@ public class PcInventory extends Inventory {
     }
 
     @Override
-    protected ItemLocation getBaseLocation() {
-        return ItemLocation.INVENTORY;
+    protected EItemLocation getBaseLocation() {
+        return EItemLocation.INVENTORY;
     }
 
     @Override
-    protected ItemLocation getEquipLocation() {
-        return ItemLocation.PAPERDOLL;
+    protected EItemLocation getEquipLocation() {
+        return EItemLocation.PAPERDOLL;
     }
 
     public L2ItemInstance getAdenaInstance() {

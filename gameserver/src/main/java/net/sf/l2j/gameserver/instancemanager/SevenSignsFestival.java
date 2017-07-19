@@ -32,7 +32,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2FestivalMonsterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.base.Experience;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.SystemMessageId;

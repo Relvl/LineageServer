@@ -1,86 +1,83 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
 import net.sf.l2j.gameserver.model.item.EItemModifyState;
-import net.sf.l2j.gameserver.model.item.instance.ItemInfo;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
-/**
- * @author Advi
- */
 public class InventoryUpdate extends L2GameServerPacket {
-    private List<ItemInfo> _items;
-
-    public InventoryUpdate() {
-        _items = new ArrayList<>();
-    }
-
-    public InventoryUpdate(List<ItemInfo> items) {
-        _items = items;
-    }
+    private final Map<L2ItemInstance, EItemModifyState> itemMap = new HashMap<>();
 
     public void addItem(L2ItemInstance item) {
-        if (item != null) { _items.add(new ItemInfo(item)); }
+        if (item != null) {
+            itemMap.put(item, item.getModifyState());
+        }
     }
 
     public void addNewItem(L2ItemInstance item) {
-        if (item != null) { _items.add(new ItemInfo(item, EItemModifyState.ADDED)); }
+        if (item != null) {
+            itemMap.put(item, EItemModifyState.ADDED);
+        }
     }
 
     public void addModifiedItem(L2ItemInstance item) {
-        if (item != null) { _items.add(new ItemInfo(item, EItemModifyState.MODIFIED)); }
+        if (item != null) {
+            itemMap.put(item, EItemModifyState.MODIFIED);
+        }
     }
 
     public void addRemovedItem(L2ItemInstance item) {
-        if (item != null) { _items.add(new ItemInfo(item, EItemModifyState.REMOVED)); }
+        if (item != null) {
+            itemMap.put(item, EItemModifyState.REMOVED);
+        }
     }
 
-    public void addItems(List<L2ItemInstance> items) {
-        if (items != null) { for (L2ItemInstance item : items) { if (item != null) { _items.add(new ItemInfo(item)); } } }
+    public void addItems(Iterable<L2ItemInstance> items) {
+        if (items != null) {
+            for (L2ItemInstance item : items) {
+                if (item != null) {
+                    itemMap.put(item, item.getModifyState());
+                }
+            }
+        }
     }
 
     @Override
     protected final void writeImpl() {
-        writeC(0x27);
-        writeH(_items.size());
+        writeC(getPacketId());
+        writeH(itemMap.size());
 
-        for (ItemInfo temp : _items) {
-            if (temp == null || temp.getItem() == null) { continue; }
+        for (Entry<L2ItemInstance, EItemModifyState> entry : itemMap.entrySet()) {
+            if (entry.getKey() == null || entry.getKey().getItem() == null) {continue;}
+            Item item = entry.getKey().getItem();
 
-            Item item = temp.getItem();
-
-            writeH(temp.getModifyState());
+            writeH(entry.getValue());
             writeH(item.getType1());
-            writeD(temp.getObjectId());
+            writeD(entry.getKey().getObjectId());
             writeD(item.getItemId());
-            writeD(temp.getCount());
+            writeD(entry.getKey().getCount());
             writeH(item.getType2());
-            writeH(temp.getCustomType1());
-            writeH(temp.getEquipped());
+            writeH(entry.getKey().getCustomType1());
+            writeH(entry.getKey().isEquipped());
             writeD(item.getBodyPart());
-            writeH(temp.getEnchant());
-            writeH(temp.getCustomType2());
-            writeD(temp.getAugmentationBoni());
-            writeD(temp.getMana());
+            writeH(entry.getKey().getEnchantLevel());
+            writeH(entry.getKey().getCustomType2());
+            if (isPlayerPacket()) {
+                writeD(entry.getKey().getAugmentation() == null ? 0 : entry.getKey().getAugmentation().getAugmentationId());
+                writeD(entry.getKey().getMana());
+            }
         }
-        _items.clear();
-        _items = null;
+    }
+
+    protected int getPacketId() { return 0x27; }
+
+    protected boolean isPlayerPacket() { return true; }
+
+    @Override
+    public String toString() {
+        return "InventoryUpdate{" + itemMap + '}';
     }
 }

@@ -22,8 +22,8 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.EItemModifyState;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance.ItemLocation;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.EItemLocation;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.world.L2World;
 
@@ -47,7 +47,7 @@ public abstract class ItemContainer {
 
     protected abstract L2Character getOwner();
 
-    protected abstract ItemLocation getBaseLocation();
+    protected abstract EItemLocation getBaseLocation();
 
     public String getName() {
         return "ItemContainer";

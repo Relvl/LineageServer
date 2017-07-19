@@ -23,7 +23,8 @@ import net.sf.l2j.gameserver.instancemanager.*;
 import net.sf.l2j.gameserver.model.*;
 import net.sf.l2j.gameserver.model.L2Party.MessageType;
 import net.sf.l2j.gameserver.model.L2PetData.L2PetLevelData;
-import net.sf.l2j.gameserver.model.L2Skill.SkillTargetType;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
+import net.sf.l2j.gameserver.model.skill.ESkillTargetType;
 import net.sf.l2j.gameserver.model.actor.*;
 import net.sf.l2j.gameserver.model.actor.appearance.PcAppearance;
 import net.sf.l2j.gameserver.model.actor.knownlist.PcKnownList;
@@ -39,14 +40,14 @@ import net.sf.l2j.gameserver.model.entity.Siege;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
 import net.sf.l2j.gameserver.model.holder.SkillUseHolder;
 import net.sf.l2j.gameserver.model.item.*;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.item.type.ActionType;
 import net.sf.l2j.gameserver.model.item.type.ArmorType;
+import net.sf.l2j.gameserver.model.item.type.EWeaponType;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
-import net.sf.l2j.gameserver.model.item.type.WeaponType;
 import net.sf.l2j.gameserver.model.itemcontainer.*;
 import net.sf.l2j.gameserver.model.itemcontainer.listeners.ItemPassiveSkillsListener;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
@@ -2207,7 +2208,7 @@ public final class L2PcInstance extends L2Playable {
                 CursedWeaponsManager.getInstance().activate(this, newitem);
             }
             // If you pickup arrows and a bow is equipped, try to equip them if no arrows is currently equipped.
-            else if (item.getItem().getItemType() == EtcItemType.ARROW && getAttackType() == WeaponType.BOW && inventory.getPaperdollItem(EPaperdollSlot.PAPERDOLL_LHAND) == null) {
+            else if (item.getItem().getItemType() == EtcItemType.ARROW && getAttackType() == EWeaponType.BOW && inventory.getPaperdollItem(EPaperdollSlot.PAPERDOLL_LHAND) == null) {
                 checkAndEquipArrows();
             }
         }
@@ -2268,7 +2269,7 @@ public final class L2PcInstance extends L2Playable {
                     CursedWeaponsManager.getInstance().activate(this, createdItem);
                 }
                 // If you pickup arrows and a bow is equipped, try to equip them if no arrows is currently equipped.
-                else if (item.getItemType() == EtcItemType.ARROW && getAttackType() == WeaponType.BOW && inventory.getPaperdollItem(EPaperdollSlot.PAPERDOLL_LHAND) == null) {
+                else if (item.getItemType() == EtcItemType.ARROW && getAttackType() == EWeaponType.BOW && inventory.getPaperdollItem(EPaperdollSlot.PAPERDOLL_LHAND) == null) {
                     checkAndEquipArrows();
                 }
 
@@ -3090,7 +3091,7 @@ public final class L2PcInstance extends L2Playable {
         }
         else {
             // if item is instance of L2ArmorType or WeaponType broadcast an "Attention" system message
-            if (target.getItemType() instanceof ArmorType || target.getItemType() instanceof WeaponType) {
+            if (target.getItemType() instanceof ArmorType || target.getItemType() instanceof EWeaponType) {
                 if (target.getEnchantLevel() > 0) {
                     SystemMessage msg = SystemMessage.getSystemMessage(SystemMessageId.ATTENTION_S1_PICKED_UP_S2_S3);
                     msg.addString(getName());
@@ -4402,11 +4403,11 @@ public final class L2PcInstance extends L2Playable {
      * @return the type of attack, depending of the worn weapon.
      */
     @Override
-    public WeaponType getAttackType() {
+    public EWeaponType getAttackType() {
         Weapon weapon = getActiveWeaponItem();
         if (weapon != null) { return weapon.getItemType(); }
 
-        return WeaponType.FIST;
+        return EWeaponType.FIST;
     }
 
     public long getUptime() {
@@ -5673,10 +5674,10 @@ public final class L2PcInstance extends L2Playable {
         // ************************************* Check Target *******************************************
         // Create and set a L2Object containing the target of the skill
         L2Object target = null;
-        SkillTargetType sklTargetType = skill.getTargetType();
+        ESkillTargetType sklTargetType = skill.getTargetType();
         Location worldPosition = _currentSkillWorldPosition;
 
-        if (sklTargetType == SkillTargetType.TARGET_GROUND && worldPosition == null) {
+        if (sklTargetType == ESkillTargetType.TARGET_GROUND && worldPosition == null) {
             _log.info("WorldPosition is null for skill: " + skill.getName() + ", player: " + getName() + ".");
             sendPacket(ActionFailed.STATIC_PACKET);
             return false;
@@ -5805,7 +5806,7 @@ public final class L2PcInstance extends L2Playable {
             // Check if the target is in the skill cast range
             if (dontMove) {
                 // Calculate the distance between the L2PcInstance and the target
-                if (sklTargetType == SkillTargetType.TARGET_GROUND) {
+                if (sklTargetType == ESkillTargetType.TARGET_GROUND) {
                     if (!isInsideRadius(worldPosition.getX(), worldPosition.getY(), worldPosition.getZ(), skill.getCastRange() + getTemplate().getCollisionRadius(), false, false)) {
                         // Send a System Message to the caster
                         sendPacket(SystemMessageId.TARGET_TOO_FAR);
@@ -5931,7 +5932,7 @@ public final class L2PcInstance extends L2Playable {
                 }
         }
 
-        if ((sklTargetType == SkillTargetType.TARGET_HOLY && !checkIfOkToCastSealOfRule(CastleManager.getInstance().getCastle(this), false, skill, target)) || (sklType == L2SkillType.SIEGEFLAG && !L2SkillSiegeFlag.checkIfOkToPlaceFlag(this, false)) || (sklType == L2SkillType.STRSIEGEASSAULT && !checkIfOkToUseStriderSiegeAssault(skill)) || (sklType == L2SkillType.SUMMON_FRIEND && !(checkSummonerStatus(this) && checkSummonTargetStatus(target, this)))) {
+        if ((sklTargetType == ESkillTargetType.TARGET_HOLY && !checkIfOkToCastSealOfRule(CastleManager.getInstance().getCastle(this), false, skill, target)) || (sklType == L2SkillType.SIEGEFLAG && !L2SkillSiegeFlag.checkIfOkToPlaceFlag(this, false)) || (sklType == L2SkillType.STRSIEGEASSAULT && !checkIfOkToUseStriderSiegeAssault(skill)) || (sklType == L2SkillType.SUMMON_FRIEND && !(checkSummonerStatus(this) && checkSummonTargetStatus(target, this)))) {
             sendPacket(ActionFailed.STATIC_PACKET);
             abortCast();
             return false;
@@ -5939,7 +5940,7 @@ public final class L2PcInstance extends L2Playable {
 
         // GeoData Los Check here
         if (skill.getCastRange() > 0) {
-            if (sklTargetType == SkillTargetType.TARGET_GROUND) {
+            if (sklTargetType == ESkillTargetType.TARGET_GROUND) {
                 if (!PathFinding.getInstance().canSeeTarget(this, worldPosition)) {
                     sendPacket(SystemMessageId.CANT_SEE_TARGET);
                     sendPacket(ActionFailed.STATIC_PACKET);
@@ -6048,10 +6049,10 @@ public final class L2PcInstance extends L2Playable {
             // Party
             if (isInParty() && targetPlayer.isInParty()) {
                 if (_party.getLeader() == targetPlayer._party.getLeader()) {
-                    return skill.getEffectRange() > 0 && isCtrlPressed && getTarget() == target && skill.isDamage();
+                    return skill.getEffectRange() > 0 && isCtrlPressed && getTarget() == target && skill.getSkillType().isDamage();
                 }
                 else if (_party.getCommandChannel() != null && _party.getCommandChannel().containsPlayer(targetPlayer)) {
-                    return skill.getEffectRange() > 0 && isCtrlPressed && getTarget() == target && skill.isDamage();
+                    return skill.getEffectRange() > 0 && isCtrlPressed && getTarget() == target && skill.getSkillType().isDamage();
                 }
             }
 
@@ -6065,18 +6066,18 @@ public final class L2PcInstance extends L2Playable {
 
             if (_clan != null && targetPlayer._clan != null) {
                 if (_clan.isAtWarWith(targetPlayer._clan.getClanId()) && targetPlayer._clan.isAtWarWith(_clan.getClanId())) {
-                    if (skill.getEffectRange() > 0 && isCtrlPressed && getTarget() == target && skill.isAOE()) {
+                    if (skill.getEffectRange() > 0 && isCtrlPressed && getTarget() == target && skill.getTargetType().isAoeSkill()) {
                         return true;
                     }
                     return isCtrlPressed;
                 }
                 else if (_clanId == targetPlayer._clanId || (getAllyId() > 0 && getAllyId() == targetPlayer.getAllyId())) {
-                    return skill.getEffectRange() > 0 && isCtrlPressed && getTarget() == target && skill.isDamage();
+                    return skill.getEffectRange() > 0 && isCtrlPressed && getTarget() == target && skill.getSkillType().isDamage();
                 }
             }
 
             if (targetPlayer._pvpFlag == 0 && targetPlayer._karma == 0) {
-                return skill.getEffectRange() > 0 && isCtrlPressed && getTarget() == target && skill.isDamage();
+                return skill.getEffectRange() > 0 && isCtrlPressed && getTarget() == target && skill.getSkillType().isDamage();
             }
 
             return targetPlayer._pvpFlag > 0 || targetPlayer._karma > 0;

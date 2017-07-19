@@ -3,7 +3,7 @@ package net.sf.l2j.gameserver.instancemanager;
 import net.sf.l2j.commons.serialize.Serializer;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Character;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.location.ChaoticLocation;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.world.L2WorldRegion;

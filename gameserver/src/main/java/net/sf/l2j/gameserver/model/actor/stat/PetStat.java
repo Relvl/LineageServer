@@ -15,10 +15,10 @@
 package net.sf.l2j.gameserver.model.actor.stat;
 
 import net.sf.l2j.gameserver.datatables.PetDataTable;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;

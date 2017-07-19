@@ -8,12 +8,12 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.EItemBodyPart;
 import net.sf.l2j.gameserver.model.item.EItemModifyState;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance.ItemLocation;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.EItemLocation;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.type.ArmorType;
+import net.sf.l2j.gameserver.model.item.type.EWeaponType;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
-import net.sf.l2j.gameserver.model.item.type.WeaponType;
 import net.sf.l2j.gameserver.model.itemcontainer.listeners.OnEquipListener;
 import net.sf.l2j.gameserver.model.itemcontainer.listeners.StatsListener;
 import net.sf.l2j.gameserver.model.world.L2World;
@@ -81,7 +81,7 @@ public abstract class Inventory extends ItemContainer {
         return null;
     }
 
-    protected abstract ItemLocation getEquipLocation();
+    protected abstract EItemLocation getEquipLocation();
 
     /**
      * Returns the instance of new ChangeRecorder
@@ -109,7 +109,7 @@ public abstract class Inventory extends ItemContainer {
 
             removeItem(item);
             item.setOwnerId(process, 0, actor, reference);
-            item.setLocation(ItemLocation.VOID);
+            item.setLocation(EItemLocation.VOID);
             item.setModifyState(EItemModifyState.REMOVED);
 
             item.updateDatabase();
@@ -560,7 +560,7 @@ public abstract class Inventory extends ItemContainer {
 
             case SLOT_L_HAND:
                 L2ItemInstance rh = getPaperdollItem(EPaperdollSlot.PAPERDOLL_RHAND);
-                if (rh != null && rh.getItem().getBodyPart() == EItemBodyPart.SLOT_LR_HAND && !((rh.getItemType() == WeaponType.BOW && item.getItemType() == EtcItemType.ARROW) || (rh.getItemType() == WeaponType.FISHINGROD && item.getItemType() == EtcItemType.LURE))) {
+                if (rh != null && rh.getItem().getBodyPart() == EItemBodyPart.SLOT_LR_HAND && !((rh.getItemType() == EWeaponType.BOW && item.getItemType() == EtcItemType.ARROW) || (rh.getItemType() == EWeaponType.FISHINGROD && item.getItemType() == EtcItemType.LURE))) {
                     setPaperdollItem(EPaperdollSlot.PAPERDOLL_RHAND, null);
                 }
 
@@ -699,7 +699,7 @@ public abstract class Inventory extends ItemContainer {
         // Verify first if item is a pet item.
         if (item.isPetItem()) {
             // Check then about type of item : armor or weapon. Feed the correct slot.
-            if (item.getItemType() == WeaponType.PET) {
+            if (item.getItemType() == EWeaponType.PET) {
                 setPaperdollItem(EPaperdollSlot.PAPERDOLL_RHAND, item);
             }
             else if (item.getItemType() == ArmorType.PET) {
@@ -786,7 +786,7 @@ public abstract class Inventory extends ItemContainer {
                 if (item == null) { continue; }
 
                 if (getOwner() instanceof L2PcInstance) {
-                    if (!((L2PcInstance) getOwner()).isHero() && item.isHeroItem()) { item.setLocation(ItemLocation.INVENTORY); }
+                    if (!((L2PcInstance) getOwner()).isHero() && item.isHeroItem()) { item.setLocation(EItemLocation.INVENTORY); }
                 }
 
                 L2World.getInstance().addObject(item);

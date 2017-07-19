@@ -16,7 +16,8 @@ package net.sf.l2j.gameserver.skills.l2skills;
 
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.ESkillTargetType;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.ShotType;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
@@ -51,7 +52,7 @@ public class L2SkillDrain extends L2Skill {
             if (!(obj instanceof L2Character)) { continue; }
 
             final L2Character target = ((L2Character) obj);
-            if (target.isAlikeDead() && getTargetType() != SkillTargetType.TARGET_CORPSE_MOB) { continue; }
+            if (target.isAlikeDead() && getTargetType() != ESkillTargetType.TARGET_CORPSE_MOB) { continue; }
 
             if (activeChar != target && target.isInvul()) {
                 continue; // No effect on invulnerable chars unless they cast it themselves.
@@ -87,13 +88,13 @@ public class L2SkillDrain extends L2Skill {
                 }
 
                 // That section is launched for drain skills made on ALIVE targets.
-                if (!target.isDead() || getTargetType() != SkillTargetType.TARGET_CORPSE_MOB) {
+                if (!target.isDead() || getTargetType() != ESkillTargetType.TARGET_CORPSE_MOB) {
                     // Manage cast break of the target (calculating rate, sending message...)
                     Formulas.calcCastBreak(target, damage);
 
                     activeChar.sendDamageMessage(target, damage, mcrit, false, false);
 
-                    if (hasEffects() && getTargetType() != SkillTargetType.TARGET_CORPSE_MOB) {
+                    if (hasEffects() && getTargetType() != ESkillTargetType.TARGET_CORPSE_MOB) {
                         // ignoring vengance-like reflections
                         if ((Formulas.calcSkillReflect(target, this) & Formulas.SKILL_REFLECT_SUCCEED) > 0) {
                             activeChar.stopSkillEffects(getId());
@@ -127,7 +128,7 @@ public class L2SkillDrain extends L2Skill {
             if (!(obj instanceof L2Character)) { continue; }
 
             final L2Character target = ((L2Character) obj);
-            if (target.isAlikeDead() && getTargetType() != SkillTargetType.TARGET_CORPSE_MOB) { continue; }
+            if (target.isAlikeDead() && getTargetType() != ESkillTargetType.TARGET_CORPSE_MOB) { continue; }
 
             final boolean mcrit = Formulas.calcMCrit(activeCubic.getMCriticalHit(target, this));
             final byte shld = Formulas.calcShldUse(activeCubic.getOwner(), target, this);
@@ -148,7 +149,7 @@ public class L2SkillDrain extends L2Skill {
                 }
 
                 // That section is launched for drain skills made on ALIVE targets.
-                if (!target.isDead() || getTargetType() != SkillTargetType.TARGET_CORPSE_MOB) {
+                if (!target.isDead() || getTargetType() != ESkillTargetType.TARGET_CORPSE_MOB) {
                     target.reduceCurrentHp(damage, activeCubic.getOwner(), this);
 
                     // Manage cast break of the target (calculating rate, sending message...)

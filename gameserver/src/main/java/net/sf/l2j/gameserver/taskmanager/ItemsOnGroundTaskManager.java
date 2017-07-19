@@ -31,7 +31,7 @@ import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.world.L2WorldRegion;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 
 /**
  * Destroys item on ground after specified time. When server is about to shutdown/restart, saves all dropped items in to SQL. Loads them during server start.

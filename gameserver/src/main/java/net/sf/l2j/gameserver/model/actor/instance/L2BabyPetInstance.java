@@ -19,12 +19,12 @@ import java.util.concurrent.Future;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
-import net.sf.l2j.gameserver.model.L2Skill;
-import net.sf.l2j.gameserver.model.L2Skill.SkillTargetType;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
+import net.sf.l2j.gameserver.model.skill.ESkillTargetType;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
@@ -58,7 +58,7 @@ public final class L2BabyPetInstance extends L2PetInstance
 		int skillLevel;
 		for (L2Skill skill : getTemplate().getHealSkills())
 		{
-			if (skill.getTargetType() != SkillTargetType.TARGET_OWNER_PET || skill.getSkillType() != L2SkillType.HEAL)
+			if (skill.getTargetType() != ESkillTargetType.TARGET_OWNER_PET || skill.getSkillType() != L2SkillType.HEAL)
 				continue;
 			
 			// The skill level is calculated on the fly. Template got an skill level of 1.

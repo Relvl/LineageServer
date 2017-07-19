@@ -19,9 +19,9 @@ import net.sf.l2j.gameserver.model.ShotType;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
-import net.sf.l2j.gameserver.model.item.type.WeaponType;
+import net.sf.l2j.gameserver.model.item.type.EWeaponType;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillUse;
 import net.sf.l2j.gameserver.util.Broadcast;
@@ -41,7 +41,7 @@ public class FishShots implements IItemHandler
 		final L2ItemInstance weaponInst = activeChar.getActiveWeaponInstance();
 		final Weapon weaponItem = activeChar.getActiveWeaponItem();
 		
-		if (weaponInst == null || weaponItem.getItemType() != WeaponType.FISHINGROD)
+		if (weaponInst == null || weaponItem.getItemType() != EWeaponType.FISHINGROD)
 			return;
 		
 		// Fishshot is already active

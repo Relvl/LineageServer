@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.ClassId;
-import net.sf.l2j.gameserver.model.item.type.WeaponType;
+import net.sf.l2j.gameserver.model.item.type.EWeaponType;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -305,8 +305,8 @@ public class Q415_PathToAMonk extends Quest
 		if (st == null)
 			return null;
 		
-		final WeaponType weapon = player.getActiveWeaponItem().getItemType();
-		if (!weapon.equals(WeaponType.DUALFIST) && !weapon.equals(WeaponType.FIST))
+		final EWeaponType weapon = player.getActiveWeaponItem().getItemType();
+		if (!weapon.equals(EWeaponType.DUALFIST) && !weapon.equals(EWeaponType.FIST))
 		{
 			st.playSound(QuestState.SOUND_GIVEUP);
 			st.exitQuest(true);

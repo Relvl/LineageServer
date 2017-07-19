@@ -2,12 +2,12 @@ package net.sf.l2j.gameserver.model.itemcontainer.listeners;
 
 import net.sf.l2j.gameserver.datatables.ArmorSetsTable;
 import net.sf.l2j.gameserver.datatables.SkillTable;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.ArmorSet;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 
 public class ArmorSetListener implements OnEquipListener {
     private static final ArmorSetListener instance = new ArmorSetListener();

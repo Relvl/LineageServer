@@ -18,7 +18,7 @@ import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.*;
 import net.sf.l2j.gameserver.model.entity.CursedWeapon;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.xmlfactory.XMLDocumentFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;

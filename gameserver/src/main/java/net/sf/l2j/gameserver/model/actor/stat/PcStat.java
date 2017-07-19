@@ -384,7 +384,7 @@ public class PcStat extends PlayableStat
 	@Override
 	public int getPhysicalAttackRange()
 	{
-		return (int) calcStat(Stats.POWER_ATTACK_RANGE, getActiveChar().getAttackType().getRange(), null, null);
+		return (int) calcStat(Stats.POWER_ATTACK_RANGE, getActiveChar().getAttackType().getAttackRange(), null, null);
 	}
 	
 	@Override

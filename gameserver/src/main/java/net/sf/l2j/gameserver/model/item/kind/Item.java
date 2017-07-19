@@ -9,7 +9,7 @@ import net.sf.l2j.gameserver.model.holder.IntIntHolder;
 import net.sf.l2j.gameserver.model.item.EItemBodyPart;
 import net.sf.l2j.gameserver.model.item.EItemType1;
 import net.sf.l2j.gameserver.model.item.EItemType2;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.type.*;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
@@ -124,7 +124,7 @@ public abstract class Item {
     /**
      * @return Enum the itemType.
      */
-    public abstract ItemType getItemType();
+    public abstract EMaskedItemType getItemType();
 
     /**
      * @return int the duration of the item
@@ -423,7 +423,7 @@ public abstract class Item {
     }
 
     public boolean isPetItem() {
-        return getItemType() == ArmorType.PET || getItemType() == WeaponType.PET;
+        return getItemType() == ArmorType.PET || getItemType() == EWeaponType.PET;
     }
 
     public boolean isPotion() {

@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 import net.sf.l2j.gameserver.datatables.HerbDropTable;
 import net.sf.l2j.gameserver.model.L2MinionData;
 import net.sf.l2j.gameserver.model.L2NpcAIData;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.instance.L2XmassTreeInstance;
 import net.sf.l2j.gameserver.model.base.ClassId;
 import net.sf.l2j.gameserver.model.item.DropCategory;

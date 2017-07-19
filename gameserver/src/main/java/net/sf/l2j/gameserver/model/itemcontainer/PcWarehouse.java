@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.model.itemcontainer;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance.ItemLocation;
+import net.sf.l2j.gameserver.model.item.EItemLocation;
 
 public class PcWarehouse extends Warehouse
 {
@@ -39,9 +39,9 @@ public class PcWarehouse extends Warehouse
 	}
 	
 	@Override
-	public ItemLocation getBaseLocation()
+	public EItemLocation getBaseLocation()
 	{
-		return ItemLocation.WAREHOUSE;
+		return EItemLocation.WAREHOUSE;
 	}
 	
 	public String getLocationId()

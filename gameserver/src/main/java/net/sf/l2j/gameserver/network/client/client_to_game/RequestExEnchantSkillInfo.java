@@ -19,7 +19,7 @@ import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.datatables.SkillTreeTable;
 import net.sf.l2j.gameserver.model.L2EnchantSkillData;
 import net.sf.l2j.gameserver.model.L2EnchantSkillLearn;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.client.game_to_client.ExEnchantSkillInfo;

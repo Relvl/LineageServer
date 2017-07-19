@@ -1,4 +1,4 @@
-package net.sf.l2j.gameserver.model.item.instance;
+package net.sf.l2j.gameserver.model.item;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
@@ -13,16 +13,12 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.ShotType;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.EItemBodyPart;
-import net.sf.l2j.gameserver.model.item.EItemModifyState;
-import net.sf.l2j.gameserver.model.item.EItemType1;
-import net.sf.l2j.gameserver.model.item.EItemType2;
 import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.EtcItem;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
-import net.sf.l2j.gameserver.model.item.type.ItemType;
+import net.sf.l2j.gameserver.model.item.type.EMaskedItemType;
 import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.world.L2WorldRegion;
@@ -50,8 +46,8 @@ import java.util.logging.Logger;
 public final class L2ItemInstance extends L2Object {
     private static final Logger _logItems = Logger.getLogger("item");
 
-    private final int _itemId;
-    private final Item _item;
+    private final int itemId;
+    private final Item item;
     private final ReentrantLock _dbLock = new ReentrantLock();
     private final DropProtection _dropProtection = new DropProtection();
     private int _ownerId;
@@ -61,7 +57,7 @@ public final class L2ItemInstance extends L2Object {
     private long _time;
     private boolean _decrease;
     /** Location of the item : Inventory, PaperDoll, WareHouse */
-    private ItemLocation _loc;
+    private EItemLocation _loc;
     /** TODO! Это и слот на хранении, и слот на кукле. Дурость, надо переделать на раздельное. */
     private int paperdollSlot;
     private int _enchantLevel;
@@ -78,25 +74,19 @@ public final class L2ItemInstance extends L2Object {
     private ScheduledFuture<?> _itemLootShedule;
     private int _shotsMask;
 
-    /**
-     * Constructor of the L2ItemInstance from the objectId and the itemId.
-     *
-     * @param objectId : int designating the ID of the object in the world
-     * @param itemId   : int designating the ID of the item
-     */
     public L2ItemInstance(int objectId, int itemId) {
         super(objectId);
-        _itemId = itemId;
-        _item = ItemTable.getInstance().getTemplate(itemId);
+        this.itemId = itemId;
+        item = ItemTable.getInstance().getTemplate(itemId);
 
-        if (_itemId == 0 || _item == null) { throw new IllegalArgumentException(); }
+        if (this.itemId == 0 || item == null) { throw new IllegalArgumentException(); }
 
-        setName(_item.getName());
+        setName(item.getName());
         setCount(1);
-        _loc = ItemLocation.VOID;
+        _loc = EItemLocation.VOID;
         _type1 = 0;
         _type2 = 0;
-        _mana = _item.getDuration() * 60;
+        _mana = item.getDuration() * 60;
     }
 
     /**
@@ -107,14 +97,14 @@ public final class L2ItemInstance extends L2Object {
      */
     public L2ItemInstance(int objectId, Item item) {
         super(objectId);
-        _itemId = item.getItemId();
-        _item = item;
+        itemId = item.getItemId();
+        this.item = item;
 
-        setName(_item.getName());
+        setName(this.item.getName());
         setCount(1);
 
-        _loc = ItemLocation.VOID;
-        _mana = _item.getDuration() * 60;
+        _loc = EItemLocation.VOID;
+        _mana = this.item.getDuration() * 60;
     }
 
     /**
@@ -133,12 +123,12 @@ public final class L2ItemInstance extends L2Object {
         int manaLeft;
         int count;
         long time;
-        ItemLocation loc;
+        EItemLocation loc;
         try {
             objectId = rs.getInt(1);
             item_id = rs.getInt("item_id");
             count = rs.getInt("count");
-            loc = ItemLocation.valueOf(rs.getString("loc"));
+            loc = EItemLocation.valueOf(rs.getString("loc"));
             paperdollSlot = rs.getInt("loc_data");
             enchant_level = rs.getInt("enchant_level");
             custom_type1 = rs.getInt("custom_type1");
@@ -223,19 +213,19 @@ public final class L2ItemInstance extends L2Object {
         _storedInDb = false;
     }
 
-    public void setLocation(ItemLocation loc, int paperdollSlot) {
+    public void setLocation(EItemLocation loc, int paperdollSlot) {
         if (loc == _loc && paperdollSlot == this.paperdollSlot) { return; }
         _loc = loc;
         this.paperdollSlot = paperdollSlot;
         _storedInDb = false;
     }
 
-    public ItemLocation getLocation() {
+    public EItemLocation getLocation() {
         return _loc;
     }
 
     @Deprecated
-    public void setLocation(ItemLocation loc) {
+    public void setLocation(EItemLocation loc) {
         setLocation(loc, 0);
     }
 
@@ -307,7 +297,7 @@ public final class L2ItemInstance extends L2Object {
      * @return boolean
      */
     public boolean isEquipable() {
-        return !(_item.getBodyPart() == EItemBodyPart.SLOT_NONE || _item.getItemType() == EtcItemType.ARROW || _item.getItemType() == EtcItemType.LURE);
+        return !(item.getBodyPart() == EItemBodyPart.SLOT_NONE || item.getItemType() == EtcItemType.ARROW || item.getItemType() == EtcItemType.LURE);
     }
 
     /**
@@ -316,7 +306,7 @@ public final class L2ItemInstance extends L2Object {
      * @return boolean
      */
     public boolean isEquipped() {
-        return _loc == ItemLocation.PAPERDOLL || _loc == ItemLocation.PET_EQUIP;
+        return _loc == EItemLocation.PAPERDOLL || _loc == EItemLocation.PET_EQUIP;
     }
 
     /**
@@ -325,7 +315,7 @@ public final class L2ItemInstance extends L2Object {
      * @return int
      */
     public int getLocationSlot() {
-        assert _loc == ItemLocation.PAPERDOLL || _loc == ItemLocation.PET_EQUIP || _loc == ItemLocation.FREIGHT;
+        assert _loc == EItemLocation.PAPERDOLL || _loc == EItemLocation.PET_EQUIP || _loc == EItemLocation.FREIGHT;
         return paperdollSlot;
     }
 
@@ -335,7 +325,7 @@ public final class L2ItemInstance extends L2Object {
      * @return L2Item
      */
     public Item getItem() {
-        return _item;
+        return item;
     }
 
     public int getCustomType1() {
@@ -355,7 +345,7 @@ public final class L2ItemInstance extends L2Object {
     }
 
     public boolean isOlyRestrictedItem() {
-        return _item.isOlyRestrictedItem();
+        return item.isOlyRestrictedItem();
     }
 
     /**
@@ -363,8 +353,8 @@ public final class L2ItemInstance extends L2Object {
      *
      * @return Enum
      */
-    public ItemType getItemType() {
-        return _item.getItemType();
+    public EMaskedItemType getItemType() {
+        return item.getItemType();
     }
 
     /**
@@ -373,7 +363,7 @@ public final class L2ItemInstance extends L2Object {
      * @return int
      */
     public int getItemId() {
-        return _itemId;
+        return itemId;
     }
 
     /**
@@ -382,7 +372,7 @@ public final class L2ItemInstance extends L2Object {
      * @return boolean
      */
     public boolean isEtcItem() {
-        return _item instanceof EtcItem;
+        return item instanceof EtcItem;
     }
 
     /**
@@ -391,7 +381,7 @@ public final class L2ItemInstance extends L2Object {
      * @return boolean
      */
     public boolean isWeapon() {
-        return _item instanceof Weapon;
+        return item instanceof Weapon;
     }
 
     /**
@@ -400,7 +390,7 @@ public final class L2ItemInstance extends L2Object {
      * @return boolean
      */
     public boolean isArmor() {
-        return _item instanceof Armor;
+        return item instanceof Armor;
     }
 
     /**
@@ -409,7 +399,7 @@ public final class L2ItemInstance extends L2Object {
      * @return EtcItem
      */
     public EtcItem getEtcItem() {
-        if (_item instanceof EtcItem) { return (EtcItem) _item; }
+        if (item instanceof EtcItem) { return (EtcItem) item; }
 
         return null;
     }
@@ -420,7 +410,7 @@ public final class L2ItemInstance extends L2Object {
      * @return Weapon
      */
     public Weapon getWeaponItem() {
-        if (_item instanceof Weapon) { return (Weapon) _item; }
+        if (item instanceof Weapon) { return (Weapon) item; }
 
         return null;
     }
@@ -431,7 +421,7 @@ public final class L2ItemInstance extends L2Object {
      * @return Armor
      */
     public Armor getArmorItem() {
-        if (_item instanceof Armor) { return (Armor) _item; }
+        if (item instanceof Armor) { return (Armor) item; }
 
         return null;
     }
@@ -442,21 +432,21 @@ public final class L2ItemInstance extends L2Object {
      * @return int
      */
     public final int getCrystalCount() {
-        return _item.getCrystalCount(_enchantLevel);
+        return item.getCrystalCount(_enchantLevel);
     }
 
     /**
      * @return the reference price of the item.
      */
     public int getReferencePrice() {
-        return _item.getReferencePrice();
+        return item.getReferencePrice();
     }
 
     /**
      * @return the name of the item.
      */
     public String getItemName() {
-        return _item.getName();
+        return item.getName();
     }
 
     /**
@@ -479,35 +469,35 @@ public final class L2ItemInstance extends L2Object {
      * @return if item is stackable.
      */
     public boolean isStackable() {
-        return _item.isStackable();
+        return item.isStackable();
     }
 
     /**
      * @return if item is dropable.
      */
     public boolean isDropable() {
-        return isAugmented() ? false : _item.isDropable();
+        return isAugmented() ? false : item.isDropable();
     }
 
     /**
      * @return if item is destroyable.
      */
     public boolean isDestroyable() {
-        return isQuestItem() ? false : _item.isDestroyable();
+        return isQuestItem() ? false : item.isDestroyable();
     }
 
     /**
      * @return if item is tradable
      */
     public boolean isTradable() {
-        return isAugmented() ? false : _item.isTradable();
+        return isAugmented() ? false : item.isTradable();
     }
 
     /**
      * @return if item is sellable.
      */
     public boolean isSellable() {
-        return isAugmented() ? false : _item.isSellable();
+        return isAugmented() ? false : item.isSellable();
     }
 
     /**
@@ -516,7 +506,7 @@ public final class L2ItemInstance extends L2Object {
      */
     public boolean isDepositable(boolean isPrivateWareHouse) {
         // equipped, hero and quest items
-        if (isEquipped() || !_item.isDepositable()) { return false; }
+        if (isEquipped() || !item.isDepositable()) { return false; }
 
         if (!isPrivateWareHouse) {
             // augmented not tradable
@@ -529,7 +519,7 @@ public final class L2ItemInstance extends L2Object {
      * @return if item is consumable.
      */
     public boolean isConsumable() {
-        return _item.isConsumable();
+        return item.isConsumable();
     }
 
     /**
@@ -540,24 +530,24 @@ public final class L2ItemInstance extends L2Object {
      */
     public boolean isAvailable(L2PcInstance player, boolean allowAdena, boolean allowNonTradable) {
         return !isEquipped() // Not equipped
-                && (_item.getType2() != EItemType2.TYPE2_QUEST) // Not Quest Item
-                && (_item.getType2() != EItemType2.TYPE2_MONEY || _item.getType1() != EItemType1.SHIELD_ARMOR) // not money, not shield
+                && (item.getType2() != EItemType2.TYPE2_QUEST) // Not Quest Item
+                && (item.getType2() != EItemType2.TYPE2_MONEY || item.getType1() != EItemType1.SHIELD_ARMOR) // not money, not shield
                 && (player.getPet() == null || getObjectId() != player.getPet().getControlItemId()) // Not Control item of currently summoned pet
                 && (player.getActiveEnchantItem() != this) // Not momentarily used enchant scroll
-                && (allowAdena || _itemId != 57) // Not adena
-                && (player.getCurrentSkill().getSkill() == null || player.getCurrentSkill().getSkill().getItemConsumeId() != _itemId) && (!player.isCastingSimultaneouslyNow() || player.getLastSimultaneousSkillCast() == null || player.getLastSimultaneousSkillCast().getItemConsumeId() != _itemId) && (allowNonTradable || isTradable());
+                && (allowAdena || itemId != 57) // Not adena
+                && (player.getCurrentSkill().getSkill() == null || player.getCurrentSkill().getSkill().getItemConsumeId() != itemId) && (!player.isCastingSimultaneouslyNow() || player.getLastSimultaneousSkillCast() == null || player.getLastSimultaneousSkillCast().getItemConsumeId() != itemId) && (allowNonTradable || isTradable());
     }
 
     @Override
     public void onAction(L2PcInstance player) {
         // Mercenaries tickets case.
-        if (_item.getItemType() == EtcItemType.CASTLE_GUARD) {
+        if (item.getItemType() == EtcItemType.CASTLE_GUARD) {
             if (player.isInParty()) {
                 player.sendPacket(ActionFailed.STATIC_PACKET);
                 return;
             }
 
-            int castleId = MercTicketManager.getTicketCastleId(_itemId);
+            int castleId = MercTicketManager.getTicketCastleId(itemId);
             if (castleId > 0 && !player.isCastleLord(castleId)) {
                 player.sendPacket(SystemMessageId.THIS_IS_NOT_A_MERCENARY_OF_A_CASTLE_THAT_YOU_OWN_AND_SO_CANNOT_CANCEL_POSITIONING);
                 player.sendPacket(ActionFailed.STATIC_PACKET);
@@ -579,7 +569,7 @@ public final class L2ItemInstance extends L2Object {
             NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
             html.setFile("data/html/admin/iteminfo.htm");
             html.replace("%objid%", getObjectId());
-            html.replace("%itemid%", _itemId);
+            html.replace("%itemid%", itemId);
             html.replace("%ownerid%", _ownerId);
             html.replace("%loc%", _loc.toString());
             html.replace("%class%", getClass().getSimpleName());
@@ -611,7 +601,7 @@ public final class L2ItemInstance extends L2Object {
      * @return whether this item is augmented or not ; true if augmented.
      */
     public boolean isAugmented() {
-        return _augmentation == null ? false : true;
+        return _augmentation != null;
     }
 
     /**
@@ -745,7 +735,7 @@ public final class L2ItemInstance extends L2Object {
      * @return Func[]
      */
     public List<Func> getStatFuncs(L2Character player) {
-        return _item.getStatFuncs(this, player);
+        return item.getStatFuncs(this, player);
     }
 
     /**
@@ -767,11 +757,11 @@ public final class L2ItemInstance extends L2Object {
 
         try {
             if (_existsInDb) {
-                if (_ownerId == 0 || _loc == ItemLocation.VOID || (_count == 0 && _loc != ItemLocation.LEASE)) { removeFromDb(); }
+                if (_ownerId == 0 || _loc == EItemLocation.VOID || (_count == 0 && _loc != EItemLocation.LEASE)) { removeFromDb(); }
                 else { updateInDb(); }
             }
             else {
-                if (_ownerId == 0 || _loc == ItemLocation.VOID || (_count == 0 && _loc != ItemLocation.LEASE)) { return; }
+                if (_ownerId == 0 || _loc == EItemLocation.VOID || (_count == 0 && _loc != EItemLocation.LEASE)) { return; }
 
                 insertIntoDb();
             }
@@ -819,7 +809,7 @@ public final class L2ItemInstance extends L2Object {
         }
 
         // if this item is a mercenary ticket, remove the spawns!
-        int itemId = _itemId;
+        int itemId = this.itemId;
 
         if (MercTicketManager.getTicketCastleId(itemId) > 0) { MercTicketManager.getInstance().removeTicket(this); }
 
@@ -874,7 +864,7 @@ public final class L2ItemInstance extends L2Object {
         try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("INSERT INTO items (owner_id,item_id,count,loc,loc_data,enchant_level,object_id,custom_type1,custom_type2,mana_left,time) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
             statement.setInt(1, _ownerId);
-            statement.setInt(2, _itemId);
+            statement.setInt(2, itemId);
             statement.setInt(3, _count);
             statement.setString(4, _loc.name());
             statement.setInt(5, paperdollSlot);
@@ -926,7 +916,7 @@ public final class L2ItemInstance extends L2Object {
      */
     @Override
     public String toString() {
-        return "" + _item;
+        return "" + item;
     }
 
     public void resetOwnerTimer() {
@@ -952,7 +942,7 @@ public final class L2ItemInstance extends L2Object {
     }
 
     public boolean isNightLure() {
-        return (_itemId >= 8505 && _itemId <= 8513) || _itemId == 8485;
+        return (itemId >= 8505 && itemId <= 8513) || itemId == 8485;
     }
 
     public boolean getCountDecrease() {
@@ -989,27 +979,27 @@ public final class L2ItemInstance extends L2Object {
     }
 
     public boolean isPetItem() {
-        return _item.isPetItem();
+        return item.isPetItem();
     }
 
     public boolean isPotion() {
-        return _item.isPotion();
+        return item.isPotion();
     }
 
     public boolean isElixir() {
-        return _item.isElixir();
+        return item.isElixir();
     }
 
     public boolean isHerb() {
-        return _item.getItemType() == EtcItemType.HERB;
+        return item.getItemType() == EtcItemType.HERB;
     }
 
     public boolean isHeroItem() {
-        return _item.isHeroItem();
+        return item.isHeroItem();
     }
 
     public boolean isQuestItem() {
-        return _item.isQuestItem();
+        return item.isQuestItem();
     }
 
     @Override
@@ -1034,7 +1024,7 @@ public final class L2ItemInstance extends L2Object {
     }
 
     public List<Quest> getQuestEvents() {
-        return _item.getQuestEvents();
+        return item.getQuestEvents();
     }
 
     @Override
@@ -1050,19 +1040,6 @@ public final class L2ItemInstance extends L2Object {
 
     public void unChargeAllShots() {
         _shotsMask = 0;
-    }
-
-    /** Enumeration of locations for item */
-    public enum ItemLocation {
-        VOID,
-        INVENTORY,
-        PAPERDOLL,
-        WAREHOUSE,
-        CLANWH,
-        PET,
-        PET_EQUIP,
-        LEASE,
-        FREIGHT
     }
 
     public class ItemDropTask implements Runnable {

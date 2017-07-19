@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.model.item.type;
 
-public enum ArmorType implements ItemType
+public enum ArmorType implements EMaskedItemType
 {
 	NONE,
 	LIGHT,
@@ -27,7 +27,7 @@ public enum ArmorType implements ItemType
 	
 	private ArmorType()
 	{
-		_mask = 1 << (ordinal() + WeaponType.values().length);
+		_mask = 1 << (ordinal() + EWeaponType.values().length);
 	}
 	
 	/**

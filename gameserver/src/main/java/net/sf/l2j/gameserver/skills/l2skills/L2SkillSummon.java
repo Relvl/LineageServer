@@ -17,7 +17,6 @@ package net.sf.l2j.gameserver.skills.l2skills;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2CubicInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -25,6 +24,8 @@ import net.sf.l2j.gameserver.model.actor.instance.L2SiegeSummonInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2SummonInstance;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.base.Experience;
+import net.sf.l2j.gameserver.model.skill.ESkillTargetType;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.templates.StatsSet;
 
@@ -81,7 +82,7 @@ public class L2SkillSummon extends L2Skill {
             L2PcInstance player = (L2PcInstance) activeChar;
 
             if (isCubic()) {
-                if (getTargetType() != SkillTargetType.TARGET_SELF) {
+                if (getTargetType() != ESkillTargetType.TARGET_SELF) {
                     return true; // Player is always able to cast mass cubic skill
                 }
 
@@ -185,7 +186,7 @@ public class L2SkillSummon extends L2Skill {
         L2SummonInstance summon;
         NpcTemplate summonTemplate = NpcTable.getInstance().getTemplate(_npcId);
         if (summonTemplate == null) {
-            _log.warning("Summon attempt for nonexisting NPC ID: " + _npcId + ", skill ID: " + getId());
+            LOGGER.warn("Summon attempt for nonexisting NPC ID: {}, skill ID: {}", _npcId, getId());
             return;
         }
 
@@ -198,7 +199,7 @@ public class L2SkillSummon extends L2Skill {
 
         if (summon.getLevel() >= Experience.LEVEL.length) {
             summon.getStat().setExp(Experience.LEVEL[Experience.LEVEL.length - 1]);
-            _log.warning("Summon (" + summon.getName() + ") NpcID: " + summon.getNpcId() + " has a level above 75. Please rectify.");
+            LOGGER.warn("Summon ({}) NpcID: {} has a level above 75. Please rectify.", summon.getName(), summon.getNpcId());
         }
         else { summon.getStat().setExp(Experience.LEVEL[(summon.getLevel() % Experience.LEVEL.length)]); }
 

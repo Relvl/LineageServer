@@ -21,7 +21,7 @@ import net.sf.l2j.gameserver.cache.HtmCache;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.DropData;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.PcInventory;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;

@@ -14,10 +14,10 @@
  */
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.type.CrystalType;
 import net.sf.l2j.gameserver.model.itemcontainer.PcInventory;
 import net.sf.l2j.gameserver.model.world.L2World;

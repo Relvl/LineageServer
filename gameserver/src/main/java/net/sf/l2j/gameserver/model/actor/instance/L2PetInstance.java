@@ -30,7 +30,7 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.L2PetData;
 import net.sf.l2j.gameserver.model.L2PetData.L2PetLevelData;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance.TimeStamp;
@@ -38,12 +38,12 @@ import net.sf.l2j.gameserver.model.actor.stat.PetStat;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.item.EItemBodyPart;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.item.type.ArmorType;
+import net.sf.l2j.gameserver.model.item.type.EWeaponType;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
-import net.sf.l2j.gameserver.model.item.type.WeaponType;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.model.itemcontainer.PetInventory;
 import net.sf.l2j.gameserver.model.world.L2World;
@@ -423,8 +423,8 @@ public class L2PetInstance extends L2Summon {
             broadcastStatusUpdate();
         }
         else {
-            // if item is instance of L2ArmorType or WeaponType broadcast an "Attention" system message
-            if (target.getItemType() instanceof ArmorType || target.getItemType() instanceof WeaponType) {
+            // if item is instance of L2ArmorType or EWeaponType broadcast an "Attention" system message
+            if (target.getItemType() instanceof ArmorType || target.getItemType() instanceof EWeaponType) {
                 SystemMessage msg;
                 if (target.getEnchantLevel() > 0) {
                     msg = SystemMessage.getSystemMessage(SystemMessageId.ATTENTION_S1_PET_PICKED_UP_S2_S3);

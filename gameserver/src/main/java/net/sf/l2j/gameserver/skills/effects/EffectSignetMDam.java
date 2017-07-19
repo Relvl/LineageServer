@@ -25,7 +25,7 @@ import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.L2Effect;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.ESkillTargetType;
 import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.ShotType;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
@@ -74,7 +74,7 @@ public class EffectSignetMDam extends L2Effect
 		int y = getEffector().getY();
 		int z = getEffector().getZ();
 		
-		if (getEffector() instanceof L2PcInstance && getSkill().getTargetType() == L2Skill.SkillTargetType.TARGET_GROUND)
+		if (getEffector() instanceof L2PcInstance && getSkill().getTargetType() == ESkillTargetType.TARGET_GROUND)
 		{
 			Location wordPosition = ((L2PcInstance) getEffector()).getCurrentSkillWorldPosition();
 			

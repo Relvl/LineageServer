@@ -19,7 +19,7 @@ import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.NextAction;
 import net.sf.l2j.gameserver.datatables.SkillTable;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;

@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.model.item.type;
 
-public enum EtcItemType implements ItemType
+public enum EtcItemType implements EMaskedItemType
 {
 	NONE,
 	ARROW,

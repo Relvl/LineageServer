@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 
 import net.sf.l2j.gameserver.model.L2MinionData;
 import net.sf.l2j.gameserver.model.L2NpcAIData;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.base.ClassId;
 import net.sf.l2j.gameserver.model.item.DropData;

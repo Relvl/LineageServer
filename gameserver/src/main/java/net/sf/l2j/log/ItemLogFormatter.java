@@ -19,7 +19,7 @@ import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 
 import net.sf.l2j.commons.lang.StringUtil;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 
 /**
  * @author Advi

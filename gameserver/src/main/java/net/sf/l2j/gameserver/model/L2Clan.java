@@ -30,6 +30,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance.TimeStamp;
 import net.sf.l2j.gameserver.model.entity.Siege;
 import net.sf.l2j.gameserver.model.itemcontainer.ClanWarehouse;
 import net.sf.l2j.gameserver.model.itemcontainer.ItemContainer;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;

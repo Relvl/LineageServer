@@ -21,8 +21,8 @@ import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.instancemanager.DimensionalRiftManager;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.L2Skill;
-import net.sf.l2j.gameserver.model.L2Skill.SkillTargetType;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
+import net.sf.l2j.gameserver.model.skill.ESkillTargetType;
 import net.sf.l2j.gameserver.model.actor.*;
 import net.sf.l2j.gameserver.model.actor.instance.*;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate.AIType;
@@ -142,7 +142,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
         // Check if the actor is a L2GuardInstance
         if (me instanceof L2GuardInstance) {
             // Check if the L2PcInstance target has karma (=PK)
-            if (target instanceof L2PcInstance && ((L2PcInstance) target).getKarma() > 0) { return PathFinding.getInstance().canSeeTarget(me, target); }
+            if (target.isPlayer() && ((L2PcInstance) target).getKarma() > 0) { return PathFinding.getInstance().canSeeTarget(me, target); }
 
             // Check if the L2MonsterInstance target is aggressive
             if (target instanceof L2MonsterInstance && Config.GUARD_ATTACK_AGGRO_MOB) { return (((L2MonsterInstance) target).isAggressive() && PathFinding.getInstance().canSeeTarget(me, target)); }
@@ -155,7 +155,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
             if (target instanceof L2Npc) { return false; }
 
             // Check if the L2PcInstance target has karma (=PK)
-            if (target instanceof L2PcInstance && ((L2PcInstance) target).getKarma() > 0) {
+            if (target.isPlayer() && ((L2PcInstance) target).getKarma() > 0) {
                 return PathFinding.getInstance().canSeeTarget(me, target); // Los Check
             }
 
@@ -300,7 +300,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
             // Get all visible objects inside its Aggro Range
             for (L2Character target : npc.getKnownList().getKnownType(L2Character.class)) {
                 // Check to see if this is a festival mob spawn. If it is, then check to see if the aggro trigger is a festival participant...if so, move to attack it.
-                if (npc instanceof L2FestivalMonsterInstance && target instanceof L2PcInstance) {
+                if (npc instanceof L2FestivalMonsterInstance && target.isPlayer()) {
                     if (!((L2PcInstance) target).isFestivalParticipant()) { continue; }
                 }
 
@@ -548,12 +548,12 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
                     L2Character leader = npc.getLeader();
                     if (leader != null && !leader.isDead() && (leader.getCurrentHp() / leader.getMaxHp() < 0.75)) {
                         for (L2Skill sk : defaultList) {
-                            if (sk.getTargetType() == SkillTargetType.TARGET_SELF) { continue; }
+                            if (sk.getTargetType() == ESkillTargetType.TARGET_SELF) { continue; }
 
                             if (!checkSkillCastConditions(sk)) { continue; }
 
                             final int overallRange = sk.getCastRange() + actorCollision + leader.getTemplate().getCollisionRadius();
-                            if (!Util.checkIfInRange(overallRange, npc, leader, false) && sk.getTargetType() != SkillTargetType.TARGET_PARTY && !npc.isMovementDisabled()) {
+                            if (!Util.checkIfInRange(overallRange, npc, leader, false) && sk.getTargetType() != ESkillTargetType.TARGET_PARTY && !npc.isMovementDisabled()) {
                                 moveToPawn(leader, overallRange);
                                 return;
                             }
@@ -583,7 +583,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
                 for (L2Skill sk : defaultList) {
                     if (!checkSkillCastConditions(sk)) { continue; }
 
-                    if (sk.getTargetType() == SkillTargetType.TARGET_ONE) {
+                    if (sk.getTargetType() == ESkillTargetType.TARGET_ONE) {
                         for (L2Attackable obj : npc.getKnownList().getKnownTypeInRadius(L2Attackable.class, sk.getCastRange() + actorCollision)) {
                             if (obj.isDead()) { continue; }
 
@@ -599,7 +599,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
                             }
                         }
 
-                        if (sk.getTargetType() == SkillTargetType.TARGET_PARTY) {
+                        if (sk.getTargetType() == ESkillTargetType.TARGET_PARTY) {
                             clientStopMoving(null);
                             npc.doCast(sk);
                             return;
@@ -735,9 +735,9 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
 
                 // ----------------------------------------
                 // If actor already have buff, start looking at others same faction mob to cast
-                if (sk.getTargetType() == SkillTargetType.TARGET_SELF) { return false; }
+                if (sk.getTargetType() == ESkillTargetType.TARGET_SELF) { return false; }
 
-                if (sk.getTargetType() == SkillTargetType.TARGET_ONE) {
+                if (sk.getTargetType() == ESkillTargetType.TARGET_ONE) {
                     L2Character target = targetReconsider(sk.getCastRange(), true);
                     if (target != null) {
                         clientStopMoving(null);
@@ -766,11 +766,11 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
             case HEAL_STATIC:
             case BALANCE_LIFE: {
                 // Minion case.
-                if (caster.isMinion() && sk.getTargetType() != SkillTargetType.TARGET_SELF) {
+                if (caster.isMinion() && sk.getTargetType() != ESkillTargetType.TARGET_SELF) {
                     L2Character leader = caster.getLeader();
                     if (leader != null && !leader.isDead() && Rnd.get(100) > (leader.getCurrentHp() / leader.getMaxHp() * 100)) {
                         final int overallRange = sk.getCastRange() + caster.getTemplate().getCollisionRadius() + leader.getTemplate().getCollisionRadius();
-                        if (!Util.checkIfInRange(overallRange, caster, leader, false) && sk.getTargetType() != SkillTargetType.TARGET_PARTY && !caster.isMovementDisabled()) { moveToPawn(leader, overallRange); }
+                        if (!Util.checkIfInRange(overallRange, caster, leader, false) && sk.getTargetType() != ESkillTargetType.TARGET_PARTY && !caster.isMovementDisabled()) { moveToPawn(leader, overallRange); }
 
                         if (PathFinding.getInstance().canSeeTarget(caster, leader)) {
                             clientStopMoving(null);
@@ -790,7 +790,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
                     return true;
                 }
 
-                if (sk.getTargetType() == SkillTargetType.TARGET_ONE) {
+                if (sk.getTargetType() == ESkillTargetType.TARGET_ONE) {
                     for (L2Attackable obj : caster.getKnownList().getKnownTypeInRadius(L2Attackable.class, sk.getCastRange() + caster.getTemplate().getCollisionRadius())) {
                         if (obj.isDead()) { continue; }
 
@@ -808,7 +808,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
                     }
                 }
 
-                if (sk.getTargetType() == SkillTargetType.TARGET_PARTY) {
+                if (sk.getTargetType() == ESkillTargetType.TARGET_PARTY) {
                     for (L2Attackable obj : caster.getKnownList().getKnownTypeInRadius(L2Attackable.class, sk.getSkillRadius() + caster.getTemplate().getCollisionRadius())) {
                         if (!Util.contains(caster.getClans(), obj.getClans())) { continue; }
 
@@ -836,19 +836,19 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
                     }
                 }
                 else if (canAOE(sk)) {
-                    if (sk.getTargetType() == SkillTargetType.TARGET_AURA || sk.getTargetType() == SkillTargetType.TARGET_BEHIND_AURA || sk.getTargetType() == SkillTargetType.TARGET_FRONT_AURA) {
+                    if (sk.getTargetType() == ESkillTargetType.TARGET_AURA || sk.getTargetType() == ESkillTargetType.TARGET_BEHIND_AURA || sk.getTargetType() == ESkillTargetType.TARGET_FRONT_AURA) {
                         clientStopMoving(null);
                         caster.doCast(sk);
                         return true;
                     }
 
-                    if ((sk.getTargetType() == SkillTargetType.TARGET_AREA || sk.getTargetType() == SkillTargetType.TARGET_BEHIND_AREA || sk.getTargetType() == SkillTargetType.TARGET_FRONT_AREA) && PathFinding.getInstance().canSeeTarget(caster, attackTarget) && !attackTarget.isDead() && distance <= range) {
+                    if ((sk.getTargetType() == ESkillTargetType.TARGET_AREA || sk.getTargetType() == ESkillTargetType.TARGET_BEHIND_AREA || sk.getTargetType() == ESkillTargetType.TARGET_FRONT_AREA) && PathFinding.getInstance().canSeeTarget(caster, attackTarget) && !attackTarget.isDead() && distance <= range) {
                         clientStopMoving(null);
                         caster.doCast(sk);
                         return true;
                     }
                 }
-                else if (sk.getTargetType() == SkillTargetType.TARGET_ONE) {
+                else if (sk.getTargetType() == ESkillTargetType.TARGET_ONE) {
                     L2Character target = targetReconsider(sk.getCastRange(), true);
                     if (target != null) {
                         clientStopMoving(null);
@@ -860,7 +860,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
             }
 
             case SLEEP: {
-                if (sk.getTargetType() == SkillTargetType.TARGET_ONE) {
+                if (sk.getTargetType() == ESkillTargetType.TARGET_ONE) {
                     if (!attackTarget.isDead() && distance <= range) {
                         if (distance > range || attackTarget.isMoving()) {
                             if (attackTarget.getFirstEffect(sk) == null) {
@@ -879,13 +879,13 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
                     }
                 }
                 else if (canAOE(sk)) {
-                    if (sk.getTargetType() == SkillTargetType.TARGET_AURA || sk.getTargetType() == SkillTargetType.TARGET_BEHIND_AURA || sk.getTargetType() == SkillTargetType.TARGET_FRONT_AURA) {
+                    if (sk.getTargetType() == ESkillTargetType.TARGET_AURA || sk.getTargetType() == ESkillTargetType.TARGET_BEHIND_AURA || sk.getTargetType() == ESkillTargetType.TARGET_FRONT_AURA) {
                         clientStopMoving(null);
                         caster.doCast(sk);
                         return true;
                     }
 
-                    if ((sk.getTargetType() == SkillTargetType.TARGET_AREA || sk.getTargetType() == SkillTargetType.TARGET_BEHIND_AREA || sk.getTargetType() == SkillTargetType.TARGET_FRONT_AREA) && PathFinding.getInstance().canSeeTarget(caster, attackTarget) && !attackTarget.isDead() && distance <= range) {
+                    if ((sk.getTargetType() == ESkillTargetType.TARGET_AREA || sk.getTargetType() == ESkillTargetType.TARGET_BEHIND_AREA || sk.getTargetType() == ESkillTargetType.TARGET_FRONT_AREA) && PathFinding.getInstance().canSeeTarget(caster, attackTarget) && !attackTarget.isDead() && distance <= range) {
                         clientStopMoving(null);
                         caster.doCast(sk);
                         return true;
@@ -905,18 +905,18 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
                     }
                 }
                 else if (canAOE(sk)) {
-                    if (sk.getTargetType() == SkillTargetType.TARGET_AURA || sk.getTargetType() == SkillTargetType.TARGET_BEHIND_AURA || sk.getTargetType() == SkillTargetType.TARGET_FRONT_AURA) {
+                    if (sk.getTargetType() == ESkillTargetType.TARGET_AURA || sk.getTargetType() == ESkillTargetType.TARGET_BEHIND_AURA || sk.getTargetType() == ESkillTargetType.TARGET_FRONT_AURA) {
                         clientStopMoving(null);
                         caster.doCast(sk);
                         return true;
                     }
-                    else if ((sk.getTargetType() == SkillTargetType.TARGET_AREA || sk.getTargetType() == SkillTargetType.TARGET_BEHIND_AREA || sk.getTargetType() == SkillTargetType.TARGET_FRONT_AREA) && PathFinding.getInstance().canSeeTarget(caster, attackTarget) && !attackTarget.isDead() && distance <= range) {
+                    else if ((sk.getTargetType() == ESkillTargetType.TARGET_AREA || sk.getTargetType() == ESkillTargetType.TARGET_BEHIND_AREA || sk.getTargetType() == ESkillTargetType.TARGET_FRONT_AREA) && PathFinding.getInstance().canSeeTarget(caster, attackTarget) && !attackTarget.isDead() && distance <= range) {
                         clientStopMoving(null);
                         caster.doCast(sk);
                         return true;
                     }
                 }
-                else if (sk.getTargetType() == SkillTargetType.TARGET_ONE) {
+                else if (sk.getTargetType() == ESkillTargetType.TARGET_ONE) {
                     L2Character target = targetReconsider(sk.getCastRange(), true);
                     if (target != null) {
                         clientStopMoving(null);
@@ -937,19 +937,19 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
                     }
                 }
                 else if (canAOE(sk)) {
-                    if (sk.getTargetType() == SkillTargetType.TARGET_AURA || sk.getTargetType() == SkillTargetType.TARGET_BEHIND_AURA || sk.getTargetType() == SkillTargetType.TARGET_FRONT_AURA) {
+                    if (sk.getTargetType() == ESkillTargetType.TARGET_AURA || sk.getTargetType() == ESkillTargetType.TARGET_BEHIND_AURA || sk.getTargetType() == ESkillTargetType.TARGET_FRONT_AURA) {
                         clientStopMoving(null);
                         caster.doCast(sk);
                         return true;
                     }
 
-                    if ((sk.getTargetType() == SkillTargetType.TARGET_AREA || sk.getTargetType() == SkillTargetType.TARGET_BEHIND_AREA || sk.getTargetType() == SkillTargetType.TARGET_FRONT_AREA) && PathFinding.getInstance().canSeeTarget(caster, attackTarget) && !attackTarget.isDead() && distance <= range) {
+                    if ((sk.getTargetType() == ESkillTargetType.TARGET_AREA || sk.getTargetType() == ESkillTargetType.TARGET_BEHIND_AREA || sk.getTargetType() == ESkillTargetType.TARGET_FRONT_AREA) && PathFinding.getInstance().canSeeTarget(caster, attackTarget) && !attackTarget.isDead() && distance <= range) {
                         clientStopMoving(null);
                         caster.doCast(sk);
                         return true;
                     }
                 }
-                else if (sk.getTargetType() == SkillTargetType.TARGET_ONE) {
+                else if (sk.getTargetType() == ESkillTargetType.TARGET_ONE) {
                     L2Character target = targetReconsider(sk.getCastRange(), true);
                     if (target != null) {
                         clientStopMoving(null);
@@ -965,7 +965,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
                 // decrease cancel probability
                 if (Rnd.get(50) != 0) { return true; }
 
-                if (sk.getTargetType() == SkillTargetType.TARGET_ONE) {
+                if (sk.getTargetType() == ESkillTargetType.TARGET_ONE) {
                     if (attackTarget.getFirstEffect(L2EffectType.BUFF) != null && PathFinding.getInstance().canSeeTarget(caster, attackTarget) && !attackTarget.isDead() && distance <= range) {
                         clientStopMoving(null);
                         caster.doCast(sk);
@@ -983,12 +983,12 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
                     }
                 }
                 else if (canAOE(sk)) {
-                    if ((sk.getTargetType() == SkillTargetType.TARGET_AURA || sk.getTargetType() == SkillTargetType.TARGET_BEHIND_AURA || sk.getTargetType() == SkillTargetType.TARGET_FRONT_AURA) && PathFinding.getInstance().canSeeTarget(caster, attackTarget)) {
+                    if ((sk.getTargetType() == ESkillTargetType.TARGET_AURA || sk.getTargetType() == ESkillTargetType.TARGET_BEHIND_AURA || sk.getTargetType() == ESkillTargetType.TARGET_FRONT_AURA) && PathFinding.getInstance().canSeeTarget(caster, attackTarget)) {
                         clientStopMoving(null);
                         caster.doCast(sk);
                         return true;
                     }
-                    else if ((sk.getTargetType() == SkillTargetType.TARGET_AREA || sk.getTargetType() == SkillTargetType.TARGET_BEHIND_AREA || sk.getTargetType() == SkillTargetType.TARGET_FRONT_AREA) && PathFinding.getInstance().canSeeTarget(caster, attackTarget) && !attackTarget.isDead() && distance <= range) {
+                    else if ((sk.getTargetType() == ESkillTargetType.TARGET_AREA || sk.getTargetType() == ESkillTargetType.TARGET_BEHIND_AREA || sk.getTargetType() == ESkillTargetType.TARGET_FRONT_AREA) && PathFinding.getInstance().canSeeTarget(caster, attackTarget) && !attackTarget.isDead() && distance <= range) {
                         clientStopMoving(null);
                         caster.doCast(sk);
                         return true;

@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.model.itemcontainer;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance.ItemLocation;
+import net.sf.l2j.gameserver.model.item.EItemLocation;
 
 public final class ClanWarehouse extends Warehouse
 {
@@ -47,9 +47,9 @@ public final class ClanWarehouse extends Warehouse
 	}
 	
 	@Override
-	public ItemLocation getBaseLocation()
+	public EItemLocation getBaseLocation()
 	{
-		return ItemLocation.CLANWH;
+		return EItemLocation.CLANWH;
 	}
 	
 	public static String getLocationId()

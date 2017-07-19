@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.skills.conditions;
 
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.skills.Env;
 
 /**

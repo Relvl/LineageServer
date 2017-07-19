@@ -18,7 +18,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.EItemLocation;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.item.type.CrystalType;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -142,7 +143,7 @@ public abstract class AbstractRefinePacket extends L2GameClientPacket
 		if (gemStones.getOwnerId() != player.getObjectId())
 			return false;
 		// .. and located in inventory
-		if (gemStones.getLocation() != L2ItemInstance.ItemLocation.INVENTORY)
+		if (gemStones.getLocation() != EItemLocation.INVENTORY)
 			return false;
 		
 		final CrystalType grade = item.getItem().getCrystalType();
@@ -174,7 +175,7 @@ public abstract class AbstractRefinePacket extends L2GameClientPacket
 			return false;
 		
 		// Lifestone must be located in inventory
-		if (refinerItem.getLocation() != L2ItemInstance.ItemLocation.INVENTORY)
+		if (refinerItem.getLocation() != EItemLocation.INVENTORY)
 			return false;
 		
 		final LifeStone ls = _lifeStones.get(refinerItem.getItemId());

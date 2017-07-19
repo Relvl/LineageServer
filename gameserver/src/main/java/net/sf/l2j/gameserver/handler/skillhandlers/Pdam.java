@@ -19,12 +19,12 @@ import java.util.List;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.ShotType;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
-import net.sf.l2j.gameserver.model.item.type.WeaponType;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.type.EWeaponType;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.skills.Env;
@@ -63,7 +63,7 @@ public class Pdam implements ISkillHandler
 				continue;
 			
 			// Calculate skill evasion. As Dodge blocks only melee skills, make an exception with bow weapons.
-			if (weapon != null && weapon.getItemType() != WeaponType.BOW && Formulas.calcPhysicalSkillEvasion(target, skill))
+			if (weapon != null && weapon.getItemType() != EWeaponType.BOW && Formulas.calcPhysicalSkillEvasion(target, skill))
 			{
 				if (activeChar instanceof L2PcInstance)
 					((L2PcInstance) activeChar).sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_DODGES_ATTACK).addCharName(target));

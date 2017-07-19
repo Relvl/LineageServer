@@ -12,7 +12,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2SummonInstance;
 import net.sf.l2j.gameserver.model.entity.DimensionalRift;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.partymatching.PartyMatchRoom;
 import net.sf.l2j.gameserver.model.partymatching.PartyMatchRoomList;
 import net.sf.l2j.gameserver.network.SystemMessageId;

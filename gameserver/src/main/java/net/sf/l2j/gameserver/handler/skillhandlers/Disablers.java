@@ -20,7 +20,8 @@ import net.sf.l2j.gameserver.ai.model.L2AttackableAI;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.ESkillTargetType;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.ShotType;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Character;
@@ -222,7 +223,7 @@ public class Disablers implements ISkillHandler
 					{
 						if (Formulas.calcSkillSuccess(activeChar, target, skill, shld, bsps))
 						{
-							if (skill.getTargetType() == L2Skill.SkillTargetType.TARGET_UNDEAD)
+							if (skill.getTargetType() == ESkillTargetType.TARGET_UNDEAD)
 							{
 								if (target.isUndead())
 									((L2Attackable) target).reduceHate(null, ((L2Attackable) target).getHating(((L2Attackable) target).getMostHated()));

@@ -1,22 +1,22 @@
 package net.sf.l2j.gameserver.templates.skills;
 
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.skills.l2skills.*;
 import net.sf.l2j.gameserver.templates.StatsSet;
 
 public enum L2SkillType {
     // Damage
-    PDAM,
-    FATAL,
-    MDAM,
-    CPDAMPERCENT,
+    PDAM(true),
+    FATAL(true),
+    MDAM(true),
+    CPDAMPERCENT(true),
     MANADAM,
     DOT,
     MDOT,
     DRAIN_SOUL,
-    DRAIN(L2SkillDrain.class),
+    DRAIN(L2SkillDrain.class, true),
     DEATHLINK,
-    BLOW,
+    BLOW(true),
     SIGNET(L2SkillSignet.class),
     SIGNET_CASTTIME(L2SkillSignetCasttime.class),
     SEED(L2SkillSeed.class),
@@ -134,13 +134,30 @@ public enum L2SkillType {
     NOTDONE;
 
     private final Class<? extends L2Skill> skillClass;
+    private final boolean isDamage;
 
     L2SkillType() {
         skillClass = L2SkillDefault.class;
+        isDamage = false;
+    }
+
+    L2SkillType(boolean isDamage) {
+        skillClass = L2SkillDefault.class;
+        this.isDamage = isDamage;
     }
 
     L2SkillType(Class<? extends L2Skill> classType) {
         skillClass = classType;
+        isDamage = false;
+    }
+
+    L2SkillType(Class<? extends L2Skill> classType, boolean damade) {
+        skillClass = classType;
+        isDamage = damade;
+    }
+
+    public boolean isDamage() {
+        return isDamage;
     }
 
     public L2Skill makeSkill(StatsSet set) {

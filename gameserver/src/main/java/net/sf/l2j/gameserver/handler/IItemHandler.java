@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.handler;
 import java.util.logging.Logger;
 
 import net.sf.l2j.gameserver.model.actor.L2Playable;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 
 /**
  * Mother class of all itemHandlers.

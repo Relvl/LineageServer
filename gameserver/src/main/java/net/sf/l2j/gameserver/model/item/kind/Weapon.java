@@ -1,31 +1,17 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.model.item.kind;
 
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.handler.SkillHandler;
 import net.sf.l2j.gameserver.model.L2Effect;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
 import net.sf.l2j.gameserver.model.item.EItemType1;
 import net.sf.l2j.gameserver.model.item.EItemType2;
-import net.sf.l2j.gameserver.model.item.type.WeaponType;
+import net.sf.l2j.gameserver.model.item.type.EWeaponType;
 import net.sf.l2j.gameserver.scripting.EventType;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.skills.Env;
@@ -39,11 +25,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * This class is dedicated to the management of weapons.
- */
 public final class Weapon extends Item {
-    private final WeaponType _type;
+    private final EWeaponType weaponType;
+
     private final int _rndDam;
     private final int _soulShotCount;
     private final int _spiritShotCount;
@@ -52,41 +36,20 @@ public final class Weapon extends Item {
     private final int _mpConsumeReduceValue;
     private final boolean _isMagical;
 
-    private IntIntHolder _enchant4Skill = null; // skill that activates when item is enchanted +4 (for duals)
+    private IntIntHolder _enchant4Skill; // skill that activates when item is enchanted +4 (for duals)
 
-    // Attached skills for Special Abilities
     private IntIntHolder _skillsOnCast;
-    private Condition _skillsOnCastCondition = null;
+    private Condition _skillsOnCastCondition;
     private IntIntHolder _skillsOnCrit;
-    private Condition _skillsOnCritCondition = null;
+    private Condition _skillsOnCritCondition;
 
-    private final int _reuseDelay;
+    private final int reuseDelay;
+    private final int reducedSoulshot;
+    private final int reducedSoulshotChance;
 
-    private final int _reducedSoulshot;
-    private final int _reducedSoulshotChance;
-
-    /**
-     * Constructor for Weapon.<BR>
-     * <BR>
-     * <U><I>Variables filled :</I></U>
-     * <UL>
-     * <LI>_soulShotCount & _spiritShotCount</LI>
-     * <LI>_pDam & _mDam & _rndDam</LI>
-     * <LI>_critical</LI>
-     * <LI>_hitModifier</LI>
-     * <LI>_avoidModifier</LI>
-     * <LI>_shieldDes & _shieldDefRate</LI>
-     * <LI>_atkSpeed & _AtkReuse</LI>
-     * <LI>_mpConsume</LI>
-     * <LI>_isMagical</LI>
-     * </UL>
-     *
-     * @param set : StatsSet designating the set of couples (key,value) caracterizing the armor
-     * @see Item constructor
-     */
     public Weapon(StatsSet set) {
         super(set);
-        _type = WeaponType.valueOf(set.getString("weapon_type", "none").toUpperCase());
+        weaponType = EWeaponType.valueOf(set.getString("weapon_type", "none").toUpperCase());
         itemType1 = EItemType1.WEAPON_RING_EARRING_NECKLACE;
         _type2 = EItemType2.TYPE2_WEAPON;
         _soulShotCount = set.getInteger("soulshots", 0);
@@ -96,18 +59,18 @@ public final class Weapon extends Item {
         String[] reduce = set.getString("mp_consume_reduce", "0,0").split(",");
         _mpConsumeReduceRate = Integer.parseInt(reduce[0]);
         _mpConsumeReduceValue = Integer.parseInt(reduce[1]);
-        _reuseDelay = set.getInteger("reuse_delay", 0);
+        reuseDelay = set.getInteger("reuse_delay", 0);
         _isMagical = set.getBool("is_magical", false);
 
-        String[] reduced_soulshots = set.getString("reduced_soulshot", "").split(",");
-        _reducedSoulshotChance = (reduced_soulshots.length == 2) ? Integer.parseInt(reduced_soulshots[0]) : 0;
-        _reducedSoulshot = (reduced_soulshots.length == 2) ? Integer.parseInt(reduced_soulshots[1]) : 0;
+        String[] soulshots = set.getString("reduced_soulshot", "").split(",");
+        reducedSoulshotChance = (soulshots.length == 2) ? Integer.parseInt(soulshots[0]) : 0;
+        reducedSoulshot = (soulshots.length == 2) ? Integer.parseInt(soulshots[1]) : 0;
 
         String skill = set.getString("enchant4_skill", null);
         if (skill != null) {
             String[] info = skill.split("-");
 
-            if (info != null && info.length == 2) {
+            if (info.length == 2) {
                 int id = 0;
                 int level = 0;
                 try {
@@ -126,7 +89,7 @@ public final class Weapon extends Item {
         if (skill != null) {
             String[] info = skill.split("-");
             String infochance = set.getString("oncast_chance", null);
-            if (info != null && info.length == 2) {
+            if (info.length == 2) {
                 int id = 0;
                 int level = 0;
                 int chance = 0;
@@ -141,7 +104,7 @@ public final class Weapon extends Item {
                 }
                 if (id > 0 && level > 0 && chance > 0) {
                     _skillsOnCast = new IntIntHolder(id, level);
-                    if (infochance != null) { _skillsOnCastCondition = new ConditionGameChance(chance); }
+                    _skillsOnCastCondition = new ConditionGameChance(chance);
                 }
             }
         }
@@ -150,7 +113,7 @@ public final class Weapon extends Item {
         if (skill != null) {
             String[] info = skill.split("-");
             String infochance = set.getString("oncrit_chance", null);
-            if (info != null && info.length == 2) {
+            if (info.length == 2) {
                 int id = 0;
                 int level = 0;
                 int chance = 0;
@@ -165,7 +128,7 @@ public final class Weapon extends Item {
                 }
                 if (id > 0 && level > 0 && chance > 0) {
                     _skillsOnCrit = new IntIntHolder(id, level);
-                    if (infochance != null) { _skillsOnCritCondition = new ConditionGameChance(chance); }
+                    _skillsOnCritCondition = new ConditionGameChance(chance);
                 }
             }
         }
@@ -175,8 +138,8 @@ public final class Weapon extends Item {
      * @return the type of weapon.
      */
     @Override
-    public WeaponType getItemType() {
-        return _type;
+    public EWeaponType getItemType() {
+        return weaponType;
     }
 
     /**
@@ -184,7 +147,7 @@ public final class Weapon extends Item {
      */
     @Override
     public int getItemMask() {
-        return getItemType().mask();
+        return weaponType.mask();
     }
 
     /**
@@ -205,14 +168,14 @@ public final class Weapon extends Item {
      * @return the reduced quantity of SoultShot used.
      */
     public int getReducedSoulShot() {
-        return _reducedSoulshot;
+        return reducedSoulshot;
     }
 
     /**
      * @return the chance to use Reduced SoultShot.
      */
     public int getReducedSoulShotChance() {
-        return _reducedSoulshotChance;
+        return reducedSoulshotChance;
     }
 
     /**
@@ -226,13 +189,13 @@ public final class Weapon extends Item {
      * @return the Reuse Delay of the Weapon.
      */
     public int getReuseDelay() {
-        return _reuseDelay;
+        return reuseDelay;
     }
 
     /**
      * @return true or false if weapon is considered as a mage weapon.
      */
-    public final boolean isMagical() {
+    public boolean isMagical() {
         return _isMagical;
     }
 
@@ -263,10 +226,10 @@ public final class Weapon extends Item {
     public List<L2Effect> getSkillEffects(L2Character caster, L2Character target, boolean crit) {
         if (_skillsOnCrit == null || !crit) { return Collections.emptyList(); }
 
-        final List<L2Effect> effects = new ArrayList<>();
+        List<L2Effect> effects = new ArrayList<>();
 
         if (_skillsOnCritCondition != null) {
-            final Env env = new Env();
+            Env env = new Env();
             env.setCharacter(caster);
             env.setTarget(target);
             env.setSkill(_skillsOnCrit.getSkill());
@@ -274,7 +237,7 @@ public final class Weapon extends Item {
             if (!_skillsOnCritCondition.test(env)) { return Collections.emptyList(); }
         }
 
-        final byte shld = Formulas.calcShldUse(caster, target, _skillsOnCrit.getSkill());
+        byte shld = Formulas.calcShldUse(caster, target, _skillsOnCrit.getSkill());
         if (!Formulas.calcSkillSuccess(caster, target, _skillsOnCrit.getSkill(), shld, false)) { return Collections.emptyList(); }
 
         if (target.getFirstEffect(_skillsOnCrit.getSkill().getId()) != null) { target.getFirstEffect(_skillsOnCrit.getSkill().getId()).exit(); }
@@ -300,7 +263,7 @@ public final class Weapon extends Item {
         if ((trigger.isToggle() || !trigger.isMagic()) && _skillsOnCast.getSkill().getSkillType() == L2SkillType.BUFF) { return Collections.emptyList(); }
 
         if (_skillsOnCastCondition != null) {
-            final Env env = new Env();
+            Env env = new Env();
             env.setCharacter(caster);
             env.setTarget(target);
             env.setSkill(_skillsOnCast.getSkill());
@@ -308,7 +271,7 @@ public final class Weapon extends Item {
             if (!_skillsOnCastCondition.test(env)) { return Collections.emptyList(); }
         }
 
-        final byte shld = Formulas.calcShldUse(caster, target, _skillsOnCast.getSkill());
+        byte shld = Formulas.calcShldUse(caster, target, _skillsOnCast.getSkill());
         if (_skillsOnCast.getSkill().isOffensive() && !Formulas.calcSkillSuccess(caster, target, _skillsOnCast.getSkill(), shld, false)) { return Collections.emptyList(); }
 
         // Get the skill handler corresponding to the skill type

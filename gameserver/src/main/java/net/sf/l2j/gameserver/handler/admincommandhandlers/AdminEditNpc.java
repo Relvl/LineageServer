@@ -23,7 +23,7 @@ import net.sf.l2j.gameserver.datatables.BuyListTable;
 import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2MerchantInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;

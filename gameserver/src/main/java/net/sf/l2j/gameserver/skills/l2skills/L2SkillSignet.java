@@ -3,7 +3,8 @@ package net.sf.l2j.gameserver.skills.l2skills;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.ESkillTargetType;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2EffectPointInstance;
@@ -34,7 +35,7 @@ public final class L2SkillSignet extends L2Skill {
         int y = caster.getY();
         int z = caster.getZ();
 
-        if (caster instanceof L2PcInstance && getTargetType() == SkillTargetType.TARGET_GROUND) {
+        if (caster instanceof L2PcInstance && getTargetType() == ESkillTargetType.TARGET_GROUND) {
             Location wordPosition = ((L2PcInstance) caster).getCurrentSkillWorldPosition();
 
             if (wordPosition != null) {

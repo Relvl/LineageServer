@@ -34,8 +34,9 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2XmassTreeInstance;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
+import net.sf.l2j.gameserver.model.item.EItemLocation;
 import net.sf.l2j.gameserver.model.item.SummonItem;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillLaunched;
 import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillUse;
@@ -190,7 +191,7 @@ public class SummonItems implements IItemHandler
 				_activeChar.setIsCastingNow(false);
 				
 				// check for summon item validity
-				if (_item == null || _item.getOwnerId() != _activeChar.getObjectId() || _item.getLocation() != L2ItemInstance.ItemLocation.INVENTORY)
+				if (_item == null || _item.getOwnerId() != _activeChar.getObjectId() || _item.getLocation() != EItemLocation.INVENTORY)
 					return;
 				
 				final L2PetInstance petSummon = L2PetInstance.spawnPet(_npcTemplate, _activeChar, _item);

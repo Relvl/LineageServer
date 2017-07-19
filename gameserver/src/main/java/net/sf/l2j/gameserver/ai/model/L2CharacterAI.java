@@ -18,14 +18,17 @@ import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.IntentionCommand;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
-import net.sf.l2j.gameserver.model.*;
+import net.sf.l2j.gameserver.model.L2Effect;
+import net.sf.l2j.gameserver.model.L2Object;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
+import net.sf.l2j.gameserver.model.skill.ESkillTargetType;
 import net.sf.l2j.gameserver.model.actor.*;
 import net.sf.l2j.gameserver.model.actor.instance.L2DoorInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance.ItemLocation;
-import net.sf.l2j.gameserver.model.location.Location;
+import net.sf.l2j.gameserver.model.item.EItemLocation;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.network.client.game_to_client.AutoAttackStop;
 import net.sf.l2j.gameserver.taskmanager.AttackStanceTaskManager;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
@@ -42,7 +45,7 @@ public class L2CharacterAI extends AbstractAI {
 
     @Override
     protected void onEvtAttacked(L2Character attacker) {
-        if (attacker instanceof L2Attackable && !((L2Attackable) attacker).isCoreAIDisabled()) { clientStartAutoAttack(); }
+        if (attacker instanceof L2Attackable && !attacker.isCoreAIDisabled()) { clientStartAutoAttack(); }
     }
 
     /**
@@ -214,6 +217,7 @@ public class L2CharacterAI extends AbstractAI {
      * <li>Set the Intention of this AI to MOVE_TO</li>
      * <li>Move the actor to Location (x,y,z) server side AND client side by sending Server->Client packet MoveToLocation (broadcast)</li>
      * </ul>
+     *
      * @param pos
      */
     @Override
@@ -324,7 +328,7 @@ public class L2CharacterAI extends AbstractAI {
         // Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
         clientStopAutoAttack();
 
-        if (object instanceof L2ItemInstance && ((L2ItemInstance) object).getLocation() != ItemLocation.VOID) { return; }
+        if (object instanceof L2ItemInstance && ((L2ItemInstance) object).getLocation() != EItemLocation.VOID) { return; }
 
         // Set the Intention of this AbstractAI to PICK_UP
         changeIntention(EIntention.PICK_UP, object, null);
@@ -555,6 +559,7 @@ public class L2CharacterAI extends AbstractAI {
      * <li>If the Intention was MOVE_TO, set the Intention to ACTIVE</li>
      * <li>Launch actions corresponding to the Event Think</li>
      * </ul>
+     *
      * @param blockedAtPos
      */
     @Override
@@ -815,7 +820,7 @@ public class L2CharacterAI extends AbstractAI {
      */
     protected boolean checkTargetLost(L2Object target) {
         if (target instanceof L2PcInstance) {
-            final L2PcInstance victim = (L2PcInstance) target;
+            L2PcInstance victim = (L2PcInstance) target;
             if (victim.isFakeDeath()) {
                 victim.stopFakeDeath(true);
                 return false;
@@ -831,7 +836,7 @@ public class L2CharacterAI extends AbstractAI {
     }
 
     public boolean canAura(L2Skill sk) {
-        if (sk.getTargetType() == L2Skill.SkillTargetType.TARGET_AURA || sk.getTargetType() == L2Skill.SkillTargetType.TARGET_BEHIND_AURA || sk.getTargetType() == L2Skill.SkillTargetType.TARGET_FRONT_AURA) {
+        if (sk.getTargetType() == ESkillTargetType.TARGET_AURA || sk.getTargetType() == ESkillTargetType.TARGET_BEHIND_AURA || sk.getTargetType() == ESkillTargetType.TARGET_FRONT_AURA) {
             for (L2Object target : actor.getKnownList().getKnownTypeInRadius(L2Character.class, sk.getSkillRadius())) {
                 if (target == getTarget()) { return true; }
             }
@@ -841,7 +846,7 @@ public class L2CharacterAI extends AbstractAI {
 
     public boolean canAOE(L2Skill sk) {
         if (sk.getSkillType() != L2SkillType.NEGATE || sk.getSkillType() != L2SkillType.CANCEL) {
-            if (sk.getTargetType() == L2Skill.SkillTargetType.TARGET_AURA || sk.getTargetType() == L2Skill.SkillTargetType.TARGET_BEHIND_AURA || sk.getTargetType() == L2Skill.SkillTargetType.TARGET_FRONT_AURA) {
+            if (sk.getTargetType() == ESkillTargetType.TARGET_AURA || sk.getTargetType() == ESkillTargetType.TARGET_BEHIND_AURA || sk.getTargetType() == ESkillTargetType.TARGET_FRONT_AURA) {
                 boolean cancast = true;
                 for (L2Character target : actor.getKnownList().getKnownTypeInRadius(L2Character.class, sk.getSkillRadius())) {
                     if (!PathFinding.getInstance().canSeeTarget(actor, target)) { continue; }
@@ -853,7 +858,7 @@ public class L2CharacterAI extends AbstractAI {
 
                 if (cancast) { return true; }
             }
-            else if (sk.getTargetType() == L2Skill.SkillTargetType.TARGET_AREA || sk.getTargetType() == L2Skill.SkillTargetType.TARGET_BEHIND_AREA || sk.getTargetType() == L2Skill.SkillTargetType.TARGET_FRONT_AREA) {
+            else if (sk.getTargetType() == ESkillTargetType.TARGET_AREA || sk.getTargetType() == ESkillTargetType.TARGET_BEHIND_AREA || sk.getTargetType() == ESkillTargetType.TARGET_FRONT_AREA) {
                 boolean cancast = true;
                 for (L2Character target : ((L2Character) getTarget()).getKnownList().getKnownTypeInRadius(L2Character.class, sk.getSkillRadius())) {
                     if (!PathFinding.getInstance().canSeeTarget(actor, target)) { continue; }
@@ -867,7 +872,7 @@ public class L2CharacterAI extends AbstractAI {
             }
         }
         else {
-            if (sk.getTargetType() == L2Skill.SkillTargetType.TARGET_AURA || sk.getTargetType() == L2Skill.SkillTargetType.TARGET_BEHIND_AURA || sk.getTargetType() == L2Skill.SkillTargetType.TARGET_FRONT_AURA) {
+            if (sk.getTargetType() == ESkillTargetType.TARGET_AURA || sk.getTargetType() == ESkillTargetType.TARGET_BEHIND_AURA || sk.getTargetType() == ESkillTargetType.TARGET_FRONT_AURA) {
                 boolean cancast = false;
                 for (L2Character target : actor.getKnownList().getKnownTypeInRadius(L2Character.class, sk.getSkillRadius())) {
                     if (!PathFinding.getInstance().canSeeTarget(actor, target)) { continue; }
@@ -879,7 +884,7 @@ public class L2CharacterAI extends AbstractAI {
                 }
                 if (cancast) { return true; }
             }
-            else if (sk.getTargetType() == L2Skill.SkillTargetType.TARGET_AREA || sk.getTargetType() == L2Skill.SkillTargetType.TARGET_BEHIND_AREA || sk.getTargetType() == L2Skill.SkillTargetType.TARGET_FRONT_AREA) {
+            else if (sk.getTargetType() == ESkillTargetType.TARGET_AREA || sk.getTargetType() == ESkillTargetType.TARGET_BEHIND_AREA || sk.getTargetType() == ESkillTargetType.TARGET_FRONT_AREA) {
                 boolean cancast = true;
                 for (L2Character target : ((L2Character) getTarget()).getKnownList().getKnownTypeInRadius(L2Character.class, sk.getSkillRadius())) {
                     if (!PathFinding.getInstance().canSeeTarget(actor, target)) { continue; }
@@ -896,12 +901,12 @@ public class L2CharacterAI extends AbstractAI {
     }
 
     public boolean canParty(L2Skill sk) {
-        if (sk.getTargetType() != L2Skill.SkillTargetType.TARGET_PARTY) { return false; }
+        if (sk.getTargetType() != ESkillTargetType.TARGET_PARTY) { return false; }
 
         int count = 0;
         int ccount = 0;
 
-        final String[] actorClans = ((L2Npc) actor).getClans();
+        String[] actorClans = ((L2Npc) actor).getClans();
         for (L2Attackable target : actor.getKnownList().getKnownTypeInRadius(L2Attackable.class, sk.getSkillRadius())) {
             if (!PathFinding.getInstance().canSeeTarget(actor, target)) { continue; }
 
@@ -912,8 +917,7 @@ public class L2CharacterAI extends AbstractAI {
             if (target.getFirstEffect(sk) != null) { ccount++; }
         }
 
-        if (ccount < count) { return true; }
+        return ccount < count;
 
-        return false;
     }
 }

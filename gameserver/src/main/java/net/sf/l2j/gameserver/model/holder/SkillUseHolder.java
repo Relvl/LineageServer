@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.model.holder;
 
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 
 /**
  * Skill casting information (used to queue when several skills are cast in a short time)

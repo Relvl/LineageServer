@@ -19,7 +19,7 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.soulcrystal.LevelingInfo;
 import net.sf.l2j.gameserver.model.soulcrystal.SoulCrystalData;
 import net.sf.l2j.gameserver.network.SystemMessageId;

@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
 import net.sf.l2j.gameserver.model.L2Clan;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 
 /**
  * Format: (ch) d [dd]

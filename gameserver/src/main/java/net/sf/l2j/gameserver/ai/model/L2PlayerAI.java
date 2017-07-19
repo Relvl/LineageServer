@@ -17,8 +17,8 @@ package net.sf.l2j.gameserver.ai.model;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.IntentionCommand;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.L2Skill;
-import net.sf.l2j.gameserver.model.L2Skill.SkillTargetType;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
+import net.sf.l2j.gameserver.model.skill.ESkillTargetType;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2StaticObjectInstance;
@@ -183,7 +183,7 @@ public class L2PlayerAI extends L2PlayableAI {
     private void thinkCast() {
         L2Character target = (L2Character) getTarget();
 
-        if (currentlyCastingSkill.getTargetType() == SkillTargetType.TARGET_GROUND && actor instanceof L2PcInstance) {
+        if (currentlyCastingSkill.getTargetType() == ESkillTargetType.TARGET_GROUND && actor instanceof L2PcInstance) {
             if (maybeMoveToPosition(((L2PcInstance) actor).getCurrentSkillWorldPosition(), currentlyCastingSkill.getCastRange())) {
                 actor.setIsCastingNow(false);
                 return;

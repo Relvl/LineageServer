@@ -4,7 +4,7 @@ import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.instancemanager.*;
 import net.sf.l2j.gameserver.model.L2SiegeClan;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
@@ -16,7 +16,7 @@ import net.sf.l2j.gameserver.model.entity.Siege;
 import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
-import net.sf.l2j.gameserver.model.item.type.WeaponType;
+import net.sf.l2j.gameserver.model.item.type.EWeaponType;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.model.zone.type.L2MotherTreeZone;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -844,7 +844,7 @@ public final class Formulas {
         byte shldSuccess = SHIELD_DEFENSE_FAILED;
 
         // if attacker use bow and target wear shield, shield block rate is multiplied by 1.3 (30%)
-        if (attacker.getAttackType() == WeaponType.BOW) { shldRate *= 1.3; }
+        if (attacker.getAttackType() == EWeaponType.BOW) { shldRate *= 1.3; }
 
         if (shldRate > 0 && 100 - Config.ALT_PERFECT_SHLD_BLOCK < Rnd.get(100)) { shldSuccess = SHIELD_DEFENSE_PERFECT_BLOCK; }
         else if (shldRate > Rnd.get(100)) { shldSuccess = SHIELD_DEFENSE_SUCCEED; }

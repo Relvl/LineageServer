@@ -1,7 +1,6 @@
 package net.sf.l2j.gameserver.model.item;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 
 public final class ArmorSet {

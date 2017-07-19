@@ -26,12 +26,13 @@ import java.util.logging.Logger;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
+import net.sf.l2j.gameserver.model.item.EItemLocation;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2SiegeGuardInstance;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.entity.Castle;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 
 /**
  * This class is similar to the SiegeGuardManager, except it handles the loading of the mercenary tickets that are dropped on castle floors by the castle lords.<br>
@@ -709,7 +710,7 @@ public class MercTicketManager
 							itemId = ITEM_IDS[i];
 							// create the ticket in the gameworld
 							L2ItemInstance dropticket = new L2ItemInstance(IdFactory.getInstance().getNextId(), itemId);
-							dropticket.setLocation(L2ItemInstance.ItemLocation.INVENTORY);
+							dropticket.setLocation(EItemLocation.INVENTORY);
 							dropticket.setDestroyProtected(true);
 							dropticket.dropMe(null, x, y, z);
 							L2World.getInstance().addObject(dropticket);
@@ -839,7 +840,7 @@ public class MercTicketManager
 				
 				// create the ticket in the gameworld
 				L2ItemInstance dropticket = new L2ItemInstance(IdFactory.getInstance().getNextId(), itemId);
-				dropticket.setLocation(L2ItemInstance.ItemLocation.INVENTORY);
+				dropticket.setLocation(EItemLocation.INVENTORY);
 				dropticket.setDestroyProtected(true);
 				dropticket.dropMe(activeChar, x, y, z);
 				L2World.getInstance().addObject(dropticket); // add to the world

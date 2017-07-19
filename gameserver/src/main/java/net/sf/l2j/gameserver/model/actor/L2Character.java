@@ -17,7 +17,8 @@ import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.handler.SkillHandler;
 import net.sf.l2j.gameserver.instancemanager.DimensionalRiftManager;
 import net.sf.l2j.gameserver.model.*;
-import net.sf.l2j.gameserver.model.L2Skill.SkillTargetType;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
+import net.sf.l2j.gameserver.model.skill.ESkillTargetType;
 import net.sf.l2j.gameserver.model.actor.instance.*;
 import net.sf.l2j.gameserver.model.actor.knownlist.CharKnownList;
 import net.sf.l2j.gameserver.model.actor.position.CharPosition;
@@ -26,11 +27,11 @@ import net.sf.l2j.gameserver.model.actor.status.CharStatus;
 import net.sf.l2j.gameserver.model.actor.template.CharTemplate;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.holder.SkillUseHolder;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
-import net.sf.l2j.gameserver.model.item.type.WeaponType;
+import net.sf.l2j.gameserver.model.item.type.EWeaponType;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
@@ -506,9 +507,9 @@ public abstract class L2Character extends L2Object {
 
         // Get the active weapon item corresponding to the active weapon instance (always equipped in the right hand)
         Weapon weaponItem = getActiveWeaponItem();
-        WeaponType weaponItemType = getAttackType();
+        EWeaponType weaponItemType = getAttackType();
 
-        if (weaponItemType == WeaponType.FISHINGROD) {
+        if (weaponItemType == EWeaponType.FISHINGROD) {
             // You can't make an attack with a fishing pole.
             getAI().setIntention(EIntention.IDLE);
             sendPacket(SystemMessage.getSystemMessage(SystemMessageId.CANNOT_ATTACK_WITH_FISHING_POLE));
@@ -525,7 +526,7 @@ public abstract class L2Character extends L2Object {
         }
 
         // Check for a bow
-        if (weaponItemType == WeaponType.BOW) {
+        if (weaponItemType == EWeaponType.BOW) {
             // Check for arrows and MP
             if (this instanceof L2PcInstance) {
                 // Equip arrows needed in left hand and send ItemList to the L2PcINstance then return True
@@ -1241,7 +1242,7 @@ public abstract class L2Character extends L2Object {
             L2WorldRegion region = getWorldRegion();
             if (region == null) { return false; }
 
-            if (skill.getTargetType() == SkillTargetType.TARGET_GROUND && this instanceof L2PcInstance) {
+            if (skill.getTargetType() == ESkillTargetType.TARGET_GROUND && this instanceof L2PcInstance) {
                 Location wp = ((L2PcInstance) this).getCurrentSkillWorldPosition();
                 if (!region.isEffectRangeInsidePeaceZone(skill, wp.getX(), wp.getY(), wp.getZ())) {
                     sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_CANNOT_BE_USED).addSkillName(skill));
@@ -3182,7 +3183,7 @@ public abstract class L2Character extends L2Object {
         if (target instanceof L2PcInstance) { target.getAI().clientStartAutoAttack(); }
 
         if (!miss && damage > 0) {
-            boolean isBow = getAttackType() == WeaponType.BOW;
+            boolean isBow = getAttackType() == EWeaponType.BOW;
             int reflectedDamage = 0;
 
             // Reflect damage system - do not reflect if weapon is a bow or target is invulnerable
@@ -3401,11 +3402,11 @@ public abstract class L2Character extends L2Object {
 
     /**
      * @param target     The target to test.
-     * @param weaponType The weapon type to test.
+     * @param EWeaponType The weapon type to test.
      * @return The Attack Speed of the L2Character (delay (in milliseconds) before next attack).
      */
-    public int calculateTimeBetweenAttacks(L2Character target, WeaponType weaponType) {
-        switch (weaponType) {
+    public int calculateTimeBetweenAttacks(L2Character target, EWeaponType EWeaponType) {
+        switch (EWeaponType) {
             case BOW:
                 return 1500 * 345 / getStat().getPAtkSpd();
 
@@ -3417,11 +3418,11 @@ public abstract class L2Character extends L2Object {
     /**
      * @return the type of attack, depending of the worn weapon.
      */
-    public WeaponType getAttackType() {
+    public EWeaponType getAttackType() {
         Weapon weapon = getActiveWeaponItem();
         if (weapon != null) { return weapon.getItemType(); }
 
-        return WeaponType.NONE;
+        return EWeaponType.NONE;
     }
 
     /**

@@ -30,7 +30,7 @@ import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.L2Character;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 
 /**
  * @author Hasha

@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.gameserver.model.L2Party;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;

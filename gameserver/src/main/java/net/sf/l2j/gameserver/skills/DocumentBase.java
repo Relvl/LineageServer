@@ -25,11 +25,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.sf.l2j.gameserver.model.ChanceCondition;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.base.Race;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.type.ArmorType;
-import net.sf.l2j.gameserver.model.item.type.WeaponType;
+import net.sf.l2j.gameserver.model.item.type.EWeaponType;
 import net.sf.l2j.gameserver.skills.basefuncs.FuncTemplate;
 import net.sf.l2j.gameserver.skills.basefuncs.Lambda;
 import net.sf.l2j.gameserver.skills.basefuncs.LambdaCalc;
@@ -662,7 +662,7 @@ abstract class DocumentBase
 				{
 					int old = mask;
 					String item = st.nextToken();
-					for (WeaponType wt : WeaponType.values())
+					for (EWeaponType wt : EWeaponType.values())
 					{
 						if (wt.name().equals(item))
 						{

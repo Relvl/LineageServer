@@ -3,7 +3,7 @@ package net.sf.l2j.gameserver.model.world;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.*;
 import net.sf.l2j.gameserver.model.zone.L2ZoneType;
 import net.sf.l2j.gameserver.model.zone.type.L2DerbyTrackZone;

@@ -4,8 +4,8 @@ import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance.ItemLocation;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.EItemLocation;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
 import net.sf.l2j.gameserver.model.world.L2World;
@@ -73,13 +73,13 @@ public class PetInventory extends Inventory {
     }
 
     @Override
-    protected ItemLocation getBaseLocation() {
-        return ItemLocation.PET;
+    protected EItemLocation getBaseLocation() {
+        return EItemLocation.PET;
     }
 
     @Override
-    protected ItemLocation getEquipLocation() {
-        return ItemLocation.PET_EQUIP;
+    protected EItemLocation getEquipLocation() {
+        return EItemLocation.PET_EQUIP;
     }
 
     @Override

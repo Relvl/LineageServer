@@ -20,7 +20,7 @@ import net.sf.l2j.gameserver.datatables.SkillTreeTable;
 import net.sf.l2j.gameserver.datatables.SpellbookTable;
 import net.sf.l2j.gameserver.model.L2PledgeSkillLearn;
 import net.sf.l2j.gameserver.model.L2ShortCut;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.L2SkillLearn;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2FishermanInstance;

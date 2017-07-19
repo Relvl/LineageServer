@@ -23,7 +23,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.knownlist.VehicleKnownList;
 import net.sf.l2j.gameserver.model.actor.stat.VehicleStat;
 import net.sf.l2j.gameserver.model.actor.template.CharTemplate;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;

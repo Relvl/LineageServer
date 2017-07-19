@@ -9,7 +9,8 @@ import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.handler.ItemHandler;
 import net.sf.l2j.gameserver.model.*;
-import net.sf.l2j.gameserver.model.L2Skill.SkillTargetType;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
+import net.sf.l2j.gameserver.model.skill.ESkillTargetType;
 import net.sf.l2j.gameserver.model.actor.instance.L2DoorInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
@@ -19,7 +20,7 @@ import net.sf.l2j.gameserver.model.actor.stat.SummonStat;
 import net.sf.l2j.gameserver.model.actor.status.SummonStatus;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.base.Experience;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.item.type.ActionType;
 import net.sf.l2j.gameserver.model.itemcontainer.PetInventory;
@@ -506,7 +507,7 @@ public abstract class L2Summon extends L2Playable {
                 if (!target.isAttackable() && getOwner() != null && !getOwner().getAccessLevel().allowPeaceAttack()) { return false; }
 
                 // Check if a Forced ATTACK is in progress on non-attackable target
-                if (!target.isAutoAttackable(this) && !forceUse && skill.getTargetType() != SkillTargetType.TARGET_AURA && skill.getTargetType() != SkillTargetType.TARGET_FRONT_AURA && skill.getTargetType() != SkillTargetType.TARGET_BEHIND_AURA && skill.getTargetType() != SkillTargetType.TARGET_AURA_UNDEAD && skill.getTargetType() != SkillTargetType.TARGET_CLAN && skill.getTargetType() != SkillTargetType.TARGET_ALLY && skill.getTargetType() != SkillTargetType.TARGET_PARTY && skill.getTargetType() != SkillTargetType.TARGET_SELF) {
+                if (!target.isAutoAttackable(this) && !forceUse && skill.getTargetType() != ESkillTargetType.TARGET_AURA && skill.getTargetType() != ESkillTargetType.TARGET_FRONT_AURA && skill.getTargetType() != ESkillTargetType.TARGET_BEHIND_AURA && skill.getTargetType() != ESkillTargetType.TARGET_AURA_UNDEAD && skill.getTargetType() != ESkillTargetType.TARGET_CLAN && skill.getTargetType() != ESkillTargetType.TARGET_ALLY && skill.getTargetType() != ESkillTargetType.TARGET_PARTY && skill.getTargetType() != ESkillTargetType.TARGET_SELF) {
                     return false;
                 }
             }

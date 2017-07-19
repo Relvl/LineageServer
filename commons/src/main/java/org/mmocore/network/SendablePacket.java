@@ -15,12 +15,20 @@ public abstract class SendablePacket<T extends MMOClient<?>> extends AbstractPac
         buffer.putShort((short) value);
     }
 
+    protected final void writeH(boolean value) {
+        buffer.putShort((short) (value ? 0x01 : 0x00));
+    }
+
     protected final void writeH(ICodeProvider value) {
         buffer.putShort((short) value.getCode());
     }
 
     protected final void writeD(int value) {
         buffer.putInt(value);
+    }
+
+    protected final void writeD(boolean value) {
+        buffer.putInt(value ? 0x01 : 0x00);
     }
 
     protected final void writeD(ICodeProvider value) {

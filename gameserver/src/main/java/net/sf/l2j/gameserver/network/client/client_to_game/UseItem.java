@@ -18,16 +18,16 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.handler.ItemHandler;
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
 import net.sf.l2j.gameserver.model.item.EItemType2;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.type.ActionType;
+import net.sf.l2j.gameserver.model.item.type.EWeaponType;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
-import net.sf.l2j.gameserver.model.item.type.WeaponType;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ItemList;
 import net.sf.l2j.gameserver.network.client.game_to_client.PetItemList;
@@ -187,7 +187,7 @@ public final class UseItem extends L2GameClientPacket {
         else {
             if (activeChar.isCastingNow() && !(item.isPotion() || item.isElixir())) { return; }
 
-            if (activeChar.getAttackType() == WeaponType.FISHINGROD && item.getItem().getItemType() == EtcItemType.LURE) {
+            if (activeChar.getAttackType() == EWeaponType.FISHINGROD && item.getItem().getItemType() == EtcItemType.LURE) {
                 activeChar.getInventory().setPaperdollItem(EPaperdollSlot.PAPERDOLL_LHAND, item);
                 activeChar.broadcastUserInfo();
 

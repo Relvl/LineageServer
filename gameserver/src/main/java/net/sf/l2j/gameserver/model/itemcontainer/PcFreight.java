@@ -2,8 +2,8 @@ package net.sf.l2j.gameserver.model.itemcontainer;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance;
-import net.sf.l2j.gameserver.model.item.instance.L2ItemInstance.ItemLocation;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.EItemLocation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +28,8 @@ public class PcFreight extends ItemContainer {
     }
 
     @Override
-    public ItemLocation getBaseLocation() {
-        return ItemLocation.FREIGHT;
+    public EItemLocation getBaseLocation() {
+        return EItemLocation.FREIGHT;
     }
 
     public void setActiveLocation(int locationId) {

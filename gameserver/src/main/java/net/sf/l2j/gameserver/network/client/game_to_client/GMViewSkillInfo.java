@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
-import net.sf.l2j.gameserver.model.L2Skill;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
 public class GMViewSkillInfo extends L2GameServerPacket
