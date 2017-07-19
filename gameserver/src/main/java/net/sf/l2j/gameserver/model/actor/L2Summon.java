@@ -675,13 +675,13 @@ public abstract class L2Summon extends L2Playable {
         // Need it only for "crests on summons" custom.
         if (Config.SHOW_SUMMON_CREST) { sendPacket(new SummonInfo(this, getOwner(), 0)); }
 
-        sendPacket(new RelationChanged(this, getOwner().getRelation(getOwner()), false));
+        sendPacket(new RelationChanged(this, getOwner().getRelationTo(getOwner()), false));
         broadcastRelationsChanges();
     }
 
     @Override
     public void broadcastRelationsChanges() {
-        for (L2PcInstance player : getOwner().getKnownList().getKnownType(L2PcInstance.class)) { player.sendPacket(new RelationChanged(this, getOwner().getRelation(player), isAutoAttackable(player))); }
+        for (L2PcInstance player : getOwner().getKnownList().getKnownType(L2PcInstance.class)) { player.sendPacket(new RelationChanged(this, getOwner().getRelationTo(player), isAutoAttackable(player))); }
     }
 
     @Override

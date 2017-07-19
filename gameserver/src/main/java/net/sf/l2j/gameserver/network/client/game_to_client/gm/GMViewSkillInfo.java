@@ -12,10 +12,11 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package net.sf.l2j.gameserver.network.client.game_to_client;
+package net.sf.l2j.gameserver.network.client.game_to_client.gm;
 
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
 
 public class GMViewSkillInfo extends L2GameServerPacket
 {

@@ -219,8 +219,6 @@ public class EnterWorld extends L2GameClientPacket {
 
         activeChar.onPlayerEnter();
 
-        sendPacket(new SkillCoolTime(activeChar));
-
         // If player logs back in a stadium, port him in nearest town.
         if (Olympiad.getInstance().playerInStadia(activeChar)) {
             activeChar.teleToLocation(TeleportWhereType.Town);

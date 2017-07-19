@@ -2,6 +2,8 @@ package net.sf.l2j.gameserver.network;
 
 import net.sf.l2j.commons.lang.HexUtil;
 import net.sf.l2j.gameserver.network.client.client_to_game.*;
+import net.sf.l2j.gameserver.network.client.client_to_game.gm.RequestGMCommand;
+import net.sf.l2j.gameserver.network.client.client_to_game.gm.RequestGmList;
 import org.mmocore.network.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,99 +41,142 @@ public final class L2GamePacketHandler implements IPacketHandler<L2GameClient>, 
 
     /* IN_GAME state */
     static {
+        // ========================================================================================
         PACKETS_IN_GAME.put(0x01, MoveBackwardToLocation.class);
+        // 0x02 = Say, не используется больше.
         PACKETS_IN_GAME.put(0x03, EnterWorld.class);
         PACKETS_IN_GAME.put(0x04, Action.class);
+        // TODO 0x05
+        // TODO 0x06
+        // TODO 0x07
+        // TODO 0x08
         PACKETS_IN_GAME.put(0x09, Logout.class);
         PACKETS_IN_GAME.put(0x0A, AttackRequest.class);
+        // TODO 0x0B
+        // TODO 0x0C
+        // TODO 0x0D
+        // TODO 0x0E
         PACKETS_IN_GAME.put(0x0F, RequestItemList.class);
+        // ========================================================================================
+        // 0x10 = RequestEquipItem, не используется больше
         PACKETS_IN_GAME.put(0x11, RequestUnEquipItem.class);
         PACKETS_IN_GAME.put(0x12, RequestDropItem.class);
+        // TODO 0x13
         PACKETS_IN_GAME.put(0x14, UseItem.class);
         PACKETS_IN_GAME.put(0x15, TradeRequest.class);
         PACKETS_IN_GAME.put(0x16, AddTradeItem.class);
         PACKETS_IN_GAME.put(0x17, TradeDone.class);
-        PACKETS_IN_GAME.put(0x1A, DummyPacket.class); // TODO WTF?!
+        // TODO 0x18
+        // TODO 0x19
+        // TODO 0x1A = DummyPacket
         PACKETS_IN_GAME.put(0x1B, RequestSocialAction.class);
         PACKETS_IN_GAME.put(0x1C, RequestChangeMoveType.class);
         PACKETS_IN_GAME.put(0x1D, RequestChangeWaitType.class);
         PACKETS_IN_GAME.put(0x1E, RequestSellItem.class);
         PACKETS_IN_GAME.put(0x1F, RequestBuyItem.class);
+        // ========================================================================================
         PACKETS_IN_GAME.put(0x20, RequestLinkHtml.class);
         PACKETS_IN_GAME.put(0x21, RequestBypassToServer.class);
         PACKETS_IN_GAME.put(0x22, RequestBBSwrite.class);
-        PACKETS_IN_GAME.put(0x23, DummyPacket.class); // TODO WTF?!
+        // TODO 0x23 = DummyPacket
         PACKETS_IN_GAME.put(0x24, RequestJoinPledge.class);
         PACKETS_IN_GAME.put(0x25, RequestAnswerJoinPledge.class);
         PACKETS_IN_GAME.put(0x26, RequestWithdrawPledge.class);
         PACKETS_IN_GAME.put(0x27, RequestOustPledgeMember.class);
+        // TODO 0x28 = RequestDismissPledge
         PACKETS_IN_GAME.put(0x29, RequestJoinParty.class);
         PACKETS_IN_GAME.put(0x2A, RequestAnswerJoinParty.class);
         PACKETS_IN_GAME.put(0x2B, RequestWithdrawParty.class);
         PACKETS_IN_GAME.put(0x2C, RequestOustPartyMember.class);
-        PACKETS_IN_GAME.put(0x2E, DummyPacket.class); // TODO WTF?!
+        // TODO 0x2D = RequestDismissParty
+        // TODO 0x2E = DummyPacket
         PACKETS_IN_GAME.put(0x2F, RequestMagicSkillUse.class);
+        // ========================================================================================
         PACKETS_IN_GAME.put(0x30, Appearing.class);
         PACKETS_IN_GAME.put(0x31, SendWarehouseDepositList.class);
         PACKETS_IN_GAME.put(0x32, SendWarehouseWithdrawList.class);
         PACKETS_IN_GAME.put(0x33, RequestShortCutReg.class);
-        PACKETS_IN_GAME.put(0x34, DummyPacket.class); // TODO WTF?!
+        // TODO 0x34 = DummyPacket
         PACKETS_IN_GAME.put(0x35, RequestShortCutDel.class);
         PACKETS_IN_GAME.put(0x36, CannotMoveAnymore.class);
         PACKETS_IN_GAME.put(0x37, RequestTargetCanceld.class);
         PACKETS_IN_GAME.put(0x38, Say2.class);
+        // TODO 0x39
+        // TODO 0x3A
+        // TODO 0x3B
         PACKETS_IN_GAME.put(0x3C, RequestPledgeMemberList.class);
-        PACKETS_IN_GAME.put(0x3E, DummyPacket.class); // TODO WTF?!
+        // TODO 0x3D
+        // TODO 0x3E = DummyPacket
         PACKETS_IN_GAME.put(0x3F, RequestSkillList.class);
+        // ========================================================================================
+        // TODO 0x40
+        // TODO 0x41 = MoveWithDelta
         PACKETS_IN_GAME.put(0x42, RequestGetOnVehicle.class);
         PACKETS_IN_GAME.put(0x43, RequestGetOffVehicle.class);
         PACKETS_IN_GAME.put(0x44, AnswerTradeRequest.class);
         PACKETS_IN_GAME.put(0x45, RequestActionUse.class);
         PACKETS_IN_GAME.put(0x46, RequestRestart.class);
+        // TODO 0x47 = RequestSiegeInfo
         PACKETS_IN_GAME.put(0x48, ValidatePosition.class);
+        // TODO 0x49 = RequestSEKCustom
         PACKETS_IN_GAME.put(0x4A, StartRotating.class);
         PACKETS_IN_GAME.put(0x4B, FinishRotating.class);
+        // TODO 0x4C
         PACKETS_IN_GAME.put(0x4D, RequestStartPledgeWar.class);
         PACKETS_IN_GAME.put(0x4E, RequestReplyStartPledgeWar.class);
         PACKETS_IN_GAME.put(0x4F, RequestStopPledgeWar.class);
+        // ========================================================================================
         PACKETS_IN_GAME.put(0x50, RequestReplyStopPledgeWar.class);
         PACKETS_IN_GAME.put(0x51, RequestSurrenderPledgeWar.class);
         PACKETS_IN_GAME.put(0x52, RequestReplySurrenderPledgeWar.class);
         PACKETS_IN_GAME.put(0x53, RequestSetPledgeCrest.class);
+        // TODO 0x54
         PACKETS_IN_GAME.put(0x55, RequestGiveNickName.class);
+        // TODO 0x56
         PACKETS_IN_GAME.put(0x57, RequestShowBoard.class);
         PACKETS_IN_GAME.put(0x58, RequestEnchantItem.class);
         PACKETS_IN_GAME.put(0x59, RequestDestroyItem.class);
+        // TODO 0x5A
         PACKETS_IN_GAME.put(0x5B, SendBypassBuildCmd.class);
         PACKETS_IN_GAME.put(0x5C, RequestMoveToLocationInVehicle.class);
         PACKETS_IN_GAME.put(0x5D, CannotMoveAnymoreInVehicle.class);
         PACKETS_IN_GAME.put(0x5E, RequestFriendInvite.class);
         PACKETS_IN_GAME.put(0x5F, RequestAnswerFriendInvite.class);
+        // ========================================================================================
         PACKETS_IN_GAME.put(0x60, RequestFriendList.class);
         PACKETS_IN_GAME.put(0x61, RequestFriendDel.class);
+        // TODO 0x62
         PACKETS_IN_GAME.put(0x63, RequestQuestList.class);
         PACKETS_IN_GAME.put(0x64, RequestQuestAbort.class);
+        // TODO 0x65
         PACKETS_IN_GAME.put(0x66, RequestPledgeInfo.class);
+        // TODO 0x67 = RequestPledgeExtendedInfo
         PACKETS_IN_GAME.put(0x68, RequestPledgeCrest.class);
         PACKETS_IN_GAME.put(0x69, RequestSurrenderPersonally.class);
+        // TODO 0x6A = Ride
         PACKETS_IN_GAME.put(0x6B, RequestAcquireSkillInfo.class);
         PACKETS_IN_GAME.put(0x6C, RequestAcquireSkill.class);
         PACKETS_IN_GAME.put(0x6D, RequestRestartPoint.class);
         PACKETS_IN_GAME.put(0x6E, RequestGMCommand.class);
         PACKETS_IN_GAME.put(0x6F, RequestPartyMatchConfig.class);
+        // ========================================================================================
         PACKETS_IN_GAME.put(0x70, RequestPartyMatchList.class);
         PACKETS_IN_GAME.put(0x71, RequestPartyMatchDetail.class);
         PACKETS_IN_GAME.put(0x72, RequestCrystallizeItem.class);
         PACKETS_IN_GAME.put(0x73, RequestPrivateStoreManageSell.class);
         PACKETS_IN_GAME.put(0x74, SetPrivateStoreListSell.class);
+        // TODO 0x75 = RequestPrivateStoreManageCancel
         PACKETS_IN_GAME.put(0x76, RequestPrivateStoreQuitSell.class);
         PACKETS_IN_GAME.put(0x77, SetPrivateStoreMsgSell.class);
+        // TODO 0x78 = RequestPrivateStoreList
         PACKETS_IN_GAME.put(0x79, RequestPrivateStoreBuy.class);
+        // TODO 0x7A
         PACKETS_IN_GAME.put(0x7B, RequestTutorialLinkHtml.class);
         PACKETS_IN_GAME.put(0x7C, RequestTutorialPassCmdToServer.class);
         PACKETS_IN_GAME.put(0x7D, RequestTutorialQuestionMark.class);
         PACKETS_IN_GAME.put(0x7E, RequestTutorialClientEvent.class);
         PACKETS_IN_GAME.put(0x7F, RequestPetition.class);
+        // ========================================================================================
         PACKETS_IN_GAME.put(0x80, RequestPetitionCancel.class);
         PACKETS_IN_GAME.put(0x81, RequestGmList.class);
         PACKETS_IN_GAME.put(0x82, RequestJoinAlly.class);
@@ -145,31 +190,49 @@ public final class L2GamePacketHandler implements IPacketHandler<L2GameClient>, 
         PACKETS_IN_GAME.put(0x8A, RequestPetUseItem.class);
         PACKETS_IN_GAME.put(0x8B, RequestGiveItemToPet.class);
         PACKETS_IN_GAME.put(0x8C, RequestGetItemFromPet.class);
+        // TODO 0x8D
         PACKETS_IN_GAME.put(0x8E, RequestAllyInfo.class);
         PACKETS_IN_GAME.put(0x8F, RequestPetGetItem.class);
+        // ========================================================================================
         PACKETS_IN_GAME.put(0x90, RequestPrivateStoreManageBuy.class);
         PACKETS_IN_GAME.put(0x91, SetPrivateStoreListBuy.class);
+        // TODO 0x92 = RequestPrivateStoreBuyManageCancel
         PACKETS_IN_GAME.put(0x93, RequestPrivateStoreQuitBuy.class);
         PACKETS_IN_GAME.put(0x94, SetPrivateStoreMsgBuy.class);
+        // TODO 0x95 = RequestPrivateStoreBuyList
         PACKETS_IN_GAME.put(0x96, RequestPrivateStoreSell.class);
-        // TODO 0x9D - RequestSkillCoolTime
+        // TODO 0x97 = SendTimeCheckPacket
+        // TODO 0x98 = RequestStartAllianceWar
+        // TODO 0x99 = ReplyStartAllianceWar
+        // TODO 0x9A = RequestStopAllianceWar
+        // TODO 0x9B = ReplyStopAllianceWar
+        // TODO 0x9C = RequestSurrenderAllianceWar
+        PACKETS_IN_GAME.put(0x9D, RequestSkillCoolTime.class);
         PACKETS_IN_GAME.put(0x9E, RequestPackageSendableItemList.class);
         PACKETS_IN_GAME.put(0x9F, RequestPackageSend.class);
+        // ========================================================================================
         PACKETS_IN_GAME.put(0xA0, RequestBlock.class);
+        // TODO 0xA1 = RequestCastleSiegeInfo
         PACKETS_IN_GAME.put(0xA2, RequestSiegeAttackerList.class);
         PACKETS_IN_GAME.put(0xA3, RequestSiegeDefenderList.class);
         PACKETS_IN_GAME.put(0xA4, RequestJoinSiege.class);
         PACKETS_IN_GAME.put(0xA5, RequestConfirmSiegeWaitingList.class);
+        // TODO 0xA6 = RequestSetCastleSiegeTime
         PACKETS_IN_GAME.put(0xA7, MultiSellChoose.class);
+        // TODO 0xA8 = NetPing
+        // TODO 0xA9
         PACKETS_IN_GAME.put(0xAA, RequestUserCommand.class);
         PACKETS_IN_GAME.put(0xAB, SnoopQuit.class); // TODO Выяснить, что это за механика. У нас не используется.
         PACKETS_IN_GAME.put(0xAC, RequestRecipeBookOpen.class);
         PACKETS_IN_GAME.put(0xAD, RequestRecipeBookDestroy.class);
         PACKETS_IN_GAME.put(0xAE, RequestRecipeItemMakeInfo.class);
         PACKETS_IN_GAME.put(0xAF, RequestRecipeItemMakeSelf.class);
+        // ========================================================================================
+        // TODO 0xB0 = RequestRecipeShopManageList
         PACKETS_IN_GAME.put(0xB1, RequestRecipeShopMessageSet.class);
         PACKETS_IN_GAME.put(0xB2, RequestRecipeShopListSet.class);
         PACKETS_IN_GAME.put(0xB3, RequestRecipeShopManageQuit.class);
+        // TODO 0xB4
         PACKETS_IN_GAME.put(0xB5, RequestRecipeShopMakeInfo.class);
         PACKETS_IN_GAME.put(0xB6, RequestRecipeShopMakeItem.class);
         PACKETS_IN_GAME.put(0xB7, RequestRecipeShopManagePrev.class);
@@ -181,6 +244,7 @@ public final class L2GamePacketHandler implements IPacketHandler<L2GameClient>, 
         PACKETS_IN_GAME.put(0xBD, RequestHennaRemoveList.class);
         PACKETS_IN_GAME.put(0xBE, RequestHennaItemRemoveInfo.class);
         PACKETS_IN_GAME.put(0xBF, RequestHennaRemove.class);
+        // ========================================================================================
         PACKETS_IN_GAME.put(0xC0, RequestPledgePower.class);
         PACKETS_IN_GAME.put(0xC1, RequestMakeMacro.class);
         PACKETS_IN_GAME.put(0xC2, RequestDeleteMacro.class);
@@ -189,11 +253,15 @@ public final class L2GamePacketHandler implements IPacketHandler<L2GameClient>, 
         PACKETS_IN_GAME.put(0xC5, DlgAnswer.class);
         PACKETS_IN_GAME.put(0xC6, RequestPreviewItem.class);
         PACKETS_IN_GAME.put(0xC7, RequestSSQStatus.class);
+        // TODO 0xC8
+        // TODO 0xC9
         PACKETS_IN_GAME.put(0xCA, GameGuardReply.class);
+        // TODO 0xCB
         PACKETS_IN_GAME.put(0xCC, RequestSendFriendMsg.class);
         PACKETS_IN_GAME.put(0xCD, RequestShowMiniMap.class);
-        PACKETS_IN_GAME.put(0xCE, DummyPacket.class); // MSN dialogs?
+        // TODO 0xCE
         PACKETS_IN_GAME.put(0xCF, RequestRecordInfo.class);
+        // ========================================================================================
     }
 
     /* IN_GAME state and has second opcode. */

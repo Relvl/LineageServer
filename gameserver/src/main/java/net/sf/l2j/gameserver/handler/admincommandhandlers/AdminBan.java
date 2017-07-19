@@ -17,6 +17,7 @@ package net.sf.l2j.gameserver.handler.admincommandhandlers;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.actor.instance.playerpart.PunishLevel;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 
@@ -60,11 +61,11 @@ public class AdminBan implements IAdminCommandHandler {
         long value = 0;
 
         if (ban) {
-            level = L2PcInstance.PunishLevel.CHAT.value();
+            level = PunishLevel.CHAT.value();
             value = (delay > 0 ? delay * 60000L : 60000);
         }
         else {
-            level = L2PcInstance.PunishLevel.NONE.value();
+            level = PunishLevel.NONE.value();
             value = 0;
         }
 
@@ -96,7 +97,7 @@ public class AdminBan implements IAdminCommandHandler {
             statement.setInt(1, -114356);
             statement.setInt(2, -249645);
             statement.setInt(3, -2984);
-            statement.setInt(4, L2PcInstance.PunishLevel.JAIL.value());
+            statement.setInt(4, PunishLevel.JAIL.value());
             statement.setLong(5, (delay > 0 ? delay * 60000L : 0));
             statement.setString(6, name);
 
@@ -219,7 +220,7 @@ public class AdminBan implements IAdminCommandHandler {
                 activeChar.sendMessage("Ban request sent for account " + player + ".");
             }
             else {
-                targetPlayer.setPunishLevel(L2PcInstance.PunishLevel.ACC, 0);
+                targetPlayer.setPunishLevel(PunishLevel.ACC, 0);
                 activeChar.sendMessage(targetPlayer.getAccountName() + " account is now banned.");
             }
         }
@@ -244,7 +245,7 @@ public class AdminBan implements IAdminCommandHandler {
                 }
 
                 String banLengthStr = "";
-                targetPlayer.setPunishLevel(L2PcInstance.PunishLevel.CHAT, duration);
+                targetPlayer.setPunishLevel(PunishLevel.CHAT, duration);
 
                 if (duration > 0) { banLengthStr = " for " + duration + " minutes"; }
 
@@ -291,7 +292,7 @@ public class AdminBan implements IAdminCommandHandler {
 
             if (targetPlayer != null) {
                 if (targetPlayer.isChatBanned()) {
-                    targetPlayer.setPunishLevel(L2PcInstance.PunishLevel.NONE, 0);
+                    targetPlayer.setPunishLevel(PunishLevel.NONE, 0);
                     activeChar.sendMessage(targetPlayer.getName() + "'s chat ban has been lifted.");
                 }
                 else { activeChar.sendMessage(targetPlayer.getName() + " isn't currently chat banned."); }
@@ -305,7 +306,7 @@ public class AdminBan implements IAdminCommandHandler {
             }
 
             if (targetPlayer != null) {
-                targetPlayer.setPunishLevel(L2PcInstance.PunishLevel.JAIL, duration);
+                targetPlayer.setPunishLevel(PunishLevel.JAIL, duration);
                 activeChar.sendMessage(targetPlayer.getName() + " have been jailed for " + (duration > 0 ? duration + " minutes." : "ever !"));
             }
             else { jailOfflinePlayer(activeChar, player, duration); }
@@ -316,7 +317,7 @@ public class AdminBan implements IAdminCommandHandler {
                 return false;
             }
             else if (targetPlayer != null) {
-                targetPlayer.setPunishLevel(L2PcInstance.PunishLevel.NONE, 0);
+                targetPlayer.setPunishLevel(PunishLevel.NONE, 0);
                 activeChar.sendMessage(targetPlayer.getName() + " have been unjailed.");
             }
             else { unjailOfflinePlayer(activeChar, player); }

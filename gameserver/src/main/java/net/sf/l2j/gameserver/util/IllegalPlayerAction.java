@@ -17,6 +17,7 @@ package net.sf.l2j.gameserver.util;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.datatables.GmListTable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.actor.instance.playerpart.PunishLevel;
 
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
@@ -76,7 +77,7 @@ public final class IllegalPlayerAction implements Runnable {
                 _actor.logout();
                 break;
             case PUNISH_JAIL:
-                _actor.setPunishLevel(L2PcInstance.PunishLevel.JAIL, Config.DEFAULT_PUNISH_PARAM);
+                _actor.setPunishLevel(PunishLevel.JAIL, Config.DEFAULT_PUNISH_PARAM);
                 break;
         }
     }

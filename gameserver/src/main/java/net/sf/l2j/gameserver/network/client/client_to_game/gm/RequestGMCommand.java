@@ -12,19 +12,20 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package net.sf.l2j.gameserver.network.client.client_to_game;
+package net.sf.l2j.gameserver.network.client.client_to_game.gm;
 
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.network.client.game_to_client.GMViewCharacterInfo;
-import net.sf.l2j.gameserver.network.client.game_to_client.GMViewHennaInfo;
-import net.sf.l2j.gameserver.network.client.game_to_client.GMViewItemList;
-import net.sf.l2j.gameserver.network.client.game_to_client.GMViewPledgeInfo;
-import net.sf.l2j.gameserver.network.client.game_to_client.GMViewQuestList;
-import net.sf.l2j.gameserver.network.client.game_to_client.GMViewSkillInfo;
-import net.sf.l2j.gameserver.network.client.game_to_client.GMViewWarehouseWithdrawList;
+import net.sf.l2j.gameserver.network.client.client_to_game.L2GameClientPacket;
+import net.sf.l2j.gameserver.network.client.game_to_client.gm.GMViewCharacterInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.gm.GMViewHennaInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.gm.GMViewItemList;
+import net.sf.l2j.gameserver.network.client.game_to_client.gm.GMViewPledgeInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.gm.GMViewQuestList;
+import net.sf.l2j.gameserver.network.client.game_to_client.gm.GMViewSkillInfo;
+import net.sf.l2j.gameserver.network.client.game_to_client.gm.GMViewWarehouseWithdrawList;
 
 public final class RequestGMCommand extends L2GameClientPacket
 {

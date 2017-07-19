@@ -1,7 +1,8 @@
-package net.sf.l2j.gameserver.network.client.game_to_client;
+package net.sf.l2j.gameserver.network.client.game_to_client.gm;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
+import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
 
 public class GMViewCharacterInfo extends L2GameServerPacket {
     private final L2PcInstance player;

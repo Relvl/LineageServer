@@ -1,9 +1,10 @@
-package net.sf.l2j.gameserver.network.client.game_to_client;
+package net.sf.l2j.gameserver.network.client.game_to_client.gm;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
+import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
 
 import java.util.List;
 
