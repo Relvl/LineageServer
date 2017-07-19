@@ -1,0 +1,126 @@
+<list>
+  <item id="8600" type="EtcItem" name="Herb of Life">
+    <sellable>false</sellable>
+    <depositable>false</depositable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2278" level="1"/>
+    <material>PAPER</material>
+    <etcItemType>HERB</etcItemType>
+  </item>
+  <item id="8601" type="EtcItem" name="Greater Herb of Life">
+    <sellable>false</sellable>
+    <depositable>false</depositable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2278" level="2"/>
+    <material>PAPER</material>
+    <etcItemType>HERB</etcItemType>
+  </item>
+  <item id="8602" type="EtcItem" name="Superior Herb of Life">
+    <sellable>false</sellable>
+    <depositable>false</depositable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2278" level="3"/>
+    <material>PAPER</material>
+    <etcItemType>HERB</etcItemType>
+  </item>
+  <item id="8603" type="EtcItem" name="Herb of Mana">
+    <sellable>false</sellable>
+    <depositable>false</depositable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2279" level="1"/>
+    <material>PAPER</material>
+    <etcItemType>HERB</etcItemType>
+  </item>
+  <item id="8604" type="EtcItem" name="Greater Herb of Mana">
+    <sellable>false</sellable>
+    <depositable>false</depositable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2279" level="2"/>
+    <material>PAPER</material>
+    <etcItemType>HERB</etcItemType>
+  </item>
+  <item id="8605" type="EtcItem" name="Superior Herb of Mana">
+    <sellable>false</sellable>
+    <depositable>false</depositable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2279" level="3"/>
+    <material>PAPER</material>
+    <etcItemType>HERB</etcItemType>
+  </item>
+  <item id="8606" type="EtcItem" name="Herb of Power">
+    <sellable>false</sellable>
+    <depositable>false</depositable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2280" level="1"/>
+    <material>PAPER</material>
+    <etcItemType>HERB</etcItemType>
+  </item>
+  <item id="8607" type="EtcItem" name="Herb of Magic">
+    <sellable>false</sellable>
+    <depositable>false</depositable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2281" level="1"/>
+    <material>PAPER</material>
+    <etcItemType>HERB</etcItemType>
+  </item>
+  <item id="8608" type="EtcItem" name="Herb of Atk. Spd.">
+    <sellable>false</sellable>
+    <depositable>false</depositable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2282" level="1"/>
+    <material>PAPER</material>
+    <etcItemType>HERB</etcItemType>
+  </item>
+  <item id="8609" type="EtcItem" name="Herb of Casting Spd.">
+    <sellable>false</sellable>
+    <depositable>false</depositable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2283" level="1"/>
+    <material>PAPER</material>
+    <etcItemType>HERB</etcItemType>
+  </item>
+  <item id="8610" type="EtcItem" name="Herb of Critical Attack.">
+    <sellable>false</sellable>
+    <depositable>false</depositable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2284" level="1"/>
+    <material>PAPER</material>
+    <etcItemType>HERB</etcItemType>
+  </item>
+  <item id="8611" type="EtcItem" name="Herb of Speed">
+    <sellable>false</sellable>
+    <depositable>false</depositable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2285" level="1"/>
+    <material>PAPER</material>
+    <etcItemType>HERB</etcItemType>
+  </item>
+  <item id="8612" type="EtcItem" name="Herb of the Warrior">
+    <sellable>false</sellable>
+    <depositable>false</depositable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2280" level="1"/>
+    <itemSkill id="2282" level="1"/>
+    <itemSkill id="2284" level="1"/>
+    <material>PAPER</material>
+    <etcItemType>HERB</etcItemType>
+  </item>
+  <item id="8613" type="EtcItem" name="Herb of the Mystic">
+    <sellable>false</sellable>
+    <depositable>false</depositable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2281" level="1"/>
+    <itemSkill id="2283" level="1"/>
+    <material>PAPER</material>
+    <etcItemType>HERB</etcItemType>
+  </item>
+  <item id="8614" type="EtcItem" name="Herb of Recovery">
+    <sellable>false</sellable>
+    <depositable>false</depositable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2278" level="3"/>
+    <itemSkill id="2279" level="3"/>
+    <material>PAPER</material>
+    <etcItemType>HERB</etcItemType>
+  </item>
+</list>

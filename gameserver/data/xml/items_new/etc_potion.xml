@@ -1,0 +1,765 @@
+<list>
+  <item id="65" type="EtcItem" name="Red Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <material>LIQUID</material>
+    <price>40</price>
+    <weight>80</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="725" type="EtcItem" name="Healing Drug">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <material>LIQUID</material>
+    <price>50</price>
+    <weight>180</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="726" type="EtcItem" name="Mana Drug">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2279" level="1"/>
+    <material>LIQUID</material>
+    <price>80</price>
+    <weight>180</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="727" type="EtcItem" name="Healing Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <material>LIQUID</material>
+    <price>80</price>
+    <weight>180</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="728" type="EtcItem" name="Mana Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2279" level="2"/>
+    <material>LIQUID</material>
+    <price>2000</price>
+    <weight>180</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="733" type="EtcItem" name="Endeavor Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2010" level="1"/>
+    <material>LIQUID</material>
+    <price>500</price>
+    <weight>180</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="734" type="EtcItem" name="Haste Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2011" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>1200</price>
+    <weight>20</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="735" type="EtcItem" name="Potion of Alacrity">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2012" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>2400</price>
+    <weight>20</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="1060" type="EtcItem" name="Lesser Healing Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2031" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>10000</reuseDelay>
+    <reuseDelaySharedGroup>8</reuseDelaySharedGroup>
+    <price>90</price>
+    <weight>5</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="1061" type="EtcItem" name="Healing Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2032" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>10000</reuseDelay>
+    <reuseDelaySharedGroup>9</reuseDelaySharedGroup>
+    <price>330</price>
+    <weight>5</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="1062" type="EtcItem" name="Haste Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>5000</price>
+    <weight>180</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="1073" type="EtcItem" name="Beginner's Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2031" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>10000</reuseDelay>
+    <weight>5</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="1374" type="EtcItem" name="Greater Haste Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2034" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>3600</price>
+    <weight>20</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="1375" type="EtcItem" name="Greater Swift Attack Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2035" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>7200</price>
+    <weight>20</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="1539" type="EtcItem" name="Greater Healing Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2037" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>10000</reuseDelay>
+    <reuseDelaySharedGroup>10</reuseDelaySharedGroup>
+    <price>1080</price>
+    <weight>5</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="1540" type="EtcItem" name="Quick Healing Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2038" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>10000</price>
+    <weight>180</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="1831" type="EtcItem" name="Antidote">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2042" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>75</price>
+    <weight>20</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="1832" type="EtcItem" name="Greater Antidote">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2043" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>180</price>
+    <weight>20</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="1833" type="EtcItem" name="Bandage">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2044" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>75</price>
+    <weight>20</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="1834" type="EtcItem" name="Emergency Dressing">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2045" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>180</price>
+    <weight>20</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="3889" type="EtcItem" name="Potion of Recovery">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2060" level="1"/>
+    <material>LIQUID</material>
+    <weight>180</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4677" type="EtcItem" name="Potion of Critical Escape">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2074" level="1"/>
+    <material>PAPER</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>120</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4678" type="EtcItem" name="Decrease Haste Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2075" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>10000</reuseDelay>
+    <weight>180</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4679" type="EtcItem" name="Bless of Eva">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2076" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>500</price>
+    <weight>180</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4680" type="EtcItem" name="Potion of Revenge">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2077" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>180</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5234" type="EtcItem" name="Mystery Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2103" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>12000</price>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5235" type="EtcItem" name="Facelifting Potion - A">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2122" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>24000</price>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5236" type="EtcItem" name="Facelifting Potion - B">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2123" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>24000</price>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5237" type="EtcItem" name="Facelifting Potion - C">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2124" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>24000</price>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5238" type="EtcItem" name="Dye Potion - A">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2125" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>24000</price>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5239" type="EtcItem" name="Dye Potion - B">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2126" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>24000</price>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5240" type="EtcItem" name="Dye Potion - C">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2127" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>24000</price>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5241" type="EtcItem" name="Dye Potion - D">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2128" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>24000</price>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5242" type="EtcItem" name="Hair Style Change Potion - A">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2129" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>24000</price>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5243" type="EtcItem" name="Hair Style Change Potion - B">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2130" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>24000</price>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5244" type="EtcItem" name="Hair Style Change Potion - C">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2131" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>24000</price>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5245" type="EtcItem" name="Hair Style Change Potion - D">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2132" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>24000</price>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5246" type="EtcItem" name="Hair Style Change Potion - E">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2133" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>24000</price>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5247" type="EtcItem" name="Hair Style Change Potion - F">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2134" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>24000</price>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5248" type="EtcItem" name="Hair Style Change Potion - G">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2135" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>24000</price>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5283" type="EtcItem" name="Rice Cake">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <itemSkill id="2136" level="1"/>
+    <material>LIQUID</material>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5560" type="EtcItem" name="Christmas Tree">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SummonItems</handlerName>
+    <itemSkill id="2137" level="1"/>
+    <material>PAPER</material>
+    <price>1</price>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5561" type="EtcItem" name="Special Christmas Tree">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SummonItems</handlerName>
+    <itemSkill id="2138" level="1"/>
+    <material>PAPER</material>
+    <price>1</price>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5589" type="EtcItem" name="Energy Stone">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2165" level="1"/>
+    <material>LIQUID</material>
+    <price>100</price>
+    <weight>10</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5591" type="EtcItem" name="CP Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2166" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>240</price>
+    <weight>25</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5592" type="EtcItem" name="Greater CP Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2166" level="2"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>600</price>
+    <weight>100</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="6035" type="EtcItem" name="Magic Haste Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2169" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>2400</price>
+    <weight>20</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="6036" type="EtcItem" name="Greater Magic Haste Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2169" level="2"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <price>7200</price>
+    <weight>20</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="6409" type="EtcItem" name="2006 Battle Tournament - CP Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <itemSkill id="2166" level="2"/>
+    <material>LIQUID</material>
+    <reuseDelay>1000</reuseDelay>
+    <weight>500</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="6410" type="EtcItem" name="2006 Battle Tournament - Quick Healing Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <itemSkill id="2038" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>180</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8663" type="EtcItem" name="Enlightenment Oil">
+    <stackable>true</stackable>
+    <handlerName>SummonItems</handlerName>
+    <itemSkill id="2103" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8664" type="EtcItem" name="Masking Oil">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2291" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8665" type="EtcItem" name="Masking Oil">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2292" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8666" type="EtcItem" name="Masking Oil">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2293" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8667" type="EtcItem" name="Chameleon Oil">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2294" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8668" type="EtcItem" name="Chameleon Oil">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2295" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8669" type="EtcItem" name="Chameleon Oil">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2296" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8670" type="EtcItem" name="Chameleon Oil">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2297" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8671" type="EtcItem" name="Luxury Oil">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2298" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8672" type="EtcItem" name="Luxury Oil">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2299" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8673" type="EtcItem" name="Luxury Oil">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2300" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8674" type="EtcItem" name="Luxury Oil">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2301" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8675" type="EtcItem" name="Luxury Oil">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2302" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8676" type="EtcItem" name="Luxury Oil">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2303" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8677" type="EtcItem" name="Luxury Oil">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2304" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>50</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8786" type="EtcItem" name="Primeval Potion">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2305" level="1"/>
+    <material>LIQUID</material>
+    <price>5000</price>
+    <weight>2</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8787" type="EtcItem" name="Sprigant's Fruit">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2305" level="1"/>
+    <material>LIQUID</material>
+    <weight>2</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="9206" type="EtcItem" name="Greater Healing Potion (Event)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2037" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>10000</reuseDelay>
+    <reuseDelaySharedGroup>10</reuseDelaySharedGroup>
+    <weight>5</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="9207" type="EtcItem" name="Quick Healing Potion (Event)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2038" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>500</reuseDelay>
+    <weight>5</weight>
+    <etcItemType>POTION</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+</list>

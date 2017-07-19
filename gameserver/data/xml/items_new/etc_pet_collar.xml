@@ -1,0 +1,109 @@
+<list>
+  <item id="2375" type="EtcItem" name="Wolf Collar">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SummonItems</handlerName>
+    <itemSkill id="2046" level="1"/>
+    <material>LEATHER</material>
+    <weight>10</weight>
+    <etcItemType>PET_COLLAR</etcItemType>
+    <defaultActionType>skill_maintain</defaultActionType>
+  </item>
+  <item id="3500" type="EtcItem" name="Dragonflute of Wind">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SummonItems</handlerName>
+    <itemSkill id="2046" level="1"/>
+    <material>STEEL</material>
+    <price>1000</price>
+    <weight>20</weight>
+    <etcItemType>PET_COLLAR</etcItemType>
+    <defaultActionType>skill_maintain</defaultActionType>
+  </item>
+  <item id="3501" type="EtcItem" name="Dragonflute of Star">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SummonItems</handlerName>
+    <itemSkill id="2046" level="1"/>
+    <material>STEEL</material>
+    <price>1000</price>
+    <weight>20</weight>
+    <etcItemType>PET_COLLAR</etcItemType>
+    <defaultActionType>skill_maintain</defaultActionType>
+  </item>
+  <item id="3502" type="EtcItem" name="Dragonflute of Twilight">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SummonItems</handlerName>
+    <itemSkill id="2046" level="1"/>
+    <material>STEEL</material>
+    <price>1000</price>
+    <weight>20</weight>
+    <etcItemType>PET_COLLAR</etcItemType>
+    <defaultActionType>skill_maintain</defaultActionType>
+  </item>
+  <item id="4422" type="EtcItem" name="Dragon Bugle of Wind">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SummonItems</handlerName>
+    <itemSkill id="2046" level="1"/>
+    <material>STEEL</material>
+    <weight>20</weight>
+    <etcItemType>PET_COLLAR</etcItemType>
+    <defaultActionType>skill_maintain</defaultActionType>
+  </item>
+  <item id="4423" type="EtcItem" name="Dragon Bugle of Star">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SummonItems</handlerName>
+    <itemSkill id="2046" level="1"/>
+    <material>STEEL</material>
+    <weight>20</weight>
+    <etcItemType>PET_COLLAR</etcItemType>
+    <defaultActionType>skill_maintain</defaultActionType>
+  </item>
+  <item id="4424" type="EtcItem" name="Dragon Bugle of Dusk">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SummonItems</handlerName>
+    <itemSkill id="2046" level="1"/>
+    <material>STEEL</material>
+    <weight>20</weight>
+    <etcItemType>PET_COLLAR</etcItemType>
+    <defaultActionType>skill_maintain</defaultActionType>
+  </item>
+  <item id="4425" type="EtcItem" name="Penitent's Manacles">
+    <sellable>false</sellable>
+    <depositable>false</depositable>
+    <destroyable>false</destroyable>
+    <dropable>false</dropable>
+    <tradable>false</tradable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SummonItems</handlerName>
+    <itemSkill id="2046" level="1"/>
+    <material>STEEL</material>
+    <weight>800</weight>
+    <etcItemType>PET_COLLAR</etcItemType>
+    <defaultActionType>skill_maintain</defaultActionType>
+  </item>
+  <item id="6648" type="EtcItem" name="Baby Buffalo Panpipe">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SummonItems</handlerName>
+    <itemSkill id="2046" level="1"/>
+    <material>LEATHER</material>
+    <weight>20</weight>
+    <etcItemType>PET_COLLAR</etcItemType>
+    <defaultActionType>skill_maintain</defaultActionType>
+  </item>
+  <item id="6649" type="EtcItem" name="Baby Cougar Chime">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SummonItems</handlerName>
+    <itemSkill id="2046" level="1"/>
+    <material>LEATHER</material>
+    <weight>20</weight>
+    <etcItemType>PET_COLLAR</etcItemType>
+    <defaultActionType>skill_maintain</defaultActionType>
+  </item>
+  <item id="6650" type="EtcItem" name="Baby Kookaburra Ocarina">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SummonItems</handlerName>
+    <itemSkill id="2046" level="1"/>
+    <material>LEATHER</material>
+    <weight>20</weight>
+    <etcItemType>PET_COLLAR</etcItemType>
+    <defaultActionType>skill_maintain</defaultActionType>
+  </item>
+</list>

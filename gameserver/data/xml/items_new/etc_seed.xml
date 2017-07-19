@@ -1,0 +1,1282 @@
+<list>
+  <item id="5016" type="EtcItem" name="Seed: Dark Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>5</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5017" type="EtcItem" name="Seed: Red Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>5</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5018" type="EtcItem" name="Seed: Chilly Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>5</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5019" type="EtcItem" name="Seed: Blue Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>10</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5020" type="EtcItem" name="Seed: Golden Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>20</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5021" type="EtcItem" name="Seed: Lute Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>30</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5022" type="EtcItem" name="Seed: Desert Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>20</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5023" type="EtcItem" name="Seed: Blue Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5024" type="EtcItem" name="Seed: Blue Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>10</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5025" type="EtcItem" name="Seed: Golden Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>20</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5026" type="EtcItem" name="Seed: Lute Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>30</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5027" type="EtcItem" name="Seed: Desert Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>20</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5028" type="EtcItem" name="Seed: Red Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>20</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5029" type="EtcItem" name="Seed: Chilly Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>25</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5030" type="EtcItem" name="Seed: Thorn Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5031" type="EtcItem" name="Seed: Golden Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5032" type="EtcItem" name="Seed: Great Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5033" type="EtcItem" name="Seed: Red Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>20</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5034" type="EtcItem" name="Seed: Chilly Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>25</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5035" type="EtcItem" name="Seed: Blue Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5036" type="EtcItem" name="Seed: Thorn Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5037" type="EtcItem" name="Seed: Golden Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5038" type="EtcItem" name="Seed: Great Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5039" type="EtcItem" name="Seed: Red Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>40</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5040" type="EtcItem" name="Seed: Twin Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5041" type="EtcItem" name="Seed: Desert Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>100</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5042" type="EtcItem" name="Seed: Dark Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>5</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5043" type="EtcItem" name="Seed: Red Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>5</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5044" type="EtcItem" name="Seed: Blue Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>10</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5045" type="EtcItem" name="Seed: Red Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>20</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5046" type="EtcItem" name="Seed: Chilly Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>25</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5047" type="EtcItem" name="Seed: Blue Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5048" type="EtcItem" name="Seed: Thorn Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5049" type="EtcItem" name="Seed: Sea Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5050" type="EtcItem" name="Seed: Chilly Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>40</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5051" type="EtcItem" name="Seed: Blue Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5052" type="EtcItem" name="Seed: Twin Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5053" type="EtcItem" name="Seed: Thorn Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5054" type="EtcItem" name="Seed: Golden Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5055" type="EtcItem" name="Seed: Great Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5056" type="EtcItem" name="Seed: Red Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>40</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5057" type="EtcItem" name="Seed: Chilly Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>40</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5058" type="EtcItem" name="Seed: Blue Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5059" type="EtcItem" name="Seed: Twin Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5060" type="EtcItem" name="Seed: Great Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>75</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5061" type="EtcItem" name="Seed: Desert Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>100</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5221" type="EtcItem" name="Seed: Chilly Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>25</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5222" type="EtcItem" name="Seed: Blue Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5223" type="EtcItem" name="Seed: Thorn Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5224" type="EtcItem" name="Seed: Golden Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5225" type="EtcItem" name="Seed: Great Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5226" type="EtcItem" name="Seed: Red Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>40</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="5227" type="EtcItem" name="Seed: Sea Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6753" type="EtcItem" name="Seed: Great Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>1200</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6754" type="EtcItem" name="Seed: Sea Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>900</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6755" type="EtcItem" name="Seed: Sea Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>900</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6756" type="EtcItem" name="Seed: Sea Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>900</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6757" type="EtcItem" name="Seed: Red Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>500</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6758" type="EtcItem" name="Seed: Red Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>500</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6759" type="EtcItem" name="Seed: Red Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>500</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6760" type="EtcItem" name="Seed: Red Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>500</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6761" type="EtcItem" name="Seed: Red Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>500</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6762" type="EtcItem" name="Seed: Desert Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>750</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6763" type="EtcItem" name="Seed: Desert Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>750</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6764" type="EtcItem" name="Seed: Desert Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>750</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6765" type="EtcItem" name="Seed: Desert Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>750</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6766" type="EtcItem" name="Seed: Desert Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>750</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6767" type="EtcItem" name="Seed: Twin Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>1000</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6768" type="EtcItem" name="Seed: Blue Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>400</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6769" type="EtcItem" name="Seed: Blue Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>400</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6770" type="EtcItem" name="Seed: Blue Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>400</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6771" type="EtcItem" name="Seed: Blue Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>400</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6772" type="EtcItem" name="Seed: Blue Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>400</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6773" type="EtcItem" name="Seed: Golden Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>650</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6774" type="EtcItem" name="Seed: Golden Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>650</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6775" type="EtcItem" name="Seed: Golden Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>650</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6776" type="EtcItem" name="Seed: Golden Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>650</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6777" type="EtcItem" name="Seed: Golden Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>650</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="6778" type="EtcItem" name="Seed: Golden Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>650</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7016" type="EtcItem" name="Seed: Blue Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7017" type="EtcItem" name="Seed: Blue Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7018" type="EtcItem" name="Seed: Blue Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7019" type="EtcItem" name="Seed: Chilly Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>25</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7020" type="EtcItem" name="Seed: Chilly Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>5</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7021" type="EtcItem" name="Seed: Chilly Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>40</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7022" type="EtcItem" name="Seed: Chilly Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>40</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7023" type="EtcItem" name="Seed: Desert Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>100</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7024" type="EtcItem" name="Seed: Desert Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>100</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7025" type="EtcItem" name="Seed: Golden Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7026" type="EtcItem" name="Seed: Golden Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>20</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7027" type="EtcItem" name="Seed: Great Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7028" type="EtcItem" name="Seed: Great Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>75</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7029" type="EtcItem" name="Seed: Great Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>75</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7051" type="EtcItem" name="Seed: Red Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>20</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7052" type="EtcItem" name="Seed: Red Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>40</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7053" type="EtcItem" name="Seed: Red Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>40</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7054" type="EtcItem" name="Seed: Sea Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7055" type="EtcItem" name="Seed: Sea Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7056" type="EtcItem" name="Seed: Sea Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="7057" type="EtcItem" name="Seed: Twin Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8223" type="EtcItem" name="Seed: Twin Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8224" type="EtcItem" name="Seed: Great Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>75</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8225" type="EtcItem" name="Seed: Desert Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>100</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8226" type="EtcItem" name="Seed: Blue Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>400</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8227" type="EtcItem" name="Seed: Red Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>500</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8228" type="EtcItem" name="Seed: Golden Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>650</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8229" type="EtcItem" name="Seed: Desert Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>750</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8237" type="EtcItem" name="Seed: Dark Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>5</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8238" type="EtcItem" name="Seed: Red Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>5</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8239" type="EtcItem" name="Seed: Chilly Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>5</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8240" type="EtcItem" name="Seed: Blue Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>10</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8241" type="EtcItem" name="Seed: Golden Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>20</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8242" type="EtcItem" name="Seed: Lute Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>30</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8243" type="EtcItem" name="Seed: Desert Coda">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="1"/>
+    <material>PAPER</material>
+    <price>20</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8244" type="EtcItem" name="Seed: Red Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>20</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8245" type="EtcItem" name="Seed: Chilly Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>25</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8246" type="EtcItem" name="Seed: Blue Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8247" type="EtcItem" name="Seed: Thorn Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8248" type="EtcItem" name="Seed: Golden Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8249" type="EtcItem" name="Seed: Great Cobol">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="2"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8250" type="EtcItem" name="Seed: Red Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>40</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8251" type="EtcItem" name="Seed: Sea Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8252" type="EtcItem" name="Seed: Chilly Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>40</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8253" type="EtcItem" name="Seed: Blue Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8254" type="EtcItem" name="Seed: Twin Codran">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>50</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8521" type="EtcItem" name="Seed: Sea Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>900</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8523" type="EtcItem" name="Seed: Twin Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>1000</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+  <item id="8525" type="EtcItem" name="Seed: Great Coba">
+    <stackable>true</stackable>
+    <handlerName>Seed</handlerName>
+    <itemSkill id="2097" level="3"/>
+    <material>PAPER</material>
+    <price>1200</price>
+    <weight>1</weight>
+    <etcItemType>SEED</etcItemType>
+    <defaultActionType>seed</defaultActionType>
+  </item>
+</list>

@@ -1,0 +1,11 @@
+<list>
+  <item id="5125" type="EtcItem" name="Harvester">
+    <handlerName>Harvester</handlerName>
+    <itemSkill id="2098" level="1"/>
+    <material>STEEL</material>
+    <price>500</price>
+    <weight>20</weight>
+    <etcItemType>HARVEST</etcItemType>
+    <defaultActionType>harvest</defaultActionType>
+  </item>
+</list>

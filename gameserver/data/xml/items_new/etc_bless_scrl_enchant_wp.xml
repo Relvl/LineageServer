@@ -1,0 +1,52 @@
+<list>
+  <item id="6569" type="EtcItem" name="Blessed Scroll: Enchant Weapon (Grade A)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2027" level="1"/>
+    <material>PAPER</material>
+    <price>1750000</price>
+    <weight>120</weight>
+    <etcItemType>BLESS_SCRL_ENCHANT_WP</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="6571" type="EtcItem" name="Blessed Scroll: Enchant Weapon (Grade B)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2028" level="1"/>
+    <material>PAPER</material>
+    <price>1250000</price>
+    <weight>120</weight>
+    <etcItemType>BLESS_SCRL_ENCHANT_WP</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="6573" type="EtcItem" name="Blessed Scroll: Enchant Weapon (Grade C)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2029" level="1"/>
+    <material>PAPER</material>
+    <price>250000</price>
+    <weight>120</weight>
+    <etcItemType>BLESS_SCRL_ENCHANT_WP</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="6575" type="EtcItem" name="Blessed Scroll: Enchant Weapon (Grade D)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2030" level="1"/>
+    <material>PAPER</material>
+    <price>150000</price>
+    <weight>120</weight>
+    <etcItemType>BLESS_SCRL_ENCHANT_WP</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="6577" type="EtcItem" name="Blessed Scroll: Enchant Weapon (Grade S)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2026" level="1"/>
+    <material>PAPER</material>
+    <price>2250000</price>
+    <weight>120</weight>
+    <etcItemType>BLESS_SCRL_ENCHANT_WP</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+</list>

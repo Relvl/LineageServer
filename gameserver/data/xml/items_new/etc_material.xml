@@ -1,0 +1,5003 @@
+<list>
+  <item id="1674" type="EtcItem" name="Twig of Treant">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>80</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1675" type="EtcItem" name="Beast Blood">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>40</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1676" type="EtcItem" name="Beast Bone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>20</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1677" type="EtcItem" name="Hot Oil">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>40</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1678" type="EtcItem" name="(Not used) Thread">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>10</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1679" type="EtcItem" name="Bronze">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>150</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1680" type="EtcItem" name="Fur">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>40</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1681" type="EtcItem" name="Elf Stone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1500</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1682" type="EtcItem" name="Tear of Holy Spirit">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1683" type="EtcItem" name="Mithril">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>400</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1684" type="EtcItem" name="Durable Stem">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>220</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1685" type="EtcItem" name="Wooden Frame">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1686" type="EtcItem" name="Bark of Treant">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>480</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1687" type="EtcItem" name="(Not used) Coarse Bone Powder">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>80</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1688" type="EtcItem" name="Refined Steel">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>480</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1689" type="EtcItem" name="(Not used) Leather">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>300</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1690" type="EtcItem" name="Bowstring">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>300</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1691" type="EtcItem" name="Steel Frame">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4400</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1692" type="EtcItem" name="(Not used) Cord">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>45</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1693" type="EtcItem" name="Refined Bronze">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>890</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1694" type="EtcItem" name="Treant Potion">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>800</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1695" type="EtcItem" name="Spell Paper">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>580</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1696" type="EtcItem" name="Flaming Oil">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>500</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1697" type="EtcItem" name="Magic Powder">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3080</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1698" type="EtcItem" name="Refined Mithril">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2100</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1699" type="EtcItem" name="Fortified Steel">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1860</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1700" type="EtcItem" name="(Not used) Oriharukon">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6300</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1701" type="EtcItem" name="Spell Solution">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>8160</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1702" type="EtcItem" name="Metal Frame">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>12500</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1703" type="EtcItem" name="Steel of The Highest Grade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3720</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1704" type="EtcItem" name="Stone of Anguish">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>157</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1705" type="EtcItem" name="Sprig of Wisdom">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>258</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1706" type="EtcItem" name="Blue Diamond Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>471</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1707" type="EtcItem" name="Saint's Molar">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>568</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1708" type="EtcItem" name="Smoky Quartz">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1136</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1709" type="EtcItem" name="Blood of Manticore">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>568</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1710" type="EtcItem" name="Tiger's Eye Crystal">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3215</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1711" type="EtcItem" name="Claw of Leopard">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>402</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1712" type="EtcItem" name="Leather Shoes Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>87</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1713" type="EtcItem" name="Leather Tunic Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>261</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1714" type="EtcItem" name="Leather Stockings Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>129</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1715" type="EtcItem" name="Leather Helmet Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>240</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1716" type="EtcItem" name="Leather Gloves Texture">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>226</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1717" type="EtcItem" name="Leather Gloves Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>113</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1718" type="EtcItem" name="Black Bone Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>693</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1719" type="EtcItem" name="Hard Leather Shirt Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>963</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1720" type="EtcItem" name="Blue-Black Bone Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1493</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1721" type="EtcItem" name="Hard Leather Gaiter Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>500</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1722" type="EtcItem" name="Boots Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>271</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1723" type="EtcItem" name="Leather Boots Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>364</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1724" type="EtcItem" name="Skull Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>512</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1725" type="EtcItem" name="Dark Stockings Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>632</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1726" type="EtcItem" name="Crafted Leather Gloves Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>523</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1727" type="EtcItem" name="Crafted Leather Gloves Texture">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>261</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1728" type="EtcItem" name="Steel Scale">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1790</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1729" type="EtcItem" name="Pure White Cloth">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>833</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1730" type="EtcItem" name="Purifying Potion">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3330</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1731" type="EtcItem" name="Steel Scale Gaiters">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1148</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1732" type="EtcItem" name="Leather Fittings">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1520</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1733" type="EtcItem" name="Large Sheet Iron">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1900</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1734" type="EtcItem" name="Small Leather Fittings">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>952</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1735" type="EtcItem" name="Small Sheet Iron">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1190</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1736" type="EtcItem" name="Iron Boots Binding">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>635</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1737" type="EtcItem" name="Iron Boots Frame">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>508</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1738" type="EtcItem" name="Wide Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>625</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1739" type="EtcItem" name="Broadsword Mold">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1250</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1740" type="EtcItem" name="Crafted Willow Branch">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>833</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1741" type="EtcItem" name="Stave">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>900</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1742" type="EtcItem" name="Red Cedar Branch">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1797</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1743" type="EtcItem" name="Dirk Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1082</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1744" type="EtcItem" name="Dirk Mold">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5410</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1745" type="EtcItem" name="Brandish Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1880</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1746" type="EtcItem" name="Short Spear Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1747" type="EtcItem" name="Shining Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1700</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1748" type="EtcItem" name="Sword of Reflection Mold">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>13600</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1749" type="EtcItem" name="Branch of The Mother Tree">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4533</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1750" type="EtcItem" name="Dark Forest Leaf">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2267</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1751" type="EtcItem" name="Lump of Iron">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5278</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1752" type="EtcItem" name="Piece of Sword Breaker">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3050</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1753" type="EtcItem" name="Sword Breaker Mold">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>24400</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1754" type="EtcItem" name="Steel Bow Mold">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4067</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1755" type="EtcItem" name="Metal Stave">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>8133</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1756" type="EtcItem" name="Spirit of The Saber Smith">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4544</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1757" type="EtcItem" name="Saber Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5453</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1758" type="EtcItem" name="Saber Mold">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>13633</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1759" type="EtcItem" name="Blood of Assassin">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4544</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1760" type="EtcItem" name="Assassin Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5453</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1761" type="EtcItem" name="Assassin Mold">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>27267</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1762" type="EtcItem" name="Piece of Trident">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6850</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1763" type="EtcItem" name="Ruby Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5113</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1764" type="EtcItem" name="Deep Sea Water">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>10225</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1765" type="EtcItem" name="Spinebone Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6440</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1766" type="EtcItem" name="Spinebone Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>12880</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1767" type="EtcItem" name="Piece of Mace of Judgment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>7156</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1768" type="EtcItem" name="Pattern of Judgment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>10733</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1769" type="EtcItem" name="Piece of Conjuror's Staff">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6440</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1770" type="EtcItem" name="Magic Flute">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>12880</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1771" type="EtcItem" name="Elven Stave">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>21467</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1772" type="EtcItem" name="Leaf of the Mother Tree">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5367</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1773" type="EtcItem" name="Piece of Dwarven Trident">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>8613</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1774" type="EtcItem" name="Piece of Two-Handed Sword">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5688</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1775" type="EtcItem" name="Two-Handed Sword Mold">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>96700</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1776" type="EtcItem" name="Piece of Spiked Club">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>32233</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1777" type="EtcItem" name="Steel Piece of Club">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6447</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1778" type="EtcItem" name="Shilen Bone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6447</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1779" type="EtcItem" name="Shilen Mane">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>64467</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1780" type="EtcItem" name="Purity Bronze">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>9210</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1781" type="EtcItem" name="Gastraphetes Stave">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>32233</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1782" type="EtcItem" name="Gastraphetes Addendum">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6447</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1783" type="EtcItem" name="Blood of Fiend">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>10744</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1784" type="EtcItem" name="Cursed Leather">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>10744</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1785" type="EtcItem" name="Soul Ore">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>250</price>
+    <weight>10</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1864" type="EtcItem" name="Stem">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>100</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1865" type="EtcItem" name="Varnish">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>200</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1866" type="EtcItem" name="Suede">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>300</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1867" type="EtcItem" name="Animal Skin">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>150</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1868" type="EtcItem" name="Thread">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>100</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1869" type="EtcItem" name="Iron Ore">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>200</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1870" type="EtcItem" name="Coal">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>200</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1871" type="EtcItem" name="Charcoal">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>200</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1872" type="EtcItem" name="Animal Bone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>150</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1873" type="EtcItem" name="Silver Nugget">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>500</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1874" type="EtcItem" name="Oriharukon Ore">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1875" type="EtcItem" name="Stone of Purity">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1876" type="EtcItem" name="Mithril Ore">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1877" type="EtcItem" name="Adamantite Nugget">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1878" type="EtcItem" name="Braided Hemp">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>500</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1879" type="EtcItem" name="Cokes">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1200</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1880" type="EtcItem" name="Steel">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1881" type="EtcItem" name="Coarse Bone Powder">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1500</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1882" type="EtcItem" name="Leather">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>900</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1883" type="EtcItem" name="Steel Mold">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4500</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1884" type="EtcItem" name="Cord">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>325</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1885" type="EtcItem" name="High Grade Suede">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2400</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1886" type="EtcItem" name="Silver Mold">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>13500</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1887" type="EtcItem" name="Varnish of Purity">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>8100</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1888" type="EtcItem" name="Synthetic Cokes">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6600</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1889" type="EtcItem" name="Compound Braid">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1890" type="EtcItem" name="Mithril Alloy">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>13100</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1891" type="EtcItem" name="Artisan's Frame">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>95000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1892" type="EtcItem" name="Blacksmith's Frame">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>64000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1893" type="EtcItem" name="Oriharukon">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>24600</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1894" type="EtcItem" name="Crafted Leather">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5700</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1895" type="EtcItem" name="Metallic Fiber">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>700</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1896" type="EtcItem" name="Necklace of Anguish Chain">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>472</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1897" type="EtcItem" name="Necklace of Wisdom Chain">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>840</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1898" type="EtcItem" name="Blue Diamond Necklace Gem">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1947</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1899" type="EtcItem" name="Necklace of Devotion Chain">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1280</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1900" type="EtcItem" name="Enchanted Necklace Chain">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1828</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1901" type="EtcItem" name="Tiger's Eye Earring Stone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1448</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1902" type="EtcItem" name="Elven Earring Beads">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1974</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1903" type="EtcItem" name="Elven Ring Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1199</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1904" type="EtcItem" name="Elven Necklace Beads">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2143</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1905" type="EtcItem" name="Omen Beast's Eye Earring Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2056</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1906" type="EtcItem" name="Mithril Ring Wire">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1455</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1907" type="EtcItem" name="Necklace of Darkness Gem">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2875</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1908" type="EtcItem" name="Moonstone Earring Wire">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2112</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1909" type="EtcItem" name="Aquastone Ring Wire">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1481</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1910" type="EtcItem" name="Aquastone Necklace Chain">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2656</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1911" type="EtcItem" name="Earring of Protection Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2689</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1912" type="EtcItem" name="Ring of Protection Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1856</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1913" type="EtcItem" name="Necklace of Protection Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3289</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1914" type="EtcItem" name="Earring of Binding Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3560</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1915" type="EtcItem" name="Ring of Ages Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2270</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1916" type="EtcItem" name="Necklace of Mermaid Teardrop">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4700</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1917" type="EtcItem" name="Sage's Necklace Chain">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5845</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1918" type="EtcItem" name="Nassen's Earring Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4618</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1919" type="EtcItem" name="Ring of Sage Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3482</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1920" type="EtcItem" name="Necklace of Binding Chain">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5845</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1921" type="EtcItem" name="Leather Shoes Texture">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>310</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1922" type="EtcItem" name="Leather Tunic Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>784</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1923" type="EtcItem" name="Leather Stocking Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>488</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1924" type="EtcItem" name="Leather Helmet Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>620</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1925" type="EtcItem" name="Leather Gloves Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>305</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1926" type="EtcItem" name="Piece Bone Breastplate Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1980</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1927" type="EtcItem" name="Hard Leather Shirt Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2507</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1928" type="EtcItem" name="Piece Bone Gaiters Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1373</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1929" type="EtcItem" name="Hard Leather Gaiters Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1550</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1930" type="EtcItem" name="Boot Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>780</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1931" type="EtcItem" name="Leather Boot Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1530</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1932" type="EtcItem" name="Bone Helmet Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1260</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1933" type="EtcItem" name="Dark Stocking Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1700</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1934" type="EtcItem" name="Crafted Leather Gloves Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1530</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1935" type="EtcItem" name="Scale Mail Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3580</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1936" type="EtcItem" name="White Tunic Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2444</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1937" type="EtcItem" name="Scale Gaiters Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2328</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1938" type="EtcItem" name="Mithril Banded Mail Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2975</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1939" type="EtcItem" name="Mithril Banded Gaiters Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2277</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1940" type="EtcItem" name="Iron Boots Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1340</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1941" type="EtcItem" name="Brigandine Temper">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5029</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1942" type="EtcItem" name="Manticore Skin Shirt Texture">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3921</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1943" type="EtcItem" name="Manticore Skin Gaiters Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2518</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1944" type="EtcItem" name="Mithril Tunic Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3921</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1945" type="EtcItem" name="Mithril Stocking Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2518</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1946" type="EtcItem" name="Rip Gauntlets Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1480</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1947" type="EtcItem" name="Kite Shield Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1389</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1948" type="EtcItem" name="Boots of Power Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1480</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1949" type="EtcItem" name="Mithril Gloves Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1792</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1950" type="EtcItem" name="Half Plate Temper">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6162</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1951" type="EtcItem" name="Plate Gaiters Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3962</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1952" type="EtcItem" name="Salamander Skin Mail Texture">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6244</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1953" type="EtcItem" name="Sage's Rag Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6244</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1954" type="EtcItem" name="Karmian Stocking Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3762</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1955" type="EtcItem" name="Chain Helmet Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2481</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1956" type="EtcItem" name="Square Shield Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1762</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1957" type="EtcItem" name="Assault Boots Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1792</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1958" type="EtcItem" name="Mithril Boots Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1120</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1959" type="EtcItem" name="Chain Mail Shirt Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>7425</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1960" type="EtcItem" name="Chain Gaiters Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3650</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1961" type="EtcItem" name="Mithril Shirt Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6250</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1962" type="EtcItem" name="Karmian Tunic Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6250</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1963" type="EtcItem" name="Ogre Power Gauntlets Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1792</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1964" type="EtcItem" name="Eldarake Temper">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2475</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1965" type="EtcItem" name="Metal Plate Helmet Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2967</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1966" type="EtcItem" name="Plated Leather Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5478</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1967" type="EtcItem" name="Plated Leather Gaiters Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3667</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1968" type="EtcItem" name="Dwarven Chain Mail Shirt Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>8300</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1969" type="EtcItem" name="Dwarven Chain Gaiters Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5233</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1970" type="EtcItem" name="Robe of Seal Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>8956</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1971" type="EtcItem" name="Great Helmet Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3267</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1972" type="EtcItem" name="Knight's Shield Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2500</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1973" type="EtcItem" name="Pa'agrian Hand Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2378</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1974" type="EtcItem" name="Crimson Boot Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2378</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1975" type="EtcItem" name="Rind Leather Armor Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6089</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1976" type="EtcItem" name="Rind Leather Gaiters Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3289</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1977" type="EtcItem" name="Composite Armor Temper">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>13520</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1978" type="EtcItem" name="Tower Shield Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3120</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1979" type="EtcItem" name="Demon's Tunic Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>8240</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1980" type="EtcItem" name="Demon's Stocking Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4700</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1981" type="EtcItem" name="Mithril Gauntlets Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3400</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1982" type="EtcItem" name="Forgotten Boots Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3400</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1983" type="EtcItem" name="Shining Circlet Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4560</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1984" type="EtcItem" name="Theca Leather Armor Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>9330</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1985" type="EtcItem" name="Theca Leather Gaiters Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5800</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1986" type="EtcItem" name="Full Plate Armor Temper">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>18927</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1987" type="EtcItem" name="Drake Leather Armor Texture">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>13109</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1988" type="EtcItem" name="Divine Tunic Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>10409</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1989" type="EtcItem" name="Divine Stocking Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6636</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1990" type="EtcItem" name="Mithril Helmet Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5782</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1991" type="EtcItem" name="Cap of Mana Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5782</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1992" type="EtcItem" name="Paradia Hood Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5782</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1993" type="EtcItem" name="Hood of Solar Eclipse Texture">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5782</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1994" type="EtcItem" name="Hood of Summoning Texture">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5782</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1995" type="EtcItem" name="Elemental Hood Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5782</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1996" type="EtcItem" name="Hood of Grace Texture">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5782</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1997" type="EtcItem" name="Phoenix Hood Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5782</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1998" type="EtcItem" name="Hood of Aid Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5782</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="1999" type="EtcItem" name="Flame Helm Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5782</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2000" type="EtcItem" name="Tallum Helm Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5782</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2001" type="EtcItem" name="Helm of Avadon Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5782</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2002" type="EtcItem" name="Helmet of Pledge Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5782</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2003" type="EtcItem" name="Gauntlets of Ghost Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3673</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2004" type="EtcItem" name="Adamantite Boots Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3673</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2005" type="EtcItem" name="Broadsword Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2800</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2006" type="EtcItem" name="Willow Staff Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2800</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2007" type="EtcItem" name="Bow Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2800</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2008" type="EtcItem" name="Cedar Staff Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5140</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2009" type="EtcItem" name="Dirk Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5640</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2010" type="EtcItem" name="Brandish Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5140</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2011" type="EtcItem" name="Short Spear Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>8767</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2012" type="EtcItem" name="Sword of Reflection Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>9600</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2013" type="EtcItem" name="Forest Bow Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>9267</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2014" type="EtcItem" name="Iron Hammer Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>17400</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2015" type="EtcItem" name="Sword Breaker Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>16400</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2016" type="EtcItem" name="Composition Bow Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>17067</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2017" type="EtcItem" name="Saber Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>15050</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2018" type="EtcItem" name="Assassin Knife Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>15050</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2019" type="EtcItem" name="Trident Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>9300</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2020" type="EtcItem" name="Temptation of Abyss Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>11425</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2021" type="EtcItem" name="Spinebone Sword Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>15840</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2022" type="EtcItem" name="Mace of Judgment Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>12840</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2023" type="EtcItem" name="Conjuror's Staff Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>16140</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2024" type="EtcItem" name="Elven Bow Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>14040</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2025" type="EtcItem" name="Dwarven Trident Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>14440</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2026" type="EtcItem" name="Two-Handed Sword Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>16617</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2027" type="EtcItem" name="Spiked Club Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>15267</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2028" type="EtcItem" name="Shilen Knife Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>16833</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2029" type="EtcItem" name="Gastraphetes Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>16767</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2030" type="EtcItem" name="Tome of Blood Page">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>17100</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2031" type="EtcItem" name="Morning Star Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>19757</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2032" type="EtcItem" name="Goat Head Staff Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>21643</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2033" type="EtcItem" name="Winged Spear Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>17929</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2034" type="EtcItem" name="Sword of Revolution Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>18929</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2035" type="EtcItem" name="Tarbar Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>19757</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2036" type="EtcItem" name="Skull Breaker Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>19757</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2037" type="EtcItem" name="Heavy Bone Club Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>19757</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2038" type="EtcItem" name="Maingauche Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>18929</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2039" type="EtcItem" name="Bich'Hwa Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>19757</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2040" type="EtcItem" name="Strengthened Long Bow Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>17286</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2041" type="EtcItem" name="War Pick Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>17929</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2042" type="EtcItem" name="Crucifix of Blood Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>21643</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2043" type="EtcItem" name="Eye of Infinity Stone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>21643</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2044" type="EtcItem" name="Cursed Maingauche Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>18929</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2045" type="EtcItem" name="Blue Crystal Skull Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>21786</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2046" type="EtcItem" name="Demon Fangs Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>21786</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2047" type="EtcItem" name="Claymore Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>22750</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2048" type="EtcItem" name="Bonebreaker Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>24188</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2049" type="EtcItem" name="Atuba Hammer Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>24188</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2050" type="EtcItem" name="Ghost Staff Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>22812</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2051" type="EtcItem" name="Staff of Life Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>22812</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2052" type="EtcItem" name="Mithril Dagger Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>23062</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2053" type="EtcItem" name="Scallop Jamadhr Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>24188</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2054" type="EtcItem" name="Light Crossbow Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>23500</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2055" type="EtcItem" name="Glaive Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>24188</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2056" type="EtcItem" name="Vajra Wand Frame">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>22812</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2057" type="EtcItem" name="Ancient Reagent Remnant">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>22812</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2058" type="EtcItem" name="Atuba Mace Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>24188</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2059" type="EtcItem" name="Flamberge Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>24125</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2060" type="EtcItem" name="Stormbringer Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>24425</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2061" type="EtcItem" name="Big Hammer Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>26800</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2062" type="EtcItem" name="Scythe Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>22750</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2063" type="EtcItem" name="Battle Axe Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>26800</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2064" type="EtcItem" name="Silver Axe Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>26800</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2065" type="EtcItem" name="Skull Graver Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>26800</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2066" type="EtcItem" name="Heavy Doom Hammer Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>22750</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2067" type="EtcItem" name="Crystal Staff Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>27000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2068" type="EtcItem" name="Stick of Faith Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>27000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2069" type="EtcItem" name="Heavy Doom Axe Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>22750</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2070" type="EtcItem" name="Cursed Dagger Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>24425</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2071" type="EtcItem" name="Wolverine Needle Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>24425</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2072" type="EtcItem" name="Dark Elven Dagger Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>24425</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2073" type="EtcItem" name="Chakram Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>26800</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2074" type="EtcItem" name="Crystallized Ice Bow Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>26538</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2075" type="EtcItem" name="Orcish Glaive Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>22750</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2076" type="EtcItem" name="Body Slasher Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>22750</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2077" type="EtcItem" name="Shamshir Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>29556</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2078" type="EtcItem" name="Katana Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>29556</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2079" type="EtcItem" name="Bec De Corbin Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>31667</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2080" type="EtcItem" name="Spirit Sword Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>29556</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2081" type="EtcItem" name="Raid Sword Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>29556</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2082" type="EtcItem" name="Cursed Staff Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>30911</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2083" type="EtcItem" name="Stiletto Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>29556</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2084" type="EtcItem" name="Soulfire Dirk Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>29556</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2085" type="EtcItem" name="Crossbow Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>26189</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2086" type="EtcItem" name="Elven Bow of Nobility Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>26189</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2087" type="EtcItem" name="Tears of Fairy Drop">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>30911</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2088" type="EtcItem" name="Horn of Glory Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>30911</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2089" type="EtcItem" name="Caliburs Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>37450</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2090" type="EtcItem" name="Delusional Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>37450</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2091" type="EtcItem" name="Tsurugi Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>37450</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2092" type="EtcItem" name="Homunkulus's Sword Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>37450</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2093" type="EtcItem" name="Poleaxe Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>34200</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2094" type="EtcItem" name="Sword of Limit Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>37450</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2095" type="EtcItem" name="Sword of Nightmare Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>37450</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2096" type="EtcItem" name="Sword of Whispering Death Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>37450</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2097" type="EtcItem" name="War Axe Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>37000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2098" type="EtcItem" name="Nirvana Axe Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>37000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2099" type="EtcItem" name="Stick of Eternity Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>35900</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2100" type="EtcItem" name="Paradia Staff Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>35900</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2101" type="EtcItem" name="Inferno Staff Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>35900</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2102" type="EtcItem" name="Pa'agrian Hammer Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>34200</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2103" type="EtcItem" name="Sage's Staff Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>35900</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2104" type="EtcItem" name="Club of Nature Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>35900</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2105" type="EtcItem" name="Mace of The Underworld Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>37000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2106" type="EtcItem" name="Grace Dagger Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>37450</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2107" type="EtcItem" name="Dark Screamer Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>37450</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2108" type="EtcItem" name="Fisted Blade Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>37000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2109" type="EtcItem" name="Akat Longbow Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>41130</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2110" type="EtcItem" name="Heathen's Book Page">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>35900</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2111" type="EtcItem" name="Hex Doll Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>35900</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2112" type="EtcItem" name="Pa'agrian Axe Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>39900</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2113" type="EtcItem" name="Scorpion Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>39900</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2114" type="EtcItem" name="Widowmaker Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>39900</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2115" type="EtcItem" name="Samurai Longsword Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>46636</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2116" type="EtcItem" name="Deadman's Staff Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>43818</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2117" type="EtcItem" name="Ghoul's Staff Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>43818</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2118" type="EtcItem" name="Demon's Staff Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>43818</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2119" type="EtcItem" name="Crystal Dagger Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>43136</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2120" type="EtcItem" name="Great Pata Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>45964</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2121" type="EtcItem" name="Eminence Bow Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>47218</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2122" type="EtcItem" name="Orcish Poleaxe Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>43818</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2123" type="EtcItem" name="Candle of Wisdom Model">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>43818</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2124" type="EtcItem" name="Blessed Branch Splinter">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>43818</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2125" type="EtcItem" name="Phoenix Feather Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>43818</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2126" type="EtcItem" name="Cerberus Eye Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>43818</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2127" type="EtcItem" name="Scroll of Destruction Page">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>43818</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2128" type="EtcItem" name="Claws of Black Dragon Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>43818</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2129" type="EtcItem" name="Three Eyed Crow's Feather Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>43818</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2130" type="EtcItem" name="Gemstone D">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2131" type="EtcItem" name="Gemstone C">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2132" type="EtcItem" name="Gemstone B">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>10000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2133" type="EtcItem" name="Gemstone A">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>30000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2134" type="EtcItem" name="Gemstone S">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>100000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2508" type="EtcItem" name="Cursed Bone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>300</price>
+    <weight>3</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2917" type="EtcItem" name="Ring of Binding Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3482</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2918" type="EtcItem" name="Mithril Scale Gaiters Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3371</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2919" type="EtcItem" name="Brigandine Gaiters Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3371</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2920" type="EtcItem" name="Elven Mithril Tunic Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3921</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2921" type="EtcItem" name="Elven Mithril Stockings Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2518</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2922" type="EtcItem" name="Brigandine Helmet Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5193</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2923" type="EtcItem" name="Manticore Skin Boot Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1480</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2924" type="EtcItem" name="Brigandine Boots Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1480</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2925" type="EtcItem" name="Elven Mithril Boots Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1480</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2926" type="EtcItem" name="Manticore Skin Gloves Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1480</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2927" type="EtcItem" name="Brigandine Gauntlets Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1480</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2928" type="EtcItem" name="Elven Mithril Gloves Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1480</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2929" type="EtcItem" name="Brigandine Shield Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1389</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2930" type="EtcItem" name="Plate Helmet Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2481</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2931" type="EtcItem" name="Salamander Skin Boot Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1792</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2932" type="EtcItem" name="Plate Boots Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1792</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2933" type="EtcItem" name="Sage's Worn Gloves Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1792</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2934" type="EtcItem" name="Plate Shield Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1762</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2935" type="EtcItem" name="Tempered Mithril Gaiters Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3763</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2936" type="EtcItem" name="Chain Hood Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2725</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2937" type="EtcItem" name="Chain Boots Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2225</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2938" type="EtcItem" name="Karmian Boots Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2225</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2939" type="EtcItem" name="Plate Leather Boot Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2225</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2940" type="EtcItem" name="Dwarven Chain Boots Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2225</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2941" type="EtcItem" name="Boots of Seal Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2225</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2942" type="EtcItem" name="Reinforced Mithril Gloves Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2225</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2943" type="EtcItem" name="Chain Gloves Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2225</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2944" type="EtcItem" name="Karmian Gloves Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2225</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2945" type="EtcItem" name="Chain Shield Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2475</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2946" type="EtcItem" name="Plate Leather Gloves Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3578</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2947" type="EtcItem" name="Dwarven Chain Shield Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2800</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2948" type="EtcItem" name="Rind Leather Boot Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2378</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2949" type="EtcItem" name="Dwarven Chain Gloves Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2378</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2950" type="EtcItem" name="Gloves of Seal Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2378</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2951" type="EtcItem" name="Rind Leather Gloves Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2378</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2952" type="EtcItem" name="Demon's Boots Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3400</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2953" type="EtcItem" name="Demon's Gloves Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3400</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2954" type="EtcItem" name="Theca Leather Boots Texture">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3160</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2955" type="EtcItem" name="Theca Leather Gloves Texture">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3160</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2956" type="EtcItem" name="Composite Boots Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3400</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2957" type="EtcItem" name="Composite Helmet Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4560</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2958" type="EtcItem" name="Divine Boots Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3673</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2959" type="EtcItem" name="Full Plate Helmet Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5782</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2960" type="EtcItem" name="Drake Leather Boots Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3673</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2961" type="EtcItem" name="Full Plate Boots Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3673</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2962" type="EtcItem" name="Drake Leather Gloves Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3673</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2963" type="EtcItem" name="Full Plate Gauntlets Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3673</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2964" type="EtcItem" name="Divine Gloves Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3673</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2965" type="EtcItem" name="Blessed Gloves Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3673</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2966" type="EtcItem" name="Full Plate Shield Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3655</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2967" type="EtcItem" name="Elven Long Sword Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>23062</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2968" type="EtcItem" name="Dwarven Warhammer Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>30067</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="2969" type="EtcItem" name="Yaksa Mace Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>38364</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="3031" type="EtcItem" name="Spirit Ore">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>400</price>
+    <weight>5</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4039" type="EtcItem" name="Mold Glue">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4040" type="EtcItem" name="Mold Lubricant">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>10000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4041" type="EtcItem" name="Mold Hardener">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>23000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4042" type="EtcItem" name="Enria">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>12000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4043" type="EtcItem" name="Asofe">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4044" type="EtcItem" name="Thons">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4045" type="EtcItem" name="Maestro Holder">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>411000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4046" type="EtcItem" name="Maestro Anvil Lock">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>90400</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4047" type="EtcItem" name="Craftsman Mold">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>710000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4048" type="EtcItem" name="Maestro Mold">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>154000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4049" type="EtcItem" name="Adamantite Earring Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3813</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4050" type="EtcItem" name="Adamantite Ring Wire">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3228</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4051" type="EtcItem" name="Adamantite Necklace Chain">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5157</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4052" type="EtcItem" name="Earring of Black Ore Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5649</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4053" type="EtcItem" name="Ring of Black Ore Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4666</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4054" type="EtcItem" name="Necklace of Black Ore Beads">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>10154</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4055" type="EtcItem" name="Composite Shield Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3120</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4056" type="EtcItem" name="Zubei's Breastplate Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>11050</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4057" type="EtcItem" name="Zubei's Gaiter Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>7150</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4058" type="EtcItem" name="Implosion Boots Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4455</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4059" type="EtcItem" name="Boots of Silence Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3843</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4060" type="EtcItem" name="Guardian's Boots Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3843</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4061" type="EtcItem" name="Paradia Boots Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4455</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4062" type="EtcItem" name="Elemental Boots Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4455</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4063" type="EtcItem" name="Boots of Grace Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4455</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4064" type="EtcItem" name="Avadon Breastplate Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>11050</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4065" type="EtcItem" name="Avadon Gaiters Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>7150</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4066" type="EtcItem" name="Zubei's Leather Shirt Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>8483</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4067" type="EtcItem" name="Zubei's Leather Gaiter Texture">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5587</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4068" type="EtcItem" name="Avadon Leather Armor Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>11042</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4069" type="EtcItem" name="Tunic of Zubei Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>8483</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4070" type="EtcItem" name="Stockings of Zubei Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5587</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4071" type="EtcItem" name="Avadon Robe Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>11042</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4072" type="EtcItem" name="Avadon Circlet Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4453</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4073" type="EtcItem" name="Avadon Gloves Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3843</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4074" type="EtcItem" name="Chain Gloves of Silence Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3843</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4075" type="EtcItem" name="Guardian's Gloves Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3843</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4076" type="EtcItem" name="Gloves of Blessing Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3843</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4077" type="EtcItem" name="Doom Shield Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4446</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4078" type="EtcItem" name="Blue Wolf Breastplate Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>13692</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4079" type="EtcItem" name="Boots of Blessing Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3843</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4080" type="EtcItem" name="Blue Wolf Gaiters Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>9723</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4081" type="EtcItem" name="Doom Plate Armor Temper">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>20292</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4082" type="EtcItem" name="Blue Wolf Leather Armor Texture">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>17700</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4083" type="EtcItem" name="Leather Armor of Doom Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>17700</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4084" type="EtcItem" name="Blue Wolf Tunic Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>11508</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4085" type="EtcItem" name="Tunic of Doom Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>11508</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4086" type="EtcItem" name="Blue Wolf Stockings Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>8523</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4087" type="EtcItem" name="Stockings of Doom Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>8523</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4088" type="EtcItem" name="Blue Wolf Helmet Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5292</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4089" type="EtcItem" name="Doom Helmet Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5292</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4090" type="EtcItem" name="Blue Wolf Boots Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4455</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4091" type="EtcItem" name="Doom Gloves Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4455</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4092" type="EtcItem" name="Elemental Gloves Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4455</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4093" type="EtcItem" name="Gloves of Grace Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4455</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4094" type="EtcItem" name="Implosion Gauntlet Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4455</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4095" type="EtcItem" name="Paradia Gloves Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4455</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4096" type="EtcItem" name="Blue Wolf Gloves Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4455</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4097" type="EtcItem" name="Zubei's Boots Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3843</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4098" type="EtcItem" name="Avadon Boots Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3843</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4099" type="EtcItem" name="Doom Boots Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4455</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4100" type="EtcItem" name="Zubei's Gauntlets Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3843</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4101" type="EtcItem" name="Zubei's Shield Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>3450</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4102" type="EtcItem" name="Zubei's Helmet Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>4453</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4103" type="EtcItem" name="Pata Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>32950</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4104" type="EtcItem" name="Great Sword Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>34950</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4105" type="EtcItem" name="Heavy War Axe Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>34950</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4106" type="EtcItem" name="Sprite's Staff Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>35533</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4107" type="EtcItem" name="Keshanberk Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>35500</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4108" type="EtcItem" name="Sword of Valhalla Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>35500</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4109" type="EtcItem" name="Kris Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>35500</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4110" type="EtcItem" name="Hell Knife Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>35500</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4111" type="EtcItem" name="Arthro Nail Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>34950</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4112" type="EtcItem" name="Dark Elven Longbow Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>35325</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4113" type="EtcItem" name="Great Axe Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>38867</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4114" type="EtcItem" name="Sword of Damascus Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>45692</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4115" type="EtcItem" name="Lance Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>45846</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4116" type="EtcItem" name="Deadman's Glory Stone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>45769</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4117" type="EtcItem" name="Art of Battle Axe Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>45769</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4118" type="EtcItem" name="Evil Spirit Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>48308</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4119" type="EtcItem" name="Demon Dagger Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>45692</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4120" type="EtcItem" name="Bellion Cestus Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>45769</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4121" type="EtcItem" name="Bow of Peril Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>45923</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4438" type="EtcItem" name="Knuckle Duster Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>28044</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="4439" type="EtcItem" name="Avadon Shield Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2900</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5220" type="EtcItem" name="Metal Hardener">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5478" type="EtcItem" name="Sealed Dark Crystal Leather Armor Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>23784</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5479" type="EtcItem" name="Sealed Tallum Leather Armor Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>33800</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5480" type="EtcItem" name="Sealed Leather Armor of Nightmare Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>44571</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5481" type="EtcItem" name="Sealed Majestic Leather Armor Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>44571</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5482" type="EtcItem" name="Sealed Dark Crystal Leggings Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>15153</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5483" type="EtcItem" name="Phoenix Earring Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5484" type="EtcItem" name="Inferno Earring Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5485" type="EtcItem" name="Sealed Tallum Tunic Texture">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>23784</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5486" type="EtcItem" name="Sealed Dark Crystal Robe Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>33800</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5487" type="EtcItem" name="Sealed Nightmare Robe Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>44414</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5488" type="EtcItem" name="Sealed Majestic Robe Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>44414</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5489" type="EtcItem" name="Sealed Tallum Stockings Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>15153</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5490" type="EtcItem" name="Phoenix Necklace Beads">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5491" type="EtcItem" name="Inferno Necklace Beads">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5492" type="EtcItem" name="Phoenix Ring Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5493" type="EtcItem" name="Inferno Ring Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5494" type="EtcItem" name="Sealed Dark Crystal Shield Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>9523</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5495" type="EtcItem" name="Sealed Shield of Nightmare Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>13171</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5496" type="EtcItem" name="Sealed Dark Crystal Boots Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>8530</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5497" type="EtcItem" name="Sealed Tallum Boots Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>8530</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5498" type="EtcItem" name="Sealed Boots of the Underworld Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5499" type="EtcItem" name="Sealed Gust Boots Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5500" type="EtcItem" name="Sealed Red Flame Boots Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5501" type="EtcItem" name="Sealed Phoenix Boots Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5502" type="EtcItem" name="Sealed Boots of Nightmare Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>11842</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5503" type="EtcItem" name="Sealed Majestic Boots Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>11842</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5504" type="EtcItem" name="Sealed Dark Legion Boots Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5505" type="EtcItem" name="Sealed Boots of Phantom Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5506" type="EtcItem" name="Sealed Cerberus Boots Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5507" type="EtcItem" name="Sealed Dasparion's Boots Lining">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5508" type="EtcItem" name="Sealed Dark Crystal Gloves Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>8530</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5509" type="EtcItem" name="Sealed Tallum Gloves Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>8530</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5510" type="EtcItem" name="Sealed Gloves of the Underworld Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5511" type="EtcItem" name="Sealed Gust Bracer design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5512" type="EtcItem" name="Sealed Gloves of Black Ore Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5513" type="EtcItem" name="Sealed Phoenix Gloves Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5514" type="EtcItem" name="Sealed Gauntlets of Nightmare Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>11842</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5515" type="EtcItem" name="Sealed Majestic Gauntlets Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>11842</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5516" type="EtcItem" name="Sealed Dark Legion Gloves Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5517" type="EtcItem" name="Sealed Gloves of Phantom Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5518" type="EtcItem" name="Sealed Cerberus Gloves Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5519" type="EtcItem" name="Sealed Dasparion's Gloves Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5520" type="EtcItem" name="Sealed Dark Crystal Breastplate Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>31015</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5521" type="EtcItem" name="Sealed Tallum Plate Armor Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>43953</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5522" type="EtcItem" name="Sealed Armor of Nightmare Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>58728</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5523" type="EtcItem" name="Sealed Majestic Plate Armor Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>58728</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5524" type="EtcItem" name="Sealed Dark Crystal Gaiters Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>20292</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5525" type="EtcItem" name="Sealed Dark Crystal Helmet Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>12938</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5526" type="EtcItem" name="Sealed Tallum Helm Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>12938</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5527" type="EtcItem" name="Sealed Helm of Nightmare Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>16728</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5528" type="EtcItem" name="Sealed Majestic Circlet Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>16728</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5529" type="EtcItem" name="Dragon Slayer Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>72900</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5530" type="EtcItem" name="Berserker Blade Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>43600</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5531" type="EtcItem" name="Heavy Sword Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>11912</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5532" type="EtcItem" name="Meteor Shower Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>59308</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5533" type="EtcItem" name="Elysian Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>72914</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5534" type="EtcItem" name="Soul Bow Stave">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>72850</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5535" type="EtcItem" name="Carnage Bow Stave">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>58615</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5536" type="EtcItem" name="Bloody Orchid Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>58785</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5537" type="EtcItem" name="Soul Separator Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>72900</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5538" type="EtcItem" name="Dragon Grinder Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>72914</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5539" type="EtcItem" name="Blood Tornado Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>59308</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5540" type="EtcItem" name="Orcish Halberd Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>62500</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5541" type="EtcItem" name="Tallum Glaive Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>72929</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5542" type="EtcItem" name="Halberd Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>59308</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5543" type="EtcItem" name="Dasparion's Staff Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>58754</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5544" type="EtcItem" name="Branch of The Mother Tree Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>72986</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5545" type="EtcItem" name="Dark Legion's Edge Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>72900</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5546" type="EtcItem" name="Sword of Miracles Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>66369</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5547" type="EtcItem" name="Elemental Sword Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>58785</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5548" type="EtcItem" name="Tallum Blade Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>58785</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5549" type="EtcItem" name="Metallic Thread">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>2000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5550" type="EtcItem" name="Durable Metal Plate">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>15000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5551" type="EtcItem" name="Leolin's Mold">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>238000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5552" type="EtcItem" name="Warsmith's Mold">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>385000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5553" type="EtcItem" name="Arcsmith's Anvil">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>531200</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5554" type="EtcItem" name="Warsmith's Holder">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>884000</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5556" type="EtcItem" name="Star Ornament">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1</price>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5557" type="EtcItem" name="Bead Ornament">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1</price>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5558" type="EtcItem" name="Fir Tree Branch">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1</price>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5559" type="EtcItem" name="Flower Pot">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1</price>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5757" type="EtcItem" name="Sealed Zubei's Gauntlet Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5758" type="EtcItem" name="Sealed Avadon Gloves Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5759" type="EtcItem" name="Sealed Blue Wolf Gloves Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5760" type="EtcItem" name="Sealed Doom Gloves Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5761" type="EtcItem" name="Sealed Zubei's Boots Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5762" type="EtcItem" name="Sealed Avadon Boots Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5763" type="EtcItem" name="Sealed Blue Wolf Boots Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="5764" type="EtcItem" name="Sealed Doom Boots Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6341" type="EtcItem" name="Sealed Phoenix Earring Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>7231</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6342" type="EtcItem" name="Sealed Majestic Earring Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>8829</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6343" type="EtcItem" name="Sealed Phoenix Necklace Beads">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>9354</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6344" type="EtcItem" name="Sealed Majestic Necklace Beads">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>13643</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6345" type="EtcItem" name="Sealed Phoenix Ring Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5228</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6346" type="EtcItem" name="Sealed Majestic Ring Gemstone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>6143</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6688" type="EtcItem" name="Forgotten Blade Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>92529</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6689" type="EtcItem" name="Basalt Battlehammer Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>94306</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6690" type="EtcItem" name="Imperial Staff Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>92353</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6691" type="EtcItem" name="Angel Slayer Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>92529</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6692" type="EtcItem" name="Shining Bow Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>90882</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6693" type="EtcItem" name="Dragon Hunter Axe Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>90882</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6694" type="EtcItem" name="Saint Spear Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>90882</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6695" type="EtcItem" name="Demon Splinter Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>94306</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6696" type="EtcItem" name="Heavens Divider Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>91082</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6697" type="EtcItem" name="Arcana Mace Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>94306</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6698" type="EtcItem" name="Sealed Tateossian Earring Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>10182</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6699" type="EtcItem" name="Sealed Tateossian Ring Gem">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>9176</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6700" type="EtcItem" name="Sealed Tateossian Necklace Chain">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>16706</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6701" type="EtcItem" name="Sealed Imperial Crusader Breastplate Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>37565</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6702" type="EtcItem" name="Sealed Imperial Crusader Gaiters Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>29182</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6703" type="EtcItem" name="Sealed Imperial Crusader Gauntlets Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>14047</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6704" type="EtcItem" name="Sealed Imperial Crusader Boots Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>14047</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6705" type="EtcItem" name="Sealed Imperial Crusader Shield Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>14341</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6706" type="EtcItem" name="Sealed Imperial Crusader Helmet Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>12329</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6707" type="EtcItem" name="Sealed Draconic Leather Armor Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>40365</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6708" type="EtcItem" name="Sealed Draconic Leather Gloves Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>14047</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6709" type="EtcItem" name="Sealed Draconic Leather Boots Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>14047</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6710" type="EtcItem" name="Sealed Draconic Leather Helmet Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>12329</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6711" type="EtcItem" name="Sealed Major Arcana Robe Part">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>40365</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6712" type="EtcItem" name="Sealed Major Arcana Gloves fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>14047</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6713" type="EtcItem" name="Sealed Major Arcana Boots Design">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>14047</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6714" type="EtcItem" name="Sealed Major Arcana Circlet Pattern">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>12329</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6904" type="EtcItem" name="Party Mask Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6905" type="EtcItem" name="Hair Pin Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6906" type="EtcItem" name="Pirate's Eye Patch Material">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6907" type="EtcItem" name="Monocle Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6908" type="EtcItem" name="Fish Oil">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>50</price>
+    <weight>30</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6909" type="EtcItem" name="Greater Fish Oil">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>250</price>
+    <weight>30</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6910" type="EtcItem" name="Premium Fish Oil">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1250</price>
+    <weight>30</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6911" type="EtcItem" name="Fish Scale">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>200</price>
+    <weight>30</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6912" type="EtcItem" name="Shiny Fish Scale">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>300</price>
+    <weight>30</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6913" type="EtcItem" name="Fish Gem">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>500</price>
+    <weight>30</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6914" type="EtcItem" name="Shiny Fish Gem">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>1000</price>
+    <weight>30</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6915" type="EtcItem" name="Thin Fish Bone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>300</price>
+    <weight>30</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="6916" type="EtcItem" name="Thick Fish Bone">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>450</price>
+    <weight>30</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="7579" type="EtcItem" name="Draconic Bow Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>91471</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="7684" type="EtcItem" name="Raccoon Ears Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="7685" type="EtcItem" name="Outlaw's Eyepatch Strap">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="7686" type="EtcItem" name="Maiden's Hairpin Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="7687" type="EtcItem" name="Rabbit Ears Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="7688" type="EtcItem" name="Cat Ears Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="7697" type="EtcItem" name="Piece of Forget-me-not Hairpin">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="7698" type="EtcItem" name="Piece of Daisy Hairpin">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8327" type="EtcItem" name="Steel Sword Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>11912</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8328" type="EtcItem" name="Titan Sword Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>20950</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8329" type="EtcItem" name="Pa'agrian Sword Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>38420</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8330" type="EtcItem" name="Guardian Sword Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>45769</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8331" type="EtcItem" name="Infernal Master Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>58615</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8332" type="EtcItem" name="Priest Sword Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>12037</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8333" type="EtcItem" name="Sword of Magic Fog Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>20300</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8334" type="EtcItem" name="Mysterious Sword Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>25187</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8335" type="EtcItem" name="Ecliptic Sword Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>43890</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8336" type="EtcItem" name="Blade of the Wizard's Tear">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>45692</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8337" type="EtcItem" name="Priest Mace Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8338" type="EtcItem" name="Axe of Eclipse Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>41636</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8339" type="EtcItem" name="Spell Breaker Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>34950</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8340" type="EtcItem" name="Bones Head of Kaim Vanul">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>45769</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8341" type="EtcItem" name="Spiritual Eye Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>59384</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8342" type="EtcItem" name="Flaming Dragon Skull Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>72914</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8343" type="EtcItem" name="Titan Hammer Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>19757</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8344" type="EtcItem" name="Dwarven Hammer Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8345" type="EtcItem" name="Karik Horn Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8346" type="EtcItem" name="Hammer Piece of Destroyer">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>59308</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8347" type="EtcItem" name="Ice Storm Hammer Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>38867</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8348" type="EtcItem" name="Star Buster Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>45846</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8349" type="EtcItem" name="Doom Crusher Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>72929</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8351" type="EtcItem" name="Black Colored Fish Scale">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>900</price>
+    <weight>10</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8352" type="EtcItem" name="Red Colored Fish Scale">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>700</price>
+    <weight>10</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8353" type="EtcItem" name="Green Colored Fish Scale">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>100</price>
+    <weight>10</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8354" type="EtcItem" name="Yellow Colored Fish Scale">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>400</price>
+    <weight>10</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8355" type="EtcItem" name="Blue Colored Fish Scale">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>300</price>
+    <weight>10</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8356" type="EtcItem" name="White Colored Fish Scale">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>800</price>
+    <weight>10</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8357" type="EtcItem" name="Orange Colored Fish Scale">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>500</price>
+    <weight>10</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8358" type="EtcItem" name="Purple Colored Fish Scale">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>600</price>
+    <weight>10</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8359" type="EtcItem" name="Jade Colored Fish Scale">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>200</price>
+    <weight>10</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8373" type="EtcItem" name="Party Hat Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>10000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8374" type="EtcItem" name="Feathered Hat Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>10000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8375" type="EtcItem" name="Artisan's Goggles Fabric">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>10000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8376" type="EtcItem" name="Red Horn of Victory Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8377" type="EtcItem" name="Little Angel Wings Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8378" type="EtcItem" name="Fairy Antennae Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>5000</price>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8553" type="EtcItem" name="Red Mask of Victory, Fabric">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8615" type="EtcItem" name="Summoning Crystal">
+    <stackable>true</stackable>
+    <material>CRYSTAL</material>
+    <price>35000</price>
+    <weight>10</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8658" type="EtcItem" name="Mysterious Solvent">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>100</price>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8712" type="EtcItem" name="Sirra's Blade Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8713" type="EtcItem" name="Sword of Ipos Blade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8714" type="EtcItem" name="Barakiel's Axe Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8715" type="EtcItem" name="Behemoth's Tuning Fork Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8716" type="EtcItem" name="Naga Storm Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8717" type="EtcItem" name="Tiphon's Spear Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8718" type="EtcItem" name="Shyeed's Bow Shaft">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8719" type="EtcItem" name="Sobekk's Hurricane Edge">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8720" type="EtcItem" name="Themis' Tongue Piece">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8721" type="EtcItem" name="Cabrio's Hand Head">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="8722" type="EtcItem" name="Daimon Crystal Fragment">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>60</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="9168" type="EtcItem" name="Philosopher's Stone Ore">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="9169" type="EtcItem" name="Philosopher's Stone Conversion Formula">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+  <item id="9170" type="EtcItem" name="Magic Reagents">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <weight>2</weight>
+    <etcItemType>MATERIAL</etcItemType>
+  </item>
+</list>

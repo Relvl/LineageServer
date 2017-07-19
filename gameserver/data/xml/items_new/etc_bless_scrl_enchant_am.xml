@@ -1,0 +1,52 @@
+<list>
+  <item id="6570" type="EtcItem" name="Blessed Scroll: Enchant Armor (Grade A)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2209" level="1"/>
+    <material>PAPER</material>
+    <price>750000</price>
+    <weight>120</weight>
+    <etcItemType>BLESS_SCRL_ENCHANT_AM</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="6572" type="EtcItem" name="Blessed Scroll: Enchant Armor (Grade B)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2210" level="1"/>
+    <material>PAPER</material>
+    <price>250000</price>
+    <weight>120</weight>
+    <etcItemType>BLESS_SCRL_ENCHANT_AM</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="6574" type="EtcItem" name="Blessed Scroll: Enchant Armor (Grade C)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2211" level="1"/>
+    <material>PAPER</material>
+    <price>100000</price>
+    <weight>120</weight>
+    <etcItemType>BLESS_SCRL_ENCHANT_AM</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="6576" type="EtcItem" name="Blessed Scroll: Enchant Armor (Grade D)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2212" level="1"/>
+    <material>PAPER</material>
+    <price>50000</price>
+    <weight>120</weight>
+    <etcItemType>BLESS_SCRL_ENCHANT_AM</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="6578" type="EtcItem" name="Blessed Scroll: Enchant Armor (Grade S)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2208" level="1"/>
+    <material>PAPER</material>
+    <price>1250000</price>
+    <weight>120</weight>
+    <etcItemType>BLESS_SCRL_ENCHANT_AM</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+</list>

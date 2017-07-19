@@ -1,0 +1,3148 @@
+<list>
+  <item id="3960" type="EtcItem" name="Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>30000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3961" type="EtcItem" name="Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>40000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3962" type="EtcItem" name="Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>50000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3963" type="EtcItem" name="Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3964" type="EtcItem" name="Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3965" type="EtcItem" name="Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>30000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3966" type="EtcItem" name="Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>40000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3967" type="EtcItem" name="Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>50000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3968" type="EtcItem" name="Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3969" type="EtcItem" name="Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3970" type="EtcItem" name="Mercenary Posting Ticket (Teleporter1)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>100000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3971" type="EtcItem" name="Mercenary Posting Ticket (Teleporter2)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>100000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3972" type="EtcItem" name="Mercenary Posting Ticket (Teleporter3)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>100000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3973" type="EtcItem" name="Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>30000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3974" type="EtcItem" name="Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>40000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3975" type="EtcItem" name="Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>50000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3976" type="EtcItem" name="Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3977" type="EtcItem" name="Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3978" type="EtcItem" name="Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>30000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3979" type="EtcItem" name="Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>40000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3980" type="EtcItem" name="Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>50000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3981" type="EtcItem" name="Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3982" type="EtcItem" name="Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3983" type="EtcItem" name="Mercenary Posting Ticket (Teleporter1)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>100000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3984" type="EtcItem" name="Mercenary Posting Ticket (Teleporter2)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>100000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3985" type="EtcItem" name="Mercenary Posting Ticket (Teleporter3)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>100000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3986" type="EtcItem" name="Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>30000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3987" type="EtcItem" name="Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>40000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3988" type="EtcItem" name="Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>50000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3989" type="EtcItem" name="Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3990" type="EtcItem" name="Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3991" type="EtcItem" name="Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>30000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3992" type="EtcItem" name="Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>40000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3993" type="EtcItem" name="Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>50000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3994" type="EtcItem" name="Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3995" type="EtcItem" name="Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3996" type="EtcItem" name="Mercenary Posting Ticket (Teleporter1)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>100000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3997" type="EtcItem" name="Mercenary Posting Ticket (Teleporter2)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>100000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3998" type="EtcItem" name="Mercenary Posting Ticket (Teleporter3)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>100000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="3999" type="EtcItem" name="Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>30000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4000" type="EtcItem" name="Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>40000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4001" type="EtcItem" name="Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>50000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4002" type="EtcItem" name="Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4003" type="EtcItem" name="Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4004" type="EtcItem" name="Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>30000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4005" type="EtcItem" name="Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>40000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4006" type="EtcItem" name="Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>50000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4007" type="EtcItem" name="Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4008" type="EtcItem" name="Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4009" type="EtcItem" name="Mercenary Posting Ticket (Teleporter1)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>100000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4010" type="EtcItem" name="Mercenary Posting Ticket (Teleporter2)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>100000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4011" type="EtcItem" name="Mercenary Posting Ticket (Teleporter3)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>100000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4012" type="EtcItem" name="Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>30000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4013" type="EtcItem" name="Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>40000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4014" type="EtcItem" name="Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>50000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4015" type="EtcItem" name="Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4016" type="EtcItem" name="Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4017" type="EtcItem" name="Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>30000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4018" type="EtcItem" name="Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>40000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4019" type="EtcItem" name="Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>50000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4020" type="EtcItem" name="Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4021" type="EtcItem" name="Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>150000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4022" type="EtcItem" name="Mercenary Posting Ticket (Teleporter1)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>100000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4023" type="EtcItem" name="Mercenary Posting Ticket (Teleporter2)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>100000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4024" type="EtcItem" name="Mercenary Posting Ticket (Teleporter3)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>100000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4025" type="EtcItem" name="Mercenary Posting Ticket (Teleporter4)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>100000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="4026" type="EtcItem" name="Mercenary Posting Ticket (Teleporter5)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <price>100000</price>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="5205" type="EtcItem" name="Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="5206" type="EtcItem" name="Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="5207" type="EtcItem" name="Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="5208" type="EtcItem" name="Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="5209" type="EtcItem" name="Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="5210" type="EtcItem" name="Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="5211" type="EtcItem" name="Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="5212" type="EtcItem" name="Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="5213" type="EtcItem" name="Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="5214" type="EtcItem" name="Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="5215" type="EtcItem" name="Mercenary Posting Ticket (Teleporter1)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="5218" type="EtcItem" name="Mercenary Posting Ticket (Teleporter2)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="5219" type="EtcItem" name="Mercenary Posting Ticket (Teleporter3)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6038" type="EtcItem" name="Greater Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6039" type="EtcItem" name="Greater Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6040" type="EtcItem" name="Greater Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6041" type="EtcItem" name="Greater Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6042" type="EtcItem" name="Greater Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6043" type="EtcItem" name="Greater Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6044" type="EtcItem" name="Greater Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6045" type="EtcItem" name="Greater Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6046" type="EtcItem" name="Greater Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6047" type="EtcItem" name="Greater Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6048" type="EtcItem" name="Trash - Trash">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6049" type="EtcItem" name="Trash - Trash">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6050" type="EtcItem" name="Trash - Trash">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6051" type="EtcItem" name="Greater Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6052" type="EtcItem" name="Greater Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6053" type="EtcItem" name="Greater Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6054" type="EtcItem" name="Greater Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6055" type="EtcItem" name="Greater Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6056" type="EtcItem" name="Greater Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6057" type="EtcItem" name="Greater Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6058" type="EtcItem" name="Greater Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6059" type="EtcItem" name="Greater Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6060" type="EtcItem" name="Greater Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6061" type="EtcItem" name="Trash - Trash">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6062" type="EtcItem" name="Trash - Trash">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6063" type="EtcItem" name="Trash - Trash">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6064" type="EtcItem" name="Greater Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6065" type="EtcItem" name="Greater Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6066" type="EtcItem" name="Greater Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6067" type="EtcItem" name="Greater Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6068" type="EtcItem" name="Greater Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6069" type="EtcItem" name="Greater Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6070" type="EtcItem" name="Greater Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6071" type="EtcItem" name="Greater Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6072" type="EtcItem" name="Greater Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6073" type="EtcItem" name="Greater Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6074" type="EtcItem" name="Trash - Trash">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6075" type="EtcItem" name="Trash - Trash">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6076" type="EtcItem" name="Trash - Trash">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6077" type="EtcItem" name="Greater Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6078" type="EtcItem" name="Greater Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6079" type="EtcItem" name="Greater Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6080" type="EtcItem" name="Greater Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6081" type="EtcItem" name="Greater Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6082" type="EtcItem" name="Greater Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6083" type="EtcItem" name="Greater Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6084" type="EtcItem" name="Greater Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6085" type="EtcItem" name="Greater Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6086" type="EtcItem" name="Greater Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6087" type="EtcItem" name="Trash - Trash">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6088" type="EtcItem" name="Trash - Trash">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6089" type="EtcItem" name="Trash - Trash">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6090" type="EtcItem" name="Greater Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6091" type="EtcItem" name="Greater Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6092" type="EtcItem" name="Greater Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6093" type="EtcItem" name="Greater Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6094" type="EtcItem" name="Greater Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6095" type="EtcItem" name="Greater Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6096" type="EtcItem" name="Greater Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6097" type="EtcItem" name="Greater Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6098" type="EtcItem" name="Greater Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6099" type="EtcItem" name="Greater Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6100" type="EtcItem" name="Trash - Trash">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6101" type="EtcItem" name="Trash - Trash">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6102" type="EtcItem" name="Trash - Trash">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6103" type="EtcItem" name="Trash - Trash">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6104" type="EtcItem" name="Trash - Trash">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6105" type="EtcItem" name="Greater Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6106" type="EtcItem" name="Greater Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6107" type="EtcItem" name="Greater Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6108" type="EtcItem" name="Greater Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6109" type="EtcItem" name="Greater Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6110" type="EtcItem" name="Greater Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6111" type="EtcItem" name="Greater Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6112" type="EtcItem" name="Greater Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6113" type="EtcItem" name="Greater Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6114" type="EtcItem" name="Greater Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6115" type="EtcItem" name="Dawn Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6116" type="EtcItem" name="Dawn Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6117" type="EtcItem" name="Dawn Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6118" type="EtcItem" name="Dawn Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6119" type="EtcItem" name="Dawn Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6120" type="EtcItem" name="Dawn Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6121" type="EtcItem" name="Dawn Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6122" type="EtcItem" name="Dawn Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6123" type="EtcItem" name="Dawn Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6124" type="EtcItem" name="Dawn Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6125" type="EtcItem" name="Dawn Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6126" type="EtcItem" name="Dawn Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6127" type="EtcItem" name="Dawn Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6128" type="EtcItem" name="Dawn Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6129" type="EtcItem" name="Dawn Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6130" type="EtcItem" name="Dawn Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6131" type="EtcItem" name="Dawn Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6132" type="EtcItem" name="Dawn Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6133" type="EtcItem" name="Dawn Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6134" type="EtcItem" name="Dawn Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6135" type="EtcItem" name="Dawn Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6136" type="EtcItem" name="Dawn Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6137" type="EtcItem" name="Dawn Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6138" type="EtcItem" name="Dawn Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6139" type="EtcItem" name="Dawn Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6140" type="EtcItem" name="Dawn Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6141" type="EtcItem" name="Dawn Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6142" type="EtcItem" name="Dawn Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6143" type="EtcItem" name="Dawn Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6144" type="EtcItem" name="Dawn Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6145" type="EtcItem" name="Dawn Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6146" type="EtcItem" name="Dawn Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6147" type="EtcItem" name="Dawn Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6148" type="EtcItem" name="Dawn Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6149" type="EtcItem" name="Dawn Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6150" type="EtcItem" name="Dawn Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6151" type="EtcItem" name="Dawn Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6152" type="EtcItem" name="Dawn Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6153" type="EtcItem" name="Dawn Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6154" type="EtcItem" name="Dawn Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6155" type="EtcItem" name="Dawn Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6156" type="EtcItem" name="Dawn Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6157" type="EtcItem" name="Dawn Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6158" type="EtcItem" name="Dawn Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6159" type="EtcItem" name="Dawn Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6160" type="EtcItem" name="Dawn Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6161" type="EtcItem" name="Dawn Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6162" type="EtcItem" name="Dawn Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6163" type="EtcItem" name="Dawn Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6164" type="EtcItem" name="Dawn Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6165" type="EtcItem" name="Dawn Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6166" type="EtcItem" name="Dawn Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6167" type="EtcItem" name="Dawn Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6168" type="EtcItem" name="Dawn Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6169" type="EtcItem" name="Dawn Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6170" type="EtcItem" name="Dawn Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6171" type="EtcItem" name="Dawn Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6172" type="EtcItem" name="Dawn Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6173" type="EtcItem" name="Dawn Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6174" type="EtcItem" name="Dawn Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6175" type="EtcItem" name="Greater Recruit Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6176" type="EtcItem" name="Greater Recruit Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6177" type="EtcItem" name="Greater Recruit Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6178" type="EtcItem" name="Greater Recruit Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6179" type="EtcItem" name="Greater Recruit Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6180" type="EtcItem" name="Greater Recruit Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6181" type="EtcItem" name="Greater Recruit Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6182" type="EtcItem" name="Greater Recruit Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6183" type="EtcItem" name="Greater Recruit Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6184" type="EtcItem" name="Greater Recruit Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6185" type="EtcItem" name="Greater Recruit Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6186" type="EtcItem" name="Greater Recruit Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6187" type="EtcItem" name="Greater Recruit Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6188" type="EtcItem" name="Greater Recruit Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6189" type="EtcItem" name="Greater Recruit Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6190" type="EtcItem" name="Greater Recruit Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6191" type="EtcItem" name="Greater Recruit Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6192" type="EtcItem" name="Greater Recruit Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6193" type="EtcItem" name="Greater Recruit Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6194" type="EtcItem" name="Greater Recruit Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6195" type="EtcItem" name="Greater Recruit Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6196" type="EtcItem" name="Greater Recruit Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6197" type="EtcItem" name="Greater Recruit Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6198" type="EtcItem" name="Greater Recruit Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6199" type="EtcItem" name="Greater Recruit Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6200" type="EtcItem" name="Greater Recruit Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6201" type="EtcItem" name="Greater Recruit Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6202" type="EtcItem" name="Greater Recruit Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6203" type="EtcItem" name="Greater Recruit Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6204" type="EtcItem" name="Greater Recruit Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6205" type="EtcItem" name="Greater Recruit Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6206" type="EtcItem" name="Greater Recruit Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6207" type="EtcItem" name="Greater Recruit Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6208" type="EtcItem" name="Greater Recruit Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6209" type="EtcItem" name="Greater Recruit Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6210" type="EtcItem" name="Greater Recruit Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6211" type="EtcItem" name="Greater Recruit Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6212" type="EtcItem" name="Greater Recruit Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6213" type="EtcItem" name="Greater Recruit Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6214" type="EtcItem" name="Greater Recruit Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6215" type="EtcItem" name="Greater Recruit Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6216" type="EtcItem" name="Greater Recruit Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6217" type="EtcItem" name="Greater Recruit Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6218" type="EtcItem" name="Greater Recruit Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6219" type="EtcItem" name="Greater Recruit Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6220" type="EtcItem" name="Greater Recruit Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6221" type="EtcItem" name="Greater Recruit Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6222" type="EtcItem" name="Greater Recruit Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6223" type="EtcItem" name="Greater Recruit Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6224" type="EtcItem" name="Greater Recruit Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6225" type="EtcItem" name="Greater Recruit Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6226" type="EtcItem" name="Greater Recruit Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6227" type="EtcItem" name="Greater Recruit Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6228" type="EtcItem" name="Greater Recruit Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6229" type="EtcItem" name="Greater Recruit Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6230" type="EtcItem" name="Greater Recruit Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6231" type="EtcItem" name="Greater Recruit Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6232" type="EtcItem" name="Greater Recruit Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6233" type="EtcItem" name="Greater Recruit Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6234" type="EtcItem" name="Greater Recruit Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6235" type="EtcItem" name="Recruit Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6236" type="EtcItem" name="Recruit Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6237" type="EtcItem" name="Recruit Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6238" type="EtcItem" name="Recruit Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6239" type="EtcItem" name="Recruit Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6240" type="EtcItem" name="Recruit Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6241" type="EtcItem" name="Recruit Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6242" type="EtcItem" name="Recruit Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6243" type="EtcItem" name="Recruit Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6244" type="EtcItem" name="Recruit Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6245" type="EtcItem" name="Recruit Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6246" type="EtcItem" name="Recruit Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6247" type="EtcItem" name="Recruit Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6248" type="EtcItem" name="Recruit Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6249" type="EtcItem" name="Recruit Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6250" type="EtcItem" name="Recruit Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6251" type="EtcItem" name="Recruit Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6252" type="EtcItem" name="Recruit Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6253" type="EtcItem" name="Recruit Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6254" type="EtcItem" name="Recruit Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6255" type="EtcItem" name="Recruit Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6256" type="EtcItem" name="Recruit Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6257" type="EtcItem" name="Recruit Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6258" type="EtcItem" name="Recruit Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6259" type="EtcItem" name="Recruit Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6260" type="EtcItem" name="Recruit Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6261" type="EtcItem" name="Recruit Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6262" type="EtcItem" name="Recruit Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6263" type="EtcItem" name="Recruit Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6264" type="EtcItem" name="Recruit Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6265" type="EtcItem" name="Recruit Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6266" type="EtcItem" name="Recruit Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6267" type="EtcItem" name="Recruit Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6268" type="EtcItem" name="Recruit Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6269" type="EtcItem" name="Recruit Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6270" type="EtcItem" name="Recruit Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6271" type="EtcItem" name="Recruit Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6272" type="EtcItem" name="Recruit Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6273" type="EtcItem" name="Recruit Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6274" type="EtcItem" name="Recruit Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6275" type="EtcItem" name="Recruit Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6276" type="EtcItem" name="Recruit Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6277" type="EtcItem" name="Recruit Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6278" type="EtcItem" name="Recruit Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6279" type="EtcItem" name="Recruit Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6280" type="EtcItem" name="Recruit Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6281" type="EtcItem" name="Recruit Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6282" type="EtcItem" name="Recruit Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6283" type="EtcItem" name="Recruit Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6284" type="EtcItem" name="Recruit Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6285" type="EtcItem" name="Recruit Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6286" type="EtcItem" name="Recruit Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6287" type="EtcItem" name="Recruit Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6288" type="EtcItem" name="Recruit Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6289" type="EtcItem" name="Recruit Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6290" type="EtcItem" name="Recruit Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6291" type="EtcItem" name="Recruit Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6292" type="EtcItem" name="Recruit Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6293" type="EtcItem" name="Recruit Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6294" type="EtcItem" name="Recruit Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6295" type="EtcItem" name="Nephilim Warrior Posting Ticket">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6296" type="EtcItem" name="Nephilim Shaman Posting Ticket">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6297" type="EtcItem" name="Nephilim Warrior Posting Ticket">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6298" type="EtcItem" name="Nephilim Shaman Posting Ticket">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6299" type="EtcItem" name="Nephilim Warrior Posting Ticket">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6300" type="EtcItem" name="Nephilim Shaman Posting Ticket">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6301" type="EtcItem" name="Nephilim Warrior Posting Ticket">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6302" type="EtcItem" name="Nephilim Shaman Posting Ticket">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6303" type="EtcItem" name="Nephilim Warrior Posting Ticket">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6304" type="EtcItem" name="Nephilim Shaman Posting Ticket">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6305" type="EtcItem" name="Nephilim Warrior Posting Ticket">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6306" type="EtcItem" name="Nephilim Shaman Posting Ticket">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6779" type="EtcItem" name="Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6780" type="EtcItem" name="Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6781" type="EtcItem" name="Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6782" type="EtcItem" name="Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6783" type="EtcItem" name="Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6784" type="EtcItem" name="Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6785" type="EtcItem" name="Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6786" type="EtcItem" name="Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6787" type="EtcItem" name="Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6788" type="EtcItem" name="Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6789" type="EtcItem" name="Mercenary Posting Ticket (Teleporter1)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6790" type="EtcItem" name="Mercenary Posting Ticket (Teleporter2)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6791" type="EtcItem" name="Mercenary Posting Ticket (Teleporter3)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6792" type="EtcItem" name="Greater Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6793" type="EtcItem" name="Greater Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6794" type="EtcItem" name="Greater Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6795" type="EtcItem" name="Greater Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6796" type="EtcItem" name="Greater Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6797" type="EtcItem" name="Greater Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6798" type="EtcItem" name="Greater Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6799" type="EtcItem" name="Greater Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6800" type="EtcItem" name="Greater Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6801" type="EtcItem" name="Greater Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6802" type="EtcItem" name="Dawn Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6803" type="EtcItem" name="Dawn Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6804" type="EtcItem" name="Dawn Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6805" type="EtcItem" name="Dawn Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6806" type="EtcItem" name="Dawn Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6807" type="EtcItem" name="Dawn Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6808" type="EtcItem" name="Dawn Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6809" type="EtcItem" name="Dawn Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6810" type="EtcItem" name="Dawn Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6811" type="EtcItem" name="Dawn Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6812" type="EtcItem" name="Greater Recruit Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6813" type="EtcItem" name="Greater Recruit Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6814" type="EtcItem" name="Greater Recruit Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6815" type="EtcItem" name="Greater Recruit Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6816" type="EtcItem" name="Greater Recruit Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6817" type="EtcItem" name="Greater Recruit Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6818" type="EtcItem" name="Greater Recruit Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6819" type="EtcItem" name="Greater Recruit Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6820" type="EtcItem" name="Greater Recruit Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6821" type="EtcItem" name="Greater Recruit Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6822" type="EtcItem" name="Recruit Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6823" type="EtcItem" name="Recruit Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6824" type="EtcItem" name="Recruit Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6825" type="EtcItem" name="Recruit Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6826" type="EtcItem" name="Recruit Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6827" type="EtcItem" name="Recruit Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6828" type="EtcItem" name="Recruit Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6829" type="EtcItem" name="Recruit Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6830" type="EtcItem" name="Recruit Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6831" type="EtcItem" name="Recruit Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6832" type="EtcItem" name="Nephilim Warrior Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="6833" type="EtcItem" name="Nephilim Shaman Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7918" type="EtcItem" name="Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7919" type="EtcItem" name="Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7920" type="EtcItem" name="Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7921" type="EtcItem" name="Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7922" type="EtcItem" name="Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7923" type="EtcItem" name="Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7924" type="EtcItem" name="Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7925" type="EtcItem" name="Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7926" type="EtcItem" name="Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7927" type="EtcItem" name="Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7928" type="EtcItem" name="Mercenary Posting Ticket (Teleporter1)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7929" type="EtcItem" name="Mercenary Posting Ticket (Teleporter2)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7930" type="EtcItem" name="Mercenary Posting Ticket (Teleporter3)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7931" type="EtcItem" name="Greater Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7932" type="EtcItem" name="Greater Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7933" type="EtcItem" name="Greater Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7934" type="EtcItem" name="Greater Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7935" type="EtcItem" name="Greater Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7936" type="EtcItem" name="Greater Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7937" type="EtcItem" name="Greater Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7938" type="EtcItem" name="Greater Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7939" type="EtcItem" name="Greater Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7940" type="EtcItem" name="Greater Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7941" type="EtcItem" name="Dawn Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7942" type="EtcItem" name="Dawn Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7943" type="EtcItem" name="Dawn Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7944" type="EtcItem" name="Dawn Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7945" type="EtcItem" name="Dawn Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7946" type="EtcItem" name="Dawn Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7947" type="EtcItem" name="Dawn Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7948" type="EtcItem" name="Dawn Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7949" type="EtcItem" name="Dawn Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7950" type="EtcItem" name="Dawn Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7951" type="EtcItem" name="Greater Recruit Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7952" type="EtcItem" name="Greater Recruit Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7953" type="EtcItem" name="Greater Recruit Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7954" type="EtcItem" name="Greater Recruit Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7955" type="EtcItem" name="Greater Recruit Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7956" type="EtcItem" name="Greater Recruit Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7957" type="EtcItem" name="Greater Recruit Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7958" type="EtcItem" name="Greater Recruit Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7959" type="EtcItem" name="Greater Recruit Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7960" type="EtcItem" name="Greater Recruit Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7961" type="EtcItem" name="Recruit Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7962" type="EtcItem" name="Recruit Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7963" type="EtcItem" name="Recruit Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7964" type="EtcItem" name="Recruit Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7965" type="EtcItem" name="Recruit Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7966" type="EtcItem" name="Recruit Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7967" type="EtcItem" name="Recruit Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7968" type="EtcItem" name="Recruit Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7969" type="EtcItem" name="Recruit Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7970" type="EtcItem" name="Recruit Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7971" type="EtcItem" name="Nephilim Warrior Posting Ticket">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7972" type="EtcItem" name="Nephilim Shaman Posting Ticket">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7973" type="EtcItem" name="Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7974" type="EtcItem" name="Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7975" type="EtcItem" name="Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7976" type="EtcItem" name="Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7977" type="EtcItem" name="Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7978" type="EtcItem" name="Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7979" type="EtcItem" name="Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7980" type="EtcItem" name="Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7981" type="EtcItem" name="Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7982" type="EtcItem" name="Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7983" type="EtcItem" name="Mercenary Posting Ticket (Teleporter1)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7984" type="EtcItem" name="Mercenary Posting Ticket (Teleporter2)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7985" type="EtcItem" name="Mercenary Posting Ticket (Teleporter3)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7986" type="EtcItem" name="Mercenary Posting Ticket (Teleporter4)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7987" type="EtcItem" name="Mercenary Posting Ticket (Teleporter5)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7988" type="EtcItem" name="Greater Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7989" type="EtcItem" name="Greater Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7990" type="EtcItem" name="Greater Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7991" type="EtcItem" name="Greater Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7992" type="EtcItem" name="Greater Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7993" type="EtcItem" name="Greater Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7994" type="EtcItem" name="Greater Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7995" type="EtcItem" name="Greater Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7996" type="EtcItem" name="Greater Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7997" type="EtcItem" name="Greater Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7998" type="EtcItem" name="Dawn Mercenary Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="7999" type="EtcItem" name="Dawn Mercenary Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8000" type="EtcItem" name="Dawn Mercenary Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8001" type="EtcItem" name="Dawn Mercenary Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8002" type="EtcItem" name="Dawn Mercenary Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8003" type="EtcItem" name="Dawn Mercenary Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8004" type="EtcItem" name="Dawn Mercenary Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8005" type="EtcItem" name="Dawn Mercenary Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8006" type="EtcItem" name="Dawn Mercenary Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8007" type="EtcItem" name="Dawn Mercenary Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8008" type="EtcItem" name="Greater Recruit Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8009" type="EtcItem" name="Greater Recruit Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8010" type="EtcItem" name="Greater Recruit Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8011" type="EtcItem" name="Greater Recruit Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8012" type="EtcItem" name="Greater Recruit Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8013" type="EtcItem" name="Greater Recruit Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8014" type="EtcItem" name="Greater Recruit Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8015" type="EtcItem" name="Greater Recruit Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8016" type="EtcItem" name="Greater Recruit Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8017" type="EtcItem" name="Greater Recruit Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8018" type="EtcItem" name="Recruit Posting Ticket (Sword/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8019" type="EtcItem" name="Recruit Posting Ticket (Spear/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8020" type="EtcItem" name="Recruit Posting Ticket (Bow/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8021" type="EtcItem" name="Recruit Posting Ticket (Cleric/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8022" type="EtcItem" name="Recruit Posting Ticket (Wizard/Stationary)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8023" type="EtcItem" name="Recruit Posting Ticket (Sword/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8024" type="EtcItem" name="Recruit Posting Ticket (Spear/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8025" type="EtcItem" name="Recruit Posting Ticket (Bow/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8026" type="EtcItem" name="Recruit Posting Ticket (Cleric/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8027" type="EtcItem" name="Recruit Posting Ticket (Wizard/Mobile)">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8028" type="EtcItem" name="Nephilim Warrior Posting Ticket">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+  <item id="8029" type="EtcItem" name="Nephilim Shaman Posting Ticket">
+    <stackable>true</stackable>
+    <handlerName>MercTicket</handlerName>
+    <material>PAPER</material>
+    <etcItemType>CASTLE_GUARD</etcItemType>
+  </item>
+</list>

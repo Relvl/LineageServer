@@ -1,0 +1,1153 @@
+<list>
+  <item id="731" type="EtcItem" name="Crystal Scroll: Enchant Weapon (Grade A)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <material>PAPER</material>
+    <price>240000</price>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="732" type="EtcItem" name="Crystal Scroll: Enchant Armor (Grade A)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <material>PAPER</material>
+    <price>240000</price>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="736" type="EtcItem" name="Scroll of Escape">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2013" level="1"/>
+    <material>PAPER</material>
+    <price>400</price>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="737" type="EtcItem" name="Scroll of Resurrection">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ScrollOfResurrection</handlerName>
+    <itemSkill id="2014" level="1"/>
+    <material>PAPER</material>
+    <price>2000</price>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="1538" type="EtcItem" name="Blessed Scroll of Escape">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2036" level="1"/>
+    <material>PAPER</material>
+    <price>150000</price>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="1829" type="EtcItem" name="Scroll of Escape: Clan Hall">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2040" level="1"/>
+    <material>PAPER</material>
+    <price>500</price>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="1830" type="EtcItem" name="Scroll of Escape: Castle">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2041" level="1"/>
+    <material>PAPER</material>
+    <price>500</price>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="3926" type="EtcItem" name="L2Day - Scroll of Guidance">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2050" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="3927" type="EtcItem" name="L2Day - Scroll of Death Whisper">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2051" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="3928" type="EtcItem" name="L2Day - Scroll of Focus">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2052" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="3929" type="EtcItem" name="L2Day - Scroll of Greater Acumen">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2053" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="3930" type="EtcItem" name="L2Day - Scroll of Haste">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2054" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="3931" type="EtcItem" name="L2Day - Scroll of Agility">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2055" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="3932" type="EtcItem" name="L2Day - Scroll of Mystic Empower">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2056" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="3933" type="EtcItem" name="L2Day - Scroll of Might">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2057" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="3934" type="EtcItem" name="L2Day - Scroll of Windwalk">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2058" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="3935" type="EtcItem" name="L2Day - Scroll of Shield">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2059" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="3936" type="EtcItem" name="Blessed Scroll of Resurrection">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ScrollOfResurrection</handlerName>
+    <itemSkill id="2049" level="1"/>
+    <material>PAPER</material>
+    <price>400000</price>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="3958" type="EtcItem" name="L2Day - Blessed Escape Effect">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2036" level="2"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="3959" type="EtcItem" name="L2Day - Blessed Resurrection Efffect">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ScrollOfResurrection</handlerName>
+    <itemSkill id="2062" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4218" type="EtcItem" name="L2 Day - Scroll of Mana Regeneration">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2064" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4629" type="EtcItem" name="Red Soul Crystal">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4630" type="EtcItem" name="Red Soul Crystal - Stage 1">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4631" type="EtcItem" name="Red Soul Crystal - Stage 2">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4632" type="EtcItem" name="Red Soul Crystal - Stage 3">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4633" type="EtcItem" name="Red Soul Crystal - Stage 4">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4634" type="EtcItem" name="Red Soul Crystal - Stage 5">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4635" type="EtcItem" name="Red Soul Crystal - Stage 6">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4636" type="EtcItem" name="Red Soul Crystal - Stage 7">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4637" type="EtcItem" name="Red Soul Crystal - Stage 8">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4638" type="EtcItem" name="Red Soul Crystal - Stage 9">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4639" type="EtcItem" name="Red Soul Crystal - Stage 10">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4640" type="EtcItem" name="Green Soul Crystal">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4641" type="EtcItem" name="Green Soul Crystal - Stage 1">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4642" type="EtcItem" name="Green Soul Crystal - Stage 2">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4643" type="EtcItem" name="Green Soul Crystal - Stage 3">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4644" type="EtcItem" name="Green Soul Crystal - Stage 4">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4645" type="EtcItem" name="Green Soul Crystal - Stage 5">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4646" type="EtcItem" name="Green Soul Crystal - Stage 6">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4647" type="EtcItem" name="Green Soul Crystal - Stage 7">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4648" type="EtcItem" name="Green Soul Crystal - Stage 8">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4649" type="EtcItem" name="Green Soul Crystal - Stage 9">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4650" type="EtcItem" name="Green Soul Crystal - Stage 10">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4651" type="EtcItem" name="Blue Soul Crystal">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4652" type="EtcItem" name="Blue Soul Crystal - Stage 1">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4653" type="EtcItem" name="Blue Soul Crystal - Stage 2">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4654" type="EtcItem" name="Blue Soul Crystal - Stage 3">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4655" type="EtcItem" name="Blue Soul Crystal - Stage 4">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4656" type="EtcItem" name="Blue Soul Crystal - Stage 5">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4657" type="EtcItem" name="Blue Soul Crystal - Stage 6">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4658" type="EtcItem" name="Blue Soul Crystal - Stage 7">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4659" type="EtcItem" name="Blue Soul Crystal - Stage 8">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4660" type="EtcItem" name="Blue Soul Crystal - Stage 9">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4661" type="EtcItem" name="Blue Soul Crystal - Stage 10">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4662" type="EtcItem" name="Broken Red Soul Crystal">
+    <olympiadRestricted>true</olympiadRestricted>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4663" type="EtcItem" name="Broken Green Soul Crystal">
+    <olympiadRestricted>true</olympiadRestricted>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="4664" type="EtcItem" name="Broken Blue Soul Crystal">
+    <olympiadRestricted>true</olympiadRestricted>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5577" type="EtcItem" name="Red Soul Crystal - Stage 11">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5578" type="EtcItem" name="Green Soul Crystal - Stage 11">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5579" type="EtcItem" name="Blue Soul Crystal - Stage 11">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5580" type="EtcItem" name="Red Soul Crystal - Stage 12">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5581" type="EtcItem" name="Green Soul Crystal - Stage 12">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5582" type="EtcItem" name="Blue Soul Crystal - Stage 12">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5593" type="EtcItem" name="SP Scroll: Low Grade">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2167" level="1"/>
+    <material>PAPER</material>
+    <price>2400</price>
+    <weight>30</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5594" type="EtcItem" name="SP Scroll: Medium Grade">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2167" level="2"/>
+    <material>PAPER</material>
+    <price>24000</price>
+    <weight>30</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5595" type="EtcItem" name="SP Scroll: High Grade">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2167" level="3"/>
+    <material>PAPER</material>
+    <price>480000</price>
+    <weight>30</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5703" type="EtcItem" name="Lucky Charm">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2168" level="1"/>
+    <material>PAPER</material>
+    <reuseDelay>10000</reuseDelay>
+    <price>100</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5803" type="EtcItem" name="Lucky Charm: D-Grade">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2168" level="2"/>
+    <material>PAPER</material>
+    <reuseDelay>10000</reuseDelay>
+    <price>300</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5804" type="EtcItem" name="Lucky Charm: C-Grade">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2168" level="3"/>
+    <material>PAPER</material>
+    <reuseDelay>10000</reuseDelay>
+    <price>660</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5805" type="EtcItem" name="Lucky Charm: B-Grade">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2168" level="4"/>
+    <material>PAPER</material>
+    <reuseDelay>10000</reuseDelay>
+    <price>1300</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5806" type="EtcItem" name="Lucky Charm: A-Grade">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2168" level="5"/>
+    <material>PAPER</material>
+    <reuseDelay>10000</reuseDelay>
+    <price>2700</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5807" type="EtcItem" name="Lucky Charm: S Grade">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2168" level="6"/>
+    <material>PAPER</material>
+    <reuseDelay>10000</reuseDelay>
+    <price>5000</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5858" type="EtcItem" name="Blessed Scroll of Escape: Clan Hall">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2177" level="1"/>
+    <material>PAPER</material>
+    <price>100000</price>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5859" type="EtcItem" name="Blessed Scroll of Escape: Castle">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2178" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5906" type="EtcItem" name="(Not used) Red Soul Crystal: Grade 11">
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+  </item>
+  <item id="5907" type="EtcItem" name="(Not used) Red Soul Crystal: Grade 12">
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+  </item>
+  <item id="5908" type="EtcItem" name="Red Soul Crystal: Grade 13">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5909" type="EtcItem" name="(Not used) Green Soul Crystal: Grade 11">
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+  </item>
+  <item id="5910" type="EtcItem" name="(Not used) Green Soul Crystal: Grade 12">
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+  </item>
+  <item id="5911" type="EtcItem" name="Green Soul Crystal: Grade 13">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="5912" type="EtcItem" name="(Not used) Blue Soul Crystal: Grade 11">
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+  </item>
+  <item id="5913" type="EtcItem" name="(Not used) Blue Soul Crystal: Grade 12">
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+  </item>
+  <item id="5914" type="EtcItem" name="Blue Soul Crystal: Grade 13">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>SoulCrystals</handlerName>
+    <itemSkill id="2096" level="1"/>
+    <material>CRYSTAL</material>
+    <weight>20</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="6037" type="EtcItem" name="Waking Scroll">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2170" level="1"/>
+    <material>PAPER</material>
+    <price>120</price>
+    <weight>5</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="6387" type="EtcItem" name="Blessed Scroll of Resurrection for Pets">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ScrollOfResurrection</handlerName>
+    <itemSkill id="2179" level="1"/>
+    <material>PAPER</material>
+    <price>6000</price>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="6652" type="EtcItem" name="Scroll: Protection of Valakas">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2231" level="1"/>
+    <material>PAPER</material>
+    <price>100000</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="6653" type="EtcItem" name="Scroll: Flames of Valakas">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+  </item>
+  <item id="6654" type="EtcItem" name="Scroll: Flames of Valakas">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2233" level="1"/>
+    <material>PAPER</material>
+    <price>40000</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="6655" type="EtcItem" name="Scroll: Slay Valakas">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2232" level="1"/>
+    <material>PAPER</material>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="6663" type="EtcItem" name="Scroll of Escape: Orc Village">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2213" level="4"/>
+    <material>PAPER</material>
+    <price>400</price>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+  </item>
+  <item id="6664" type="EtcItem" name="Scroll of Escape: Silenos Village">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2213" level="21"/>
+    <material>PAPER</material>
+    <price>400</price>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+  </item>
+  <item id="8379" type="EtcItem" name="Petrification Scroll">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2239" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8515" type="EtcItem" name="Charm of Courage: No Grade">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="5041" level="1"/>
+    <material>PAPER</material>
+    <reuseDelay>1200000</reuseDelay>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>keep_exp</defaultActionType>
+  </item>
+  <item id="8516" type="EtcItem" name="Charm of Courage: D-Grade">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="5041" level="1"/>
+    <crystalType>D</crystalType>
+    <material>PAPER</material>
+    <reuseDelay>1200000</reuseDelay>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>keep_exp</defaultActionType>
+  </item>
+  <item id="8517" type="EtcItem" name="Charm of Courage: C-Grade">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="5041" level="1"/>
+    <crystalType>C</crystalType>
+    <material>PAPER</material>
+    <reuseDelay>1200000</reuseDelay>
+    <price>13200</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>keep_exp</defaultActionType>
+  </item>
+  <item id="8518" type="EtcItem" name="Charm of Courage: B-Grade">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="5041" level="1"/>
+    <crystalType>B</crystalType>
+    <material>PAPER</material>
+    <reuseDelay>1200000</reuseDelay>
+    <price>26000</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>keep_exp</defaultActionType>
+  </item>
+  <item id="8519" type="EtcItem" name="Charm of Courage: A-Grade">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="5041" level="1"/>
+    <crystalType>A</crystalType>
+    <material>PAPER</material>
+    <reuseDelay>1200000</reuseDelay>
+    <price>54000</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>keep_exp</defaultActionType>
+  </item>
+  <item id="8520" type="EtcItem" name="Charm of Courage: S-Grade">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="5041" level="1"/>
+    <crystalType>S</crystalType>
+    <material>PAPER</material>
+    <reuseDelay>1200000</reuseDelay>
+    <price>100000</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>keep_exp</defaultActionType>
+  </item>
+  <item id="8594" type="EtcItem" name="Scroll: Recovery (No Grade)">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2286" level="1"/>
+    <material>PAPER</material>
+    <reuseDelay>10000</reuseDelay>
+    <price>2000</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8595" type="EtcItem" name="Scroll: Recovery (Grade D)">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2286" level="2"/>
+    <crystalType>D</crystalType>
+    <material>PAPER</material>
+    <reuseDelay>10000</reuseDelay>
+    <price>4800</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8596" type="EtcItem" name="Scroll: Recovery (Grade C)">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2286" level="3"/>
+    <crystalType>C</crystalType>
+    <material>PAPER</material>
+    <reuseDelay>10000</reuseDelay>
+    <price>14000</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8597" type="EtcItem" name="Scroll: Recovery (Grade B)">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2286" level="4"/>
+    <crystalType>B</crystalType>
+    <material>PAPER</material>
+    <reuseDelay>10000</reuseDelay>
+    <price>28000</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8598" type="EtcItem" name="Scroll: Recovery (Grade A)">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2286" level="5"/>
+    <crystalType>A</crystalType>
+    <material>PAPER</material>
+    <reuseDelay>10000</reuseDelay>
+    <price>48000</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8599" type="EtcItem" name="Scroll: Recovery (Grade S)">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2286" level="6"/>
+    <crystalType>S</crystalType>
+    <material>PAPER</material>
+    <reuseDelay>10000</reuseDelay>
+    <price>80000</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8954" type="EtcItem" name="Blue Primeval Crystal">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2306" level="1"/>
+    <crystalType>S</crystalType>
+    <material>PAPER</material>
+    <reuseDelay>1000</reuseDelay>
+    <price>50000</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8955" type="EtcItem" name="Green Primeval Crystal">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2306" level="2"/>
+    <crystalType>S</crystalType>
+    <material>PAPER</material>
+    <reuseDelay>1000</reuseDelay>
+    <price>100000</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8956" type="EtcItem" name="Red Primeval Crystal">
+    <stackable>true</stackable>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2306" level="3"/>
+    <crystalType>S</crystalType>
+    <material>PAPER</material>
+    <reuseDelay>1000</reuseDelay>
+    <price>200000</price>
+    <weight>10</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="9146" type="EtcItem" name="Scroll of Guidance - For Event">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2310" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="9147" type="EtcItem" name="Scroll of Death Whisper - For Event">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2311" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="9148" type="EtcItem" name="Scroll of Focus (Event)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2312" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="9149" type="EtcItem" name="Scroll of Acumen (Event)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2313" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="9150" type="EtcItem" name="Scroll of Haste (Event)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2314" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="9151" type="EtcItem" name="Scroll of Agility (Event)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2315" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="9152" type="EtcItem" name="Scroll of Empower (Event)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2316" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="9153" type="EtcItem" name="Scroll of Might (Event)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2317" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="9154" type="EtcItem" name="Scroll of Wind Walk (Event)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2318" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="9155" type="EtcItem" name="Scroll of Shield (Event)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2319" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="9156" type="EtcItem" name="Blessed Scroll of Escape (Event)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ItemSkills</handlerName>
+    <itemSkill id="2320" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="9157" type="EtcItem" name="Blessed Scroll of Resurrection (Event)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>ScrollOfResurrection</handlerName>
+    <itemSkill id="2321" level="1"/>
+    <material>PAPER</material>
+    <weight>120</weight>
+    <etcItemType>SCROLL</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+</list>

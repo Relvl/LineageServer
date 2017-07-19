@@ -1,0 +1,52 @@
+<list>
+  <item id="729" type="EtcItem" name="Scroll: Enchant Weapon (Grade A)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2006" level="1"/>
+    <material>PAPER</material>
+    <price>1800000</price>
+    <weight>120</weight>
+    <etcItemType>SCRL_ENCHANT_WP</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="947" type="EtcItem" name="Scroll: Enchant Weapon (Grade B)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2015" level="1"/>
+    <material>PAPER</material>
+    <price>500000</price>
+    <weight>120</weight>
+    <etcItemType>SCRL_ENCHANT_WP</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="951" type="EtcItem" name="Scroll: Enchant Weapon (Grade C)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2017" level="1"/>
+    <material>PAPER</material>
+    <price>110000</price>
+    <weight>120</weight>
+    <etcItemType>SCRL_ENCHANT_WP</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="955" type="EtcItem" name="Scroll: Enchant Weapon (Grade D)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2019" level="1"/>
+    <material>PAPER</material>
+    <price>50000</price>
+    <weight>120</weight>
+    <etcItemType>SCRL_ENCHANT_WP</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="959" type="EtcItem" name="Scroll: Enchant Weapon (Grade S)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2021" level="1"/>
+    <material>PAPER</material>
+    <price>5000000</price>
+    <weight>120</weight>
+    <etcItemType>SCRL_ENCHANT_WP</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+</list>

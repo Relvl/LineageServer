@@ -1,0 +1,11 @@
+<list>
+  <item id="4442" type="EtcItem" name="Lottery Ticket">
+    <sellable>false</sellable>
+    <depositable>false</depositable>
+    <dropable>false</dropable>
+    <tradable>false</tradable>
+    <material>PAPER</material>
+    <weight>20</weight>
+    <etcItemType>LOTTO</etcItemType>
+  </item>
+</list>

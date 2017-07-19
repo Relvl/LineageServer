@@ -1,0 +1,374 @@
+<list>
+  <item id="6519" type="EtcItem" name="Green Colored Lure - Low Grade">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <material>LIQUID</material>
+    <price>100</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>5</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="6520" type="EtcItem" name="Green Colored Lure">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <material>LIQUID</material>
+    <price>120</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>4</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="6521" type="EtcItem" name="Green Colored Lure - High Grade">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <material>LIQUID</material>
+    <price>150</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>3</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="6522" type="EtcItem" name="Purple Colored Lure - Low Grade">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <material>LIQUID</material>
+    <price>150</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>5</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="6523" type="EtcItem" name="Purple Colored Lure">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <material>LIQUID</material>
+    <price>180</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>4</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="6524" type="EtcItem" name="Purple Colored Lure - High Grade">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <material>LIQUID</material>
+    <price>200</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>3</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="6525" type="EtcItem" name="Yellow Colored Lure - Low Grade">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <material>LIQUID</material>
+    <price>120</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>5</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="6526" type="EtcItem" name="Yellow Colored Lure">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <material>LIQUID</material>
+    <price>150</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>4</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="6527" type="EtcItem" name="Yellow Colored Lure - High Grade">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <material>LIQUID</material>
+    <price>180</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>3</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="6528" type="EtcItem" name="Event bait">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <material>LIQUID</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>3</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="7067" type="EtcItem" name="Special Bait 1">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>1</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="7068" type="EtcItem" name="Special Bait 2">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>1</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="7069" type="EtcItem" name="Special Bait 3">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>1</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="7070" type="EtcItem" name="Special Bait 4">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>1</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="7610" type="EtcItem" name="Wind Fishing Lure">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>1</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="7611" type="EtcItem" name="Icy Air Fishing Lure">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>1</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="7612" type="EtcItem" name="Earth Fishing Lure">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>1</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="7613" type="EtcItem" name="Flaming Fishing Lure">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>1</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="7807" type="EtcItem" name="Green Colored Lure - For Beginners">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>50</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>5</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="7808" type="EtcItem" name="Purple Colored Lure - For Beginners">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>70</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>5</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="7809" type="EtcItem" name="Yellow Colored Lure - For Beginners">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>60</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>5</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8484" type="EtcItem" name="Prize-Winning Fishing Lure">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>240</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>4</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8485" type="EtcItem" name="Prize-Winning Night Fishing Lure">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>240</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>4</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8486" type="EtcItem" name="Prize-Winning Novice Fishing Lure">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>100</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>5</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8496" type="EtcItem" name="Gludio's Luminous Lure">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>5</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8497" type="EtcItem" name="Dion's Luminous Lure">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>4</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8498" type="EtcItem" name="Giran's Luminous Lure">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>3</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8499" type="EtcItem" name="Oren's Luminous Lure">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>5</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8500" type="EtcItem" name="Aden's Luminous Lure">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>4</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8501" type="EtcItem" name="Innadril's Luminous Lure">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>3</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8502" type="EtcItem" name="Goddard's Luminous Lure">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>5</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8503" type="EtcItem" name="Rune's Luminous Lure">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>4</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8504" type="EtcItem" name="Schuttgart's Luminous Lure">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>3</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8505" type="EtcItem" name="Green Luminous Lure - Low Grade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>5</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8506" type="EtcItem" name="Green Luminous Lure">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>120</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>4</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8507" type="EtcItem" name="Green Colored Lure - High Grade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>3</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8508" type="EtcItem" name="Purple Luminous Lure - Low Grade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>5</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8509" type="EtcItem" name="Purple Luminous Lure">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>180</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>4</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8510" type="EtcItem" name="Purple Luminous Lure - High Grade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>3</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8511" type="EtcItem" name="Yellow Luminous Lure - Low Grade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>5</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8512" type="EtcItem" name="Yellow Luminous Lure">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>4</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8513" type="EtcItem" name="Yellow Luminous Lure - High Grade">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>3</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="8548" type="EtcItem" name="Hot Springs Lure">
+    <stackable>true</stackable>
+    <material>LIQUID</material>
+    <price>200</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>3</weight>
+    <etcItemType>LURE</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+</list>

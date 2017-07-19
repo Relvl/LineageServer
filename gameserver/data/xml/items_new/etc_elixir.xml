@@ -1,0 +1,251 @@
+<list>
+  <item id="8622" type="EtcItem" name="Elixir of Life (No Grade)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>Elixir</handlerName>
+    <itemSkill id="2287" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>300000</reuseDelay>
+    <reuseDelaySharedGroup>1</reuseDelaySharedGroup>
+    <price>1300</price>
+    <weight>5</weight>
+    <etcItemType>ELIXIR</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8623" type="EtcItem" name="Elixir of Life (D-Grade)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>Elixir</handlerName>
+    <itemSkill id="2287" level="2"/>
+    <crystalType>D</crystalType>
+    <material>LIQUID</material>
+    <reuseDelay>300000</reuseDelay>
+    <reuseDelaySharedGroup>2</reuseDelaySharedGroup>
+    <price>3450</price>
+    <weight>5</weight>
+    <etcItemType>ELIXIR</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8624" type="EtcItem" name="Elixir of Life (C-Grade)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>Elixir</handlerName>
+    <itemSkill id="2287" level="3"/>
+    <crystalType>C</crystalType>
+    <material>LIQUID</material>
+    <reuseDelay>300000</reuseDelay>
+    <reuseDelaySharedGroup>3</reuseDelaySharedGroup>
+    <price>7200</price>
+    <weight>5</weight>
+    <etcItemType>ELIXIR</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8625" type="EtcItem" name="Elixir of Life (B-Grade)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>Elixir</handlerName>
+    <itemSkill id="2287" level="4"/>
+    <crystalType>B</crystalType>
+    <material>LIQUID</material>
+    <reuseDelay>300000</reuseDelay>
+    <reuseDelaySharedGroup>4</reuseDelaySharedGroup>
+    <price>10000</price>
+    <weight>5</weight>
+    <etcItemType>ELIXIR</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8626" type="EtcItem" name="Elixir of Life (A-Grade)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>Elixir</handlerName>
+    <itemSkill id="2287" level="5"/>
+    <crystalType>A</crystalType>
+    <material>LIQUID</material>
+    <reuseDelay>300000</reuseDelay>
+    <reuseDelaySharedGroup>5</reuseDelaySharedGroup>
+    <price>12500</price>
+    <weight>5</weight>
+    <etcItemType>ELIXIR</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8627" type="EtcItem" name="Elixir of Life (S-Grade)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>Elixir</handlerName>
+    <itemSkill id="2287" level="6"/>
+    <crystalType>S</crystalType>
+    <material>LIQUID</material>
+    <reuseDelay>300000</reuseDelay>
+    <reuseDelaySharedGroup>6</reuseDelaySharedGroup>
+    <price>15000</price>
+    <weight>5</weight>
+    <etcItemType>ELIXIR</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8628" type="EtcItem" name="Elixir of Mental Strength (No Grade)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>Elixir</handlerName>
+    <itemSkill id="2288" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>300000</reuseDelay>
+    <reuseDelaySharedGroup>1</reuseDelaySharedGroup>
+    <price>1200</price>
+    <weight>5</weight>
+    <etcItemType>ELIXIR</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8629" type="EtcItem" name="Elixir of Mental Strength (D-Grade)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>Elixir</handlerName>
+    <itemSkill id="2288" level="2"/>
+    <crystalType>D</crystalType>
+    <material>LIQUID</material>
+    <reuseDelay>300000</reuseDelay>
+    <reuseDelaySharedGroup>2</reuseDelaySharedGroup>
+    <price>3400</price>
+    <weight>5</weight>
+    <etcItemType>ELIXIR</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8630" type="EtcItem" name="Elixir of Mental Strength (C-Grade)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>Elixir</handlerName>
+    <itemSkill id="2288" level="3"/>
+    <crystalType>C</crystalType>
+    <material>LIQUID</material>
+    <reuseDelay>300000</reuseDelay>
+    <reuseDelaySharedGroup>3</reuseDelaySharedGroup>
+    <price>8700</price>
+    <weight>5</weight>
+    <etcItemType>ELIXIR</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8631" type="EtcItem" name="Elixir of Mental Strength (B-Grade)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>Elixir</handlerName>
+    <itemSkill id="2288" level="4"/>
+    <crystalType>B</crystalType>
+    <material>LIQUID</material>
+    <reuseDelay>300000</reuseDelay>
+    <reuseDelaySharedGroup>4</reuseDelaySharedGroup>
+    <price>11600</price>
+    <weight>5</weight>
+    <etcItemType>ELIXIR</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8632" type="EtcItem" name="Elixir of Mental Strength (A-Grade)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>Elixir</handlerName>
+    <itemSkill id="2288" level="5"/>
+    <crystalType>A</crystalType>
+    <material>LIQUID</material>
+    <reuseDelay>300000</reuseDelay>
+    <reuseDelaySharedGroup>5</reuseDelaySharedGroup>
+    <price>14400</price>
+    <weight>5</weight>
+    <etcItemType>ELIXIR</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8633" type="EtcItem" name="Elixir of Mental Strength (S-Grade)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>Elixir</handlerName>
+    <itemSkill id="2288" level="6"/>
+    <crystalType>S</crystalType>
+    <material>LIQUID</material>
+    <reuseDelay>300000</reuseDelay>
+    <reuseDelaySharedGroup>6</reuseDelaySharedGroup>
+    <price>16800</price>
+    <weight>5</weight>
+    <etcItemType>ELIXIR</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8634" type="EtcItem" name="Elixir of CP (No Grade)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>Elixir</handlerName>
+    <itemSkill id="2289" level="1"/>
+    <material>LIQUID</material>
+    <reuseDelay>300000</reuseDelay>
+    <reuseDelaySharedGroup>7</reuseDelaySharedGroup>
+    <price>600</price>
+    <weight>5</weight>
+    <etcItemType>ELIXIR</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8635" type="EtcItem" name="Elixir of CP (D-Grade)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>Elixir</handlerName>
+    <itemSkill id="2289" level="2"/>
+    <crystalType>D</crystalType>
+    <material>LIQUID</material>
+    <reuseDelay>300000</reuseDelay>
+    <reuseDelaySharedGroup>7</reuseDelaySharedGroup>
+    <price>1400</price>
+    <weight>5</weight>
+    <etcItemType>ELIXIR</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8636" type="EtcItem" name="Elixir of CP (C-Grade)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>Elixir</handlerName>
+    <itemSkill id="2289" level="3"/>
+    <crystalType>C</crystalType>
+    <material>LIQUID</material>
+    <reuseDelay>300000</reuseDelay>
+    <reuseDelaySharedGroup>7</reuseDelaySharedGroup>
+    <price>3000</price>
+    <weight>5</weight>
+    <etcItemType>ELIXIR</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8637" type="EtcItem" name="Elixir of CP (B-Grade)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>Elixir</handlerName>
+    <itemSkill id="2289" level="4"/>
+    <crystalType>B</crystalType>
+    <material>LIQUID</material>
+    <reuseDelay>300000</reuseDelay>
+    <reuseDelaySharedGroup>7</reuseDelaySharedGroup>
+    <price>4000</price>
+    <weight>5</weight>
+    <etcItemType>ELIXIR</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8638" type="EtcItem" name="Elixir of CP (A-Grade)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>Elixir</handlerName>
+    <itemSkill id="2289" level="5"/>
+    <crystalType>A</crystalType>
+    <material>LIQUID</material>
+    <reuseDelay>300000</reuseDelay>
+    <reuseDelaySharedGroup>7</reuseDelaySharedGroup>
+    <price>5000</price>
+    <weight>5</weight>
+    <etcItemType>ELIXIR</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="8639" type="EtcItem" name="Elixir of CP (S-Grade)">
+    <stackable>true</stackable>
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>Elixir</handlerName>
+    <itemSkill id="2289" level="6"/>
+    <crystalType>S</crystalType>
+    <material>LIQUID</material>
+    <reuseDelay>300000</reuseDelay>
+    <reuseDelaySharedGroup>7</reuseDelaySharedGroup>
+    <price>6000</price>
+    <weight>5</weight>
+    <etcItemType>ELIXIR</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+</list>

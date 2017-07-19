@@ -1,0 +1,61 @@
+<list>
+  <item id="17" type="EtcItem" name="Wooden Arrow">
+    <stackable>true</stackable>
+    <material>WOOD</material>
+    <price>2</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>6</weight>
+    <etcItemType>ARROW</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="1341" type="EtcItem" name="Bone Arrow">
+    <stackable>true</stackable>
+    <crystalType>D</crystalType>
+    <material>BONE</material>
+    <price>3</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>5</weight>
+    <etcItemType>ARROW</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="1342" type="EtcItem" name="Fine Steel Arrow">
+    <stackable>true</stackable>
+    <crystalType>C</crystalType>
+    <material>FINE_STEEL</material>
+    <price>5</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>4</weight>
+    <etcItemType>ARROW</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="1343" type="EtcItem" name="Silver Arrow">
+    <stackable>true</stackable>
+    <crystalType>B</crystalType>
+    <material>SILVER</material>
+    <price>7</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>4</weight>
+    <etcItemType>ARROW</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="1344" type="EtcItem" name="Mithril Arrow">
+    <stackable>true</stackable>
+    <crystalType>A</crystalType>
+    <material>MITHRIL</material>
+    <price>8</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>3</weight>
+    <etcItemType>ARROW</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+  <item id="1345" type="EtcItem" name="Shining Arrow">
+    <stackable>true</stackable>
+    <crystalType>S</crystalType>
+    <material>ADAMANTAITE</material>
+    <price>10</price>
+    <bodyPart>SLOT_L_HAND</bodyPart>
+    <weight>3</weight>
+    <etcItemType>ARROW</etcItemType>
+    <defaultActionType>equip</defaultActionType>
+  </item>
+</list>

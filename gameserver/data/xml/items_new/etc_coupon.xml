@@ -1,0 +1,12 @@
+<list>
+  <item id="8592" type="EtcItem" name="Weapon Exchange Coupon - No Grade">
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>COUPON</etcItemType>
+  </item>
+  <item id="8593" type="EtcItem" name="Weapon Exchange Coupon - D Grade">
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>COUPON</etcItemType>
+  </item>
+</list>

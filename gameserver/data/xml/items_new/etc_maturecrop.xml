@@ -1,0 +1,386 @@
+<list>
+  <item id="5095" type="EtcItem" name="Mature Chilly Coda">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5096" type="EtcItem" name="Mature Burning Coda">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5097" type="EtcItem" name="Mature Blue Coda">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5098" type="EtcItem" name="Mature Red Coda">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5099" type="EtcItem" name="Mature Golden Coda">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5100" type="EtcItem" name="Mature Desert Coda">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5101" type="EtcItem" name="Mature Lute Coda">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5102" type="EtcItem" name="Mature Twin Coda">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5103" type="EtcItem" name="Mature Dark Coda">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5104" type="EtcItem" name="Mature Shining Coda">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5105" type="EtcItem" name="Mature Chilly Cobol">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5106" type="EtcItem" name="Mature Burning Cobol">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5107" type="EtcItem" name="Mature Blue Cobol">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5108" type="EtcItem" name="Mature Red Cobol">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5109" type="EtcItem" name="Mature Golden Cobol">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5110" type="EtcItem" name="Mature Desert Cobol">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5111" type="EtcItem" name="Mature Sea Cobol">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5112" type="EtcItem" name="Mature Thorn Cobol">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5113" type="EtcItem" name="Mature Dapple Cobol">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5114" type="EtcItem" name="Mature Great Cobol">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5115" type="EtcItem" name="Mature Chilly Codran">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5116" type="EtcItem" name="Mature Burning Codran">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5117" type="EtcItem" name="Mature Blue Codran">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5118" type="EtcItem" name="Mature Red Codran">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5119" type="EtcItem" name="Mature Dapple Codran">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5120" type="EtcItem" name="Mature Desert Codran">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5121" type="EtcItem" name="Mature Sea Codran">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5122" type="EtcItem" name="Mature Twin Codran">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5123" type="EtcItem" name="Mature Thorn Codran">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5124" type="EtcItem" name="Mature Great Codran">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5838" type="EtcItem" name="Mature Alternative Dark Coda">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5839" type="EtcItem" name="Mature Alternative Red Coda">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5840" type="EtcItem" name="Mature Alternative Chilly Coda">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5841" type="EtcItem" name="Mature Alternative Blue Coda">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5842" type="EtcItem" name="Mature Alternative Golden Coda">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5843" type="EtcItem" name="Mature Alternative Lute Coda">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5844" type="EtcItem" name="Mature Alternative Desert Coda">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5845" type="EtcItem" name="Mature Alternative Red Cobol">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5846" type="EtcItem" name="Mature Alternative Chilly Cobol">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5847" type="EtcItem" name="Mature Alternative Blue Cobol">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5848" type="EtcItem" name="Mature Alternative Thorn Cobol">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5849" type="EtcItem" name="Mature Alternative Golden Cobol">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5850" type="EtcItem" name="Mature Alternative Great Cobol">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5851" type="EtcItem" name="Mature Alternative Red Codran">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5852" type="EtcItem" name="Mature Alternative Sea Codran">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5853" type="EtcItem" name="Mature Alternative Chilly Codran">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5854" type="EtcItem" name="Mature Alternative Blue Codran">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5855" type="EtcItem" name="Mature Alternative Twin Codran">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5856" type="EtcItem" name="Mature Alternative Great Codran">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="5857" type="EtcItem" name="Mature Alternative Desert Codran">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="6555" type="EtcItem" name="Ripe Blue Coba">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="6556" type="EtcItem" name="Ripe Red Coba">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="6557" type="EtcItem" name="Ripe Gold Coba">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="6558" type="EtcItem" name="Ripe Desert Coba">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="6559" type="EtcItem" name="Ripe Sea Coba">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="6560" type="EtcItem" name="Ripe Twin Coba">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="6561" type="EtcItem" name="Ripe King Coba">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="6562" type="EtcItem" name="Ripe Alternative Blue Coba">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="6563" type="EtcItem" name="Ripe Alternative Red Coba">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="6564" type="EtcItem" name="Ripe Alternative Gold Coba">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="6565" type="EtcItem" name="Ripe Alternative Desert Coba">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="6566" type="EtcItem" name="Ripe Alternative Sea Coba">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="6567" type="EtcItem" name="Ripe Alternative Twin Coba">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+  <item id="6568" type="EtcItem" name="Ripe Alternative King Coba">
+    <stackable>true</stackable>
+    <material>PAPER</material>
+    <weight>1</weight>
+    <etcItemType>MATURECROP</etcItemType>
+  </item>
+</list>

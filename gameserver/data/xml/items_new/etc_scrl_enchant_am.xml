@@ -1,0 +1,52 @@
+<list>
+  <item id="730" type="EtcItem" name="Scroll: Enchant Armor (Grade A)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2007" level="1"/>
+    <material>PAPER</material>
+    <price>240000</price>
+    <weight>120</weight>
+    <etcItemType>SCRL_ENCHANT_AM</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="948" type="EtcItem" name="Scroll: Enchant Armor (Grade B)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2016" level="1"/>
+    <material>PAPER</material>
+    <price>80000</price>
+    <weight>120</weight>
+    <etcItemType>SCRL_ENCHANT_AM</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="952" type="EtcItem" name="Scroll: Enchant Armor (Grade C)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2018" level="1"/>
+    <material>PAPER</material>
+    <price>15000</price>
+    <weight>120</weight>
+    <etcItemType>SCRL_ENCHANT_AM</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="956" type="EtcItem" name="Scroll: Enchant Armor (Grade D)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2020" level="1"/>
+    <material>PAPER</material>
+    <price>6000</price>
+    <weight>120</weight>
+    <etcItemType>SCRL_ENCHANT_AM</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+  <item id="960" type="EtcItem" name="Scroll: Enchant Armor (Grade S)">
+    <olympiadRestricted>true</olympiadRestricted>
+    <handlerName>EnchantScrolls</handlerName>
+    <itemSkill id="2022" level="1"/>
+    <material>PAPER</material>
+    <price>500000</price>
+    <weight>120</weight>
+    <etcItemType>SCRL_ENCHANT_AM</etcItemType>
+    <defaultActionType>skill_reduce</defaultActionType>
+  </item>
+</list>
