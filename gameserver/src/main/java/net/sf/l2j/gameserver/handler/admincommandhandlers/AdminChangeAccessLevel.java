@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.handler.admincommandhandlers;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -61,7 +61,7 @@ public class AdminChangeAccessLevel implements IAdminCommandHandler
 				onLineChange(activeChar, player, lvl);
 			else
 			{
-				try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+				try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 				{
 					PreparedStatement statement = con.prepareStatement("UPDATE characters SET accesslevel=? WHERE char_name=?");
 					statement.setInt(1, lvl);

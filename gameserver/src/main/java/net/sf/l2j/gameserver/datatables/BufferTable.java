@@ -30,7 +30,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.model.holder.BuffSkillHolder;
 
@@ -57,7 +57,7 @@ public class BufferTable
 	{
 		int count = 0;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement st = con.prepareStatement(LOAD_SCHEMES);
 			ResultSet rs = st.executeQuery();
@@ -94,7 +94,7 @@ public class BufferTable
 	
 	public void saveSchemes()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			// Delete all entries from database.
 			PreparedStatement st = con.prepareStatement(DELETE_SCHEMES);

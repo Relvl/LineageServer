@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.instancemanager;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ClanTable;
@@ -82,7 +82,7 @@ public class CastleManorManager {
     }
 
     private static void load() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statementProduction = con.prepareStatement(CASTLE_MANOR_LOAD_PRODUCTION);
             PreparedStatement statementProcure = con.prepareStatement(CASTLE_MANOR_LOAD_PROCURE);
             ResultSet rs;

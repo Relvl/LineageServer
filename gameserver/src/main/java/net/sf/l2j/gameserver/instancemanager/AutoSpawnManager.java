@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.instancemanager;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.MapRegionTable;
@@ -54,7 +54,7 @@ public class AutoSpawnManager {
     }
 
     private void restoreSpawnData() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             // Restore spawn group data, then the location data.
             PreparedStatement statement = con.prepareStatement("SELECT * FROM random_spawn ORDER BY groupId ASC");
             ResultSet rs = statement.executeQuery();

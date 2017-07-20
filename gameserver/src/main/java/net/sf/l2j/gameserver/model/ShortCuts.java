@@ -22,7 +22,7 @@ import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
@@ -84,7 +84,7 @@ public class ShortCuts
 		if (oldShortCut != null)
 			deleteShortCutFromDb(oldShortCut);
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("REPLACE INTO character_shortcuts (char_obj_id,slot,page,type,shortcut_id,level,class_index) values(?,?,?,?,?,?,?)");
 			statement.setInt(1, _owner.getObjectId());
@@ -148,7 +148,7 @@ public class ShortCuts
 	 */
 	private void deleteShortCutFromDb(L2ShortCut shortcut)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("DELETE FROM character_shortcuts WHERE char_obj_id=? AND slot=? AND page=? AND class_index=?");
 			statement.setInt(1, _owner.getObjectId());
@@ -167,7 +167,7 @@ public class ShortCuts
 	public void restore()
 	{
 		_shortCuts.clear();
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("SELECT char_obj_id, slot, page, type, shortcut_id, level FROM character_shortcuts WHERE char_obj_id=? AND class_index=?");
 			statement.setInt(1, _owner.getObjectId());

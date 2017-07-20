@@ -2,6 +2,7 @@ package net.sf.l2j.gameserver;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.Server;
 import net.sf.l2j.gameserver.cache.CrestCache;
 import net.sf.l2j.gameserver.cache.HtmCache;
@@ -53,7 +54,9 @@ public class GameServer {
 
         instance = this;
 
-        L2DatabaseFactory.config = CONFIG.database;
+        L2DatabaseFactoryOld.config = CONFIG.database;
+        L2DatabaseFactoryOld.getInstance();
+        L2DatabaseFactory.config = CONFIG.database_new;
         L2DatabaseFactory.getInstance();
 
         IdFactory.getInstance();

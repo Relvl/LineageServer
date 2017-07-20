@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.FriendList;
@@ -26,7 +26,7 @@ public final class RequestAnswerFriendInvite extends L2GameClientPacket {
         if (requestor == null) { return; }
 
         if (_response == 1) {
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement("INSERT INTO character_friends (char_id, friend_id) VALUES (?,?), (?,?)");
                 statement.setInt(1, requestor.getObjectId());
                 statement.setInt(2, player.getObjectId());

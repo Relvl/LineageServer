@@ -23,7 +23,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.item.EItemLocation;
@@ -674,7 +674,7 @@ public class MercTicketManager
 	
 	private static final void load()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("SELECT * FROM castle_siege_guards WHERE isHired=1");
 			ResultSet rs = statement.executeQuery();

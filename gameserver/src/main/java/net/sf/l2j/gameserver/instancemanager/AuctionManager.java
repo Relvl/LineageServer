@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.instancemanager;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.model.entity.Auction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,7 +71,7 @@ public class AuctionManager {
     }
 
     private final void load() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT id FROM auction ORDER BY id");
             ResultSet rs = statement.executeQuery();
 
@@ -123,7 +123,7 @@ public class AuctionManager {
             return;
         }
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("INSERT INTO `auction` VALUES " + ITEM_INIT_DATA[i]);
             statement.execute();
             statement.close();

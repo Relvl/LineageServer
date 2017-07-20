@@ -1,6 +1,7 @@
 package net.sf.l2j.commons.database;
 
 import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.database.annotation.OrmParamCursor;
 import net.sf.l2j.commons.database.annotation.OrmParamIn;
 import net.sf.l2j.commons.database.annotation.OrmParamOut;

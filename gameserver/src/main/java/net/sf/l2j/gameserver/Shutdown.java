@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.EServerStatus;
 import net.sf.l2j.gameserver.datatables.BufferTable;
 import net.sf.l2j.gameserver.datatables.ServerMemo;
@@ -208,7 +208,7 @@ public class Shutdown extends Thread {
             }
 
             try {
-                L2DatabaseFactory.getInstance().shutdown();
+                L2DatabaseFactoryOld.getInstance().shutdown();
             }
             catch (Throwable t) {
             }

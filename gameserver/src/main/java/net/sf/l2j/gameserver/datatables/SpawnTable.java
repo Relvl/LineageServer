@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.datatables;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.instancemanager.DayNightSpawnManager;
 import net.sf.l2j.gameserver.model.L2Spawn;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
@@ -48,7 +48,7 @@ public class SpawnTable {
     }
 
     private void fillSpawnTable() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT * FROM spawnlist");
             ResultSet rset = statement.executeQuery();
 
@@ -116,7 +116,7 @@ public class SpawnTable {
         _spawntable.add(spawn);
 
         if (storeInDb) {
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement("INSERT INTO spawnlist (npc_templateid,locx,locy,locz,heading,respawn_delay) VALUES(?,?,?,?,?,?)");
                 statement.setInt(1, spawn.getNpcId());
                 statement.setInt(2, spawn.getLocx());
@@ -138,7 +138,7 @@ public class SpawnTable {
         if (!_spawntable.remove(spawn)) { return; }
 
         if (updateDb) {
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement("DELETE FROM spawnlist WHERE locx=? AND locy=? AND locz=? AND npc_templateid=? AND heading=?");
                 statement.setInt(1, spawn.getLocx());
                 statement.setInt(2, spawn.getLocy());

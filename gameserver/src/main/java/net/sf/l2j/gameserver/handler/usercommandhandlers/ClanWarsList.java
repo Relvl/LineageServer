@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.handler.usercommandhandlers;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.handler.IUserCommandHandler;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -22,7 +22,7 @@ public class ClanWarsList implements IUserCommandHandler {
             return false;
         }
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement;
 
             // Attack List

@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.cache.HtmCache;
 import net.sf.l2j.gameserver.datatables.CharNameTable;
@@ -183,7 +183,7 @@ public class MailBBSManager extends BaseBBSManager
 
 	private void initId()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(SELECT_LAST_ID);
 			ResultSet result = statement.executeQuery();
@@ -213,7 +213,7 @@ public class MailBBSManager extends BaseBBSManager
 		if (_letters == null)
 		{
 			_letters = new ArrayList<>();
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+			try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 			{
 				PreparedStatement statement = con.prepareStatement(SELECT_CHAR_MAILS);
 				statement.setInt(1, objId);
@@ -477,7 +477,7 @@ public class MailBBSManager extends BaseBBSManager
 		if (subject == null || subject.isEmpty())
 			subject = "(no subject)";
 
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			Set<String> recipts = new HashSet<>(5);
 			String[] recipAr = recipients.split(";");
@@ -650,7 +650,7 @@ public class MailBBSManager extends BaseBBSManager
 			}
 		}
 
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(DELETE_MAIL);
 			statement.setInt(1, letterId);
@@ -667,7 +667,7 @@ public class MailBBSManager extends BaseBBSManager
 	{
 		getLetter(activeChar, letterId).unread = false;
 
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(MARK_MAIL_READ);
 			statement.setInt(1, 0);
@@ -685,7 +685,7 @@ public class MailBBSManager extends BaseBBSManager
 	{
 		getLetter(activeChar, letterId).location = location;
 
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(SET_LETTER_LOC);
 			statement.setString(1, location.toString().toLowerCase());
@@ -708,7 +708,7 @@ public class MailBBSManager extends BaseBBSManager
 	private static boolean isGM(int charId)
 	{
 		boolean isGM = false;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("SELECT accesslevel FROM characters WHERE obj_Id = ?");
 			statement.setInt(1, charId);

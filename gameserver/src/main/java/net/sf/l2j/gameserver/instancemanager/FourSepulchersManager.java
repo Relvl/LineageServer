@@ -28,7 +28,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.DoorTable;
@@ -552,7 +552,7 @@ public class FourSepulchersManager
 	{
 		_mysteriousBoxSpawns.clear();
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("SELECT id, npc_templateid, locx, locy, locz, heading, respawn_delay, key_npc_id FROM spawnlist_4s WHERE spawntype = ? ORDER BY id");
 			statement.setInt(1, 0);
@@ -623,7 +623,7 @@ public class FourSepulchersManager
 		_physicalMonsters.clear();
 		
 		int loaded = 0;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement1 = con.prepareStatement("SELECT Distinct key_npc_id FROM spawnlist_4s WHERE spawntype = ? ORDER BY key_npc_id");
 			statement1.setInt(1, 1);
@@ -683,7 +683,7 @@ public class FourSepulchersManager
 		_magicalMonsters.clear();
 		
 		int loaded = 0;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement1 = con.prepareStatement("SELECT Distinct key_npc_id FROM spawnlist_4s WHERE spawntype = ? ORDER BY key_npc_id");
 			statement1.setInt(1, 2);
@@ -744,7 +744,7 @@ public class FourSepulchersManager
 		_archonSpawned.clear();
 		
 		int loaded = 0;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement1 = con.prepareStatement("SELECT Distinct key_npc_id FROM spawnlist_4s WHERE spawntype = ? ORDER BY key_npc_id");
 			statement1.setInt(1, 5);
@@ -806,7 +806,7 @@ public class FourSepulchersManager
 		_emperorsGraveNpcs.clear();
 		
 		int loaded = 0;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement1 = con.prepareStatement("SELECT Distinct key_npc_id FROM spawnlist_4s WHERE spawntype = ? ORDER BY key_npc_id");
 			statement1.setInt(1, 6);

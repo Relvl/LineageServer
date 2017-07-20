@@ -32,7 +32,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.instancemanager.ZoneManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -126,7 +126,7 @@ public class Olympiad
 	private void load()
 	{
 		boolean loaded = false;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(OLYMPIAD_LOAD_DATA);
 			ResultSet rset = statement.executeQuery();
@@ -187,7 +187,7 @@ public class Olympiad
 				return;
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(OLYMPIAD_LOAD_NOBLES);
 			ResultSet rset = statement.executeQuery();
@@ -247,7 +247,7 @@ public class Olympiad
 		
 		final Map<Integer, Integer> tmpPlace = new HashMap<>();
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(GET_ALL_CLASSIFIED_NOBLESS);
 			ResultSet rset = statement.executeQuery();
@@ -588,7 +588,7 @@ public class Olympiad
 		if (_nobles == null || _nobles.isEmpty())
 			return;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement;
 			for (Map.Entry<Integer, StatsSet> nobleEntry : _nobles.entrySet())
@@ -646,7 +646,7 @@ public class Olympiad
 	{
 		saveNobleData();
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			final PreparedStatement statement = con.prepareStatement(OLYMPIAD_SAVE_DATA);
 			
@@ -672,7 +672,7 @@ public class Olympiad
 	
 	protected void updateMonthlyData()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(OLYMPIAD_MONTH_CLEAR);
 			statement.execute();
@@ -691,7 +691,7 @@ public class Olympiad
 	{
 		_heroesToBe.clear();
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			final PreparedStatement statement = con.prepareStatement(OLYMPIAD_GET_HEROS);
 			for (ClassId id : ClassId.values())
@@ -725,7 +725,7 @@ public class Olympiad
 	public List<String> getClassLeaderBoard(int classId)
 	{
 		List<String> names = new ArrayList<>();
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(GET_EACH_CLASS_LEADER);
 			statement.setInt(1, classId);
@@ -795,7 +795,7 @@ public class Olympiad
 	public int getLastNobleOlympiadPoints(int objId)
 	{
 		int result = 0;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			final PreparedStatement statement = con.prepareStatement("SELECT olympiad_points FROM olympiad_nobles_eom WHERE char_id = ?");
 			statement.setInt(1, objId);
@@ -838,7 +838,7 @@ public class Olympiad
 	
 	protected void deleteNobles()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			final PreparedStatement statement = con.prepareStatement(OLYMPIAD_DELETE_ALL);
 			statement.execute();

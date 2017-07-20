@@ -23,7 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.model.L2Bookmark;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
@@ -42,7 +42,7 @@ public class BookmarkTable
 	{
 		_bks = new ArrayList<>();
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("SELECT * FROM bookmarks");
 			ResultSet result = statement.executeQuery();
@@ -111,7 +111,7 @@ public class BookmarkTable
 		
 		_bks.add(new L2Bookmark(name, objId, x, y, z));
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("INSERT INTO bookmarks (name, obj_Id, x, y, z) values (?,?,?,?,?)");
 			statement.setString(1, name);
@@ -140,7 +140,7 @@ public class BookmarkTable
 		{
 			_bks.remove(bookmark);
 			
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+			try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 			{
 				PreparedStatement statement = con.prepareStatement("DELETE FROM bookmarks WHERE name=? AND obj_Id=?");
 				statement.setString(1, name);

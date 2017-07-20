@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.communitybbs.Manager;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.communitybbs.BB.Forum;
 
 import java.sql.Connection;
@@ -16,7 +16,7 @@ public class ForumsBBSManager extends BaseBBSManager {
     protected ForumsBBSManager() {
         _table = new CopyOnWriteArrayList<>();
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT forum_id FROM forums WHERE forum_type=0");
             ResultSet result = statement.executeQuery();
 

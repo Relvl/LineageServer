@@ -25,7 +25,7 @@ import java.util.StringTokenizer;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.config.ExProperties;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.model.L2Clan;
@@ -170,7 +170,7 @@ public class SiegeManager
 			return true;
 		
 		boolean register = false;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("SELECT clan_id FROM siege_clans WHERE clan_id=?");
 			statement.setInt(1, clan.getClanId());
@@ -242,7 +242,7 @@ public class SiegeManager
 		if (castleId <= 0)
 			return;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("SELECT * FROM castle_trapupgrade WHERE castleId=?");
 			statement.setInt(1, castleId);

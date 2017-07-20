@@ -23,6 +23,10 @@ public class Config {
     public DatabaseConfig database = new DatabaseConfig();
 
     /**  */
+    @ConfigElement(fileName = "./config/database_new.xml", doNotSaveDinamically = true)
+    public DatabaseConfig database_new = new DatabaseConfig();
+
+    /**  */
     @ConfigElement(fileName = "./config/mmocore.xml", doNotSaveDinamically = true)
     public MMOCoreConfigImpl mmocore = new MMOCoreConfigImpl();
 

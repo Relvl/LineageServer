@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.instancemanager.games;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
@@ -101,7 +101,7 @@ public class Lottery {
                         0
                 };
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(SELECT_LOTTERY_TICKET);
             statement.setInt(1, id);
             ResultSet rset = statement.executeQuery();
@@ -172,7 +172,7 @@ public class Lottery {
 
     public void increasePrize(int count) {
         _prize += count;
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement;
             statement = con.prepareStatement(UPDATE_PRICE);
             statement.setInt(1, getPrize());
@@ -205,7 +205,7 @@ public class Lottery {
 
         @Override
         public void run() {
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement(SELECT_LAST_LOTTERY);
                 ResultSet rset = statement.executeQuery();
 
@@ -271,7 +271,7 @@ public class Lottery {
             ThreadPoolManager.getInstance().scheduleGeneral(new stopSellingTickets(), _enddate - System.currentTimeMillis() - 10 * MINUTE);
             ThreadPoolManager.getInstance().scheduleGeneral(new finishLottery(), _enddate - System.currentTimeMillis());
 
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement(INSERT_LOTTERY);
                 statement.setInt(1, 1);
                 statement.setInt(2, getId());
@@ -336,7 +336,7 @@ public class Lottery {
             int count3 = 0;
             int count4 = 0;
 
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement(SELECT_LOTTERY_ITEM);
                 statement.setInt(1, getId());
                 ResultSet rset = statement.executeQuery();
@@ -393,7 +393,7 @@ public class Lottery {
             // There are no winners.
             { Broadcast.toAllOnlinePlayers(SystemMessage.getSystemMessage(SystemMessageId.AMOUNT_FOR_LOTTERY_S1_IS_S2_ADENA_NO_WINNER).addNumber(getId()).addNumber(getPrize())); }
 
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement(UPDATE_LOTTERY);
                 statement.setInt(1, getPrize());
                 statement.setInt(2, newprize);

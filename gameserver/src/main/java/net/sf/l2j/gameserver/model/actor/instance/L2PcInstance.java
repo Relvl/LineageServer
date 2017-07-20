@@ -1,7 +1,7 @@
 package net.sf.l2j.gameserver.model.actor.instance;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.ECtrlEvent;
@@ -392,7 +392,7 @@ public final class L2PcInstance extends L2Playable {
 
     public static L2PcInstance restore(int objectId) {
         L2PcInstance player = null;
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection();
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection();
              PreparedStatement statement = con.prepareStatement(RESTORE_CHARACTER);) {
 
             statement.setInt(1, objectId);
@@ -575,7 +575,7 @@ public final class L2PcInstance extends L2Playable {
     }
 
     private static boolean restoreSubClassData(L2PcInstance player) {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(RESTORE_CHAR_SUBCLASSES);
             statement.setInt(1, player.getObjectId());
 
@@ -1310,7 +1310,7 @@ public final class L2PcInstance extends L2Playable {
     }
 
     public void giveRecom(L2PcInstance target) {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(ADD_CHAR_RECOM);
             statement.setInt(1, getObjectId());
             statement.setInt(2, target.getObjectId());
@@ -4320,7 +4320,7 @@ public final class L2PcInstance extends L2Playable {
 
     public void storePetFood(int petId) {
         if (_controlItemId != 0 && petId != 0) {
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement("UPDATE pets SET fed=? WHERE item_obj_id = ?");
                 statement.setInt(1, _curFeed);
                 statement.setInt(2, _controlItemId);
@@ -4582,7 +4582,7 @@ public final class L2PcInstance extends L2Playable {
      * Update the characters table of the database with online status and lastAccess of this L2PcInstance (called when login and logout).
      */
     public void updateOnlineStatus() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE characters SET online=?, lastAccess=? WHERE obj_id=?");
             statement.setInt(1, isOnlineInt());
             statement.setLong(2, System.currentTimeMillis());
@@ -4601,7 +4601,7 @@ public final class L2PcInstance extends L2Playable {
      * @return true if successful.
      */
     private boolean createDb() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(INSERT_CHARACTER);
             statement.setString(1, accountName);
             statement.setInt(2, getObjectId());
@@ -4713,7 +4713,7 @@ public final class L2PcInstance extends L2Playable {
 
         if (getCommonRecipeBook().isEmpty() && getDwarvenRecipeBook().isEmpty()) { return; }
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("DELETE FROM character_recipebook WHERE char_id=?");
             statement.setInt(1, getObjectId());
             statement.execute();
@@ -4744,7 +4744,7 @@ public final class L2PcInstance extends L2Playable {
      * Restore recipe book data for this L2PcInstance.
      */
     private void restoreRecipeBook() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT id, type FROM character_recipebook WHERE char_id=?");
             statement.setInt(1, getObjectId());
             ResultSet rset = statement.executeQuery();
@@ -4789,7 +4789,7 @@ public final class L2PcInstance extends L2Playable {
     }
 
     private void storeCharBase() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             // Get the exp, level, and sp of base class to store in base table
             int currentClassIndex = _classIndex;
             _classIndex = 0;
@@ -4864,7 +4864,7 @@ public final class L2PcInstance extends L2Playable {
     }
 
     private void storeCharSub() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(UPDATE_CHAR_SUBCLASS);
 
             if (getTotalSubClasses() > 0) {
@@ -4889,7 +4889,7 @@ public final class L2PcInstance extends L2Playable {
     private void storeEffect(boolean storeEffects) {
         if (!Config.STORE_SKILL_COOLTIME) { return; }
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             // Delete all current stored effects for char to avoid dupe
             PreparedStatement statement = con.prepareStatement(DELETE_SKILL_SAVE);
 
@@ -5046,7 +5046,7 @@ public final class L2PcInstance extends L2Playable {
         // Remove a skill from the L2Character and its Func objects from calculator set of the L2Character
         L2Skill oldSkill = super.removeSkill(skill);
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(DELETE_SKILL_FROM_CHAR);
 
             if (oldSkill != null) {
@@ -5087,7 +5087,7 @@ public final class L2PcInstance extends L2Playable {
 
         if (newClassIndex > -1) { classIndex = newClassIndex; }
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             if (oldSkill != null && newSkill != null) {
                 PreparedStatement statement = con.prepareStatement(UPDATE_CHARACTER_SKILL_LEVEL);
                 statement.setInt(1, newSkill.getLevel());
@@ -5119,7 +5119,7 @@ public final class L2PcInstance extends L2Playable {
      * Retrieve from the database all skills of this L2PcInstance and add them to _skills.
      */
     private void restoreSkills() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(RESTORE_SKILLS_FOR_CHAR);
             statement.setInt(1, getObjectId());
             statement.setInt(2, _classIndex);
@@ -5153,7 +5153,7 @@ public final class L2PcInstance extends L2Playable {
      * Retrieve from the database all skill effects of this L2PcInstance and add them to the player.
      */
     public void restoreEffects() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(RESTORE_SKILL_SAVE);
             statement.setInt(1, getObjectId());
             statement.setInt(2, _classIndex);
@@ -5218,7 +5218,7 @@ public final class L2PcInstance extends L2Playable {
      * Retrieve from the database all Henna of this L2PcInstance, add them to _henna and calculate stats of the L2PcInstance.
      */
     private void restoreHenna() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(RESTORE_CHAR_HENNAS);
             statement.setInt(1, getObjectId());
             statement.setInt(2, _classIndex);
@@ -5253,7 +5253,7 @@ public final class L2PcInstance extends L2Playable {
      * Retrieve from the database all Recommendation data of this L2PcInstance, add to _recomChars and calculate stats of the L2PcInstance.
      */
     private void restoreRecom() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(RESTORE_CHAR_RECOMS);
             statement.setInt(1, getObjectId());
             ResultSet rset = statement.executeQuery();
@@ -5300,7 +5300,7 @@ public final class L2PcInstance extends L2Playable {
         Henna henna = _henna[slot];
         _henna[slot] = null;
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(DELETE_CHAR_HENNA);
 
             statement.setInt(1, getObjectId());
@@ -5344,7 +5344,7 @@ public final class L2PcInstance extends L2Playable {
                 // Calculate Henna modifiers of this L2PcInstance
                 recalcHennaStats();
 
-                try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+                try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                     PreparedStatement statement = con.prepareStatement(ADD_CHAR_HENNA);
 
                     statement.setInt(1, getObjectId());
@@ -6744,7 +6744,7 @@ public final class L2PcInstance extends L2Playable {
         sendSkillList();
 
         if (store) {
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement(UPDATE_NOBLESS);
                 statement.setBoolean(1, val);
                 statement.setInt(2, getObjectId());
@@ -6866,7 +6866,7 @@ public final class L2PcInstance extends L2Playable {
             newClass.setClassId(classId);
             newClass.setClassIndex(classIndex);
 
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement(ADD_CHAR_SUBCLASS);
                 statement.setInt(1, getObjectId());
                 statement.setInt(2, newClass.getClassId());
@@ -6925,7 +6925,7 @@ public final class L2PcInstance extends L2Playable {
         if (!_subclassLock.tryLock()) { return false; }
 
         try {
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 // Remove all henna info stored for this sub-class.
                 PreparedStatement statement = con.prepareStatement(DELETE_CHAR_HENNAS);
                 statement.setInt(1, getObjectId());
@@ -7209,7 +7209,7 @@ public final class L2PcInstance extends L2Playable {
     }
 
     public void restartRecom() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(DELETE_CHAR_RECOMS);
             statement.setInt(1, getObjectId());
             statement.execute();
@@ -8625,7 +8625,7 @@ public final class L2PcInstance extends L2Playable {
     private void restoreFriendList() {
         _friendList.clear();
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT friend_id FROM character_friends WHERE char_id = ? AND relation = 0");
             statement.setInt(1, getObjectId());
             ResultSet rset = statement.executeQuery();

@@ -24,7 +24,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.CastleUpdater;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ClanTable;
@@ -166,7 +166,7 @@ public class Castle
 				_treasury += amount;
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("UPDATE castle SET treasury = ? WHERE id = ?");
 			statement.setLong(1, _treasury);
@@ -394,7 +394,7 @@ public class Castle
 		
 		if (save)
 		{
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+			try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 			{
 				PreparedStatement statement = con.prepareStatement("UPDATE castle SET taxPercent = ? WHERE id = ?");
 				statement.setInt(1, taxPercent);
@@ -453,7 +453,7 @@ public class Castle
 		
 		if (db)
 		{
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+			try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 			{
 				PreparedStatement statement = con.prepareStatement("REPLACE INTO castle_doorupgrade (doorId, hp, castleId) VALUES (?,?,?)");
 				statement.setInt(1, doorId);
@@ -474,7 +474,7 @@ public class Castle
 	 */
 	public void loadDoorUpgrade()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("SELECT * FROM castle_doorupgrade WHERE castleId=?");
 			statement.setInt(1, _castleId);
@@ -501,7 +501,7 @@ public class Castle
 		for (L2DoorInstance door : _doors)
 			door.setUpgradeHpRatio(1);
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("DELETE FROM castle_doorupgrade WHERE castleId=?");
 			statement.setInt(1, _castleId);
@@ -524,7 +524,7 @@ public class Castle
 			resetManor();
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("UPDATE clan_data SET hasCastle=0 WHERE hasCastle=?");
 			statement.setInt(1, _castleId);
@@ -736,7 +736,7 @@ public class Castle
 	 */
 	public void saveSeedData()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(CASTLE_MANOR_DELETE_PRODUCTION);
 			statement.setInt(1, getCastleId());
@@ -795,7 +795,7 @@ public class Castle
 	 */
 	public void saveSeedData(int period)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(CASTLE_MANOR_DELETE_PRODUCTION_PERIOD);
 			statement.setInt(1, getCastleId());
@@ -835,7 +835,7 @@ public class Castle
 	 */
 	public void saveCropData()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(CASTLE_MANOR_DELETE_PROCURE);
 			statement.setInt(1, getCastleId());
@@ -894,7 +894,7 @@ public class Castle
 	 */
 	public void saveCropData(int period)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(CASTLE_MANOR_DELETE_PROCURE_PERIOD);
 			statement.setInt(1, getCastleId());
@@ -938,7 +938,7 @@ public class Castle
 	 */
 	public void updateCrop(int cropId, int amount, int period)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(CASTLE_UPDATE_CROP);
 			statement.setInt(1, amount);
@@ -962,7 +962,7 @@ public class Castle
 	 */
 	public void updateSeed(int seedId, int amount, int period)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(CASTLE_UPDATE_SEED);
 			statement.setInt(1, amount);
@@ -1099,7 +1099,7 @@ public class Castle
 	{
 		if (save)
 		{
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+			try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 			{
 				PreparedStatement statement = con.prepareStatement("REPLACE INTO castle_trapupgrade (castleId, towerIndex, level) values (?,?,?)");
 				statement.setInt(1, _castleId);
@@ -1127,7 +1127,7 @@ public class Castle
 		for (TowerSpawn ts : SiegeManager.getInstance().getFlameTowers(_castleId))
 			ts.setUpgradeLevel(0);
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("DELETE FROM castle_trapupgrade WHERE castleId=?");
 			statement.setInt(1, _castleId);

@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.commons.math.MathUtil;
 import net.sf.l2j.gameserver.datatables.CharTemplateTable;
@@ -511,7 +511,7 @@ public class AdminEditChar implements IAdminCommandHandler
 				L2PcInstance player = L2World.getInstance().getPlayer(playerName);
 				if (player == null)
 				{
-					try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+					try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 					{
 						PreparedStatement ps = con.prepareStatement("UPDATE characters SET " + (changeCreateExpiryTime ? "clan_create_expiry_time" : "clan_join_expiry_time") + " WHERE char_name=? LIMIT 1");
 						

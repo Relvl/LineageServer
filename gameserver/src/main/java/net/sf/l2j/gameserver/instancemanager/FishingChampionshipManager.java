@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.instancemanager;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ItemTable;
@@ -82,7 +82,7 @@ public class FishingChampionshipManager {
     private void restoreData() {
         _enddate = ServerMemo.getInstance().getLong("fishChampionshipEnd", 0);
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(SELECT);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
@@ -287,7 +287,7 @@ public class FishingChampionshipManager {
     public void shutdown() {
         ServerMemo.getInstance().set("fishChampionshipEnd", _enddate);
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(DELETE);
             statement.execute();
             statement.close();

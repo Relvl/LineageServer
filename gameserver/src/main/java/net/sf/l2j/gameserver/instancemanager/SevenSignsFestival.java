@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.instancemanager;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.EChatType;
@@ -2665,7 +2665,7 @@ public class SevenSignsFestival implements SpawnListener {
             }
         }
         else {
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement(GET_CLAN_NAME);
                 statement.setString(1, partyMemberName);
                 ResultSet rset = statement.executeQuery();
@@ -2722,7 +2722,7 @@ public class SevenSignsFestival implements SpawnListener {
     protected void restoreFestivalData() {
         _log.info("SevenSignsFestival: Restoring festival data. Current SS Cycle: " + _signsCycle);
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT festivalId, cabal, cycle, date, score, members " + "FROM seven_signs_festival");
             ResultSet rset = statement.executeQuery();
 
@@ -2785,7 +2785,7 @@ public class SevenSignsFestival implements SpawnListener {
      * @param updateSettings if true, will save Seven Signs status aswell.
      */
     public void saveFestivalData(boolean updateSettings) {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statementUpdate = con.prepareStatement("UPDATE seven_signs_festival SET date=?, score=?, members=? WHERE cycle=? AND cabal=? AND festivalId=?");
             PreparedStatement statementInsert = con.prepareStatement("INSERT INTO seven_signs_festival (festivalId, cabal, cycle, date, score, members) VALUES (?,?,?,?,?,?)");
 

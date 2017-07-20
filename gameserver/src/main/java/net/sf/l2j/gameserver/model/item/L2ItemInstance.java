@@ -1,7 +1,7 @@
 package net.sf.l2j.gameserver.model.item;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.ItemTable;
@@ -634,7 +634,7 @@ public final class L2ItemInstance extends L2Object {
 
         _augmentation = null;
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("DELETE FROM augmentations WHERE item_id = ?");
             statement.setInt(1, getObjectId());
             statement.executeUpdate();
@@ -646,7 +646,7 @@ public final class L2ItemInstance extends L2Object {
     }
 
     private void restoreAttributes() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT attributes,skill_id,skill_level FROM augmentations WHERE item_id=?");
             statement.setInt(1, getObjectId());
             ResultSet rs = statement.executeQuery();
@@ -665,7 +665,7 @@ public final class L2ItemInstance extends L2Object {
     }
 
     private void updateItemAttributes(Connection pooledCon) {
-        try (Connection con = pooledCon == null ? L2DatabaseFactory.getInstance().getConnection() : pooledCon) {
+        try (Connection con = pooledCon == null ? L2DatabaseFactoryOld.getInstance().getConnection() : pooledCon) {
             PreparedStatement statement = con.prepareStatement("REPLACE INTO augmentations VALUES(?,?,?,?)");
             statement.setInt(1, getObjectId());
             if (_augmentation == null) {
@@ -833,7 +833,7 @@ public final class L2ItemInstance extends L2Object {
 
         if (_storedInDb) { return; }
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE items SET owner_id=?,count=?,loc=?,loc_data=?,enchant_level=?,custom_type1=?,custom_type2=?,mana_left=?,time=? WHERE object_id = ?");
             statement.setInt(1, _ownerId);
             statement.setInt(2, _count);
@@ -861,7 +861,7 @@ public final class L2ItemInstance extends L2Object {
     private void insertIntoDb() {
         assert !_existsInDb && getObjectId() != 0;
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("INSERT INTO items (owner_id,item_id,count,loc,loc_data,enchant_level,object_id,custom_type1,custom_type2,mana_left,time) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
             statement.setInt(1, _ownerId);
             statement.setInt(2, itemId);
@@ -893,7 +893,7 @@ public final class L2ItemInstance extends L2Object {
     private void removeFromDb() {
         assert _existsInDb;
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("DELETE FROM items WHERE object_id=?");
             statement.setInt(1, getObjectId());
             statement.executeUpdate();

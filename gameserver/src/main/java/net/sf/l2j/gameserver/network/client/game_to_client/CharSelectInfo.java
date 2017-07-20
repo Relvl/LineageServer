@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.model.CharSelectInfoPackage;
 import net.sf.l2j.gameserver.model.L2Clan;
@@ -152,7 +152,7 @@ public class CharSelectInfo extends L2GameServerPacket {
         CharSelectInfoPackage charInfopackage;
         List<CharSelectInfoPackage> characterList = new ArrayList<>();
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT account_name, obj_Id, char_name, level, maxHp, curHp, maxMp, curMp, face, hairStyle, hairColor, sex, heading, x, y, z, exp, sp, karma, pvpkills, pkkills, clanid, race, classid, deletetime, cancraft, title, accesslevel, online, char_slot, lastAccess, base_class FROM characters WHERE account_name=?");
             statement.setString(1, loginName);
             ResultSet charList = statement.executeQuery();
@@ -176,7 +176,7 @@ public class CharSelectInfo extends L2GameServerPacket {
     }
 
     private static void loadCharacterSubclassInfo(CharSelectInfoPackage charInfopackage, int ObjectId, int activeClassId) {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT exp, sp, level FROM character_subclasses WHERE char_obj_id=? && class_id=? ORDER BY char_obj_id");
             statement.setInt(1, ObjectId);
             statement.setInt(2, activeClassId);
@@ -251,7 +251,7 @@ public class CharSelectInfo extends L2GameServerPacket {
         if (weaponObjId < 1) { weaponObjId = charInfopackage.getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_RHAND); }
 
         if (weaponObjId > 0) {
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement("SELECT attributes FROM augmentations WHERE item_id=?");
                 statement.setInt(1, weaponObjId);
                 ResultSet result = statement.executeQuery();

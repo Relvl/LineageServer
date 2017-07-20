@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.model.L2PetData;
 import net.sf.l2j.gameserver.model.L2PetData.L2PetLevelData;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
@@ -228,7 +228,7 @@ public class PetDataTable
 	public boolean doesPetNameExist(String name, int petNpcId)
 	{
 		boolean result = true;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("SELECT name FROM pets p, items i WHERE p.item_obj_id = i.object_id AND name=? AND i.item_id IN (?)");
 			statement.setString(1, name);

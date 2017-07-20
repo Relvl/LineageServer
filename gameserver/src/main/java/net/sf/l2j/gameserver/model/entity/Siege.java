@@ -26,7 +26,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.datatables.MapRegionTable.TeleportWhereType;
@@ -480,7 +480,7 @@ public class Siege implements Siegable
 	/** Clear all registered siege clans from database for castle */
 	public void clearSiegeClan()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("DELETE FROM siege_clans WHERE castle_id=?");
 			statement.setInt(1, getCastle().getCastleId());
@@ -508,7 +508,7 @@ public class Siege implements Siegable
 	/** Clear all siege clans waiting for approval from database for castle */
 	public void clearSiegeWaitingClan()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("DELETE FROM siege_clans WHERE castle_id=? and type = 2");
 			statement.setInt(1, getCastle().getCastleId());
@@ -740,7 +740,7 @@ public class Siege implements Siegable
 		if (clanId <= 0)
 			return;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("DELETE FROM siege_clans WHERE castle_id=? and clan_id=?");
 			statement.setInt(1, getCastle().getCastleId());
@@ -933,7 +933,7 @@ public class Siege implements Siegable
 	/** Load siege clans. */
 	private void loadSiegeClan()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			getAttackerClans().clear();
 			getDefenderClans().clear();
@@ -1039,7 +1039,7 @@ public class Siege implements Siegable
 			_scheduledStartSiegeTask = ThreadPoolManager.getInstance().scheduleGeneral(new ScheduleStartSiegeTask(getCastle()), 1000);
 		}
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("UPDATE castle SET siegeDate = ?, regTimeEnd = ?, regTimeOver = ?  WHERE id = ?");
 			statement.setLong(1, getSiegeDate().getTimeInMillis());
@@ -1065,7 +1065,7 @@ public class Siege implements Siegable
 		if (clan.hasCastle())
 			return;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			if (typeId == DEFENDER || typeId == DEFENDER_NOT_APPROVED || typeId == OWNER)
 			{

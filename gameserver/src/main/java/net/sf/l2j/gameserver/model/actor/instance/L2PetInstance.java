@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.model.actor.instance;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
@@ -600,7 +600,7 @@ public class L2PetInstance extends L2Summon {
         }
 
         // pet control item no longer exists, delete the pet from the db
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("DELETE FROM pets WHERE item_obj_id=?");
             statement.setInt(1, _controlItemId);
             statement.execute();
@@ -618,7 +618,7 @@ public class L2PetInstance extends L2Summon {
     }
 
     private static L2PetInstance restore(L2ItemInstance control, NpcTemplate template, L2PcInstance owner) {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             L2PetInstance pet;
             if (template.isType("L2BabyPet")) { pet = new L2BabyPetInstance(IdFactory.getInstance().getNextId(), template, owner, control); }
             else { pet = new L2PetInstance(IdFactory.getInstance().getNextId(), template, owner, control); }
@@ -667,7 +667,7 @@ public class L2PetInstance extends L2Summon {
         if (!_respawned) { req = "INSERT INTO pets (name,level,curHp,curMp,exp,sp,fed,item_obj_id) VALUES (?,?,?,?,?,?,?,?)"; }
         else { req = "UPDATE pets SET name=?,level=?,curHp=?,curMp=?,exp=?,sp=?,fed=? WHERE item_obj_id = ?"; }
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(req);
             statement.setString(1, getName());
             statement.setInt(2, getStat().getLevel());

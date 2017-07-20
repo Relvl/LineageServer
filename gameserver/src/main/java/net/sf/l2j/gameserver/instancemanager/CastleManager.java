@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.instancemanager;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.CastleUpdater;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ClanTable;
@@ -82,7 +82,7 @@ public class CastleManager {
     }
 
     public final void load() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT * FROM castle ORDER BY id");
             ResultSet rs = statement.executeQuery();
 
@@ -255,7 +255,7 @@ public class CastleManager {
         }
 
         // offline player actions ; remove all circlets / crowns
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("DELETE FROM items WHERE owner_id = ? AND item_id IN (?, 6841)");
             statement.setInt(1, member.getObjectId());
             statement.setInt(2, circletId);

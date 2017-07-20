@@ -8,13 +8,13 @@ import org.slf4j.LoggerFactory;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class L2DatabaseFactory {
-    private static final Logger LOGGER = LoggerFactory.getLogger(L2DatabaseFactory.class);
+public class L2DatabaseFactoryOld {
+    private static final Logger LOGGER = LoggerFactory.getLogger(L2DatabaseFactoryOld.class);
     public static DatabaseConfig config = new DatabaseConfig();
 
     private ComboPooledDataSource _source;
 
-    public L2DatabaseFactory() throws SQLException {
+    public L2DatabaseFactoryOld() throws SQLException {
         try {
             _source = new ComboPooledDataSource();
             _source.setAutoCommitOnClose(true);
@@ -64,7 +64,7 @@ public class L2DatabaseFactory {
         }
     }
 
-    public static L2DatabaseFactory getInstance() {
+    public static L2DatabaseFactoryOld getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
@@ -92,11 +92,11 @@ public class L2DatabaseFactory {
     }
 
     private static final class SingletonHolder {
-        private static final L2DatabaseFactory INSTANCE;
+        private static final L2DatabaseFactoryOld INSTANCE;
 
         static {
             try {
-                INSTANCE = new L2DatabaseFactory();
+                INSTANCE = new L2DatabaseFactoryOld();
             }
             catch (Exception e) {
                 throw new ExceptionInInitializerError(e);

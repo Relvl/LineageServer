@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.model;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
@@ -144,7 +144,7 @@ public class L2ClanMember {
     }
 
     public void updatePledgeType() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE characters SET subpledge=? WHERE obj_id=?");
             statement.setInt(1, _pledgeType);
             statement.setInt(2, getObjectId());
@@ -170,7 +170,7 @@ public class L2ClanMember {
      * Update the characters table of the database with power grade.
      */
     public void updatePowerGrade() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE characters SET power_grade=? WHERE obj_id=?");
             statement.setInt(1, _powerGrade);
             statement.setInt(2, getObjectId());
@@ -380,7 +380,7 @@ public class L2ClanMember {
     }
 
     public void saveApprenticeAndSponsor(int apprentice, int sponsor) {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE characters SET apprentice=?,sponsor=? WHERE obj_Id=?");
             statement.setInt(1, apprentice);
             statement.setInt(2, sponsor);

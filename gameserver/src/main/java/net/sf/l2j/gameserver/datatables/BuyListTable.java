@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.model.buylist.NpcBuyList;
 import net.sf.l2j.gameserver.model.buylist.Product;
 import net.sf.l2j.gameserver.model.item.kind.Item;
@@ -105,7 +105,7 @@ public class BuyListTable
 		}
 		_log.config("BuyListTable: Loaded " + _buyLists.size() + " buylists.");
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			final Statement statement = con.createStatement();
 			final ResultSet rs = statement.executeQuery("SELECT * FROM `buylists`");

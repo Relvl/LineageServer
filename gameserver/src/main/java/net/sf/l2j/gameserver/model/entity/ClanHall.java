@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.model.entity;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.instancemanager.AuctionManager;
@@ -159,7 +159,7 @@ public class ClanHall {
         }
 
         public void dbSave() {
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement("REPLACE INTO clanhall_functions (hall_id, type, lvl, lease, rate, endTime) VALUES (?,?,?,?,?,?)");
                 statement.setInt(1, getId());
                 statement.setInt(2, getType());
@@ -371,7 +371,7 @@ public class ClanHall {
 
     /** Load All Functions */
     private void loadFunctions() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT * FROM clanhall_functions WHERE hall_id = ?");
             statement.setInt(1, getId());
             ResultSet rs = statement.executeQuery();
@@ -394,7 +394,7 @@ public class ClanHall {
     public void removeFunction(int functionType) {
         _functions.remove(functionType);
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("DELETE FROM clanhall_functions WHERE hall_id=? AND type=?");
             statement.setInt(1, getId());
             statement.setInt(2, functionType);
@@ -412,7 +412,7 @@ public class ClanHall {
     public void removeAllFunctions() {
         _functions.clear();
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("DELETE FROM clanhall_functions WHERE hall_id=?");
             statement.setInt(1, getId());
             statement.execute();
@@ -461,7 +461,7 @@ public class ClanHall {
 
     /** Update DB */
     public void updateDb() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE clanhall SET ownerId=?, paidUntil=?, paid=? WHERE id=?");
             statement.setInt(1, _ownerId);
             statement.setLong(2, _paidUntil);

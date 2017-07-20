@@ -1,7 +1,7 @@
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.datatables.PetDataTable;
 import net.sf.l2j.gameserver.instancemanager.CursedWeaponsManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -93,7 +93,7 @@ public final class RequestDestroyItem extends L2GameClientPacket {
                 return;
             }
 
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement("DELETE FROM pets WHERE item_obj_id=?");
                 statement.setInt(1, _objectId);
                 statement.execute();

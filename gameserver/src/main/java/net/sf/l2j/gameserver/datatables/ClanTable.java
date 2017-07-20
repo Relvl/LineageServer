@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.datatables;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
@@ -58,7 +58,7 @@ public class ClanTable {
         _clans = new HashMap<>();
 
         // Load all clans.
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT * FROM clan_data");
             ResultSet result = statement.executeQuery();
 
@@ -208,7 +208,7 @@ public class ClanTable {
         _clans.remove(clanId);
         IdFactory.getInstance().releaseId(clanId);
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("DELETE FROM clan_data WHERE clan_id=?");
             statement.setInt(1, clanId);
             statement.execute();
@@ -275,7 +275,7 @@ public class ClanTable {
         clan2.setAttackerClan(clanId1);
         clan2.broadcastToOnlineMembers(new PledgeShowInfoUpdate(clan2), SystemMessage.getSystemMessage(SystemMessageId.CLAN_S1_DECLARED_WAR).addString(clan1.getName()));
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement;
             statement = con.prepareStatement("REPLACE INTO clan_wars (clan1, clan2) VALUES(?,?)");
             statement.setInt(1, clanId1);
@@ -298,7 +298,7 @@ public class ClanTable {
         clan2.deleteAttackerClan(clanId1);
         clan2.broadcastToOnlineMembers(new PledgeShowInfoUpdate(clan2), SystemMessage.getSystemMessage(SystemMessageId.CLAN_S1_HAS_DECIDED_TO_STOP).addString(clan1.getName()));
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement;
 
             if (Config.ALT_CLAN_WAR_PENALTY_WHEN_ENDED > 0) {
@@ -341,7 +341,7 @@ public class ClanTable {
      * Restore wars, checking penalties.
      */
     private void restoreWars() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             // Delete deprecated wars (server was offline).
             PreparedStatement statement = con.prepareStatement("DELETE FROM clan_wars WHERE expiry_time > 0 AND expiry_time <= ?");
             statement.setLong(1, System.currentTimeMillis());
@@ -411,7 +411,7 @@ public class ClanTable {
         }
 
         // Retrieve the 99 best clans, allocate their ranks.
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT clan_id FROM clan_data ORDER BY reputation_score DESC LIMIT 99");
             ResultSet result = statement.executeQuery();
 

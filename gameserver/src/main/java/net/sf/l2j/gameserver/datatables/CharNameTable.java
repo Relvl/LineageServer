@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
 public class CharNameTable
@@ -81,7 +81,7 @@ public class CharNameTable
 		
 		int id = -1;
 		int accessLevel = 0;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("SELECT obj_Id,accesslevel FROM characters WHERE char_name=?");
 			statement.setString(1, name);
@@ -121,7 +121,7 @@ public class CharNameTable
 		
 		int accessLevel = 0;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("SELECT char_name,accesslevel FROM characters WHERE obj_Id=?");
 			statement.setInt(1, id);
@@ -160,7 +160,7 @@ public class CharNameTable
 	public synchronized static boolean doesCharNameExist(String name)
 	{
 		boolean result = true;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("SELECT account_name FROM characters WHERE char_name=?");
 			statement.setString(1, name);
@@ -179,7 +179,7 @@ public class CharNameTable
 	public static int accountCharNumber(String account)
 	{
 		int number = 0;
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("SELECT COUNT(char_name) FROM characters WHERE account_name=?");
 			statement.setString(1, account);

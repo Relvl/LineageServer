@@ -29,7 +29,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.taskmanager.tasks.ATask;
 import net.sf.l2j.gameserver.taskmanager.tasks.ATask.TaskType;
@@ -83,7 +83,7 @@ public final class TaskManager
 			_task.onTimeElapsed(this);
 			_lastActivation = System.currentTimeMillis();
 			
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+			try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 			{
 				PreparedStatement statement = con.prepareStatement(UPDATE_TASK);
 				statement.setLong(1, _lastActivation);
@@ -159,7 +159,7 @@ public final class TaskManager
 		registerTask(new TaskShutdown());
 		
 		// load data and start all tasks
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(LOAD_TASKS);
 			ResultSet rset = statement.executeQuery();
@@ -291,7 +291,7 @@ public final class TaskManager
 	
 	public static boolean addUniqueTask(String task, TaskType type, String param1, String param2, String param3, long lastActivation)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(LOAD_TASK);
 			statement.setString(1, task);
@@ -325,7 +325,7 @@ public final class TaskManager
 	
 	public static boolean addTask(String task, TaskType type, String param1, String param2, String param3, long lastActivation)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(SAVE_TASK);
 			statement.setString(1, task);

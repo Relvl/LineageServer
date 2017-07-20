@@ -21,7 +21,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 
 /**
  * @author UnAfraid
@@ -47,7 +47,7 @@ public class PlayerMemo extends AbstractMemo
 	public boolean restoreMe()
 	{
 		// Restore previous variables.
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement st = con.prepareStatement(SELECT_QUERY);
 			st.setInt(1, _objectId);
@@ -78,7 +78,7 @@ public class PlayerMemo extends AbstractMemo
 		if (!hasChanges())
 			return false;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			// Clear previous entries.
 			PreparedStatement st = con.prepareStatement(DELETE_QUERY);

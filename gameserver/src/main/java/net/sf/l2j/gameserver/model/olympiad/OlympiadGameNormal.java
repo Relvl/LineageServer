@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.model.olympiad;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.L2Character;
@@ -80,7 +80,7 @@ abstract public class OlympiadGameNormal extends AbstractOlympiadGame {
     }
 
     protected static final void saveResults(Participant one, Participant two, int _winner, long _startTime, long _fightTime, CompetitionType type) {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("INSERT INTO olympiad_fights (charOneId, charTwoId, charOneClass, charTwoClass, winner, start, time, classed) VALUES(?,?,?,?,?,?,?,?)");
             statement.setInt(1, one.objectId);
             statement.setInt(2, two.objectId);

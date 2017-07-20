@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.handler.admincommandhandlers;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.playerpart.PunishLevel;
@@ -69,7 +69,7 @@ public class AdminBan implements IAdminCommandHandler {
             value = 0;
         }
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE characters SET punish_level=?, punish_timer=? WHERE char_name=?");
             statement.setInt(1, level);
             statement.setLong(2, value);
@@ -92,7 +92,7 @@ public class AdminBan implements IAdminCommandHandler {
     }
 
     private static void jailOfflinePlayer(L2PcInstance activeChar, String name, int delay) {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE characters SET x=?, y=?, z=?, punish_level=?, punish_timer=? WHERE char_name=?");
             statement.setInt(1, -114356);
             statement.setInt(2, -249645);
@@ -117,7 +117,7 @@ public class AdminBan implements IAdminCommandHandler {
     }
 
     private static void unjailOfflinePlayer(L2PcInstance activeChar, String name) {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE characters SET x=?, y=?, z=?, punish_level=?, punish_timer=? WHERE char_name=?");
             statement.setInt(1, 17836);
             statement.setInt(2, 170178);
@@ -144,7 +144,7 @@ public class AdminBan implements IAdminCommandHandler {
             activeChar.sendMessage(targetPlayer.getName() + " has been banned.");
         }
         else {
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement("UPDATE characters SET accesslevel=? WHERE char_name=?");
                 statement.setInt(1, lvl);
                 statement.setString(2, player);

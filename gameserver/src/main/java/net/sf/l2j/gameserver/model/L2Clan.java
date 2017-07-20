@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.model;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.cache.CrestCache;
 import net.sf.l2j.gameserver.cache.CrestCache.CrestType;
@@ -132,7 +132,7 @@ public class L2Clan {
         _clanId = clanId;
         initializePrivs();
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT char_name,level,classid,obj_Id,title,power_grade,subpledge,apprentice,sponsor,sex,race FROM characters WHERE clanid=?");
             statement.setInt(1, _clanId);
             ResultSet rset = statement.executeQuery();
@@ -384,7 +384,7 @@ public class L2Clan {
             player.sendPacket(PledgeShowMemberListDeleteAll.STATIC_PACKET);
         }
         else {
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement("UPDATE characters SET clanid=0, title=?, clan_join_expiry_time=?, clan_create_expiry_time=?, clan_privs=0, wantspeace=0, subpledge=0, lvl_joined_academy=0, apprentice=0, sponsor=0 WHERE obj_Id=?");
                 statement.setString(1, "");
                 statement.setLong(2, clanJoinExpiryTime);
@@ -647,7 +647,7 @@ public class L2Clan {
     }
 
     public void updateClanInDB() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE clan_data SET leader_id=?,ally_id=?,ally_name=?,reputation_score=?,ally_penalty_expiry_time=?,ally_penalty_type=?,char_penalty_expiry_time=?,dissolving_expiry_time=? WHERE clan_id=?");
             statement.setInt(1, _leader.getObjectId());
             statement.setInt(2, _allyId);
@@ -667,7 +667,7 @@ public class L2Clan {
     }
 
     public void store() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("INSERT INTO clan_data (clan_id,clan_name,clan_level,hasCastle,ally_id,ally_name,leader_id,crest_id,crest_large_id,ally_crest_id) VALUES (?,?,?,?,?,?,?,?,?,?)");
             statement.setInt(1, _clanId);
             statement.setString(2, _name);
@@ -692,7 +692,7 @@ public class L2Clan {
 
         if (notice.length() > MAX_NOTICE_LENGTH) { notice = notice.substring(0, MAX_NOTICE_LENGTH - 1); }
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE clan_data SET enabled=?,notice=? WHERE clan_id=?");
             statement.setString(1, (enabled) ? "true" : "false");
             statement.setString(2, notice);
@@ -742,7 +742,7 @@ public class L2Clan {
 
             if (intro.length() > MAX_INTRODUCTION_LENGTH) { intro = intro.substring(0, MAX_INTRODUCTION_LENGTH - 1); }
 
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement("UPDATE clan_data SET introduction=? WHERE clan_id=?");
                 statement.setString(1, intro);
                 statement.setInt(2, _clanId);
@@ -777,7 +777,7 @@ public class L2Clan {
      * Restore skills of that clan, and feed _skills Map.
      */
     private void restoreSkills() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT skill_id,skill_level FROM clan_skills WHERE clan_id=?");
             statement.setInt(1, _clanId);
             ResultSet rset = statement.executeQuery();
@@ -815,7 +815,7 @@ public class L2Clan {
     public void addNewSkill(L2Skill newSkill) {
         if (newSkill == null) { return; }
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement;
 
             // Replace oldSkill by newSkill or Add the newSkill
@@ -976,7 +976,7 @@ public class L2Clan {
     }
 
     private void restoreSubPledges() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT sub_pledge_id,name,leader_id FROM clan_subpledges WHERE clan_id=?");
             statement.setInt(1, _clanId);
             ResultSet rset = statement.executeQuery();
@@ -1049,7 +1049,7 @@ public class L2Clan {
         }
 
         SubPledge subPledge = null;
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("INSERT INTO clan_subpledges (clan_id,sub_pledge_id,name,leader_id) VALUES (?,?,?,?)");
             statement.setInt(1, _clanId);
             statement.setInt(2, pledgeType);
@@ -1110,7 +1110,7 @@ public class L2Clan {
     }
 
     public void updateSubPledgeInDB(int pledgeType) {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE clan_subpledges SET leader_id=?, name=? WHERE clan_id=? AND sub_pledge_id=?");
             statement.setInt(1, getSubPledge(pledgeType).getLeaderId());
             statement.setString(2, getSubPledge(pledgeType).getName());
@@ -1125,7 +1125,7 @@ public class L2Clan {
     }
 
     private void restoreRankPrivs() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT privs,rank FROM clan_privs WHERE clan_id=?");
             statement.setInt(1, _clanId);
             ResultSet rset = statement.executeQuery();
@@ -1162,7 +1162,7 @@ public class L2Clan {
         if (_privs.get(rank) != null) {
             _privs.get(rank).setPrivs(privs);
 
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement("INSERT INTO clan_privs (clan_id,rank,privs) VALUES (?,?,?) ON DUPLICATE KEY UPDATE privs = ?");
                 statement.setInt(1, _clanId);
                 statement.setInt(2, rank);
@@ -1183,7 +1183,7 @@ public class L2Clan {
         else {
             _privs.put(rank, new RankPrivs(rank, privs));
 
-            try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+            try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement("INSERT INTO clan_privs (clan_id,rank,privs) VALUES (?,?,?)");
                 statement.setInt(1, _clanId);
                 statement.setInt(2, rank);
@@ -1286,7 +1286,7 @@ public class L2Clan {
         for (L2PcInstance member : members) { member.sendPacket(infoRefresh); }
 
         // Save the amount on the database.
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE clan_data SET reputation_score=? WHERE clan_id=?");
             statement.setInt(1, _reputationScore);
             statement.setInt(2, _clanId);
@@ -1313,7 +1313,7 @@ public class L2Clan {
     public void setAuctionBiddedAt(int id) {
         _auctionBiddedAt = id;
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE clan_data SET auction_bid_at=? WHERE clan_id=?");
             statement.setInt(1, id);
             statement.setInt(2, _clanId);
@@ -1677,7 +1677,7 @@ public class L2Clan {
     }
 
     public void changeLevel(int level) {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE clan_data SET clan_level = ? WHERE clan_id = ?");
             statement.setInt(1, level);
             statement.setInt(2, _clanId);
@@ -1711,7 +1711,7 @@ public class L2Clan {
 
         _crestId = crestId;
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE clan_data SET crest_id = ? WHERE clan_id = ?");
             statement.setInt(1, crestId);
             statement.setInt(2, _clanId);
@@ -1741,7 +1741,7 @@ public class L2Clan {
             allyId = _allyId;
         }
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(sqlStatement);
             statement.setInt(1, crestId);
             statement.setInt(2, allyId);
@@ -1776,7 +1776,7 @@ public class L2Clan {
 
         _crestLargeId = crestId;
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE clan_data SET crest_large_id = ? WHERE clan_id = ?");
             statement.setInt(1, crestId);
             statement.setInt(2, _clanId);

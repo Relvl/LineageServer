@@ -1,7 +1,7 @@
 package net.sf.l2j.gameserver.network;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.SessionKey;
 import net.sf.l2j.gameserver.LoginServerThread;
 import net.sf.l2j.gameserver.ThreadPoolManager;
@@ -70,7 +70,7 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
 
         CharNameTable.getInstance().removeName(objid);
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement;
 
             statement = con.prepareStatement("DELETE FROM character_friends WHERE char_id=? OR friend_id=?");
@@ -260,7 +260,7 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
 
         if (objid < 0) { return -1; }
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT clanId FROM characters WHERE obj_id=?");
             statement.setInt(1, objid);
             ResultSet rs = statement.executeQuery();
@@ -306,7 +306,7 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
         int objid = getObjectIdForSlot(charslot);
         if (objid < 0) { return; }
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE characters SET deletetime=0 WHERE obj_id=?");
             statement.setInt(1, objid);
             statement.execute();

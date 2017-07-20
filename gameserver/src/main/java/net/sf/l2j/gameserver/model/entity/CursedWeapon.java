@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.model.entity;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ItemTable;
@@ -130,7 +130,7 @@ public class CursedWeapon {
             else {
                 _log.info(_name + " being removed offline.");
 
-                try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+                try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                     // Delete the item
                     PreparedStatement statement = con.prepareStatement("DELETE FROM items WHERE owner_id=? AND item_id=?");
                     statement.setInt(1, _playerId);
@@ -485,7 +485,7 @@ public class CursedWeapon {
     }
 
     public void loadData() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("SELECT * FROM cursed_weapons WHERE itemId=?");
             statement.setInt(1, _itemId);
             ResultSet rset = statement.executeQuery();
@@ -516,7 +516,7 @@ public class CursedWeapon {
      * Use : activate() method.
      */
     private void insertData() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("INSERT INTO cursed_weapons (itemId, playerId, playerKarma, playerPkKills, nbKills, currentStage, numberBeforeNextStage, hungryTime, endTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
             statement.setInt(1, _itemId);
             statement.setInt(2, _playerId);
@@ -540,7 +540,7 @@ public class CursedWeapon {
      * Use : in the 1min overall task.
      */
     protected void updateData() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement("UPDATE cursed_weapons SET nbKills=?, currentStage=?, numberBeforeNextStage=?, hungryTime=?, endTime=? WHERE itemId=?");
             statement.setInt(1, _nbKills);
             statement.setInt(2, _currentStage);
@@ -561,7 +561,7 @@ public class CursedWeapon {
      * Use : in endOfLife() method.
      */
     private void removeFromDb() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             // Delete datas
             PreparedStatement statement = con.prepareStatement("DELETE FROM cursed_weapons WHERE itemId = ?");
             statement.setInt(1, _itemId);

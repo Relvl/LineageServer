@@ -1,7 +1,7 @@
 package net.sf.l2j.gameserver.datatables;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.L2Object;
@@ -133,7 +133,7 @@ public class ItemTable {
             }
 
             if (PetDataTable.isPetCollar(item.getItemId())) {
-                try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+                try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                     PreparedStatement statement = con.prepareStatement("DELETE FROM pets WHERE item_obj_id=?");
                     statement.setInt(1, item.getObjectId());
                     statement.execute();

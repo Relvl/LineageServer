@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2GrandBossInstance;
@@ -59,7 +59,7 @@ public class GrandBossManager
 	
 	protected GrandBossManager()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(SELECT_GRAND_BOSS_DATA);
 			ResultSet rset = statement.executeQuery();
@@ -97,7 +97,7 @@ public class GrandBossManager
 	 */
 	public void initZones()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(SELECT_GRAND_BOSS_LIST);
 			ResultSet rset = statement.executeQuery();
@@ -211,7 +211,7 @@ public class GrandBossManager
 	
 	private void storeToDb()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement deleteStatement = con.prepareStatement(DELETE_GRAND_BOSS_LIST);
 			deleteStatement.executeUpdate();
@@ -273,7 +273,7 @@ public class GrandBossManager
 	
 	private void updateDb(int bossId, boolean statusOnly)
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			L2GrandBossInstance boss = _bosses.get(bossId);
 			StatsSet info = _storedInfo.get(bossId);

@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.idfactory;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ public abstract class IdFactory {
      * Sets all character offline
      */
     private static void setAllCharacterOffline() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             Statement statement = con.createStatement();
             statement.executeUpdate("UPDATE characters SET online = 0");
             statement.close();
@@ -69,7 +69,7 @@ public abstract class IdFactory {
      * Cleans up Database
      */
     private static void cleanUpDB() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             int cleanCount = 0;
             Statement stmt = con.createStatement();
 
@@ -134,7 +134,7 @@ public abstract class IdFactory {
     }
 
     private static void cleanUpTimeStamps() {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             int cleanCount = 0;
             PreparedStatement stmt = con.prepareStatement("DELETE FROM character_skills_save WHERE restore_type = 1 AND systime <= ?");
             stmt.setLong(1, System.currentTimeMillis());
@@ -149,7 +149,7 @@ public abstract class IdFactory {
     protected static Collection<Integer> extractUsedObjectIDTable() throws SQLException {
         final List<Integer> temp = new ArrayList<>();
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             final Statement st = con.createStatement();
             for (String[] table : EXTRACT_OBJ_ID_TABLES) {
                 final ResultSet rs = st.executeQuery("SELECT " + table[1] + " FROM " + table[0]);

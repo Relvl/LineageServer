@@ -22,7 +22,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.model.memo.AbstractMemo;
 
 @SuppressWarnings("serial")
@@ -43,7 +43,7 @@ public class ServerMemo extends AbstractMemo
 	public boolean restoreMe()
 	{
 		// Restore previous variables.
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			Statement st = con.createStatement();
 			
@@ -74,7 +74,7 @@ public class ServerMemo extends AbstractMemo
 		if (!hasChanges())
 			return false;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			// Clear previous entries.
 			Statement del = con.createStatement();

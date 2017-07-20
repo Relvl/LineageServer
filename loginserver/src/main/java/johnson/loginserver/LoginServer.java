@@ -3,6 +3,7 @@ package johnson.loginserver;
 import johnson.loginserver.config.LoginServerConfig;
 import johnson.loginserver.security.SecurityController;
 import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.SystemExitReason;
 import org.mmocore.network.SelectorConfig;
 import org.mmocore.network.SelectorThread;

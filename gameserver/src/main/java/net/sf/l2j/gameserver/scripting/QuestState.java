@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.scripting;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.cache.HtmCache;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -185,7 +185,7 @@ public final class QuestState {
             for (int itemId : itemIdList) { takeItems(itemId, -1); }
         }
 
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement;
             if (repeatable) { statement = con.prepareStatement(QUEST_DELETE); }
             else { statement = con.prepareStatement(QUEST_COMPLETE); }
@@ -379,7 +379,7 @@ public final class QuestState {
      * @param value : String designating the value of the variable for the quest
      */
     private void setQuestVarInDb(String var, String value) {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(QUEST_SET_VAR);
             statement.setInt(1, _player.getObjectId());
             statement.setString(2, _quest.getName());
@@ -399,7 +399,7 @@ public final class QuestState {
      * @param var : String designating the variable characterizing the quest
      */
     private void removeQuestVarInDb(String var) {
-        try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(QUEST_DEL_VAR);
             statement.setInt(1, _player.getObjectId());
             statement.setString(2, _quest.getName());

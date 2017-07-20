@@ -25,7 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.datatables.SkillTable;
@@ -666,7 +666,7 @@ public class SevenSigns
 	 */
 	protected void restoreSevenSignsData()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(LOAD_DATA);
 			ResultSet rset = statement.executeQuery();
@@ -737,7 +737,7 @@ public class SevenSigns
 	 */
 	public void saveSevenSignsData()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(UPDATE_PLAYER);
 			
@@ -772,7 +772,7 @@ public class SevenSigns
 		if (sevenDat == null)
 			return;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(UPDATE_PLAYER);
 			statement.setString(1, sevenDat.getString("cabal"));
@@ -794,7 +794,7 @@ public class SevenSigns
 	
 	public final void saveSevenSignsStatus()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(UPDATE_STATUS);
 			statement.setInt(1, _currentCycle);
@@ -882,7 +882,7 @@ public class SevenSigns
 			_signsPlayerData.put(objectId, currPlayerData);
 			
 			// Update data in database, as we have a new player signing up.
-			try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+			try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 			{
 				PreparedStatement statement = con.prepareStatement(INSERT_PLAYER);
 				statement.setInt(1, objectId);

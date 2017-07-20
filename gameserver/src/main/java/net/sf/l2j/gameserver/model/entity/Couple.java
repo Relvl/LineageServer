@@ -20,7 +20,7 @@ import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.instancemanager.CoupleManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -42,7 +42,7 @@ public class Couple
 	{
 		_Id = coupleId;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("SELECT * FROM mods_wedding WHERE id = ?");
 			statement.setInt(1, _Id);
@@ -71,7 +71,7 @@ public class Couple
 		_player1Id = _tempPlayer1Id;
 		_player2Id = _tempPlayer2Id;
 		
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			_Id = IdFactory.getInstance().getNextId();
 			PreparedStatement statement = con.prepareStatement("INSERT INTO mods_wedding (id, player1Id, player2Id, married) VALUES (?,?,?,?)");
@@ -90,7 +90,7 @@ public class Couple
 	
 	public void marry()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("UPDATE mods_wedding SET married = ? WHERE id = ?");
 			statement.setBoolean(1, true);
@@ -107,7 +107,7 @@ public class Couple
 	
 	public void divorce()
 	{
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement("DELETE FROM mods_wedding WHERE id = ?");
 			statement.setInt(1, _Id);

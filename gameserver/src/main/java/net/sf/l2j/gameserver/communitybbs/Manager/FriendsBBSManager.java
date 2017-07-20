@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.communitybbs.Manager;
 
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.cache.HtmCache;
 import net.sf.l2j.gameserver.datatables.CharNameTable;
@@ -147,7 +147,7 @@ public class FriendsBBSManager extends BaseBBSManager {
                 showFriendsList(activeChar, false);
             }
             else if (action.equals("delall")) {
-                try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+                try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                     PreparedStatement statement = con.prepareStatement("DELETE FROM character_friends WHERE char_id = ? OR friend_id = ?");
                     statement.setInt(1, activeChar.getObjectId());
                     statement.setInt(2, activeChar.getObjectId());
@@ -177,7 +177,7 @@ public class FriendsBBSManager extends BaseBBSManager {
             }
             else if (action.equals("delconfirm")) { showFriendsList(activeChar, true); }
             else if (action.equals("del")) {
-                try (Connection con = L2DatabaseFactory.getInstance().getConnection()) {
+                try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                     for (int friendId : activeChar.getSelectedFriendList()) {
                         PreparedStatement statement = con.prepareStatement("DELETE FROM character_friends WHERE (char_id = ? AND friend_id = ?) OR (char_id = ? AND friend_id = ?)");
                         statement.setInt(1, activeChar.getObjectId());

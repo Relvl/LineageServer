@@ -24,7 +24,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.L2DatabaseFactory;
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.instancemanager.CursedWeaponsManager;
 import net.sf.l2j.gameserver.model.world.L2World;
@@ -62,7 +62,7 @@ public final class ItemsOnGroundTaskManager implements Runnable
 			return;
 		
 		// Load all items.
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			// Get current time.
 			final long time = System.currentTimeMillis();
@@ -111,7 +111,7 @@ public final class ItemsOnGroundTaskManager implements Runnable
 		}
 		
 		// Delete all items from database.
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			PreparedStatement statement = con.prepareStatement(DELETE_ITEMS);
 			statement.execute();
@@ -218,7 +218,7 @@ public final class ItemsOnGroundTaskManager implements Runnable
 		}
 		
 		// Store whole items list to database.
-		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
+		try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection())
 		{
 			// Get current time.
 			final long time = System.currentTimeMillis();
