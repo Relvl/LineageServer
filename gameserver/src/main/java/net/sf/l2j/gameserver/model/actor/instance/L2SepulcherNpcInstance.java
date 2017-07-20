@@ -296,7 +296,7 @@ public class L2SepulcherNpcInstance extends L2NpcInstance {
                 _DoorTable.getDoor(_DoorId).closeMe();
             }
             catch (Exception e) {
-                _log.warning(e.getMessage());
+                LOGGER.error("", e);
             }
         }
     }

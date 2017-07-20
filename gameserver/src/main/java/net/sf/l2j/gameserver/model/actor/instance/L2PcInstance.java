@@ -492,7 +492,7 @@ public final class L2PcInstance extends L2Playable {
                     // a possible restart-while-modifysubclass cheat has been attempted.
                     // Switching to use base class
                     player.setClassId(player._baseClass);
-                    _log.warning("Player " + player.getName() + " reverted to base class. Possibly has tried a relogin exploit while subclassing.");
+                    LOGGER.warn("Player " + player.getName() + " reverted to base class. Possibly has tried a relogin exploit while subclassing.");
                 }
                 else { player._activeClass = activeClassId; }
 
@@ -571,7 +571,7 @@ public final class L2PcInstance extends L2Playable {
             statement.close();
         }
         catch (Exception e) {
-            _log.severe("Could not restore char data: " + e);
+            LOGGER.error("Could not restore char data: " + e);
         }
 
         return player;
@@ -599,8 +599,7 @@ public final class L2PcInstance extends L2Playable {
             statement.close();
         }
         catch (Exception e) {
-            _log.warning("Could not restore classes for " + player.getName() + ": " + e);
-            e.printStackTrace();
+            LOGGER.error("Could not restore classes for " + player.getName() + ": " + e);
         }
 
         return true;
@@ -868,7 +867,7 @@ public final class L2PcInstance extends L2Playable {
             closeNetConnection(closeClient);
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Exception on logout(): " + e.getMessage(), e);
+            LOGGER.error("Exception on logout(): " + e.getMessage(), e);
         }
     }
 
@@ -920,7 +919,7 @@ public final class L2PcInstance extends L2Playable {
     public void unregisterRecipeList(int recipeId) {
         if (_dwarvenRecipeBook.containsKey(recipeId)) { _dwarvenRecipeBook.remove(recipeId); }
         else if (_commonRecipeBook.containsKey(recipeId)) { _commonRecipeBook.remove(recipeId); }
-        else { _log.warning("Attempted to remove unknown RecipeList: " + recipeId); }
+        else { LOGGER.warn("Attempted to remove unknown RecipeList: " + recipeId); }
 
         for (L2ShortCut sc : getAllShortCuts()) {
             if (sc != null && sc.getId() == recipeId && sc.getType() == L2ShortCut.TYPE_RECIPE) {
@@ -1321,7 +1320,7 @@ public final class L2PcInstance extends L2Playable {
             statement.close();
         }
         catch (Exception e) {
-            _log.warning("Could not update char recommendations: " + e);
+            LOGGER.warn("Could not update char recommendations: " + e);
         }
 
         target.incRecomHave();
@@ -2251,7 +2250,7 @@ public final class L2PcInstance extends L2Playable {
             // Retrieve the template of the item.
             Item item = ItemTable.getInstance().getTemplate(itemId);
             if (item == null) {
-                _log.log(Level.SEVERE, "Item id " + itemId + "doesn't exist, so it can't be added.");
+                LOGGER.error("Item id " + itemId + "doesn't exist, so it can't be added.");
                 return null;
             }
 
@@ -3014,7 +3013,7 @@ public final class L2PcInstance extends L2Playable {
         // Check if the L2Object to pick up is a L2ItemInstance
         if (!(object instanceof L2ItemInstance)) {
             // dont try to pickup anything that is not an item :)
-            _log.warning(getName() + " tried to pickup a wrong target: " + object);
+            LOGGER.warn(getName() + " tried to pickup a wrong target: " + object);
             return;
         }
 
@@ -4332,7 +4331,7 @@ public final class L2PcInstance extends L2Playable {
                 _controlItemId = 0;
             }
             catch (Exception e) {
-                _log.log(Level.SEVERE, "Failed to store Pet [NpcId: " + petId + "] data", e);
+                LOGGER.error("Failed to store Pet [NpcId: " + petId + "] data", e);
             }
         }
     }
@@ -4506,7 +4505,7 @@ public final class L2PcInstance extends L2Playable {
      */
     public void setAccessLevel(int level) {
         if (level == AccessLevels.MASTER_ACCESS_LEVEL_NUMBER) {
-            _log.warning(getName() + " has logged in with Master access level.");
+            LOGGER.warn(getName() + " has logged in with Master access level.");
             _accessLevel = AccessLevels.MASTER_ACCESS_LEVEL;
         }
         else if (level == AccessLevels.USER_ACCESS_LEVEL_NUMBER) { _accessLevel = AccessLevels.USER_ACCESS_LEVEL; }
@@ -4519,7 +4518,7 @@ public final class L2PcInstance extends L2Playable {
                     _accessLevel = AccessLevels.getInstance().getAccessLevel(level);
                 }
                 else {
-                    _log.warning("Server tried to set unregistered access level " + level + " to " + getName() + ". His access level have been reseted to user level.");
+                    LOGGER.warn("Server tried to set unregistered access level " + level + " to " + getName() + ". His access level have been reseted to user level.");
                     _accessLevel = AccessLevels.USER_ACCESS_LEVEL;
                 }
             }
@@ -4594,7 +4593,7 @@ public final class L2PcInstance extends L2Playable {
             statement.close();
         }
         catch (Exception e) {
-            _log.warning("could not set char online status:" + e);
+            LOGGER.error("could not set char online status:" + e);
         }
     }
 
@@ -4644,7 +4643,7 @@ public final class L2PcInstance extends L2Playable {
             statement.close();
         }
         catch (Exception e) {
-            _log.severe("Could not insert char data: " + e);
+            LOGGER.error("Could not insert char data: " + e);
             return false;
         }
         return true;
@@ -4739,7 +4738,7 @@ public final class L2PcInstance extends L2Playable {
             }
         }
         catch (Exception e) {
-            _log.warning("Could not store recipe book data: " + e);
+            LOGGER.error("Could not store recipe book data: " + e);
         }
     }
 
@@ -4762,7 +4761,7 @@ public final class L2PcInstance extends L2Playable {
             statement.close();
         }
         catch (Exception e) {
-            _log.warning("Could not restore recipe book data:" + e);
+            LOGGER.error("Could not restore recipe book data:" + e);
         }
     }
 
@@ -4862,7 +4861,7 @@ public final class L2PcInstance extends L2Playable {
             statement.close();
         }
         catch (Exception e) {
-            _log.warning("Could not store char base data: " + e);
+            LOGGER.error("Could not store char base data: " + e);
         }
     }
 
@@ -4885,7 +4884,7 @@ public final class L2PcInstance extends L2Playable {
             statement.close();
         }
         catch (Exception e) {
-            _log.warning("Could not store sub class data for " + getName() + ": " + e);
+            LOGGER.error("Could not store sub class data for " + getName() + ": " + e);
         }
     }
 
@@ -4973,7 +4972,7 @@ public final class L2PcInstance extends L2Playable {
             statement.close();
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Could not store char effect data: ", e);
+            LOGGER.error("Could not store char effect data: ", e);
         }
     }
 
@@ -5061,7 +5060,7 @@ public final class L2PcInstance extends L2Playable {
             statement.close();
         }
         catch (Exception e) {
-            _log.warning("Error could not delete skill: " + e);
+            LOGGER.error("Error could not delete skill: " + e);
         }
 
         // Don't busy with shortcuts if skill was a passive skill.
@@ -5110,11 +5109,11 @@ public final class L2PcInstance extends L2Playable {
                 statement.close();
             }
             else {
-                _log.warning("storeSkill() couldn't store new skill. It's null type.");
+                LOGGER.warn("storeSkill() couldn't store new skill. It's null type.");
             }
         }
         catch (Exception e) {
-            _log.warning("Error could not store char skills: " + e);
+            LOGGER.error("Error could not store char skills: " + e);
         }
     }
 
@@ -5148,7 +5147,7 @@ public final class L2PcInstance extends L2Playable {
             statement.close();
         }
         catch (Exception e) {
-            _log.warning("Could not restore character skills: " + e);
+            LOGGER.error("Could not restore character skills: " + e);
         }
     }
 
@@ -5213,7 +5212,7 @@ public final class L2PcInstance extends L2Playable {
             statement.close();
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Could not restore " + this + " active effect data: " + e.getMessage(), e);
+            LOGGER.error("Could not restore " + this + " active effect data: " + e.getMessage(), e);
         }
     }
 
@@ -5245,7 +5244,7 @@ public final class L2PcInstance extends L2Playable {
             statement.close();
         }
         catch (Exception e) {
-            _log.warning("could not restore henna: " + e);
+            LOGGER.error("could not restore henna: " + e);
         }
 
         // Calculate Henna modifiers of this L2PcInstance
@@ -5266,7 +5265,7 @@ public final class L2PcInstance extends L2Playable {
             statement.close();
         }
         catch (Exception e) {
-            _log.warning("could not restore recommendations: " + e);
+            LOGGER.error("could not restore recommendations: " + e);
         }
     }
 
@@ -5314,7 +5313,7 @@ public final class L2PcInstance extends L2Playable {
             statement.close();
         }
         catch (Exception e) {
-            _log.warning("could not remove char henna: " + e);
+            LOGGER.error("could not remove char henna: " + e);
         }
 
         // Calculate Henna modifiers of this L2PcInstance
@@ -5359,7 +5358,7 @@ public final class L2PcInstance extends L2Playable {
                     statement.close();
                 }
                 catch (Exception e) {
-                    _log.warning("could not save char henna: " + e);
+                    LOGGER.error("could not save char henna: " + e);
                 }
 
                 sendPacket(new HennaInfo(this));
@@ -5685,7 +5684,7 @@ public final class L2PcInstance extends L2Playable {
         Location worldPosition = _currentSkillWorldPosition;
 
         if (sklTargetType == ESkillTargetType.TARGET_GROUND && worldPosition == null) {
-            _log.info("WorldPosition is null for skill: " + skill.getName() + ", player: " + getName() + ".");
+            LOGGER.warn("WorldPosition is null for skill: " + skill.getName() + ", player: " + getName() + ".");
             sendPacket(ActionFailed.STATIC_PACKET);
             return false;
         }
@@ -6755,7 +6754,7 @@ public final class L2PcInstance extends L2Playable {
                 statement.close();
             }
             catch (Exception e) {
-                _log.log(Level.WARNING, "Could not update " + getName() + " nobless status: " + e.getMessage(), e);
+                LOGGER.error("Could not update " + getName() + " nobless status: " + e.getMessage(), e);
             }
         }
     }
@@ -6882,7 +6881,7 @@ public final class L2PcInstance extends L2Playable {
                 statement.close();
             }
             catch (Exception e) {
-                _log.warning("WARNING: Could not add character sub class for " + getName() + ": " + e);
+                LOGGER.error("WARNING: Could not add character sub class for " + getName() + ": " + e);
                 return false;
             }
 
@@ -6965,7 +6964,7 @@ public final class L2PcInstance extends L2Playable {
                 statement.close();
             }
             catch (Exception e) {
-                _log.warning("Could not modify subclass for " + getName() + " to class index " + classIndex + ": " + e);
+                LOGGER.error("Could not modify subclass for " + getName() + " to class index " + classIndex + ": " + e);
 
                 // This must be done in order to maintain data consistency.
                 _subClasses.remove(classIndex);
@@ -7015,7 +7014,7 @@ public final class L2PcInstance extends L2Playable {
         PcTemplate t = CharTemplateTable.getInstance().getTemplate(classId);
 
         if (t == null) {
-            _log.severe("Missing template for classId: " + classId);
+            LOGGER.error("Missing template for classId: " + classId);
             throw new Error();
         }
 
@@ -7062,7 +7061,7 @@ public final class L2PcInstance extends L2Playable {
                     setClassTemplate(_subClasses.get(classIndex).getClassId());
                 }
                 catch (Exception e) {
-                    _log.info("Could not switch " + getName() + "'s sub class to class index " + classIndex + ": " + e);
+                    LOGGER.error("Could not switch " + getName() + "'s sub class to class index " + classIndex + ": " + e);
                     return false;
                 }
             }
@@ -7221,7 +7220,7 @@ public final class L2PcInstance extends L2Playable {
             _recomChars.clear();
         }
         catch (Exception e) {
-            _log.warning("could not clear char recommendations: " + e);
+            LOGGER.error("could not clear char recommendations: " + e);
         }
 
         if (getStat().getLevel() < 20) {
@@ -7664,7 +7663,7 @@ public final class L2PcInstance extends L2Playable {
             _blockList.playerLogout();
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Exception on deleteMe()" + e.getMessage(), e);
+            LOGGER.error("Exception on deleteMe()" + e.getMessage(), e);
         }
     }
 
@@ -8388,7 +8387,7 @@ public final class L2PcInstance extends L2Playable {
             for (L2BossZone _zone : GrandBossManager.getInstance().getZones()) { _zone.removePlayer(this); }
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Exception on removeFromBossZone(): " + e.getMessage(), e);
+            LOGGER.error("Exception on removeFromBossZone(): " + e.getMessage(), e);
         }
     }
 
@@ -8645,7 +8644,7 @@ public final class L2PcInstance extends L2Playable {
             statement.close();
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Error found in " + getName() + "'s friendlist: " + e.getMessage(), e);
+            LOGGER.error("Error found in " + getName() + "'s friendlist: " + e.getMessage(), e);
         }
     }
 
@@ -8807,7 +8806,7 @@ public final class L2PcInstance extends L2Playable {
                 }
             }
             catch (Exception e) {
-                _log.log(Level.SEVERE, "Mounted Pet [NpcId: " + getMountNpcId() + "] a feed task error has occurred", e);
+                LOGGER.error("Mounted Pet [NpcId: " + getMountNpcId() + "] a feed task error has occurred", e);
             }
         }
     }
@@ -8863,7 +8862,7 @@ public final class L2PcInstance extends L2Playable {
                 dismount();
             }
             catch (Exception e) {
-                _log.log(Level.WARNING, "Exception on dismount(): " + e.getMessage(), e);
+                LOGGER.error("Exception on dismount(): " + e.getMessage(), e);
             }
         }
     }

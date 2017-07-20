@@ -1409,7 +1409,7 @@ public class L2Npc extends L2Character {
             }
         }
         catch (Exception e) {
-            _log.log(Level.SEVERE, "", e);
+            LOGGER.error("", e);
         }
     }
 

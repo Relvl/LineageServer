@@ -49,7 +49,6 @@ import net.sf.l2j.gameserver.util.Util;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Level;
 
 /**
  * This class manages all NPC that can be attacked. It inherits from L2Npc.
@@ -200,7 +199,7 @@ public class L2Attackable extends L2Npc {
             }
         }
         catch (Exception e) {
-            _log.log(Level.SEVERE, "", e);
+            LOGGER.error("", e);
         }
 
         _attackByList.clear();
@@ -855,7 +854,7 @@ public class L2Attackable extends L2Npc {
             if (drop == null) { return null; }
 
 			/*
-			 * Now decide the quantity to drop based on the rates and penalties. To get this value, simply divide the modified categoryDropChance by the base category chance. This results in a chance that will dictate the drops amounts : for each amount over 100 that it is, it will give another
+             * Now decide the quantity to drop based on the rates and penalties. To get this value, simply divide the modified categoryDropChance by the base category chance. This results in a chance that will dictate the drops amounts : for each amount over 100 that it is, it will give another
 			 * chance to add to the min/max quantities. For example, if the final chance is 120%, then the item should drop between its min and max one time, and then have 20% chance to drop again. If the final chance is 330%, it will similarly give 3 times the min and max, and have a 30% chance to
 			 * give a 4th time. At least 1 item will be dropped for sure. So the chance will be adjusted to 100% if smaller.
 			 */
@@ -1032,7 +1031,7 @@ public class L2Attackable extends L2Npc {
                 // If stackable, end loop as entire count is included in 1 instance of item
                 if (ditem.isStackable() || !Config.MULTIPLE_ITEM_DROP) { break; }
             }
-            else { _log.log(Level.SEVERE, "Item doesn't exist so cannot be dropped. Item ID: " + item.getId()); }
+            else { LOGGER.error("Item doesn't exist so cannot be dropped. Item ID: " + item.getId()); }
         }
         return ditem;
     }

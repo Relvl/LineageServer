@@ -26,7 +26,6 @@ import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 import java.util.StringTokenizer;
-import java.util.logging.Level;
 
 /**
  * Dawn/Dusk Seven Signs Priest Instance
@@ -73,7 +72,7 @@ public class L2SignsPriestInstance extends L2NpcInstance {
                             cabal = Integer.parseInt(st.nextToken());
                         }
                         catch (Exception e3) {
-                            _log.warning("Failed to retrieve cabal from bypass command. NpcId: " + getNpcId() + "; Command: " + command);
+                            LOGGER.warn("Failed to retrieve cabal from bypass command. NpcId: {}; Command: {}", getNpcId(), command);
                         }
                     }
                 }
@@ -439,7 +438,7 @@ public class L2SignsPriestInstance extends L2NpcInstance {
                         player.teleToLocation(x, y, z, 0);
                     }
                     catch (Exception e) {
-                        _log.log(Level.WARNING, "SevenSigns: Error occurred while teleporting player: " + e.getMessage(), e);
+                        LOGGER.error("SevenSigns: Error occurred while teleporting player: {}", e.getMessage(), e);
                     }
                     break;
 

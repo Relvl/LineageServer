@@ -66,7 +66,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Future;
-import java.util.logging.Level;
 
 public abstract class L2Character extends L2Object {
     protected final Map<Integer, L2Skill> _skills = new LinkedHashMap<>();
@@ -377,22 +376,6 @@ public abstract class L2Character extends L2Object {
         // default implementation
     }
 
-    /**
-     * Teleport a L2Character and its pet if necessary.<BR>
-     * <BR>
-     * <B><U> Actions</U> :</B>
-     * <ul>
-     * <li>Stop the movement of the L2Character</li>
-     * <li>Set the x,y,z position of the L2Object and if necessary modify its _worldRegion</li>
-     * <li>Send TeleportToLocationt to the L2Character AND to all L2PcInstance in its _KnownPlayers</li>
-     * <li>Modify the position of the pet if necessary</li>
-     * </ul>
-     *
-     * @param x
-     * @param y
-     * @param z
-     * @param randomOffset
-     */
     public void teleToLocation(int x, int y, int z, int randomOffset) {
         // Stop movement
         stopMove(null);
@@ -633,7 +616,7 @@ public abstract class L2Character extends L2Object {
                     }
                 }
                 catch (Exception e) {
-                    _log.log(Level.SEVERE, "", e);
+                    LOGGER.error("", e);
                 }
             }
 
@@ -1634,7 +1617,7 @@ public abstract class L2Character extends L2Object {
         if (getRunSpeed() != 0) { broadcastPacket(new ChangeMoveType(this)); }
 
         if (this instanceof L2PcInstance) { ((L2PcInstance) this).broadcastUserInfo(); }
-        else if (this instanceof L2Summon) { this.broadcastStatusUpdate(); }
+        else if (this instanceof L2Summon) { broadcastStatusUpdate(); }
         else if (this instanceof L2Npc) {
             for (L2PcInstance player : getKnownList().getKnownType(L2PcInstance.class)) {
                 if (getRunSpeed() == 0) { player.sendPacket(new ServerObjectInfo((L2Npc) this, player)); }
@@ -2022,7 +2005,7 @@ public abstract class L2Character extends L2Object {
      * Stun
      */
     public final void startStunning() {
-		/* Aborts any attacks/casts if stunned */
+        /* Aborts any attacks/casts if stunned */
         abortAttack();
         abortCast();
         stopMove(null);
@@ -2828,7 +2811,7 @@ public abstract class L2Character extends L2Object {
 
                 if (curX < L2World.WORLD_X_MIN || curX > L2World.WORLD_X_MAX || curY < L2World.WORLD_Y_MIN || curY > L2World.WORLD_Y_MAX) {
                     // Temporary fix for character outside world region errors
-                    _log.warning("Character " + getName() + " outside world area, in coordinates x:" + curX + " y:" + curY);
+                    LOGGER.warn("Character {} outside world area, in coordinates x:{} y:{}", getName(), curX, curY);
                     getAI().setIntention(EIntention.IDLE);
 
                     if (this instanceof L2PcInstance) { ((L2PcInstance) this).logout(); }
@@ -2986,8 +2969,8 @@ public abstract class L2Character extends L2Object {
         _move = newMd;
 
         // get travel distance
-        double dx = _move._xDestination - super.getX();
-        double dy = _move._yDestination - super.getY();
+        double dx = _move._xDestination - getX();
+        double dy = _move._yDestination - getY();
         double distance = Math.sqrt(dx * dx + dy * dy);
 
         // set character heading
@@ -3406,12 +3389,12 @@ public abstract class L2Character extends L2Object {
         }
         catch (Exception e) {
             if (this instanceof L2PcInstance) {
-                _log.warning("Player " + getName() + " at bad coords: (x: " + getX() + ", y: " + getY() + ", z: " + getZ() + ").");
-                this.sendMessage("Error with your coordinates! Please reboot your game fully!");
-                this.teleToLocation(80753, 145481, -3532, 0); // Near Giran luxury shop
+                LOGGER.warn("Player {} at bad coords: (x: {}, y: {}, z: {}).", getName(), getX(), getY(), getZ());
+                sendMessage("Error with your coordinates! Please reboot your game fully!");
+                teleToLocation(80753, 145481, -3532, 0); // Near Giran luxury shop
             }
             else {
-                _log.warning("Object " + getName() + " at bad coords: (x: " + getX() + ", y: " + getY() + ", z: " + getZ() + ").");
+                LOGGER.warn("Object {} at bad coords: (x: {}, y: {}, z: {}).", getName(), getX(), getY(), getZ());
                 decayMe();
             }
             return false;
@@ -3748,7 +3731,7 @@ public abstract class L2Character extends L2Object {
     }
 
     /*
-	 * Runs in the end of skill casting
+     * Runs in the end of skill casting
 	 */
     public void onMagicHitTimer(MagicUseTask mut) {
         L2Skill skill = mut.skill;
@@ -3863,7 +3846,7 @@ public abstract class L2Character extends L2Object {
     }
 
     /*
-	 * Runs after skill hitTime+coolTime
+     * Runs after skill hitTime+coolTime
 	 */
     public void onMagicFinalizer(MagicUseTask mut) {
         if (mut.simultaneously) {
@@ -4141,7 +4124,7 @@ public abstract class L2Character extends L2Object {
             }
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, getClass().getSimpleName() + ": callSkill() failed on skill id: " + skill.getId(), e);
+            LOGGER.error("{}: callSkill() failed on skill id: {}", getClass().getSimpleName(), skill.getId(), e);
         }
     }
 
@@ -4593,7 +4576,7 @@ public abstract class L2Character extends L2Object {
                 _currPlayer.useMagic(_queuedSkill, _isCtrlPressed, _isShiftPressed);
             }
             catch (Exception e) {
-                _log.log(Level.SEVERE, "Failed executing QueuedMagicUseTask.", e);
+                LOGGER.error("Failed executing QueuedMagicUseTask.", e);
             }
         }
     }
@@ -4720,7 +4703,7 @@ public abstract class L2Character extends L2Object {
                 }
             }
             catch (Exception e) {
-                _log.log(Level.SEVERE, "Failed executing MagicUseTask.", e);
+                LOGGER.error("Failed executing MagicUseTask.", e);
                 if (simultaneously) { setIsCastingSimultaneouslyNow(false); }
                 else { setIsCastingNow(false); }
             }
@@ -4741,7 +4724,7 @@ public abstract class L2Character extends L2Object {
                 getAI().notifyEvent(_evt, null);
             }
             catch (Throwable t) {
-                _log.log(Level.WARNING, "", t);
+                LOGGER.error("", t);
             }
         }
     }
@@ -4769,7 +4752,7 @@ public abstract class L2Character extends L2Object {
                 getPosition().setXYZ(_tgt.getX(), _tgt.getY(), _tgt.getZ());
             }
             catch (Exception e) {
-                _log.log(Level.SEVERE, "Failed executing FlyToLocationTask.", e);
+                LOGGER.error("Failed executing FlyToLocationTask.", e);
             }
         }
     }

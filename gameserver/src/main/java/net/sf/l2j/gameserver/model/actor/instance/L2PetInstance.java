@@ -174,7 +174,7 @@ public class L2PetInstance extends L2Summon {
                 }
             }
             catch (Exception e) {
-                _log.log(Level.SEVERE, "Pet [ObjectId: " + getObjectId() + "] a feed task error has occurred", e);
+                LOGGER.error("Pet [ObjectId: {}] a feed task error has occurred", getObjectId(), e);
             }
         }
 
@@ -352,7 +352,7 @@ public class L2PetInstance extends L2Summon {
 
         if (!(object instanceof L2ItemInstance)) {
             // dont try to pickup anything that is not an item :)
-            _log.warning(getName() + " tried to pickup a wrong target: " + object);
+            LOGGER.warn("{} tried to pickup a wrong target: {}", getName(), object);
             return;
         }
 
@@ -579,7 +579,7 @@ public class L2PetInstance extends L2Summon {
         try {
             L2ItemInstance removedItem = owner.getInventory().destroyItem(EItemProcessPurpose.PET_DESTROY, _controlItemId, 1, getOwner(), this);
 
-            if (removedItem == null) { _log.warning("Couldn't destroy petControlItem for " + owner.getName() + ", pet: " + this); }
+            if (removedItem == null) { LOGGER.warn("Couldn't destroy petControlItem for {}, pet: {}", owner.getName(), this); }
             else {
                 InventoryUpdate iu = new InventoryUpdate();
                 iu.addRemovedItem(removedItem);
@@ -596,7 +596,7 @@ public class L2PetInstance extends L2Summon {
             }
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Error while destroying control item: " + e.getMessage(), e);
+            LOGGER.error("Error while destroying control item: {}", e.getMessage(), e);
         }
 
         // pet control item no longer exists, delete the pet from the db
@@ -607,7 +607,7 @@ public class L2PetInstance extends L2Summon {
             statement.close();
         }
         catch (Exception e) {
-            _log.log(Level.SEVERE, "Failed to delete Pet [ObjectId: " + getObjectId() + "]", e);
+            LOGGER.error("Failed to delete Pet [ObjectId: {}]", getObjectId(), e);
         }
     }
 
@@ -654,7 +654,7 @@ public class L2PetInstance extends L2Summon {
             return pet;
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Could not restore pet data for owner: " + owner + " - " + e.getMessage(), e);
+            LOGGER.error("Could not restore pet data for owner: {} - {}", owner, e.getMessage(), e);
             return null;
         }
     }
@@ -682,7 +682,7 @@ public class L2PetInstance extends L2Summon {
             _respawned = true;
         }
         catch (Exception e) {
-            _log.log(Level.SEVERE, "Failed to store Pet [ObjectId: " + getObjectId() + "] data", e);
+            LOGGER.error("Failed to store Pet [ObjectId: {}] data", getObjectId(), e);
         }
 
         L2ItemInstance itemInst = getControlItem();

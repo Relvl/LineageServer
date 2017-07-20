@@ -170,7 +170,7 @@ public final class L2TeleporterInstance extends L2NpcInstance {
 
             if (Config.ALT_GAME_FREE_TELEPORT || player.destroyItemByItemId(EItemProcessPurpose.TELEPORT, 57, price, this, true)) { player.teleToLocation(list.getLocX(), list.getLocY(), list.getLocZ(), 20); }
         }
-        else { _log.warning("No teleport destination with id:" + val); }
+        else { LOGGER.warn("No teleport destination with id:{}", val); }
 
         player.sendPacket(ActionFailed.STATIC_PACKET);
     }

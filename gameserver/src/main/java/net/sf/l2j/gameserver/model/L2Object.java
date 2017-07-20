@@ -10,11 +10,11 @@ import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.world.L2WorldRegion;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
-
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class L2Object {
-    public static final Logger _log = Logger.getLogger(L2Object.class.getName());
+    protected static final Logger LOGGER = LoggerFactory.getLogger(L2Object.class);
 
     private String _name;
     private int _objectId;
@@ -41,16 +41,7 @@ public abstract class L2Object {
         player.sendPacket(ActionFailed.STATIC_PACKET);
     }
 
-    /**
-     * Do Nothing.<BR>
-     * <BR>
-     * <B><U> Overriden in </U> :</B><BR>
-     * <BR>
-     * <li>L2GuardInstance : Set the home location of its L2GuardInstance</li> <li>L2Attackable : Reset the Spoiled flag</li><BR>
-     * <BR>
-     */
-    public void onSpawn() {
-    }
+    public void onSpawn() { }
 
     public final void setXYZ(int x, int y, int z) {
         getPosition().setXYZ(x, y, z);
@@ -294,11 +285,11 @@ public abstract class L2Object {
         return false;
     }
 
-    public boolean isPlayer(){
+    public boolean isPlayer() {
         return false;
     }
 
-    public boolean isSummon(){
+    public boolean isSummon() {
         return false;
     }
 

@@ -10,8 +10,7 @@ public class Location {
     @JacksonXmlProperty(localName = "Z", isAttribute = true)
     protected volatile int posZ;
 
-    public Location() {
-    }
+    public Location() {}
 
     public Location(int x, int y, int z) {
         posX = x;

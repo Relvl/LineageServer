@@ -14,7 +14,6 @@ import net.sf.l2j.gameserver.skills.l2skills.L2SkillSummon;
 import net.sf.l2j.gameserver.taskmanager.DecayTaskManager;
 
 import java.util.concurrent.Future;
-import java.util.logging.Level;
 
 public class L2SummonInstance extends L2Summon {
     private float _expPenalty;
@@ -186,7 +185,7 @@ public class L2SummonInstance extends L2Summon {
                 }
             }
             catch (Exception e) {
-                _log.log(Level.SEVERE, "Error on player [" + _activeChar.getName() + "] summon item consume task.", e);
+                LOGGER.error("Error on player [{}] summon item consume task.", _activeChar.getName(), e);
             }
         }
     }
