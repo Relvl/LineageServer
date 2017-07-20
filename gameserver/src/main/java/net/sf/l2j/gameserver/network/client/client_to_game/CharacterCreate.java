@@ -134,7 +134,7 @@ public final class CharacterCreate extends L2GameClientPacket {
         L2World.getInstance().addObject(newChar);
 
         newChar.addAdena(EItemProcessPurpose.INIT, Config.STARTING_ADENA, null, false);
-        newChar.setXYZInvisible(template.getSpawnX(), template.getSpawnY(), template.getSpawnZ());
+        newChar.getPosition().setXYZInvisible(template.getSpawnX(), template.getSpawnY(), template.getSpawnZ());
         newChar.setTitle("");
 
         newChar.registerShortCut(new L2ShortCut(0, 0, 3, 2, -1, 1)); // attack shortcut

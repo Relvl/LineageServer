@@ -74,7 +74,7 @@ public class InstantJump implements ISkillHandler
 		activeChar.abortAttack();
 		activeChar.abortCast();
 		
-		activeChar.setXYZ(x, y, z);
+		activeChar.getPosition().setXYZ(x, y, z);
 		activeChar.broadcastPacket(new ValidateLocation(activeChar));
 	}
 	

@@ -40,9 +40,6 @@ import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
-/**
- * This class manages items.
- */
 public final class L2ItemInstance extends L2Object {
     private static final Logger _logItems = Logger.getLogger("item");
 
@@ -78,7 +75,6 @@ public final class L2ItemInstance extends L2Object {
         super(objectId);
         this.itemId = itemId;
         item = ItemTable.getInstance().getTemplate(itemId);
-
         if (this.itemId == 0 || item == null) { throw new IllegalArgumentException(); }
 
         setName(item.getName());
@@ -1069,8 +1065,8 @@ public final class L2ItemInstance extends L2Object {
             synchronized (_itm) {
                 // Set the x,y,z position of the L2ItemInstance dropped and update its _worldregion
                 _itm.setIsVisible(true);
-                _itm.getPosition().setWorldPosition(_x, _y, _z);
-                _itm.getPosition().setWorldRegion(L2World.getInstance().getRegion(getPosition().getWorldPosition()));
+                _itm.getPosition().setXYZ(_x, _y, _z);
+                _itm.getPosition().setWorldRegion(L2World.getInstance().getRegion(getPosition()));
             }
 
             _itm.getPosition().getWorldRegion().addVisibleObject(_itm);

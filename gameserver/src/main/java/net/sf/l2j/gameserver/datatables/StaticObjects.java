@@ -47,7 +47,7 @@ public class StaticObjects
 					L2StaticObjectInstance obj = new L2StaticObjectInstance(IdFactory.getInstance().getNextId());
 					obj.setType(Integer.valueOf(node.getNamedItem("type").getNodeValue()));
 					obj.setStaticObjectId(Integer.valueOf(node.getNamedItem("id").getNodeValue()));
-					obj.setXYZ(Integer.valueOf(node.getNamedItem("x").getNodeValue()), Integer.valueOf(node.getNamedItem("y").getNodeValue()), Integer.valueOf(node.getNamedItem("z").getNodeValue()));
+					obj.getPosition().setXYZ(Integer.valueOf(node.getNamedItem("x").getNodeValue()), Integer.valueOf(node.getNamedItem("y").getNodeValue()), Integer.valueOf(node.getNamedItem("z").getNodeValue()));
 					obj.setMap(node.getNamedItem("texture").getNodeValue(), Integer.valueOf(node.getNamedItem("map_x").getNodeValue()), Integer.valueOf(node.getNamedItem("map_y").getNodeValue()));
 					obj.spawnMe();
 					

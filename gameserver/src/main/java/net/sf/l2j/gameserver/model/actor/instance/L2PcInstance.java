@@ -98,7 +98,6 @@ import java.util.Map.Entry;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.logging.Level;
 
 public final class L2PcInstance extends L2Playable {
     public static final int REQUEST_TIMEOUT = 15;
@@ -515,7 +514,7 @@ public final class L2PcInstance extends L2Playable {
                 player._deathPenaltyBuffLevel = rset.getInt("death_penalty_level");
 
                 // Set the x,y,z position of the L2PcInstance and make it invisible
-                player.setXYZInvisible(rset.getInt("x"), rset.getInt("y"), rset.getInt("z"));
+                player.getPosition().setXYZInvisible(rset.getInt("x"), rset.getInt("y"), rset.getInt("z"));
 
                 // Set Hero status if it applies
                 if (Hero.getInstance().isActiveHero(objectId)) { player.setHero(true); }
@@ -571,7 +570,7 @@ public final class L2PcInstance extends L2Playable {
             statement.close();
         }
         catch (Exception e) {
-            LOGGER.error("Could not restore char data: " + e);
+            LOGGER.error("Could not restore char data", e);
         }
 
         return player;
@@ -4773,7 +4772,7 @@ public final class L2PcInstance extends L2Playable {
     public synchronized void store(boolean storeActiveEffects) {
         // update client coords, if these look like true
         if (isInsideRadius(_clientX, _clientY, 1000, true)) {
-            setXYZ(_clientX, _clientY, _clientZ);
+            getPosition().setXYZ(_clientX, _clientY, _clientZ);
         }
 
         storeCharBase();
@@ -6454,7 +6453,7 @@ public final class L2PcInstance extends L2Playable {
 
         sendPacket(new ObservationMode(x, y, z));
         getKnownList().removeAllKnownObjects(); // reinit knownlist
-        setXYZ(x, y, z);
+        getPosition().setXYZ(x, y, z);
 
         broadcastUserInfo();
     }
@@ -6487,7 +6486,7 @@ public final class L2PcInstance extends L2Playable {
     public void leaveObserverMode() {
         setTarget(null);
         getKnownList().removeAllKnownObjects(); // reinit knownlist
-        setXYZ(_savedLocation.getX(), _savedLocation.getY(), _savedLocation.getZ());
+        getPosition().setXYZ(_savedLocation);
         setIsParalyzed(false);
         stopParalyze(false);
         appearance.setVisible();
@@ -7620,7 +7619,7 @@ public final class L2PcInstance extends L2Playable {
             // Check if the L2PcInstance is in observer mode to set its position to its position
             // before entering in observer mode
             if (inObserverMode()) {
-                setXYZInvisible(_savedLocation.getX(), _savedLocation.getY(), _savedLocation.getZ());
+                getPosition().setXYZInvisible(_savedLocation.getX(), _savedLocation.getY(), _savedLocation.getZ());
             }
 
             // Oust player from boat
@@ -8685,7 +8684,7 @@ public final class L2PcInstance extends L2Playable {
 
     @Override
     public void sendInfo(L2PcInstance activeChar) {
-        if (isInBoat()) { getPosition().setWorldPosition(getBoat().getPosition().getWorldPosition()); }
+        if (isInBoat()) { getPosition().setXYZ(getBoat().getPosition()); }
 
         if (getPoly().isMorphed()) {
             activeChar.sendPacket(new PcMorphInfo(this, getPoly().getNpcTemplate()));

@@ -352,29 +352,9 @@ public abstract class L2Character extends L2Object {
         }
     }
 
-    /**
-     * <B><U> Overriden in </U> :</B><BR>
-     * <BR>
-     * <li>L2PcInstance</li><BR>
-     * <BR>
-     *
-     * @param mov The packet to send.
-     */
-    public void sendPacket(L2GameServerPacket mov) {
-        // default implementation
-    }
+    public void sendPacket(L2GameServerPacket mov) { }
 
-    /**
-     * <B><U> Overridden in </U> :</B><BR>
-     * <BR>
-     * <li>L2PcInstance</li><BR>
-     * <BR>
-     *
-     * @param text The string to send.
-     */
-    public void sendMessage(String text) {
-        // default implementation
-    }
+    public void sendMessage(String text) { }
 
     public void teleToLocation(int x, int y, int z, int randomOffset) {
         // Stop movement
@@ -1697,8 +1677,6 @@ public abstract class L2Character extends L2Object {
     public final void setStatus(CharStatus value) {
         _status = value;
     }
-
-    // Method - Public
 
     @Override
     public void initPosition() {
@@ -4555,6 +4533,9 @@ public abstract class L2Character extends L2Object {
     public boolean isInArena() {
         return false;
     }
+
+    @Override
+    public boolean isCharacter() { return true; }
 
     /** Task launching the function useMagic() */
     private static class QueuedMagicUseTask implements Runnable {

@@ -31,7 +31,7 @@ import java.util.logging.Logger;
  * @author luisantonioa, DS
  */
 public class MinionList {
-    private static Logger _log = Logger.getLogger(MinionList.class.getName());
+    private static final Logger _log = Logger.getLogger(MinionList.class.getName());
 
     protected final L2MonsterInstance _master;
     private final List<L2MonsterInstance> _minionReferences;
@@ -78,8 +78,8 @@ public class MinionList {
         minion.setLeader(master);
 
         // Init the position of the Minion and add it in the world as a visible object
-        final int offset = 100 + minion.getCollisionRadius() + master.getCollisionRadius();
-        final int minRadius = master.getCollisionRadius() + 30;
+        int offset = 100 + minion.getCollisionRadius() + master.getCollisionRadius();
+        int minRadius = master.getCollisionRadius() + 30;
 
         int newX = Rnd.get(minRadius * 2, offset * 2); // x
         int newY = Rnd.get(newX, offset * 2); // distance
@@ -171,7 +171,7 @@ public class MinionList {
         minion.setLeader(null); // prevent memory leaks
         _minionReferences.remove(minion);
 
-        final int time = _master.isRaid() ? (int) Config.RAID_MINION_RESPAWN_TIMER : respawnTime;
+        int time = _master.isRaid() ? (int) Config.RAID_MINION_RESPAWN_TIMER : respawnTime;
         if (time > 0 && !_master.isAlikeDead()) { ThreadPoolManager.getInstance().scheduleGeneral(new MinionRespawnTask(minion), time); }
     }
 
@@ -186,7 +186,7 @@ public class MinionList {
 
         if (!_master.isAlikeDead() && !_master.isInCombat()) { _master.addDamageHate(attacker, 0, 1); }
 
-        final boolean callerIsMaster = caller == _master;
+        boolean callerIsMaster = caller == _master;
         int aggro = callerIsMaster ? 10 : 1;
         if (_master.isRaid()) { aggro *= 10; }
 
@@ -199,8 +199,8 @@ public class MinionList {
      * Called from onTeleported() of the master Alive and able to move minions teleported to master.
      */
     public void onMasterTeleported() {
-        final int offset = 200;
-        final int minRadius = _master.getCollisionRadius() + 30;
+        int offset = 200;
+        int minRadius = _master.getCollisionRadius() + 30;
 
         for (L2MonsterInstance minion : _minionReferences) {
             if (minion != null && !minion.isDead() && !minion.isMovementDisabled()) {
@@ -228,7 +228,7 @@ public class MinionList {
     private final class MinionRespawnTask implements Runnable {
         private final L2MonsterInstance _minion;
 
-        public MinionRespawnTask(L2MonsterInstance minion) {
+        private MinionRespawnTask(L2MonsterInstance minion) {
             _minion = minion;
         }
 

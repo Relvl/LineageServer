@@ -39,7 +39,7 @@ public class L2BoatInstance extends L2Vehicle {
         final Location loc = getOustLoc();
         if (player.isOnline()) { player.teleToLocation(loc.getX(), loc.getY(), loc.getZ(), 0); }
         else {
-            player.setXYZInvisible(loc.getX(), loc.getY(), loc.getZ()); // disconnects handling
+            player.getPosition().setXYZInvisible(loc.getX(), loc.getY(), loc.getZ()); // disconnects handling
         }
     }
 

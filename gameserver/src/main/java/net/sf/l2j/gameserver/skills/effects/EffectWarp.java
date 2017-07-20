@@ -88,7 +88,7 @@ public class EffectWarp extends L2Effect
 		_actor.abortAttack();
 		_actor.abortCast();
 		
-		_actor.setXYZ(x, y, z);
+		_actor.getPosition().setXYZ(x, y, z);
 		_actor.broadcastPacket(new ValidateLocation(_actor));
 		
 		return true;

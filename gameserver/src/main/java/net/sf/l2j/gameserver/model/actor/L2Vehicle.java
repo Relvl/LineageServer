@@ -279,7 +279,7 @@ public abstract class L2Vehicle extends L2Character {
         }
 
         decayMe();
-        setXYZ(x, y, z);
+        getPosition().setXYZ(x, y, z);
 
         onTeleported();
         revalidateZone(true);
@@ -289,7 +289,7 @@ public abstract class L2Vehicle extends L2Character {
     public void stopMove(HeadedLocation pos) {
         _move = null;
         if (pos != null) {
-            setXYZ(pos.getX(), pos.getY(), pos.getZ());
+            getPosition().setXYZ(pos.getX(), pos.getY(), pos.getZ());
             setHeading(pos.getHeading());
             revalidateZone(true);
         }

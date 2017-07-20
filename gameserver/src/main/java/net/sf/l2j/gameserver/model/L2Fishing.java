@@ -128,7 +128,7 @@ public class L2Fishing implements Runnable {
                 int npcId = 18319 + Math.min(_fisher.getLevel() / 11, 7); // 18319-18326
 
                 L2PenaltyMonsterInstance npc = new L2PenaltyMonsterInstance(IdFactory.getInstance().getNextId(), NpcTable.getInstance().getTemplate(npcId));
-                npc.setXYZ(_fisher.getX(), _fisher.getY(), _fisher.getZ() + 20);
+                npc.getPosition().setXYZ(_fisher.getX(), _fisher.getY(), _fisher.getZ() + 20);
                 npc.setCurrentHpMp(npc.getMaxHp(), npc.getMaxMp());
                 npc.setHeading(_fisher.getHeading());
                 npc.spawnMe();

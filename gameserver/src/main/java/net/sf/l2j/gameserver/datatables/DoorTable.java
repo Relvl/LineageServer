@@ -168,7 +168,7 @@ public class DoorTable {
                             final L2DoorInstance door = new L2DoorInstance(IdFactory.getInstance().getNextId(), new CharTemplate(npcDat), id, name, unlockable);
                             door.setRange(rangeXMin, rangeYMin, rangeZMin, rangeXMax, rangeYMax, rangeZMax);
                             door.setCurrentHpMp(door.getMaxHp(), door.getMaxMp());
-                            door.setXYZInvisible(x, y, z);
+                            door.getPosition().setXYZInvisible(x, y, z);
                             door.setMapRegion(MapRegionTable.getMapRegion(x, y));
                             door.setOpen(false);
 

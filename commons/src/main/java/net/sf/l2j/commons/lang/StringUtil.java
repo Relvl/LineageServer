@@ -139,6 +139,9 @@ public final class StringUtil {
     }
 
     public static String objectToString(Object o) {
+        if (o == null){
+            return "NULL";
+        }
         if (o.getClass() == byte[].class) {
             return "[" + bytesToHex((byte[]) o) + "]";
         }

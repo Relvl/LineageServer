@@ -8,24 +8,35 @@ import net.sf.l2j.gameserver.model.world.L2WorldRegion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ObjectPosition {
+public class ObjectPosition extends Location {
     private static final Logger LOGGER = LoggerFactory.getLogger(ObjectPosition.class);
 
     private final L2Object activeObject;
-    private Location worldPosition;
     private L2WorldRegion worldRegion;
 
     public ObjectPosition(L2Object activeObject) {
         this.activeObject = activeObject;
-        setWorldRegion(L2World.getInstance().getRegion(getWorldPosition()));
+        setWorldRegion(L2World.getInstance().getRegion(this));
     }
 
+    public final void setXYZ(Location newPosition) { setXYZ(newPosition.getX(), newPosition.getY(), newPosition.getZ()); }
+
+    @Override
     public final void setXYZ(int x, int y, int z) {
         assert worldRegion != null;
-        setWorldPosition(x, y, z);
+
+        super.setXYZ(x, y, z);
 
         try {
-            if (L2World.getInstance().getRegion(getWorldPosition()) != worldRegion) { updateWorldRegion(); }
+            if (L2World.getInstance().getRegion(this) != worldRegion) {
+                if (!getActiveObject().isVisible()) { return; }
+                L2WorldRegion newRegion = L2World.getInstance().getRegion(this);
+                if (newRegion != worldRegion) {
+                    worldRegion.removeVisibleObject(getActiveObject());
+                    setWorldRegion(newRegion);
+                    worldRegion.addVisibleObject(getActiveObject());
+                }
+            }
         }
         catch (RuntimeException e) {
             LOGGER.error("Object Id at bad coords: (x: {}, y: {}, z: {}).", getX(), getY(), getZ(), e);
@@ -43,60 +54,19 @@ public class ObjectPosition {
         if (y > L2World.WORLD_Y_MAX) { y = L2World.WORLD_Y_MAX - 5000; }
         if (y < L2World.WORLD_Y_MIN) { y = L2World.WORLD_Y_MIN + 5000; }
 
-        setWorldPosition(x, y, z);
+        setXYZ(x, y, z);
         getActiveObject().setIsVisible(false);
     }
 
-    public void updateWorldRegion() {
-        if (!getActiveObject().isVisible()) { return; }
-        L2WorldRegion newRegion = L2World.getInstance().getRegion(getWorldPosition());
-        if (newRegion != worldRegion) {
-            worldRegion.removeVisibleObject(getActiveObject());
-            setWorldRegion(newRegion);
-            worldRegion.addVisibleObject(getActiveObject());
-        }
-    }
+    public L2Object getActiveObject() { return activeObject; }
 
-    public L2Object getActiveObject() {
-        return activeObject;
-    }
-
-    public final int getX() {
-        return getWorldPosition().getX();
-    }
-
-    public final int getY() {
-        return getWorldPosition().getY();
-    }
-
-    public final int getZ() {
-        return getWorldPosition().getZ();
-    }
-
-    public final Location getWorldPosition() {
-        if (worldPosition == null) { worldPosition = new Location(0, 0, 0); }
-        return worldPosition;
-    }
-
-    public final void setWorldPosition(int x, int y, int z) {
-        getWorldPosition().setXYZ(x, y, z);
-    }
-
-    public final void setWorldPosition(Location newPosition) {
-        setWorldPosition(newPosition.getX(), newPosition.getY(), newPosition.getZ());
-    }
-
-    public final L2WorldRegion getWorldRegion() {
-        return worldRegion;
-    }
+    public final L2WorldRegion getWorldRegion() { return worldRegion; }
 
     public void setWorldRegion(L2WorldRegion value) {
-        // confirm revalidation of old region's zones
-        if (worldRegion != null && getActiveObject() instanceof L2Character) {
-            if (value != null) { worldRegion.revalidateZones((L2Character) getActiveObject()); }
-            else { worldRegion.removeFromZones((L2Character) getActiveObject()); }
+        if (worldRegion != null && getActiveObject().isCharacter()) {
+            if (value == null) { worldRegion.removeFromZones((L2Character) getActiveObject()); }
+            else { worldRegion.revalidateZones((L2Character) getActiveObject()); }
         }
-
         worldRegion = value;
     }
 }

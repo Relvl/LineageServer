@@ -87,8 +87,8 @@ public final class ItemsOnGroundTaskManager implements Runnable
 					item.setEnchantLevel(enchant);
 				
 				// Spawn item in the world.
-				item.getPosition().setWorldPosition(result.getInt(5), result.getInt(6), result.getInt(7));
-				L2WorldRegion region = L2World.getInstance().getRegion(item.getPosition().getWorldPosition());
+				item.getPosition().setXYZ(result.getInt(5), result.getInt(6), result.getInt(7));
+				L2WorldRegion region = L2World.getInstance().getRegion(item.getPosition());
 				item.getPosition().setWorldRegion(region);
 				region.addVisibleObject(item);
 				item.setIsVisible(true);

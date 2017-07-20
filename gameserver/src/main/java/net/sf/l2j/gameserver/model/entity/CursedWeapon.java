@@ -739,10 +739,8 @@ public class CursedWeapon {
     }
 
     public Location getWorldPosition() {
-        if (_isActivated && _player != null) { return _player.getPosition().getWorldPosition(); }
-
-        if (_isDropped && _item != null) { return _item.getPosition().getWorldPosition(); }
-
+        if (_isActivated && _player != null) { return _player.getPosition(); }
+        if (_isDropped && _item != null) { return _item.getPosition(); }
         return null;
     }
 }

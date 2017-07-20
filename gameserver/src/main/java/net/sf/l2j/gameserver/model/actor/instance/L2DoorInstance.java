@@ -20,7 +20,6 @@ import net.sf.l2j.gameserver.ai.model.L2CharacterAI;
 import net.sf.l2j.gameserver.ai.model.L2DoorAI;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.model.L2Clan;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
@@ -33,6 +32,7 @@ import net.sf.l2j.gameserver.model.entity.ClanHall;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
 
@@ -46,19 +46,19 @@ public class L2DoorInstance extends L2Character {
     private int _castleIndex = -2;
     private int _mapRegion = -1;
     // when door is closed, the dimensions are
-    private int _rangeXMin = 0;
-    private int _rangeYMin = 0;
-    private int _rangeZMin = 0;
-    private int _rangeXMax = 0;
-    private int _rangeYMax = 0;
-    private int _rangeZMax = 0;
+    private int _rangeXMin;
+    private int _rangeYMin;
+    private int _rangeZMin;
+    private int _rangeXMax;
+    private int _rangeYMax;
+    private int _rangeZMax;
     // these variables assist in see-through calculation only
-    private int _A = 0;
-    private int _B = 0;
-    private int _C = 0;
-    private int _D = 0;
+    private int _A;
+    private int _B;
+    private int _C;
+    private int _D;
     private boolean _open;
-    private boolean _isWall = false; // False by default
+    private boolean _isWall; // False by default
     private int _upgradeHpRatio = 1;
     private ClanHall _clanHall;
     private ScheduledFuture<?> _autoActionTask;
@@ -190,12 +190,12 @@ public class L2DoorInstance extends L2Character {
         // Doors can`t be attacked by NPCs
         if (!(attacker instanceof L2Playable)) { return false; }
 
-        if (isUnlockable()) { return true; }
+        if (_unlockable) { return true; }
 
         // Attackable during siege by attacker only
-        final boolean isCastle = (getCastle() != null && getCastle().getSiege().isInProgress());
+        boolean isCastle = getCastle() != null && getCastle().getSiege().isInProgress();
         if (isCastle) {
-            final L2Clan clan = attacker.getActingPlayer().getClan();
+            L2Clan clan = attacker.getActingPlayer().getClan();
             if (clan != null && clan.getClanId() == getCastle().getOwnerId()) { return false; }
         }
         return isCastle;
@@ -242,9 +242,9 @@ public class L2DoorInstance extends L2Character {
                 { player.getAI().setIntention(EIntention.ATTACK, this); }
             }
             else if (!isInsideRadius(player, L2Npc.INTERACTION_DISTANCE, false, false)) { player.getAI().setIntention(EIntention.INTERACT, this); }
-            else if (player.getClan() != null && getClanHall() != null && player.getClanId() == getClanHall().getOwnerId()) {
+            else if (player.getClan() != null && _clanHall != null && player.getClanId() == _clanHall.getOwnerId()) {
                 player.gatesRequest(this);
-                if (!isOpened()) { player.sendPacket(new ConfirmDlg(1140)); }
+                if (!_open) { player.sendPacket(new ConfirmDlg(1140)); }
                 else { player.sendPacket(new ConfirmDlg(1141)); }
 
                 player.sendPacket(ActionFailed.STATIC_PACKET);
@@ -258,23 +258,23 @@ public class L2DoorInstance extends L2Character {
     @Override
     public void onActionShift(L2PcInstance player) {
         if (player.isGM()) {
-            final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
+            NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
             html.setFile("data/html/admin/infos/doorinfo.htm");
             html.replace("%class%", getClass().getSimpleName());
             html.replace("%objid%", getObjectId());
-            html.replace("%doorid%", getDoorId());
+            html.replace("%doorid%", _doorId);
             html.replace("%hp%", (int) getCurrentHp());
             html.replace("%hpmax%", getMaxHp());
             html.replace("%pdef%", getPDef(null));
             html.replace("%mdef%", getMDef(null, null));
-            html.replace("%minx%", getXMin());
-            html.replace("%miny%", getYMin());
-            html.replace("%minz%", getZMin());
-            html.replace("%maxx%", getXMax());
-            html.replace("%maxy%", getYMax());
-            html.replace("%maxz%", getZMax());
-            html.replace("%unlock%", isUnlockable() ? "<font color=00FF00>YES<font>" : "<font color=FF0000>NO</font>");
-            html.replace("%isWall%", isWall() ? "<font color=00FF00>YES<font>" : "<font color=FF0000>NO</font>");
+            html.replace("%minx%", _rangeXMin);
+            html.replace("%miny%", _rangeYMin);
+            html.replace("%minz%", _rangeZMin);
+            html.replace("%maxx%", _rangeXMax);
+            html.replace("%maxy%", _rangeYMax);
+            html.replace("%maxz%", _rangeZMax);
+            html.replace("%unlock%", _unlockable ? "<font color=00FF00>YES<font>" : "<font color=FF0000>NO</font>");
+            html.replace("%isWall%", _isWall ? "<font color=00FF00>YES<font>" : "<font color=FF0000>NO</font>");
             player.sendPacket(html);
             player.sendPacket(ActionFailed.STATIC_PACKET);
         }
@@ -388,7 +388,7 @@ public class L2DoorInstance extends L2Character {
 
     @Override
     public void reduceCurrentHp(double damage, L2Character attacker, boolean awake, boolean isDOT, L2Skill skill) {
-        if (isWall() && !(attacker instanceof L2SiegeSummonInstance)) { return; }
+        if (_isWall && !(attacker instanceof L2SiegeSummonInstance)) { return; }
 
         if (!(getCastle() != null && getCastle().getSiege().isInProgress())) { return; }
 
@@ -405,7 +405,7 @@ public class L2DoorInstance extends L2Character {
         if (!super.doDie(killer)) { return false; }
 
         if (getCastle() != null && getCastle().getSiege().isInProgress()) {
-            getCastle().getSiege().announceToPlayer(SystemMessage.getSystemMessage((isWall()) ? SystemMessageId.CASTLE_WALL_DAMAGED : SystemMessageId.CASTLE_GATE_BROKEN_DOWN), false);
+            getCastle().getSiege().announceToPlayer(SystemMessage.getSystemMessage((_isWall) ? SystemMessageId.CASTLE_WALL_DAMAGED : SystemMessageId.CASTLE_GATE_BROKEN_DOWN), false);
         }
 
         return true;

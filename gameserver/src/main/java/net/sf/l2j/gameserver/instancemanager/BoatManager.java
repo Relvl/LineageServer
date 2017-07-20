@@ -89,7 +89,7 @@ public class BoatManager
 		_boats.put(boat.getObjectId(), boat);
 		
 		boat.setHeading(heading);
-		boat.setXYZInvisible(x, y, z);
+		boat.getPosition().setXYZInvisible(x, y, z);
 		boat.spawnMe();
 		
 		return boat;

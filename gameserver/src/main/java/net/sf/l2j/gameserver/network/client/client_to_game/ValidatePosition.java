@@ -62,7 +62,7 @@ public class ValidatePosition extends L2GameClientPacket {
         diffSq = dx * dx + dy * dy;
 
         if (activeChar.isFlying() || activeChar.isInsideZone(ZoneId.WATER)) {
-            activeChar.setXYZ(realX, realY, _z);
+            activeChar.getPosition().setXYZ(realX, realY, _z);
             if (diffSq > 90000) // validate packet, may also cause z bounce if close to land
             { activeChar.sendPacket(new ValidateLocation(activeChar)); }
         }
@@ -71,7 +71,7 @@ public class ValidatePosition extends L2GameClientPacket {
             if (Config.COORD_SYNCHRONIZE == -1) // Only Z coordinate synched to server,
             // mainly used when no geodata but can be used also with geodata
             {
-                activeChar.setXYZ(realX, realY, _z);
+                activeChar.getPosition().setXYZ(realX, realY, _z);
                 return;
             }
             if (Config.COORD_SYNCHRONIZE == 1) // Trusting also client x,y coordinates (should not be used with geodata)
@@ -80,10 +80,10 @@ public class ValidatePosition extends L2GameClientPacket {
                 if (!activeChar.isMoving() || !activeChar.validateMovementHeading(_heading)) {
                     // character is not moving, take coordinates from client
                     if (diffSq < 2500) // 50*50 - attack won't work fluently if even small differences are corrected
-                    { activeChar.setXYZ(realX, realY, _z); }
-                    else { activeChar.setXYZ(_x, _y, _z); }
+                    { activeChar.getPosition().setXYZ(realX, realY, _z); }
+                    else { activeChar.getPosition().setXYZ(_x, _y, _z); }
                 }
-                else { activeChar.setXYZ(realX, realY, _z); }
+                else { activeChar.getPosition().setXYZ(realX, realY, _z); }
 
                 activeChar.setHeading(_heading);
                 return;
@@ -93,7 +93,7 @@ public class ValidatePosition extends L2GameClientPacket {
             // Important: this code part must work together with L2Character.updatePosition
             if (Config.GEODATA > 0 && (diffSq > 250000 || Math.abs(dz) > 200)) {
                 if (Math.abs(dz) > 200 && Math.abs(dz) < 1500 && Math.abs(_z - activeChar.getClientZ()) < 800) {
-                    activeChar.setXYZ(realX, realY, _z);
+                    activeChar.getPosition().setXYZ(realX, realY, _z);
                     realZ = _z;
                 }
                 else {

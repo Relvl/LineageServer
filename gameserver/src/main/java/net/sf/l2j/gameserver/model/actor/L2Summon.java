@@ -44,7 +44,7 @@ public abstract class L2Summon extends L2Playable {
         _owner = owner;
         ai = new L2SummonAI(this);
 
-        setXYZInvisible(owner.getX() + 50, owner.getY() + 100, owner.getZ() + 100);
+        getPosition().setXYZInvisible(owner.getX() + 50, owner.getY() + 100, owner.getZ() + 100);
     }
 
     @Override

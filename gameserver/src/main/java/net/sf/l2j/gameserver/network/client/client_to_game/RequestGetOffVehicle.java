@@ -53,7 +53,7 @@ public final class RequestGetOffVehicle extends L2GameClientPacket
 		activeChar.setInVehiclePosition(null);
 		sendPacket(ActionFailed.STATIC_PACKET);
 		activeChar.broadcastPacket(new GetOffVehicle(activeChar.getObjectId(), _boatId, _x, _y, _z));
-		activeChar.setXYZ(_x, _y, _z + 50);
+		activeChar.getPosition().setXYZ(_x, _y, _z + 50);
 		activeChar.revalidateZone(true);
 	}
 }
