@@ -1,7 +1,6 @@
 package net.sf.l2j.commons.database;
 
 import net.sf.l2j.L2DatabaseFactory;
-import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.database.annotation.OrmParamCursor;
 import net.sf.l2j.commons.database.annotation.OrmParamIn;
 import net.sf.l2j.commons.database.annotation.OrmParamOut;
@@ -25,7 +24,7 @@ public abstract class IndexedCall implements AutoCloseable {
     private String sqlStatementString;
     private String logStatementString;
 
-    public IndexedCall(String procedureName, int argumentsCount, boolean isFunction) {
+    protected IndexedCall(String procedureName, int argumentsCount, boolean isFunction) {
         generateSqlStatement(procedureName, argumentsCount, isFunction);
     }
 
@@ -38,7 +37,7 @@ public abstract class IndexedCall implements AutoCloseable {
 
     public CallableStatement getStatement() throws SQLException {
         if (statement == null) {
-            statement = getConnection().prepareCall(this.sqlStatementString);
+            statement = getConnection().prepareCall(sqlStatementString);
         }
         return statement;
     }
@@ -70,7 +69,7 @@ public abstract class IndexedCall implements AutoCloseable {
 
         try {
             // Регистрируем исходящие аргументы.
-            List<FieldAccessor> paramsOut = ReflectionManager.getAnnotatedFields(this.getClass(), OrmParamOut.class);
+            List<FieldAccessor> paramsOut = ReflectionManager.getAnnotatedFields(getClass(), OrmParamOut.class);
             if (paramsOut != null && !paramsOut.isEmpty()) {
                 for (FieldAccessor accessor : paramsOut) {
                     int position = accessor.getField().getAnnotation(OrmParamOut.class).value();
@@ -82,7 +81,7 @@ public abstract class IndexedCall implements AutoCloseable {
                 }
             }
             // Назначаем входящие аргументы.
-            List<FieldAccessor> paramsIn = ReflectionManager.getAnnotatedFields(this.getClass(), OrmParamIn.class);
+            List<FieldAccessor> paramsIn = ReflectionManager.getAnnotatedFields(getClass(), OrmParamIn.class);
             if (paramsIn != null && !paramsIn.isEmpty()) {
                 for (FieldAccessor accessor : paramsIn) {
                     int position = accessor.getField().getAnnotation(OrmParamIn.class).value();
@@ -157,7 +156,9 @@ public abstract class IndexedCall implements AutoCloseable {
             }
 
             getLogger().info("DB <-> {}", logStatementString);
-        } catch (SQLException | ReflectiveOperationException e) {
+        }
+        catch (SQLException | ReflectiveOperationException e) {
+            getLogger().info("DB <-> {}", logStatementString);
             throw new CallException("Cannot execute call '" + getClass().getSimpleName() + "'", e);
         }
     }
@@ -168,14 +169,16 @@ public abstract class IndexedCall implements AutoCloseable {
             if (statement != null) {
                 statement.close();
             }
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             throw new CallException("Cannot close statement of '" + getClass().getSimpleName() + "'", e);
         }
         try {
             if (connection != null) {
                 connection.close();
             }
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             throw new CallException("Cannot close connection of '" + getClass().getSimpleName() + "'", e);
         }
     }

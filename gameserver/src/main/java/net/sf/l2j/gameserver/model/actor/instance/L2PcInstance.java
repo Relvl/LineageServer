@@ -29,6 +29,7 @@ import net.sf.l2j.gameserver.model.actor.instance.playerpart.GatesRequest;
 import net.sf.l2j.gameserver.model.actor.instance.playerpart.PrivateStoreType;
 import net.sf.l2j.gameserver.model.actor.instance.playerpart.PunishLevel;
 import net.sf.l2j.gameserver.model.actor.instance.playerpart.SummonRequest;
+import net.sf.l2j.gameserver.model.actor.instance.playerpart.variables.PlayerVariables;
 import net.sf.l2j.gameserver.model.actor.knownlist.PcKnownList;
 import net.sf.l2j.gameserver.model.actor.position.PcPosition;
 import net.sf.l2j.gameserver.model.actor.stat.PcStat;
@@ -136,6 +137,8 @@ public final class L2PcInstance extends L2Playable {
     private static final int[] COMMON_CRAFT_LEVELS = {5, 20, 28, 36, 43, 49, 55, 62};
     private static final int FALLING_VALIDATION_DELAY = 10000;
 
+    private final PlayerVariables variables = new PlayerVariables(this);
+
     private final L2Radar radar = new L2Radar(this);
     private final PcInventory inventory = new PcInventory(this);
 
@@ -173,14 +176,14 @@ public final class L2PcInstance extends L2Playable {
     private final PcAppearance appearance;
     public ScheduledFuture<?> _taskforfish;
     public int _telemode;
-    protected int _baseClass;
-    protected int _activeClass;
-    protected int _classIndex;
-    protected boolean _inventoryDisable;
-    protected Map<Integer, L2CubicInstance> _cubics = new ConcurrentSkipListMap<>();
-    protected Set<Integer> _activeSoulShots = ConcurrentHashMap.newKeySet(1);
-    protected Future<?> _mountFeedTask;
-    ScheduledFuture<?> _shortBuffTask;
+    private int _baseClass;
+    private int _activeClass;
+    private int _classIndex;
+    private boolean _inventoryDisable;
+    private Map<Integer, L2CubicInstance> _cubics = new ConcurrentSkipListMap<>();
+    private Set<Integer> _activeSoulShots = ConcurrentHashMap.newKeySet(1);
+    private Future<?> _mountFeedTask;
+    private ScheduledFuture<?> _shortBuffTask;
     private L2GameClient _client;
     private long _deleteTimer;
     private boolean _isOnline;
@@ -748,7 +751,7 @@ public final class L2PcInstance extends L2Playable {
     }
 
     @Override
-    public final PcKnownList getKnownList() {
+    public PcKnownList getKnownList() {
         return (PcKnownList) super.getKnownList();
     }
 
@@ -758,7 +761,7 @@ public final class L2PcInstance extends L2Playable {
     }
 
     @Override
-    public final PcStat getStat() {
+    public PcStat getStat() {
         return (PcStat) super.getStat();
     }
 
@@ -768,7 +771,7 @@ public final class L2PcInstance extends L2Playable {
     }
 
     @Override
-    public final PcStatus getStatus() {
+    public PcStatus getStatus() {
         return (PcStatus) super.getStatus();
     }
 
@@ -782,20 +785,20 @@ public final class L2PcInstance extends L2Playable {
         return (PcPosition) super.getPosition();
     }
 
-    public final PcAppearance getAppearance() {
+    public PcAppearance getAppearance() {
         return appearance;
     }
 
     /**
      * @return the base L2PcTemplate link to the L2PcInstance.
      */
-    public final PcTemplate getBaseTemplate() {
+    public PcTemplate getBaseTemplate() {
         return CharTemplateTable.getInstance().getTemplate(_baseClass);
     }
 
     /** Return the L2PcTemplate link to the L2PcInstance. */
     @Override
-    public final PcTemplate getTemplate() {
+    public PcTemplate getTemplate() {
         return (PcTemplate) super.getTemplate();
     }
 
@@ -821,7 +824,7 @@ public final class L2PcInstance extends L2Playable {
 
     /** Return the Level of the L2PcInstance. */
     @Override
-    public final int getLevel() {
+    public int getLevel() {
         return getStat().getLevel();
     }
 
@@ -1032,7 +1035,7 @@ public final class L2PcInstance extends L2Playable {
     /**
      * @return A list of QuestStates which registered for notify of death of this L2PcInstance.
      */
-    public final List<QuestState> getNotifyQuestOfDeath() {
+    public List<QuestState> getNotifyQuestOfDeath() {
         return _notifyQuestOfDeathList;
     }
 
@@ -2255,7 +2258,7 @@ public final class L2PcInstance extends L2Playable {
             // Sends message to client if requested.
             if (sendMessage && ((!isCastingNow() && item.getItemType() == EtcItemType.HERB) || item.getItemType() != EtcItemType.HERB)) {
                 if (count > 1) {
-                    if (process==EItemProcessPurpose.SWEEP || process == EItemProcessPurpose.QUEST) {
+                    if (process == EItemProcessPurpose.SWEEP || process == EItemProcessPurpose.QUEST) {
                         sendPacket(SystemMessage.getSystemMessage(SystemMessageId.EARNED_S2_S1_S).addItemName(itemId).addItemNumber(count));
                     }
                     else {
@@ -2643,16 +2646,16 @@ public final class L2PcInstance extends L2Playable {
         return _recentFakeDeathEndTime > System.currentTimeMillis();
     }
 
-    public final boolean isFakeDeath() {
+    public boolean isFakeDeath() {
         return _isFakeDeath;
     }
 
-    public final void setIsFakeDeath(boolean value) {
+    public void setIsFakeDeath(boolean value) {
         _isFakeDeath = value;
     }
 
     @Override
-    public final boolean isAlikeDead() {
+    public boolean isAlikeDead() {
         if (super.isAlikeDead()) { return true; }
 
         return _isFakeDeath;
@@ -2896,7 +2899,7 @@ public final class L2PcInstance extends L2Playable {
      * <li>Send a CharInfo packet (public data only) to L2PcInstance's knownlist.</li>
      * </ul>
      */
-    public final void broadcastUserInfo() {
+    public void broadcastUserInfo() {
         sendPacket(new UserInfo(this));
 
         if (getPoly().isMorphed()) {
@@ -2905,7 +2908,7 @@ public final class L2PcInstance extends L2Playable {
         else { broadcastCharInfo(); }
     }
 
-    public final void broadcastCharInfo() {
+    public void broadcastCharInfo() {
         for (L2PcInstance player : getKnownList().getKnownType(L2PcInstance.class)) {
             player.sendPacket(new CharInfo(this));
 
@@ -2920,7 +2923,7 @@ public final class L2PcInstance extends L2Playable {
     /**
      * Broadcast player title information.
      */
-    public final void broadcastTitleInfo() {
+    public void broadcastTitleInfo() {
         sendPacket(new UserInfo(this));
         broadcastPacket(new TitleUpdate(this));
     }
@@ -4362,17 +4365,17 @@ public final class L2PcInstance extends L2Playable {
         }
     }
 
-    private final void clearPetData() {
+    private void clearPetData() {
         _data = null;
     }
 
-    protected final L2PetData getPetData(int npcId) {
+    protected L2PetData getPetData(int npcId) {
         if (_data == null) { _data = PetDataTable.getInstance().getPetData(npcId); }
 
         return _data;
     }
 
-    private final L2PetLevelData getPetLevelData(int npcId) {
+    private L2PetLevelData getPetLevelData(int npcId) {
         if (_leveldata == null) {
             _leveldata = PetDataTable.getInstance().getPetData(npcId).getPetLevelData(_mountLevel);
         }
@@ -7371,7 +7374,7 @@ public final class L2PcInstance extends L2Playable {
     }
 
     @Override
-    public final void onTeleported() {
+    public void onTeleported() {
         super.onTeleported();
 
         // Force a revalidation
@@ -8311,7 +8314,7 @@ public final class L2PcInstance extends L2Playable {
     }
 
     @Override
-    public final void sendDamageMessage(L2Character target, int damage, boolean mcrit, boolean pcrit, boolean miss) {
+    public void sendDamageMessage(L2Character target, int damage, boolean mcrit, boolean pcrit, boolean miss) {
         // Check if hit is missed
         if (miss) {
             sendPacket(SystemMessageId.MISSED_TARGET);
@@ -8519,35 +8522,35 @@ public final class L2PcInstance extends L2Playable {
         _summonRequest.setTarget(null, null);
     }
 
-    public final int getClientX() {
+    public int getClientX() {
         return _clientX;
     }
 
-    public final void setClientX(int val) {
+    public void setClientX(int val) {
         _clientX = val;
     }
 
-    public final int getClientY() {
+    public int getClientY() {
         return _clientY;
     }
 
-    public final void setClientY(int val) {
+    public void setClientY(int val) {
         _clientY = val;
     }
 
-    public final int getClientZ() {
+    public int getClientZ() {
         return _clientZ;
     }
 
-    public final void setClientZ(int val) {
+    public void setClientZ(int val) {
         _clientZ = val;
     }
 
-    public final int getClientHeading() {
+    public int getClientHeading() {
         return _clientHeading;
     }
 
-    public final void setClientHeading(int val) {
+    public void setClientHeading(int val) {
         _clientHeading = val;
     }
 
@@ -8569,7 +8572,7 @@ public final class L2PcInstance extends L2Playable {
      * @param z
      * @return true if character falling now On the start of fall return false for correct coord sync !
      */
-    public final boolean isFalling(int z) {
+    public boolean isFalling(int z) {
         if (isDead() || isFlying() || isInsideZone(ZoneId.WATER)) { return false; }
 
         if (System.currentTimeMillis() < _fallingTimestamp) { return true; }
@@ -8591,7 +8594,7 @@ public final class L2PcInstance extends L2Playable {
     /**
      * Set falling timestamp
      */
-    public final void setFalling() {
+    public void setFalling() {
         _fallingTimestamp = System.currentTimeMillis() + FALLING_VALIDATION_DELAY;
     }
 
@@ -8729,9 +8732,9 @@ public final class L2PcInstance extends L2Playable {
     }
 
     @Override
-    public boolean isPlayer() {
-        return true;
-    }
+    public boolean isPlayer() { return true; }
+
+    public PlayerVariables variables() { return variables; }
 
     private class ShortBuffTask implements Runnable {
         @Override
