@@ -5,11 +5,7 @@ import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.EItemBodyPart;
-import net.sf.l2j.gameserver.model.item.EItemModifyState;
-import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
-import net.sf.l2j.gameserver.model.item.L2ItemInstance;
-import net.sf.l2j.gameserver.model.item.EItemLocation;
+import net.sf.l2j.gameserver.model.item.*;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.type.ArmorType;
 import net.sf.l2j.gameserver.model.item.type.EWeaponType;
@@ -101,7 +97,7 @@ public abstract class Inventory extends ItemContainer {
      * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
      * @return L2ItemInstance corresponding to the destroyed item or the updated item in inventory
      */
-    public L2ItemInstance dropItem(String process, L2ItemInstance item, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance dropItem(EItemProcessPurpose process, L2ItemInstance item, L2PcInstance actor, L2Object reference) {
         if (item == null) { return null; }
 
         synchronized (item) {
@@ -128,7 +124,7 @@ public abstract class Inventory extends ItemContainer {
      * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
      * @return L2ItemInstance corresponding to the destroyed item or the updated item in inventory
      */
-    public L2ItemInstance dropItem(String process, int objectId, int count, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance dropItem(EItemProcessPurpose process, int objectId, int count, L2PcInstance actor, L2Object reference) {
         L2ItemInstance item = getItemByObjectId(objectId);
         if (item == null) { return null; }
 
@@ -792,7 +788,7 @@ public abstract class Inventory extends ItemContainer {
                 L2World.getInstance().addObject(item);
 
                 // If stackable item is found in inventory just add to current quantity
-                if (item.isStackable() && getItemByItemId(item.getItemId()) != null) { addItem("Restore", item, getOwner().getActingPlayer(), null); }
+                if (item.isStackable() && getItemByItemId(item.getItemId()) != null) { addItem(EItemProcessPurpose.RESTORE, item, getOwner().getActingPlayer(), null); }
                 else { addItem(item); }
             }
             inv.close();

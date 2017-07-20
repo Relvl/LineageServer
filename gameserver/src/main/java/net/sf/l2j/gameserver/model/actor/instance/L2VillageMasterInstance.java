@@ -974,7 +974,7 @@ public class L2VillageMasterInstance extends L2NpcInstance
 		
 		for (L2PledgeSkillLearn psl : SkillTreeTable.getInstance().getAvailablePledgeSkills(player))
 		{
-			L2Skill sk = SkillTable.getInstance().getInfo(psl.getId(), psl.getLevel());
+			L2Skill sk = SkillTable.getInfo(psl.getId(), psl.getLevel());
 			if (sk == null)
 				continue;
 			

@@ -167,7 +167,7 @@ public class NpcTable
 											continue;
 										}
 										
-										L2Skill npcSkill = SkillTable.getInstance().getInfo(skillId, level);
+										L2Skill npcSkill = SkillTable.getInfo(skillId, level);
 										if (npcSkill == null)
 											continue;
 										

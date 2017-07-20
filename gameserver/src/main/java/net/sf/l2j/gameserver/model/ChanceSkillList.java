@@ -144,7 +144,7 @@ public class ChanceSkillList extends ConcurrentHashMap<IChanceSkillTrigger, Chan
 			{
 				if (skill.triggersChanceSkill()) // skill will trigger another skill, but only if its not chance skill
 				{
-					skill = SkillTable.getInstance().getInfo(skill.getTriggeredChanceId(), skill.getTriggeredChanceLevel());
+					skill = SkillTable.getInfo(skill.getTriggeredChanceId(), skill.getTriggeredChanceLevel());
 					if (skill == null || skill.getSkillType() == L2SkillType.NOTDONE)
 						return;
 				}
@@ -188,7 +188,7 @@ public class ChanceSkillList extends ConcurrentHashMap<IChanceSkillTrigger, Chan
 			if (effect == null || !effect.triggersChanceSkill())
 				return;
 			
-			L2Skill triggered = SkillTable.getInstance().getInfo(effect.getTriggeredChanceId(), effect.getTriggeredChanceLevel());
+			L2Skill triggered = SkillTable.getInfo(effect.getTriggeredChanceId(), effect.getTriggeredChanceLevel());
 			if (triggered == null)
 				return;
 			L2Character caster = triggered.getTargetType() == ESkillTargetType.TARGET_SELF ? _owner : effect.getEffector();

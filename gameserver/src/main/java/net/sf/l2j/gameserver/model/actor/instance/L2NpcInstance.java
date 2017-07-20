@@ -99,7 +99,7 @@ public class L2NpcInstance extends L2Npc
 		
 		for (L2SkillLearn sl : SkillTreeTable.getInstance().getAvailableSkills(player, classId))
 		{
-			L2Skill sk = SkillTable.getInstance().getInfo(sl.getId(), sl.getLevel());
+			L2Skill sk = SkillTable.getInfo(sl.getId(), sl.getLevel());
 			if (sk == null)
 				continue;
 			
@@ -160,7 +160,7 @@ public class L2NpcInstance extends L2Npc
 		List<L2EnchantSkillLearn> esll = SkillTreeTable.getInstance().getAvailableEnchantSkills(player);
 		for (L2EnchantSkillLearn skill : esll)
 		{
-			L2Skill sk = SkillTable.getInstance().getInfo(skill.getId(), skill.getLevel());
+			L2Skill sk = SkillTable.getInfo(skill.getId(), skill.getLevel());
 			if (sk == null)
 				continue;
 			

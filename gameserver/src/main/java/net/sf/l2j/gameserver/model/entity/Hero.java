@@ -28,6 +28,7 @@ import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.olympiad.Olympiad;
@@ -553,7 +554,7 @@ public class Hero {
 
                     for (L2ItemInstance item : player.getInventory().getAvailableItems(false, false)) {
                         if ((item != null) && item.isHeroItem()) {
-                            player.destroyItem("Hero", item, null, true);
+                            player.destroyItem(EItemProcessPurpose.HERO, item, null, true);
                             InventoryUpdate iu = new InventoryUpdate();
                             iu.addRemovedItem(item);
                             player.sendPacket(iu);

@@ -140,7 +140,7 @@ public class AdminEnchant implements IAdminCommandHandler {
                             if (armorSet != null) {
                                 int skillId = armorSet.getEnchant6skillId();
                                 if (skillId > 0) {
-                                    L2Skill skill = SkillTable.getInstance().getInfo(skillId, 1);
+                                    L2Skill skill = SkillTable.getInfo(skillId, 1);
                                     if (skill != null) {
                                         player.removeSkill(skill, false);
                                         player.sendSkillList();
@@ -159,7 +159,7 @@ public class AdminEnchant implements IAdminCommandHandler {
                             {
                                 int skillId = armorSet.getEnchant6skillId();
                                 if (skillId > 0) {
-                                    L2Skill skill = SkillTable.getInstance().getInfo(skillId, 1);
+                                    L2Skill skill = SkillTable.getInfo(skillId, 1);
                                     if (skill != null) {
                                         player.addSkill(skill, false);
                                         player.sendSkillList();

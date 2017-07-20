@@ -41,6 +41,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2SepulcherMonsterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2SepulcherNpcInstance;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
@@ -1086,13 +1087,13 @@ public class FourSepulchersManager
 				driftx = Rnd.get(-80, 80);
 				drifty = Rnd.get(-80, 80);
 				mem.teleToLocation(location[0] + driftx, location[1] + drifty, location[2], 0);
-				mem.destroyItemByItemId("Quest", ENTRANCE_PASS, 1, mem, true);
+				mem.destroyItemByItemId(EItemProcessPurpose.QUEST, ENTRANCE_PASS, 1, mem, true);
 				if (mem.getInventory().getItemByItemId(ANTIQUE_BROOCH) == null)
-					mem.addItem("Quest", USED_PASS, 1, mem, true);
+					mem.addItem(EItemProcessPurpose.QUEST, USED_PASS, 1, mem, true);
 				
 				L2ItemInstance hallsKey = mem.getInventory().getItemByItemId(CHAPEL_KEY);
 				if (hallsKey != null)
-					mem.destroyItemByItemId("Quest", CHAPEL_KEY, hallsKey.getCount(), mem, true);
+					mem.destroyItemByItemId(EItemProcessPurpose.QUEST, CHAPEL_KEY, hallsKey.getCount(), mem, true);
 			}
 			
 			_challengers.put(npcId, player);
@@ -1115,13 +1116,13 @@ public class FourSepulchersManager
 				driftx = Rnd.get(-80, 80);
 				drifty = Rnd.get(-80, 80);
 				mem.teleToLocation(location[0] + driftx, location[1] + drifty, location[2], 0);
-				mem.destroyItemByItemId("Quest", ENTRANCE_PASS, 1, mem, true);
+				mem.destroyItemByItemId(EItemProcessPurpose.QUEST, ENTRANCE_PASS, 1, mem, true);
 				if (mem.getInventory().getItemByItemId(ANTIQUE_BROOCH) == null)
-					mem.addItem("Quest", USED_PASS, 1, mem, true);
+					mem.addItem(EItemProcessPurpose.QUEST, USED_PASS, 1, mem, true);
 				
 				L2ItemInstance hallsKey = mem.getInventory().getItemByItemId(CHAPEL_KEY);
 				if (hallsKey != null)
-					mem.destroyItemByItemId("Quest", CHAPEL_KEY, hallsKey.getCount(), mem, true);
+					mem.destroyItemByItemId(EItemProcessPurpose.QUEST, CHAPEL_KEY, hallsKey.getCount(), mem, true);
 			}
 			
 			_challengers.put(npcId, player);
@@ -1134,13 +1135,13 @@ public class FourSepulchersManager
 			driftx = Rnd.get(-80, 80);
 			drifty = Rnd.get(-80, 80);
 			player.teleToLocation(location[0] + driftx, location[1] + drifty, location[2], 0);
-			player.destroyItemByItemId("Quest", ENTRANCE_PASS, 1, player, true);
+			player.destroyItemByItemId(EItemProcessPurpose.QUEST, ENTRANCE_PASS, 1, player, true);
 			if (player.getInventory().getItemByItemId(ANTIQUE_BROOCH) == null)
-				player.addItem("Quest", USED_PASS, 1, player, true);
+				player.addItem(EItemProcessPurpose.QUEST, USED_PASS, 1, player, true);
 			
 			L2ItemInstance hallsKey = player.getInventory().getItemByItemId(CHAPEL_KEY);
 			if (hallsKey != null)
-				player.destroyItemByItemId("Quest", CHAPEL_KEY, hallsKey.getCount(), player, true);
+				player.destroyItemByItemId(EItemProcessPurpose.QUEST, CHAPEL_KEY, hallsKey.getCount(), player, true);
 			
 			_challengers.put(npcId, player);
 			

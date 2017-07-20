@@ -28,7 +28,10 @@ import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.DimensionalRiftManager;
 import net.sf.l2j.gameserver.instancemanager.SevenSigns;
 import net.sf.l2j.gameserver.instancemanager.games.Lottery;
-import net.sf.l2j.gameserver.model.*;
+import net.sf.l2j.gameserver.model.L2Clan;
+import net.sf.l2j.gameserver.model.L2Object;
+import net.sf.l2j.gameserver.model.L2Spawn;
+import net.sf.l2j.gameserver.model.ShotType;
 import net.sf.l2j.gameserver.model.actor.instance.*;
 import net.sf.l2j.gameserver.model.actor.knownlist.NpcKnownList;
 import net.sf.l2j.gameserver.model.actor.stat.NpcStat;
@@ -36,6 +39,7 @@ import net.sf.l2j.gameserver.model.actor.status.NpcStatus;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate.AIType;
 import net.sf.l2j.gameserver.model.entity.Castle;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
@@ -559,7 +563,8 @@ public class L2Npc extends L2Character {
             String quest = "";
             try {
                 quest = command.substring(5).trim();
-            } catch (IndexOutOfBoundsException ioobe) {
+            }
+            catch (IndexOutOfBoundsException ioobe) {
             }
 
             if (quest.isEmpty()) { showQuestWindowGeneral(player, this); }
@@ -569,8 +574,10 @@ public class L2Npc extends L2Character {
             int val = 0;
             try {
                 val = Integer.parseInt(command.substring(5));
-            } catch (IndexOutOfBoundsException ioobe) {
-            } catch (NumberFormatException nfe) {
+            }
+            catch (IndexOutOfBoundsException ioobe) {
+            }
+            catch (NumberFormatException nfe) {
             }
 
             showChatWindow(player, val);
@@ -588,8 +595,10 @@ public class L2Npc extends L2Character {
             int val = 0;
             try {
                 val = Integer.parseInt(command.substring(5));
-            } catch (IndexOutOfBoundsException ioobe) {
-            } catch (NumberFormatException nfe) {
+            }
+            catch (IndexOutOfBoundsException ioobe) {
+            }
+            catch (NumberFormatException nfe) {
             }
 
             if (val == 0) {
@@ -627,7 +636,8 @@ public class L2Npc extends L2Character {
             try {
                 Byte b1 = Byte.parseByte(command.substring(10)); // Selected Area: Recruit, Soldier etc
                 DimensionalRiftManager.getInstance().start(player, b1, this);
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
             }
         }
         else if (command.startsWith("ChangeRiftRoom")) {
@@ -932,7 +942,7 @@ public class L2Npc extends L2Character {
                 else { type2 += Math.pow(2, player.getLoto(i) - 17); }
             }
 
-            if (!player.reduceAdena("Loto", price, this, true)) { return; }
+            if (!player.reduceAdena(EItemProcessPurpose.LOTO, price, this, true)) { return; }
 
             Lottery.getInstance().increasePrize(price);
 
@@ -941,7 +951,7 @@ public class L2Npc extends L2Character {
             item.setCustomType1(lotonumber);
             item.setEnchantLevel(enchant);
             item.setCustomType2(type2);
-            player.addItem("Loto", item, player, true);
+            player.addItem(EItemProcessPurpose.LOTO, item, player, true);
 
             html.setFile(getHtmlPath(npcId, 3));
         }
@@ -1000,8 +1010,8 @@ public class L2Npc extends L2Character {
             player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S2_S1_DISAPPEARED).addItemName(4442));
 
             int adena = check[1];
-            if (adena > 0) { player.addAdena("Loto", adena, this, true); }
-            player.destroyItem("Loto", item, this, false);
+            if (adena > 0) { player.addAdena(EItemProcessPurpose.LOTO, adena, this, true); }
+            player.destroyItem(EItemProcessPurpose.LOTO, item, this, false);
             return;
         }
         html.replace("%objectId%", getObjectId());
@@ -1028,7 +1038,7 @@ public class L2Npc extends L2Character {
         }
 
         // Consume 100 adenas
-        if (player.reduceAdena("RestoreCP", 100, player.getCurrentFolkNPC(), true)) {
+        if (player.reduceAdena(EItemProcessPurpose.RESTORE_CP, 100, player.getCurrentFolkNPC(), true)) {
             setTarget(player);
             doCast(FrequentSkill.ARENA_CP_RECOVERY.getSkill());
             player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_CP_WILL_BE_RESTORED).addPcName(player));
@@ -1093,7 +1103,7 @@ public class L2Npc extends L2Character {
         for (L2HelperBuff helperBuffItem : HelperBuffTable.getInstance().getHelperBuffTable()) {
             if (helperBuffItem.isMagicClassBuff() == player.isMageClass()) {
                 if (player_level >= helperBuffItem.getLowerLevel() && player_level <= helperBuffItem.getUpperLevel()) {
-                    skill = SkillTable.getInstance().getInfo(helperBuffItem.getSkillID(), helperBuffItem.getSkillLevel());
+                    skill = SkillTable.getInfo(helperBuffItem.getSkillID(), helperBuffItem.getSkillLevel());
                     if (skill.getSkillType() == L2SkillType.SUMMON) { player.doCast(skill); }
                     else { doCast(skill); }
                 }
@@ -1393,13 +1403,12 @@ public class L2Npc extends L2Character {
             List<Quest> quests = getTemplate().getEventQuests(EventType.ON_SPELL_FINISHED);
             if (quests != null) {
                 L2PcInstance player = null;
-                if (target != null)
-                    player = target.getActingPlayer();
+                if (target != null) { player = target.getActingPlayer(); }
 
-                for (Quest quest : quests)
-                    quest.notifySpellFinished(this, player, skill);
+                for (Quest quest : quests) { quest.notifySpellFinished(this, player, skill); }
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             _log.log(Level.SEVERE, "", e);
         }
     }
@@ -1416,10 +1425,8 @@ public class L2Npc extends L2Character {
 
     @Override
     public void sendInfo(L2PcInstance activeChar) {
-        if (getRunSpeed() == 0)
-            activeChar.sendPacket(new ServerObjectInfo(this, activeChar));
-        else
-            activeChar.sendPacket(new NpcInfo(this, activeChar));
+        if (getRunSpeed() == 0) { activeChar.sendPacket(new ServerObjectInfo(this, activeChar)); }
+        else { activeChar.sendPacket(new NpcInfo(this, activeChar)); }
     }
 
     @Override
@@ -1429,20 +1436,16 @@ public class L2Npc extends L2Character {
 
     @Override
     public void setChargedShot(ShotType type, boolean charged) {
-        if (charged)
-            _shotsMask |= type.getMask();
-        else
-            _shotsMask &= ~type.getMask();
+        if (charged) { _shotsMask |= type.getMask(); }
+        else { _shotsMask &= ~type.getMask(); }
     }
 
     @Override
     public void rechargeShots(boolean physical, boolean magic) {
         if (physical) {
-            if (_currentSsCount <= 0)
-                return;
+            if (_currentSsCount <= 0) { return; }
 
-            if (Rnd.get(100) > getSsRate())
-                return;
+            if (Rnd.get(100) > getSsRate()) { return; }
 
             _currentSsCount--;
             Broadcast.toSelfAndKnownPlayersInRadiusSq(this, new MagicSkillUse(this, this, 2154, 1, 0, 0), 360000);
@@ -1450,11 +1453,9 @@ public class L2Npc extends L2Character {
         }
 
         if (magic) {
-            if (_currentSpsCount <= 0)
-                return;
+            if (_currentSpsCount <= 0) { return; }
 
-            if (Rnd.get(100) > getSpsRate())
-                return;
+            if (Rnd.get(100) > getSpsRate()) { return; }
 
             _currentSpsCount--;
             Broadcast.toSelfAndKnownPlayersInRadiusSq(this, new MagicSkillUse(this, this, 2061, 1, 0, 0), 360000);

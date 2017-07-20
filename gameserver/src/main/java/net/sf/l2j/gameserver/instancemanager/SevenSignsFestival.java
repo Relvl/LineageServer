@@ -32,6 +32,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2FestivalMonsterInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.base.Experience;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.model.world.L2World;
@@ -1780,7 +1781,7 @@ public class SevenSignsFestival implements SpawnListener {
                             },
                     },
                     {
-			/* Level 53 and Below */
+            /* Level 53 and Below */
                             {
                                     -74055,
                                     111781,
@@ -2919,7 +2920,7 @@ public class SevenSignsFestival implements SpawnListener {
         // Remove any unused blood offerings from online players.
         for (L2PcInstance player : L2World.getInstance().getPlayers()) {
             L2ItemInstance bloodOfferings = player.getInventory().getItemByItemId(FESTIVAL_OFFERING_ID);
-            if (bloodOfferings != null) { player.destroyItem("SevenSigns", bloodOfferings, null, false); }
+            if (bloodOfferings != null) { player.destroyItem(EItemProcessPurpose.SEVEN_SIGNS, bloodOfferings, null, false); }
         }
 
         _log.info("SevenSignsFestival: Reinitialized engine for next competition period.");
@@ -3650,7 +3651,7 @@ public class SevenSignsFestival implements SpawnListener {
                     // Remove any stray blood offerings in inventory
                     L2ItemInstance bloodOfferings = participant.getInventory().getItemByItemId(FESTIVAL_OFFERING_ID);
                     if (bloodOfferings != null) {
-                        participant.destroyItem("SevenSigns", bloodOfferings, null, true);
+                        participant.destroyItem(EItemProcessPurpose.SEVEN_SIGNS, bloodOfferings, null, true);
                     }
                 }
             }

@@ -54,8 +54,8 @@ public class PrimevalIsle extends AbstractNpcAI
 	
 	private static final int ANCIENT_EGG = 18344;
 	
-	private static final L2Skill ANESTHESIA = SkillTable.getInstance().getInfo(5085, 1);
-	private static final L2Skill POISON = SkillTable.getInstance().getInfo(5086, 1);
+	private static final L2Skill ANESTHESIA = SkillTable.getInfo(5085, 1);
+	private static final L2Skill POISON = SkillTable.getInfo(5086, 1);
 	
 	public PrimevalIsle()
 	{

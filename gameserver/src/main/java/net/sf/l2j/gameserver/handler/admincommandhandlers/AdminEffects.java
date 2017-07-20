@@ -228,7 +228,7 @@ public class AdminEffects implements IAdminCommandHandler
 				
 				final int val = Integer.parseInt(st.nextToken());
 				if (val > 0 && val < 5)
-					activeChar.doCast(SkillTable.getInstance().getInfo(7029, val));
+					activeChar.doCast(SkillTable.getInfo(7029, val));
 			}
 			catch (Exception e)
 			{

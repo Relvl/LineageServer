@@ -33,10 +33,10 @@ public class EffectSignet extends L2Effect {
     @Override
     public boolean onStart() {
         if (getSkill() instanceof L2SkillSignet) {
-            _skill = SkillTable.getInstance().getInfo(((L2SkillSignet) getSkill()).effectId, getLevel());
+            _skill = SkillTable.getInfo(((L2SkillSignet) getSkill()).effectId, getLevel());
         }
         else if (getSkill() instanceof L2SkillSignetCasttime) {
-            _skill = SkillTable.getInstance().getInfo(((L2SkillSignetCasttime) getSkill()).effectId, getLevel());
+            _skill = SkillTable.getInfo(((L2SkillSignetCasttime) getSkill()).effectId, getLevel());
         }
 
         _actor = (L2EffectPointInstance) getEffected();

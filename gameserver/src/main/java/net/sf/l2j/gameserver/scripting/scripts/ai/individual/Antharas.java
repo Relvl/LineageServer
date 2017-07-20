@@ -206,10 +206,10 @@ public class Antharas extends AbstractNpcAI {
                 case 29073:
                 case 29074:
                 case 29075:
-                    skill = SkillTable.getInstance().getInfo(5097, 1);
+                    skill = SkillTable.getInfo(5097, 1);
                     break;
                 default:
-                    skill = SkillTable.getInstance().getInfo(5094, 1);
+                    skill = SkillTable.getInfo(5094, 1);
             }
             npc.doCast(skill);
         }
@@ -257,7 +257,7 @@ public class Antharas extends AbstractNpcAI {
 
         // Debuff strider-mounted players.
         if (attacker.getMountType() == 1) {
-            final L2Skill skill = SkillTable.getInstance().getInfo(4258, 1);
+            final L2Skill skill = SkillTable.getInfo(4258, 1);
             if (attacker.getFirstEffect(skill) == null) {
                 npc.setTarget(attacker);
                 npc.doCast(skill);
@@ -401,17 +401,17 @@ public class Antharas extends AbstractNpcAI {
         final int playersNumber = ANTHARAS_LAIR.getAllowedPlayers().size();
         if (playersNumber < 45) {
             _antharasId = ANTHARAS_IDS[0];
-            _skillRegen = SkillTable.getInstance().getInfo(4239, 1);
+            _skillRegen = SkillTable.getInfo(4239, 1);
             _minionTimer = 180000;
         }
         else if (playersNumber < 63) {
             _antharasId = ANTHARAS_IDS[1];
-            _skillRegen = SkillTable.getInstance().getInfo(4240, 1);
+            _skillRegen = SkillTable.getInfo(4240, 1);
             _minionTimer = 150000;
         }
         else {
             _antharasId = ANTHARAS_IDS[2];
-            _skillRegen = SkillTable.getInstance().getInfo(4241, 1);
+            _skillRegen = SkillTable.getInfo(4241, 1);
             _minionTimer = 120000;
         }
     }

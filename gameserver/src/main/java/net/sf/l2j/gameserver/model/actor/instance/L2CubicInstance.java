@@ -93,43 +93,43 @@ public class L2CubicInstance
 		switch (_id)
 		{
 			case STORM_CUBIC:
-				_skills.add(SkillTable.getInstance().getInfo(4049, level));
+				_skills.add(SkillTable.getInfo(4049, level));
 				break;
 			
 			case VAMPIRIC_CUBIC:
-				_skills.add(SkillTable.getInstance().getInfo(4050, level));
+				_skills.add(SkillTable.getInfo(4050, level));
 				break;
 			
 			case LIFE_CUBIC:
-				_skills.add(SkillTable.getInstance().getInfo(4051, level));
+				_skills.add(SkillTable.getInfo(4051, level));
 				doAction();
 				break;
 			
 			case VIPER_CUBIC:
-				_skills.add(SkillTable.getInstance().getInfo(4052, level));
+				_skills.add(SkillTable.getInfo(4052, level));
 				break;
 			
 			case POLTERGEIST_CUBIC:
-				_skills.add(SkillTable.getInstance().getInfo(4053, level));
-				_skills.add(SkillTable.getInstance().getInfo(4054, level));
-				_skills.add(SkillTable.getInstance().getInfo(4055, level));
+				_skills.add(SkillTable.getInfo(4053, level));
+				_skills.add(SkillTable.getInfo(4054, level));
+				_skills.add(SkillTable.getInfo(4055, level));
 				break;
 			
 			case BINDING_CUBIC:
-				_skills.add(SkillTable.getInstance().getInfo(4164, level));
+				_skills.add(SkillTable.getInfo(4164, level));
 				break;
 			
 			case AQUA_CUBIC:
-				_skills.add(SkillTable.getInstance().getInfo(4165, level));
+				_skills.add(SkillTable.getInfo(4165, level));
 				break;
 			
 			case SPARK_CUBIC:
-				_skills.add(SkillTable.getInstance().getInfo(4166, level));
+				_skills.add(SkillTable.getInfo(4166, level));
 				break;
 			
 			case ATTRACT_CUBIC:
-				_skills.add(SkillTable.getInstance().getInfo(5115, level));
-				_skills.add(SkillTable.getInstance().getInfo(5116, level));
+				_skills.add(SkillTable.getInfo(5115, level));
+				_skills.add(SkillTable.getInfo(5116, level));
 				break;
 		}
 		_disappearTask = ThreadPoolManager.getInstance().scheduleGeneral(new Disappear(), totallifetime); // disappear

@@ -50,7 +50,7 @@ public class BeastSpice implements IItemHandler
 				break;
 		}
 		
-		L2Skill skill = SkillTable.getInstance().getInfo(skillId, 1);
+		L2Skill skill = SkillTable.getInfo(skillId, 1);
 		if (skill != null)
 			activeChar.useMagic(skill, false, false);
 	}

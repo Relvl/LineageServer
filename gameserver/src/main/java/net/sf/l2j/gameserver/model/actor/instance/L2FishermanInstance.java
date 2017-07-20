@@ -37,7 +37,7 @@ public class L2FishermanInstance extends L2MerchantInstance {
         boolean empty = true;
 
         for (L2SkillLearn sl : SkillTreeTable.getInstance().getAvailableFishingDwarvenCraftSkills(player)) {
-            L2Skill sk = SkillTable.getInstance().getInfo(sl.getId(), sl.getLevel());
+            L2Skill sk = SkillTable.getInfo(sl.getId(), sl.getLevel());
             if (sk == null) { continue; }
 
             asl.addSkill(sl.getId(), sl.getLevel(), sl.getLevel(), sl.getSpCost(), 1);

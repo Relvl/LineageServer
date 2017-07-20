@@ -14,6 +14,7 @@
  */
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
@@ -134,7 +135,7 @@ public final class RequestCrystallizeItem extends L2GameClientPacket {
         }
 
         // remove from inventory
-        L2ItemInstance removedItem = activeChar.getInventory().destroyItem("Crystalize", _objectId, _count, activeChar, null);
+        L2ItemInstance removedItem = activeChar.getInventory().destroyItem(EItemProcessPurpose.CRYSTALIZE, _objectId, _count, activeChar, null);
 
         InventoryUpdate iu = new InventoryUpdate();
         iu.addRemovedItem(removedItem);
@@ -143,7 +144,7 @@ public final class RequestCrystallizeItem extends L2GameClientPacket {
         // add crystals
         int crystalId = itemToRemove.getItem().getCrystalItemId();
         int crystalAmount = itemToRemove.getCrystalCount();
-        L2ItemInstance createditem = activeChar.getInventory().addItem("Crystalize", crystalId, crystalAmount, activeChar, activeChar);
+        L2ItemInstance createditem = activeChar.getInventory().addItem(EItemProcessPurpose.CRYSTALIZE, crystalId, crystalAmount, activeChar, activeChar);
 
         activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_CRYSTALLIZED).addItemName(removedItem.getItemId()));
         activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.EARNED_S2_S1_S).addItemName(createditem.getItemId()).addItemNumber(crystalAmount));

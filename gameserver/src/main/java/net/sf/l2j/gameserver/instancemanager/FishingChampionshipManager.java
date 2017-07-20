@@ -21,6 +21,7 @@ import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.datatables.ServerMemo;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
@@ -220,7 +221,7 @@ public class FishingChampionshipManager {
                     }
                     fisher.setRewardType(2);
                     if (rewardCnt > 0) {
-                        pl.addItem("fishing_reward", Config.ALT_FISH_CHAMPIONSHIP_REWARD_ITEM, rewardCnt, null, true);
+                        pl.addItem(EItemProcessPurpose.FISHING, Config.ALT_FISH_CHAMPIONSHIP_REWARD_ITEM, rewardCnt, null, true);
 
                         final NpcHtmlMessage html = new NpcHtmlMessage(0);
                         html.setFile("data/html/fisherman/championship/fish_event_reward001.htm");

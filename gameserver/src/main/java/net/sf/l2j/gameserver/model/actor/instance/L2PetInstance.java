@@ -30,13 +30,13 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.L2PetData;
 import net.sf.l2j.gameserver.model.L2PetData.L2PetLevelData;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
+import net.sf.l2j.gameserver.model.TimeStamp;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Summon;
-import net.sf.l2j.gameserver.model.TimeStamp;
 import net.sf.l2j.gameserver.model.actor.stat.PetStat;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.item.EItemBodyPart;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
@@ -46,6 +46,7 @@ import net.sf.l2j.gameserver.model.item.type.EWeaponType;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.model.itemcontainer.PetInventory;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -290,7 +291,7 @@ public class L2PetInstance extends L2Summon {
      * @return boolean informing if the action was successfull
      */
     @Override
-    public boolean destroyItem(String process, int objectId, int count, L2Object reference, boolean sendMessage) {
+    public boolean destroyItem(EItemProcessPurpose process, int objectId, int count, L2Object reference, boolean sendMessage) {
         L2ItemInstance item = _inventory.destroyItem(process, objectId, count, getOwner(), reference);
 
         if (item == null) {
@@ -322,7 +323,7 @@ public class L2PetInstance extends L2Summon {
      * @return boolean informing if the action was successfull
      */
     @Override
-    public boolean destroyItemByItemId(String process, int itemId, int count, L2Object reference, boolean sendMessage) {
+    public boolean destroyItemByItemId(EItemProcessPurpose process, int itemId, int count, L2Object reference, boolean sendMessage) {
         L2ItemInstance item = _inventory.destroyItemByItemId(process, itemId, count, getOwner(), reference);
 
         if (item == null) {
@@ -419,7 +420,7 @@ public class L2PetInstance extends L2Summon {
             IItemHandler handler = ItemHandler.getInstance().getItemHandler(target.getEtcItem());
             if (handler != null) { handler.useItem(this, target, false); }
 
-            ItemTable.getInstance().destroyItem("Consume", target, getOwner(), null);
+            ItemTable.getInstance().destroyItem(EItemProcessPurpose.CONSUME, target, getOwner(), null);
             broadcastStatusUpdate();
         }
         else {
@@ -460,7 +461,7 @@ public class L2PetInstance extends L2Summon {
                 sm2.addItemName(target.getItemId());
             }
             getOwner().sendPacket(sm2);
-            _inventory.addItem("Pickup", target, getOwner(), this);
+            _inventory.addItem(EItemProcessPurpose.PICKUP, target, getOwner(), this);
             getOwner().sendPacket(new PetItemList(this));
         }
 
@@ -524,7 +525,7 @@ public class L2PetInstance extends L2Summon {
      * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
      * @return L2ItemInstance corresponding to the new item or the updated item in inventory
      */
-    public L2ItemInstance transferItem(String process, int objectId, int count, Inventory target, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance transferItem(EItemProcessPurpose process, int objectId, int count, Inventory target, L2PcInstance actor, L2Object reference) {
         final L2ItemInstance oldItem = checkItemManipulation(objectId, count);
         if (oldItem == null) { return null; }
 
@@ -576,7 +577,7 @@ public class L2PetInstance extends L2Summon {
 
         // delete from inventory
         try {
-            L2ItemInstance removedItem = owner.getInventory().destroyItem("PetDestroy", _controlItemId, 1, getOwner(), this);
+            L2ItemInstance removedItem = owner.getInventory().destroyItem(EItemProcessPurpose.PET_DESTROY, _controlItemId, 1, getOwner(), this);
 
             if (removedItem == null) { _log.warning("Couldn't destroy petControlItem for " + owner.getName() + ", pet: " + this); }
             else {
@@ -831,7 +832,7 @@ public class L2PetInstance extends L2Summon {
         if (getKnownSkill(skillId) == null) { return -1; }
 
         // Max level for pet is 80, max level for pet skills is 12 => ((80 - 8) / 6) = 12.
-        return Math.max(1, Math.min((getLevel() - 8) / 6, SkillTable.getInstance().getMaxLevel(skillId)));
+        return Math.max(1, Math.min((getLevel() - 8) / 6, SkillTable.getMaxLevel(skillId)));
     }
 
     public void updateRefOwner(L2PcInstance owner) {
@@ -880,7 +881,7 @@ public class L2PetInstance extends L2Summon {
             if (_curWeightPenalty != newWeightPenalty) {
                 _curWeightPenalty = newWeightPenalty;
                 if (newWeightPenalty > 0) {
-                    addSkill(SkillTable.getInstance().getInfo(4270, newWeightPenalty));
+                    addSkill(SkillTable.getInfo(4270, newWeightPenalty));
                     setIsOverloaded(getCurrentLoad() >= maxLoad);
                 }
                 else {

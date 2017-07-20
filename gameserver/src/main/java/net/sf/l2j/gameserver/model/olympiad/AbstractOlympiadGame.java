@@ -4,13 +4,14 @@ import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.L2Party.MessageType;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
-import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
+import net.sf.l2j.gameserver.model.location.Location;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.zone.type.L2OlympiadStadiumZone;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ExOlympiadMode;
@@ -171,14 +172,14 @@ public abstract class AbstractOlympiadGame {
      * @param player : the happy benefactor.
      */
     protected static final void buffAndHealPlayer(L2PcInstance player) {
-        L2Skill skill = SkillTable.getInstance().getInfo(1204, 2); // Windwalk 2
+        L2Skill skill = SkillTable.getInfo(1204, 2); // Windwalk 2
         if (skill != null) {
             skill.getEffects(player, player);
             player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_FEEL_S1_EFFECT).addSkillName(1204));
         }
 
         if (!player.isMageClass()) {
-            skill = SkillTable.getInstance().getInfo(1086, 1); // Haste 1
+            skill = SkillTable.getInfo(1086, 1); // Haste 1
             if (skill != null) {
                 skill.getEffects(player, player);
                 player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_FEEL_S1_EFFECT).addSkillName(1086));
@@ -275,7 +276,7 @@ public abstract class AbstractOlympiadGame {
             for (int[] it : reward) {
                 if (it == null || it.length != 2) { continue; }
 
-                final L2ItemInstance item = player.getInventory().addItem("Olympiad", it[0], it[1], player, null);
+                final L2ItemInstance item = player.getInventory().addItem(EItemProcessPurpose.OLYMPIAD, it[0], it[1], player, null);
                 if (item == null) { continue; }
 
                 iu.addModifiedItem(item);

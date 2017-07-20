@@ -4,6 +4,7 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.ItemContainer;
 import net.sf.l2j.gameserver.model.itemcontainer.PcFreight;
@@ -99,7 +100,7 @@ public final class RequestPackageSend extends L2GameClientPacket {
         }
 
         // Check if enough adena and charge the fee
-        if (currentAdena < fee || !player.reduceAdena("Warehouse", fee, player.getCurrentFolkNPC(), false)) {
+        if (currentAdena < fee || !player.reduceAdena(EItemProcessPurpose.WAREHOUSE, fee, player.getCurrentFolkNPC(), false)) {
             sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_NOT_ENOUGH_ADENA));
             return;
         }
@@ -121,7 +122,7 @@ public final class RequestPackageSend extends L2GameClientPacket {
 
             if (oldItem.isHeroItem()) { continue; }
 
-            L2ItemInstance newItem = player.getInventory().transferItem("Warehouse", objectId, count, warehouse, player, player.getCurrentFolkNPC());
+            L2ItemInstance newItem = player.getInventory().transferItem(EItemProcessPurpose.WAREHOUSE, objectId, count, warehouse, player, player.getCurrentFolkNPC());
             if (newItem == null) {
                 _log.warn("Error depositing a warehouse object for char " + player.getName() + " (newitem == null)");
                 continue;

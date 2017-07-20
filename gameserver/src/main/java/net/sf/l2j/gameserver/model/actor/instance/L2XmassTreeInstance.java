@@ -28,7 +28,7 @@ import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
  */
 public class L2XmassTreeInstance extends L2NpcInstance
 {
-	private static final L2Skill XTREE_SKILL = SkillTable.getInstance().getInfo(2139, 1);
+	private static final L2Skill XTREE_SKILL = SkillTable.getInfo(2139, 1);
 	public static final int SPECIAL_TREE_ID = 13007;
 	protected ScheduledFuture<?> _aiTask;
 	

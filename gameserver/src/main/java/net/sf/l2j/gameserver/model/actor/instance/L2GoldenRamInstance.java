@@ -143,7 +143,7 @@ public class L2GoldenRamInstance extends L2NpcInstance
 				{
 					qs.takeItems(GOLDEN_RAM, coins);
 					setTarget(player);
-					doCast(SkillTable.getInstance().getInfo(buffData[0], buffData[1]));
+					doCast(SkillTable.getInfo(buffData[0], buffData[1]));
 					val = 4;
 				}
 				

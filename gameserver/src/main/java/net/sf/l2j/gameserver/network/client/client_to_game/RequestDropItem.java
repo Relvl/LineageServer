@@ -1,6 +1,7 @@
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.EItemType2;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -114,6 +115,6 @@ public final class RequestDropItem extends L2GameClientPacket {
             activeChar.sendPacket(new ItemList(activeChar, true));
         }
 
-        activeChar.dropItem("Drop", _objectId, _count, _x, _y, _z, null, false, false);
+        activeChar.dropItem(EItemProcessPurpose.DROP, _objectId, _count, _x, _y, _z, null, false, false);
     }
 }

@@ -3,6 +3,7 @@ package net.sf.l2j.gameserver.network.client.client_to_game;
 import net.sf.l2j.gameserver.datatables.AugmentationData;
 import net.sf.l2j.gameserver.model.L2Augmentation;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -82,14 +83,14 @@ public final class RequestRefine extends AbstractRefinePacket {
         }
 
         // Consume the life stone
-        if (!activeChar.destroyItem("RequestRefine", refinerItem, 1, null, false)) {
+        if (!activeChar.destroyItem(EItemProcessPurpose.REQUEST_REFINE, refinerItem, 1, null, false)) {
             activeChar.sendPacket(new ExVariationResult(0, 0, 0));
             activeChar.sendPacket(SystemMessageId.AUGMENTATION_FAILED_DUE_TO_INAPPROPRIATE_CONDITIONS);
             return;
         }
 
         // Consume gemstones
-        if (!activeChar.destroyItem("RequestRefine", gemStoneItem, _gemStoneCount, null, false)) {
+        if (!activeChar.destroyItem(EItemProcessPurpose.REQUEST_REFINE, gemStoneItem, _gemStoneCount, null, false)) {
             activeChar.sendPacket(new ExVariationResult(0, 0, 0));
             activeChar.sendPacket(SystemMessageId.AUGMENTATION_FAILED_DUE_TO_INAPPROPRIATE_CONDITIONS);
             return;

@@ -4,7 +4,6 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.handler.SkillHandler;
 import net.sf.l2j.gameserver.model.L2Effect;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -12,6 +11,7 @@ import net.sf.l2j.gameserver.model.holder.IntIntHolder;
 import net.sf.l2j.gameserver.model.item.EItemType1;
 import net.sf.l2j.gameserver.model.item.EItemType2;
 import net.sf.l2j.gameserver.model.item.type.EWeaponType;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.scripting.EventType;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.skills.Env;
@@ -28,39 +28,45 @@ import java.util.List;
 public final class Weapon extends Item {
     private final EWeaponType weaponType;
 
-    private final int _rndDam;
-    private final int _soulShotCount;
-    private final int _spiritShotCount;
-    private final int _mpConsume;
-    private final int _mpConsumeReduceRate;
-    private final int _mpConsumeReduceValue;
-    private final boolean _isMagical;
+    private final int randomDamage;
 
-    private IntIntHolder _enchant4Skill; // skill that activates when item is enchanted +4 (for duals)
-
-    private IntIntHolder _skillsOnCast;
-    private Condition _skillsOnCastCondition;
-    private IntIntHolder _skillsOnCrit;
-    private Condition _skillsOnCritCondition;
-
-    private final int reuseDelay;
+    private final int soulShotCount;
     private final int reducedSoulshot;
     private final int reducedSoulshotChance;
 
+    private final int spiritShotCount;
+
+    private final int mpConsume;
+    private final int mpConsumeReduce;
+    private final int mpConsumeReduceChance;
+
+    private final boolean isMagical;
+
+    private IntIntHolder enchant4Skill; // skill that activates when item is enchanted +4 (for duals)
+
+    private IntIntHolder skillsOnCast;
+    private Condition skillsOnCastCondition;
+
+    private IntIntHolder skillsOnCrit;
+    private Condition skillsOnCritCondition;
+
+    private final int reuseDelay;
+
     public Weapon(StatsSet set) {
         super(set);
-        weaponType = EWeaponType.valueOf(set.getString("weapon_type", "none").toUpperCase());
         itemType1 = EItemType1.WEAPON_RING_EARRING_NECKLACE;
-        _type2 = EItemType2.TYPE2_WEAPON;
-        _soulShotCount = set.getInteger("soulshots", 0);
-        _spiritShotCount = set.getInteger("spiritshots", 0);
-        _rndDam = set.getInteger("random_damage", 0);
-        _mpConsume = set.getInteger("mp_consume", 0);
+        itemType2 = EItemType2.TYPE2_WEAPON;
+
+        weaponType = EWeaponType.valueOf(set.getString("weapon_type", "none").toUpperCase());
+        soulShotCount = set.getInteger("soulshots", 0);
+        spiritShotCount = set.getInteger("spiritshots", 0);
+        randomDamage = set.getInteger("random_damage", 0);
+        mpConsume = set.getInteger("mp_consume", 0);
         String[] reduce = set.getString("mp_consume_reduce", "0,0").split(",");
-        _mpConsumeReduceRate = Integer.parseInt(reduce[0]);
-        _mpConsumeReduceValue = Integer.parseInt(reduce[1]);
+        mpConsumeReduceChance = Integer.parseInt(reduce[0]);
+        mpConsumeReduce = Integer.parseInt(reduce[1]);
         reuseDelay = set.getInteger("reuse_delay", 0);
-        _isMagical = set.getBool("is_magical", false);
+        isMagical = set.getBool("is_magical", false);
 
         String[] soulshots = set.getString("reduced_soulshot", "").split(",");
         reducedSoulshotChance = (soulshots.length == 2) ? Integer.parseInt(soulshots[0]) : 0;
@@ -77,11 +83,10 @@ public final class Weapon extends Item {
                     id = Integer.parseInt(info[0]);
                     level = Integer.parseInt(info[1]);
                 }
-                catch (Exception nfe) {
-                    // Incorrect syntax, dont add new skill
-                    _log.info("> Couldnt parse " + skill + " in weapon enchant skills! item " + toString());
+                catch (Exception ignored) {
+                    LOGGER.info("> Couldnt parse {} in weapon enchant skills! item {}", skill, toString());
                 }
-                if (id > 0 && level > 0) { _enchant4Skill = new IntIntHolder(id, level); }
+                if (id > 0 && level > 0) { enchant4Skill = new IntIntHolder(id, level); }
             }
         }
 
@@ -98,13 +103,12 @@ public final class Weapon extends Item {
                     level = Integer.parseInt(info[1]);
                     if (infochance != null) { chance = Integer.parseInt(infochance); }
                 }
-                catch (Exception nfe) {
-                    // Incorrect syntax, dont add new skill
-                    _log.info("> Couldnt parse " + skill + " in weapon oncast skills! item " + toString());
+                catch (Exception ignored) {
+                    LOGGER.info("> Couldnt parse {} in weapon oncast skills! item {}", skill, toString());
                 }
                 if (id > 0 && level > 0 && chance > 0) {
-                    _skillsOnCast = new IntIntHolder(id, level);
-                    _skillsOnCastCondition = new ConditionGameChance(chance);
+                    skillsOnCast = new IntIntHolder(id, level);
+                    skillsOnCastCondition = new ConditionGameChance(chance);
                 }
             }
         }
@@ -122,174 +126,126 @@ public final class Weapon extends Item {
                     level = Integer.parseInt(info[1]);
                     if (infochance != null) { chance = Integer.parseInt(infochance); }
                 }
-                catch (Exception nfe) {
-                    // Incorrect syntax, dont add new skill
-                    _log.info("> Couldnt parse " + skill + " in weapon oncrit skills! item " + toString());
+                catch (Exception ignored) {
+                    LOGGER.info("> Couldnt parse {} in weapon oncrit skills! item {}", skill, toString());
                 }
                 if (id > 0 && level > 0 && chance > 0) {
-                    _skillsOnCrit = new IntIntHolder(id, level);
-                    _skillsOnCritCondition = new ConditionGameChance(chance);
+                    skillsOnCrit = new IntIntHolder(id, level);
+                    skillsOnCritCondition = new ConditionGameChance(chance);
                 }
             }
         }
     }
 
-    /**
-     * @return the type of weapon.
-     */
     @Override
     public EWeaponType getItemType() {
         return weaponType;
     }
 
-    /**
-     * @return the ID of the Etc item after applying the mask.
-     */
     @Override
     public int getItemMask() {
         return weaponType.mask();
     }
 
-    /**
-     * @return the quantity of SoulShot used.
-     */
     public int getSoulShotCount() {
-        return _soulShotCount;
+        return soulShotCount;
     }
 
-    /**
-     * @return the quatity of SpiritShot used.
-     */
     public int getSpiritShotCount() {
-        return _spiritShotCount;
+        return spiritShotCount;
     }
 
-    /**
-     * @return the reduced quantity of SoultShot used.
-     */
     public int getReducedSoulShot() {
         return reducedSoulshot;
     }
 
-    /**
-     * @return the chance to use Reduced SoultShot.
-     */
     public int getReducedSoulShotChance() {
         return reducedSoulshotChance;
     }
 
-    /**
-     * @return the random damage inflicted by the weapon
-     */
     public int getRandomDamage() {
-        return _rndDam;
+        return randomDamage;
     }
 
-    /**
-     * @return the Reuse Delay of the Weapon.
-     */
     public int getReuseDelay() {
         return reuseDelay;
     }
 
-    /**
-     * @return true or false if weapon is considered as a mage weapon.
-     */
     public boolean isMagical() {
-        return _isMagical;
+        return isMagical;
     }
 
-    /**
-     * @return the MP consumption of the weapon.
-     */
     public int getMpConsume() {
-        if (_mpConsumeReduceRate > 0 && Rnd.get(100) < _mpConsumeReduceRate) { return _mpConsumeReduceValue; }
-
-        return _mpConsume;
+        if (mpConsumeReduceChance > 0 && Rnd.get(100) < mpConsumeReduceChance) { return mpConsumeReduce; }
+        return mpConsume;
     }
 
-    /**
-     * @return The skill player obtains when he equiped weapon +4 or more (for duals SA)
-     */
     public L2Skill getEnchant4Skill() {
-        if (_enchant4Skill == null) { return null; }
-
-        return _enchant4Skill.getSkill();
+        if (enchant4Skill == null) { return null; }
+        return enchant4Skill.getSkill();
     }
 
-    /**
-     * @param caster : L2Character pointing out the caster
-     * @param target : L2Character pointing out the target
-     * @param crit   : boolean tells whether the hit was critical
-     * @return An array of L2Effect of skills associated with the item to be triggered onHit.
-     */
     public List<L2Effect> getSkillEffects(L2Character caster, L2Character target, boolean crit) {
-        if (_skillsOnCrit == null || !crit) { return Collections.emptyList(); }
+        if (skillsOnCrit == null || !crit) { return Collections.emptyList(); }
 
         List<L2Effect> effects = new ArrayList<>();
 
-        if (_skillsOnCritCondition != null) {
+        if (skillsOnCritCondition != null) {
             Env env = new Env();
             env.setCharacter(caster);
             env.setTarget(target);
-            env.setSkill(_skillsOnCrit.getSkill());
+            env.setSkill(skillsOnCrit.getSkill());
 
-            if (!_skillsOnCritCondition.test(env)) { return Collections.emptyList(); }
+            if (!skillsOnCritCondition.test(env)) { return Collections.emptyList(); }
         }
 
-        byte shld = Formulas.calcShldUse(caster, target, _skillsOnCrit.getSkill());
-        if (!Formulas.calcSkillSuccess(caster, target, _skillsOnCrit.getSkill(), shld, false)) { return Collections.emptyList(); }
+        byte shld = Formulas.calcShldUse(caster, target, skillsOnCrit.getSkill());
+        if (!Formulas.calcSkillSuccess(caster, target, skillsOnCrit.getSkill(), shld, false)) { return Collections.emptyList(); }
 
-        if (target.getFirstEffect(_skillsOnCrit.getSkill().getId()) != null) { target.getFirstEffect(_skillsOnCrit.getSkill().getId()).exit(); }
+        if (target.getFirstEffect(skillsOnCrit.getSkill().getId()) != null) { target.getFirstEffect(skillsOnCrit.getSkill().getId()).exit(); }
 
-        for (L2Effect e : _skillsOnCrit.getSkill().getEffects(caster, target, new Env(shld, false, false, false))) { effects.add(e); }
+        for (L2Effect e : skillsOnCrit.getSkill().getEffects(caster, target, new Env(shld, false, false, false))) { effects.add(e); }
 
         return effects;
     }
 
-    /**
-     * @param caster  : L2Character pointing out the caster
-     * @param target  : L2Character pointing out the target
-     * @param trigger : L2Skill pointing out the skill triggering this action
-     * @return An array of L2Effect associated with the item to be triggered onCast.
-     */
     public List<L2Effect> getSkillEffects(L2Character caster, L2Character target, L2Skill trigger) {
-        if (_skillsOnCast == null) { return Collections.emptyList(); }
+        if (skillsOnCast == null) { return Collections.emptyList(); }
 
         // Trigger only same type of skill.
-        if (trigger.isOffensive() != _skillsOnCast.getSkill().isOffensive()) { return Collections.emptyList(); }
+        if (trigger.isOffensive() != skillsOnCast.getSkill().isOffensive()) { return Collections.emptyList(); }
 
         // No buffing with toggle or not magic skills.
-        if ((trigger.isToggle() || !trigger.isMagic()) && _skillsOnCast.getSkill().getSkillType() == L2SkillType.BUFF) { return Collections.emptyList(); }
+        if ((trigger.isToggle() || !trigger.isMagic()) && skillsOnCast.getSkill().getSkillType() == L2SkillType.BUFF) { return Collections.emptyList(); }
 
-        if (_skillsOnCastCondition != null) {
+        if (skillsOnCastCondition != null) {
             Env env = new Env();
             env.setCharacter(caster);
             env.setTarget(target);
-            env.setSkill(_skillsOnCast.getSkill());
+            env.setSkill(skillsOnCast.getSkill());
 
-            if (!_skillsOnCastCondition.test(env)) { return Collections.emptyList(); }
+            if (!skillsOnCastCondition.test(env)) { return Collections.emptyList(); }
         }
 
-        byte shld = Formulas.calcShldUse(caster, target, _skillsOnCast.getSkill());
-        if (_skillsOnCast.getSkill().isOffensive() && !Formulas.calcSkillSuccess(caster, target, _skillsOnCast.getSkill(), shld, false)) { return Collections.emptyList(); }
+        byte shld = Formulas.calcShldUse(caster, target, skillsOnCast.getSkill());
+        if (skillsOnCast.getSkill().isOffensive() && !Formulas.calcSkillSuccess(caster, target, skillsOnCast.getSkill(), shld, false)) { return Collections.emptyList(); }
 
         // Get the skill handler corresponding to the skill type
-        ISkillHandler handler = SkillHandler.getInstance().getSkillHandler(_skillsOnCast.getSkill().getSkillType());
+        ISkillHandler handler = SkillHandler.getInstance().getSkillHandler(skillsOnCast.getSkill().getSkillType());
 
         L2Character[] targets = new L2Character[1];
         targets[0] = target;
 
         // Launch the magic skill and calculate its effects
-        if (handler != null) { handler.useSkill(caster, _skillsOnCast.getSkill(), targets); }
-        else { _skillsOnCast.getSkill().useSkill(caster, targets); }
+        if (handler != null) { handler.useSkill(caster, skillsOnCast.getSkill(), targets); }
+        else { skillsOnCast.getSkill().useSkill(caster, targets); }
 
         // notify quests of a skill use
         if (caster instanceof L2PcInstance) {
             // Mobs in range 1000 see spell
             for (L2Npc npcMob : caster.getKnownList().getKnownTypeInRadius(L2Npc.class, 1000)) {
                 List<Quest> quests = npcMob.getTemplate().getEventQuests(EventType.ON_SKILL_SEE);
-                if (quests != null) { for (Quest quest : quests) { quest.notifySkillSee(npcMob, (L2PcInstance) caster, _skillsOnCast.getSkill(), targets, false); } }
+                if (quests != null) { for (Quest quest : quests) { quest.notifySkillSee(npcMob, (L2PcInstance) caster, skillsOnCast.getSkill(), targets, false); } }
             }
         }
         return Collections.emptyList();

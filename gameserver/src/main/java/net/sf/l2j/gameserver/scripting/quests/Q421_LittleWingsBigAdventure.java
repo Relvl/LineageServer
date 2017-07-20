@@ -205,7 +205,7 @@ public class Q421_LittleWingsBigAdventure extends Quest
 							// Curse if the registered objectId is the wrong one (switch flutes).
 							htmltext = "30747-18.htm";
 							
-							final L2Skill skill = SkillTable.getInstance().getInfo(4167, 1);
+							final L2Skill skill = SkillTable.getInfo(4167, 1);
 							if (skill != null && player.getFirstEffect(skill) == null)
 								skill.getEffects(npc, player);
 						}
@@ -277,7 +277,7 @@ public class Q421_LittleWingsBigAdventure extends Quest
 		{
 			if (originalKiller != null)
 			{
-				final L2Skill skill = SkillTable.getInstance().getInfo(4243, 1);
+				final L2Skill skill = SkillTable.getInfo(4243, 1);
 				if (skill != null && originalKiller.getFirstEffect(skill) == null)
 					skill.getEffects(npc, originalKiller);
 			}

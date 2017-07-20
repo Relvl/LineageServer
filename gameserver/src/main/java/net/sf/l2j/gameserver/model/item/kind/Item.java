@@ -4,7 +4,6 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Summon;
-import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
 import net.sf.l2j.gameserver.model.item.EItemBodyPart;
 import net.sf.l2j.gameserver.model.item.EItemType1;
@@ -19,36 +18,41 @@ import net.sf.l2j.gameserver.skills.basefuncs.Func;
 import net.sf.l2j.gameserver.skills.basefuncs.FuncTemplate;
 import net.sf.l2j.gameserver.skills.conditions.Condition;
 import net.sf.l2j.gameserver.templates.StatsSet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Logger;
 
 public abstract class Item {
-    private final int _itemId;
-    private final String _name;
+    protected static final Logger LOGGER = LoggerFactory.getLogger(Item.class);
+
+    private final int itemId;
+    private final String itemName;
     protected EItemType1 itemType1;
-    protected EItemType2 _type2; // different lists for armor, weapon, etc
-    private final int _weight;
-    private final boolean _stackable;
-    private final MaterialType _materialType;
-    private final CrystalType _crystalType;
-    private final int _duration;
+    protected EItemType2 itemType2; // different lists for armor, weapon, etc
     private final EItemBodyPart bodyPart;
-    private final int _referencePrice;
-    private final int _crystalCount;
+    private final MaterialType materialType;
+    private final int weight;
 
-    private final boolean _sellable;
-    private final boolean _dropable;
-    private final boolean _destroyable;
-    private final boolean _tradable;
-    private final boolean _depositable;
+    private final CrystalType crystalType;
+    private final int crystalCount;
 
-    private final boolean _heroItem;
-    private final boolean _isOlyRestricted;
+    private final int referencePrice;
+    private final int _duration;
 
-    private final ActionType _defaultAction;
+    private final boolean sellable;
+    private final boolean stackable;
+    private final boolean dropable;
+    private final boolean destroyable;
+    private final boolean tradable;
+    private final boolean depositable;
+
+    private final boolean heroItem;
+    private final boolean isOlyRestricted;
+
+    protected final ActionType defaultAction;
 
     protected List<FuncTemplate> _funcTemplates;
 
@@ -57,30 +61,28 @@ public abstract class Item {
 
     private final List<Quest> _questEvents = new ArrayList<>();
 
-    protected static final Logger _log = Logger.getLogger(Item.class.getName());
-
     protected Item(StatsSet set) {
-        _itemId = set.getInteger("item_id");
-        _name = set.getString("name");
-        _weight = set.getInteger("weight", 0);
-        _materialType = set.getEnum("material", MaterialType.class, MaterialType.STEEL);
+        itemId = set.getInteger("item_id");
+        itemName = set.getString("name");
+        weight = set.getInteger("weight", 0);
+        materialType = set.getEnum("material", MaterialType.class, MaterialType.STEEL);
         _duration = set.getInteger("duration", -1);
         bodyPart = EItemBodyPart.getByCode(set.getString("bodypart", "none"));
-        _referencePrice = set.getInteger("price", 0);
-        _crystalType = set.getEnum("crystal_type", CrystalType.class, CrystalType.NONE);
-        _crystalCount = set.getInteger("crystal_count", 0);
+        referencePrice = set.getInteger("price", 0);
+        crystalType = set.getEnum("crystal_type", CrystalType.class, CrystalType.NONE);
+        crystalCount = set.getInteger("crystal_count", 0);
 
-        _stackable = set.getBool("is_stackable", false);
-        _sellable = set.getBool("is_sellable", true);
-        _dropable = set.getBool("is_dropable", true);
-        _destroyable = set.getBool("is_destroyable", true);
-        _tradable = set.getBool("is_tradable", true);
-        _depositable = set.getBool("is_depositable", true);
+        stackable = set.getBool("is_stackable", false);
+        sellable = set.getBool("is_sellable", true);
+        dropable = set.getBool("is_dropable", true);
+        destroyable = set.getBool("is_destroyable", true);
+        tradable = set.getBool("is_tradable", true);
+        depositable = set.getBool("is_depositable", true);
 
-        _heroItem = (_itemId >= 6611 && _itemId <= 6621) || _itemId == 6842;
-        _isOlyRestricted = set.getBool("is_oly_restricted", false);
+        heroItem = (itemId >= 6611 && itemId <= 6621) || itemId == 6842;
+        isOlyRestricted = set.getBool("is_oly_restricted", false);
 
-        _defaultAction = set.getEnum("default_action", ActionType.class, ActionType.none);
+        defaultAction = set.getEnum("default_action", ActionType.class, ActionType.none);
 
         String skills = set.getString("item_skill", null);
         if (skills != null) {
@@ -95,12 +97,11 @@ public abstract class Item {
                     int level = Integer.parseInt(skillSplit[1]);
 
                     if (id == 0) {
-                        _log.info("Ignoring item_skill(" + element + ") for item " + toString() + ". Skill id is 0.");
+                        LOGGER.info("Ignoring item_skill({}) for item {}. Skill id is 0.", element, toString());
                         continue;
                     }
-
                     if (level == 0) {
-                        _log.info("Ignoring item_skill(" + element + ") for item " + toString() + ". Skill level is 0.");
+                        LOGGER.info("Ignoring item_skill({}) for item {}. Skill level is 0.", element, toString());
                         continue;
                     }
 
@@ -108,7 +109,7 @@ public abstract class Item {
                     ++used;
                 }
                 catch (Exception e) {
-                    _log.warning("Failed to parse item_skill(" + element + ") for item " + toString() + ". The used format is wrong.");
+                    LOGGER.error("Failed to parse item_skill({}) for item {}. The used format is wrong.", element, toString());
                 }
             }
 
@@ -121,139 +122,85 @@ public abstract class Item {
         }
     }
 
-    /**
-     * @return Enum the itemType.
-     */
     public abstract EMaskedItemType getItemType();
 
-    /**
-     * @return int the duration of the item
-     */
     public final int getDuration() {
         return _duration;
     }
 
-    /**
-     * @return int the ID of the item
-     */
     public final int getItemId() {
-        return _itemId;
+        return itemId;
     }
 
     public abstract int getItemMask();
 
-    /**
-     * @return int the type of material of the item
-     */
-    public final MaterialType getMaterialType() {
-        return _materialType;
-    }
-
-    /**
-     * @return int the type 2 of the item
-     */
     public final EItemType2 getType2() {
-        return _type2;
+        return itemType2;
     }
 
-    /**
-     * @return int the weight of the item
-     */
     public final int getWeight() {
-        return _weight;
+        return weight;
     }
 
-    /**
-     * @return boolean if the item is crystallizable
-     */
     public final boolean isCrystallizable() {
-        return _crystalType != CrystalType.NONE && _crystalCount > 0;
+        return crystalType != CrystalType.NONE && crystalCount > 0;
     }
 
-    /**
-     * @return CrystalType the type of crystal if item is crystallizable
-     */
     public final CrystalType getCrystalType() {
-        return _crystalType;
+        return crystalType;
     }
 
-    /**
-     * @return int the type of crystal if item is crystallizable
-     */
     public final int getCrystalItemId() {
-        return _crystalType.getCrystalId();
+        return crystalType.getCrystalId();
     }
 
-    /**
-     * @return int the quantity of crystals for crystallization
-     */
     public final int getCrystalCount() {
-        return _crystalCount;
+        return crystalCount;
     }
 
-    /**
-     * @param enchantLevel
-     * @return int the quantity of crystals for crystallization on specific enchant level
-     */
     public final int getCrystalCount(int enchantLevel) {
         if (enchantLevel > 3) {
-            switch (_type2) {
+            switch (itemType2) {
                 case TYPE2_SHIELD_ARMOR:
                 case TYPE2_ACCESSORY:
-                    return _crystalCount + _crystalType.getCrystalEnchantBonusArmor() * (3 * enchantLevel - 6);
-
+                    return crystalCount + crystalType.getCrystalEnchantBonusArmor() * (3 * enchantLevel - 6);
                 case TYPE2_WEAPON:
-                    return _crystalCount + _crystalType.getCrystalEnchantBonusWeapon() * (2 * enchantLevel - 3);
+                    return crystalCount + crystalType.getCrystalEnchantBonusWeapon() * (2 * enchantLevel - 3);
 
                 default:
-                    return _crystalCount;
+                    return crystalCount;
             }
         }
         else if (enchantLevel > 0) {
-            switch (_type2) {
+            switch (itemType2) {
                 case TYPE2_SHIELD_ARMOR:
                 case TYPE2_ACCESSORY:
-                    return _crystalCount + _crystalType.getCrystalEnchantBonusArmor() * enchantLevel;
+                    return crystalCount + crystalType.getCrystalEnchantBonusArmor() * enchantLevel;
                 case TYPE2_WEAPON:
-                    return _crystalCount + _crystalType.getCrystalEnchantBonusWeapon() * enchantLevel;
+                    return crystalCount + crystalType.getCrystalEnchantBonusWeapon() * enchantLevel;
                 default:
-                    return _crystalCount;
+                    return crystalCount;
             }
         }
-        else { return _crystalCount; }
+        else { return crystalCount; }
     }
 
-    /**
-     * @return String the name of the item
-     */
     public final String getName() {
-        return _name;
+        return itemName;
     }
 
-    /**
-     * @return int the part of the body used with the item.
-     */
     public final EItemBodyPart getBodyPart() {
         return bodyPart;
     }
 
-    /**
-     * @return int the type 1 of the item
-     */
     public final EItemType1 getType1() {
         return itemType1;
     }
 
-    /**
-     * @return boolean if the item is stackable
-     */
     public final boolean isStackable() {
-        return _stackable;
+        return stackable;
     }
 
-    /**
-     * @return boolean if the item is consumable
-     */
     public boolean isConsumable() {
         return false;
     }
@@ -262,65 +209,30 @@ public abstract class Item {
         return bodyPart != EItemBodyPart.SLOT_NONE && !(getItemType() instanceof EtcItemType);
     }
 
-    /**
-     * @return int the price of reference of the item
-     */
     public final int getReferencePrice() {
-        return isConsumable() ? (int) (_referencePrice * Config.RATE_CONSUMABLE_COST) : _referencePrice;
+        return isConsumable() ? (int) (referencePrice * Config.RATE_CONSUMABLE_COST) : referencePrice;
     }
 
-    /**
-     * Returns if the item can be sold
-     *
-     * @return boolean
-     */
     public final boolean isSellable() {
-        return _sellable;
+        return sellable;
     }
 
-    /**
-     * Returns if the item can dropped
-     *
-     * @return boolean
-     */
     public final boolean isDropable() {
-        return _dropable;
+        return dropable;
     }
 
-    /**
-     * Returns if the item can destroy
-     *
-     * @return boolean
-     */
     public final boolean isDestroyable() {
-        return _destroyable;
+        return destroyable;
     }
 
-    /**
-     * Returns if the item can add to trade
-     *
-     * @return boolean
-     */
     public final boolean isTradable() {
-        return _tradable;
+        return tradable;
     }
 
-    /**
-     * Returns if the item can be put into warehouse
-     *
-     * @return boolean
-     */
     public final boolean isDepositable() {
-        return _depositable;
+        return depositable;
     }
 
-    /**
-     * Get the functions used by this item.
-     *
-     * @param item   : L2ItemInstance pointing out the item
-     * @param player : L2Character pointing out the player
-     * @return the list of functions
-     */
     public final List<Func> getStatFuncs(L2ItemInstance item, L2Character player) {
         if (_funcTemplates == null || _funcTemplates.isEmpty()) { return Collections.emptyList(); }
 
@@ -332,44 +244,35 @@ public abstract class Item {
         env.setItem(item);
 
         for (FuncTemplate t : _funcTemplates) {
-            Func f = t.getFunc(env, item);
-            if (f != null) { funcs.add(f); }
+            Func func = t.getFunc(env, item);
+            if (func != null) { funcs.add(func); }
         }
         return funcs;
     }
 
-    /**
-     * Add the FuncTemplate f to the list of functions used with the item
-     *
-     * @param f : FuncTemplate to add
-     */
-    public void attach(FuncTemplate f) {
+    public void attach(FuncTemplate func) {
         if (_funcTemplates == null) { _funcTemplates = new ArrayList<>(1); }
-
-        _funcTemplates.add(f);
+        _funcTemplates.add(func);
     }
 
-    public final void attach(Condition c) {
+    public final void attach(Condition condition) {
         if (_preConditions == null) { _preConditions = new ArrayList<>(); }
-
-        if (!_preConditions.contains(c)) { _preConditions.add(c); }
+        if (!_preConditions.contains(condition)) { _preConditions.add(condition); }
     }
 
-    /**
-     * Method to retrieve skills linked to this item
-     *
-     * @return Skills linked to this item as SkillHolder[]
-     */
     public final IntIntHolder[] getSkills() {
         return _skillHolder;
     }
 
     public boolean checkCondition(L2Character activeChar, L2Object target, boolean sendMessage) {
         // Don't allow hero equipment and restricted items during Olympiad
-        if ((_isOlyRestricted || _heroItem) && (activeChar instanceof L2PcInstance) && activeChar.getActingPlayer().isInOlympiadMode()) {
-            if (isEquipable()) { activeChar.getActingPlayer().sendPacket(SystemMessageId.THIS_ITEM_CANT_BE_EQUIPPED_FOR_THE_OLYMPIAD_EVENT); }
-            else { activeChar.getActingPlayer().sendPacket(SystemMessageId.THIS_ITEM_IS_NOT_AVAILABLE_FOR_THE_OLYMPIAD_EVENT); }
-
+        if ((isOlyRestricted || heroItem) && activeChar.isPlayer() && activeChar.getActingPlayer().isInOlympiadMode()) {
+            if (isEquipable()) {
+                activeChar.getActingPlayer().sendPacket(SystemMessageId.THIS_ITEM_CANT_BE_EQUIPPED_FOR_THE_OLYMPIAD_EVENT);
+            }
+            else {
+                activeChar.getActingPlayer().sendPacket(SystemMessageId.THIS_ITEM_IS_NOT_AVAILABLE_FOR_THE_OLYMPIAD_EVENT);
+            }
             return false;
         }
 
@@ -396,7 +299,7 @@ public abstract class Item {
                     }
                     else if (msgId != 0) {
                         SystemMessage sm = SystemMessage.getSystemMessage(msgId);
-                        if (preCondition.isAddName()) { sm.addItemName(_itemId); }
+                        if (preCondition.isAddName()) { sm.addItemName(itemId); }
                         activeChar.sendPacket(sm);
                     }
                 }
@@ -406,20 +309,16 @@ public abstract class Item {
         return true;
     }
 
-    public boolean isConditionAttached() {
-        return _preConditions != null && !_preConditions.isEmpty();
-    }
-
     public boolean isQuestItem() {
         return getItemType() == EtcItemType.QUEST;
     }
 
     public final boolean isHeroItem() {
-        return _heroItem;
+        return heroItem;
     }
 
     public boolean isOlyRestrictedItem() {
-        return _isOlyRestricted;
+        return isOlyRestricted;
     }
 
     public boolean isPetItem() {
@@ -435,17 +334,7 @@ public abstract class Item {
     }
 
     public ActionType getDefaultAction() {
-        return _defaultAction;
-    }
-
-    /**
-     * Returns the name of the item
-     *
-     * @return String
-     */
-    @Override
-    public String toString() {
-        return _name + " (" + _itemId + ")";
+        return defaultAction;
     }
 
     public void addQuestEvent(Quest q) {
@@ -454,5 +343,10 @@ public abstract class Item {
 
     public List<Quest> getQuestEvents() {
         return _questEvents;
+    }
+
+    @Override
+    public String toString() {
+        return itemName + " (" + itemId + ")";
     }
 }

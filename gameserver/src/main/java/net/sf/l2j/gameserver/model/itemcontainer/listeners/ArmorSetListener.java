@@ -33,16 +33,16 @@ public class ArmorSetListener implements OnEquipListener {
         // checks if equipped item is part of set
         if (armorSet.containItem(slot, item.getItemId())) {
             if (armorSet.containAll(player)) {
-                L2Skill skill = SkillTable.getInstance().getInfo(armorSet.getSkillId(), 1);
+                L2Skill skill = SkillTable.getInfo(armorSet.getSkillId(), 1);
                 if (skill != null) {
-                    player.addSkill(SkillTable.getInstance().getInfo(3006, 1), false);
+                    player.addSkill(SkillTable.getInfo(3006, 1), false);
                     player.addSkill(skill, false);
                     player.sendSkillList();
                 }
 
                 if (armorSet.containShield(player)) // has shield from set
                 {
-                    L2Skill skills = SkillTable.getInstance().getInfo(armorSet.getShieldSkillId(), 1);
+                    L2Skill skills = SkillTable.getInfo(armorSet.getShieldSkillId(), 1);
                     if (skills != null) {
                         player.addSkill(skills, false);
                         player.sendSkillList();
@@ -53,7 +53,7 @@ public class ArmorSetListener implements OnEquipListener {
                 {
                     int skillId = armorSet.getEnchant6skillId();
                     if (skillId > 0) {
-                        L2Skill skille = SkillTable.getInstance().getInfo(skillId, 1);
+                        L2Skill skille = SkillTable.getInfo(skillId, 1);
                         if (skille != null) {
                             player.addSkill(skille, false);
                             player.sendSkillList();
@@ -64,7 +64,7 @@ public class ArmorSetListener implements OnEquipListener {
         }
         else if (armorSet.containShield(item.getItemId())) {
             if (armorSet.containAll(player)) {
-                L2Skill skills = SkillTable.getInstance().getInfo(armorSet.getShieldSkillId(), 1);
+                L2Skill skills = SkillTable.getInfo(armorSet.getShieldSkillId(), 1);
                 if (skills != null) {
                     player.addSkill(skills, false);
                     player.sendSkillList();
@@ -114,20 +114,20 @@ public class ArmorSetListener implements OnEquipListener {
 
         if (remove) {
             if (removeSkillId1 != 0) {
-                L2Skill skill = SkillTable.getInstance().getInfo(removeSkillId1, 1);
+                L2Skill skill = SkillTable.getInfo(removeSkillId1, 1);
                 if (skill != null) {
-                    player.removeSkill(SkillTable.getInstance().getInfo(3006, 1));
+                    player.removeSkill(SkillTable.getInfo(3006, 1));
                     player.removeSkill(skill);
                 }
             }
 
             if (removeSkillId2 != 0) {
-                L2Skill skill = SkillTable.getInstance().getInfo(removeSkillId2, 1);
+                L2Skill skill = SkillTable.getInfo(removeSkillId2, 1);
                 if (skill != null) { player.removeSkill(skill); }
             }
 
             if (removeSkillId3 != 0) {
-                L2Skill skill = SkillTable.getInstance().getInfo(removeSkillId3, 1);
+                L2Skill skill = SkillTable.getInfo(removeSkillId3, 1);
                 if (skill != null) { player.removeSkill(skill); }
             }
             player.sendSkillList();

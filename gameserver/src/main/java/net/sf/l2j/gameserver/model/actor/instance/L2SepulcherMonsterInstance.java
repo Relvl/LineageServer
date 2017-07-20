@@ -18,9 +18,10 @@ import net.sf.l2j.gameserver.EChatType;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.instancemanager.FourSepulchersManager;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.network.client.game_to_client.NpcSay;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -269,14 +270,14 @@ public class L2SepulcherMonsterInstance extends L2MonsterInstance {
             for (L2PcInstance mem : player.getParty().getPartyMembers()) {
                 QuestState qs = mem.getQuestState(questId);
                 if (qs != null && (qs.isStarted() || qs.isCompleted()) && mem.getInventory().getItemByItemId(oldBrooch) == null) {
-                    mem.addItem("Quest", cupId, 1, mem, true);
+                    mem.addItem(EItemProcessPurpose.QUEST, cupId, 1, mem, true);
                 }
             }
         }
         else {
             QuestState qs = player.getQuestState(questId);
             if (qs != null && (qs.isStarted() || qs.isCompleted()) && player.getInventory().getItemByItemId(oldBrooch) == null) {
-                player.addItem("Quest", cupId, 1, player, true);
+                player.addItem(EItemProcessPurpose.QUEST, cupId, 1, player, true);
             }
         }
     }

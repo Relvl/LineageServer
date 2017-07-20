@@ -20,6 +20,7 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.cache.HtmCache;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.DropData;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.PcInventory;
@@ -114,7 +115,7 @@ public final class QuestState {
      * @return
      */
     public boolean isCreated() {
-        return (_state == Quest.STATE_CREATED);
+        return _state == Quest.STATE_CREATED;
     }
 
     /**
@@ -123,7 +124,7 @@ public final class QuestState {
      * @return boolean
      */
     public boolean isCompleted() {
-        return (_state == Quest.STATE_COMPLETED);
+        return _state == Quest.STATE_COMPLETED;
     }
 
     /**
@@ -132,7 +133,7 @@ public final class QuestState {
      * @return boolean
      */
     public boolean isStarted() {
-        return (_state == Quest.STATE_STARTED);
+        return _state == Quest.STATE_STARTED;
     }
 
     /**
@@ -292,10 +293,10 @@ public final class QuestState {
 
                 // since no flag had been skipped until now, the least significant bits must all
                 // be set to 1, up until "old" number of bits.
-                completedStateFlags |= ((1 << old) - 1);
+                completedStateFlags |= (1 << old) - 1;
 
                 // now, just set the bit corresponding to the passed cond to 1 (current step)
-                completedStateFlags |= (1 << (cond - 1));
+                completedStateFlags |= 1 << (cond - 1);
                 set("__compltdStateFlags", String.valueOf(completedStateFlags));
             }
         }
@@ -303,7 +304,7 @@ public final class QuestState {
         else {
             // if this is a push back to a previous step, clear all completion flags ahead
             if (cond < old) {
-                completedStateFlags &= ((1 << cond) - 1); // note, this also unsets the flag indicating that there exist skips
+                completedStateFlags &= (1 << cond) - 1; // note, this also unsets the flag indicating that there exist skips
 
                 // now, check if this resulted in no steps being skipped any more
                 if (completedStateFlags == ((1 << cond) - 1)) { unset("__compltdStateFlags"); }
@@ -318,7 +319,7 @@ public final class QuestState {
             // if this moves forward, it changes nothing on previously skipped steps...so just mark this
             // state and we are done
             else {
-                completedStateFlags |= (1 << (cond - 1));
+                completedStateFlags |= 1 << (cond - 1);
                 set("__compltdStateFlags", String.valueOf(completedStateFlags));
             }
         }
@@ -357,7 +358,7 @@ public final class QuestState {
      * @return int
      */
     public int getInt(String var) {
-        final String variable = _vars.get(var);
+        String variable = _vars.get(var);
         if (variable == null || variable.isEmpty()) { return 0; }
 
         int value = 0;
@@ -428,7 +429,7 @@ public final class QuestState {
      * @return {@code true} if all items exist in player's inventory, {@code false} otherwise
      */
     public boolean hasQuestItems(int... itemIds) {
-        final PcInventory inv = _player.getInventory();
+        PcInventory inv = _player.getInventory();
         for (int itemId : itemIds) {
             if (inv.getItemByItemId(itemId) == null) { return false; }
         }
@@ -472,7 +473,7 @@ public final class QuestState {
      * @return int
      */
     public int getEnchantLevel(int itemId) {
-        final L2ItemInstance enchanteditem = _player.getInventory().getItemByItemId(itemId);
+        L2ItemInstance enchanteditem = _player.getInventory().getItemByItemId(itemId);
         if (enchanteditem == null) { return 0; }
 
         return enchanteditem.getEnchantLevel();
@@ -500,7 +501,7 @@ public final class QuestState {
         if (itemCount <= 0) { return; }
 
         // Add items to player's inventory.
-        final L2ItemInstance item = _player.getInventory().addItem("Quest", itemId, itemCount, _player, _player);
+        L2ItemInstance item = _player.getInventory().addItem(EItemProcessPurpose.QUEST, itemId, itemCount, _player, _player);
         if (item == null) { return; }
 
         // Set enchant level for the item.
@@ -540,7 +541,7 @@ public final class QuestState {
      */
     public void takeItems(int itemId, int itemCount) {
         // Find item in player's inventory.
-        final L2ItemInstance item = _player.getInventory().getItemByItemId(itemId);
+        L2ItemInstance item = _player.getInventory().getItemByItemId(itemId);
         if (item == null) { return; }
 
         // Tests on count value and set correct value if necessary.
@@ -557,7 +558,7 @@ public final class QuestState {
         }
 
         // Destroy the quantity of items wanted.
-        _player.destroyItemByItemId("Quest", itemId, itemCount, _player, true);
+        _player.destroyItemByItemId(EItemProcessPurpose.QUEST, itemId, itemCount, _player, true);
     }
 
     /**
@@ -597,7 +598,7 @@ public final class QuestState {
      */
     public boolean dropItems(int itemId, int count, int neededCount, int dropChance, byte type) {
         // Get current amount of item.
-        final int currentCount = getQuestItemsCount(itemId);
+        int currentCount = getQuestItemsCount(itemId);
 
         // Required amount reached already?
         if (neededCount > 0 && currentCount >= neededCount) { return true; }
@@ -670,14 +671,14 @@ public final class QuestState {
 
         // For each reward type, calculate the probability of drop.
         for (int[] info : rewardsInfos) {
-            final int itemId = info[0];
-            final int currentCount = getQuestItemsCount(itemId);
-            final int neededCount = info[2];
+            int itemId = info[0];
+            int currentCount = getQuestItemsCount(itemId);
+            int neededCount = info[2];
 
             // Required amount reached already?
             if (neededCount > 0 && currentCount >= neededCount) { continue; }
 
-            final int count = info[1];
+            int count = info[1];
 
             int dropChance = info[3];
             int amount = 0;

@@ -17,9 +17,10 @@ package net.sf.l2j.gameserver.model.itemcontainer;
 import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EItemLocation;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
-import net.sf.l2j.gameserver.model.item.EItemLocation;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
 import net.sf.l2j.gameserver.model.itemcontainer.listeners.ArmorSetListener;
 import net.sf.l2j.gameserver.model.itemcontainer.listeners.BowRodListener;
@@ -288,7 +289,7 @@ public class PcInventory extends Inventory {
      * @param actor     : L2PcInstance Player requesting the item add
      * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
      */
-    public void addAdena(String process, int count, L2PcInstance actor, L2Object reference) {
+    public void addAdena(EItemProcessPurpose process, int count, L2PcInstance actor, L2Object reference) {
         if (count > 0) { addItem(process, ADENA_ID, count, actor, reference); }
     }
 
@@ -301,7 +302,7 @@ public class PcInventory extends Inventory {
      * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
      * @return true if successful.
      */
-    public boolean reduceAdena(String process, int count, L2PcInstance actor, L2Object reference) {
+    public boolean reduceAdena(EItemProcessPurpose process, int count, L2PcInstance actor, L2Object reference) {
         if (count > 0) { return destroyItemByItemId(process, ADENA_ID, count, actor, reference) != null; }
 
         return false;
@@ -315,7 +316,7 @@ public class PcInventory extends Inventory {
      * @param actor     : L2PcInstance Player requesting the item add
      * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
      */
-    public void addAncientAdena(String process, int count, L2PcInstance actor, L2Object reference) {
+    public void addAncientAdena(EItemProcessPurpose process, int count, L2PcInstance actor, L2Object reference) {
         if (count > 0) { addItem(process, ANCIENT_ADENA_ID, count, actor, reference); }
     }
 
@@ -328,7 +329,7 @@ public class PcInventory extends Inventory {
      * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
      * @return true if successful.
      */
-    public boolean reduceAncientAdena(String process, int count, L2PcInstance actor, L2Object reference) {
+    public boolean reduceAncientAdena(EItemProcessPurpose process, int count, L2PcInstance actor, L2Object reference) {
         if (count > 0) { return destroyItemByItemId(process, ANCIENT_ADENA_ID, count, actor, reference) != null; }
 
         return false;
@@ -344,7 +345,7 @@ public class PcInventory extends Inventory {
      * @return L2ItemInstance corresponding to the new item or the updated item in inventory
      */
     @Override
-    public L2ItemInstance addItem(String process, L2ItemInstance item, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance addItem(EItemProcessPurpose process, L2ItemInstance item, L2PcInstance actor, L2Object reference) {
         item = super.addItem(process, item, actor, reference);
         if (item == null) { return null; }
 
@@ -365,7 +366,7 @@ public class PcInventory extends Inventory {
      * @return L2ItemInstance corresponding to the new item or the updated item in inventory
      */
     @Override
-    public L2ItemInstance addItem(String process, int itemId, int count, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance addItem(EItemProcessPurpose process, int itemId, int count, L2PcInstance actor, L2Object reference) {
         L2ItemInstance item = super.addItem(process, itemId, count, actor, reference);
         if (item == null) { return null; }
 
@@ -398,7 +399,7 @@ public class PcInventory extends Inventory {
      * @return L2ItemInstance corresponding to the new item or the updated item in inventory
      */
     @Override
-    public L2ItemInstance transferItem(String process, int objectId, int count, ItemContainer target, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance transferItem(EItemProcessPurpose process, int objectId, int count, ItemContainer target, L2PcInstance actor, L2Object reference) {
         L2ItemInstance item = super.transferItem(process, objectId, count, target, actor, reference);
 
         if (_adena != null && (_adena.getCount() <= 0 || _adena.getOwnerId() != getOwnerId())) { _adena = null; }
@@ -418,7 +419,7 @@ public class PcInventory extends Inventory {
      * @return L2ItemInstance corresponding to the destroyed item or the updated item in inventory
      */
     @Override
-    public L2ItemInstance destroyItem(String process, L2ItemInstance item, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance destroyItem(EItemProcessPurpose process, L2ItemInstance item, L2PcInstance actor, L2Object reference) {
         return this.destroyItem(process, item, item.getCount(), actor, reference);
     }
 
@@ -432,7 +433,7 @@ public class PcInventory extends Inventory {
      * @return L2ItemInstance corresponding to the destroyed item or the updated item in inventory
      */
     @Override
-    public L2ItemInstance destroyItem(String process, L2ItemInstance item, int count, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance destroyItem(EItemProcessPurpose process, L2ItemInstance item, int count, L2PcInstance actor, L2Object reference) {
         item = super.destroyItem(process, item, count, actor, reference);
 
         if (_adena != null && _adena.getCount() <= 0) { _adena = null; }
@@ -453,7 +454,7 @@ public class PcInventory extends Inventory {
      * @return L2ItemInstance corresponding to the destroyed item or the updated item in inventory
      */
     @Override
-    public L2ItemInstance destroyItem(String process, int objectId, int count, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance destroyItem(EItemProcessPurpose process, int objectId, int count, L2PcInstance actor, L2Object reference) {
         L2ItemInstance item = getItemByObjectId(objectId);
         if (item == null) { return null; }
 
@@ -471,7 +472,7 @@ public class PcInventory extends Inventory {
      * @return L2ItemInstance corresponding to the destroyed item or the updated item in inventory
      */
     @Override
-    public L2ItemInstance destroyItemByItemId(String process, int itemId, int count, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance destroyItemByItemId(EItemProcessPurpose process, int itemId, int count, L2PcInstance actor, L2Object reference) {
         L2ItemInstance item = getItemByItemId(itemId);
         if (item == null) { return null; }
 
@@ -488,7 +489,7 @@ public class PcInventory extends Inventory {
      * @return L2ItemInstance corresponding to the destroyed item or the updated item in inventory
      */
     @Override
-    public L2ItemInstance dropItem(String process, L2ItemInstance item, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance dropItem(EItemProcessPurpose process, L2ItemInstance item, L2PcInstance actor, L2Object reference) {
         item = super.dropItem(process, item, actor, reference);
 
         if (_adena != null && (_adena.getCount() <= 0 || _adena.getOwnerId() != getOwnerId())) { _adena = null; }
@@ -509,7 +510,7 @@ public class PcInventory extends Inventory {
      * @return L2ItemInstance corresponding to the destroyed item or the updated item in inventory
      */
     @Override
-    public L2ItemInstance dropItem(String process, int objectId, int count, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance dropItem(EItemProcessPurpose process, int objectId, int count, L2PcInstance actor, L2Object reference) {
         L2ItemInstance item = super.dropItem(process, objectId, count, actor, reference);
 
         if (_adena != null && (_adena.getCount() <= 0 || _adena.getOwnerId() != getOwnerId())) { _adena = null; }

@@ -2,6 +2,7 @@ package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.EnchantResult;
 
@@ -22,7 +23,7 @@ public final class RequestGetItemFromPet extends L2GameClientPacket {
     protected void runImpl() {
         if (_amount <= 0) { return; }
 
-        final L2PcInstance player = getClient().getActiveChar();
+        L2PcInstance player = getClient().getActiveChar();
         if (player == null || !player.hasPet()) { return; }
 
         if (player.isProcessingTransaction()) {
@@ -36,9 +37,9 @@ public final class RequestGetItemFromPet extends L2GameClientPacket {
             player.sendPacket(SystemMessageId.ENCHANT_SCROLL_CANCELLED);
         }
 
-        final L2PetInstance pet = (L2PetInstance) player.getPet();
+        L2PetInstance pet = (L2PetInstance) player.getPet();
 
-        if (pet.transferItem("Transfer", _objectId, _amount, player.getInventory(), player, pet) == null) {
+        if (pet.transferItem(EItemProcessPurpose.PET_TRANSFER, _objectId, _amount, player.getInventory(), player, pet) == null) {
             _log.warn("Invalid item transfer request: {}(pet) --> {}", pet.getName(), player.getName());
         }
     }

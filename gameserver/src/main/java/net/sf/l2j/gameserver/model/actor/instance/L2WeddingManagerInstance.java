@@ -20,11 +20,12 @@ import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.SkillTable.FrequentSkill;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.CoupleManager;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.entity.Couple;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
 import net.sf.l2j.gameserver.util.Broadcast;
@@ -65,8 +66,8 @@ public class L2WeddingManagerInstance extends L2NpcInstance {
         ptarget.setMarried(true);
 
         // reduce adenas amount according to configs
-        player.reduceAdena("Wedding", Config.WEDDING_PRICE, player.getCurrentFolkNPC(), true);
-        ptarget.reduceAdena("Wedding", Config.WEDDING_PRICE, player.getCurrentFolkNPC(), true);
+        player.reduceAdena(EItemProcessPurpose.WEDDING, Config.WEDDING_PRICE, player.getCurrentFolkNPC(), true);
+        ptarget.reduceAdena(EItemProcessPurpose.WEDDING, Config.WEDDING_PRICE, player.getCurrentFolkNPC(), true);
 
         // Flag players as married
         Couple couple = CoupleManager.getInstance().getCouple(player.getCoupleId());

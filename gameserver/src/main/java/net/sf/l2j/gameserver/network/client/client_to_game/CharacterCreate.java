@@ -25,6 +25,7 @@ import net.sf.l2j.gameserver.model.L2ShortCut;
 import net.sf.l2j.gameserver.model.L2SkillLearn;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.template.PcTemplate;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.EItemType2;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
@@ -100,7 +101,7 @@ public final class CharacterCreate extends L2GameClientPacket {
         PcTemplate template = null;
 
 		/*
-		 * DrHouse: Since checks for duplicate names are done using SQL, lock must be held until data is written to DB as well.
+         * DrHouse: Since checks for duplicate names are done using SQL, lock must be held until data is written to DB as well.
 		 */
         synchronized (CharNameTable.getInstance()) {
             if (CharNameTable.accountCharNumber(getClient().getAccountName()) >= 7) {
@@ -132,7 +133,7 @@ public final class CharacterCreate extends L2GameClientPacket {
 
         L2World.getInstance().addObject(newChar);
 
-        newChar.addAdena("Init", Config.STARTING_ADENA, null, false);
+        newChar.addAdena(EItemProcessPurpose.INIT, Config.STARTING_ADENA, null, false);
         newChar.setXYZInvisible(template.getSpawnX(), template.getSpawnY(), template.getSpawnZ());
         newChar.setTitle("");
 
@@ -141,7 +142,7 @@ public final class CharacterCreate extends L2GameClientPacket {
         newChar.registerShortCut(new L2ShortCut(10, 0, 3, 0, -1, 1)); // sit shortcut
 
         for (Item ia : template.getItems()) {
-            L2ItemInstance item = newChar.getInventory().addItem("Init", ia.getItemId(), 1, newChar, null);
+            L2ItemInstance item = newChar.getInventory().addItem(EItemProcessPurpose.INIT, ia.getItemId(), 1, newChar, null);
             if (item.getItemId() == 5588) // tutorial book shortcut
             { newChar.registerShortCut(new L2ShortCut(11, 0, 1, item.getObjectId(), -1, 1)); }
 
@@ -153,7 +154,7 @@ public final class CharacterCreate extends L2GameClientPacket {
         }
 
         for (L2SkillLearn skill : SkillTreeTable.getInstance().getAvailableSkills(newChar, newChar.getClassId())) {
-            newChar.addSkill(SkillTable.getInstance().getInfo(skill.getId(), skill.getLevel()), true);
+            newChar.addSkill(SkillTable.getInfo(skill.getId(), skill.getLevel()), true);
             if (skill.getId() == 1001 || skill.getId() == 1177) { newChar.registerShortCut(new L2ShortCut(1, 0, 2, skill.getId(), 1, 1)); }
 
             if (skill.getId() == 1216) { newChar.registerShortCut(new L2ShortCut(9, 0, 2, skill.getId(), 1, 1)); }

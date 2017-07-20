@@ -2,6 +2,7 @@ package net.sf.l2j.gameserver.model.itemcontainer;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.EItemLocation;
 
@@ -20,6 +21,11 @@ public class PcFreight extends ItemContainer {
     @Override
     public String getName() {
         return "Freight";
+    }
+
+    @Override
+    public EItemProcessPurpose getItemInteractionPurpose() {
+        return EItemProcessPurpose.FREIGHT;
     }
 
     @Override

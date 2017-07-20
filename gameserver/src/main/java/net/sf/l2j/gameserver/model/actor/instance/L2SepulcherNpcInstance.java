@@ -20,10 +20,11 @@ import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.DoorTable;
 import net.sf.l2j.gameserver.instancemanager.FourSepulchersManager;
-import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
 import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
 import net.sf.l2j.gameserver.network.client.game_to_client.MoveToPawn;
@@ -175,7 +176,7 @@ public class L2SepulcherNpcInstance extends L2NpcInstance {
                 if (player.isInParty() && !player.getParty().isLeader(player)) {
                     player = player.getParty().getLeader();
                 }
-                player.addItem("Quest", HALLS_KEY, 1, player, true);
+                player.addItem(EItemProcessPurpose.QUEST, HALLS_KEY, 1, player, true);
                 break;
 
             default: {
@@ -214,8 +215,10 @@ public class L2SepulcherNpcInstance extends L2NpcInstance {
             int val = 0;
             try {
                 val = Integer.parseInt(command.substring(5));
-            } catch (IndexOutOfBoundsException ioobe) {
-            } catch (NumberFormatException nfe) {
+            }
+            catch (IndexOutOfBoundsException ioobe) {
+            }
+            catch (NumberFormatException nfe) {
             }
             showChatWindow(player, val);
         }
@@ -234,11 +237,11 @@ public class L2SepulcherNpcInstance extends L2NpcInstance {
                         if (player.isInParty()) {
                             for (L2PcInstance mem : player.getParty().getPartyMembers()) {
                                 if (mem != null && mem.getInventory().getItemByItemId(HALLS_KEY) != null) {
-                                    mem.destroyItemByItemId("Quest", HALLS_KEY, mem.getInventory().getItemByItemId(HALLS_KEY).getCount(), mem, true);
+                                    mem.destroyItemByItemId(EItemProcessPurpose.QUEST, HALLS_KEY, mem.getInventory().getItemByItemId(HALLS_KEY).getCount(), mem, true);
                                 }
                             }
                         }
-                        else { player.destroyItemByItemId("Quest", HALLS_KEY, hallsKey.getCount(), player, true); }
+                        else { player.destroyItemByItemId(EItemProcessPurpose.QUEST, HALLS_KEY, hallsKey.getCount(), player, true); }
                     }
                 }
             }
@@ -291,7 +294,8 @@ public class L2SepulcherNpcInstance extends L2NpcInstance {
         public void run() {
             try {
                 _DoorTable.getDoor(_DoorId).closeMe();
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 _log.warning(e.getMessage());
             }
         }

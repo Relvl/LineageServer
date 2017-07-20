@@ -54,7 +54,7 @@ public final class RequestExMagicSkillUseGround extends L2GameClientPacket {
         }
 
         // Get the L2Skill template corresponding to the skillID received from the client
-        L2Skill skill = SkillTable.getInstance().getInfo(_skillId, level);
+        L2Skill skill = SkillTable.getInfo(_skillId, level);
         if (skill != null) {
             activeChar.setCurrentSkillWorldPosition(new Location(_x, _y, _z));
 

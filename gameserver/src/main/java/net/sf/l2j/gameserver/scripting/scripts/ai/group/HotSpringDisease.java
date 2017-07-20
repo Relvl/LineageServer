@@ -98,7 +98,7 @@ public class HotSpringDisease extends AbstractNpcAI
 			if (level > 10)
 				level = 10;
 			
-			SkillTable.getInstance().getInfo(skillId, level).getEffects(npc, victim);
+			SkillTable.getInfo(skillId, level).getEffects(npc, victim);
 		}
 	}
 }

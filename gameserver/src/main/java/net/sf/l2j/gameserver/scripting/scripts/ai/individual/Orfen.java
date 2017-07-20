@@ -151,7 +151,7 @@ public class Orfen extends AbstractNpcAI {
             npc.broadcastNpcSay(ORFEN_CHAT[Rnd.get(4)].replace("$s1", caster.getName()));
             originalCaster.teleToLocation(npc.getX(), npc.getY(), npc.getZ(), 0);
             npc.setTarget(originalCaster);
-            npc.doCast(SkillTable.getInstance().getInfo(4064, 1));
+            npc.doCast(SkillTable.getInfo(4064, 1));
         }
         return super.onSkillSee(npc, caster, skill, targets, isPet);
     }
@@ -164,7 +164,7 @@ public class Orfen extends AbstractNpcAI {
         int callerId = caller.getNpcId();
         if (npcId == RAIKEL_LEOS && Rnd.get(20) == 0) {
             npc.setTarget(attacker);
-            npc.doCast(SkillTable.getInstance().getInfo(4067, 4));
+            npc.doCast(SkillTable.getInfo(4067, 4));
         }
         else if (npcId == RIBA_IREN) {
             int chance = 1;
@@ -173,7 +173,7 @@ public class Orfen extends AbstractNpcAI {
             if (callerId != RIBA_IREN && (caller.getCurrentHp() / caller.getMaxHp() < 0.5) && Rnd.get(10) < chance) {
                 npc.getAI().setIntention(EIntention.IDLE, null, null);
                 npc.setTarget(caller);
-                npc.doCast(SkillTable.getInstance().getInfo(4516, 1));
+                npc.doCast(SkillTable.getInfo(4516, 1));
             }
         }
         return super.onFactionCall(npc, caller, attacker, isPet);
@@ -193,14 +193,14 @@ public class Orfen extends AbstractNpcAI {
                 npc.broadcastNpcSay(ORFEN_CHAT[Rnd.get(3)].replace("$s1", attacker.getName()));
                 attacker.teleToLocation(npc.getX(), npc.getY(), npc.getZ(), 0);
                 npc.setTarget(attacker);
-                npc.doCast(SkillTable.getInstance().getInfo(4064, 1));
+                npc.doCast(SkillTable.getInfo(4064, 1));
             }
         }
         // RIBA_IREN case, as it's the only other registered.
         else {
             if (!npc.isCastingNow() && (npc.getCurrentHp() - damage) < (npc.getMaxHp() / 2.0)) {
                 npc.setTarget(attacker);
-                npc.doCast(SkillTable.getInstance().getInfo(4516, 1));
+                npc.doCast(SkillTable.getInfo(4516, 1));
             }
         }
         return super.onAttack(npc, attacker, damage, isPet);

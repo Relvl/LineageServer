@@ -18,6 +18,7 @@ import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.datatables.SkillTable.FrequentSkill;
 import net.sf.l2j.gameserver.model.L2Object;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Character;
@@ -159,7 +160,7 @@ public class KetraOrcSupport extends Quest
 				htmltext = "31372-4.htm";
 				st.takeItems(HORN, buffInfo[1]);
 				npc.setTarget(player);
-				npc.doCast(SkillTable.getInstance().getInfo(buffInfo[0], 1));
+				npc.doCast(SkillTable.getInfo(buffInfo[0], 1));
 				npc.setCurrentHpMp(npc.getMaxHp(), npc.getMaxMp());
 			}
 		}
@@ -390,11 +391,11 @@ public class KetraOrcSupport extends Quest
 				if (item != null)
 				{
 					// Destroy the badge.
-					player.destroyItemByItemId("Quest", i, item.getCount(), player, true);
+					player.destroyItemByItemId(EItemProcessPurpose.QUEST, i, item.getCount(), player, true);
 					
 					// Badge lvl 1 ; no addition of badge of lower level.
 					if (i != 7211)
-						player.addItem("Quest", i - 1, 1, player, true);
+						player.addItem(EItemProcessPurpose.QUEST, i - 1, 1, player, true);
 					
 					break;
 				}

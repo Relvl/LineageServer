@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.model.itemcontainer;
 
 import net.sf.l2j.Config;
@@ -21,9 +7,10 @@ import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.EItemModifyState;
-import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.EItemLocation;
+import net.sf.l2j.gameserver.model.item.EItemModifyState;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
+import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.world.L2World;
 
@@ -51,6 +38,10 @@ public abstract class ItemContainer {
 
     public String getName() {
         return "ItemContainer";
+    }
+
+    public EItemProcessPurpose getItemInteractionPurpose(){
+        return EItemProcessPurpose.ITEM_CONTAINER;
     }
 
     /**
@@ -158,7 +149,7 @@ public abstract class ItemContainer {
      * @param reference : The L2Object referencing current action (like NPC selling item or previous item in transformation,...)
      * @return the L2ItemInstance corresponding to the new or updated item.
      */
-    public L2ItemInstance addItem(String process, L2ItemInstance item, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance addItem(EItemProcessPurpose process, L2ItemInstance item, L2PcInstance actor, L2Object reference) {
         L2ItemInstance olditem = getItemByItemId(item.getItemId());
 
         // If stackable item is found in inventory just add to current quantity
@@ -206,7 +197,7 @@ public abstract class ItemContainer {
      * @param reference : The L2Object referencing current action (like NPC selling item or previous item in transformation,...)
      * @return the L2ItemInstance corresponding to the new or updated item.
      */
-    public L2ItemInstance addItem(String process, int itemId, int count, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance addItem(EItemProcessPurpose process, int itemId, int count, L2PcInstance actor, L2Object reference) {
         L2ItemInstance item = getItemByItemId(itemId);
 
         // If stackable item is found in inventory just add to current quantity
@@ -261,7 +252,7 @@ public abstract class ItemContainer {
      * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
      * @return L2ItemInstance corresponding to the new item or the updated item in inventory
      */
-    public L2ItemInstance transferItem(String process, int objectId, int count, ItemContainer target, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance transferItem(EItemProcessPurpose process, int objectId, int count, ItemContainer target, L2PcInstance actor, L2Object reference) {
         if (target == null) { return null; }
 
         L2ItemInstance sourceitem = getItemByObjectId(objectId);
@@ -321,7 +312,7 @@ public abstract class ItemContainer {
      * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
      * @return L2ItemInstance corresponding to the destroyed item or the updated item in inventory
      */
-    public L2ItemInstance destroyItem(String process, L2ItemInstance item, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance destroyItem(EItemProcessPurpose process, L2ItemInstance item, L2PcInstance actor, L2Object reference) {
         return destroyItem(process, item, item.getCount(), actor, reference);
     }
 
@@ -335,7 +326,7 @@ public abstract class ItemContainer {
      * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
      * @return L2ItemInstance corresponding to the destroyed item or the updated item in inventory
      */
-    public L2ItemInstance destroyItem(String process, L2ItemInstance item, int count, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance destroyItem(EItemProcessPurpose process, L2ItemInstance item, int count, L2PcInstance actor, L2Object reference) {
         synchronized (item) {
             // Adjust item quantity
             if (item.getCount() > count) {
@@ -373,7 +364,7 @@ public abstract class ItemContainer {
      * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
      * @return L2ItemInstance corresponding to the destroyed item or the updated item in inventory
      */
-    public L2ItemInstance destroyItem(String process, int objectId, int count, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance destroyItem(EItemProcessPurpose process, int objectId, int count, L2PcInstance actor, L2Object reference) {
         L2ItemInstance item = getItemByObjectId(objectId);
         if (item == null) { return null; }
 
@@ -390,7 +381,7 @@ public abstract class ItemContainer {
      * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
      * @return L2ItemInstance corresponding to the destroyed item or the updated item in inventory
      */
-    public L2ItemInstance destroyItemByItemId(String process, int itemId, int count, L2PcInstance actor, L2Object reference) {
+    public L2ItemInstance destroyItemByItemId(EItemProcessPurpose process, int itemId, int count, L2PcInstance actor, L2Object reference) {
         L2ItemInstance item = getItemByItemId(itemId);
         if (item == null) { return null; }
 
@@ -404,7 +395,7 @@ public abstract class ItemContainer {
      * @param actor     : L2PcInstance Player requesting the item destroy
      * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
      */
-    public void destroyAllItems(String process, L2PcInstance actor, L2Object reference) {
+    public void destroyAllItems(EItemProcessPurpose process, L2PcInstance actor, L2Object reference) {
         for (L2ItemInstance item : _items) { destroyItem(process, item, actor, reference); }
     }
 
@@ -484,7 +475,7 @@ public abstract class ItemContainer {
                 L2PcInstance owner = (getOwner() == null) ? null : getOwner().getActingPlayer();
 
                 // If stackable item is found in inventory just add to current quantity
-                if (item.isStackable() && getItemByItemId(item.getItemId()) != null) { addItem("Restore", item, owner, null); }
+                if (item.isStackable() && getItemByItemId(item.getItemId()) != null) { addItem(EItemProcessPurpose.RESTORE, item, owner, null); }
                 else { addItem(item); }
             }
             inv.close();

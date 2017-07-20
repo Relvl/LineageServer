@@ -155,7 +155,7 @@ public class L2EffectZone extends L2ZoneType {
                     if (temp != null && !temp.isDead()) {
                         if (Rnd.get(100) < getChance()) {
                             for (Entry<Integer, Integer> e : _skills.entrySet()) {
-                                L2Skill skill = SkillTable.getInstance().getInfo(e.getKey(), e.getValue());
+                                L2Skill skill = SkillTable.getInfo(e.getKey(), e.getValue());
                                 if (skill != null && skill.checkCondition(temp, temp, false)) { if (temp.getFirstEffect(e.getKey()) == null) { skill.getEffects(temp, temp); } }
                             }
                         }

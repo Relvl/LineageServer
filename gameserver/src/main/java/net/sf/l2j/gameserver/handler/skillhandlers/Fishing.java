@@ -21,14 +21,15 @@ import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.instancemanager.ZoneManager;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.item.type.EWeaponType;
 import net.sf.l2j.gameserver.model.location.Location;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.zone.L2ZoneType;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.model.zone.type.L2FishingZone;
@@ -110,7 +111,7 @@ public class Fishing implements ISkillHandler {
         int y = player.getY() + (int) (sin * rnd);
         int z = player.getZ() + 50;
         /*
-		 * ...and if the spot is in a fishing zone. If it is, it will position the hook on the water surface. If not, you have to be GM to proceed past here... in that case, the hook will be positioned using the old Z lookup method.
+         * ...and if the spot is in a fishing zone. If it is, it will position the hook on the water surface. If not, you have to be GM to proceed past here... in that case, the hook will be positioned using the old Z lookup method.
 		 */
         L2FishingZone aimingTo = null;
         L2WaterZone water = null;
@@ -164,7 +165,7 @@ public class Fishing implements ISkillHandler {
         }
 
         // Has enough bait, consume 1 and update inventory. Start fishing follows.
-        lure2 = player.getInventory().destroyItem("Consume", player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_LHAND), 1, player, null);
+        lure2 = player.getInventory().destroyItem(EItemProcessPurpose.CONSUME, player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_LHAND), 1, player, null);
         InventoryUpdate iu = new InventoryUpdate();
         iu.addModifiedItem(lure2);
         player.sendPacket(iu);

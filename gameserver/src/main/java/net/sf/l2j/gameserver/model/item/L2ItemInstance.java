@@ -17,8 +17,8 @@ import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.EtcItem;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
-import net.sf.l2j.gameserver.model.item.type.EtcItemType;
 import net.sf.l2j.gameserver.model.item.type.EMaskedItemType;
+import net.sf.l2j.gameserver.model.item.type.EtcItemType;
 import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.world.L2WorldRegion;
@@ -176,7 +176,7 @@ public final class L2ItemInstance extends L2Object {
      * @param creator   : L2PcInstance Player requesting the item creation
      * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
      */
-    public void setOwnerId(String process, int owner_id, L2PcInstance creator, L2Object reference) {
+    public void setOwnerId(EItemProcessPurpose process, int owner_id, L2PcInstance creator, L2Object reference) {
         setOwnerId(owner_id);
 
         if (Config.LOG_ITEMS) {
@@ -261,7 +261,7 @@ public final class L2ItemInstance extends L2Object {
      * @param creator   : L2PcInstance Player requesting the item creation
      * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
      */
-    public void changeCount(String process, int count, L2PcInstance creator, L2Object reference) {
+    public void changeCount(EItemProcessPurpose process, int count, L2PcInstance creator, L2Object reference) {
         if (count == 0) { return; }
 
         if (count > 0 && _count > Integer.MAX_VALUE - count) { setCount(Integer.MAX_VALUE); }

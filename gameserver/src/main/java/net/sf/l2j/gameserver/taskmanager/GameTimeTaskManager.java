@@ -160,7 +160,7 @@ public final class GameTimeTaskManager implements Runnable
 			DayNightSpawnManager.getInstance().notifyChangeMode();
 			
 			// Set Shadow Sense skill to apply/remove effect from players.
-			skill = SkillTable.getInstance().getInfo(SHADOW_SENSE, 1);
+			skill = SkillTable.getInfo(SHADOW_SENSE, 1);
 		}
 		
 		// List is empty, skip.

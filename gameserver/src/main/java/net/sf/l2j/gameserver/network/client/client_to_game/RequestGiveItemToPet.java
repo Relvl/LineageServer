@@ -17,6 +17,7 @@ package net.sf.l2j.gameserver.network.client.client_to_game;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.EnchantResult;
@@ -81,7 +82,7 @@ public final class RequestGiveItemToPet extends L2GameClientPacket {
             player.sendPacket(SystemMessageId.ENCHANT_SCROLL_CANCELLED);
         }
 
-        if (player.transferItem("Transfer", _objectId, _amount, pet.getInventory(), pet) == null) {
+        if (player.transferItem(EItemProcessPurpose.PET_TRANSFER, _objectId, _amount, pet.getInventory(), pet) == null) {
             _log.warn("Invalid item transfer request: {}(pet) --> {}", pet.getName(), player.getName());
         }
     }

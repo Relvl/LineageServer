@@ -4,14 +4,15 @@ import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.datatables.ArmorSetsTable;
 import net.sf.l2j.gameserver.datatables.SkillTable;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.ArmorSet;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
@@ -65,7 +66,7 @@ public final class RequestEnchantItem extends AbstractEnchantPacket {
         }
 
         // attempting to destroy scroll
-        scroll = activeChar.getInventory().destroyItem("Enchant", scroll.getObjectId(), 1, activeChar, item);
+        scroll = activeChar.getInventory().destroyItem(EItemProcessPurpose.ENCHANT, scroll.getObjectId(), 1, activeChar, item);
         if (scroll == null) {
             activeChar.sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS);
             Util.handleIllegalPlayerAction(activeChar, activeChar.getName() + " tried to enchant without scroll.", Config.DEFAULT_PUNISH);
@@ -133,7 +134,7 @@ public final class RequestEnchantItem extends AbstractEnchantPacket {
                             {
                                 int skillId = armorSet.getEnchant6skillId();
                                 if (skillId > 0) {
-                                    L2Skill skill = SkillTable.getInstance().getInfo(skillId, 1);
+                                    L2Skill skill = SkillTable.getInfo(skillId, 1);
                                     if (skill != null) {
                                         activeChar.addSkill(skill, false);
                                         activeChar.sendSkillList();
@@ -168,7 +169,7 @@ public final class RequestEnchantItem extends AbstractEnchantPacket {
                             {
                                 int skillId = armorSet.getEnchant6skillId();
                                 if (skillId > 0) {
-                                    L2Skill skill = SkillTable.getInstance().getInfo(skillId, 1);
+                                    L2Skill skill = SkillTable.getInfo(skillId, 1);
                                     if (skill != null) {
                                         activeChar.removeSkill(skill, false);
                                         activeChar.sendSkillList();
@@ -193,7 +194,7 @@ public final class RequestEnchantItem extends AbstractEnchantPacket {
                     int count = item.getCrystalCount() - (item.getItem().getCrystalCount() + 1) / 2;
                     if (count < 1) { count = 1; }
 
-                    L2ItemInstance destroyItem = activeChar.getInventory().destroyItem("Enchant", item, activeChar, null);
+                    L2ItemInstance destroyItem = activeChar.getInventory().destroyItem(EItemProcessPurpose.ENCHANT, item, activeChar, null);
                     if (destroyItem == null) {
                         // unable to destroy item, cheater ?
                         Util.handleIllegalPlayerAction(activeChar, "Unable to delete item on enchant failure from player " + activeChar.getName() + ", possible cheater !", Config.DEFAULT_PUNISH);
@@ -203,7 +204,7 @@ public final class RequestEnchantItem extends AbstractEnchantPacket {
                     }
 
                     if (crystalId != 0) {
-                        activeChar.getInventory().addItem("Enchant", crystalId, count, activeChar, destroyItem);
+                        activeChar.getInventory().addItem(EItemProcessPurpose.ENCHANT, crystalId, count, activeChar, destroyItem);
                         activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.EARNED_S2_S1_S).addItemName(crystalId).addItemNumber(count));
                     }
 

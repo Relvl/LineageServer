@@ -3,9 +3,10 @@ package net.sf.l2j.gameserver.model.itemcontainer;
 import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
+import net.sf.l2j.gameserver.model.item.EItemLocation;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
-import net.sf.l2j.gameserver.model.item.EItemLocation;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
 import net.sf.l2j.gameserver.model.world.L2World;
@@ -103,7 +104,7 @@ public class PetInventory extends Inventory {
             if (petOwner != null) {
                 // Transfer each item to master's inventory.
                 for (L2ItemInstance item : _items) {
-                    _owner.transferItem("return", item.getObjectId(), item.getCount(), petOwner.getInventory(), petOwner, _owner);
+                    _owner.transferItem(EItemProcessPurpose.RETURN, item.getObjectId(), item.getCount(), petOwner.getInventory(), petOwner, _owner);
                     L2World.getInstance().removeObject(item);
                 }
             }

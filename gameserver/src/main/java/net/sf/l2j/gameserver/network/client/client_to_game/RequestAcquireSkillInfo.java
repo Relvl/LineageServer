@@ -56,7 +56,7 @@ public class RequestAcquireSkillInfo extends L2GameClientPacket
 		if (!activeChar.isInsideRadius(trainer, L2Npc.INTERACTION_DISTANCE, false, false) && !activeChar.isGM())
 			return;
 		
-		final L2Skill skill = SkillTable.getInstance().getInfo(_skillId, _skillLevel);
+		final L2Skill skill = SkillTable.getInfo(_skillId, _skillLevel);
 		if (skill == null)
 			return;
 		

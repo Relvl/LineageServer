@@ -23,6 +23,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2MerchantInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.buylist.NpcBuyList;
 import net.sf.l2j.gameserver.model.buylist.Product;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
@@ -129,7 +130,7 @@ public final class RequestPreviewItem extends L2GameClientPacket {
         }
 
         // Charge buyer and add tax to castle treasury if not owned by npc clan because a Try On is not Free
-        if (totalPrice < 0 || !activeChar.reduceAdena("Wear", totalPrice, activeChar.getCurrentFolkNPC(), true)) {
+        if (totalPrice < 0 || !activeChar.reduceAdena(EItemProcessPurpose.WEAR, totalPrice, activeChar.getCurrentFolkNPC(), true)) {
             activeChar.sendPacket(SystemMessageId.YOU_NOT_ENOUGH_ADENA);
             return;
         }

@@ -62,7 +62,7 @@ public final class FusionSkill
 			((EffectFusion) effect).increaseEffect();
 		else
 		{
-			L2Skill force = SkillTable.getInstance().getInfo(_fusionId, _fusionLevel);
+			L2Skill force = SkillTable.getInfo(_fusionId, _fusionLevel);
 			if (force != null)
 				force.getEffects(_caster, _target, null);
 			else

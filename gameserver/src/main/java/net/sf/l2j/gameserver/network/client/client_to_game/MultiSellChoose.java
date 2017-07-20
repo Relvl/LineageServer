@@ -20,6 +20,7 @@ import net.sf.l2j.gameserver.datatables.MultisellData;
 import net.sf.l2j.gameserver.model.L2Augmentation;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.Item;
@@ -59,7 +60,7 @@ public class MultiSellChoose extends L2GameClientPacket {
     public void runImpl() {
         if (!FloodProtectors.performAction(getClient(), Action.MULTISELL)) { return; }
 
-        final L2PcInstance player = getClient().getActiveChar();
+        L2PcInstance player = getClient().getActiveChar();
         if (player == null) { return; }
 
         if (_amount < 1 || _amount > 9999) { return; }
@@ -80,7 +81,7 @@ public class MultiSellChoose extends L2GameClientPacket {
     }
 
     private void doExchange(L2PcInstance player, L2Npc merchant, Entry templateEntry, boolean applyTaxes, boolean maintainEnchantment, int enchantment) {
-        final PcInventory inv = player.getInventory();
+        PcInventory inv = player.getInventory();
 
         Entry entry = prepareEntry(merchant, templateEntry, applyTaxes, maintainEnchantment, enchantment);
 
@@ -198,7 +199,7 @@ public class MultiSellChoose extends L2GameClientPacket {
                 if (Config.ALT_BLACKSMITH_USE_RECIPES || !e.getMaintainIngredient()) {
                     // if it's a stackable item, just reduce the amount from the first (only) instance that is found in the inventory
                     if (itemToTake.isStackable()) {
-                        if (!player.destroyItem("Multisell", itemToTake.getObjectId(), (e.getItemCount() * _amount), player.getTarget(), true)) {
+                        if (!player.destroyItem(EItemProcessPurpose.MULTISELL, itemToTake.getObjectId(), e.getItemCount() * _amount, player.getTarget(), true)) {
                             return;
                         }
                     }
@@ -215,7 +216,7 @@ public class MultiSellChoose extends L2GameClientPacket {
                                 if (inventoryContents[i].isAugmented()) {
                                     augmentation.add(inventoryContents[i].getAugmentation());
                                 }
-                                if (!player.destroyItem("Multisell", inventoryContents[i].getObjectId(), 1, player.getTarget(), true)) {
+                                if (!player.destroyItem(EItemProcessPurpose.MULTISELL, inventoryContents[i].getObjectId(), 1, player.getTarget(), true)) {
                                     return;
                                 }
                             }
@@ -238,7 +239,7 @@ public class MultiSellChoose extends L2GameClientPacket {
                                         }
                                     }
                                 }
-                                if (!player.destroyItem("Multisell", itemToTake.getObjectId(), 1, player.getTarget(), true)) {
+                                if (!player.destroyItem(EItemProcessPurpose.MULTISELL, itemToTake.getObjectId(), 1, player.getTarget(), true)) {
                                     return;
                                 }
                             }
@@ -256,11 +257,11 @@ public class MultiSellChoose extends L2GameClientPacket {
         // Generate the appropriate items
         for (Ingredient e : entry.getProducts()) {
             if (ItemTable.getInstance().createDummyItem(e.getItemId()).isStackable()) {
-                inv.addItem("Multisell", e.getItemId(), (e.getItemCount() * _amount), player, player.getTarget());
+                inv.addItem(EItemProcessPurpose.MULTISELL, e.getItemId(), e.getItemCount() * _amount, player, player.getTarget());
             }
             else {
                 for (int i = 0; i < (e.getItemCount() * _amount); i++) {
-                    L2ItemInstance product = inv.addItem("Multisell", e.getItemId(), 1, player, player.getTarget());
+                    L2ItemInstance product = inv.addItem(EItemProcessPurpose.MULTISELL, e.getItemId(), 1, player, player.getTarget());
                     if (product == null) { continue; }
 
                     if (maintainEnchantment) {

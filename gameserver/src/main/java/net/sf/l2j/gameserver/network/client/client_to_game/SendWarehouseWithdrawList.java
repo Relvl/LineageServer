@@ -122,7 +122,7 @@ public final class SendWarehouseWithdrawList extends L2GameClientPacket {
                 return;
             }
 
-            L2ItemInstance newItem = warehouse.transferItem(warehouse.getName(), i.getId(), i.getValue(), player.getInventory(), player, manager);
+            L2ItemInstance newItem = warehouse.transferItem(warehouse.getItemInteractionPurpose(), i.getId(), i.getValue(), player.getInventory(), player, manager);
             if (newItem == null) {
                 _log.warn("Error withdrawing a warehouse object for {} (newitem == null)", player.getName());
                 return;

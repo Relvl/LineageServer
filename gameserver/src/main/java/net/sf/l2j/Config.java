@@ -597,7 +597,6 @@ public final class Config {
      */
     public static boolean AUTO_LOOT;
     public static boolean AUTO_LOOT_HERBS;
-    public static boolean AUTO_LOOT_RAID;
 
     /**
      * Items Management
@@ -1174,7 +1173,6 @@ public final class Config {
 
             AUTO_LOOT = server.getProperty("AutoLoot", false);
             AUTO_LOOT_HERBS = server.getProperty("AutoLootHerbs", false);
-            AUTO_LOOT_RAID = server.getProperty("AutoLootRaid", false);
 
             MULTIPLE_ITEM_DROP = server.getProperty("MultipleItemDrop", true);
             HERB_AUTO_DESTROY_TIME = server.getProperty("AutoDestroyHerbTime", 15) * 1000;

@@ -23,6 +23,7 @@ import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2Manor;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Castle;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.itemcontainer.ClanWarehouse;
 import net.sf.l2j.gameserver.model.itemcontainer.ItemContainer;
 import net.sf.l2j.gameserver.model.world.L2World;
@@ -265,7 +266,7 @@ public class CastleManorManager {
                     if (count < 1) {
                         if (Rnd.get(99) < 90) { count = 1; }
                     }
-                    if (count > 0) { cwh.addItem("Manor", L2Manor.getInstance().getMatureCrop(crop.getId()), count, null, null); }
+                    if (count > 0) { cwh.addItem(EItemProcessPurpose.MANOR, L2Manor.getInstance().getMatureCrop(crop.getId()), count, null, null); }
                 }
                 // reserved and not used money giving back to treasury
                 if (crop.getAmount() > 0) { c.addToTreasuryNoTax(crop.getAmount() * crop.getPrice()); }

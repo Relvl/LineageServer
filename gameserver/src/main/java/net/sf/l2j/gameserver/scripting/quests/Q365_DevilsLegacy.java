@@ -113,7 +113,7 @@ public class Q365_DevilsLegacy extends Quest
 					htmltext = "30092-06.htm";
 					
 					// Curse effect !
-					final L2Skill skill = SkillTable.getInstance().getInfo(4082, 1);
+					final L2Skill skill = SkillTable.getInfo(4082, 1);
 					if (skill != null && player.getFirstEffect(skill) == null)
 						skill.getEffects(npc, player);
 				}

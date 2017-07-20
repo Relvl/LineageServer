@@ -224,7 +224,7 @@ public class Baium extends AbstractNpcAI
 				else if ((_lastAttackTime + 300000 < System.currentTimeMillis()) && (npc.getCurrentHp() / npc.getMaxHp() < 0.75))
 				{
 					npc.setTarget(npc);
-					npc.doCast(SkillTable.getInstance().getInfo(4135, 1));
+					npc.doCast(SkillTable.getInfo(4135, 1));
 				}
 				else if (!BAIUM_LAIR.isInsideZone(npc))
 					npc.teleToLocation(116033, 17447, 10104, 0);
@@ -328,7 +328,7 @@ public class Baium extends AbstractNpcAI
 		{
 			if (attacker.getMountType() == 1)
 			{
-				L2Skill skill = SkillTable.getInstance().getInfo(4258, 1);
+				L2Skill skill = SkillTable.getInfo(4258, 1);
 				if (attacker.getFirstEffect(skill) == null)
 				{
 					npc.setTarget(attacker);
@@ -437,7 +437,7 @@ public class Baium extends AbstractNpcAI
 		if (_actualVictim == null)
 			return;
 		
-		final L2Skill skill = SkillTable.getInstance().getInfo(getRandomSkill(npc), 1);
+		final L2Skill skill = SkillTable.getInfo(getRandomSkill(npc), 1);
 		
 		// Adapt the skill range, because Baium is fat.
 		if (Util.checkIfInRange(skill.getCastRange() + npc.getCollisionRadius(), npc, _actualVictim, true))

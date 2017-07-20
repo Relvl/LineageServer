@@ -20,6 +20,7 @@ import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2DoorInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
@@ -27,89 +28,78 @@ import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
 /**
  * @author chris
  */
-public class PaganKeys implements IItemHandler
-{
-	public static final int INTERACTION_DISTANCE = 100;
-	
-	@Override
-	public void useItem(L2Playable playable, L2ItemInstance item, boolean forceUse)
-	{
-		if (!(playable instanceof L2PcInstance))
-			return;
-		
-		final L2PcInstance activeChar = (L2PcInstance) playable;
-		final L2Object target = activeChar.getTarget();
-		
-		if (!(target instanceof L2DoorInstance))
-		{
-			activeChar.sendPacket(SystemMessageId.INCORRECT_TARGET);
-			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
-			return;
-		}
-		
-		final L2DoorInstance door = (L2DoorInstance) target;
-		
-		if (!(activeChar.isInsideRadius(door, INTERACTION_DISTANCE, false, false)))
-		{
-			activeChar.sendPacket(SystemMessageId.DIST_TOO_FAR_CASTING_STOPPED);
-			activeChar.sendPacket(ActionFailed.STATIC_PACKET);
-			return;
-		}
-		
-		if (!playable.destroyItem("Consume", item.getObjectId(), 1, null, true))
-			return;
-		
-		final int doorId = door.getDoorId();
-		
-		switch (item.getItemId())
-		{
-			case 8056:
-				if (doorId == 23150004 || doorId == 23150003)
-				{
-					DoorTable.getInstance().getDoor(23150003).openMe();
-					DoorTable.getInstance().getDoor(23150003).onOpen();
-					DoorTable.getInstance().getDoor(23150004).openMe();
-					DoorTable.getInstance().getDoor(23150004).onOpen();
-				}
-				else
-					activeChar.sendPacket(SystemMessageId.TARGET_IS_INCORRECT);
-				break;
-			
-			case 8273:
-				switch (doorId)
-				{
-					case 19160002:
-					case 19160003:
-					case 19160004:
-					case 19160005:
-					case 19160006:
-					case 19160007:
-					case 19160008:
-					case 19160009:
-						DoorTable.getInstance().getDoor(doorId).openMe();
-						DoorTable.getInstance().getDoor(doorId).onOpen();
-						break;
-					
-					default:
-						activeChar.sendPacket(SystemMessageId.TARGET_IS_INCORRECT);
-						break;
-				}
-				break;
-			
-			case 8275:
-				switch (doorId)
-				{
-					case 19160012:
-					case 19160013:
-						DoorTable.getInstance().getDoor(doorId).openMe();
-						DoorTable.getInstance().getDoor(doorId).onOpen();
-						break;
-					
-					default:
-						activeChar.sendPacket(SystemMessageId.TARGET_IS_INCORRECT);
-						break;
-				}
-				break;
-		}
-	}
+public class PaganKeys implements IItemHandler {
+    public static final int INTERACTION_DISTANCE = 100;
+
+    @Override
+    public void useItem(L2Playable playable, L2ItemInstance item, boolean forceUse) {
+        if (!(playable instanceof L2PcInstance)) { return; }
+
+        L2PcInstance activeChar = (L2PcInstance) playable;
+        L2Object target = activeChar.getTarget();
+
+        if (!(target instanceof L2DoorInstance)) {
+            activeChar.sendPacket(SystemMessageId.INCORRECT_TARGET);
+            activeChar.sendPacket(ActionFailed.STATIC_PACKET);
+            return;
+        }
+
+        L2DoorInstance door = (L2DoorInstance) target;
+
+        if (!activeChar.isInsideRadius(door, INTERACTION_DISTANCE, false, false)) {
+            activeChar.sendPacket(SystemMessageId.DIST_TOO_FAR_CASTING_STOPPED);
+            activeChar.sendPacket(ActionFailed.STATIC_PACKET);
+            return;
+        }
+
+        if (!playable.destroyItem(EItemProcessPurpose.CONSUME, item.getObjectId(), 1, null, true)) { return; }
+
+        int doorId = door.getDoorId();
+
+        switch (item.getItemId()) {
+            case 8056:
+                if (doorId == 23150004 || doorId == 23150003) {
+                    DoorTable.getInstance().getDoor(23150003).openMe();
+                    DoorTable.getInstance().getDoor(23150003).onOpen();
+                    DoorTable.getInstance().getDoor(23150004).openMe();
+                    DoorTable.getInstance().getDoor(23150004).onOpen();
+                }
+                else { activeChar.sendPacket(SystemMessageId.TARGET_IS_INCORRECT); }
+                break;
+
+            case 8273:
+                switch (doorId) {
+                    case 19160002:
+                    case 19160003:
+                    case 19160004:
+                    case 19160005:
+                    case 19160006:
+                    case 19160007:
+                    case 19160008:
+                    case 19160009:
+                        DoorTable.getInstance().getDoor(doorId).openMe();
+                        DoorTable.getInstance().getDoor(doorId).onOpen();
+                        break;
+
+                    default:
+                        activeChar.sendPacket(SystemMessageId.TARGET_IS_INCORRECT);
+                        break;
+                }
+                break;
+
+            case 8275:
+                switch (doorId) {
+                    case 19160012:
+                    case 19160013:
+                        DoorTable.getInstance().getDoor(doorId).openMe();
+                        DoorTable.getInstance().getDoor(doorId).onOpen();
+                        break;
+
+                    default:
+                        activeChar.sendPacket(SystemMessageId.TARGET_IS_INCORRECT);
+                        break;
+                }
+                break;
+        }
+    }
 }

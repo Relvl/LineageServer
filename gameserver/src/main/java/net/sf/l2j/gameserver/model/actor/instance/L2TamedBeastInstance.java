@@ -18,9 +18,10 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.EChatType;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.network.client.game_to_client.AbstractNpcInfo.NpcInfo;
 import net.sf.l2j.gameserver.network.client.game_to_client.NpcSay;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
@@ -272,7 +273,7 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance {
             }
 
             // Destroy the food from owner's inventory ; if none is found, delete the pet.
-            if (_tamedBeast.getOwner().destroyItemByItemId("BeastMob", _tamedBeast.getFoodType(), 1, _tamedBeast, true)) {
+            if (_tamedBeast.getOwner().destroyItemByItemId(EItemProcessPurpose.BEAST_MOB, _tamedBeast.getFoodType(), 1, _tamedBeast, true)) {
                 _tamedBeast.broadcastPacket(new SocialAction(_tamedBeast, 2));
                 _tamedBeast.broadcastPacket(new NpcSay(_tamedBeast.getObjectId(), EChatType.ALL, _tamedBeast.getNpcId(), TAMED_TEXT[Rnd.get(TAMED_TEXT.length)]));
             }
@@ -321,7 +322,7 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance {
 
                 if (owner.getFirstEffect(skill) != null) { totalBuffsOnOwner++; }
             }
-			
+
 			/*
 			 * If the owner has less than 60% of available buff, cast a random buff. That buff is casted only if the player hasn't it.
 			 */

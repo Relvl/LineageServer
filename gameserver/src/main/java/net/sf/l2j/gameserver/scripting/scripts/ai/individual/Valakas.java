@@ -203,12 +203,12 @@ public class Valakas extends AbstractNpcAI {
                     final double hpRatio = npc.getCurrentHp() / npc.getMaxHp();
 
                     // Current HPs are inferior to 25% ; apply lvl 4 of regen skill.
-                    if (hpRatio < 0.25) { skillRegen = SkillTable.getInstance().getInfo(4691, 4); }
+                    if (hpRatio < 0.25) { skillRegen = SkillTable.getInfo(4691, 4); }
                     // Current HPs are inferior to 50% ; apply lvl 3 of regen skill.
-                    else if (hpRatio < 0.5) { skillRegen = SkillTable.getInstance().getInfo(4691, 3); }
+                    else if (hpRatio < 0.5) { skillRegen = SkillTable.getInfo(4691, 3); }
                     // Current HPs are inferior to 75% ; apply lvl 2 of regen skill.
-                    else if (hpRatio < 0.75) { skillRegen = SkillTable.getInstance().getInfo(4691, 2); }
-                    else { skillRegen = SkillTable.getInstance().getInfo(4691, 1); }
+                    else if (hpRatio < 0.75) { skillRegen = SkillTable.getInfo(4691, 2); }
+                    else { skillRegen = SkillTable.getInfo(4691, 1); }
 
                     skillRegen.getEffects(npc, npc);
                 }
@@ -280,7 +280,7 @@ public class Valakas extends AbstractNpcAI {
 
         // Debuff strider-mounted players.
         if (attacker.getMountType() == 1) {
-            final L2Skill skill = SkillTable.getInstance().getInfo(4258, 1);
+            final L2Skill skill = SkillTable.getInfo(4258, 1);
             if (attacker.getFirstEffect(skill) == null) {
                 npc.setTarget(attacker);
                 npc.doCast(skill);
@@ -350,7 +350,7 @@ public class Valakas extends AbstractNpcAI {
             return;
         }
 
-        final L2Skill skill = SkillTable.getInstance().getInfo(getRandomSkill(npc), 1);
+        final L2Skill skill = SkillTable.getInfo(getRandomSkill(npc), 1);
 
         // Cast the skill or follow the target.
         if (Util.checkIfInRange((skill.getCastRange() < 600) ? 600 : skill.getCastRange(), npc, _actualVictim, true)) {

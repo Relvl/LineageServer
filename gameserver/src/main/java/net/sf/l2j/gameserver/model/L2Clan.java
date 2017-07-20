@@ -27,6 +27,7 @@ import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Siege;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.itemcontainer.ClanWarehouse;
 import net.sf.l2j.gameserver.model.itemcontainer.ItemContainer;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
@@ -151,7 +152,8 @@ public class L2Clan {
             restoreRankPrivs();
             restoreSkills();
             checkCrests();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             _log.warning("Error while restoring clan " + e.getMessage());
         }
 
@@ -400,7 +402,8 @@ public class L2Clan {
                 statement.setInt(1, exMember.getObjectId());
                 statement.execute();
                 statement.close();
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 _log.warning("error while removing clan member in db " + e);
             }
         }
@@ -657,7 +660,8 @@ public class L2Clan {
             statement.setInt(9, _clanId);
             statement.execute();
             statement.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             _log.warning("error while saving new clan leader to db " + e);
         }
     }
@@ -677,7 +681,8 @@ public class L2Clan {
             statement.setInt(10, _allyCrestId);
             statement.execute();
             statement.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             _log.warning("error while saving new clan to db " + e);
         }
     }
@@ -694,7 +699,8 @@ public class L2Clan {
             statement.setInt(3, _clanId);
             statement.execute();
             statement.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             _log.log(Level.WARNING, "L2Clan : could not store clan notice: " + e.getMessage(), e);
         }
 
@@ -742,7 +748,8 @@ public class L2Clan {
                 statement.setInt(2, _clanId);
                 statement.execute();
                 statement.close();
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 _log.log(Level.WARNING, "L2Clan : could not store clan introduction: " + e.getMessage(), e);
             }
         }
@@ -779,7 +786,7 @@ public class L2Clan {
                 int id = rset.getInt("skill_id");
                 int level = rset.getInt("skill_level");
 
-                L2Skill skill = SkillTable.getInstance().getInfo(id, level);
+                L2Skill skill = SkillTable.getInfo(id, level);
                 if (skill == null) { continue; }
 
                 _skills.put(id, skill);
@@ -787,7 +794,8 @@ public class L2Clan {
 
             rset.close();
             statement.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             _log.warning("Could not restore clan skills: " + e);
         }
     }
@@ -830,7 +838,8 @@ public class L2Clan {
                 statement.execute();
                 statement.close();
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             _log.warning("Error could not store char skills: " + e);
             return;
         }
@@ -979,7 +988,8 @@ public class L2Clan {
 
             rset.close();
             statement.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             _log.log(Level.WARNING, "Could not restore clan sub-units: " + e.getMessage(), e);
         }
     }
@@ -1057,7 +1067,8 @@ public class L2Clan {
                 else if (pledgeType > SUBUNIT_ROYAL2) // knight
                 { takeReputationScore(10000); }
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             _log.warning("error while saving new sub_clan to db " + e);
         }
 
@@ -1107,7 +1118,8 @@ public class L2Clan {
             statement.setInt(4, pledgeType);
             statement.execute();
             statement.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             _log.log(Level.SEVERE, "Error updating subpledge: " + e.getMessage(), e);
         }
     }
@@ -1122,7 +1134,8 @@ public class L2Clan {
 
             rset.close();
             statement.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             _log.warning("Could not restore clan privs by rank: " + e);
         }
     }
@@ -1157,7 +1170,8 @@ public class L2Clan {
                 statement.setInt(4, privs);
                 statement.execute();
                 statement.close();
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 _log.warning("Could not store clan privs for rank: " + e);
             }
 
@@ -1176,7 +1190,8 @@ public class L2Clan {
                 statement.setInt(3, privs);
                 statement.execute();
                 statement.close();
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 _log.warning("Could not create new rank and store clan privs for rank: " + e);
             }
         }
@@ -1277,7 +1292,8 @@ public class L2Clan {
             statement.setInt(2, _clanId);
             statement.execute();
             statement.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             _log.log(Level.WARNING, "Exception on updateClanScoreInDb(): " + e.getMessage(), e);
         }
     }
@@ -1303,7 +1319,8 @@ public class L2Clan {
             statement.setInt(2, _clanId);
             statement.execute();
             statement.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             _log.warning("Could not store auction for clan: " + e);
         }
     }
@@ -1589,35 +1606,35 @@ public class L2Clan {
 
         switch (_level) {
             case 0: // upgrade to 1
-                if (player.getSp() >= 30000 && player.reduceAdena("ClanLvl", 650000, player.getTarget(), true)) {
+                if (player.getSp() >= 30000 && player.reduceAdena(EItemProcessPurpose.CLAN_LVL, 650000, player.getTarget(), true)) {
                     player.removeExpAndSp(0, 30000);
                     increaseClanLevel = true;
                 }
                 break;
 
             case 1: // upgrade to 2
-                if (player.getSp() >= 150000 && player.reduceAdena("ClanLvl", 2500000, player.getTarget(), true)) {
+                if (player.getSp() >= 150000 && player.reduceAdena(EItemProcessPurpose.CLAN_LVL, 2500000, player.getTarget(), true)) {
                     player.removeExpAndSp(0, 150000);
                     increaseClanLevel = true;
                 }
                 break;
 
             case 2:// upgrade to 3
-                if (player.getSp() >= 500000 && player.destroyItemByItemId("ClanLvl", 1419, 1, player.getTarget(), true)) {
+                if (player.getSp() >= 500000 && player.destroyItemByItemId(EItemProcessPurpose.CLAN_LVL, 1419, 1, player.getTarget(), true)) {
                     player.removeExpAndSp(0, 500000);
                     increaseClanLevel = true;
                 }
                 break;
 
             case 3: // upgrade to 4
-                if (player.getSp() >= 1400000 && player.destroyItemByItemId("ClanLvl", 3874, 1, player.getTarget(), true)) {
+                if (player.getSp() >= 1400000 && player.destroyItemByItemId(EItemProcessPurpose.CLAN_LVL, 3874, 1, player.getTarget(), true)) {
                     player.removeExpAndSp(0, 1400000);
                     increaseClanLevel = true;
                 }
                 break;
 
             case 4: // upgrade to 5
-                if (player.getSp() >= 3500000 && player.destroyItemByItemId("ClanLvl", 3870, 1, player.getTarget(), true)) {
+                if (player.getSp() >= 3500000 && player.destroyItemByItemId(EItemProcessPurpose.CLAN_LVL, 3870, 1, player.getTarget(), true)) {
                     player.removeExpAndSp(0, 3500000);
                     increaseClanLevel = true;
                 }
@@ -1666,7 +1683,8 @@ public class L2Clan {
             statement.setInt(2, _clanId);
             statement.execute();
             statement.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             _log.log(Level.WARNING, "Could not increase clan level:" + e.getMessage(), e);
         }
 
@@ -1699,7 +1717,8 @@ public class L2Clan {
             statement.setInt(2, _clanId);
             statement.executeUpdate();
             statement.close();
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             _log.log(Level.WARNING, "Could not update crest for clan " + _name + " [" + _clanId + "] : " + e.getMessage(), e);
         }
 
@@ -1728,7 +1747,8 @@ public class L2Clan {
             statement.setInt(2, allyId);
             statement.executeUpdate();
             statement.close();
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             _log.log(Level.WARNING, "Could not update ally crest for ally/clan id " + allyId + " : " + e.getMessage(), e);
         }
 
@@ -1762,7 +1782,8 @@ public class L2Clan {
             statement.setInt(2, _clanId);
             statement.executeUpdate();
             statement.close();
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             _log.log(Level.WARNING, "Could not update large crest for clan " + _name + " [" + _clanId + "] : " + e.getMessage(), e);
         }
 

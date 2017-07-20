@@ -50,7 +50,7 @@ public final class RequestMagicSkillUse extends L2GameClientPacket {
         }
 
         // Get the L2Skill template corresponding to the skillID received from the client
-        L2Skill skill = SkillTable.getInstance().getInfo(_magicId, level);
+        L2Skill skill = SkillTable.getInfo(_magicId, level);
         if (skill == null) {
             activeChar.sendPacket(ActionFailed.STATIC_PACKET);
             _log.warn("No skill found with id {} and level {}.", _magicId, level);

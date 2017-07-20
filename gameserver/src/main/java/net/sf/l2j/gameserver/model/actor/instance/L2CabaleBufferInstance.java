@@ -193,7 +193,7 @@ public class L2CabaleBufferInstance extends L2NpcInstance {
         private void handleCast(L2PcInstance player, int skillId) {
             int skillLevel = (player.getLevel() > 40) ? 1 : 2;
 
-            final L2Skill skill = SkillTable.getInstance().getInfo(skillId, skillLevel);
+            final L2Skill skill = SkillTable.getInfo(skillId, skillLevel);
             if (player.getFirstEffect(skill) == null) {
                 skill.getEffects(_caster, player);
                 broadcastPacket(new MagicSkillUse(_caster, player, skill.getId(), skillLevel, skill.getHitTime(), 0));

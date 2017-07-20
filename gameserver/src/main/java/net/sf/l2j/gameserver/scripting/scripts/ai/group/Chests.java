@@ -150,7 +150,7 @@ public class Chests extends AbstractNpcAI
 							break;
 						
 						default:
-							chest.doCast(SkillTable.getInstance().getInfo(4143, Math.min(10, Math.round(npc.getLevel() / 10))));
+							chest.doCast(SkillTable.getInfo(4143, Math.min(10, Math.round(npc.getLevel() / 10))));
 							break;
 					}
 				}
@@ -176,7 +176,7 @@ public class Chests extends AbstractNpcAI
 				
 				// If it was a box, cast a suicide type skill.
 				if (Rnd.get(100) < 40)
-					chest.doCast(SkillTable.getInstance().getInfo(4143, Math.min(10, Math.round(npc.getLevel() / 10))));
+					chest.doCast(SkillTable.getInfo(4143, Math.min(10, Math.round(npc.getLevel() / 10))));
 				// Mimic behavior : attack the caster.
 				else
 					attack(chest, ((isPet) ? attacker.getPet() : attacker), ((damage * 100) / (chest.getLevel() + 7)));

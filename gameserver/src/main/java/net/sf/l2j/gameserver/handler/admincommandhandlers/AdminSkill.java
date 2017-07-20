@@ -342,7 +342,7 @@ public class AdminSkill implements IAdminCommandHandler
 				String level = st.nextToken();
 				int idval = Integer.parseInt(id);
 				int levelval = Integer.parseInt(level);
-				skill = SkillTable.getInstance().getInfo(idval, levelval);
+				skill = SkillTable.getInfo(idval, levelval);
 			}
 			catch (Exception e)
 			{
@@ -379,7 +379,7 @@ public class AdminSkill implements IAdminCommandHandler
 			return;
 		}
 		
-		L2Skill skill = SkillTable.getInstance().getInfo(idval, player.getSkillLevel(idval));
+		L2Skill skill = SkillTable.getInfo(idval, player.getSkillLevel(idval));
 		if (skill != null)
 		{
 			String skillname = skill.getName();
@@ -425,7 +425,7 @@ public class AdminSkill implements IAdminCommandHandler
 			return;
 		}
 		
-		L2Skill skill = SkillTable.getInstance().getInfo(id, level);
+		L2Skill skill = SkillTable.getInfo(id, level);
 		if (skill == null)
 		{
 			activeChar.sendMessage("Error: there is no such skill.");

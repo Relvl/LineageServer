@@ -5,6 +5,7 @@ import net.sf.l2j.L2DatabaseFactory;
 import net.sf.l2j.gameserver.datatables.PetDataTable;
 import net.sf.l2j.gameserver.instancemanager.CursedWeaponsManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -103,7 +104,7 @@ public final class RequestDestroyItem extends L2GameClientPacket {
             }
         }
 
-        L2ItemInstance removedItem = activeChar.getInventory().destroyItem("Destroy", _objectId, _count, activeChar, null);
+        L2ItemInstance removedItem = activeChar.getInventory().destroyItem(EItemProcessPurpose.DESTROY, _objectId, _count, activeChar, null);
         if (removedItem == null) { return; }
 
         InventoryUpdate iu = new InventoryUpdate();

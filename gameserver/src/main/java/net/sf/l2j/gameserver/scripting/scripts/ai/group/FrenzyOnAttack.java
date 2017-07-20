@@ -35,7 +35,7 @@ import net.sf.l2j.gameserver.scripting.scripts.ai.AbstractNpcAI;
  */
 public class FrenzyOnAttack extends AbstractNpcAI
 {
-	private static final L2Skill ULTIMATE_BUFF = SkillTable.getInstance().getInfo(4318, 1);
+	private static final L2Skill ULTIMATE_BUFF = SkillTable.getInfo(4318, 1);
 	
 	private static final String[] ORCS_WORDS =
 	{

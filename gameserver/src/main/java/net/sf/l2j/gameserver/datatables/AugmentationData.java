@@ -389,7 +389,7 @@ public class AugmentationData {
         }
 
         public L2Skill getSkill() {
-            return SkillTable.getInstance().getInfo(_skillId, _skillLevel);
+            return SkillTable.getInfo(_skillId, _skillLevel);
         }
     }
 
