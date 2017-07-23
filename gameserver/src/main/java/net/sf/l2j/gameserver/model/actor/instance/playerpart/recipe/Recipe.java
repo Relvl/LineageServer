@@ -8,10 +8,12 @@ import net.sf.l2j.Config;
 import net.sf.l2j.commons.DefaultConstructor;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.commons.serialize.converter.IntegerNot100OnlyConverter;
+import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.model.L2ManufactureItem;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
@@ -51,8 +53,10 @@ public class Recipe {
     @JacksonXmlElementWrapper(useWrapping = false)
     public RecipeIngredient product;
 
+    private Item productItem;
+
     @DefaultConstructor
-    public Recipe() { }
+    public Recipe() {}
 
     public int getLevel() { return level; }
 
@@ -62,10 +66,9 @@ public class Recipe {
 
     public boolean isDwarvenRecipe() { return isDwarven; }
 
-    private boolean isConsumable() {
-        // Soulshots, Spiritshots, Bss, Arrows.
-        return (product.id >= 1463 && product.id <= 1467) || (product.id >= 2509 && product.id <= 2514) || (product.id >= 3947 && product.id <= 3952) || (product.id >= 1341 && product.id <= 1345);
-    }
+    public void makeInfo() { productItem = ItemTable.getInstance().getTemplate(product.id); }
+
+    private boolean isConsumable() { return productItem.isConsumable(); }
 
     public List<RecipeIngredient> getIngredients() { return ingredients; }
 
@@ -163,35 +166,35 @@ public class Recipe {
 
             // Если крафт прокнул - отдаем результат
             if (Rnd.get(100) < chance) {
-                requester.getInventory().addItem(EItemProcessPurpose.CRAFT, product.id, product.count, requester, manufacturer);
+                requester.getInventory().addItem(EItemProcessPurpose.CRAFT, productItem.getItemId(), product.count, requester, manufacturer);
 
                 if (requester != manufacturer) {
                     if (product.count > 1) {
                         manufacturer.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S2_S3_S_CREATED_FOR_S1_FOR_S4_ADENA)
                                 .addString(requester.getName())
                                 .addNumber(product.count)
-                                .addItemName(product.id)
+                                .addItemName(productItem.getItemId())
                                 .addItemNumber(price));
                         requester.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_CREATED_S2_S3_S_FOR_S4_ADENA)
                                 .addString(manufacturer.getName())
                                 .addNumber(product.count)
-                                .addItemName(product.id)
+                                .addItemName(productItem.getItemId())
                                 .addItemNumber(price));
                     }
                     else {
                         manufacturer.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S2_CREATED_FOR_S1_FOR_S3_ADENA)
                                 .addString(requester.getName())
-                                .addItemName(product.id)
+                                .addItemName(productItem.getItemId())
                                 .addItemNumber(price));
                         requester.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_CREATED_S2_FOR_S3_ADENA)
                                 .addString(manufacturer.getName())
-                                .addItemName(product.id)
+                                .addItemName(productItem.getItemId())
                                 .addItemNumber(price));
                     }
                 }
 
-                if (product.count > 1) { requester.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.EARNED_S2_S1_S).addItemName(product.id).addNumber(product.count)); }
-                else { /*             */ requester.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.EARNED_ITEM_S1).addItemName(product.id)); }
+                if (product.count > 1) { requester.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.EARNED_S2_S1_S).addItemName(productItem.getItemId()).addNumber(product.count)); }
+                else { /*             */ requester.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.EARNED_ITEM_S1).addItemName(productItem.getItemId())); }
 
                 if (requester == manufacturer) { requester.sendPacket(new RecipeItemMakeInfo(id, requester, 1)); }
                 else { /*                     */ requester.sendPacket(new RecipeShopItemInfo(manufacturer, id)); }
@@ -201,11 +204,11 @@ public class Recipe {
                 if (requester != manufacturer) {
                     manufacturer.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.CREATION_OF_S2_FOR_S1_AT_S3_ADENA_FAILED)
                             .addPcName(requester)
-                            .addItemName(product.id)
+                            .addItemName(productItem.getItemId())
                             .addItemNumber(price));
                     requester.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_FAILED_TO_CREATE_S2_FOR_S3_ADENA)
                             .addPcName(manufacturer)
-                            .addItemName(product.id)
+                            .addItemName(productItem.getItemId())
                             .addItemNumber(price));
                 }
                 else { requester.sendPacket(SystemMessageId.ITEM_MIXING_FAILED); }

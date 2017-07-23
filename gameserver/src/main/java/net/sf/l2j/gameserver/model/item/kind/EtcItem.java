@@ -48,7 +48,7 @@ public final class EtcItem extends Item {
 
     @Override
     public boolean isConsumable() {
-        return (etcItemType == EtcItemType.SHOT) || (etcItemType == EtcItemType.POTION);
+        return (etcItemType == EtcItemType.SHOT) || (etcItemType == EtcItemType.POTION) || (etcItemType == EtcItemType.ARROW);
     }
 
     @Override

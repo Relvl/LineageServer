@@ -131,6 +131,7 @@ public final class RecipeController {
 
     // region RECIPES TABLE
     public static void loadRecipes() {
+        LOGGER.info("Load recipes...");
         try {
             Map<Integer, Recipe> recipeNewMap = new HashMap<>();
             RecipesXmlFile xmlFile = Serializer.MAPPER.readValue(RECIPES_FILE, RecipesXmlFile.class);
@@ -139,6 +140,7 @@ public final class RecipeController {
                     LOGGER.warn("Ingridients empty for recipe {}", recipe.getRecipeId());
                     continue;
                 }
+                recipe.makeInfo();
                 recipeNewMap.put(recipe.id, recipe);
             }
             recipes = recipeNewMap;
