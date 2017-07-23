@@ -1,4 +1,6 @@
-package net.sf.l2j.gameserver.playerpart.achievements;
+package net.sf.l2j.gameserver.playerpart.achievements.impl;
+
+import net.sf.l2j.gameserver.playerpart.achievements.IAchieveElement;
 
 /**
  * @author Johnson / 23.07.2017

@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * @author Johnson / 22.07.2017
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
+@Target({ElementType.TYPE, ElementType.FIELD})
 public @interface OrmTypeName {
     String value();
 }

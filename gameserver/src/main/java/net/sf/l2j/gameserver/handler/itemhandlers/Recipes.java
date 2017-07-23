@@ -10,6 +10,7 @@ import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
+import net.sf.l2j.gameserver.templates.skills.L2SkillType;
 
 public class Recipes implements IItemHandler {
     @Override
@@ -46,6 +47,7 @@ public class Recipes implements IItemHandler {
                     activeChar.getRecipeController().registerRecipe(rp, true);
                     activeChar.destroyItem(EItemProcessPurpose.CONSUME, item.getObjectId(), 1, null, false);
                     activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_ADDED).addItemName(item));
+                    activeChar.getRecipeController().requestBookOpen(true);
                 }
             }
             else {
@@ -67,6 +69,7 @@ public class Recipes implements IItemHandler {
                     activeChar.getRecipeController().registerRecipe(rp, false);
                     activeChar.destroyItem(EItemProcessPurpose.CONSUME, item.getObjectId(), 1, null, false);
                     activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_ADDED).addItemName(item));
+                    activeChar.getRecipeController().requestBookOpen(false);
                 }
             }
             else {

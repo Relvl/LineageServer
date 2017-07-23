@@ -313,29 +313,19 @@ public abstract class Item {
         return getItemType() == EtcItemType.QUEST;
     }
 
-    public final boolean isHeroItem() {
-        return heroItem;
-    }
+    public final boolean isHeroItem() { return heroItem; }
 
-    public boolean isOlyRestrictedItem() {
-        return isOlyRestricted;
-    }
+    public boolean isOlyRestrictedItem() { return isOlyRestricted; }
 
-    public boolean isPetItem() {
-        return getItemType() == ArmorType.PET || getItemType() == EWeaponType.PET;
-    }
+    public boolean isPetItem() { return getItemType() == ArmorType.PET || getItemType() == EWeaponType.PET; }
 
-    public boolean isPotion() {
-        return getItemType() == EtcItemType.POTION;
-    }
+    public boolean isPotion() { return getItemType() == EtcItemType.POTION; }
 
-    public boolean isElixir() {
-        return getItemType() == EtcItemType.ELIXIR;
-    }
+    public boolean isElixir() { return getItemType() == EtcItemType.ELIXIR; }
 
-    public ActionType getDefaultAction() {
-        return defaultAction;
-    }
+    public boolean isWeapon() { return false; }
+
+    public ActionType getDefaultAction() { return defaultAction; }
 
     public void addQuestEvent(Quest q) {
         _questEvents.add(q);

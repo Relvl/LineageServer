@@ -12,4 +12,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface OrmParamIn {
     int value();
+    Class<?> arrayElementClass() default Object.class;
 }

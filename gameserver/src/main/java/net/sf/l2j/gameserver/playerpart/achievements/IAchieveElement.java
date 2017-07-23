@@ -15,10 +15,4 @@ public interface IAchieveElement {
 
     /**  */
     String getId();
-
-    /**  */
-    default String getFullId() {
-        EAchieveGroup group = EAchieveGroup.getByClass(this);
-        return group.name() + "." + getId();
-    }
 }

@@ -14,9 +14,11 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
+import net.sf.l2j.gameserver.model.item.type.CrystalType;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
+import net.sf.l2j.gameserver.playerpart.achievements.impl.EAchieveCraft;
 import net.sf.l2j.gameserver.taskmanager.AttackStanceTaskManager;
 
 import java.util.ArrayList;
@@ -164,20 +166,37 @@ public class Recipe {
                 }
             }
 
+            // region ACHIEVEMENTS
+            manufacturer.getAchievementController().increase(productItem.isConsumable() ?
+                            EAchieveCraft.CRAFT_CONSUMABLES_1000_TIMES :
+                            EAchieveCraft.CRAFT_NOT_CONSUMABLES_100_TIMES,
+                    1);
+            if (productItem.isWeapon() && (productItem.getCrystalType() == CrystalType.A || productItem.getCrystalType() == CrystalType.S)) {
+                manufacturer.getAchievementController().increase(EAchieveCraft.CRAFT_100_A_WEAPONS, 1);
+            }
+            // endregion
+
             // Если крафт прокнул - отдаем результат
-            if (Rnd.get(100) < chance) {
-                requester.getInventory().addItem(EItemProcessPurpose.CRAFT, productItem.getItemId(), product.count, requester, manufacturer);
+            if (chance == 100 || Rnd.get(100) < chance) {
+                int productCount = product.count;
+                if (manufacturer.getAchievementController().hasAchievement(EAchieveCraft.CRAFT_CONSUMABLES_1000_TIMES) && Rnd.get(100) < 20) {
+                    productCount *= 2;
+                    requester.sendMessage("Благодаря достижению \"" + EAchieveCraft.CRAFT_CONSUMABLES_1000_TIMES.title() + "\" количество продукта удвоилось!");
+                    manufacturer.broadcastPacket(new MagicSkillUse(manufacturer, requester, 2023, 1, 0, 0));
+                }
+
+                requester.getInventory().addItem(EItemProcessPurpose.CRAFT, productItem.getItemId(), productCount, requester, manufacturer);
 
                 if (requester != manufacturer) {
-                    if (product.count > 1) {
+                    if (productCount > 1) {
                         manufacturer.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S2_S3_S_CREATED_FOR_S1_FOR_S4_ADENA)
                                 .addString(requester.getName())
-                                .addNumber(product.count)
+                                .addNumber(productCount)
                                 .addItemName(productItem.getItemId())
                                 .addItemNumber(price));
                         requester.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_CREATED_S2_S3_S_FOR_S4_ADENA)
                                 .addString(manufacturer.getName())
-                                .addNumber(product.count)
+                                .addNumber(productCount)
                                 .addItemName(productItem.getItemId())
                                 .addItemNumber(price));
                     }
@@ -193,7 +212,7 @@ public class Recipe {
                     }
                 }
 
-                if (product.count > 1) { requester.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.EARNED_S2_S1_S).addItemName(productItem.getItemId()).addNumber(product.count)); }
+                if (productCount > 1) { requester.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.EARNED_S2_S1_S).addItemName(productItem.getItemId()).addNumber(productCount)); }
                 else { /*             */ requester.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.EARNED_ITEM_S1).addItemName(productItem.getItemId())); }
 
                 if (requester == manufacturer) { requester.sendPacket(new RecipeItemMakeInfo(id, requester, 1)); }

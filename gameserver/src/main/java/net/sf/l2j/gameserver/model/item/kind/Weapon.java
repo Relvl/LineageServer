@@ -175,6 +175,9 @@ public final class Weapon extends Item {
         return isMagical;
     }
 
+    @Override
+    public boolean isWeapon() { return true; }
+
     public int getMpConsume() {
         if (mpConsumeReduceChance > 0 && Rnd.get(100) < mpConsumeReduceChance) { return mpConsumeReduce; }
         return mpConsume;

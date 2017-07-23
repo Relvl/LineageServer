@@ -35,13 +35,7 @@ public class AchievementStoreData {
 
     public Boolean isComplete() { return complete; }
 
+    /** Стоит обратить внимание, что toString в UDT постгреса должен возвращать значения в правильном порядке внутри скобочек, через запятую. */
     @Override
-    public String toString() {
-        return "AchievementStoreData{" +
-                "playerId=" + playerId +
-                ", achievementId='" + achievementId + '\'' +
-                ", count=" + count +
-                ", complete=" + complete +
-                '}';
-    }
+    public String toString() { return "(" + playerId + "," + achievementId + "," + count + "," + complete + ')'; }
 }
