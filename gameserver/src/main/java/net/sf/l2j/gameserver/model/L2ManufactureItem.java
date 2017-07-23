@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.model;
 
-import net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe.RecipeController;
+import net.sf.l2j.gameserver.playerpart.recipe.RecipeController;
 
 public class L2ManufactureItem {
     private final int recipeId;

@@ -1,4 +1,4 @@
-package net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe;
+package net.sf.l2j.gameserver.playerpart.recipe;
 
 import net.sf.l2j.commons.database.IndexedCall;
 import net.sf.l2j.commons.database.annotation.OrmParamCursor;

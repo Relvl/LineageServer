@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.util;
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.datatables.GmListTable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.actor.instance.playerpart.PunishLevel;
+import net.sf.l2j.gameserver.playerpart.PunishLevel;
 
 import java.util.logging.Level;
 import java.util.logging.LogRecord;

@@ -15,7 +15,7 @@ import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.instancemanager.*;
 import net.sf.l2j.gameserver.instancemanager.games.MonsterRace;
 import net.sf.l2j.gameserver.model.L2Manor;
-import net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe.RecipeController;
+import net.sf.l2j.gameserver.playerpart.recipe.RecipeController;
 import net.sf.l2j.gameserver.model.entity.Hero;
 import net.sf.l2j.gameserver.model.olympiad.Olympiad;
 import net.sf.l2j.gameserver.model.olympiad.OlympiadGameManager;

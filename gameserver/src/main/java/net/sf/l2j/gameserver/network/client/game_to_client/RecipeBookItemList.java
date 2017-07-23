@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
-import net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe.Recipe;
+import net.sf.l2j.gameserver.playerpart.recipe.Recipe;
 
 import java.util.Collection;
 

@@ -16,7 +16,7 @@ package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.actor.instance.playerpart.PrivateStoreType;
+import net.sf.l2j.gameserver.playerpart.PrivateStoreType;
 import net.sf.l2j.gameserver.network.client.game_to_client.RecipeShopItemInfo;
 
 /**

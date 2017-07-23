@@ -1,4 +1,4 @@
-package net.sf.l2j.gameserver.model.actor.instance.playerpart;
+package net.sf.l2j.gameserver.playerpart;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2DoorInstance;
 

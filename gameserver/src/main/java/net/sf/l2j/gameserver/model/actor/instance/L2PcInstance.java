@@ -25,12 +25,6 @@ import net.sf.l2j.gameserver.model.L2Party.MessageType;
 import net.sf.l2j.gameserver.model.L2PetData.L2PetLevelData;
 import net.sf.l2j.gameserver.model.actor.*;
 import net.sf.l2j.gameserver.model.actor.appearance.PcAppearance;
-import net.sf.l2j.gameserver.model.actor.instance.playerpart.GatesRequest;
-import net.sf.l2j.gameserver.model.actor.instance.playerpart.PrivateStoreType;
-import net.sf.l2j.gameserver.model.actor.instance.playerpart.PunishLevel;
-import net.sf.l2j.gameserver.model.actor.instance.playerpart.SummonRequest;
-import net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe.RecipeController;
-import net.sf.l2j.gameserver.model.actor.instance.playerpart.variables.PlayerVariables;
 import net.sf.l2j.gameserver.model.actor.knownlist.PcKnownList;
 import net.sf.l2j.gameserver.model.actor.position.PcPosition;
 import net.sf.l2j.gameserver.model.actor.stat.PcStat;
@@ -72,6 +66,13 @@ import net.sf.l2j.gameserver.network.L2GameClient;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.AbstractNpcInfo.PcMorphInfo;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
+import net.sf.l2j.gameserver.playerpart.GatesRequest;
+import net.sf.l2j.gameserver.playerpart.PrivateStoreType;
+import net.sf.l2j.gameserver.playerpart.PunishLevel;
+import net.sf.l2j.gameserver.playerpart.SummonRequest;
+import net.sf.l2j.gameserver.playerpart.achievements.AchievementController;
+import net.sf.l2j.gameserver.playerpart.recipe.RecipeController;
+import net.sf.l2j.gameserver.playerpart.variables.PlayerVariables;
 import net.sf.l2j.gameserver.scripting.EventType;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -138,6 +139,7 @@ public final class L2PcInstance extends L2Playable {
 
     private final PlayerVariables variables = new PlayerVariables(this);
     private final RecipeController recipeController = new RecipeController(this);
+    private final AchievementController achievementController = new AchievementController(this);
 
     private final L2Radar radar = new L2Radar(this);
     private final PcInventory inventory = new PcInventory(this);
@@ -8524,6 +8526,8 @@ public final class L2PcInstance extends L2Playable {
     public PlayerVariables variables() { return variables; }
 
     public RecipeController getRecipeController() { return recipeController; }
+
+    public AchievementController getAchievementController() { return achievementController; }
 
     private class ShortBuffTask implements Runnable {
         @Override

@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import net.sf.l2j.commons.serialize.Serializer;
-import net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe.Recipe;
-import net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe.RecipeIngredient;
-import net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe.RecipesXmlFile;
+import net.sf.l2j.gameserver.playerpart.recipe.Recipe;
+import net.sf.l2j.gameserver.playerpart.recipe.RecipeIngredient;
+import net.sf.l2j.gameserver.playerpart.recipe.RecipesXmlFile;
 
 import java.io.File;
 import java.io.IOException;

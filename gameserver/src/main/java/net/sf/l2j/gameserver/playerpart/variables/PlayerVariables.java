@@ -1,4 +1,4 @@
-package net.sf.l2j.gameserver.model.actor.instance.playerpart.variables;
+package net.sf.l2j.gameserver.playerpart.variables;
 
 import net.sf.l2j.commons.database.CallException;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;

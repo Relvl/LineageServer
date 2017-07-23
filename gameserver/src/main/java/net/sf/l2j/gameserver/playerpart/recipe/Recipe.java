@@ -1,4 +1,4 @@
-package net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe;
+package net.sf.l2j.gameserver.playerpart.recipe;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

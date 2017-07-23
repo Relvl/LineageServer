@@ -1,4 +1,4 @@
-package net.sf.l2j.gameserver.model.actor.instance.playerpart.variables;
+package net.sf.l2j.gameserver.playerpart.variables;
 
 import net.sf.l2j.commons.DefaultConstructor;
 import net.sf.l2j.commons.database.annotation.OrmParamCursor;

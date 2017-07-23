@@ -1,4 +1,4 @@
-package net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe;
+package net.sf.l2j.gameserver.playerpart.recipe;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.database.CallException;
@@ -6,7 +6,7 @@ import net.sf.l2j.commons.database.EModify;
 import net.sf.l2j.commons.serialize.Serializer;
 import net.sf.l2j.gameserver.model.L2ShortCut;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe.PlayerRecipesLoadCall.RecipeRow;
+import net.sf.l2j.gameserver.playerpart.recipe.PlayerRecipesLoadCall.RecipeRow;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.network.client.game_to_client.RecipeBookItemList;
 import net.sf.l2j.gameserver.skills.Stats;
