@@ -44,7 +44,7 @@ public class ZoneManager {
     public static L2ArenaZone getArena(L2Character character) {
         if (character == null) { return null; }
 
-        for (L2ZoneType temp : ZoneManager.getZones(character.getX(), character.getY(), character.getZ())) {
+        for (L2ZoneType temp : getZones(character.getX(), character.getY(), character.getZ())) {
             if (temp instanceof L2ArenaZone && temp.isCharacterInZone(character)) { return (L2ArenaZone) temp; }
         }
 
@@ -54,7 +54,7 @@ public class ZoneManager {
     public static L2OlympiadStadiumZone getOlympiadStadium(L2Character character) {
         if (character == null) { return null; }
 
-        for (L2ZoneType temp : ZoneManager.getZones(character.getX(), character.getY(), character.getZ())) {
+        for (L2ZoneType temp : getZones(character.getX(), character.getY(), character.getZ())) {
             if (temp instanceof L2OlympiadStadiumZone && temp.isCharacterInZone(character)) { return (L2OlympiadStadiumZone) temp; }
         }
         return null;
@@ -118,6 +118,7 @@ public class ZoneManager {
             }
 
             L2ZoneType zone = zoneElement.getType().instantiate(zoneId);
+            zone.setComment(zoneElement.getComment());
             switch (zoneElement.getShape()) {
                 case CUBOID:
                     if (zoneElement.getNodes().length != 2) {
@@ -126,8 +127,8 @@ public class ZoneManager {
                     }
                     zone.setZone(new ZoneCuboid(
                             zoneElement.getNodes()[0].getX(),
-                            zoneElement.getNodes()[0].getY(),
                             zoneElement.getNodes()[1].getX(),
+                            zoneElement.getNodes()[0].getY(),
                             zoneElement.getNodes()[1].getY(),
                             zoneElement.getMinZ(),
                             zoneElement.getMaxZ()

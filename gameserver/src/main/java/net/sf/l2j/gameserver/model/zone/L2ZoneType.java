@@ -20,6 +20,7 @@ public abstract class L2ZoneType {
     private final int _id;
     protected L2ZoneForm _zone;
     protected List<L2Character> _characterList;
+    private String comment;
 
     private Map<EventType, List<Quest>> _questEvents;
 
@@ -28,72 +29,43 @@ public abstract class L2ZoneType {
         _characterList = new CopyOnWriteArrayList<>();
     }
 
-    /**
-     * @return Returns the id.
-     */
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     public int getId() {
         return _id;
     }
 
-    /**
-     * Setup new parameters for this zone
-     *
-     * @param name  parameter name.
-     * @param value new parameter value.
-     */
     public void setParameter(String name, String value) {
         _log.info(getClass().getSimpleName() + ": Unknown parameter - " + name + " in zone: " + getId());
     }
 
-    /**
-     * @param character The character to test.
-     * @return True if the given character is affected by this zone.
-     */
     protected boolean isAffected(L2Character character) {
-        // Overriden in children classes.
         return true;
     }
 
-    /**
-     * @return this zone form.
-     */
     public L2ZoneForm getZone() {
         return _zone;
     }
 
-    /**
-     * Set the zone for this L2ZoneType Instance
-     *
-     * @param zone
-     */
     public void setZone(L2ZoneForm zone) {
         if (_zone != null) { throw new IllegalStateException("Zone already set"); }
         _zone = zone;
     }
 
-    /**
-     * @param x
-     * @param y
-     * @return true if the given coordinates are within zone's plane
-     */
     public boolean isInsideZone(int x, int y) {
         return _zone.isInsideZone(x, y, _zone.getHighZ());
     }
 
-    /**
-     * @param x
-     * @param y
-     * @param z
-     * @return true if the given coordinates are within the zone
-     */
     public boolean isInsideZone(int x, int y, int z) {
         return _zone.isInsideZone(x, y, z);
     }
 
-    /**
-     * @param object check object's X/Y positions.
-     * @return true if the given object is inside the zone.
-     */
     public boolean isInsideZone(L2Object object) {
         return isInsideZone(object.getX(), object.getY(), object.getZ());
     }

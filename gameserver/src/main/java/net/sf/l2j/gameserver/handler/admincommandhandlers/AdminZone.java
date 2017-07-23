@@ -68,7 +68,10 @@ public class AdminZone implements IAdminCommandHandler {
 
         StringBuilder sb = new StringBuilder(100);
         for (L2ZoneType zone : L2World.getInstance().getRegion(x, y).getZones()) {
-            if (zone.isCharacterInZone(activeChar)) { StringUtil.append(sb, zone.getId(), " "); }
+            if (zone.isCharacterInZone(activeChar)) {
+                activeChar.sendMessage("Zone: " + zone.getComment() + " > " + zone.getZone().toString());
+                StringUtil.append(sb, zone.getId(), " ");
+            }
         }
         html.replace("%ZLIST%", sb.toString());
         activeChar.sendPacket(html);

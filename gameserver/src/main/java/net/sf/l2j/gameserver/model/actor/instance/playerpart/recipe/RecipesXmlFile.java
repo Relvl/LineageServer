@@ -14,6 +14,6 @@ import java.util.List;
 public class RecipesXmlFile {
     @JacksonXmlProperty(localName = "item")
     @JacksonXmlElementWrapper(useWrapping = false)
-    public List<RecipeNew> list = new ArrayList<>();
+    public List<Recipe> list = new ArrayList<>();
 
 }

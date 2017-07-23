@@ -1,9 +1,10 @@
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
-import net.sf.l2j.gameserver.datatables.RecipeTable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.playerpart.PrivateStoreType;
 import net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe.Recipe;
+import net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe.RecipeController;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.RecipeBookItemList;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
@@ -26,7 +27,7 @@ public final class RequestRecipeBookDestroy extends L2GameClientPacket {
             return;
         }
 
-        Recipe rp = RecipeTable.getInstance().getRecipeList(recipeID);
+        Recipe rp = RecipeController.getRecipe(recipeID);
         if (rp == null) { return; }
 
         activeChar.getRecipeController().unregisterRecipe(recipeID);
@@ -35,5 +36,7 @@ public final class RequestRecipeBookDestroy extends L2GameClientPacket {
         RecipeBookItemList response = new RecipeBookItemList(rp.isDwarvenRecipe(), activeChar.getMaxMp());
         response.addRecipes(rp.isDwarvenRecipe() ? activeChar.getRecipeController().getDwarvenRecipes() : activeChar.getRecipeController().getCommonRecipes());
         activeChar.sendPacket(response);
+
+        activeChar.getInventory().addItem(EItemProcessPurpose.CRAFT, rp.recipeItemId, 1, activeChar, activeChar);
     }
 }

@@ -97,7 +97,7 @@ public final class RequestDropItem extends L2GameClientPacket {
             return;
         }
 
-        if (!activeChar.isInsideRadius(_x, _y, 150, false) || Math.abs(_z - activeChar.getZ()) > 50) {
+        if (!activeChar.isGM() && (!activeChar.isInsideRadius(_x, _y, 150, false) || Math.abs(_z - activeChar.getZ()) > 50)) {
             activeChar.sendPacket(SystemMessageId.CANNOT_DISCARD_DISTANCE_TOO_FAR);
             return;
         }

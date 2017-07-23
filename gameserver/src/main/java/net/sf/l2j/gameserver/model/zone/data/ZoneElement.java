@@ -62,4 +62,6 @@ public class ZoneElement {
     public List<ZoneStatElement> getStats() { return stats; }
 
     public List<ChaoticLocation> getSpawns() { return spawns; }
+
+    public String getComment() { return comment; }
 }

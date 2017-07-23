@@ -105,4 +105,16 @@ public class ZoneCuboid extends L2ZoneForm {
             dropDebugItem(57, 1, _x2, y, z);
         }
     }
+
+    @Override
+    public String toString() {
+        return "ZoneCuboid{" +
+                "_x1=" + _x1 +
+                ", _x2=" + _x2 +
+                ", _y1=" + _y1 +
+                ", _y2=" + _y2 +
+                ", _z1=" + _z1 +
+                ", _z2=" + _z2 +
+                '}';
+    }
 }

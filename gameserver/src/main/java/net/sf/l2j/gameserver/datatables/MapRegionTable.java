@@ -18,13 +18,13 @@ import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.ClanHallManager;
 import net.sf.l2j.gameserver.instancemanager.SevenSigns;
 import net.sf.l2j.gameserver.instancemanager.ZoneManager;
-import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.Race;
 import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.model.entity.ClanHall;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.zone.L2ZoneType;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.model.zone.type.L2ArenaZone;
@@ -498,8 +498,8 @@ public class MapRegionTable {
             // If in Monster Derby Track
             if (player.isInsideZone(ZoneId.MONSTER_TRACK)) { return new Location(12661, 181687, -3560); }
 
-            Castle castle = null;
-            ClanHall clanhall = null;
+            Castle castle;
+            ClanHall clanhall;
 
             if (player.getClan() != null) {
                 // If teleport to clan hall
@@ -545,7 +545,9 @@ public class MapRegionTable {
 
             // Checking if in arena
             L2ArenaZone arena = ZoneManager.getArena(player);
-            if (arena != null) { return arena.getSpawnLoc(); }
+            if (arena != null) {
+                return arena.getSpawnLoc();
+            }
 
             // Checking if needed to be respawned in "far" town from the castle;
             castle = CastleManager.getInstance().getCastle(player);

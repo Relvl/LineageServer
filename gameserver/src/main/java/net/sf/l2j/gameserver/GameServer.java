@@ -15,6 +15,7 @@ import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.instancemanager.*;
 import net.sf.l2j.gameserver.instancemanager.games.MonsterRace;
 import net.sf.l2j.gameserver.model.L2Manor;
+import net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe.RecipeController;
 import net.sf.l2j.gameserver.model.entity.Hero;
 import net.sf.l2j.gameserver.model.olympiad.Olympiad;
 import net.sf.l2j.gameserver.model.olympiad.OlympiadGameManager;
@@ -75,7 +76,7 @@ public class GameServer {
         SummonItemsData.getInstance();
         BuyListTable.getInstance();
         MultisellData.getInstance();
-        RecipeTable.getInstance();
+        RecipeController.loadRecipes();
         ArmorSetsTable.getInstance();
         FishTable.getInstance();
         SpellbookTable.getInstance();

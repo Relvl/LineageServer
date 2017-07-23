@@ -1,29 +1,16 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.MapRegionTable;
+import net.sf.l2j.gameserver.datatables.MapRegionTable.TeleportWhereType;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.ClanHallManager;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager;
 import net.sf.l2j.gameserver.model.L2SiegeClan;
-import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.model.entity.ClanHall;
+import net.sf.l2j.gameserver.model.location.Location;
 
 public final class RequestRestartPoint extends L2GameClientPacket {
     protected int _requestedPointType;
@@ -36,7 +23,7 @@ public final class RequestRestartPoint extends L2GameClientPacket {
 
     @Override
     protected void runImpl() {
-        final L2PcInstance activeChar = getClient().getActiveChar();
+        L2PcInstance activeChar = getClient().getActiveChar();
         if (activeChar == null) { return; }
 
         if (activeChar.isFakeDeath()) {
@@ -90,7 +77,7 @@ public final class RequestRestartPoint extends L2GameClientPacket {
                         return;
                     }
 
-                    loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, MapRegionTable.TeleportWhereType.ClanHall);
+                    loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, TeleportWhereType.ClanHall);
 
                     if (ClanHallManager.getInstance().getClanHallByOwner(activeChar.getClan()) != null && ClanHallManager.getInstance().getClanHallByOwner(activeChar.getClan()).getFunction(ClanHall.FUNC_RESTORE_EXP) != null) {
                         activeChar.restoreExp(ClanHallManager.getInstance().getClanHallByOwner(activeChar.getClan()).getFunction(ClanHall.FUNC_RESTORE_EXP).getLvl());
@@ -103,11 +90,11 @@ public final class RequestRestartPoint extends L2GameClientPacket {
                     if (castle != null && castle.getSiege().isInProgress()) {
                         // Siege in progress
                         if (castle.getSiege().checkIsDefender(activeChar.getClan())) {
-                            loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, MapRegionTable.TeleportWhereType.Castle);
+                            loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, TeleportWhereType.Castle);
                         }
                         // Just in case you lost castle while being dead.. Port to nearest Town.
                         else if (castle.getSiege().checkIsAttacker(activeChar.getClan())) {
-                            loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, MapRegionTable.TeleportWhereType.Town);
+                            loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, TeleportWhereType.Town);
                         }
                         else {
                             _log.warn("{} called RestartPointPacket - To Castle while he doesn't have Castle.", activeChar.getName());
@@ -117,7 +104,7 @@ public final class RequestRestartPoint extends L2GameClientPacket {
                     else {
                         if (activeChar.getClan() == null || !activeChar.getClan().hasCastle()) { return; }
 
-                        loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, MapRegionTable.TeleportWhereType.Castle);
+                        loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, TeleportWhereType.Castle);
                     }
                     break;
 
@@ -138,10 +125,10 @@ public final class RequestRestartPoint extends L2GameClientPacket {
                     // If a player was waiting with flag option and then the flag dies before the
                     // player pushes the button, he is send back to closest/second closest town.
                     if (siegeClan.getFlags().isEmpty()) {
-                        loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, MapRegionTable.TeleportWhereType.Town);
+                        loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, TeleportWhereType.Town);
                     }
                     else {
-                        loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, MapRegionTable.TeleportWhereType.SiegeFlag);
+                        loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, TeleportWhereType.SiegeFlag);
                     }
                     break;
 
@@ -159,7 +146,7 @@ public final class RequestRestartPoint extends L2GameClientPacket {
                     break;
 
                 default:
-                    loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, MapRegionTable.TeleportWhereType.Town);
+                    loc = MapRegionTable.getInstance().getTeleToLocation(activeChar, TeleportWhereType.Town);
                     break;
             }
 

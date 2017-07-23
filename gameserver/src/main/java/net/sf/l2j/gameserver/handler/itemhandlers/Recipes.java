@@ -1,11 +1,11 @@
 package net.sf.l2j.gameserver.handler.itemhandlers;
 
-import net.sf.l2j.gameserver.datatables.RecipeTable;
 import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.playerpart.PrivateStoreType;
 import net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe.Recipe;
+import net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe.RecipeController;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -23,10 +23,10 @@ public class Recipes implements IItemHandler {
             return;
         }
 
-        Recipe rp = RecipeTable.getInstance().getRecipeByItemId(item.getItemId());
+        Recipe rp = RecipeController.getRecipeByItem(item.getItemId());
         if (rp == null) { return; }
 
-        if (activeChar.getRecipeController().hasRecipe(rp.getId())) {
+        if (activeChar.getRecipeController().hasRecipe(rp.getRecipeId())) {
             activeChar.sendPacket(SystemMessageId.RECIPE_ALREADY_REGISTERED);
             return;
         }

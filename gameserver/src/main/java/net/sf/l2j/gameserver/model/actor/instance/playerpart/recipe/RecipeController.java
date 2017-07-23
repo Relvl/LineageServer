@@ -4,13 +4,13 @@ import net.sf.l2j.Config;
 import net.sf.l2j.commons.database.CallException;
 import net.sf.l2j.commons.database.EModify;
 import net.sf.l2j.commons.serialize.Serializer;
-import net.sf.l2j.gameserver.datatables.RecipeTable;
 import net.sf.l2j.gameserver.model.L2ShortCut;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe.PlayerRecipesLoadCall.RecipeRow;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.network.client.game_to_client.RecipeBookItemList;
 import net.sf.l2j.gameserver.skills.Stats;
+import net.sf.l2j.gameserver.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,7 +28,7 @@ public final class RecipeController {
     private static final Logger LOGGER = LoggerFactory.getLogger(RecipeController.class);
     private static final File RECIPES_FILE = new File("./data/xml/recipes_new.xml");
 
-    private static Map<Integer, RecipeNew> recipes = new HashMap<>();
+    private static Map<Integer, Recipe> recipes = new HashMap<>();
 
     private final L2PcInstance player;
     private final Map<Integer, Recipe> commonRecipes = new HashMap<>();
@@ -52,8 +52,10 @@ public final class RecipeController {
             dwarvenRecipes.clear();
 
             for (RecipeRow row : call.getRecipes()) {
-                Recipe recipe = RecipeTable.getInstance().getRecipeList(row.getRecipeId());
-                (recipe.isDwarvenRecipe() ? dwarvenRecipes : commonRecipes).put(recipe.getId(), recipe);
+                Recipe recipe = getRecipe(row.getRecipeId());
+                if (recipe != null) {
+                    (recipe.isDwarvenRecipe() ? dwarvenRecipes : commonRecipes).put(recipe.getRecipeId(), recipe);
+                }
             }
         }
         catch (CallException e) {
@@ -77,14 +79,14 @@ public final class RecipeController {
 
     public void registerRecipe(Recipe recipe, boolean dwarven) {
         try {
-            modifyCall.setRecipeId(recipe.getId());
+            modifyCall.setRecipeId(recipe.getRecipeId());
             modifyCall.setModify(EModify.ADD);
             modifyCall.execute();
 
-            (dwarven ? dwarvenRecipes : commonRecipes).put(recipe.getId(), recipe);
+            (dwarven ? dwarvenRecipes : commonRecipes).put(recipe.getRecipeId(), recipe);
         }
         catch (CallException e) {
-            LOGGER.error("Cannot store registered recipe {} for player {}", recipe.getId(), player.getObjectId(), e);
+            LOGGER.error("Cannot store registered recipe {} for player {}", recipe.getRecipeId(), player.getObjectId(), e);
         }
     }
 
@@ -116,12 +118,27 @@ public final class RecipeController {
 
     public int getCommonCraft() { return player.getSkillLevel(L2Skill.SKILL_CREATE_COMMON); }
 
+    public int getCraftSkillLevel(boolean dwarven) { return dwarven ? getDwarvenCraft() : getCommonCraft(); }
+
+    public void doManufacture(Integer recipeId, boolean privateStore, L2PcInstance requester) {
+        Recipe recipe = getRecipe(recipeId);
+        if (recipe == null || !hasRecipe(recipeId)) {
+            Util.handleIllegalPlayerAction(player, player.getName() + " of account " + player.getAccountName() + " sent a wrong recipe id.", Config.DEFAULT_PUNISH);
+            return;
+        }
+        recipe.doManufacture(player, privateStore, requester);
+    }
+
     // region RECIPES TABLE
     public static void loadRecipes() {
         try {
-            Map<Integer, RecipeNew> recipeNewMap = new HashMap<>();
+            Map<Integer, Recipe> recipeNewMap = new HashMap<>();
             RecipesXmlFile xmlFile = Serializer.MAPPER.readValue(RECIPES_FILE, RecipesXmlFile.class);
-            for (RecipeNew recipe : xmlFile.list) {
+            for (Recipe recipe : xmlFile.list) {
+                if (recipe.getIngredients() == null || recipe.getIngredients().isEmpty()) {
+                    LOGGER.warn("Ingridients empty for recipe {}", recipe.getRecipeId());
+                    continue;
+                }
                 recipeNewMap.put(recipe.id, recipe);
             }
             recipes = recipeNewMap;
@@ -129,6 +146,17 @@ public final class RecipeController {
         catch (IOException e) {
             LOGGER.error("Cannot load recipes", e);
         }
+    }
+
+    public static Recipe getRecipe(Integer id) { return recipes.get(id); }
+
+    public static Recipe getRecipeByItem(Integer itemId) {
+        for (Recipe recipe : recipes.values()) {
+            if (recipe.getRecipeItemId().equals(itemId)) {
+                return recipe;
+            }
+        }
+        return null;
     }
 
     // endregion RECIPES TABLE
