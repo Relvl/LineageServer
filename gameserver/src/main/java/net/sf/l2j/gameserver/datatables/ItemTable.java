@@ -85,13 +85,13 @@ public class ItemTable {
                 if (raidBoss.getFirstCommandChannelAttacked() != null) {
                     item.setOwnerId(raidBoss.getFirstCommandChannelAttacked().getChannelLeader().getObjectId());
                     itemLootShedule = ThreadPoolManager.getInstance().scheduleGeneral(new ResetOwner(item), 300000);
-                    item.setItemLootShedule(itemLootShedule);
+                    item.setItemLootTask(itemLootShedule);
                 }
             }
             else if (!Config.AUTO_LOOT) {
                 item.setOwnerId(actor.getObjectId());
                 itemLootShedule = ThreadPoolManager.getInstance().scheduleGeneral(new ResetOwner(item), 15000);
-                item.setItemLootShedule(itemLootShedule);
+                item.setItemLootTask(itemLootShedule);
             }
         }
 
@@ -163,7 +163,7 @@ public class ItemTable {
         @Override
         public void run() {
             itemInstance.setOwnerId(0);
-            itemInstance.setItemLootShedule(null);
+            itemInstance.setItemLootTask(null);
         }
     }
 

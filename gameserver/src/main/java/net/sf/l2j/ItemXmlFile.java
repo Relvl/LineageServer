@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import net.sf.l2j.commons.serialize.JsonBooleanFalseOnlyFilter;
+import net.sf.l2j.commons.serialize.converter.BooleanFalseOnlyConverter;
 import net.sf.l2j.gameserver.model.item.EItemBodyPart;
 import net.sf.l2j.gameserver.model.item.type.*;
 
@@ -46,19 +46,19 @@ public class ItemXmlFile {
         // ================================================= new properties
 
         @JacksonXmlProperty(localName = "sellable")
-        @JsonSerialize(converter = JsonBooleanFalseOnlyFilter.class)
+        @JsonSerialize(converter = BooleanFalseOnlyConverter.class)
         public Boolean sellable = true;
 
         @JacksonXmlProperty(localName = "depositable")
-        @JsonSerialize(converter = JsonBooleanFalseOnlyFilter.class)
+        @JsonSerialize(converter = BooleanFalseOnlyConverter.class)
         public Boolean depositable = true;
 
         @JacksonXmlProperty(localName = "destroyable")
-        @JsonSerialize(converter = JsonBooleanFalseOnlyFilter.class)
+        @JsonSerialize(converter = BooleanFalseOnlyConverter.class)
         public Boolean destroyable = true;
 
         @JacksonXmlProperty(localName = "dropable")
-        @JsonSerialize(converter = JsonBooleanFalseOnlyFilter.class)
+        @JsonSerialize(converter = BooleanFalseOnlyConverter.class)
         public Boolean dropable = true;
 
         @JacksonXmlProperty(localName = "stackable")
@@ -66,7 +66,7 @@ public class ItemXmlFile {
         public Boolean stackable;
 
         @JacksonXmlProperty(localName = "tradable")
-        @JsonSerialize(converter = JsonBooleanFalseOnlyFilter.class)
+        @JsonSerialize(converter = BooleanFalseOnlyConverter.class)
         public Boolean tradable = true;
 
         @JacksonXmlProperty(localName = "olympiadRestricted")

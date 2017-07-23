@@ -5129,20 +5129,6 @@
 		<ingredient id="1878" count="1" />
 		<ingredient id="1873" count="5" />
 	</item>
-	<item id="436" name="mk_pata_i">
-		<recipe id="5008" level="6" type="dwarven" />
-		<mpCost>171</mpCost>
-		<successRate>60</successRate>
-		<production id="264" count="1" />
-		<ingredient id="5008" count="1" />
-		<ingredient id="4103" count="12" />
-		<ingredient id="1890" count="70" />
-		<ingredient id="1888" count="70" />
-		<ingredient id="1885" count="35" />
-		<ingredient id="4042" count="35" />
-		<ingredient id="1459" count="310" />
-		<ingredient id="2132" count="55" />
-	</item>
 	<item id="437" name="mk_pata_ii">
 		<recipe id="4181" level="6" type="dwarven" />
 		<mpCost>171</mpCost>

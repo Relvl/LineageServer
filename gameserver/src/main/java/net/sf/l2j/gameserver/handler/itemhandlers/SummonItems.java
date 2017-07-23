@@ -56,7 +56,7 @@ public class SummonItems implements IItemHandler {
 
         if (activeChar.isAllSkillsDisabled() || activeChar.isCastingNow()) { return; }
 
-        SummonItem sitem = SummonItemsData.getInstance().getSummonItem(item.getItemId());
+        SummonItem sitem = SummonItemsData.getSummonItem(item.getItemId());
 
         if ((activeChar.getPet() != null || activeChar.isMounted()) && sitem.isPetSummon()) {
             activeChar.sendPacket(SystemMessageId.SUMMON_ONLY_ONE);

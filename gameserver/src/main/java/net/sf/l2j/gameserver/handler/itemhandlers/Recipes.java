@@ -5,9 +5,9 @@ import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.playerpart.PrivateStoreType;
+import net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe.Recipe;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
-import net.sf.l2j.gameserver.model.item.RecipeList;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
@@ -23,43 +23,55 @@ public class Recipes implements IItemHandler {
             return;
         }
 
-        RecipeList rp = RecipeTable.getInstance().getRecipeByItemId(item.getItemId());
+        Recipe rp = RecipeTable.getInstance().getRecipeByItemId(item.getItemId());
         if (rp == null) { return; }
 
-        if (activeChar.hasRecipeList(rp.getId())) {
+        if (activeChar.getRecipeController().hasRecipe(rp.getId())) {
             activeChar.sendPacket(SystemMessageId.RECIPE_ALREADY_REGISTERED);
             return;
         }
 
         if (rp.isDwarvenRecipe()) {
-            if (activeChar.hasDwarvenCraft()) {
-                if (activeChar.getPrivateStoreType() == PrivateStoreType.MANUFACTURE) { activeChar.sendPacket(SystemMessageId.CANT_ALTER_RECIPEBOOK_WHILE_CRAFTING); }
-                else if (rp.getLevel() > activeChar.getDwarvenCraft()) { activeChar.sendPacket(SystemMessageId.CREATE_LVL_TOO_LOW_TO_REGISTER); }
-                else if (activeChar.getDwarvenRecipeBook().size() >= activeChar.getDwarfRecipeLimit()) {
-                    activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.UP_TO_S1_RECIPES_CAN_REGISTER).addNumber(activeChar.getDwarfRecipeLimit()));
+            if (activeChar.getRecipeController().hasDwarvenCraft()) {
+                if (activeChar.getPrivateStoreType() == PrivateStoreType.MANUFACTURE) {
+                    activeChar.sendPacket(SystemMessageId.CANT_ALTER_RECIPEBOOK_WHILE_CRAFTING);
+                }
+                else if (rp.getLevel() > activeChar.getRecipeController().getDwarvenCraft()) {
+                    activeChar.sendPacket(SystemMessageId.CREATE_LVL_TOO_LOW_TO_REGISTER);
+                }
+                else if (activeChar.getRecipeController().getDwarvenRecipes().size() >= activeChar.getRecipeController().getDwarfRecipeLimit()) {
+                    activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.UP_TO_S1_RECIPES_CAN_REGISTER).addNumber(activeChar.getRecipeController().getDwarfRecipeLimit()));
                 }
                 else {
-                    activeChar.registerDwarvenRecipeList(rp);
+                    activeChar.getRecipeController().registerRecipe(rp, true);
                     activeChar.destroyItem(EItemProcessPurpose.CONSUME, item.getObjectId(), 1, null, false);
                     activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_ADDED).addItemName(item));
                 }
             }
-            else { activeChar.sendPacket(SystemMessageId.CANT_REGISTER_NO_ABILITY_TO_CRAFT); }
+            else {
+                activeChar.sendPacket(SystemMessageId.CANT_REGISTER_NO_ABILITY_TO_CRAFT);
+            }
         }
         else {
-            if (activeChar.hasCommonCraft()) {
-                if (activeChar.getPrivateStoreType() == PrivateStoreType.MANUFACTURE) { activeChar.sendPacket(SystemMessageId.CANT_ALTER_RECIPEBOOK_WHILE_CRAFTING); }
-                else if (rp.getLevel() > activeChar.getCommonCraft()) { activeChar.sendPacket(SystemMessageId.CREATE_LVL_TOO_LOW_TO_REGISTER); }
-                else if (activeChar.getCommonRecipeBook().size() >= activeChar.getCommonRecipeLimit()) {
-                    activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.UP_TO_S1_RECIPES_CAN_REGISTER).addNumber(activeChar.getCommonRecipeLimit()));
+            if (activeChar.getRecipeController().hasCommonCraft()) {
+                if (activeChar.getPrivateStoreType() == PrivateStoreType.MANUFACTURE) {
+                    activeChar.sendPacket(SystemMessageId.CANT_ALTER_RECIPEBOOK_WHILE_CRAFTING);
+                }
+                else if (rp.getLevel() > activeChar.getRecipeController().getCommonCraft()) {
+                    activeChar.sendPacket(SystemMessageId.CREATE_LVL_TOO_LOW_TO_REGISTER);
+                }
+                else if (activeChar.getRecipeController().getCommonRecipes().size() >= activeChar.getRecipeController().getCommonRecipeLimit()) {
+                    activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.UP_TO_S1_RECIPES_CAN_REGISTER).addNumber(activeChar.getRecipeController().getCommonRecipeLimit()));
                 }
                 else {
-                    activeChar.registerCommonRecipeList(rp);
+                    activeChar.getRecipeController().registerRecipe(rp, false);
                     activeChar.destroyItem(EItemProcessPurpose.CONSUME, item.getObjectId(), 1, null, false);
                     activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_ADDED).addItemName(item));
                 }
             }
-            else { activeChar.sendPacket(SystemMessageId.CANT_REGISTER_NO_ABILITY_TO_CRAFT); }
+            else {
+                activeChar.sendPacket(SystemMessageId.CANT_REGISTER_NO_ABILITY_TO_CRAFT);
+            }
         }
     }
 }

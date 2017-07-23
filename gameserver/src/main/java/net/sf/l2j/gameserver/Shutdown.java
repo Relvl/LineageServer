@@ -18,7 +18,6 @@ import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.EServerStatus;
 import net.sf.l2j.gameserver.datatables.BufferTable;
-import net.sf.l2j.gameserver.datatables.ServerMemo;
 import net.sf.l2j.gameserver.instancemanager.*;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Hero;
@@ -187,10 +186,6 @@ public class Shutdown extends Thread {
             // Schemes save.
             BufferTable.getInstance().saveSchemes();
             LOGGER.info("BufferTable data has been saved.");
-
-            // Save server memos.
-            ServerMemo.getInstance().storeMe();
-            LOGGER.info("ServerMemo data has been saved.");
 
             // Save items on ground before closing
             ItemsOnGroundTaskManager.getInstance().save();

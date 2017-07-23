@@ -118,7 +118,7 @@ public class L2DungeonGatekeeperInstance extends L2NpcInstance {
     }
 
     private static void doTeleport(L2PcInstance player, int val) {
-        L2TeleportLocation list = TeleportLocationTable.getInstance().getTemplate(val);
+        L2TeleportLocation list = TeleportLocationTable.getTemplate(val);
         if (list != null) {
             if (player.isAlikeDead()) { return; }
 

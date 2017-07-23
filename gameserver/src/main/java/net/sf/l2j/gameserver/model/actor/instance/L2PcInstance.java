@@ -29,6 +29,7 @@ import net.sf.l2j.gameserver.model.actor.instance.playerpart.GatesRequest;
 import net.sf.l2j.gameserver.model.actor.instance.playerpart.PrivateStoreType;
 import net.sf.l2j.gameserver.model.actor.instance.playerpart.PunishLevel;
 import net.sf.l2j.gameserver.model.actor.instance.playerpart.SummonRequest;
+import net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe.RecipeController;
 import net.sf.l2j.gameserver.model.actor.instance.playerpart.variables.PlayerVariables;
 import net.sf.l2j.gameserver.model.actor.knownlist.PcKnownList;
 import net.sf.l2j.gameserver.model.actor.position.PcPosition;
@@ -54,7 +55,6 @@ import net.sf.l2j.gameserver.model.itemcontainer.*;
 import net.sf.l2j.gameserver.model.itemcontainer.listeners.ItemPassiveSkillsListener;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.model.location.Location;
-import net.sf.l2j.gameserver.model.memo.PlayerMemo;
 import net.sf.l2j.gameserver.model.olympiad.OlympiadGameManager;
 import net.sf.l2j.gameserver.model.olympiad.OlympiadGameTask;
 import net.sf.l2j.gameserver.model.olympiad.OlympiadManager;
@@ -137,20 +137,19 @@ public final class L2PcInstance extends L2Playable {
     private static final int FALLING_VALIDATION_DELAY = 10000;
 
     private final PlayerVariables variables = new PlayerVariables(this);
+    private final RecipeController recipeController = new RecipeController(this);
 
     private final L2Radar radar = new L2Radar(this);
     private final PcInventory inventory = new PcInventory(this);
 
     private final ReentrantLock _subclassLock = new ReentrantLock();
+
     private final Map<Integer, SubClass> _subClasses = new ConcurrentSkipListMap<>();
-    private final Map<Integer, RecipeList> _dwarvenRecipeBook = new HashMap<>();
-    private final Map<Integer, RecipeList> _commonRecipeBook = new HashMap<>();
     private final Location _savedLocation = new Location(0, 0, 0);
     private final List<Integer> _recomChars = new ArrayList<>();
     private final List<PcFreight> _depositedFreight = new ArrayList<>();
     private final List<QuestState> _quests = new ArrayList<>();
     private final List<QuestState> _notifyQuestOfDeathList = new ArrayList<>();
-    private final PlayerMemo _vars = new PlayerMemo(getObjectId());
     private final ShortCuts _shortCuts = new ShortCuts(this);
     private final MacroList _macroses = new MacroList(this);
     private final Henna[] _henna = new Henna[3];
@@ -794,7 +793,6 @@ public final class L2PcInstance extends L2Playable {
         return CharTemplateTable.getInstance().getTemplate(_baseClass);
     }
 
-    /** Return the L2PcTemplate link to the L2PcInstance. */
     @Override
     public PcTemplate getTemplate() {
         return (PcTemplate) super.getTemplate();
@@ -820,18 +818,11 @@ public final class L2PcInstance extends L2Playable {
         return ai;
     }
 
-    /** Return the Level of the L2PcInstance. */
     @Override
     public int getLevel() {
         return getStat().getLevel();
     }
 
-    /**
-     * A newbie is a player reaching level 6. He isn't considered newbie at lvl 25.<br>
-     * Since IL newbie isn't anymore the first character of an account reaching that state, but any.
-     *
-     * @return True if newbie.
-     */
     public boolean isNewbie() {
         return getClassId().level() <= 1 && getLevel() >= 6 && getLevel() <= 25;
     }
@@ -870,78 +861,10 @@ public final class L2PcInstance extends L2Playable {
         }
     }
 
-    /**
-     * @return a table containing all Common RecipeList of the L2PcInstance.
-     */
-    public Collection<RecipeList> getCommonRecipeBook() {
-        return _commonRecipeBook.values();
-    }
-
-    /**
-     * @return a table containing all Dwarf RecipeList of the L2PcInstance.
-     */
-    public Collection<RecipeList> getDwarvenRecipeBook() {
-        return _dwarvenRecipeBook.values();
-    }
-
-    /**
-     * Add a new L2RecipList to the table _commonrecipebook containing all RecipeList of the L2PcInstance.
-     *
-     * @param recipe The RecipeList to add to the _recipebook
-     */
-    public void registerCommonRecipeList(RecipeList recipe) {
-        _commonRecipeBook.put(recipe.getId(), recipe);
-    }
-
-    /**
-     * Add a new L2RecipList to the table _recipebook containing all RecipeList of the L2PcInstance.
-     *
-     * @param recipe The RecipeList to add to the _recipebook
-     */
-    public void registerDwarvenRecipeList(RecipeList recipe) {
-        _dwarvenRecipeBook.put(recipe.getId(), recipe);
-    }
-
-    /**
-     * @param recipeId The Identifier of the RecipeList to check in the player's recipe books
-     * @return <b>TRUE</b> if player has the recipe on Common or Dwarven Recipe book else returns <b>FALSE</b>
-     */
-    public boolean hasRecipeList(int recipeId) {
-        return _dwarvenRecipeBook.containsKey(recipeId) || _commonRecipeBook.containsKey(recipeId);
-    }
-
-    /**
-     * Tries to remove a L2RecipList from the table _DwarvenRecipeBook or from table _CommonRecipeBook, those table contain all RecipeList of the L2PcInstance.
-     *
-     * @param recipeId The Identifier of the RecipeList to remove from the _recipebook.
-     */
-    public void unregisterRecipeList(int recipeId) {
-        if (_dwarvenRecipeBook.containsKey(recipeId)) { _dwarvenRecipeBook.remove(recipeId); }
-        else if (_commonRecipeBook.containsKey(recipeId)) { _commonRecipeBook.remove(recipeId); }
-        else { LOGGER.warn("Attempted to remove unknown RecipeList: " + recipeId); }
-
-        for (L2ShortCut sc : getAllShortCuts()) {
-            if (sc != null && sc.getId() == recipeId && sc.getType() == L2ShortCut.TYPE_RECIPE) {
-                deleteShortCut(sc.getSlot(), sc.getPage());
-            }
-        }
-    }
-
-    /**
-     * @return the Id for the last talked quest NPC.
-     */
-    public int getLastQuestNpcObject() {
-        return _questNpcObject;
-    }
-
     public void setLastQuestNpcObject(int npcId) {
         _questNpcObject = npcId;
     }
 
-    /**
-     * @param name The name of the quest.
-     * @return The QuestState object corresponding to the quest name.
-     */
     public QuestState getQuestState(String name) {
         for (QuestState qs : _quests) {
             if (name.equals(qs.getQuest().getName())) { return qs; }
@@ -949,28 +872,14 @@ public final class L2PcInstance extends L2Playable {
         return null;
     }
 
-    /**
-     * Add a QuestState to the table _quest containing all quests began by the L2PcInstance.
-     *
-     * @param qs The QuestState to add to _quest.
-     */
     public void setQuestState(QuestState qs) {
         _quests.add(qs);
     }
 
-    /**
-     * Remove a QuestState from the table _quest containing all quests began by the L2PcInstance.
-     *
-     * @param qs : The QuestState to be removed from _quest.
-     */
     public void delQuestState(QuestState qs) {
         _quests.remove(qs);
     }
 
-    /**
-     * @param completed : If true, include completed quests to the list.
-     * @return list of started and eventually completed quests of the player.
-     */
     public List<Quest> getAllQuests(boolean completed) {
         List<Quest> quests = new ArrayList<>();
 
@@ -1008,45 +917,22 @@ public final class L2PcInstance extends L2Playable {
         }
     }
 
-    /**
-     * Add QuestState instance that is to be notified of L2PcInstance's death.
-     *
-     * @param qs The QuestState that subscribe to this event
-     */
     public void addNotifyQuestOfDeath(QuestState qs) {
         if (qs == null) { return; }
 
         if (!_notifyQuestOfDeathList.contains(qs)) { _notifyQuestOfDeathList.add(qs); }
     }
 
-    /**
-     * Remove QuestState instance that is to be notified of L2PcInstance's death.
-     *
-     * @param qs The QuestState that subscribe to this event
-     */
     public void removeNotifyQuestOfDeath(QuestState qs) {
         if (qs == null) { return; }
 
         _notifyQuestOfDeathList.remove(qs);
     }
 
-    /**
-     * @return A list of QuestStates which registered for notify of death of this L2PcInstance.
-     */
     public List<QuestState> getNotifyQuestOfDeath() {
         return _notifyQuestOfDeathList;
     }
 
-    /**
-     * @return player memos.
-     */
-    public PlayerMemo getMemos() {
-        return _vars;
-    }
-
-    /**
-     * @return A table containing all L2ShortCut of the L2PcInstance.
-     */
     public L2ShortCut[] getAllShortCuts() {
         return _shortCuts.getAllShortCuts();
     }
@@ -1197,28 +1083,6 @@ public final class L2PcInstance extends L2Playable {
             _lastCompassZone = ExSetCompassZoneCode.GENERALZONE;
             sendPacket(new ExSetCompassZoneCode(ExSetCompassZoneCode.GENERALZONE));
         }
-    }
-
-    /**
-     * @return True if the L2PcInstance can Craft Dwarven Recipes.
-     */
-    public boolean hasDwarvenCraft() {
-        return getSkillLevel(L2Skill.SKILL_CREATE_DWARVEN) >= 1;
-    }
-
-    public int getDwarvenCraft() {
-        return getSkillLevel(L2Skill.SKILL_CREATE_DWARVEN);
-    }
-
-    /**
-     * @return True if the L2PcInstance can Craft Dwarven Recipes.
-     */
-    public boolean hasCommonCraft() {
-        return getSkillLevel(L2Skill.SKILL_CREATE_COMMON) >= 1;
-    }
-
-    public int getCommonCraft() {
-        return getSkillLevel(L2Skill.SKILL_CREATE_COMMON);
     }
 
     /**
@@ -3061,7 +2925,7 @@ public final class L2PcInstance extends L2Playable {
                 return;
             }
 
-            if (target.getItemLootShedule() != null && (target.getOwnerId() == getObjectId() || isInLooterParty(target.getOwnerId()))) {
+            if (target.getItemLootTask() != null && (target.getOwnerId() == getObjectId() || isInLooterParty(target.getOwnerId()))) {
                 target.resetOwnerTimer();
             }
 
@@ -4627,7 +4491,7 @@ public final class L2PcInstance extends L2Playable {
             statement.setInt(21, getRace().ordinal());
             statement.setInt(22, getClassId().getId());
             statement.setLong(23, _deleteTimer);
-            statement.setInt(24, hasDwarvenCraft() ? 1 : 0);
+            statement.setInt(24, recipeController.hasDwarvenCraft() ? 1 : 0);
             statement.setString(25, getTitle());
             statement.setInt(26, getAccessLevel().getLevel());
             statement.setInt(27, isOnlineInt());
@@ -4701,67 +4565,7 @@ public final class L2PcInstance extends L2Playable {
         // Retrieve from the database all recom data of this L2PcInstance and add to _recomChars.
         restoreRecom();
 
-        // Retrieve from the database the recipe book of this L2PcInstance.
-        if (!isSubClassActive()) { restoreRecipeBook(); }
-    }
-
-    /**
-     * Store recipe book data for this L2PcInstance, if not on an active sub-class.
-     */
-    private void storeRecipeBook() {
-        // If the player is on a sub-class don't even attempt to store a recipe book.
-        if (isSubClassActive()) { return; }
-
-        if (getCommonRecipeBook().isEmpty() && getDwarvenRecipeBook().isEmpty()) { return; }
-
-        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
-            PreparedStatement statement = con.prepareStatement("DELETE FROM character_recipebook WHERE char_id=?");
-            statement.setInt(1, getObjectId());
-            statement.execute();
-            statement.close();
-
-            for (RecipeList recipe : getCommonRecipeBook()) {
-                statement = con.prepareStatement("INSERT INTO character_recipebook (char_id, id, type) VALUES(?,?,0)");
-                statement.setInt(1, getObjectId());
-                statement.setInt(2, recipe.getId());
-                statement.execute();
-                statement.close();
-            }
-
-            for (RecipeList recipe : getDwarvenRecipeBook()) {
-                statement = con.prepareStatement("INSERT INTO character_recipebook (char_id, id, type) VALUES(?,?,1)");
-                statement.setInt(1, getObjectId());
-                statement.setInt(2, recipe.getId());
-                statement.execute();
-                statement.close();
-            }
-        }
-        catch (Exception e) {
-            LOGGER.error("Could not store recipe book data: " + e);
-        }
-    }
-
-    /**
-     * Restore recipe book data for this L2PcInstance.
-     */
-    private void restoreRecipeBook() {
-        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
-            PreparedStatement statement = con.prepareStatement("SELECT id, type FROM character_recipebook WHERE char_id=?");
-            statement.setInt(1, getObjectId());
-            ResultSet rset = statement.executeQuery();
-
-            while (rset.next()) {
-                RecipeList recipe = RecipeTable.getInstance().getRecipeList(rset.getInt("id"));
-                if (rset.getInt("type") == 1) { registerDwarvenRecipeList(recipe); }
-                else { registerCommonRecipeList(recipe); }
-            }
-
-            rset.close();
-            statement.close();
-        }
-        catch (Exception e) {
-            LOGGER.error("Could not restore recipe book data:" + e);
-        }
+        recipeController.reload();
     }
 
     /**
@@ -4778,11 +4582,8 @@ public final class L2PcInstance extends L2Playable {
         storeCharBase();
         storeCharSub();
         storeEffect(storeActiveEffects);
-        storeRecipeBook();
 
         SevenSigns.getInstance().saveSevenSignsData(getObjectId());
-
-        _vars.storeMe();
     }
 
     public void store() {
@@ -7079,11 +6880,7 @@ public final class L2PcInstance extends L2Playable {
             stopAllEffectsExceptThoseThatLastThroughDeath();
             stopCubics();
 
-            if (isSubClassActive()) {
-                _dwarvenRecipeBook.clear();
-                _commonRecipeBook.clear();
-            }
-            else { restoreRecipeBook(); }
+            recipeController.reload();
 
             restoreSkills();
             rewardSkills();
@@ -7923,14 +7720,6 @@ public final class L2PcInstance extends L2Playable {
         return Config.FREIGHT_SLOTS + (int) getStat().calcStat(Stats.FREIGHT_LIM, 0, null, null);
     }
 
-    public int getDwarfRecipeLimit() {
-        return Config.DWARF_RECIPE_LIMIT + (int) getStat().calcStat(Stats.REC_D_LIM, 0, null, null);
-    }
-
-    public int getCommonRecipeLimit() {
-        return Config.COMMON_RECIPE_LIMIT + (int) getStat().calcStat(Stats.REC_C_LIM, 0, null, null);
-    }
-
     public int getMountNpcId() {
         return _mountNpcId;
     }
@@ -8733,6 +8522,8 @@ public final class L2PcInstance extends L2Playable {
     public boolean isPlayer() { return true; }
 
     public PlayerVariables variables() { return variables; }
+
+    public RecipeController getRecipeController() { return recipeController; }
 
     private class ShortBuffTask implements Runnable {
         @Override

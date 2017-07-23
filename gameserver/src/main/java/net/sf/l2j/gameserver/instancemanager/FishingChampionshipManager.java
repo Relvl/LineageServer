@@ -19,7 +19,6 @@ import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ItemTable;
-import net.sf.l2j.gameserver.datatables.ServerMemo;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -80,7 +79,7 @@ public class FishingChampionshipManager {
     }
 
     private void restoreData() {
-        _enddate = ServerMemo.getInstance().getLong("fishChampionshipEnd", 0);
+        _enddate = 0;//ServerMemo.getInstance().getLong("fishChampionshipEnd", 0);
 
         try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(SELECT);
@@ -285,8 +284,6 @@ public class FishingChampionshipManager {
     }
 
     public void shutdown() {
-        ServerMemo.getInstance().set("fishChampionshipEnd", _enddate);
-
         try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(DELETE);
             statement.execute();

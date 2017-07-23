@@ -79,7 +79,7 @@ public class RequestAcquireSkillInfo extends L2GameClientPacket
 					if (sl.getId() == _skillId && sl.getLevel() == _skillLevel)
 					{
 						AcquireSkillInfo asi = new AcquireSkillInfo(_skillId, _skillLevel, sl.getSpCost(), 0);
-						int spellbookItemId = SpellbookTable.getInstance().getBookForSkill(_skillId, _skillLevel);
+						int spellbookItemId = SpellbookTable.getBookForSkill(_skillId, _skillLevel);
 						if (spellbookItemId != 0)
 							asi.addRequirement(99, spellbookItemId, 1, 50);
 						sendPacket(asi);

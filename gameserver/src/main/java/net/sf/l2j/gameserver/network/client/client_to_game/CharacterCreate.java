@@ -160,11 +160,9 @@ public final class CharacterCreate extends L2GameClientPacket {
             if (skill.getId() == 1216) { newChar.registerShortCut(new L2ShortCut(9, 0, 2, skill.getId(), 1, 1)); }
         }
 
-        if (!Config.DISABLE_TUTORIAL) {
-            if (newChar.getQuestState("Tutorial") == null) {
-                Quest q = ScriptManager.getInstance().getQuest("Tutorial");
-                if (q != null) { q.newQuestState(newChar).setState(Quest.STATE_STARTED); }
-            }
+        if (newChar.getQuestState("Tutorial") == null) {
+            Quest q = ScriptManager.getInstance().getQuest("Tutorial");
+            if (q != null) { q.newQuestState(newChar).setState(Quest.STATE_STARTED); }
         }
 
         newChar.setOnlineStatus(true, false);

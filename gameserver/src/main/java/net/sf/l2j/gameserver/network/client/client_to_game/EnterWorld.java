@@ -184,7 +184,7 @@ public class EnterWorld extends L2GameClientPacket {
         activeChar.sendSkillList();
 
         Quest.playerEnter(activeChar);
-        if (!Config.DISABLE_TUTORIAL) { loadTutorial(activeChar); }
+        loadTutorial(activeChar);
 
         for (Quest quest : ScriptManager.getInstance().getQuests()) {
             if (quest != null && quest.getOnEnterWorld()) { quest.notifyEnterWorld(activeChar); }

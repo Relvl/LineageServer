@@ -11,10 +11,13 @@ import java.util.*;
  */
 public enum ESqlTypeMapping {
     UNKNOWN(Types.OTHER, "getObject"),
+
     INT(Types.INTEGER, "getInt"),
+    LONG(Types.INTEGER, "getLong"),
     BYTEA(Types.BINARY, "getBytes"),
     VARCHAR(Types.VARCHAR, "getString"),
-    CURSOR(Types.OTHER, "getObject");
+    CURSOR(Types.OTHER, "getObject"),
+    ARRAY(Types.ARRAY, "getArray");
 
     private static final Map<Class<?>, ESqlTypeMapping> MAPPING = new HashMap<>();
     private final int type;
@@ -22,12 +25,20 @@ public enum ESqlTypeMapping {
 
     static {
         MAPPING.put(Integer.class, INT);
+        MAPPING.put(Long.class, LONG);
+
+        MAPPING.put(String.class, VARCHAR);
 
         MAPPING.put(byte[].class, BYTEA);
 
         MAPPING.put(List.class, CURSOR);
         MAPPING.put(ArrayList.class, CURSOR);
         MAPPING.put(LinkedList.class, CURSOR);
+
+        MAPPING.put(Integer[].class, ARRAY);
+        MAPPING.put(Long[].class, ARRAY);
+        MAPPING.put(String[].class, ARRAY);
+        MAPPING.put(Boolean[].class, ARRAY);
     }
 
     ESqlTypeMapping(int type, String methodName) {
@@ -50,7 +61,6 @@ public enum ESqlTypeMapping {
     public int getType() {
         return type;
     }
-
 
     public static ESqlTypeMapping getType(Class<?> clazz) {
         if (clazz == null || !MAPPING.containsKey(clazz)) {

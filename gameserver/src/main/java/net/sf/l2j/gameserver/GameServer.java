@@ -67,7 +67,6 @@ public class GameServer {
         L2World.getInstance();
         MapRegionTable.getInstance();
         AnnouncementTable.getInstance();
-        ServerMemo.getInstance();
 
         SkillTable.getInstance();
         SkillTreeTable.getInstance();

@@ -23,7 +23,7 @@ public class GetPlayerVariablesCall extends IndexedCall {
     private Integer resultCode;
 
     protected GetPlayerVariablesCall(Integer playerId) {
-        super("game_server.get_player_variables", 3, false);
+        super("game_server.player_variable_load", 3, false);
         this.playerId = playerId;
     }
 

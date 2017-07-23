@@ -62,7 +62,6 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Future;
-import java.util.logging.Level;
 
 public class L2PetInstance extends L2Summon {
     private int _curFed;
@@ -405,7 +404,7 @@ public class L2PetInstance extends L2Summon {
                 return;
             }
 
-            if (target.getItemLootShedule() != null && (target.getOwnerId() == getOwner().getObjectId() || getOwner().isInLooterParty(target.getOwnerId()))) { target.resetOwnerTimer(); }
+            if (target.getItemLootTask() != null && (target.getOwnerId() == getOwner().getObjectId() || getOwner().isInLooterParty(target.getOwnerId()))) { target.resetOwnerTimer(); }
 
             // If owner is in party and it isnt finders keepers, distribute the item instead of stealing it -.-
             if (getOwner().isInParty() && getOwner().getParty().getLootDistribution() != L2Party.ITEM_LOOTER) { getOwner().getParty().distributeItem(getOwner(), target); }

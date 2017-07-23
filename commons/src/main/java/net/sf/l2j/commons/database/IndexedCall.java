@@ -1,24 +1,30 @@
 package net.sf.l2j.commons.database;
 
 import net.sf.l2j.L2DatabaseFactory;
-import net.sf.l2j.commons.database.annotation.OrmParamCursor;
-import net.sf.l2j.commons.database.annotation.OrmParamIn;
-import net.sf.l2j.commons.database.annotation.OrmParamOut;
+import net.sf.l2j.commons.database.annotation.*;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.commons.reflection.FieldAccessor;
 import net.sf.l2j.commons.reflection.ReflectionManager;
+import org.postgresql.jdbc.PgArray;
 import org.slf4j.Logger;
 
+import java.lang.reflect.Array;
+import java.math.BigDecimal;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Johnson / 02.06.2017
  */
 public abstract class IndexedCall implements AutoCloseable {
+    private static final Map<String, Class<?>> TYPE_MAPPING = new HashMap<>();
+
     private Connection connection;
     private CallableStatement statement;
     private String sqlStatementString;
@@ -40,6 +46,26 @@ public abstract class IndexedCall implements AutoCloseable {
             statement = getConnection().prepareCall(sqlStatementString);
         }
         return statement;
+    }
+
+    private void storeTypeMapping(FieldAccessor accessor) {
+        OrmTypeName typeName = accessor.getField().getType().getAnnotation(OrmTypeName.class);
+        if (typeName != null && !TYPE_MAPPING.containsKey(typeName.value())) {
+            try {
+                Map<String, Class<?>> map = getConnection().getTypeMap();
+                if (map == null) {
+                    map = new HashMap<>();
+                    map.putAll(TYPE_MAPPING);
+                }
+                map.put(typeName.value(), accessor.getField().getType());
+                getConnection().setTypeMap(map);
+                TYPE_MAPPING.put(typeName.value(), accessor.getField().getType());
+            }
+            catch (SQLException e) {
+                getLogger().error("Cannot add type mapping {}", typeName.value(), e);
+            }
+        }
+
     }
 
     // { ? = call some_func(?, ?) }
@@ -65,13 +91,14 @@ public abstract class IndexedCall implements AutoCloseable {
     }
 
     public final void execute() throws CallException {
-        boolean hasCursors = false;
 
         try {
             // Регистрируем исходящие аргументы.
             List<FieldAccessor> paramsOut = ReflectionManager.getAnnotatedFields(getClass(), OrmParamOut.class);
+            boolean hasCursors = false;
             if (paramsOut != null && !paramsOut.isEmpty()) {
                 for (FieldAccessor accessor : paramsOut) {
+                    storeTypeMapping(accessor);
                     int position = accessor.getField().getAnnotation(OrmParamOut.class).value();
                     ESqlTypeMapping sqlType = ESqlTypeMapping.getType(accessor.getField().getType());
                     if (sqlType == ESqlTypeMapping.CURSOR) {
@@ -84,11 +111,10 @@ public abstract class IndexedCall implements AutoCloseable {
             List<FieldAccessor> paramsIn = ReflectionManager.getAnnotatedFields(getClass(), OrmParamIn.class);
             if (paramsIn != null && !paramsIn.isEmpty()) {
                 for (FieldAccessor accessor : paramsIn) {
+                    storeTypeMapping(accessor);
                     int position = accessor.getField().getAnnotation(OrmParamIn.class).value();
                     ESqlTypeMapping sqlType = ESqlTypeMapping.getType(accessor.getField().getType());
-
                     getStatement().setObject(position, accessor.getInstanceValue(this), sqlType.getType());
-
                     logStatementString = logStatementString.replaceAll("\\{" + position + "\\}", String.valueOf(accessor.getInstanceValue(this)));
                 }
             }
@@ -101,6 +127,7 @@ public abstract class IndexedCall implements AutoCloseable {
             if (paramsOut != null && !paramsOut.isEmpty()) {
                 for (FieldAccessor accessor : paramsOut) {
                     OrmParamOut ormParamOut = accessor.getField().getAnnotation(OrmParamOut.class);
+                    OrmCollectionType ormCollectionType = accessor.getField().getAnnotation(OrmCollectionType.class);
                     int position = ormParamOut.value();
                     ESqlTypeMapping sqlType = ESqlTypeMapping.getType(accessor.getField().getType());
 
@@ -111,13 +138,13 @@ public abstract class IndexedCall implements AutoCloseable {
 
                         List cursorList = (List) accessor.getField().get(this);
                         if (cursorList == null) {
-                            throw new IllegalArgumentException("Please use instances of List in param '" + getClass().getName() + ":" + accessor.getField().getName() + "'.");
+                            throw new CallException("Please use instances of List in param '" + getClass().getName() + ":" + accessor.getField().getName() + "'.", null);
                         }
                         cursorList.clear();
 
                         Class<?> cursorClass = ormParamOut.cursorClass();
-                        if (cursorClass == Object.class) {
-                            throw new IllegalArgumentException("Please use 'cursorClass' annotation argument in param '" + getClass().getName() + ":" + accessor.getField().getName() + "'.");
+                        if (cursorClass.isAssignableFrom(Object.class)) {
+                            throw new CallException("Please use 'cursorClass' annotation argument in param '" + getClass().getName() + ":" + accessor.getField().getName() + "'.", null);
                         }
 
                         List<FieldAccessor> cursorAccessors = ReflectionManager.getAnnotatedFields(cursorClass, OrmParamCursor.class);
@@ -125,9 +152,8 @@ public abstract class IndexedCall implements AutoCloseable {
                         try (ResultSet resultSet = (ResultSet) argument) {
                             while (resultSet.next()) {
                                 logSb.append("{");
-                                Object cursorElement = cursorClass.newInstance();
+                                Object cursorElement = cursorClass.getConstructor().newInstance();
                                 for (FieldAccessor cursorAccessor : cursorAccessors) {
-                                    ESqlTypeMapping cursorElementSql = ESqlTypeMapping.getType(cursorAccessor.getField().getType());
                                     OrmParamCursor ormParamCursor = cursorAccessor.getField().getAnnotation(OrmParamCursor.class);
                                     Object cursorElementField = sqlType.readFromResultSet(resultSet, ormParamCursor.value());
                                     cursorAccessor.getField().set(cursorElement, cursorElementField);
@@ -142,6 +168,39 @@ public abstract class IndexedCall implements AutoCloseable {
                             logSb.delete(logSb.length() - 1, logSb.length());
                         }
                         logStatementString = logStatementString.replaceAll("\\{" + position + "\\}", logSb.append("]").toString());
+                    }
+                    // ARRAYS ==============================================================================================
+                    else if (sqlType == ESqlTypeMapping.ARRAY && PgArray.class.isAssignableFrom(argument.getClass())) {
+                        StringBuilder logSb = new StringBuilder("ARRAY");
+                        PgArray pgArray = (PgArray) argument;
+                        Object[] array = (Object[]) pgArray.getArray();
+
+                        System.out.println(">>> pgArray.getBaseTypeName()" + pgArray.getBaseTypeName());
+                        switch (pgArray.getBaseTypeName()) {
+                            case "numeric":
+                                BigDecimal[] bdArray = (BigDecimal[]) array;
+                                Object[] finalArray = (Object[]) Array.newInstance(accessor.getField().getType().getComponentType(), bdArray.length);
+                                for (int i = 0; i < bdArray.length; i++) {
+                                    if (accessor.getField().getType().getComponentType().isAssignableFrom(Integer.class)) {
+                                        finalArray[i] = bdArray[i].intValue();
+                                    }
+                                    else if (accessor.getField().getType().getComponentType().isAssignableFrom(Long.class)) {
+                                        finalArray[i] = bdArray[i].longValue();
+                                    }
+                                }
+                                logSb.append(Arrays.toString(finalArray));
+                                accessor.getField().set(this, finalArray);
+                                break;
+                            default:
+                                logSb.append(Arrays.toString(array));
+                                accessor.getField().set(this, array);
+                                break;
+                        }
+                        logStatementString = logStatementString.replaceAll("\\{" + position + "\\}", logSb.toString());
+                    }
+                    // OBJECTS =============================================================================================
+                    else if (sqlType == ESqlTypeMapping.UNKNOWN) {
+                        System.out.println(">>> unn field");
                     }
                     // REGULAR FIELDS ======================================================================================
                     else {
@@ -160,6 +219,12 @@ public abstract class IndexedCall implements AutoCloseable {
         catch (SQLException | ReflectiveOperationException e) {
             getLogger().info("DB <-> {}", logStatementString);
             throw new CallException("Cannot execute call '" + getClass().getSimpleName() + "'", e);
+        }
+        finally {
+            if (throwErrorOnRecultCode() && (getResultCode() == null || getResultCode() != 0)) {
+                //noinspection ThrowFromFinallyBlock
+                throw new CallException("Result code " + getResultCode() + " for call " + getClass().getSimpleName(), null);
+            }
         }
     }
 
@@ -185,7 +250,9 @@ public abstract class IndexedCall implements AutoCloseable {
 
     public abstract Logger getLogger();
 
-    public Integer getResultCode() {
-        return 0;
+    public Integer getResultCode() { return 0; }
+
+    protected boolean throwErrorOnRecultCode() {
+        return false;
     }
 }

@@ -103,7 +103,7 @@ public class RequestAcquireSkill extends L2GameClientPacket {
                 }
 
                 // Get spellbook and try to consume it.
-                int spbId = SpellbookTable.getInstance().getBookForSkill(_skillId, _skillLevel);
+                int spbId = SpellbookTable.getBookForSkill(_skillId, _skillLevel);
                 if (spbId > 0) {
                     if (!activeChar.destroyItemByItemId(EItemProcessPurpose.SKILL, spbId, 1, trainer, true)) {
                         activeChar.sendPacket(SystemMessageId.ITEM_MISSING_TO_LEARN_SKILL);

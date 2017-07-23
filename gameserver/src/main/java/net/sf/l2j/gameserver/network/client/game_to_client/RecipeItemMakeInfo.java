@@ -16,7 +16,7 @@ package net.sf.l2j.gameserver.network.client.game_to_client;
 
 import net.sf.l2j.gameserver.datatables.RecipeTable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.RecipeList;
+import net.sf.l2j.gameserver.model.actor.instance.playerpart.recipe.Recipe;
 
 /**
  * format dddd
@@ -44,7 +44,7 @@ public class RecipeItemMakeInfo extends L2GameServerPacket
 	@Override
 	protected final void writeImpl()
 	{
-		RecipeList recipe = RecipeTable.getInstance().getRecipeList(_id);
+		Recipe recipe = RecipeTable.getInstance().getRecipeList(_id);
 		if (recipe != null)
 		{
 			writeC(0xD7);

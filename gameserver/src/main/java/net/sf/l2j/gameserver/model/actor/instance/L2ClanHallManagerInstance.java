@@ -1314,7 +1314,7 @@ public class L2ClanHallManagerInstance extends L2MerchantInstance {
                 player.sendPacket(html);
             }
             else if (actualCommand.equalsIgnoreCase("goto")) {
-                L2TeleportLocation list = TeleportLocationTable.getInstance().getTemplate(Integer.parseInt(val));
+                L2TeleportLocation list = TeleportLocationTable.getTemplate(Integer.parseInt(val));
                 if (list != null) {
                     if (player.reduceAdena(EItemProcessPurpose.TELEPORT, list.getPrice(), this, true)) { player.teleToLocation(list.getLocX(), list.getLocY(), list.getLocZ(), 0); }
                 }

@@ -67,7 +67,7 @@ public class InventoryUpdate extends L2GameServerPacket {
             writeH(entry.getKey().getCustomType2());
             if (isPlayerPacket()) {
                 writeD(entry.getKey().getAugmentation() == null ? 0 : entry.getKey().getAugmentation().getAugmentationId());
-                writeD(entry.getKey().getMana());
+                writeD(entry.getKey().getShadowMana());
             }
         }
     }

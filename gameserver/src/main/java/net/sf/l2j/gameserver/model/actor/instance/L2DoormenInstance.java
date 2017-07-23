@@ -98,9 +98,9 @@ public class L2DoormenInstance extends L2NpcInstance {
         player.sendPacket(html);
     }
 
-    protected void doTeleport(L2PcInstance player, String command) {
+    protected static void doTeleport(L2PcInstance player, String command) {
         int whereTo = Integer.parseInt(command.substring(5).trim());
-        L2TeleportLocation list = TeleportLocationTable.getInstance().getTemplate(whereTo);
+        L2TeleportLocation list = TeleportLocationTable.getTemplate(whereTo);
         if (list != null) {
             if (!player.isAlikeDead()) { player.teleToLocation(list.getLocX(), list.getLocY(), list.getLocZ(), 0); }
         }

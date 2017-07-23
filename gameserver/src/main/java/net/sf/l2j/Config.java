@@ -697,7 +697,6 @@ public final class Config {
     public static boolean AUTODELETE_INVALID_QUEST_DATA;
     public static boolean SERVER_NEWS;
     public static int ZONE_TOWN;
-    public static boolean DISABLE_TUTORIAL;
 
     // --------------------------------------------------
     // Those "hidden" settings haven't configs to avoid admins to fuck their server
@@ -1253,7 +1252,6 @@ public final class Config {
             AUTODELETE_INVALID_QUEST_DATA = server.getProperty("AutoDeleteInvalidQuestData", false);
             ZONE_TOWN = server.getProperty("ZoneTown", 0);
             SERVER_NEWS = server.getProperty("ShowServerNews", false);
-            DISABLE_TUTORIAL = server.getProperty("DisableTutorial", false);
         } else if (Server.serverMode == Server.MODE_LOGINSERVER) {
             _log.info("Loading loginserver configuration files.");
 
