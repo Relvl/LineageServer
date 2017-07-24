@@ -24,7 +24,6 @@ import net.sf.l2j.gameserver.model.*;
 import net.sf.l2j.gameserver.model.L2Party.MessageType;
 import net.sf.l2j.gameserver.model.L2PetData.L2PetLevelData;
 import net.sf.l2j.gameserver.model.actor.*;
-import net.sf.l2j.gameserver.model.actor.PcAppearance;
 import net.sf.l2j.gameserver.model.actor.knownlist.PcKnownList;
 import net.sf.l2j.gameserver.model.actor.position.PcPosition;
 import net.sf.l2j.gameserver.model.actor.stat.PcStat;
@@ -1605,9 +1604,8 @@ public final class L2PcInstance extends L2Playable {
     /**
      * @return The Race object of the L2PcInstance.
      */
-    public Race getRace() {
+    public PlayerRace getRace() {
         if (!isSubClassActive()) { return getTemplate().getRace(); }
-
         return CharTemplateTable.getInstance().getTemplate(_baseClass).getRace();
     }
 
@@ -7703,19 +7701,19 @@ public final class L2PcInstance extends L2Playable {
     }
 
     public int getInventoryLimit() {
-        return ((getRace() == Race.Dwarf) ? Config.INVENTORY_MAXIMUM_DWARF : Config.INVENTORY_MAXIMUM_NO_DWARF) + (int) getStat().calcStat(Stats.INV_LIM, 0, null, null);
+        return ((getRace() == PlayerRace.Dwarf) ? Config.INVENTORY_MAXIMUM_DWARF : Config.INVENTORY_MAXIMUM_NO_DWARF) + (int) getStat().calcStat(Stats.INV_LIM, 0, null, null);
     }
 
     public int getWareHouseLimit() {
-        return ((getRace() == Race.Dwarf) ? Config.WAREHOUSE_SLOTS_DWARF : Config.WAREHOUSE_SLOTS_NO_DWARF) + (int) getStat().calcStat(Stats.WH_LIM, 0, null, null);
+        return ((getRace() == PlayerRace.Dwarf) ? Config.WAREHOUSE_SLOTS_DWARF : Config.WAREHOUSE_SLOTS_NO_DWARF) + (int) getStat().calcStat(Stats.WH_LIM, 0, null, null);
     }
 
     public int getPrivateSellStoreLimit() {
-        return ((getRace() == Race.Dwarf) ? Config.MAX_PVTSTORE_SLOTS_DWARF : Config.MAX_PVTSTORE_SLOTS_OTHER) + (int) getStat().calcStat(Stats.P_SELL_LIM, 0, null, null);
+        return ((getRace() == PlayerRace.Dwarf) ? Config.MAX_PVTSTORE_SLOTS_DWARF : Config.MAX_PVTSTORE_SLOTS_OTHER) + (int) getStat().calcStat(Stats.P_SELL_LIM, 0, null, null);
     }
 
     public int getPrivateBuyStoreLimit() {
-        return ((getRace() == Race.Dwarf) ? Config.MAX_PVTSTORE_SLOTS_DWARF : Config.MAX_PVTSTORE_SLOTS_OTHER) + (int) getStat().calcStat(Stats.P_BUY_LIM, 0, null, null);
+        return ((getRace() == PlayerRace.Dwarf) ? Config.MAX_PVTSTORE_SLOTS_DWARF : Config.MAX_PVTSTORE_SLOTS_OTHER) + (int) getStat().calcStat(Stats.P_BUY_LIM, 0, null, null);
     }
 
     public int getFreightLimit() {

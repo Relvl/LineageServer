@@ -16,7 +16,7 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.ClassId;
-import net.sf.l2j.gameserver.model.base.Race;
+import net.sf.l2j.gameserver.model.base.PlayerRace;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -164,7 +164,7 @@ public class Q233_TestOfTheWarSpirit extends Quest
 				if (player.getClassId() == ClassId.orcShaman)
 					htmltext = (player.getLevel() < 39) ? "30510-03.htm" : "30510-04.htm";
 				else
-					htmltext = (player.getRace() == Race.Orc) ? "30510-02.htm" : "30510-01.htm";
+					htmltext = (player.getRace() == PlayerRace.Orc) ? "30510-02.htm" : "30510-01.htm";
 				break;
 			
 			case STATE_STARTED:

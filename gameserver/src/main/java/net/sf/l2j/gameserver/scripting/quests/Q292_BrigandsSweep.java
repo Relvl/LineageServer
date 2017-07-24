@@ -15,7 +15,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.base.Race;
+import net.sf.l2j.gameserver.model.base.PlayerRace;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -87,7 +87,7 @@ public class Q292_BrigandsSweep extends Quest
 		switch (st.getState())
 		{
 			case STATE_CREATED:
-				if (player.getRace() != Race.Dwarf)
+				if (player.getRace() != PlayerRace.Dwarf)
 					htmltext = "30532-00.htm";
 				else if (player.getLevel() < 5)
 					htmltext = "30532-01.htm";

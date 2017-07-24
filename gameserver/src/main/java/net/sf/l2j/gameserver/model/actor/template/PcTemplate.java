@@ -2,7 +2,7 @@ package net.sf.l2j.gameserver.model.actor.template;
 
 import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.model.base.ClassId;
-import net.sf.l2j.gameserver.model.base.Race;
+import net.sf.l2j.gameserver.model.base.PlayerRace;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.templates.StatsSet;
 
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class PcTemplate extends CharTemplate {
     private final ClassId _classId;
-    private final Race _race;
+    private final PlayerRace _race;
     private final String _className;
 
     private final int _fallingHeight;
@@ -35,7 +35,7 @@ public class PcTemplate extends CharTemplate {
         super(set);
 
         _classId = ClassId.values()[set.getInteger("classId")];
-        _race = Race.values()[set.getInteger("raceId")];
+        _race = PlayerRace.values()[set.getInteger("raceId")];
         _className = set.getString("className");
 
         _fallingHeight = set.getInteger("falling_height", 333);
@@ -89,7 +89,7 @@ public class PcTemplate extends CharTemplate {
         return _classId;
     }
 
-    public Race getRace() {
+    public PlayerRace getRace() {
         return _race;
     }
 

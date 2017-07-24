@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.skills.conditions;
 
-import net.sf.l2j.gameserver.model.base.Race;
+import net.sf.l2j.gameserver.model.base.PlayerRace;
 import net.sf.l2j.gameserver.skills.Env;
 
 /**
@@ -22,9 +22,9 @@ import net.sf.l2j.gameserver.skills.Env;
  */
 public class ConditionPlayerRace extends Condition
 {
-	private final Race _race;
+	private final PlayerRace _race;
 	
-	public ConditionPlayerRace(Race race)
+	public ConditionPlayerRace(PlayerRace race)
 	{
 		_race = race;
 	}

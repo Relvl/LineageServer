@@ -15,7 +15,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.base.Race;
+import net.sf.l2j.gameserver.model.base.PlayerRace;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -74,7 +74,7 @@ public class Q271_ProofOfValor extends Quest
 		switch (st.getState())
 		{
 			case STATE_CREATED:
-				if (player.getRace() != Race.Orc)
+				if (player.getRace() != PlayerRace.Orc)
 					htmltext = "30577-00.htm";
 				else if (player.getLevel() < 4)
 					htmltext = "30577-01.htm";

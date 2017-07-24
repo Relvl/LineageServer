@@ -14,7 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.base.Race;
+import net.sf.l2j.gameserver.model.base.PlayerRace;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -77,7 +77,7 @@ public class Q160_NerupasRequest extends Quest
 		switch (st.getState())
 		{
 			case STATE_CREATED:
-				if (player.getRace() != Race.Elf)
+				if (player.getRace() != PlayerRace.Elf)
 					htmltext = "30370-00.htm";
 				else if (player.getLevel() < 3)
 					htmltext = "30370-02.htm";

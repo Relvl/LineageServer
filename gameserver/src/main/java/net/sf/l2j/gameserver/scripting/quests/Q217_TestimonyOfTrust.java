@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.base.Race;
+import net.sf.l2j.gameserver.model.base.PlayerRace;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -199,7 +199,7 @@ public class Q217_TestimonyOfTrust extends Quest
 			case STATE_CREATED:
 				if (player.getClassId().level() != 1)
 					htmltext = "30191-01a.htm";
-				else if (player.getRace() != Race.Human)
+				else if (player.getRace() != PlayerRace.Human)
 					htmltext = "30191-02.htm";
 				else if (player.getLevel() < 37)
 					htmltext = "30191-01.htm";

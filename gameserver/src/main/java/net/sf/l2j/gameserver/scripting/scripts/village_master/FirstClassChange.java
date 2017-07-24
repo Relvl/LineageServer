@@ -19,7 +19,7 @@ import java.util.Map;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.base.Race;
+import net.sf.l2j.gameserver.model.base.PlayerRace;
 import net.sf.l2j.gameserver.network.client.game_to_client.HennaInfo;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -402,7 +402,7 @@ public class FirstClassChange extends Quest
 			case 30290: // Dark Elf
 			case 30297:
 			case 30462:
-				if (player.getRace() == Race.DarkElf)
+				if (player.getRace() == PlayerRace.DarkElf)
 				{
 					if (player.getClassId().level() == 0)
 					{
@@ -421,7 +421,7 @@ public class FirstClassChange extends Quest
 				break;
 			
 			case 30358: // Thifiell (dark elf)
-				if (player.getRace() == Race.DarkElf)
+				if (player.getRace() == PlayerRace.DarkElf)
 				{
 					if (player.getClassId().level() == 0)
 					{
@@ -443,7 +443,7 @@ public class FirstClassChange extends Quest
 			case 30505:
 			case 30508:
 			case 32097:
-				if (player.getRace() == Race.Orc)
+				if (player.getRace() == PlayerRace.Orc)
 				{
 					if (player.getClassId().level() == 0)
 					{
@@ -462,7 +462,7 @@ public class FirstClassChange extends Quest
 				break;
 			
 			case 30565: // Kakai (Orcs)
-				if (player.getRace() == Race.Orc)
+				if (player.getRace() == PlayerRace.Orc)
 				{
 					if (player.getClassId().level() == 0)
 					{
@@ -488,7 +488,7 @@ public class FirstClassChange extends Quest
 			case 30504:
 			case 30595:
 			case 30499:
-				if (player.getRace() == Race.Dwarf)
+				if (player.getRace() == PlayerRace.Dwarf)
 				{
 					if (player.getClassId().level() == 0)
 					{
@@ -506,7 +506,7 @@ public class FirstClassChange extends Quest
 			
 			case 30525: // Bronk and Reed(dwarf)
 			case 30520:
-				if (player.getRace() == Race.Dwarf)
+				if (player.getRace() == PlayerRace.Dwarf)
 				{
 					if (player.getClassId().level() == 0)
 					{
@@ -526,7 +526,7 @@ public class FirstClassChange extends Quest
 			case 30037:
 			case 30289:
 			case 32098:
-				if (player.getRace() == Race.Elf)
+				if (player.getRace() == PlayerRace.Elf)
 				{
 					if (player.isMageClass())
 					{
@@ -543,7 +543,7 @@ public class FirstClassChange extends Quest
 					else
 						htmltext = npcId + "-33.htm";
 				}
-				else if (player.getRace() == Race.Human)
+				else if (player.getRace() == PlayerRace.Human)
 				{
 					if (player.isMageClass())
 					{
@@ -565,7 +565,7 @@ public class FirstClassChange extends Quest
 				break;
 			
 			case 30154: // Asterios (Elf fighters and mages)
-				if (player.getRace() == Race.Elf)
+				if (player.getRace() == PlayerRace.Elf)
 				{
 					if (player.getClassId().level() == 0)
 					{
@@ -584,7 +584,7 @@ public class FirstClassChange extends Quest
 				break;
 			
 			case 30031: // Biotin (Human mages)
-				if (player.getRace() == Race.Human)
+				if (player.getRace() == PlayerRace.Human)
 				{
 					if (player.isMageClass())
 					{
@@ -608,7 +608,7 @@ public class FirstClassChange extends Quest
 			case 30373: // Human and Elfs fighters
 			case 30288:
 			case 30066:
-				if (player.getRace() == Race.Human)
+				if (player.getRace() == PlayerRace.Human)
 				{
 					if (player.getClassId().level() == 0)
 					{
@@ -622,7 +622,7 @@ public class FirstClassChange extends Quest
 					else
 						htmltext = npcId + "-39.htm";
 				}
-				else if (player.getRace() == Race.Elf)
+				else if (player.getRace() == PlayerRace.Elf)
 				{
 					if (player.getClassId().level() == 0)
 					{
@@ -641,7 +641,7 @@ public class FirstClassChange extends Quest
 				break;
 			
 			case 30026: // Bitz (Human fighters)
-				if (player.getRace() == Race.Human)
+				if (player.getRace() == PlayerRace.Human)
 				{
 					if (player.getClassId().level() == 0)
 					{

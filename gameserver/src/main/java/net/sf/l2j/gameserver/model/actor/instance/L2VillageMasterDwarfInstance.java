@@ -16,7 +16,7 @@ package net.sf.l2j.gameserver.model.actor.instance;
 
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.base.PlayerClass;
-import net.sf.l2j.gameserver.model.base.Race;
+import net.sf.l2j.gameserver.model.base.PlayerRace;
 
 public final class L2VillageMasterDwarfInstance extends L2VillageMasterInstance
 {
@@ -31,6 +31,6 @@ public final class L2VillageMasterDwarfInstance extends L2VillageMasterInstance
 		if (pclass == null)
 			return false;
 		
-		return pclass.isOfRace(Race.Dwarf);
+		return pclass.isOfRace(PlayerRace.Dwarf);
 	}
 }

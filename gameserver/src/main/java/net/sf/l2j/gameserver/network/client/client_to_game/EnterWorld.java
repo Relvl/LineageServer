@@ -11,7 +11,7 @@ import net.sf.l2j.gameserver.instancemanager.*;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2Clan.SubPledge;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.base.Race;
+import net.sf.l2j.gameserver.model.base.PlayerRace;
 import net.sf.l2j.gameserver.model.entity.ClanHall;
 import net.sf.l2j.gameserver.model.entity.Couple;
 import net.sf.l2j.gameserver.model.entity.Siege;
@@ -167,7 +167,7 @@ public class EnterWorld extends L2GameClientPacket {
         AnnouncementTable.getInstance().showAnnouncements(activeChar, false);
 
         // if player is DE, check for shadow sense skill at night
-        if (activeChar.getRace() == Race.DarkElf && activeChar.getSkillLevel(294) == 1) {
+        if (activeChar.getRace() == PlayerRace.DarkElf && activeChar.getSkillLevel(294) == 1) {
             activeChar.sendPacket(SystemMessage.getSystemMessage((GameTimeTaskManager.getInstance().isNight()) ? SystemMessageId.NIGHT_S1_EFFECT_APPLIES : SystemMessageId.DAY_S1_EFFECT_DISAPPEARS).addSkillName(294));
         }
 

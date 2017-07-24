@@ -21,11 +21,11 @@ import static net.sf.l2j.gameserver.model.base.ClassLevel.Third;
 import static net.sf.l2j.gameserver.model.base.ClassType.Fighter;
 import static net.sf.l2j.gameserver.model.base.ClassType.Mystic;
 import static net.sf.l2j.gameserver.model.base.ClassType.Priest;
-import static net.sf.l2j.gameserver.model.base.Race.DarkElf;
-import static net.sf.l2j.gameserver.model.base.Race.Dwarf;
-import static net.sf.l2j.gameserver.model.base.Race.Elf;
-import static net.sf.l2j.gameserver.model.base.Race.Human;
-import static net.sf.l2j.gameserver.model.base.Race.Orc;
+import static net.sf.l2j.gameserver.model.base.PlayerRace.DarkElf;
+import static net.sf.l2j.gameserver.model.base.PlayerRace.Dwarf;
+import static net.sf.l2j.gameserver.model.base.PlayerRace.Elf;
+import static net.sf.l2j.gameserver.model.base.PlayerRace.Human;
+import static net.sf.l2j.gameserver.model.base.PlayerRace.Orc;
 
 import java.util.EnumMap;
 import java.util.EnumSet;
@@ -166,7 +166,7 @@ public enum PlayerClass
 	fortuneSeeker(Dwarf, Fighter, Fourth),
 	maestro(Dwarf, Fighter, Fourth);
 	
-	private Race _race;
+	private PlayerRace _race;
 	private ClassLevel _level;
 	private ClassType _type;
 	
@@ -210,7 +210,7 @@ public enum PlayerClass
 		subclassSetMap.put(Spellhowler, subclasseSet5);
 	}
 	
-	PlayerClass(Race pRace, ClassType pType, ClassLevel pLevel)
+	PlayerClass(PlayerRace pRace, ClassType pType, ClassLevel pLevel)
 	{
 		_race = pRace;
 		_level = pLevel;
@@ -246,7 +246,7 @@ public enum PlayerClass
 		return subclasses;
 	}
 	
-	public static final EnumSet<PlayerClass> getSet(Race race, ClassLevel level)
+	public static final EnumSet<PlayerClass> getSet(PlayerRace race, ClassLevel level)
 	{
 		EnumSet<PlayerClass> allOf = EnumSet.noneOf(PlayerClass.class);
 		
@@ -264,7 +264,7 @@ public enum PlayerClass
 		return allOf;
 	}
 	
-	public final boolean isOfRace(Race pRace)
+	public final boolean isOfRace(PlayerRace pRace)
 	{
 		return _race == pRace;
 	}

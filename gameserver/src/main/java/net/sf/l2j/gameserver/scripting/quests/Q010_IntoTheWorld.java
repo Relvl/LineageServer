@@ -14,7 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.base.Race;
+import net.sf.l2j.gameserver.model.base.PlayerRace;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -97,7 +97,7 @@ public class Q010_IntoTheWorld extends Quest
 		switch (st.getState())
 		{
 			case STATE_CREATED:
-				if (player.getLevel() >= 3 && player.getRace() == Race.Dwarf)
+				if (player.getLevel() >= 3 && player.getRace() == PlayerRace.Dwarf)
 					htmltext = "30533-01.htm";
 				else
 					htmltext = "30533-01a.htm";

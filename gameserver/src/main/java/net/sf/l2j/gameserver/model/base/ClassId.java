@@ -25,73 +25,73 @@ package net.sf.l2j.gameserver.model.base;
  */
 public enum ClassId
 {
-	fighter(0x00, false, Race.Human, null),
+	fighter(0x00, false, PlayerRace.Human, null),
 	
-	warrior(0x01, false, Race.Human, fighter),
-	gladiator(0x02, false, Race.Human, warrior),
-	warlord(0x03, false, Race.Human, warrior),
-	knight(0x04, false, Race.Human, fighter),
-	paladin(0x05, false, Race.Human, knight),
-	darkAvenger(0x06, false, Race.Human, knight),
-	rogue(0x07, false, Race.Human, fighter),
-	treasureHunter(0x08, false, Race.Human, rogue),
-	hawkeye(0x09, false, Race.Human, rogue),
+	warrior(0x01, false, PlayerRace.Human, fighter),
+	gladiator(0x02, false, PlayerRace.Human, warrior),
+	warlord(0x03, false, PlayerRace.Human, warrior),
+	knight(0x04, false, PlayerRace.Human, fighter),
+	paladin(0x05, false, PlayerRace.Human, knight),
+	darkAvenger(0x06, false, PlayerRace.Human, knight),
+	rogue(0x07, false, PlayerRace.Human, fighter),
+	treasureHunter(0x08, false, PlayerRace.Human, rogue),
+	hawkeye(0x09, false, PlayerRace.Human, rogue),
 	
-	mage(0x0a, true, Race.Human, null),
-	wizard(0x0b, true, Race.Human, mage),
-	sorceror(0x0c, true, Race.Human, wizard),
-	necromancer(0x0d, true, Race.Human, wizard),
-	warlock(0x0e, true, Race.Human, wizard),
-	cleric(0x0f, true, Race.Human, mage),
-	bishop(0x10, true, Race.Human, cleric),
-	prophet(0x11, true, Race.Human, cleric),
+	mage(0x0a, true, PlayerRace.Human, null),
+	wizard(0x0b, true, PlayerRace.Human, mage),
+	sorceror(0x0c, true, PlayerRace.Human, wizard),
+	necromancer(0x0d, true, PlayerRace.Human, wizard),
+	warlock(0x0e, true, PlayerRace.Human, wizard),
+	cleric(0x0f, true, PlayerRace.Human, mage),
+	bishop(0x10, true, PlayerRace.Human, cleric),
+	prophet(0x11, true, PlayerRace.Human, cleric),
 	
-	elvenFighter(0x12, false, Race.Elf, null),
-	elvenKnight(0x13, false, Race.Elf, elvenFighter),
-	templeKnight(0x14, false, Race.Elf, elvenKnight),
-	swordSinger(0x15, false, Race.Elf, elvenKnight),
-	elvenScout(0x16, false, Race.Elf, elvenFighter),
-	plainsWalker(0x17, false, Race.Elf, elvenScout),
-	silverRanger(0x18, false, Race.Elf, elvenScout),
+	elvenFighter(0x12, false, PlayerRace.Elf, null),
+	elvenKnight(0x13, false, PlayerRace.Elf, elvenFighter),
+	templeKnight(0x14, false, PlayerRace.Elf, elvenKnight),
+	swordSinger(0x15, false, PlayerRace.Elf, elvenKnight),
+	elvenScout(0x16, false, PlayerRace.Elf, elvenFighter),
+	plainsWalker(0x17, false, PlayerRace.Elf, elvenScout),
+	silverRanger(0x18, false, PlayerRace.Elf, elvenScout),
 	
-	elvenMage(0x19, true, Race.Elf, null),
-	elvenWizard(0x1a, true, Race.Elf, elvenMage),
-	spellsinger(0x1b, true, Race.Elf, elvenWizard),
-	elementalSummoner(0x1c, true, Race.Elf, elvenWizard),
-	oracle(0x1d, true, Race.Elf, elvenMage),
-	elder(0x1e, true, Race.Elf, oracle),
+	elvenMage(0x19, true, PlayerRace.Elf, null),
+	elvenWizard(0x1a, true, PlayerRace.Elf, elvenMage),
+	spellsinger(0x1b, true, PlayerRace.Elf, elvenWizard),
+	elementalSummoner(0x1c, true, PlayerRace.Elf, elvenWizard),
+	oracle(0x1d, true, PlayerRace.Elf, elvenMage),
+	elder(0x1e, true, PlayerRace.Elf, oracle),
 	
-	darkFighter(0x1f, false, Race.DarkElf, null),
-	palusKnight(0x20, false, Race.DarkElf, darkFighter),
-	shillienKnight(0x21, false, Race.DarkElf, palusKnight),
-	bladedancer(0x22, false, Race.DarkElf, palusKnight),
-	assassin(0x23, false, Race.DarkElf, darkFighter),
-	abyssWalker(0x24, false, Race.DarkElf, assassin),
-	phantomRanger(0x25, false, Race.DarkElf, assassin),
+	darkFighter(0x1f, false, PlayerRace.DarkElf, null),
+	palusKnight(0x20, false, PlayerRace.DarkElf, darkFighter),
+	shillienKnight(0x21, false, PlayerRace.DarkElf, palusKnight),
+	bladedancer(0x22, false, PlayerRace.DarkElf, palusKnight),
+	assassin(0x23, false, PlayerRace.DarkElf, darkFighter),
+	abyssWalker(0x24, false, PlayerRace.DarkElf, assassin),
+	phantomRanger(0x25, false, PlayerRace.DarkElf, assassin),
 	
-	darkMage(0x26, true, Race.DarkElf, null),
-	darkWizard(0x27, true, Race.DarkElf, darkMage),
-	spellhowler(0x28, true, Race.DarkElf, darkWizard),
-	phantomSummoner(0x29, true, Race.DarkElf, darkWizard),
-	shillienOracle(0x2a, true, Race.DarkElf, darkMage),
-	shillenElder(0x2b, true, Race.DarkElf, shillienOracle),
+	darkMage(0x26, true, PlayerRace.DarkElf, null),
+	darkWizard(0x27, true, PlayerRace.DarkElf, darkMage),
+	spellhowler(0x28, true, PlayerRace.DarkElf, darkWizard),
+	phantomSummoner(0x29, true, PlayerRace.DarkElf, darkWizard),
+	shillienOracle(0x2a, true, PlayerRace.DarkElf, darkMage),
+	shillenElder(0x2b, true, PlayerRace.DarkElf, shillienOracle),
 	
-	orcFighter(0x2c, false, Race.Orc, null),
-	orcRaider(0x2d, false, Race.Orc, orcFighter),
-	destroyer(0x2e, false, Race.Orc, orcRaider),
-	orcMonk(0x2f, false, Race.Orc, orcFighter),
-	tyrant(0x30, false, Race.Orc, orcMonk),
+	orcFighter(0x2c, false, PlayerRace.Orc, null),
+	orcRaider(0x2d, false, PlayerRace.Orc, orcFighter),
+	destroyer(0x2e, false, PlayerRace.Orc, orcRaider),
+	orcMonk(0x2f, false, PlayerRace.Orc, orcFighter),
+	tyrant(0x30, false, PlayerRace.Orc, orcMonk),
 	
-	orcMage(0x31, false, Race.Orc, null),
-	orcShaman(0x32, true, Race.Orc, orcMage),
-	overlord(0x33, true, Race.Orc, orcShaman),
-	warcryer(0x34, true, Race.Orc, orcShaman),
+	orcMage(0x31, false, PlayerRace.Orc, null),
+	orcShaman(0x32, true, PlayerRace.Orc, orcMage),
+	overlord(0x33, true, PlayerRace.Orc, orcShaman),
+	warcryer(0x34, true, PlayerRace.Orc, orcShaman),
 	
-	dwarvenFighter(0x35, false, Race.Dwarf, null),
-	scavenger(0x36, false, Race.Dwarf, dwarvenFighter),
-	bountyHunter(0x37, false, Race.Dwarf, scavenger),
-	artisan(0x38, false, Race.Dwarf, dwarvenFighter),
-	warsmith(0x39, false, Race.Dwarf, artisan),
+	dwarvenFighter(0x35, false, PlayerRace.Dwarf, null),
+	scavenger(0x36, false, PlayerRace.Dwarf, dwarvenFighter),
+	bountyHunter(0x37, false, PlayerRace.Dwarf, scavenger),
+	artisan(0x38, false, PlayerRace.Dwarf, dwarvenFighter),
+	warsmith(0x39, false, PlayerRace.Dwarf, artisan),
 	
 	// Dummy Entries (id's already in decimal format) <START>
 	dummyEntry1(58, false, null, null),
@@ -126,41 +126,41 @@ public enum ClassId
 	dummyEntry30(87, false, null, null),
 	
 	// 3rd classes
-	duelist(0x58, false, Race.Human, gladiator),
-	dreadnought(0x59, false, Race.Human, warlord),
-	phoenixKnight(0x5a, false, Race.Human, paladin),
-	hellKnight(0x5b, false, Race.Human, darkAvenger),
-	sagittarius(0x5c, false, Race.Human, hawkeye),
-	adventurer(0x5d, false, Race.Human, treasureHunter),
-	archmage(0x5e, true, Race.Human, sorceror),
-	soultaker(0x5f, true, Race.Human, necromancer),
-	arcanaLord(0x60, true, Race.Human, warlock),
-	cardinal(0x61, true, Race.Human, bishop),
-	hierophant(0x62, true, Race.Human, prophet),
+	duelist(0x58, false, PlayerRace.Human, gladiator),
+	dreadnought(0x59, false, PlayerRace.Human, warlord),
+	phoenixKnight(0x5a, false, PlayerRace.Human, paladin),
+	hellKnight(0x5b, false, PlayerRace.Human, darkAvenger),
+	sagittarius(0x5c, false, PlayerRace.Human, hawkeye),
+	adventurer(0x5d, false, PlayerRace.Human, treasureHunter),
+	archmage(0x5e, true, PlayerRace.Human, sorceror),
+	soultaker(0x5f, true, PlayerRace.Human, necromancer),
+	arcanaLord(0x60, true, PlayerRace.Human, warlock),
+	cardinal(0x61, true, PlayerRace.Human, bishop),
+	hierophant(0x62, true, PlayerRace.Human, prophet),
 	
-	evaTemplar(0x63, false, Race.Elf, templeKnight),
-	swordMuse(0x64, false, Race.Elf, swordSinger),
-	windRider(0x65, false, Race.Elf, plainsWalker),
-	moonlightSentinel(0x66, false, Race.Elf, silverRanger),
-	mysticMuse(0x67, true, Race.Elf, spellsinger),
-	elementalMaster(0x68, true, Race.Elf, elementalSummoner),
-	evaSaint(0x69, true, Race.Elf, elder),
+	evaTemplar(0x63, false, PlayerRace.Elf, templeKnight),
+	swordMuse(0x64, false, PlayerRace.Elf, swordSinger),
+	windRider(0x65, false, PlayerRace.Elf, plainsWalker),
+	moonlightSentinel(0x66, false, PlayerRace.Elf, silverRanger),
+	mysticMuse(0x67, true, PlayerRace.Elf, spellsinger),
+	elementalMaster(0x68, true, PlayerRace.Elf, elementalSummoner),
+	evaSaint(0x69, true, PlayerRace.Elf, elder),
 	
-	shillienTemplar(0x6a, false, Race.DarkElf, shillienKnight),
-	spectralDancer(0x6b, false, Race.DarkElf, bladedancer),
-	ghostHunter(0x6c, false, Race.DarkElf, abyssWalker),
-	ghostSentinel(0x6d, false, Race.DarkElf, phantomRanger),
-	stormScreamer(0x6e, true, Race.DarkElf, spellhowler),
-	spectralMaster(0x6f, true, Race.DarkElf, phantomSummoner),
-	shillienSaint(0x70, true, Race.DarkElf, shillenElder),
+	shillienTemplar(0x6a, false, PlayerRace.DarkElf, shillienKnight),
+	spectralDancer(0x6b, false, PlayerRace.DarkElf, bladedancer),
+	ghostHunter(0x6c, false, PlayerRace.DarkElf, abyssWalker),
+	ghostSentinel(0x6d, false, PlayerRace.DarkElf, phantomRanger),
+	stormScreamer(0x6e, true, PlayerRace.DarkElf, spellhowler),
+	spectralMaster(0x6f, true, PlayerRace.DarkElf, phantomSummoner),
+	shillienSaint(0x70, true, PlayerRace.DarkElf, shillenElder),
 	
-	titan(0x71, false, Race.Orc, destroyer),
-	grandKhauatari(0x72, false, Race.Orc, tyrant),
-	dominator(0x73, true, Race.Orc, overlord),
-	doomcryer(0x74, true, Race.Orc, warcryer),
+	titan(0x71, false, PlayerRace.Orc, destroyer),
+	grandKhauatari(0x72, false, PlayerRace.Orc, tyrant),
+	dominator(0x73, true, PlayerRace.Orc, overlord),
+	doomcryer(0x74, true, PlayerRace.Orc, warcryer),
 	
-	fortuneSeeker(0x75, false, Race.Dwarf, bountyHunter),
-	maestro(0x76, false, Race.Dwarf, warsmith);
+	fortuneSeeker(0x75, false, PlayerRace.Dwarf, bountyHunter),
+	maestro(0x76, false, PlayerRace.Dwarf, warsmith);
 	
 	/** The Identifier of the Class */
 	private final int _id;
@@ -169,12 +169,12 @@ public enum ClassId
 	private final boolean _isMage;
 	
 	/** The Race object of the class */
-	private final Race _race;
+	private final PlayerRace _race;
 	
 	/** The parent ClassId or null if this class is a root */
 	private final ClassId _parent;
 	
-	private ClassId(int pId, boolean pIsMage, Race pRace, ClassId pParent)
+	private ClassId(int pId, boolean pIsMage, PlayerRace pRace, ClassId pParent)
 	{
 		_id = pId;
 		_isMage = pIsMage;
@@ -201,7 +201,7 @@ public enum ClassId
 	/**
 	 * @return the Race object of the class.
 	 */
-	public final Race getRace()
+	public final PlayerRace getRace()
 	{
 		return _race;
 	}

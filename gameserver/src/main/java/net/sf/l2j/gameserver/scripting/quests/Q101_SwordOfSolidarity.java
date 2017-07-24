@@ -14,7 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.base.Race;
+import net.sf.l2j.gameserver.model.base.PlayerRace;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -124,7 +124,7 @@ public class Q101_SwordOfSolidarity extends Quest
 		switch (st.getState())
 		{
 			case STATE_CREATED:
-				if (player.getRace() != Race.Human)
+				if (player.getRace() != PlayerRace.Human)
 					htmltext = "30008-01a.htm";
 				else if (player.getLevel() < 9)
 					htmltext = "30008-01.htm";

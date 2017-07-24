@@ -17,7 +17,7 @@ import java.util.Map;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.base.Race;
+import net.sf.l2j.gameserver.model.base.PlayerRace;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -74,7 +74,7 @@ public class Q004_LongliveThePaagrioLord extends Quest
 		switch (st.getState())
 		{
 			case STATE_CREATED:
-				if (player.getRace() != Race.Orc)
+				if (player.getRace() != PlayerRace.Orc)
 					htmltext = "30578-00.htm";
 				else if (player.getLevel() < 2)
 					htmltext = "30578-01.htm";

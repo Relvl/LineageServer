@@ -20,7 +20,7 @@ import java.util.Map;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.ClassId;
-import net.sf.l2j.gameserver.model.base.Race;
+import net.sf.l2j.gameserver.model.base.PlayerRace;
 import net.sf.l2j.gameserver.network.client.game_to_client.HennaInfo;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -652,7 +652,7 @@ public class SecondClassChange extends Quest
 			case 31334:
 			case 31974:
 			case 32096:
-				if (player.getRace() == Race.DarkElf)
+				if (player.getRace() == PlayerRace.DarkElf)
 				{
 					if (player.getClassId().level() == 1)
 					{
@@ -680,7 +680,7 @@ public class SecondClassChange extends Quest
 			case 31288:
 			case 31326:
 			case 31977:
-				if (player.getRace() == Race.Orc)
+				if (player.getRace() == PlayerRace.Orc)
 				{
 					if (player.getClassId().level() == 1)
 					{
@@ -706,7 +706,7 @@ public class SecondClassChange extends Quest
 			case 31269:
 			case 31314:
 			case 31958:
-				if (player.getRace() == Race.Dwarf)
+				if (player.getRace() == PlayerRace.Dwarf)
 				{
 					if (player.getClassId().level() == 1)
 					{
@@ -730,7 +730,7 @@ public class SecondClassChange extends Quest
 			case 31272:
 			case 31317:
 			case 31961:
-				if (player.getRace() == Race.Dwarf)
+				if (player.getRace() == PlayerRace.Dwarf)
 				{
 					if (player.getClassId().level() == 1)
 					{
@@ -753,7 +753,7 @@ public class SecondClassChange extends Quest
 			case 30900:
 			case 31965:
 			case 32094:
-				if (player.getRace() == Race.Human || player.getRace() == Race.Elf)
+				if (player.getRace() == PlayerRace.Human || player.getRace() == PlayerRace.Elf)
 				{
 					if (player.getClassId().level() == 1)
 					{
@@ -783,7 +783,7 @@ public class SecondClassChange extends Quest
 			case 30694:
 			case 30854:
 			case 31996:
-				if (player.getRace() == Race.Elf || player.getRace() == Race.Human)
+				if (player.getRace() == PlayerRace.Elf || player.getRace() == PlayerRace.Human)
 				{
 					if (player.getClassId().level() == 1)
 					{
@@ -812,7 +812,7 @@ public class SecondClassChange extends Quest
 			case 31968:
 			case 32095:
 			case 31336:
-				if (player.getRace() == Race.Human || player.getRace() == Race.Elf)
+				if (player.getRace() == PlayerRace.Human || player.getRace() == PlayerRace.Elf)
 				{
 					if (player.getClassId().level() == 1)
 					{
