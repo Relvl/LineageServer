@@ -3,7 +3,7 @@ package net.sf.l2j.gameserver.model.actor.template;
 import net.sf.l2j.gameserver.datatables.HerbDropTable;
 import net.sf.l2j.gameserver.model.L2MinionData;
 import net.sf.l2j.gameserver.model.L2NpcAIData;
-import net.sf.l2j.gameserver.model.Race;
+import net.sf.l2j.gameserver.model.actor.NpcRace;
 import net.sf.l2j.gameserver.model.actor.instance.L2XmassTreeInstance;
 import net.sf.l2j.gameserver.model.base.ClassId;
 import net.sf.l2j.gameserver.model.item.DropCategory;
@@ -32,7 +32,7 @@ public final class NpcTemplate extends CharTemplate {
     private final int _enchantEffect;
     private final int _corpseTime;
     private int _dropHerbGroup;
-    private Race _race;
+    private NpcRace _race;
 
     // used for champion option ; avoid to popup champion quest mob.
     private final boolean _cantBeChampionMonster;
@@ -240,76 +240,76 @@ public final class NpcTemplate extends CharTemplate {
     public void setRace(int raceId) {
         switch (raceId) {
             case 1:
-                _race = Race.UNDEAD;
+                _race = NpcRace.UNDEAD;
                 break;
             case 2:
-                _race = Race.MAGICCREATURE;
+                _race = NpcRace.MAGICCREATURE;
                 break;
             case 3:
-                _race = Race.BEAST;
+                _race = NpcRace.BEAST;
                 break;
             case 4:
-                _race = Race.ANIMAL;
+                _race = NpcRace.ANIMAL;
                 break;
             case 5:
-                _race = Race.PLANT;
+                _race = NpcRace.PLANT;
                 break;
             case 6:
-                _race = Race.HUMANOID;
+                _race = NpcRace.HUMANOID;
                 break;
             case 7:
-                _race = Race.SPIRIT;
+                _race = NpcRace.SPIRIT;
                 break;
             case 8:
-                _race = Race.ANGEL;
+                _race = NpcRace.ANGEL;
                 break;
             case 9:
-                _race = Race.DEMON;
+                _race = NpcRace.DEMON;
                 break;
             case 10:
-                _race = Race.DRAGON;
+                _race = NpcRace.DRAGON;
                 break;
             case 11:
-                _race = Race.GIANT;
+                _race = NpcRace.GIANT;
                 break;
             case 12:
-                _race = Race.BUG;
+                _race = NpcRace.BUG;
                 break;
             case 13:
-                _race = Race.FAIRIE;
+                _race = NpcRace.FAIRIE;
                 break;
             case 14:
-                _race = Race.HUMAN;
+                _race = NpcRace.HUMAN;
                 break;
             case 15:
-                _race = Race.ELVE;
+                _race = NpcRace.ELVE;
                 break;
             case 16:
-                _race = Race.DARKELVE;
+                _race = NpcRace.DARKELVE;
                 break;
             case 17:
-                _race = Race.ORC;
+                _race = NpcRace.ORC;
                 break;
             case 18:
-                _race = Race.DWARVE;
+                _race = NpcRace.DWARVE;
                 break;
             case 19:
-                _race = Race.OTHER;
+                _race = NpcRace.OTHER;
                 break;
             case 20:
-                _race = Race.NONLIVING;
+                _race = NpcRace.NONLIVING;
                 break;
             case 21:
-                _race = Race.SIEGEWEAPON;
+                _race = NpcRace.SIEGEWEAPON;
                 break;
             case 22:
-                _race = Race.DEFENDINGARMY;
+                _race = NpcRace.DEFENDINGARMY;
                 break;
             case 23:
-                _race = Race.MERCENARIE;
+                _race = NpcRace.MERCENARIE;
                 break;
             default:
-                _race = Race.UNKNOWN;
+                _race = NpcRace.UNKNOWN;
                 break;
         }
     }
@@ -326,8 +326,8 @@ public final class NpcTemplate extends CharTemplate {
         return _title;
     }
 
-    public Race getRace() {
-        if (_race == null) { _race = Race.UNKNOWN; }
+    public NpcRace getRace() {
+        if (_race == null) { _race = NpcRace.UNKNOWN; }
         return _race;
     }
 
@@ -413,7 +413,7 @@ public final class NpcTemplate extends CharTemplate {
     }
 
     public boolean isUndead() {
-        return _race == Race.UNDEAD;
+        return _race == NpcRace.UNDEAD;
     }
 
     public boolean cantBeChampion() {

@@ -1,7 +1,7 @@
 package net.sf.l2j.gameserver.datatables;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
+import net.sf.l2j.gameserver.model.skill.SkillConst;
 import net.sf.l2j.gameserver.xmlfactory.XMLDocumentFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +38,7 @@ public final class SpellbookTable {
     }
 
     public static int getBookForSkill(int skillId, int level) {
-        if (skillId == L2Skill.SKILL_DIVINE_INSPIRATION) {
+        if (skillId == SkillConst.SKILL_DIVINE_INSPIRATION) {
             if (!Config.DIVINE_SP_BOOK_NEEDED) { return 0; }
             switch (level) {
                 case 1:

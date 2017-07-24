@@ -36,6 +36,7 @@ import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.skill.ESkillTargetType;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
+import net.sf.l2j.gameserver.model.skill.SkillConst;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.world.L2WorldRegion;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
@@ -4503,7 +4504,7 @@ public abstract class L2Character extends L2Object {
      * @return max buff count
      */
     public int getMaxBuffCount() {
-        return Config.BUFFS_MAX_AMOUNT + Math.max(0, getSkillLevel(L2Skill.SKILL_DIVINE_INSPIRATION));
+        return Config.BUFFS_MAX_AMOUNT + Math.max(0, getSkillLevel(SkillConst.SKILL_DIVINE_INSPIRATION));
     }
 
     /**

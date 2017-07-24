@@ -56,6 +56,7 @@ import net.sf.l2j.gameserver.model.partymatching.PartyMatchRoomList;
 import net.sf.l2j.gameserver.model.partymatching.PartyMatchWaitingList;
 import net.sf.l2j.gameserver.model.skill.ESkillTargetType;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
+import net.sf.l2j.gameserver.model.skill.SkillConst;
 import net.sf.l2j.gameserver.model.tradelist.TradeList;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.world.L2WorldRegion;
@@ -1520,7 +1521,7 @@ public final class L2PcInstance extends L2Playable {
         int lvl = getLevel();
 
         // Remove the Lucky skill once reached lvl 10.
-        if (getSkillLevel(L2Skill.SKILL_LUCKY) > 0 && lvl >= 10) { removeSkill(FrequentSkill.LUCKY.getSkill()); }
+        if (getSkillLevel(SkillConst.SKILL_LUCKY) > 0 && lvl >= 10) { removeSkill(FrequentSkill.LUCKY.getSkill()); }
 
         // Calculate the current higher Expertise of the L2PcInstance
         for (int i = 0; i < EXPERTISE_LEVELS.length; i++) {
@@ -3331,7 +3332,7 @@ public final class L2PcInstance extends L2Playable {
                     }
 
                     // Reduce player's xp and karma.
-                    if (Config.ALT_GAME_DELEVEL && (getSkillLevel(L2Skill.SKILL_LUCKY) < 0 || getStat().getLevel() > 9)) {
+                    if (Config.ALT_GAME_DELEVEL && (getSkillLevel(SkillConst.SKILL_LUCKY) < 0 || getStat().getLevel() > 9)) {
                         deathPenalty(pk != null && clan != null && pk.clan != null && (clan.isAtWarWith(pk._clanId) || pk.clan.isAtWarWith(_clanId)), pk != null, killer instanceof L2SiegeGuardInstance);
                     }
                 }

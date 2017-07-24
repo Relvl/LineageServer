@@ -1,9 +1,9 @@
-package net.sf.l2j.gameserver.model;
+package net.sf.l2j.gameserver.model.actor;
 
 /**
  * @author Johnson / 24.07.2017
  */
-public enum Race {
+public enum NpcRace {
     NONE,
     UNDEAD,
     MAGICCREATURE,

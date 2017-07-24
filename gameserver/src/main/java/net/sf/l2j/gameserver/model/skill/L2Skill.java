@@ -38,14 +38,6 @@ import java.util.StringTokenizer;
 
 public abstract class L2Skill implements IChanceSkillTrigger {
     protected static final Logger LOGGER = LoggerFactory.getLogger(L2Skill.class);
-    private static final L2Object[] EMPTY_TARGET_LIST = new L2Object[0];
-
-    public static final int SKILL_LUCKY = 194;
-    public static final int SKILL_CREATE_COMMON = 1320;
-    public static final int SKILL_CREATE_DWARVEN = 172;
-    public static final int SKILL_CRYSTALLIZE = 248;
-    public static final int SKILL_DIVINE_INSPIRATION = 1405;
-    public static final int SKILL_NPC_RACE = 4416;
 
     // conditional values
     public static final int COND_BEHIND = 0x0008;

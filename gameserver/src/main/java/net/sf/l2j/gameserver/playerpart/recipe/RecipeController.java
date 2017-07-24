@@ -6,8 +6,8 @@ import net.sf.l2j.commons.database.EModify;
 import net.sf.l2j.commons.serialize.Serializer;
 import net.sf.l2j.gameserver.model.L2ShortCut;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.skill.SkillConst;
 import net.sf.l2j.gameserver.playerpart.recipe.PlayerRecipesLoadCall.RecipeRow;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.network.client.game_to_client.RecipeBookItemList;
 import net.sf.l2j.gameserver.skills.Stats;
 import net.sf.l2j.gameserver.util.Util;
@@ -110,13 +110,13 @@ public final class RecipeController {
 
     }
 
-    public boolean hasDwarvenCraft() { return player.getSkillLevel(L2Skill.SKILL_CREATE_DWARVEN) >= 1; }
+    public boolean hasDwarvenCraft() { return player.getSkillLevel(SkillConst.SKILL_CREATE_DWARVEN) >= 1; }
 
-    public int getDwarvenCraft() { return player.getSkillLevel(L2Skill.SKILL_CREATE_DWARVEN); }
+    public int getDwarvenCraft() { return player.getSkillLevel(SkillConst.SKILL_CREATE_DWARVEN); }
 
-    public boolean hasCommonCraft() { return player.getSkillLevel(L2Skill.SKILL_CREATE_COMMON) >= 1; }
+    public boolean hasCommonCraft() { return player.getSkillLevel(SkillConst.SKILL_CREATE_COMMON) >= 1; }
 
-    public int getCommonCraft() { return player.getSkillLevel(L2Skill.SKILL_CREATE_COMMON); }
+    public int getCommonCraft() { return player.getSkillLevel(SkillConst.SKILL_CREATE_COMMON); }
 
     public int getCraftSkillLevel(boolean dwarven) { return dwarven ? getDwarvenCraft() : getCommonCraft(); }
 

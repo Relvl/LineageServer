@@ -7,6 +7,7 @@ import net.sf.l2j.gameserver.model.L2SkillLearn;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.ClassId;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
+import net.sf.l2j.gameserver.model.skill.SkillConst;
 import net.sf.l2j.gameserver.xmlfactory.XMLDocumentFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -210,7 +211,7 @@ public class SkillTreeTable {
 
         for (L2SkillLearn sl : _skillTrees.get(classId).values()) {
             // Exception for Lucky skill, it can't be learned back once lost.
-            if (sl.getId() == L2Skill.SKILL_LUCKY) { continue; }
+            if (sl.getId() == SkillConst.SKILL_LUCKY) { continue; }
 
             if (sl.getMinLevel() <= level) {
                 boolean found = false;
@@ -246,7 +247,7 @@ public class SkillTreeTable {
         for (L2SkillLearn sl : _skillTrees.get(classId).values()) {
             skillId = sl.getId();
             // Exception for Lucky skill, it can't be learned back once lost.
-            if (skillId == L2Skill.SKILL_LUCKY) { continue; }
+            if (skillId == SkillConst.SKILL_LUCKY) { continue; }
 
             if (sl.getMinLevel() <= level) {
                 skill = result.get(skillId);
