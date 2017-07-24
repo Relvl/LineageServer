@@ -1,5 +1,7 @@
 package net.sf.l2j.gameserver.model;
 
+import net.sf.l2j.gameserver.model.skill.chance.ChanceCondition;
+
 public interface IChanceSkillTrigger {
     boolean triggersChanceSkill();
 

@@ -920,12 +920,12 @@ public abstract class L2Character extends L2Object {
         stopEffectsOnAction();
 
         // Recharge AutoSoulShot
-        rechargeShots(skill.useSoulShot(), skill.useSpiritShot());
+        rechargeShots(skill.isUsingSoulshot(), skill.isUsingSpiritshot());
 
         // Set the target of the skill in function of Skill Type and Target Type
         L2Character target = null;
         // Get all possible targets of the skill in a table in function of the skill target type
-        L2Object[] targets = skill.getTargetList(this);
+        L2Object[] targets = skill.getTargetType().getTargetList(this, skill);
 
         boolean doit = false;
 
@@ -4737,4 +4737,6 @@ public abstract class L2Character extends L2Object {
             }
         }
     }
+
+    public boolean isHolyArtefact() { return false; }
 }

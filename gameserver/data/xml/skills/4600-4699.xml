@@ -1053,7 +1053,7 @@
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="100" />
 		<set name="magicLvl" val="#magicLvl" />
-		<set name="target" val="TARGET_CORPSE" />
+		<set name="target" val="TARGET_CORPSE_MOB" />
 		<set name="skillType" val="DRAIN" />
 		<set name="hitTime" val="2000" />
 		<set name="reuseDelay" val="20000" />

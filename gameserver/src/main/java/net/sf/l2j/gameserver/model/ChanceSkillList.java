@@ -6,6 +6,8 @@ import net.sf.l2j.gameserver.handler.SkillHandler;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.skill.ESkillTargetType;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
+import net.sf.l2j.gameserver.model.skill.chance.ChanceCondition;
+import net.sf.l2j.gameserver.model.skill.chance.ESkillTriggerType;
 import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillLaunched;
 import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillUse;
 import net.sf.l2j.gameserver.skills.effects.EffectChanceSkillTrigger;
@@ -27,15 +29,15 @@ public class ChanceSkillList extends ConcurrentHashMap<IChanceSkillTrigger, Chan
     public void onHit(L2Character target, boolean ownerWasHit, boolean wasCrit) {
         int event;
         if (ownerWasHit) {
-            event = SkillTriggerType.ON_ATTACKED.getMask() | SkillTriggerType.ON_ATTACKED_HIT.getMask();
+            event = ESkillTriggerType.ON_ATTACKED.getMask() | ESkillTriggerType.ON_ATTACKED_HIT.getMask();
             if (wasCrit) {
-                event |= SkillTriggerType.ON_ATTACKED_CRIT.getMask();
+                event |= ESkillTriggerType.ON_ATTACKED_CRIT.getMask();
             }
         }
         else {
-            event = SkillTriggerType.ON_HIT.getMask();
+            event = ESkillTriggerType.ON_HIT.getMask();
             if (wasCrit) {
-                event |= SkillTriggerType.ON_CRIT.getMask();
+                event |= ESkillTriggerType.ON_CRIT.getMask();
             }
         }
 
@@ -45,31 +47,31 @@ public class ChanceSkillList extends ConcurrentHashMap<IChanceSkillTrigger, Chan
     public void onSkillHit(L2Character target, boolean ownerWasHit, boolean wasMagic, boolean wasOffensive) {
         int event;
         if (ownerWasHit) {
-            event = SkillTriggerType.ON_HIT_BY_SKILL.getMask();
+            event = ESkillTriggerType.ON_HIT_BY_SKILL.getMask();
             if (wasOffensive) {
-                event |= SkillTriggerType.ON_HIT_BY_OFFENSIVE_SKILL.getMask();
-                event |= SkillTriggerType.ON_ATTACKED.getMask();
+                event |= ESkillTriggerType.ON_HIT_BY_OFFENSIVE_SKILL.getMask();
+                event |= ESkillTriggerType.ON_ATTACKED.getMask();
             }
             else {
-                event |= SkillTriggerType.ON_HIT_BY_GOOD_MAGIC.getMask();
+                event |= ESkillTriggerType.ON_HIT_BY_GOOD_MAGIC.getMask();
             }
         }
         else {
-            event = SkillTriggerType.ON_CAST.getMask();
-            event |= wasMagic ? SkillTriggerType.ON_MAGIC.getMask() : SkillTriggerType.ON_PHYSICAL.getMask();
-            event |= wasOffensive ? SkillTriggerType.ON_MAGIC_OFFENSIVE.getMask() : SkillTriggerType.ON_MAGIC_GOOD.getMask();
+            event = ESkillTriggerType.ON_CAST.getMask();
+            event |= wasMagic ? ESkillTriggerType.ON_MAGIC.getMask() : ESkillTriggerType.ON_PHYSICAL.getMask();
+            event |= wasOffensive ? ESkillTriggerType.ON_MAGIC_OFFENSIVE.getMask() : ESkillTriggerType.ON_MAGIC_GOOD.getMask();
         }
 
         onChanceSkillEvent(event, target);
     }
 
-    public void onStart() { onChanceSkillEvent(SkillTriggerType.ON_START.getMask(), character); }
+    public void onStart() { onChanceSkillEvent(ESkillTriggerType.ON_START.getMask(), character); }
 
-    public void onActionTime() { onChanceSkillEvent(SkillTriggerType.ON_ACTION_TIME.getMask(), character); }
+    public void onActionTime() { onChanceSkillEvent(ESkillTriggerType.ON_ACTION_TIME.getMask(), character); }
 
-    public void onExit() { onChanceSkillEvent(SkillTriggerType.ON_EXIT.getMask(), character); }
+    public void onExit() { onChanceSkillEvent(ESkillTriggerType.ON_EXIT.getMask(), character); }
 
-    public void onEvadedHit(L2Character attacker) { onChanceSkillEvent(SkillTriggerType.ON_EVADED_HIT.getMask(), attacker); }
+    public void onEvadedHit(L2Character attacker) { onChanceSkillEvent(ESkillTriggerType.ON_EVADED_HIT.getMask(), attacker); }
 
     public void onChanceSkillEvent(int event, L2Character target) {
         if (character.isDead()) { return; }
@@ -102,7 +104,7 @@ public class ChanceSkillList extends ConcurrentHashMap<IChanceSkillTrigger, Chan
 
                 if (skill.getReuseDelay() > 0) { character.disableSkill(skill, skill.getReuseDelay()); }
 
-                L2Object[] targets = skill.getTargetList(character, false, target);
+                L2Object[] targets = skill.getTargetType().getTargetList(character, false, target, skill);
 
                 if (targets.length == 0) { return; }
 
@@ -136,7 +138,7 @@ public class ChanceSkillList extends ConcurrentHashMap<IChanceSkillTrigger, Chan
 
             if (triggered.getReuseDelay() > 0) { caster.disableSkill(triggered, triggered.getReuseDelay()); }
 
-            L2Object[] targets = triggered.getTargetList(caster, false, target);
+            L2Object[] targets = triggered.getTargetType().getTargetList(caster, false, target, triggered);
 
             if (targets.length == 0) { return; }
 

@@ -830,7 +830,7 @@ public final class Formulas {
      */
     public static byte calcShldUse(L2Character attacker, L2Character target, L2Skill skill) {
         // Ignore shield skills types bypass the shield use.
-        if (skill != null && skill.ignoreShield()) { return 0; }
+        if (skill != null && skill.isIgnoresShield()) { return 0; }
 
         Item item = target.getSecondaryWeaponItem();
         if (item == null || !(item instanceof Armor)) { return 0; }
@@ -1017,7 +1017,7 @@ public final class Formulas {
         if (target.isRaid() && !calcRaidAffected(type)) { return false; }
 
         final double baseChance = skill.getEffectPower();
-        if (skill.ignoreResists()) { return (Rnd.get(100) < baseChance); }
+        if (skill.isIgnoreResists()) { return (Rnd.get(100) < baseChance); }
 
         final double statModifier = calcSkillStatModifier(type, target);
         final double skillModifier = calcSkillVulnerability(attacker, target, skill, type);
@@ -1041,7 +1041,7 @@ public final class Formulas {
 
         final double baseChance = skill.getEffectPower();
 
-        if (skill.ignoreResists()) { return Rnd.get(100) < baseChance; }
+        if (skill.isIgnoreResists()) { return Rnd.get(100) < baseChance; }
 
         double mAtkModifier = 1;
 
@@ -1180,7 +1180,7 @@ public final class Formulas {
      */
     public static byte calcSkillReflect(L2Character target, L2Skill skill) {
         // Some special skills (like hero debuffs...) or ignoring resistances skills can't be reflected.
-        if (skill.ignoreResists() || !skill.canBeReflected()) { return SKILL_REFLECT_FAILED; }
+        if (skill.isIgnoreResists() || !skill.canBeReflected()) { return SKILL_REFLECT_FAILED; }
 
         // Only magic and melee skills can be reflected.
         if (!skill.isMagic() && (skill.getCastRange() == -1 || skill.getCastRange() > MELEE_ATTACK_RANGE)) { return SKILL_REFLECT_FAILED; }

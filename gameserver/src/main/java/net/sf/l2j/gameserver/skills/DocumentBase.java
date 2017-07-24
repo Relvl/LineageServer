@@ -24,7 +24,7 @@ import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.sf.l2j.gameserver.model.ChanceCondition;
+import net.sf.l2j.gameserver.model.skill.chance.ChanceCondition;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.base.Race;
 import net.sf.l2j.gameserver.model.item.kind.Item;

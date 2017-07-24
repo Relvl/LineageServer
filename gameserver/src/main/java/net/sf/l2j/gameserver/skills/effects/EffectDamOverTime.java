@@ -49,7 +49,7 @@ public class EffectDamOverTime extends L2Effect
 			}
 			
 			// For DOT skills that will not kill effected player.
-			if (!getSkill().killByDOT())
+			if (!getSkill().isKillingByDOT())
 			{
 				// Fix for players dying by DOTs if HP < 1 since reduceCurrentHP method will kill them
 				if (getEffected().getCurrentHp() <= 1)

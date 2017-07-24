@@ -1,9 +1,9 @@
-package net.sf.l2j.gameserver.model;
+package net.sf.l2j.gameserver.model.skill.chance;
 
 /**
  * @author Johnson / 24.07.2017
  */
-public enum SkillTriggerType {
+public enum ESkillTriggerType {
     // You hit an enemy
     ON_HIT(0x00001),
     // You hit an enemy - was crit
@@ -41,7 +41,7 @@ public enum SkillTriggerType {
 
     private final int mask;
 
-    SkillTriggerType(int mask) {
+    ESkillTriggerType(int mask) {
         this.mask = mask;
     }
 

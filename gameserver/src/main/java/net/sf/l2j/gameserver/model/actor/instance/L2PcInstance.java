@@ -7211,7 +7211,7 @@ public final class L2PcInstance extends L2Playable {
     @Override
     public void reduceCurrentHp(double value, L2Character attacker, boolean awake, boolean isDOT, L2Skill skill) {
         if (skill != null) {
-            getStatus().reduceHp(value, attacker, awake, isDOT, skill.isToggle(), skill.getDmgDirectlyToHP());
+            getStatus().reduceHp(value, attacker, awake, isDOT, skill.isToggle(), skill.isDamagedHPDirectly());
         }
         else { getStatus().reduceHp(value, attacker, awake, isDOT, false, false); }
 
