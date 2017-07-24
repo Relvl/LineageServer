@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.datatables;
 
-import net.sf.l2j.gameserver.model.L2TeleportLocation;
+import net.sf.l2j.gameserver.model.location.L2TeleportLocation;
 import net.sf.l2j.gameserver.xmlfactory.XMLDocumentFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,9 +40,11 @@ public final class TeleportLocationTable {
 
                     L2TeleportLocation teleport = new L2TeleportLocation();
                     teleport.setTeleId(Integer.valueOf(node.getNamedItem("id").getNodeValue()));
-                    teleport.setLocX(Integer.valueOf(node.getNamedItem("loc_x").getNodeValue()));
-                    teleport.setLocY(Integer.valueOf(node.getNamedItem("loc_y").getNodeValue()));
-                    teleport.setLocZ(Integer.valueOf(node.getNamedItem("loc_z").getNodeValue()));
+                    teleport.setXYZ(
+                            Integer.valueOf(node.getNamedItem("loc_x").getNodeValue()),
+                            Integer.valueOf(node.getNamedItem("loc_y").getNodeValue()),
+                            Integer.valueOf(node.getNamedItem("loc_z").getNodeValue())
+                    );
                     teleport.setPrice(Integer.valueOf(node.getNamedItem("price").getNodeValue()));
                     teleport.setIsForNoble(Integer.valueOf(node.getNamedItem("fornoble").getNodeValue()) == 1);
 

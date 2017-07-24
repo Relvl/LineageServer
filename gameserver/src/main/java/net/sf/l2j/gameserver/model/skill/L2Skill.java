@@ -1983,4 +1983,7 @@ public abstract class L2Skill implements IChanceSkillTrigger {
     public String toString() {
         return "" + _name + "[id=" + _id + ",lvl=" + _level + "]";
     }
+
+    @Override
+    public boolean isSkill() { return true; }
 }

@@ -72,7 +72,7 @@ import net.sf.l2j.gameserver.playerpart.PunishLevel;
 import net.sf.l2j.gameserver.playerpart.SummonRequest;
 import net.sf.l2j.gameserver.playerpart.achievements.AchievementController;
 import net.sf.l2j.gameserver.playerpart.recipe.RecipeController;
-import net.sf.l2j.gameserver.playerpart.variables.PlayerVariables;
+import net.sf.l2j.gameserver.playerpart.variables.PlayerVariablesController;
 import net.sf.l2j.gameserver.scripting.EventType;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -137,7 +137,7 @@ public final class L2PcInstance extends L2Playable {
     private static final int[] COMMON_CRAFT_LEVELS = {5, 20, 28, 36, 43, 49, 55, 62};
     private static final int FALLING_VALIDATION_DELAY = 10000;
 
-    private final PlayerVariables variables = new PlayerVariables(this);
+    private final PlayerVariablesController variables = new PlayerVariablesController(this);
     private final RecipeController recipeController = new RecipeController(this);
     private final AchievementController achievementController = new AchievementController(this);
 
@@ -8523,7 +8523,7 @@ public final class L2PcInstance extends L2Playable {
     @Override
     public boolean isPlayer() { return true; }
 
-    public PlayerVariables variables() { return variables; }
+    public PlayerVariablesController variables() { return variables; }
 
     public RecipeController getRecipeController() { return recipeController; }
 

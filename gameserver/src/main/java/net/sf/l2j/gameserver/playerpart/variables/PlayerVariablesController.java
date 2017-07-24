@@ -14,13 +14,13 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author Johnson / 20.07.2017
  */
-public class PlayerVariables {
-    private static final Logger LOGGER = LoggerFactory.getLogger(PlayerVariables.class);
+public class PlayerVariablesController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(PlayerVariablesController.class);
 
     private final L2PcInstance player;
     private final Map<String, PlayerVariable> variables = new ConcurrentHashMap<>();
 
-    public PlayerVariables(L2PcInstance player) {
+    public PlayerVariablesController(L2PcInstance player) {
         this.player = player;
         reload();
     }
@@ -90,7 +90,7 @@ public class PlayerVariables {
 
     @Override
     public String toString() {
-        return "PlayerVariables{" +
+        return "PlayerVariablesController{" +
                 "player=" + player +
                 ", variables=" + variables +
                 '}';

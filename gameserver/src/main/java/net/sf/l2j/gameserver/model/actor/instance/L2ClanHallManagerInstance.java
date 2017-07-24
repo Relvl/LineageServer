@@ -19,7 +19,7 @@ import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.datatables.TeleportLocationTable;
 import net.sf.l2j.gameserver.instancemanager.ClanHallManager;
 import net.sf.l2j.gameserver.model.L2Clan;
-import net.sf.l2j.gameserver.model.L2TeleportLocation;
+import net.sf.l2j.gameserver.model.location.L2TeleportLocation;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.entity.ClanHall;
 import net.sf.l2j.gameserver.model.entity.ClanHall.ClanHallFunction;
@@ -1316,7 +1316,7 @@ public class L2ClanHallManagerInstance extends L2MerchantInstance {
             else if (actualCommand.equalsIgnoreCase("goto")) {
                 L2TeleportLocation list = TeleportLocationTable.getTemplate(Integer.parseInt(val));
                 if (list != null) {
-                    if (player.reduceAdena(EItemProcessPurpose.TELEPORT, list.getPrice(), this, true)) { player.teleToLocation(list.getLocX(), list.getLocY(), list.getLocZ(), 0); }
+                    if (player.reduceAdena(EItemProcessPurpose.TELEPORT, list.getPrice(), this, true)) { player.teleToLocation(list.getX(), list.getY(), list.getZ(), 0); }
                 }
                 else { LOGGER.warn("No teleport destination with id:{}", val); }
 

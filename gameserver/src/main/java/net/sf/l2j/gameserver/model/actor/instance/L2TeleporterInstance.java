@@ -20,7 +20,7 @@ import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.datatables.TeleportLocationTable;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager;
-import net.sf.l2j.gameserver.model.L2TeleportLocation;
+import net.sf.l2j.gameserver.model.location.L2TeleportLocation;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
@@ -131,12 +131,12 @@ public final class L2TeleporterInstance extends L2NpcInstance {
         L2TeleportLocation list = TeleportLocationTable.getTemplate(val);
         if (list != null) {
             // you cannot teleport to village that is in siege
-            if (SiegeManager.getSiege(list.getLocX(), list.getLocY(), list.getLocZ()) != null) {
+            if (SiegeManager.getSiege(list.getX(), list.getY(), list.getZ()) != null) {
                 player.sendPacket(SystemMessageId.NO_PORT_THAT_IS_IN_SIGE);
                 return;
             }
 
-            if (MapRegionTable.townHasCastleInSiege(list.getLocX(), list.getLocY()) && isInsideZone(ZoneId.TOWN)) {
+            if (MapRegionTable.townHasCastleInSiege(list.getX(), list.getY()) && isInsideZone(ZoneId.TOWN)) {
                 player.sendPacket(SystemMessageId.NO_PORT_THAT_IS_IN_SIGE);
                 return;
             }
@@ -147,7 +147,7 @@ public final class L2TeleporterInstance extends L2NpcInstance {
                 return;
             }
 
-            if (list.getIsForNoble() && !player.isNoble()) {
+            if (list.isForNoble() && !player.isNoble()) {
                 final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
                 html.setFile("data/html/teleporter/nobleteleporter-no.htm");
                 html.replace("%objectId%", getObjectId());
@@ -161,11 +161,11 @@ public final class L2TeleporterInstance extends L2NpcInstance {
             Calendar cal = Calendar.getInstance();
             int price = list.getPrice();
 
-            if (!list.getIsForNoble()) {
+            if (!list.isForNoble()) {
                 if (cal.get(Calendar.HOUR_OF_DAY) >= 20 && cal.get(Calendar.HOUR_OF_DAY) <= 23 && (cal.get(Calendar.DAY_OF_WEEK) == 1 || cal.get(Calendar.DAY_OF_WEEK) == 7)) { price /= 2; }
             }
 
-            if (Config.ALT_GAME_FREE_TELEPORT || player.destroyItemByItemId(EItemProcessPurpose.TELEPORT, 57, price, this, true)) { player.teleToLocation(list.getLocX(), list.getLocY(), list.getLocZ(), 20); }
+            if (Config.ALT_GAME_FREE_TELEPORT || player.destroyItemByItemId(EItemProcessPurpose.TELEPORT, 57, price, this, true)) { player.teleToLocation(list.getX(), list.getY(), list.getZ(), 20); }
         }
         else { LOGGER.warn("No teleport destination with id:{}", val); }
 

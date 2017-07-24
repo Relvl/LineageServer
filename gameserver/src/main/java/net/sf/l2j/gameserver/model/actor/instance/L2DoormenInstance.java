@@ -16,7 +16,7 @@ package net.sf.l2j.gameserver.model.actor.instance;
 
 import net.sf.l2j.gameserver.datatables.DoorTable;
 import net.sf.l2j.gameserver.datatables.TeleportLocationTable;
-import net.sf.l2j.gameserver.model.L2TeleportLocation;
+import net.sf.l2j.gameserver.model.location.L2TeleportLocation;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
 import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
@@ -102,7 +102,7 @@ public class L2DoormenInstance extends L2NpcInstance {
         int whereTo = Integer.parseInt(command.substring(5).trim());
         L2TeleportLocation list = TeleportLocationTable.getTemplate(whereTo);
         if (list != null) {
-            if (!player.isAlikeDead()) { player.teleToLocation(list.getLocX(), list.getLocY(), list.getLocZ(), 0); }
+            if (!player.isAlikeDead()) { player.teleToLocation(list.getX(), list.getY(), list.getZ(), 0); }
         }
         else { LOGGER.warn("No teleport destination with id: {}", whereTo); }
 
