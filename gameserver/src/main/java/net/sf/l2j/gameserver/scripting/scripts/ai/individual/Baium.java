@@ -394,7 +394,7 @@ public class Baium extends AbstractNpcAI
 				if (obj.isDead() || !(PathFinding.getInstance().canSeeTarget(npc, obj)))
 					continue;
 				
-				if (((L2PcInstance) obj).isGM() && ((L2PcInstance) obj).getAppearance().getInvisible())
+				if (((L2PcInstance) obj).isGM() && ((L2PcInstance) obj).getAppearance().isInvisible())
 					continue;
 				
 				if (npcId == ARCHANGEL && ((L2PcInstance) obj).getActiveWeaponInstance() == null)
@@ -430,7 +430,7 @@ public class Baium extends AbstractNpcAI
 			return;
 		
 		// Pickup a target if no or dead victim. If Baium was hitting an angel, 50% luck he reconsiders his target. 10% luck he decides to reconsiders his target.
-		if (_actualVictim == null || _actualVictim.isDead() || !(npc.getKnownList().knowsObject(_actualVictim)) || (_actualVictim instanceof L2MonsterInstance && Rnd.get(10) < 5) || Rnd.get(10) == 0)
+		if (_actualVictim == null || _actualVictim.isDead() || !(npc.getKnownList().isObjectKnown(_actualVictim)) || (_actualVictim instanceof L2MonsterInstance && Rnd.get(10) < 5) || Rnd.get(10) == 0)
 			_actualVictim = getRandomTarget(npc);
 		
 		// If result is null, return directly.

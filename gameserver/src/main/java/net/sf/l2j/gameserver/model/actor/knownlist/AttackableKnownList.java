@@ -36,7 +36,7 @@ public class AttackableKnownList extends NpcKnownList
 			return false;
 		
 		// get attackable
-		final L2Attackable attackable = (L2Attackable) _activeObject;
+		final L2Attackable attackable = (L2Attackable) this.object;
 		
 		// remove object from agro list
 		if (object instanceof L2Character)
@@ -56,10 +56,10 @@ public class AttackableKnownList extends NpcKnownList
 			return 0;
 		
 		if (object instanceof L2Playable)
-			return object.getKnownList().getDistanceToWatchObject(_activeObject);
+			return object.getKnownList().getDistanceToWatchObject(this.object);
 		
 		// get attackable
-		final L2Attackable attackable = (L2Attackable) _activeObject;
+		final L2Attackable attackable = (L2Attackable) this.object;
 		
 		return Math.max(300, Math.max(attackable.getAggroRange(), attackable.getClanRange()));
 	}

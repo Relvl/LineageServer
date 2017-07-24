@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.model.actor.stat;
 
 import net.sf.l2j.Config;
@@ -148,11 +134,8 @@ public class PcStat extends PlayableStat {
         su.addAttribute(StatusUpdate.MAX_MP, getMaxMp());
         getActiveChar().sendPacket(su);
 
-        // Update the overloaded status of the L2PcInstance
         getActiveChar().refreshOverloaded();
-        // Update the expertise status of the L2PcInstance
         getActiveChar().refreshExpertisePenalty();
-        // Send UserInfo to the L2PcInstance
         getActiveChar().sendPacket(new UserInfo(getActiveChar()));
 
         return levelIncreased;
@@ -165,7 +148,7 @@ public class PcStat extends PlayableStat {
 
     @Override
     public final L2PcInstance getActiveChar() {
-        return (L2PcInstance) super.getActiveChar();
+        return super.getActiveChar().getActingPlayer();
     }
 
     @Override

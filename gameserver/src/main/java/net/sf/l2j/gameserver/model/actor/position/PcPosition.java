@@ -12,7 +12,7 @@ public class PcPosition extends CharPosition {
 
     @Override
     public L2PcInstance getActiveObject() {
-        return ((L2PcInstance) super.getActiveObject());
+        return super.getActiveObject().getActingPlayer();
     }
 
     @Override

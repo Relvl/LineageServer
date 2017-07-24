@@ -439,7 +439,7 @@ public abstract class L2Character extends L2Object {
         }
 
         if (!isAlikeDead()) {
-            if (this instanceof L2Npc && target.isAlikeDead() || !getKnownList().knowsObject(target)) {
+            if (this instanceof L2Npc && target.isAlikeDead() || !getKnownList().isObjectKnown(target)) {
                 getAI().setIntention(EIntention.ACTIVE);
                 sendPacket(ActionFailed.STATIC_PACKET);
                 return;
@@ -3135,7 +3135,7 @@ public abstract class L2Character extends L2Object {
             return;
         }
 
-        if ((this instanceof L2Npc && target.isAlikeDead()) || target._isDead || (!getKnownList().knowsObject(target) && !(this instanceof L2DoorInstance))) {
+        if ((this instanceof L2Npc && target.isAlikeDead()) || target._isDead || (!getKnownList().isObjectKnown(target) && !(this instanceof L2DoorInstance))) {
             getAI().notifyEvent(ECtrlEvent.EVT_CANCEL);
 
             sendPacket(ActionFailed.STATIC_PACKET);

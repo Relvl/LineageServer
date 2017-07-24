@@ -3,6 +3,7 @@ package net.sf.l2j.gameserver.model.actor.template;
 import net.sf.l2j.gameserver.datatables.HerbDropTable;
 import net.sf.l2j.gameserver.model.L2MinionData;
 import net.sf.l2j.gameserver.model.L2NpcAIData;
+import net.sf.l2j.gameserver.model.Race;
 import net.sf.l2j.gameserver.model.actor.instance.L2XmassTreeInstance;
 import net.sf.l2j.gameserver.model.base.ClassId;
 import net.sf.l2j.gameserver.model.item.DropCategory;
@@ -45,41 +46,6 @@ public final class NpcTemplate extends CharTemplate {
     private final List<L2Skill> _suicideSkills = new ArrayList<>();
 
     private L2NpcAIData _AIdata = new L2NpcAIData();
-
-    public enum AIType {
-        DEFAULT,
-        ARCHER,
-        MAGE,
-        HEALER,
-        CORPSE
-    }
-
-    public enum Race {
-        UNDEAD,
-        MAGICCREATURE,
-        BEAST,
-        ANIMAL,
-        PLANT,
-        HUMANOID,
-        SPIRIT,
-        ANGEL,
-        DEMON,
-        DRAGON,
-        GIANT,
-        BUG,
-        FAIRIE,
-        HUMAN,
-        ELVE,
-        DARKELVE,
-        ORC,
-        DWARVE,
-        OTHER,
-        NONLIVING,
-        SIEGEWEAPON,
-        DEFENDINGARMY,
-        MERCENARIE,
-        UNKNOWN
-    }
 
     private final List<DropCategory> _categories = new LinkedList<>();
     private final List<L2MinionData> _minions = new ArrayList<>();
@@ -229,16 +195,6 @@ public final class NpcTemplate extends CharTemplate {
      */
     public List<DropCategory> getDropData() {
         return _categories;
-    }
-
-    /**
-     * @return the list of all possible item drops of this L2NpcTemplate. (ie full drops and part drops, mats, miscellaneous & UNCATEGORIZED)
-     */
-    public List<DropData> getAllDropData() {
-        List<DropData> list = new ArrayList<>();
-        for (DropCategory tmp : _categories) { list.addAll(tmp.getAllDrops()); }
-
-        return list;
     }
 
     /**

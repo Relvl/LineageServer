@@ -47,7 +47,7 @@ public final class TradeRequest extends L2GameClientPacket
 		}
 		
 		final L2PcInstance target = L2World.getInstance().getPlayer(_objectId);
-		if (target == null || !player.getKnownList().knowsObject(target) || target.equals(player))
+		if (target == null || !player.getKnownList().isObjectKnown(target) || target.equals(player))
 		{
 			player.sendPacket(SystemMessageId.TARGET_IS_INCORRECT);
 			return;

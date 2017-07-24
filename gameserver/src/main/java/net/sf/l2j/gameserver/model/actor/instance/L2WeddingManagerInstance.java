@@ -180,7 +180,7 @@ public class L2WeddingManagerInstance extends L2NpcInstance {
         }
 
         // Sex check
-        if (ptarget.getAppearance().getSex() == player.getAppearance().getSex() && !Config.WEDDING_SAMESEX) {
+        if (ptarget.getAppearance().isFemale() == player.getAppearance().isFemale() && !Config.WEDDING_SAMESEX) {
             sendHtmlMessage(player, "data/html/mods/Wedding_error_sex.htm");
             return false;
         }

@@ -197,7 +197,7 @@ public class Q350_EnhanceYourWeapon extends Quest
 			if (crystalData != null)
 			{
 				// Leveling requires soul crystal being used?
-				if (npcInfo.skillRequired())
+				if (npcInfo.isSkillRequired())
 				{
 					// Absorb list contains killer and his SoulCrystalAbsorbInfo is registered.
 					final SoulCrystalAbsorbInfo ai = mob.getAbsorbInfo(player.getObjectId());
@@ -219,7 +219,7 @@ public class Q350_EnhanceYourWeapon extends Quest
 			return;
 		
 		// Leveling requires soul crystal being used?
-		if (npcInfo.skillRequired())
+		if (npcInfo.isSkillRequired())
 		{
 			// Absorb list doesn't contain killer or his SoulCrystalAbsorbInfo is not registered.
 			final SoulCrystalAbsorbInfo ai = mob.getAbsorbInfo(player.getObjectId());

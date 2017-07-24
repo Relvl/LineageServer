@@ -25,7 +25,7 @@ import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.skill.ESkillTargetType;
 import net.sf.l2j.gameserver.model.actor.*;
 import net.sf.l2j.gameserver.model.actor.instance.*;
-import net.sf.l2j.gameserver.model.actor.template.NpcTemplate.AIType;
+import net.sf.l2j.gameserver.model.AIType;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.scripting.EventType;
@@ -119,7 +119,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
             L2PcInstance targetPlayer = target.getActingPlayer();
             if (targetPlayer != null) {
                 // GM checks ; check if the target is invisible or got access level
-                if (targetPlayer.isGM() && (targetPlayer.getAppearance().getInvisible() || !targetPlayer.getAccessLevel().canTakeAggro())) { return false; }
+                if (targetPlayer.isGM() && (targetPlayer.getAppearance().isInvisible() || !targetPlayer.getAccessLevel().canTakeAggro())) { return false; }
 
                 // Check if player is an allied Varka.
                 if (Util.contains(me.getClans(), "varka_silenos_clan") && targetPlayer.isAlliedWithVarka()) { return false; }

@@ -14,8 +14,6 @@
  */
 package net.sf.l2j.gameserver.model;
 
-import net.sf.l2j.gameserver.model.actor.template.NpcTemplate.AIType;
-
 /**
  * Model used for NPC AI related attributes.
  * @author ShanSoft from L2JTW.

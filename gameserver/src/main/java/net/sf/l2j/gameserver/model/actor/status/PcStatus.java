@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.model.actor.status;
 
 import net.sf.l2j.commons.random.Rnd;
@@ -33,7 +19,7 @@ import net.sf.l2j.gameserver.skills.Stats;
 import net.sf.l2j.gameserver.util.Util;
 
 public class PcStatus extends PlayableStatus {
-    private double _currentCp = 0;
+    private double currentCp = 0;
 
     public PcStatus(L2PcInstance activeChar) {
         super(activeChar);
@@ -196,7 +182,7 @@ public class PcStatus extends PlayableStatus {
 
     @Override
     public final double getCurrentCp() {
-        return _currentCp;
+        return currentCp;
     }
 
     @Override
@@ -214,7 +200,7 @@ public class PcStatus extends PlayableStatus {
 
             if (newCp >= maxCp) {
                 // Set the RegenActive flag to false
-                _currentCp = maxCp;
+                currentCp = maxCp;
                 _flagsRegenActive &= ~REGEN_FLAG_CP;
 
                 // Stop the HP/MP/CP Regeneration task
@@ -222,7 +208,7 @@ public class PcStatus extends PlayableStatus {
             }
             else {
                 // Set the RegenActive flag to true
-                _currentCp = newCp;
+                currentCp = newCp;
                 _flagsRegenActive |= REGEN_FLAG_CP;
 
                 // Start the HP/MP/CP Regeneration task with Medium priority

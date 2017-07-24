@@ -51,7 +51,7 @@ public class AdminCamera implements IAdminCommandHandler
 		else if (command.equals("admin_cameramode"))
 		{
 			// lolcheck. But basically, chance to be invisible AND rooted is kinda null, except with this command
-			if (!(activeChar.getAppearance().getInvisible() && activeChar.isImmobilized()))
+			if (!(activeChar.getAppearance().isInvisible() && activeChar.isImmobilized()))
 			{
 				activeChar.setTarget(null);
 				activeChar.setIsImmobilized(true);

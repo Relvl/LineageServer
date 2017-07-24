@@ -46,7 +46,7 @@ public class UserInfo extends L2GameServerPacket {
         writeS(name);
 
         writeD(_activeChar.getRace().ordinal());
-        writeD(_activeChar.getAppearance().getSex() ? 1 : 0);
+        writeD(_activeChar.getAppearance().isFemale() ? 1 : 0);
 
         if (_activeChar.getClassIndex() == 0) { writeD(_activeChar.getClassId().getId()); }
         else { writeD(_activeChar.getBaseClass()); }
@@ -202,7 +202,7 @@ public class UserInfo extends L2GameServerPacket {
 
         writeC(_activeChar.isInPartyMatchRoom() ? 1 : 0);
 
-        if (_activeChar.getAppearance().getInvisible() && _activeChar.isGM()) { writeD(_activeChar.getAbnormalEffect() | AbnormalEffect.STEALTH.getMask()); }
+        if (_activeChar.getAppearance().isInvisible() && _activeChar.isGM()) { writeD(_activeChar.getAbnormalEffect() | AbnormalEffect.STEALTH.getMask()); }
         else { writeD(_activeChar.getAbnormalEffect()); }
         writeC(0x00);
 

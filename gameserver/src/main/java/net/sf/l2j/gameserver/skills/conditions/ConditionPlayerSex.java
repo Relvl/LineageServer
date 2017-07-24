@@ -39,6 +39,6 @@ public class ConditionPlayerSex extends Condition
 		if (env.getPlayer() == null)
 			return false;
 		
-		return (env.getPlayer().getAppearance().getSex() ? 1 : 0) == _sex;
+		return (env.getPlayer().getAppearance().isFemale() ? 1 : 0) == _sex;
 	}
 }

@@ -52,7 +52,7 @@ public class CharInfo extends L2GameServerPacket {
     protected final void writeImpl() {
         boolean gmSeeInvis = false;
 
-        if (player.getAppearance().getInvisible()) {
+        if (player.getAppearance().isInvisible()) {
             L2PcInstance tmp = getClient().getActiveChar();
             if (tmp != null && tmp.isGM()) { gmSeeInvis = true; }
         }
@@ -65,7 +65,7 @@ public class CharInfo extends L2GameServerPacket {
         writeD(player.getObjectId());
         writeS(player.getName());
         writeD(player.getRace().ordinal());
-        writeD(player.getAppearance().getSex() ? 1 : 0);
+        writeD(player.getAppearance().isFemale() ? 1 : 0);
 
         if (player.getClassIndex() == 0) { writeD(player.getClassId().getId()); }
         else { writeD(player.getBaseClass()); }
@@ -157,7 +157,7 @@ public class CharInfo extends L2GameServerPacket {
 
         if (gmSeeInvis) { writeC(0); }
         else {
-            writeC(player.getAppearance().getInvisible() ? 1 : 0); // invisible = 1 visible =0
+            writeC(player.getAppearance().isInvisible() ? 1 : 0); // invisible = 1 visible =0
         }
 
         writeC(player.getMountType()); // 1 on strider 2 on wyvern 0 no mount

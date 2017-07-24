@@ -34,7 +34,7 @@ public class PledgeShowMemberListAdd extends L2GameServerPacket
 		_isOnline = (player.isOnline()) ? player.getObjectId() : 0;
 		_pledgeType = player.getPledgeType();
 		_race = player.getRace().ordinal();
-		_sex = (player.getAppearance().getSex()) ? 1 : 0;
+		_sex = (player.getAppearance().isFemale()) ? 1 : 0;
 	}
 	
 	@Override

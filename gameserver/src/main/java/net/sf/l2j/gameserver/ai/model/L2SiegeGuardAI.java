@@ -27,7 +27,7 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2SiegeGuardInstance;
-import net.sf.l2j.gameserver.model.actor.template.NpcTemplate.AIType;
+import net.sf.l2j.gameserver.model.AIType;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.util.Util;
 
@@ -59,7 +59,7 @@ public class L2SiegeGuardAI extends L2AttackableAI {
         if (player == null) { return false; }
 
         // Check if the target isn't GM on hide mode.
-        if (player.isGM() && player.getAppearance().getInvisible()) { return false; }
+        if (player.isGM() && player.getAppearance().isInvisible()) { return false; }
 
         // Check if the target isn't in silent move mode AND too far
         if (player.isSilentMoving() && !actor.isInsideRadius(player, 250, false, false)) { return false; }
@@ -228,7 +228,7 @@ public class L2SiegeGuardAI extends L2AttackableAI {
          * Check if the siege guard isn't too far from its spawn location ; if yes, then move him back to home.
          */
 
-        if (dist > clanRange && (Math.sqrt(actor.getPlanDistanceSq(actor.getSpawn().getLocx(), actor.getSpawn().getLocy())) > (clanRange * 2)) && actor.getKnownList().knowsObject(attackTarget)) {
+        if (dist > clanRange && (Math.sqrt(actor.getPlanDistanceSq(actor.getSpawn().getLocx(), actor.getSpawn().getLocy())) > (clanRange * 2)) && actor.getKnownList().isObjectKnown(attackTarget)) {
             actor.getKnownList().removeKnownObject(attackTarget);
             actor.setTarget(null);
             setIntention(EIntention.IDLE, null, null);

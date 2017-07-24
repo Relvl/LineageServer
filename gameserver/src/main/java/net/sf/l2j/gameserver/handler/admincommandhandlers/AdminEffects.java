@@ -95,7 +95,7 @@ public class AdminEffects implements IAdminCommandHandler
 		
 		if (command.startsWith("admin_hide"))
 		{
-			if (!activeChar.getAppearance().getInvisible())
+			if (!activeChar.getAppearance().isInvisible())
 			{
 				activeChar.getAppearance().setInvisible();
 				activeChar.decayMe();

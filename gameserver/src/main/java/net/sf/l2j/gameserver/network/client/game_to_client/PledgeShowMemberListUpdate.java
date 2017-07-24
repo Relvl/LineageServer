@@ -39,7 +39,7 @@ public final class PledgeShowMemberListUpdate extends L2GameServerPacket
 		_level = player.getLevel();
 		_classId = player.getClassId().getId();
 		_race = player.getRace().ordinal();
-		_sex = player.getAppearance().getSex() ? 1 : 0;
+		_sex = player.getAppearance().isFemale() ? 1 : 0;
 		_isOnline = (player.isOnline()) ? player.getObjectId() : 0;
 	}
 	
@@ -55,7 +55,7 @@ public final class PledgeShowMemberListUpdate extends L2GameServerPacket
 		if (_isOnline != 0)
 		{
 			_race = player.getPlayerInstance().getRace().ordinal();
-			_sex = (player.getPlayerInstance().getAppearance().getSex()) ? 1 : 0;
+			_sex = (player.getPlayerInstance().getAppearance().isFemale()) ? 1 : 0;
 		}
 		else
 		{

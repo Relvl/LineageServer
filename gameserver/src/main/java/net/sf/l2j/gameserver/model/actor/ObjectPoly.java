@@ -1,4 +1,4 @@
-package net.sf.l2j.gameserver.model.actor.poly;
+package net.sf.l2j.gameserver.model.actor;
 
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.model.L2Object;

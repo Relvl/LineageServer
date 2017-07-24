@@ -88,7 +88,7 @@ public final class RequestJoinParty extends L2GameClientPacket {
             return;
         }
 
-        if (target.equals(requestor) || target.isCursedWeaponEquipped() || requestor.isCursedWeaponEquipped() || target.getAppearance().getInvisible()) {
+        if (target.equals(requestor) || target.isCursedWeaponEquipped() || requestor.isCursedWeaponEquipped() || target.getAppearance().isInvisible()) {
             requestor.sendPacket(SystemMessageId.YOU_HAVE_INVITED_THE_WRONG_TARGET);
             return;
         }

@@ -302,7 +302,7 @@ public class Antharas extends AbstractNpcAI {
         if (npc.isInvul() || npc.isCastingNow()) { return; }
 
         // Pickup a target if no or dead victim. 10% luck he decides to reconsiders his target.
-        if (_actualVictim == null || _actualVictim.isDead() || !(npc.getKnownList().knowsObject(_actualVictim)) || Rnd.get(10) == 0) { _actualVictim = getRandomPlayer(npc); }
+        if (_actualVictim == null || _actualVictim.isDead() || !(npc.getKnownList().isObjectKnown(_actualVictim)) || Rnd.get(10) == 0) { _actualVictim = getRandomPlayer(npc); }
 
         // If result is still null, Antharas will roam. Don't go deeper in skill AI.
         if (_actualVictim == null) {

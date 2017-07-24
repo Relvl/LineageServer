@@ -24,7 +24,7 @@ import net.sf.l2j.gameserver.model.*;
 import net.sf.l2j.gameserver.model.L2Party.MessageType;
 import net.sf.l2j.gameserver.model.L2PetData.L2PetLevelData;
 import net.sf.l2j.gameserver.model.actor.*;
-import net.sf.l2j.gameserver.model.actor.appearance.PcAppearance;
+import net.sf.l2j.gameserver.model.actor.PcAppearance;
 import net.sf.l2j.gameserver.model.actor.knownlist.PcKnownList;
 import net.sf.l2j.gameserver.model.actor.position.PcPosition;
 import net.sf.l2j.gameserver.model.actor.stat.PcStat;
@@ -4483,7 +4483,7 @@ public final class L2PcInstance extends L2Playable {
             statement.setInt(11, appearance.getFace());
             statement.setInt(12, appearance.getHairStyle());
             statement.setInt(13, appearance.getHairColor());
-            statement.setInt(14, appearance.getSex() ? 1 : 0);
+            statement.setInt(14, appearance.isFemale() ? 1 : 0);
             statement.setLong(15, getExp());
             statement.setInt(16, getSp());
             statement.setInt(17, _karma);
@@ -4614,7 +4614,7 @@ public final class L2PcInstance extends L2Playable {
             statement.setInt(8, appearance.getFace());
             statement.setInt(9, appearance.getHairStyle());
             statement.setInt(10, appearance.getHairColor());
-            statement.setInt(11, appearance.getSex() ? 1 : 0);
+            statement.setInt(11, appearance.isFemale() ? 1 : 0);
             statement.setInt(12, getHeading());
             statement.setInt(13, _observerMode ? _savedLocation.getX() : getX());
             statement.setInt(14, _observerMode ? _savedLocation.getY() : getY());
@@ -6981,7 +6981,7 @@ public final class L2PcInstance extends L2Playable {
 
         if (isGM()) {
             if (isInvul()) { sendMessage("Entering world in Invulnerable mode."); }
-            if (appearance.getInvisible()) { sendMessage("Entering world in Invisible mode."); }
+            if (appearance.isInvisible()) { sendMessage("Entering world in Invisible mode."); }
             if (_messageRefusal) { sendMessage("Entering world in Message Refusal mode."); }
         }
 
