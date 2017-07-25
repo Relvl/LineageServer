@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.Config;
@@ -31,38 +17,40 @@ import net.sf.l2j.gameserver.network.client.game_to_client.ShortCutRegister;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.network.client.game_to_client.UserInfo;
 
-/**
- * Format chdd
- *
- * @author -Wooden-
- */
 public final class RequestExEnchantSkill extends L2GameClientPacket {
-    private int _skillId;
-    private int _skillLevel;
+    private int skillId;
+    private int skillLevel;
 
     @Override
     protected void readImpl() {
-        _skillId = readD();
-        _skillLevel = readD();
+        skillId = readD();
+        skillLevel = readD();
     }
 
     @Override
     protected void runImpl() {
-        if (_skillId <= 0 || _skillLevel <= 0) { return; }
+        if (skillId <= 0 || skillLevel <= 0) { return; }
 
-        final L2PcInstance activeChar = getClient().getActiveChar();
+        /* TODO Реализовать проверки:
+        public boolean isAllowedToEnchantSkills() {
+            if (isSubclassChangeLocked()) { return false; }
+            if (AttackStanceTaskManager.getInstance().isInAttackStance(this)) { return false; }
+            if (isCastingNow() || isCastingSimultaneouslyNow()) { return false; }
+            return !isInBoat();
+        } */
+
+        L2PcInstance activeChar = getClient().getActiveChar();
         if (activeChar == null) { return; }
-
         if (activeChar.getClassId().level() < 3 || activeChar.getLevel() < 76) { return; }
 
-        final L2Npc trainer = activeChar.getCurrentFolkNPC();
+        L2Npc trainer = activeChar.getCurrentFolkNPC();
         if (trainer == null) { return; }
 
         if (!activeChar.isInsideRadius(trainer, L2Npc.INTERACTION_DISTANCE, false, false) && !activeChar.isGM()) { return; }
 
-        if (activeChar.getSkillLevel(_skillId) >= _skillLevel) { return; }
+        if (activeChar.getSkillLevel(skillId) >= skillLevel) { return; }
 
-        final L2Skill skill = SkillTable.getInfo(_skillId, _skillLevel);
+        L2Skill skill = SkillTable.getInfo(skillId, skillLevel);
         if (skill == null) { return; }
 
         L2EnchantSkillData data = null;
@@ -72,7 +60,7 @@ public final class RequestExEnchantSkill extends L2GameClientPacket {
         for (L2EnchantSkillLearn esl : SkillTreeTable.getInstance().getAvailableEnchantSkills(activeChar)) {
             if (esl == null) { continue; }
 
-            if (esl.getId() == _skillId && esl.getLevel() == _skillLevel) {
+            if (esl.getId() == skillId && esl.getLevel() == skillLevel) {
                 data = SkillTreeTable.getInstance().getEnchantSkillData(esl.getEnchant());
                 baseLvl = esl.getBaseLevel();
                 break;
@@ -107,13 +95,13 @@ public final class RequestExEnchantSkill extends L2GameClientPacket {
         // Try to enchant skill.
         if (Rnd.get(100) <= data.getRate(activeChar.getLevel())) {
             activeChar.addSkill(skill, true);
-            activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_HAVE_SUCCEEDED_IN_ENCHANTING_THE_SKILL_S1).addSkillName(_skillId, _skillLevel));
+            activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_HAVE_SUCCEEDED_IN_ENCHANTING_THE_SKILL_S1).addSkillName(skillId, skillLevel));
         }
         else {
-            activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_HAVE_FAILED_TO_ENCHANT_THE_SKILL_S1).addSkillName(_skillId, _skillLevel));
-            if (_skillLevel > 100) {
-                _skillLevel = baseLvl;
-                activeChar.addSkill(SkillTable.getInfo(_skillId, _skillLevel), true);
+            activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_HAVE_FAILED_TO_ENCHANT_THE_SKILL_S1).addSkillName(skillId, skillLevel));
+            if (skillLevel > 100) {
+                skillLevel = baseLvl;
+                activeChar.addSkill(SkillTable.getInfo(skillId, skillLevel), true);
             }
         }
         activeChar.sendSkillList();
@@ -121,8 +109,8 @@ public final class RequestExEnchantSkill extends L2GameClientPacket {
 
         // Update shortcuts.
         for (L2ShortCut sc : activeChar.getAllShortCuts()) {
-            if (sc.getId() == _skillId && sc.getType() == L2ShortCut.TYPE_SKILL) {
-                L2ShortCut newsc = new L2ShortCut(sc.getSlot(), sc.getPage(), L2ShortCut.TYPE_SKILL, _skillId, _skillLevel, 1);
+            if (sc.getId() == skillId && sc.getType() == L2ShortCut.TYPE_SKILL) {
+                L2ShortCut newsc = new L2ShortCut(sc.getSlot(), sc.getPage(), L2ShortCut.TYPE_SKILL, skillId, skillLevel, 1);
                 activeChar.sendPacket(new ShortCutRegister(newsc));
                 activeChar.registerShortCut(newsc);
             }
