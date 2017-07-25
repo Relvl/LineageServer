@@ -18,6 +18,7 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.ClassId;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -100,9 +101,9 @@ public class Q215_TrialOfThePilgrim extends Quest
 		}
 		else if (event.equalsIgnoreCase("30650-02.htm"))
 		{
-			if (st.getQuestItemsCount(57) >= 100000)
+			if (st.getQuestItemsCount(ItemConst.ADENA_ID) >= 100000)
 			{
-				st.takeItems(57, 100000);
+				st.takeItems(ItemConst.ADENA_ID, 100000);
 				st.giveItems(BOOK_OF_GERALD, 1);
 			}
 			else
@@ -235,7 +236,7 @@ public class Q215_TrialOfThePilgrim extends Quest
 						{
 							htmltext = "30650-04.htm";
 							st.takeItems(BOOK_OF_GERALD, 1);
-							st.giveItems(57, 100000);
+							st.giveItems(ItemConst.ADENA_ID, 100000);
 						}
 						break;
 					

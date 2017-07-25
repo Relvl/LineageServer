@@ -34,8 +34,7 @@ public class Sow implements ISkillHandler {
         int seedId = target.getSeedType();
         if (seedId == 0) { return; }
 
-        // Consuming used seed
-        if (!activeChar.destroyItemByItemId(EItemProcessPurpose.CONSUME, seedId, 1, target, false)) { return; }
+        if (activeChar.isPlayer() && !activeChar.getActingPlayer().destroyItemByItemId(EItemProcessPurpose.CONSUME, seedId, 1, target, false)) { return; }
 
         SystemMessage sm;
         if (calcSuccess(activeChar, target, seedId)) {

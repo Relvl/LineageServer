@@ -16,6 +16,7 @@ import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.type.CrystalType;
 import net.sf.l2j.gameserver.model.itemcontainer.Inventory;
+import net.sf.l2j.gameserver.model.itemcontainer.PcInventory;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
 import net.sf.l2j.gameserver.playerpart.achievements.impl.EAchieveCraft;
@@ -109,7 +110,7 @@ public class Recipe {
             }
 
             // Резервируем ингредиенты
-            Inventory inv = requester.getInventory();
+            PcInventory inv = requester.getInventory();
             Map<L2ItemInstance, Integer> ingredientItems = new HashMap<>();
             boolean allMaterials = true;
             for (RecipeIngredient ingredient : ingredients) {
@@ -157,7 +158,7 @@ public class Recipe {
 
             // Забираем ингредиенты
             for (Entry<L2ItemInstance, Integer> material : ingredientItems.entrySet()) {
-                inv.destroyItem(EItemProcessPurpose.CRAFT, material.getKey(), material.getValue(), requester, manufacturer);
+                inv.destroyItem(EItemProcessPurpose.CRAFT, material.getKey(), material.getValue(), manufacturer, true);
                 if (material.getValue() > 1) {
                     requester.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S2_S1_DISAPPEARED).addItemName(material.getKey().getItemId()).addItemNumber(material.getValue()));
                 }

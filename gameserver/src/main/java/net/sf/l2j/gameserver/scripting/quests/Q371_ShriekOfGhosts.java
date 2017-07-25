@@ -18,6 +18,7 @@ import java.util.Map;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -92,7 +93,7 @@ public class Q371_ShriekOfGhosts extends Quest
 				}
 				else
 					urns += 7;
-				st.rewardItems(57, urns * 1000);
+				st.rewardItems(ItemConst.ADENA_ID, urns * 1000);
 			}
 		}
 		else if (event.equalsIgnoreCase("30867-10.htm"))

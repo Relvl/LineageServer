@@ -15,6 +15,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.PlayerRace;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -103,7 +104,7 @@ public class Q168_DeliverSupplies extends Quest
 						{
 							htmltext = "30349-06.htm";
 							st.takeItems(OLD_BRONZE_SWORD, 2);
-							st.rewardItems(57, 820);
+							st.rewardItems(ItemConst.ADENA_ID, 820);
 							st.playSound(QuestState.SOUND_FINISH);
 							st.exitQuest(false);
 						}

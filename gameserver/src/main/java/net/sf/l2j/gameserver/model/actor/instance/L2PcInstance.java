@@ -37,7 +37,6 @@ import net.sf.l2j.gameserver.model.entity.Siege;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
 import net.sf.l2j.gameserver.model.holder.SkillUseHolder;
 import net.sf.l2j.gameserver.model.item.*;
-import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.item.type.ActionType;
@@ -605,16 +604,12 @@ public final class L2PcInstance extends L2Playable {
 
         if (!checkSummonTargetStatus(targetChar, summonerChar)) { return; }
 
-        int itemConsumeId = summonSkill.getTargetConsumeId();
-        int itemConsumeCount = summonSkill.getTargetConsume();
-
-        if (itemConsumeId != 0 && itemConsumeCount != 0) {
-            if (targetChar.inventory.getInventoryItemCount(itemConsumeId, 0) < itemConsumeCount) {
+        if (summonSkill.getTargetConsumeId() != 0 && summonSkill.getTargetConsume() != 0) {
+            if (targetChar.inventory.getInventoryItemCount(summonSkill.getTargetConsumeId(), 0) < summonSkill.getTargetConsume()) {
                 targetChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_REQUIRED_FOR_SUMMONING).addItemName(summonSkill.getTargetConsumeId()));
                 return;
             }
-
-            targetChar.destroyItemByItemId(EItemProcessPurpose.CONSUME, itemConsumeId, itemConsumeCount, targetChar, true);
+            targetChar.destroyItemByItemId(EItemProcessPurpose.CONSUME, summonSkill.getTargetConsumeId(), summonSkill.getTargetConsume(), targetChar, true);
         }
         targetChar.teleToLocation(summonerChar.getX(), summonerChar.getY(), summonerChar.getZ(), 20);
     }
@@ -1651,91 +1646,7 @@ public final class L2PcInstance extends L2Playable {
         _depositedFreight.clear();
     }
 
-    public int getAdena() {
-        return inventory.getAdena();
-    }
-
-    public int getAncientAdena() {
-        return inventory.getAncientAdena();
-    }
-
-    public void addAdena(EItemProcessPurpose process, int count, L2Object reference, boolean sendMessage) {
-        if (sendMessage) {
-            sendPacket(SystemMessage.getSystemMessage(SystemMessageId.EARNED_S1_ADENA).addNumber(count));
-        }
-
-        if (count > 0) {
-            inventory.addAdena(process, count, this, reference);
-
-            InventoryUpdate iu = new InventoryUpdate();
-            iu.addItem(inventory.getAdenaInstance());
-            sendPacket(iu);
-        }
-    }
-
-    public boolean reduceAdena(EItemProcessPurpose process, int count, L2Object reference, boolean sendMessage) {
-        if (count > getAdena()) {
-            if (sendMessage) { sendPacket(SystemMessageId.YOU_NOT_ENOUGH_ADENA); }
-
-            return false;
-        }
-
-        if (count > 0) {
-            L2ItemInstance adenaItem = inventory.getAdenaInstance();
-            if (!inventory.reduceAdena(process, count, this, reference)) { return false; }
-
-            // Send update packet
-            InventoryUpdate iu = new InventoryUpdate();
-            iu.addItem(adenaItem);
-            sendPacket(iu);
-
-            if (sendMessage) {
-                sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_DISAPPEARED_ADENA).addNumber(count));
-            }
-        }
-        return true;
-    }
-
-    public void addAncientAdena(EItemProcessPurpose process, int count, L2Object reference, boolean sendMessage) {
-        if (sendMessage) {
-            sendPacket(SystemMessage.getSystemMessage(SystemMessageId.EARNED_S2_S1_S).addItemName(PcInventory.ANCIENT_ADENA_ID).addNumber(count));
-        }
-
-        if (count > 0) {
-            inventory.addAncientAdena(process, count, this, reference);
-
-            InventoryUpdate iu = new InventoryUpdate();
-            iu.addItem(inventory.getAncientAdenaInstance());
-            sendPacket(iu);
-        }
-    }
-
-    public boolean reduceAncientAdena(EItemProcessPurpose process, int count, L2Object reference, boolean sendMessage) {
-        if (count > getAncientAdena()) {
-            if (sendMessage) { sendPacket(SystemMessageId.YOU_NOT_ENOUGH_ADENA); }
-
-            return false;
-        }
-
-        if (count > 0) {
-            L2ItemInstance ancientAdenaItem = inventory.getAncientAdenaInstance();
-            if (!inventory.reduceAncientAdena(process, count, this, reference)) { return false; }
-
-            InventoryUpdate iu = new InventoryUpdate();
-            iu.addItem(ancientAdenaItem);
-            sendPacket(iu);
-
-            if (sendMessage) {
-                if (count > 1) {
-                    sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S2_S1_DISAPPEARED).addItemName(PcInventory.ANCIENT_ADENA_ID).addItemNumber(count));
-                }
-                else {
-                    sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_DISAPPEARED).addItemName(PcInventory.ANCIENT_ADENA_ID));
-                }
-            }
-        }
-        return true;
-    }
+    public int getAdena() { return inventory.getAdena(); }
 
     public void addItem(EItemProcessPurpose process, L2ItemInstance item, L2Object reference, boolean sendMessage) {
         if (item.getCount() > 0) {
@@ -1829,86 +1740,34 @@ public final class L2PcInstance extends L2Playable {
         return null;
     }
 
-    public boolean destroyItem(EItemProcessPurpose process, L2ItemInstance item, L2Object reference, boolean sendMessage) {
-        return destroyItem(process, item, item.getCount(), reference, sendMessage);
-    }
-
-    public boolean destroyItem(EItemProcessPurpose process, L2ItemInstance item, int count, L2Object reference, boolean sendMessage) {
-        item = inventory.destroyItem(process, item, count, this, reference);
-
-        if (item == null) {
-            if (sendMessage) { sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS); }
-
-            return false;
-        }
-
-        // Send inventory update packet
-        InventoryUpdate playerIU = new InventoryUpdate();
-        playerIU.addItem(item);
-        sendPacket(playerIU);
-
-        // Update current load as well
-        StatusUpdate su = new StatusUpdate(this);
-        su.addAttribute(StatusUpdate.CUR_LOAD, getCurrentLoad());
-        sendPacket(su);
-
-        // Sends message to client if requested
-        if (sendMessage) {
-            if (count > 1) {
-                sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S2_S1_DISAPPEARED).addItemName(item).addItemNumber(count));
-            }
-            else { sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_DISAPPEARED).addItemName(item)); }
-        }
-        return true;
-    }
-
     @Override
     public boolean destroyItem(EItemProcessPurpose process, int objectId, int count, L2Object reference, boolean sendMessage) {
-        L2ItemInstance item = inventory.getItemByObjectId(objectId);
-
-        if (item == null) {
-            if (sendMessage) { sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS); }
-
-            return false;
-        }
-        return destroyItem(process, item, count, reference, sendMessage);
-    }
-
-    public boolean destroyItemWithoutTrace(EItemProcessPurpose process, int objectId, int count, L2Object reference, boolean sendMessage) {
-        L2ItemInstance item = inventory.getItemByObjectId(objectId);
-
-        if (item == null || item.getCount() < count) {
-            if (sendMessage) { sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS); }
-
-            return false;
-        }
-
-        return destroyItem(null, item, count, reference, sendMessage);
+        return inventory.destroyItem(process, objectId, count, this, reference, sendMessage) != null;
     }
 
     @Override
     public boolean destroyItemByItemId(EItemProcessPurpose process, int itemId, int count, L2Object reference, boolean sendMessage) {
-        if (itemId == 57) { return reduceAdena(process, count, reference, sendMessage); }
+        if (itemId == ItemConst.ADENA_ID) {
+            return inventory.reduceAdena(process, count, reference, sendMessage);
+        }
 
         L2ItemInstance item = inventory.getItemByItemId(itemId);
 
-        if (item == null || item.getCount() < count || inventory.destroyItemByItemId(process, itemId, count, this, reference) == null) {
-            if (sendMessage) { sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS); }
-
+        if (item == null || item.getCount() < count || inventory.destroyItemByItemId(process, itemId, count, this, reference, sendMessage) == null) {
+            if (sendMessage) {
+                sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS);
+            }
             return false;
         }
 
-        // Send inventory update packet
-        InventoryUpdate playerIU = new InventoryUpdate();
-        playerIU.addItem(item);
-        sendPacket(playerIU);
+        InventoryUpdate iu = new InventoryUpdate();
+        iu.addItem(item);
+        sendPacket(iu);
 
-        // Update current load as well
         StatusUpdate su = new StatusUpdate(this);
         su.addAttribute(StatusUpdate.CUR_LOAD, getCurrentLoad());
         sendPacket(su);
 
-        // Sends message to client if requested
         if (sendMessage) {
             if (count > 1) {
                 sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S2_S1_DISAPPEARED).addItemName(itemId).addItemNumber(count));
@@ -2360,7 +2219,7 @@ public final class L2PcInstance extends L2Playable {
         if (isInParty()) {
             _party.distributeItem(this, item, false, target);
         }
-        else if (item.getId() == 57) { addAdena(EItemProcessPurpose.LOOT, item.getValue(), target, true); }
+        else if (item.getId() == ItemConst.ADENA_ID) { inventory.addAdena(EItemProcessPurpose.LOOT, item.getValue(), target, true); }
         else { addItem(EItemProcessPurpose.LOOT, item.getId(), item.getValue(), target, true); }
     }
 
@@ -2410,7 +2269,7 @@ public final class L2PcInstance extends L2Playable {
             }
 
             if (target.getOwnerId() != 0 && target.getOwnerId() != getObjectId() && !isInLooterParty(target.getOwnerId())) {
-                if (target.getItemId() == 57) {
+                if (target.getItemId() == ItemConst.ADENA_ID) {
                     sendPacket(SystemMessage.getSystemMessage(SystemMessageId.FAILED_TO_PICKUP_S1_ADENA).addNumber(target.getCount()));
                 }
                 else if (target.getCount() > 1) {
@@ -2468,8 +2327,8 @@ public final class L2PcInstance extends L2Playable {
                 _party.distributeItem(this, target);
             }
             // Target is adena
-            else if (target.getItemId() == 57 && inventory.getAdenaInstance() != null) {
-                addAdena(EItemProcessPurpose.PICKUP, target.getCount(), null, true);
+            else if (target.getItemId() == ItemConst.ADENA_ID && inventory.getAdenaInstance() != null) {
+                inventory.addAdena(EItemProcessPurpose.PICKUP, target.getCount(), null, true);
                 ItemTable.getInstance().destroyItem(EItemProcessPurpose.PICKUP, target, this, null);
             }
             // Target is regular item
@@ -2849,7 +2708,7 @@ public final class L2PcInstance extends L2Playable {
 
                 for (L2ItemInstance itemDrop : inventory.getItems()) {
                     // Don't drop those following things
-                    if (!itemDrop.isDropable() || itemDrop.isShadowItem() || itemDrop.getItemId() == 57 || itemDrop.getItem().getType2() == EItemType2.TYPE2_QUEST || summon != null && summon.getControlItemId() == itemDrop.getItemId() || Arrays.binarySearch(Config.KARMA_LIST_NONDROPPABLE_ITEMS, itemDrop.getItemId()) >= 0 || Arrays.binarySearch(Config.KARMA_LIST_NONDROPPABLE_PET_ITEMS, itemDrop.getItemId()) >= 0) {
+                    if (!itemDrop.isDropable() || itemDrop.isShadowItem() || itemDrop.getItemId() == ItemConst.ADENA_ID || itemDrop.getItem().getType2() == EItemType2.TYPE2_QUEST || summon != null && summon.getControlItemId() == itemDrop.getItemId() || Arrays.binarySearch(Config.KARMA_LIST_NONDROPPABLE_ITEMS, itemDrop.getItemId()) >= 0 || Arrays.binarySearch(Config.KARMA_LIST_NONDROPPABLE_PET_ITEMS, itemDrop.getItemId()) >= 0) {
                         continue;
                     }
 
@@ -3252,7 +3111,7 @@ public final class L2PcInstance extends L2Playable {
         }
         else {
             // Destroy entire item and save to database
-            inventory.destroyItem(EItemProcessPurpose.CONSUME, arrows, this, null);
+            inventory.destroyItem(EItemProcessPurpose.CONSUME, arrows,arrows.getCount(), this, false);
             inventory.unEquipItemInSlot(EPaperdollSlot.PAPERDOLL_LHAND);
             _arrowItem = null;
 
@@ -4282,7 +4141,7 @@ public final class L2PcInstance extends L2Playable {
         // Send UserInfo packet to this L2PcInstance
         sendPacket(new UserInfo(this));
 
-        reduceAdena(EItemProcessPurpose.HENNA, henna.getPrice() / 5, this, false);
+        inventory.reduceAdena(EItemProcessPurpose.HENNA, henna.getPrice() / 5, this, false);
 
         // Add the recovered dyes to the player's inventory and notify them.
         addItem(EItemProcessPurpose.HENNA, henna.getDyeId(), Henna.getAmountDyeRequire() / 2, this, true);

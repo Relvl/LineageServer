@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -29,8 +30,7 @@ public class Q033_MakeAPairOfDressShoes extends Quest
 	// Items
 	private static final int LEATHER = 1882;
 	private static final int THREAD = 1868;
-	private static final int ADENA = 57;
-	
+
 	// Rewards
 	public static int DRESS_SHOES_BOX = 7113;
 	
@@ -68,11 +68,11 @@ public class Q033_MakeAPairOfDressShoes extends Quest
 		}
 		else if (event.equalsIgnoreCase("30838-5.htm"))
 		{
-			if (st.getQuestItemsCount(LEATHER) >= 200 && st.getQuestItemsCount(THREAD) >= 600 && st.getQuestItemsCount(ADENA) >= 200000)
+			if (st.getQuestItemsCount(LEATHER) >= 200 && st.getQuestItemsCount(THREAD) >= 600 && st.getQuestItemsCount(ItemConst.ADENA_ID) >= 200000)
 			{
 				st.set("cond", "4");
 				st.playSound(QuestState.SOUND_MIDDLE);
-				st.takeItems(ADENA, 200000);
+				st.takeItems(ItemConst.ADENA_ID, 200000);
 				st.takeItems(LEATHER, 200);
 				st.takeItems(THREAD, 600);
 			}
@@ -81,11 +81,11 @@ public class Q033_MakeAPairOfDressShoes extends Quest
 		}
 		else if (event.equalsIgnoreCase("30164-1.htm"))
 		{
-			if (st.getQuestItemsCount(ADENA) >= 300000)
+			if (st.getQuestItemsCount(ItemConst.ADENA_ID) >= 300000)
 			{
 				st.set("cond", "5");
 				st.playSound(QuestState.SOUND_MIDDLE);
-				st.takeItems(ADENA, 300000);
+				st.takeItems(ItemConst.ADENA_ID, 300000);
 			}
 			else
 				htmltext = "30164-1a.htm";
@@ -134,7 +134,7 @@ public class Q033_MakeAPairOfDressShoes extends Quest
 							htmltext = "30838-2.htm";
 						else if (cond == 3)
 						{
-							if (st.getQuestItemsCount(LEATHER) >= 200 && st.getQuestItemsCount(THREAD) >= 600 && st.getQuestItemsCount(ADENA) >= 200000)
+							if (st.getQuestItemsCount(LEATHER) >= 200 && st.getQuestItemsCount(THREAD) >= 600 && st.getQuestItemsCount(ItemConst.ADENA_ID) >= 200000)
 								htmltext = "30838-4.htm";
 							else
 								htmltext = "30838-4a.htm";

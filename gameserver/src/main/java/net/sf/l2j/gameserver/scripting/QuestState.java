@@ -19,10 +19,7 @@ import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.cache.HtmCache;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.DropData;
-import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
-import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
-import net.sf.l2j.gameserver.model.item.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.*;
 import net.sf.l2j.gameserver.model.itemcontainer.PcInventory;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
@@ -508,7 +505,7 @@ public final class QuestState {
         if (enchantLevel > 0) { item.setEnchantLevel(enchantLevel); }
 
         // Send message to the client.
-        if (itemId == 57) {
+        if (itemId == ItemConst.ADENA_ID) {
             SystemMessage smsg = SystemMessage.getSystemMessage(SystemMessageId.EARNED_S1_ADENA);
             smsg.addItemNumber(itemCount);
             _player.sendPacket(smsg);
@@ -734,7 +731,7 @@ public final class QuestState {
      * @param itemCount : Quantity of item to reward before applying multiplier.
      */
     public void rewardItems(int itemId, int itemCount) {
-        if (itemId == 57) { giveItems(itemId, (int) (itemCount * Config.RATE_QUEST_REWARD_ADENA), 0); }
+        if (itemId == ItemConst.ADENA_ID) { giveItems(itemId, (int) (itemCount * Config.RATE_QUEST_REWARD_ADENA), 0); }
         else { giveItems(itemId, (int) (itemCount * Config.RATE_QUEST_REWARD), 0); }
     }
 

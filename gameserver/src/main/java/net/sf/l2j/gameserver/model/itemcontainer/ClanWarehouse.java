@@ -7,50 +7,27 @@ import net.sf.l2j.gameserver.model.item.EItemLocation;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 
 public final class ClanWarehouse extends Warehouse {
-    private final L2Clan _clan;
+    private final L2Clan clan;
 
     public ClanWarehouse(L2Clan clan) {
-        _clan = clan;
+        this.clan = clan;
     }
 
     @Override
-    public String getName() {
-        return "ClanWarehouse";
-    }
+    public String getName() { return "ClanWarehouse"; }
 
     @Override
-    public EItemProcessPurpose getItemInteractionPurpose() {
-        return EItemProcessPurpose.CLAN_WAREHOUSE;
-    }
+    public EItemProcessPurpose getItemInteractionPurpose() { return EItemProcessPurpose.CLAN_WAREHOUSE; }
 
     @Override
-    public int getOwnerId() {
-        return _clan.getClanId();
-    }
+    public int getOwnerId() { return clan.getClanId(); }
 
     @Override
-    public L2PcInstance getOwner() {
-        return _clan.getLeader().getPlayerInstance();
-    }
+    public L2PcInstance getOwner() { return clan.getLeader().getPlayerInstance(); }
 
     @Override
-    public EItemLocation getBaseLocation() {
-        return EItemLocation.CLANWH;
-    }
-
-    public static String getLocationId() {
-        return "0";
-    }
-
-    public static int getLocationId(boolean dummy) {
-        return 0;
-    }
-
-    public void setLocationId(L2PcInstance dummy) {
-    }
+    public EItemLocation getBaseLocation() { return EItemLocation.CLANWH; }
 
     @Override
-    public boolean validateCapacity(int slots) {
-        return (_items.size() + slots <= Config.WAREHOUSE_SLOTS_CLAN);
-    }
+    public boolean validateCapacity(int slots) { return items.size() + slots <= Config.WAREHOUSE_SLOTS_CLAN; }
 }

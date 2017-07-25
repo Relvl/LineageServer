@@ -55,10 +55,10 @@ public final class RequestPreviewItem extends L2GameClientPacket {
             return; // prevent too long lists
         }
 
-        // Create _items table that will contain all ItemID to Wear
+        // Create items table that will contain all ItemID to Wear
         _items = new int[_count];
 
-        // Fill _items table with all ItemID to Wear
+        // Fill items table with all ItemID to Wear
         for (int i = 0; i < _count; i++) { _items[i] = readD(); }
     }
 
@@ -130,7 +130,7 @@ public final class RequestPreviewItem extends L2GameClientPacket {
         }
 
         // Charge buyer and add tax to castle treasury if not owned by npc clan because a Try On is not Free
-        if (totalPrice < 0 || !activeChar.reduceAdena(EItemProcessPurpose.WEAR, totalPrice, activeChar.getCurrentFolkNPC(), true)) {
+        if (totalPrice < 0 || !activeChar.getInventory().reduceAdena(EItemProcessPurpose.WEAR, totalPrice, activeChar.getCurrentFolkNPC(), true)) {
             activeChar.sendPacket(SystemMessageId.YOU_NOT_ENOUGH_ADENA);
             return;
         }

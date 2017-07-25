@@ -17,6 +17,7 @@ import java.util.Map;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -169,7 +170,7 @@ public class Q354_ConquestOfAlligatorIsland extends Quest
 					htmltext = "30895-05a.htm";
 				
 				st.takeItems(ALLIGATOR_TOOTH, -1);
-				st.rewardItems(57, reward);
+				st.rewardItems(ItemConst.ADENA_ID, reward);
 			}
 		}
 		else if (event.equalsIgnoreCase("30895-07.htm"))

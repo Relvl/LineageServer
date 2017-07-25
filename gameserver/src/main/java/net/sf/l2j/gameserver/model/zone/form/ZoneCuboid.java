@@ -1,5 +1,6 @@
 package net.sf.l2j.gameserver.model.zone.form;
 
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.model.zone.L2ZoneForm;
 
 public class ZoneCuboid extends L2ZoneForm {
@@ -96,13 +97,13 @@ public class ZoneCuboid extends L2ZoneForm {
     public void visualizeZone(int z) {
         // x1->x2
         for (int x = _x1; x < _x2; x += STEP) {
-            dropDebugItem(57, 1, x, _y1, z);
-            dropDebugItem(57, 1, x, _y2, z);
+            dropDebugItem(ItemConst.ADENA_ID, 1, x, _y1, z);
+            dropDebugItem(ItemConst.ADENA_ID, 1, x, _y2, z);
         }
         // y1->y2
         for (int y = _y1; y < _y2; y += STEP) {
-            dropDebugItem(57, 1, _x1, y, z);
-            dropDebugItem(57, 1, _x2, y, z);
+            dropDebugItem(ItemConst.ADENA_ID, 1, _x1, y, z);
+            dropDebugItem(ItemConst.ADENA_ID, 1, _x2, y, z);
         }
     }
 

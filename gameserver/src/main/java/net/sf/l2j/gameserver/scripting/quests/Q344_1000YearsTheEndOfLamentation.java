@@ -18,6 +18,7 @@ import java.util.Map;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -103,7 +104,7 @@ public class Q344_1000YearsTheEndOfLamentation extends Quest
 				final int amount = st.getQuestItemsCount(ARTICLE_DEAD_HERO);
 				
 				st.takeItems(ARTICLE_DEAD_HERO, -1);
-				st.giveItems(57, amount * 60);
+				st.giveItems(ItemConst.ADENA_ID, amount * 60);
 				
 				// Special item, % based on actual number of qItems.
 				if (Rnd.get(1000) < Math.min(10, Math.max(1, amount / 10)))

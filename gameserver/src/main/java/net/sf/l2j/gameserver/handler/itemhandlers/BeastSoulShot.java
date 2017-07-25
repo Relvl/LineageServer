@@ -19,7 +19,6 @@ import net.sf.l2j.gameserver.model.ShotType;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillUse;
@@ -59,7 +58,7 @@ public class BeastSoulShot implements IItemHandler {
         if (activePet.isChargedShot(ShotType.SOULSHOT)) { return; }
 
         // If the player doesn't have enough beast soulshot remaining, remove any auto soulshot task.
-        if (!activeOwner.destroyItemWithoutTrace(EItemProcessPurpose.CONSUME, item.getObjectId(), activePet.getSoulShotsPerHit(), null, false)) {
+        if (activeOwner.getInventory().destroyItem(null, item, activePet.getSoulShotsPerHit(), null, false) == null) {
             if (!activeOwner.disableAutoShot(item.getItemId())) { activeOwner.sendPacket(SystemMessageId.NOT_ENOUGH_SOULSHOTS_FOR_PET); }
             return;
         }

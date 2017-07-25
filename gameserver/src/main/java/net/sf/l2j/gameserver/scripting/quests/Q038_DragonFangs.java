@@ -18,6 +18,7 @@ import java.util.Map;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -166,7 +167,7 @@ public class Q038_DragonFangs extends Quest
 				htmltext = "30034-06.htm";
 				st.takeItems(TOOTH_OF_DRAGON, 50);
 				st.giveItems(REWARD[position][0], 1);
-				st.rewardItems(57, REWARD[position][1]);
+				st.rewardItems(ItemConst.ADENA_ID, REWARD[position][1]);
 				st.playSound(QuestState.SOUND_FINISH);
 				st.exitQuest(false);
 			}

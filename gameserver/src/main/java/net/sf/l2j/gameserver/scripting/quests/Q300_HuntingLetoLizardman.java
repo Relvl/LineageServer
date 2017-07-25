@@ -18,6 +18,7 @@ import java.util.Map;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -80,7 +81,7 @@ public class Q300_HuntingLetoLizardman extends Quest
 				
 				final int luck = Rnd.get(3);
 				if (luck == 0)
-					st.rewardItems(57, 30000);
+					st.rewardItems(ItemConst.ADENA_ID, 30000);
 				else if (luck == 1)
 					st.rewardItems(1867, 50);
 				else if (luck == 2)

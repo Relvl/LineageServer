@@ -201,7 +201,7 @@ public class ClanTable {
         }
 
         // Drop all items from clan warehouse.
-        clan.getWarehouse().destroyAllItems(EItemProcessPurpose.CLAN_REMOVE, (clan.getLeader() == null) ? null : clan.getLeader().getPlayerInstance(), null);
+        clan.getWarehouse().destroyAllItems(EItemProcessPurpose.CLAN_REMOVE, (clan.getLeader() == null) ? null : clan.getLeader().getPlayerInstance());
 
         for (L2ClanMember member : clan.getMembers()) { clan.removeClanMember(member.getObjectId(), 0); }
 

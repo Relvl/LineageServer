@@ -15,6 +15,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -218,7 +219,7 @@ public class Q372_LegacyOfInsolence extends Quest
 			},
 			{
 				100,
-				57
+					ItemConst.ADENA_ID
 			}
 		},
 		// Patrin Tallum parts + adenas.
@@ -237,7 +238,7 @@ public class Q372_LegacyOfInsolence extends Quest
 			},
 			{
 				100,
-				57
+					ItemConst.ADENA_ID
 			}
 		},
 		// Claudia NM parts + adenas.
@@ -256,7 +257,7 @@ public class Q372_LegacyOfInsolence extends Quest
 			},
 			{
 				100,
-				57
+					ItemConst.ADENA_ID
 			}
 		},
 		// Desmond Maja choice
@@ -275,7 +276,7 @@ public class Q372_LegacyOfInsolence extends Quest
 			},
 			{
 				100,
-				57
+					ItemConst.ADENA_ID
 			}
 		}
 	};

@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -81,7 +82,7 @@ public class Q353_PowerOfDarkness extends Quest
 				{
 					htmltext = "31044-06.htm";
 					st.takeItems(STONE, -1);
-					st.rewardItems(57, 2500 + 230 * stones);
+					st.rewardItems(ItemConst.ADENA_ID, 2500 + 230 * stones);
 				}
 				break;
 		}

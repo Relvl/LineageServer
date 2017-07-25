@@ -17,6 +17,7 @@ import java.util.Map;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -85,7 +86,7 @@ public class Q639_GuardiansOfTheHolyGrail extends Quest
 			final int count = st.getQuestItemsCount(SCRIPTURE);
 			
 			st.takeItems(SCRIPTURE, -1);
-			st.rewardItems(57, 1625 * count + ((count >= 10) ? 33940 : 0));
+			st.rewardItems(ItemConst.ADENA_ID, 1625 * count + ((count >= 10) ? 33940 : 0));
 		}
 		else if (event.equalsIgnoreCase("31350-09.htm"))
 		{

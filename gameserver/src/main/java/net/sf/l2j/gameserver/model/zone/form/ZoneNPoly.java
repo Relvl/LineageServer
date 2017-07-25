@@ -1,5 +1,6 @@
 package net.sf.l2j.gameserver.model.zone.form;
 
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.model.zone.L2ZoneForm;
 
 public class ZoneNPoly extends L2ZoneForm {
@@ -95,7 +96,7 @@ public class ZoneNPoly extends L2ZoneForm {
             lenght /= STEP;
             for (int o = 1; o <= lenght; o++) {
                 float k = o / lenght;
-                dropDebugItem(57, 1, (int) (_x[i] + k * vx), (int) (_y[i] + k * vy), z);
+                dropDebugItem(ItemConst.ADENA_ID, 1, (int) (_x[i] + k * vx), (int) (_y[i] + k * vy), z);
             }
         }
     }

@@ -17,6 +17,7 @@ import java.util.Map;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -32,8 +33,7 @@ public class Q369_CollectorOfJewels extends Quest
 	private static final int FREEZING_SHARD = 5883;
 	
 	// Reward
-	private static final int ADENA = 57;
-	
+
 	// Droplist
 	private static final Map<Integer, int[]> DROPLIST = new HashMap<>();
 	{
@@ -135,7 +135,7 @@ public class Q369_CollectorOfJewels extends Quest
 					st.playSound(QuestState.SOUND_MIDDLE);
 					st.takeItems(FLARE_SHARD, -1);
 					st.takeItems(FREEZING_SHARD, -1);
-					st.rewardItems(ADENA, 12500);
+					st.rewardItems(ItemConst.ADENA_ID, 12500);
 				}
 				else if (cond == 3)
 					htmltext = "30376-09.htm";
@@ -144,7 +144,7 @@ public class Q369_CollectorOfJewels extends Quest
 					htmltext = "30376-10.htm";
 					st.takeItems(FLARE_SHARD, -1);
 					st.takeItems(FREEZING_SHARD, -1);
-					st.rewardItems(ADENA, 63500);
+					st.rewardItems(ItemConst.ADENA_ID, 63500);
 					st.playSound(QuestState.SOUND_FINISH);
 					st.exitQuest(true);
 				}

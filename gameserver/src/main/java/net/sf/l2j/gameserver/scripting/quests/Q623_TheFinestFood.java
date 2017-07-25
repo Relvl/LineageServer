@@ -15,6 +15,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -75,22 +76,22 @@ public class Q623_TheFinestFood extends Quest
 			int luck = Rnd.get(100);
 			if (luck < 11)
 			{
-				st.rewardItems(57, 25000);
+				st.rewardItems(ItemConst.ADENA_ID, 25000);
 				st.giveItems(6849, 1);
 			}
 			else if (luck < 23)
 			{
-				st.rewardItems(57, 65000);
+				st.rewardItems(ItemConst.ADENA_ID, 65000);
 				st.giveItems(6847, 1);
 			}
 			else if (luck < 33)
 			{
-				st.rewardItems(57, 25000);
+				st.rewardItems(ItemConst.ADENA_ID, 25000);
 				st.giveItems(6851, 1);
 			}
 			else
 			{
-				st.rewardItems(57, 73000);
+				st.rewardItems(ItemConst.ADENA_ID, 73000);
 				st.rewardExpAndSp(230000, 18250);
 			}
 			

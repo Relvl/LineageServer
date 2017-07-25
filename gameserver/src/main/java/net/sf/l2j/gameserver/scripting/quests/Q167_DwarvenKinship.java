@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -60,19 +61,19 @@ public class Q167_DwarvenKinship extends Quest
 			st.set("cond", "2");
 			st.takeItems(CARLON_LETTER, 1);
 			st.giveItems(NORMAN_LETTER, 1);
-			st.rewardItems(57, 2000);
+			st.rewardItems(ItemConst.ADENA_ID, 2000);
 		}
 		else if (event.equalsIgnoreCase("30255-04.htm"))
 		{
 			st.takeItems(CARLON_LETTER, 1);
-			st.rewardItems(57, 3000);
+			st.rewardItems(ItemConst.ADENA_ID, 3000);
 			st.playSound(QuestState.SOUND_FINISH);
 			st.exitQuest(false);
 		}
 		else if (event.equalsIgnoreCase("30210-02.htm"))
 		{
 			st.takeItems(NORMAN_LETTER, 1);
-			st.rewardItems(57, 20000);
+			st.rewardItems(ItemConst.ADENA_ID, 20000);
 			st.playSound(QuestState.SOUND_FINISH);
 			st.exitQuest(false);
 		}

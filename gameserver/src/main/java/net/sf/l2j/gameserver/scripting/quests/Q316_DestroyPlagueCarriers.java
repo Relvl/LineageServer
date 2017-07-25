@@ -15,6 +15,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.PlayerRace;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -96,7 +97,7 @@ public class Q316_DestroyPlagueCarriers extends Quest
 					htmltext = "30155-07.htm";
 					st.takeItems(WERERAT_FANG, -1);
 					st.takeItems(VAROOL_FOULCLAW_FANG, -1);
-					st.rewardItems(57, ratFangs * 30 + varoolFangs * 10000 + ((ratFangs > 10) ? 5000 : 0));
+					st.rewardItems(ItemConst.ADENA_ID, ratFangs * 30 + varoolFangs * 10000 + ((ratFangs > 10) ? 5000 : 0));
 				}
 				break;
 		}

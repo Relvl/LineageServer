@@ -18,6 +18,7 @@ import java.util.Map;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -39,7 +40,6 @@ public class Q327_RecoverTheFarmland extends Quest
 	private static final int ANCIENT_JADE_NECKLACE = 1855;
 	
 	// Rewards
-	private static final int ADENA = 57;
 	private static final int SOULSHOT_D = 1463;
 	private static final int SPIRITSHOT_D = 2510;
 	private static final int HEALING_POTION = 1061;
@@ -365,7 +365,7 @@ public class Q327_RecoverTheFarmland extends Quest
 								
 								st.takeItems(TUREK_DOGTAG, -1);
 								st.takeItems(TUREK_MEDALLION, -1);
-								st.rewardItems(ADENA, dogtag * 40 + medallion * 50 + ((dogtag + medallion >= 10) ? 619 : 0));
+								st.rewardItems(ItemConst.ADENA_ID, dogtag * 40 + medallion * 50 + ((dogtag + medallion >= 10) ? 619 : 0));
 							}
 							else
 								htmltext = "30597-04.htm";

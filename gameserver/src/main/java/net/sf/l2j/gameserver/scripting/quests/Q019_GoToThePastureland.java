@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -59,7 +60,7 @@ public class Q019_GoToThePastureland extends Quest
 			{
 				htmltext = "31537-01.htm";
 				st.takeItems(YOUNG_WILD_BEAST_MEAT, 1);
-				st.rewardItems(57, 30000);
+				st.rewardItems(ItemConst.ADENA_ID, 30000);
 				st.playSound(QuestState.SOUND_FINISH);
 				st.exitQuest(false);
 			}

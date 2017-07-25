@@ -15,6 +15,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -82,7 +83,7 @@ public class Q642_APowerfulPrimevalCreature extends Quest
 			if (tissues > 0)
 			{
 				st.takeItems(DINOSAUR_TISSUE, -1);
-				st.rewardItems(57, tissues * 5000);
+				st.rewardItems(ItemConst.ADENA_ID, tissues * 5000);
 			}
 			else
 				htmltext = "32105-08.htm";
@@ -95,7 +96,7 @@ public class Q642_APowerfulPrimevalCreature extends Quest
 				
 				st.takeItems(DINOSAUR_TISSUE, 150);
 				st.takeItems(DINOSAUR_EGG, 1);
-				st.rewardItems(57, 44000);
+				st.rewardItems(ItemConst.ADENA_ID, 44000);
 				st.giveItems(REWARDS[Integer.parseInt(event.split("_")[1])], 1);
 			}
 			else

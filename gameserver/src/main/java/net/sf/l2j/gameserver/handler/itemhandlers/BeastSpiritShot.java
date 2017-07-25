@@ -19,7 +19,6 @@ import net.sf.l2j.gameserver.model.ShotType;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.L2Summon;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillUse;
@@ -61,8 +60,10 @@ public class BeastSpiritShot implements IItemHandler {
         // shots are already active.
         if (activePet.isChargedShot(isBlessed ? ShotType.BLESSED_SPIRITSHOT : ShotType.SPIRITSHOT)) { return; }
 
-        if (!activeOwner.destroyItemWithoutTrace(EItemProcessPurpose.CONSUME, item.getObjectId(), activePet.getSpiritShotsPerHit(), null, false)) {
-            if (!activeOwner.disableAutoShot(itemId)) { activeOwner.sendPacket(SystemMessageId.NOT_ENOUGH_SPIRITSHOTS_FOR_PET); }
+        if (activeOwner.getInventory().destroyItem(null, item, activePet.getSpiritShotsPerHit(), null, false) == null) {
+            if (!activeOwner.disableAutoShot(itemId)) {
+                activeOwner.sendPacket(SystemMessageId.NOT_ENOUGH_SPIRITSHOTS_FOR_PET);
+            }
             return;
         }
 

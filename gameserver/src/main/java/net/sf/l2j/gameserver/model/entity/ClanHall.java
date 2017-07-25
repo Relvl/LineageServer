@@ -23,6 +23,7 @@ import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.actor.instance.L2DoorInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.model.zone.type.L2ClanHallZone;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.PledgeShowInfoUpdate;
@@ -146,7 +147,7 @@ public class ClanHall {
                         setEndTime(System.currentTimeMillis() + getRate());
                         dbSave();
 
-                        if (_cwh) { clan.getWarehouse().destroyItemByItemId(EItemProcessPurpose.CLANHALL_FUNCTION_FEE, 57, fee, null, null); }
+                        if (_cwh) { clan.getWarehouse().destroyItemByItemId(EItemProcessPurpose.CLANHALL_FUNCTION_FEE, ItemConst.ADENA_ID, fee, null, null, true); }
 
                         ThreadPoolManager.getInstance().scheduleGeneral(new FunctionTask(true), getRate());
                     }
@@ -438,7 +439,7 @@ public class ClanHall {
         if (player == null) { return false; }
 
         if (lease > 0) {
-            if (!player.destroyItemByItemId(EItemProcessPurpose.CONSUME, 57, lease, null, true)) { return false; }
+            if (!player.destroyItemByItemId(EItemProcessPurpose.CONSUME, ItemConst.ADENA_ID, lease, null, true)) { return false; }
         }
 
         if (addNew) { _functions.put(type, new ClanHallFunction(type, lvl, lease, 0, rate, 0, false)); }
@@ -514,7 +515,7 @@ public class ClanHall {
                     }
                     else { _paidUntil = time + CH_RATE; }
 
-                    clan.getWarehouse().destroyItemByItemId(EItemProcessPurpose.CLANHALL_RENTAL_FEE, 57, getLease(), null, null);
+                    clan.getWarehouse().destroyItemByItemId(EItemProcessPurpose.CLANHALL_RENTAL_FEE, ItemConst.ADENA_ID, getLease(), null, null, true);
 
                     ThreadPoolManager.getInstance().scheduleGeneral(new FeeTask(), _paidUntil - time);
                     _paid = true;

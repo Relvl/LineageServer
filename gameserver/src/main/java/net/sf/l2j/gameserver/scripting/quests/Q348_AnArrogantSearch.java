@@ -17,6 +17,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -121,7 +122,7 @@ public class Q348_AnArrogantSearch extends Quest
 		{
 			st.set("cond", "24");
 			st.playSound(QuestState.SOUND_MIDDLE);
-			st.rewardItems(57, Rnd.get(1, 2) * 12000);
+			st.rewardItems(ItemConst.ADENA_ID, Rnd.get(1, 2) * 12000);
 		}
 		else if (event.equalsIgnoreCase("30864-37.htm"))
 		{
@@ -236,7 +237,7 @@ public class Q348_AnArrogantSearch extends Quest
 							{
 								htmltext = "30864-54.htm";
 								st.takeItems(BLOODED_FABRIC, -1);
-								st.rewardItems(57, (1000 * count) + 4000);
+								st.rewardItems(ItemConst.ADENA_ID, (1000 * count) + 4000);
 								st.exitQuest(true);
 							}
 							else if (count < 10)
@@ -250,7 +251,7 @@ public class Q348_AnArrogantSearch extends Quest
 							{
 								htmltext = "30864-60.htm";
 								st.set("cond", "28");
-								st.rewardItems(57, 49000);
+								st.rewardItems(ItemConst.ADENA_ID, 49000);
 								st.playSound(QuestState.SOUND_MIDDLE);
 							}
 							else if (st.hasQuestItems(BLOODED_FABRIC) && st.getInt("usedonbaium") != 1)
@@ -272,7 +273,7 @@ public class Q348_AnArrogantSearch extends Quest
 							{
 								htmltext = "30864-54.htm";
 								st.takeItems(BLOODED_FABRIC, -1);
-								st.rewardItems(57, 5000 * count);
+								st.rewardItems(ItemConst.ADENA_ID, 5000 * count);
 								st.playSound(QuestState.SOUND_FINISH);
 								st.exitQuest(true);
 							}

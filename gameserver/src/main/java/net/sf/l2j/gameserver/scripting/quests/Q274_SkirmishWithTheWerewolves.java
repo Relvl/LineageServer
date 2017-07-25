@@ -16,6 +16,7 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.PlayerRace;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -93,7 +94,7 @@ public class Q274_SkirmishWithTheWerewolves extends Quest
 					
 					st.takeItems(MARAKU_WEREWOLF_HEAD, -1);
 					st.takeItems(MARAKU_WOLFMEN_TOTEM, -1);
-					st.rewardItems(57, amount);
+					st.rewardItems(ItemConst.ADENA_ID, amount);
 					
 					st.playSound(QuestState.SOUND_FINISH);
 					st.exitQuest(true);

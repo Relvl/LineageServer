@@ -1,8 +1,12 @@
 package net.sf.l2j.gameserver.model;
 
+import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
-import net.sf.l2j.gameserver.model.itemcontainer.PcInventory;
+import org.slf4j.LoggerFactory;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -41,10 +45,31 @@ public class CharSelectInfoPackage {
     public CharSelectInfoPackage(int objectId, String name) {
         _objectId = objectId;
         _name = name;
-        int[][] restoreVisibleInventory = PcInventory.restoreVisibleInventory(objectId);
+        int[][] restoreVisibleInventory = restoreVisibleInventory(objectId);
         for (int i = 0; i < restoreVisibleInventory.length; i++) {
             paperdoll.put(EPaperdollSlot.getByIndex(i), restoreVisibleInventory[i]);
         }
+    }
+
+    public static int[][] restoreVisibleInventory(int objectId) {
+        int[][] paperdoll = new int[EPaperdollSlot.values().length][3];
+        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
+            PreparedStatement statement2 = con.prepareStatement("SELECT object_id,item_id,loc_data,enchant_level FROM items WHERE owner_id=? AND loc='PAPERDOLL'");
+            statement2.setInt(1, objectId);
+            ResultSet invdata = statement2.executeQuery();
+            while (invdata.next()) {
+                int slot = invdata.getInt("loc_data");
+                paperdoll[slot][0] = invdata.getInt("object_id");
+                paperdoll[slot][1] = invdata.getInt("item_id");
+                paperdoll[slot][2] = invdata.getInt("enchant_level");
+            }
+            invdata.close();
+            statement2.close();
+        }
+        catch (Exception e) {
+            LoggerFactory.getLogger(CharSelectInfoPackage.class).error("Could not restore inventory: {}", e.getMessage(), e);
+        }
+        return paperdoll;
     }
 
     public int getObjectId() {

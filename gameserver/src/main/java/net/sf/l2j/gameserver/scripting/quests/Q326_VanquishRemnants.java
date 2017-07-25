@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -90,7 +91,7 @@ public class Q326_VanquishRemnants extends Quest
 					st.takeItems(RED_CROSS_BADGE, -1);
 					st.takeItems(BLUE_CROSS_BADGE, -1);
 					st.takeItems(BLACK_CROSS_BADGE, -1);
-					st.rewardItems(57, ((redBadges * 46) + (blueBadges * 52) + (blackBadges * 58) + ((badgesSum >= 10) ? 4320 : 0)));
+					st.rewardItems(ItemConst.ADENA_ID, ((redBadges * 46) + (blueBadges * 52) + (blackBadges * 58) + ((badgesSum >= 10) ? 4320 : 0)));
 					
 					if (badgesSum >= 100)
 					{

@@ -18,6 +18,7 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.ClassId;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -34,7 +35,6 @@ public class Q211_TrialOfTheChallenger extends Quest
 	private static final int BROKEN_KEY = 2632;
 	
 	// Rewards
-	private static final int ADENA = 57;
 	private static final int ELVEN_NECKLACE_BEADS = 1904;
 	private static final int WHITE_TUNIC_PATTERN = 1936;
 	private static final int IRON_BOOTS_DESIGN = 1940;
@@ -134,7 +134,7 @@ public class Q211_TrialOfTheChallenger extends Quest
 				{
 					htmltext = "30647-02.htm";
 					st.takeItems(BROKEN_KEY, 1);
-					st.rewardItems(ADENA, Rnd.get(1, 1000));
+					st.rewardItems(ItemConst.ADENA_ID, Rnd.get(1, 1000));
 				}
 			}
 		}

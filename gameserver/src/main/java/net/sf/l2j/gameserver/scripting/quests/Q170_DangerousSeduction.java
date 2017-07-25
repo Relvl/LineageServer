@@ -15,6 +15,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.PlayerRace;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -79,7 +80,7 @@ public class Q170_DangerousSeduction extends Quest
 				{
 					htmltext = "30305-06.htm";
 					st.takeItems(NIGHTMARE_CRYSTAL, -1);
-					st.rewardItems(57, 102680);
+					st.rewardItems(ItemConst.ADENA_ID, 102680);
 					st.playSound(QuestState.SOUND_FINISH);
 					st.exitQuest(false);
 				}

@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -101,7 +102,7 @@ public class Q257_TheGuardIsBusy extends Quest
 					if (amulets + necklaces + fangs >= 10)
 						reward += 1000;
 					
-					st.rewardItems(57, reward);
+					st.rewardItems(ItemConst.ADENA_ID, reward);
 					
 					if (player.isNewbie() && st.getInt("Reward") == 0)
 					{

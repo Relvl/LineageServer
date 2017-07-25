@@ -17,6 +17,7 @@ import java.util.Map;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -79,7 +80,7 @@ public class Q370_AnElderSowsSeeds extends Quest
 				st.takeItems(CHAPTER_OF_WATER, 1);
 				st.takeItems(CHAPTER_OF_WIND, 1);
 				st.takeItems(CHAPTER_OF_EARTH, 1);
-				st.rewardItems(57, 3600);
+				st.rewardItems(ItemConst.ADENA_ID, 3600);
 			}
 		}
 		else if (event.equalsIgnoreCase("30612-9.htm"))

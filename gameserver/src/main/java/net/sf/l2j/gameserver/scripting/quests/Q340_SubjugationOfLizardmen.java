@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -68,12 +69,12 @@ public class Q340_SubjugationOfLizardmen extends Quest
 		else if (event.equalsIgnoreCase("30385-09.htm"))
 		{
 			st.takeItems(CARGO, -1);
-			st.rewardItems(57, 4090);
+			st.rewardItems(ItemConst.ADENA_ID, 4090);
 		}
 		else if (event.equalsIgnoreCase("30385-10.htm"))
 		{
 			st.takeItems(CARGO, -1);
-			st.rewardItems(57, 4090);
+			st.rewardItems(ItemConst.ADENA_ID, 4090);
 			st.exitQuest(true);
 		}
 		else if (event.equalsIgnoreCase("30375-02.htm"))
@@ -122,7 +123,7 @@ public class Q340_SubjugationOfLizardmen extends Quest
 						else if (cond == 7)
 						{
 							htmltext = "30385-13.htm";
-							st.rewardItems(57, 14700);
+							st.rewardItems(ItemConst.ADENA_ID, 14700);
 							st.playSound(QuestState.SOUND_FINISH);
 							st.exitQuest(false);
 						}

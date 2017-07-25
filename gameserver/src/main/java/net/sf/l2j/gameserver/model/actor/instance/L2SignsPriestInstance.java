@@ -18,8 +18,8 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.instancemanager.SevenSigns;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
-import net.sf.l2j.gameserver.model.itemcontainer.PcInventory;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
 import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
@@ -49,8 +49,6 @@ public class L2SignsPriestInstance extends L2NpcInstance {
 
             int cabal = SevenSigns.CABAL_NULL;
             int stoneType = 0;
-
-            final long ancientAdenaAmount = player.getAncientAdena();
 
             int val = Integer.parseInt(command.substring(11, 12).trim());
 
@@ -85,7 +83,7 @@ public class L2SignsPriestInstance extends L2NpcInstance {
                         break;
                     }
 
-                    if (!player.reduceAdena(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.RECORD_SEVEN_SIGNS_COST, this, true)) { break; }
+                    if (!player.getInventory().reduceAdena(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.RECORD_SEVEN_SIGNS_COST, this, true)) { break; }
 
                     player.addItem(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.RECORD_SEVEN_SIGNS_ID, 1, player, true);
 
@@ -128,7 +126,7 @@ public class L2SignsPriestInstance extends L2NpcInstance {
                     break;
 
                 case 34: // Pay the participation fee request
-                    L2ItemInstance adena = player.getInventory().getItemByItemId(PcInventory.ADENA_ID); // adena
+                    L2ItemInstance adena = player.getInventory().getItemByItemId(ItemConst.ADENA_ID); // adena
                     L2ItemInstance certif = player.getInventory().getItemByItemId(6388); // Lord of the Manor's Certificate of Approval
                     boolean fee = true;
 
@@ -163,7 +161,7 @@ public class L2SignsPriestInstance extends L2NpcInstance {
                             if (player.getClan() != null && player.getClan().hasCastle()) // castle owner don't need to pay anything
                             { allowJoinDawn = true; }
                             else if (player.destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.CERTIFICATE_OF_APPROVAL_ID, 1, this, true)) { allowJoinDawn = true; }
-                            else if (player.reduceAdena(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.ADENA_JOIN_DAWN_COST, this, true)) { allowJoinDawn = true; }
+                            else if (player.getInventory().reduceAdena(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.ADENA_JOIN_DAWN_COST, this, true)) { allowJoinDawn = true; }
 
                             if (!allowJoinDawn) {
                                 showChatWindow(player, SevenSigns.SEVEN_SIGNS_HTML_PATH + "signs_33_dawn_fee.htm");
@@ -389,13 +387,13 @@ public class L2SignsPriestInstance extends L2NpcInstance {
                         break;
                     }
 
-                    if (ancientAdenaAmount < ancientAdenaConvert) {
+                    if (player.getInventory().getAncientAdena() < ancientAdenaConvert) {
                         showChatWindow(player, SevenSigns.SEVEN_SIGNS_HTML_PATH + "blkmrkt_4.htm");
                         break;
                     }
 
-                    player.reduceAncientAdena(EItemProcessPurpose.SEVEN_SIGNS, ancientAdenaConvert, this, true);
-                    player.addAdena(EItemProcessPurpose.SEVEN_SIGNS, ancientAdenaConvert, this, true);
+                    player.getInventory().reduceAncientAdena(EItemProcessPurpose.SEVEN_SIGNS, ancientAdenaConvert, this);
+                    player.getInventory().addAdena(EItemProcessPurpose.SEVEN_SIGNS, ancientAdenaConvert, this, true);
 
                     showChatWindow(player, SevenSigns.SEVEN_SIGNS_HTML_PATH + "blkmrkt_5.htm");
                     break;
@@ -413,7 +411,7 @@ public class L2SignsPriestInstance extends L2NpcInstance {
                             break;
                         }
 
-                        player.addAncientAdena(EItemProcessPurpose.SEVEN_SIGNS, ancientAdenaReward, this, true);
+                        player.getInventory().addAncientAdena(EItemProcessPurpose.SEVEN_SIGNS, ancientAdenaReward, this);
 
                         if (this instanceof L2DawnPriestInstance) { showChatWindow(player, 9, "dawn_a", false); }
                         else { showChatWindow(player, 9, "dusk_a", false); }
@@ -432,7 +430,7 @@ public class L2SignsPriestInstance extends L2NpcInstance {
                         int ancientAdenaCost = Integer.parseInt(st.nextToken());
 
                         if (ancientAdenaCost > 0) {
-                            if (!player.reduceAncientAdena(EItemProcessPurpose.SEVEN_SIGNS, ancientAdenaCost, this, true)) { break; }
+                            if (!player.getInventory().reduceAncientAdena(EItemProcessPurpose.SEVEN_SIGNS, ancientAdenaCost, this)) { break; }
                         }
 
                         player.teleToLocation(x, y, z, 0);
@@ -497,7 +495,7 @@ public class L2SignsPriestInstance extends L2NpcInstance {
                             if (greenStoneCountAll > 0) { player.destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_GREEN_ID, greenStoneCountAll, this, true); }
                             if (redStoneCountAll > 0) { player.destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_RED_ID, redStoneCountAll, this, true); }
 
-                            player.addAncientAdena(EItemProcessPurpose.SEVEN_SIGNS, ancientAdenaRewardAll, this, true);
+                            player.getInventory().addAncientAdena(EItemProcessPurpose.SEVEN_SIGNS, ancientAdenaRewardAll, this);
 
                             if (this instanceof L2DawnPriestInstance) { showChatWindow(player, 18, "dawn", false); }
                             else { showChatWindow(player, 18, "dusk", false); }
@@ -553,7 +551,7 @@ public class L2SignsPriestInstance extends L2NpcInstance {
                             }
 
                             if (player.destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, convertStoneId, convertCount, this, true)) {
-                                player.addAncientAdena(EItemProcessPurpose.SEVEN_SIGNS, ancientAdenaReward, this, true);
+                                player.getInventory().addAncientAdena(EItemProcessPurpose.SEVEN_SIGNS, ancientAdenaReward, this);
 
                                 if (this instanceof L2DawnPriestInstance) { showChatWindow(player, 18, "dawn", false); }
                                 else { showChatWindow(player, 18, "dusk", false); }

@@ -13,6 +13,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2SummonInstance;
 import net.sf.l2j.gameserver.model.entity.DimensionalRift;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.partymatching.PartyMatchRoom;
 import net.sf.l2j.gameserver.model.partymatching.PartyMatchRoomList;
@@ -488,7 +489,7 @@ public class L2Party {
      * @param item
      */
     public void distributeItem(L2PcInstance player, L2ItemInstance item) {
-        if (item.getItemId() == 57) {
+        if (item.getItemId() == ItemConst.ADENA_ID) {
             distributeAdena(player, item.getCount(), player);
             ItemTable.getInstance().destroyItem(EItemProcessPurpose.PARTY, item, player, null);
             return;
@@ -520,7 +521,7 @@ public class L2Party {
     public void distributeItem(L2PcInstance player, IntIntHolder item, boolean spoil, L2Attackable target) {
         if (item == null) { return; }
 
-        if (item.getId() == 57) {
+        if (item.getId() == ItemConst.ADENA_ID) {
             distributeAdena(player, item.getValue(), target);
             return;
         }
@@ -565,7 +566,7 @@ public class L2Party {
         if (toReward.isEmpty()) { return; }
 
         int count = adena / toReward.size();
-        for (L2PcInstance member : toReward) { member.addAdena(EItemProcessPurpose.PARTY, count, player, true); }
+        for (L2PcInstance member : toReward) { member.getInventory().addAdena(EItemProcessPurpose.PARTY, count, player, true); }
     }
 
     /**

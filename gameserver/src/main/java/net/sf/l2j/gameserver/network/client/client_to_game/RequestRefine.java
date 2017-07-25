@@ -83,14 +83,14 @@ public final class RequestRefine extends AbstractRefinePacket {
         }
 
         // Consume the life stone
-        if (!activeChar.destroyItem(EItemProcessPurpose.REQUEST_REFINE, refinerItem, 1, null, false)) {
+        if (activeChar.getInventory().destroyItem(EItemProcessPurpose.REQUEST_REFINE, refinerItem, 1, null, false) == null) {
             activeChar.sendPacket(new ExVariationResult(0, 0, 0));
             activeChar.sendPacket(SystemMessageId.AUGMENTATION_FAILED_DUE_TO_INAPPROPRIATE_CONDITIONS);
             return;
         }
 
         // Consume gemstones
-        if (!activeChar.destroyItem(EItemProcessPurpose.REQUEST_REFINE, gemStoneItem, _gemStoneCount, null, false)) {
+        if (activeChar.getInventory().destroyItem(EItemProcessPurpose.REQUEST_REFINE, gemStoneItem, _gemStoneCount, null, false) == null) {
             activeChar.sendPacket(new ExVariationResult(0, 0, 0));
             activeChar.sendPacket(SystemMessageId.AUGMENTATION_FAILED_DUE_TO_INAPPROPRIATE_CONDITIONS);
             return;

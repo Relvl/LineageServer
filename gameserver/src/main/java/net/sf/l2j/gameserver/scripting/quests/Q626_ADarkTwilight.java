@@ -17,6 +17,7 @@ import java.util.Map;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -95,7 +96,7 @@ public class Q626_ADarkTwilight extends Quest
 			{
 				htmltext = "31517-07.htm";
 				st.takeItems(BLOOD_OF_SAINT, 300);
-				st.rewardItems(57, 100000);
+				st.rewardItems(ItemConst.ADENA_ID, 100000);
 				st.playSound(QuestState.SOUND_FINISH);
 				st.exitQuest(false);
 			}

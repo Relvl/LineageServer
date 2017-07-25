@@ -66,9 +66,8 @@ public final class RequestEnchantItem extends AbstractEnchantPacket {
         }
 
         // attempting to destroy scroll
-        scroll = activeChar.getInventory().destroyItem(EItemProcessPurpose.ENCHANT, scroll.getObjectId(), 1, activeChar, item);
+        scroll = activeChar.getInventory().destroyItem(EItemProcessPurpose.ENCHANT, scroll.getObjectId(), 1, activeChar, item, true);
         if (scroll == null) {
-            activeChar.sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS);
             Util.handleIllegalPlayerAction(activeChar, activeChar.getName() + " tried to enchant without scroll.", Config.DEFAULT_PUNISH);
             activeChar.setActiveEnchantItem(null);
             activeChar.sendPacket(EnchantResult.CANCELLED);
@@ -194,7 +193,7 @@ public final class RequestEnchantItem extends AbstractEnchantPacket {
                     int count = item.getCrystalCount() - (item.getItem().getCrystalCount() + 1) / 2;
                     if (count < 1) { count = 1; }
 
-                    L2ItemInstance destroyItem = activeChar.getInventory().destroyItem(EItemProcessPurpose.ENCHANT, item, activeChar, null);
+                    L2ItemInstance destroyItem = activeChar.getInventory().destroyItem(EItemProcessPurpose.ENCHANT, item, item.getCount(), activeChar, true);
                     if (destroyItem == null) {
                         // unable to destroy item, cheater ?
                         Util.handleIllegalPlayerAction(activeChar, "Unable to delete item on enchant failure from player " + activeChar.getName() + ", possible cheater !", Config.DEFAULT_PUNISH);

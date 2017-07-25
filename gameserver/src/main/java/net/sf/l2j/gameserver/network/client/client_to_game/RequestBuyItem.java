@@ -148,7 +148,7 @@ public final class RequestBuyItem extends L2GameClientPacket {
         }
 
         // Charge buyer and add tax to castle treasury if not owned by npc clan
-        if (subTotal < 0 || !player.reduceAdena(EItemProcessPurpose.BUY, subTotal, player.getCurrentFolkNPC(), false)) {
+        if (subTotal < 0 || !player.getInventory().reduceAdena(EItemProcessPurpose.BUY, subTotal, player.getCurrentFolkNPC(), false)) {
             sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_NOT_ENOUGH_ADENA));
             return;
         }

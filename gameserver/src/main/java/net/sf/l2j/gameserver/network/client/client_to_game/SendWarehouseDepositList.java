@@ -27,7 +27,7 @@ import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
 import net.sf.l2j.gameserver.network.client.game_to_client.StatusUpdate;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
-import static net.sf.l2j.gameserver.model.itemcontainer.PcInventory.ADENA_ID;
+import static net.sf.l2j.gameserver.model.item.ItemConst.ADENA_ID;
 
 public final class SendWarehouseDepositList extends L2GameClientPacket {
     private static final int BATCH_LENGTH = 8; // length of one item
@@ -112,7 +112,7 @@ public final class SendWarehouseDepositList extends L2GameClientPacket {
         }
 
         // Check if enough adena and charge the fee
-        if (currentAdena < fee || !player.reduceAdena(warehouse.getItemInteractionPurpose(), fee, manager, false)) {
+        if (currentAdena < fee || !player.getInventory().reduceAdena(warehouse.getItemInteractionPurpose(), fee, manager, false)) {
             sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_NOT_ENOUGH_ADENA));
             return;
         }

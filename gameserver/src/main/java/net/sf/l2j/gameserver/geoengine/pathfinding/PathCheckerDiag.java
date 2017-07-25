@@ -176,7 +176,7 @@ public class PathCheckerDiag extends PathFinding
 		// delta, determines axis to move on (+..X axis, -..Y axis)
 		int d = dx - dy;
 		
-		// PathFinding.dropDebugItem(57, 0, new GeoLocation(gox, goy, goz));
+		// PathFinding.dropDebugItem(ItemConst.ADENA_ID, 0, new GeoLocation(gox, goy, goz));
 		// PathFinding.dropDebugItem(1831, 0, new GeoLocation(gtx, gty, gtz));
 		
 		// loop
@@ -203,7 +203,7 @@ public class PathCheckerDiag extends PathFinding
 			goz = GeoData.getInstance().getHeightNearest(gox, goy, goz);
 			gtz = GeoData.getInstance().getHeightNearest(gtx, gty, gtz);
 			
-			// PathFinding.dropDebugItem(57, 0, new GeoLocation(gox, goy, goz));
+			// PathFinding.dropDebugItem(ItemConst.ADENA_ID, 0, new GeoLocation(gox, goy, goz));
 			// PathFinding.dropDebugItem(1831, 0, new GeoLocation(gtx, gty, gtz));
 			
 			// calculate next line of sight Z coord
@@ -275,7 +275,7 @@ public class PathCheckerDiag extends PathFinding
 		int nx = gpx;
 		int ny = gpy;
 		
-		// PathFinding.dropDebugItem(57, 0, new GeoLocation(gpx, gpy, (short) gpz));
+		// PathFinding.dropDebugItem(ItemConst.ADENA_ID, 0, new GeoLocation(gpx, gpy, (short) gpz));
 		
 		// loop
 		do
@@ -314,7 +314,7 @@ public class PathCheckerDiag extends PathFinding
 			gpy = ny;
 			gpz = GeoData.getInstance().getHeightNearest(nx, ny, gpz);
 			
-			// PathFinding.dropDebugItem(57, 0, new GeoLocation(gpx, gpy, (short) gpz));
+			// PathFinding.dropDebugItem(ItemConst.ADENA_ID, 0, new GeoLocation(gpx, gpy, (short) gpz));
 			
 			// target coords reached
 			if (gpx == gtx && gpy == gty)

@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -49,7 +50,7 @@ public class Q122_OminousNews extends Quest
 		}
 		else if (event.equalsIgnoreCase("32017-02.htm"))
 		{
-			st.rewardItems(57, 1695);
+			st.rewardItems(ItemConst.ADENA_ID, 1695);
 			st.playSound(QuestState.SOUND_FINISH);
 			st.exitQuest(false);
 		}

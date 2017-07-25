@@ -16,6 +16,7 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.PlayerRace;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -129,7 +130,7 @@ public class Q293_TheHiddenVeins extends Quest
 							
 							st.takeItems(CHRYSOLITE_ORE, -1);
 							st.takeItems(HIDDEN_VEIN_MAP, -1);
-							st.rewardItems(57, reward);
+							st.rewardItems(ItemConst.ADENA_ID, reward);
 							
 							if (player.isNewbie() && st.getInt("Reward") == 0)
 							{

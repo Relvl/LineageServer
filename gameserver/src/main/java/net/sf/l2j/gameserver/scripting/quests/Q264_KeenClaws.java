@@ -15,6 +15,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -93,13 +94,13 @@ public class Q264_KeenClaws extends Quest
 						st.playSound(QuestState.SOUND_JACKPOT);
 					}
 					else if (n < 2)
-						st.giveItems(57, 1000);
+						st.giveItems(ItemConst.ADENA_ID, 1000);
 					else if (n < 5)
 						st.giveItems(LEATHER_SANDALS, 1);
 					else if (n < 8)
 					{
 						st.giveItems(STOCKINGS, 1);
-						st.giveItems(57, 50);
+						st.giveItems(ItemConst.ADENA_ID, 50);
 					}
 					else if (n < 11)
 						st.giveItems(HEALING_POTION, 1);

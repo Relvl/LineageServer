@@ -120,7 +120,7 @@ public class RequestProcureCropList extends L2GameClientPacket {
             // try modify castle crop
             if (!i.setCrop()) { continue; }
 
-            if (fee > 0 && !player.reduceAdena(EItemProcessPurpose.MANOR, fee, manager, true)) { continue; }
+            if (fee > 0 && !player.getInventory().reduceAdena(EItemProcessPurpose.MANOR, fee, manager, true)) { continue; }
 
             if (!player.destroyItem(EItemProcessPurpose.MANOR, i.getObjectId(), i.getCount(), manager, true)) { continue; }
 

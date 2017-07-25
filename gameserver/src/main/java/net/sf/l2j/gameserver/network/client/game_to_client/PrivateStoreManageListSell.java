@@ -5,11 +5,12 @@ import net.sf.l2j.gameserver.model.tradelist.TradeItem;
 
 import java.util.List;
 
+/** Ответ на запрос открытия настройки частной продажи (первый раз, или повторно). */
 public class PrivateStoreManageListSell extends L2GameServerPacket {
     private final int _objId;
     private final int _playerAdena;
     private final boolean _packageSale;
-    private final TradeItem[] _itemList;
+    private final List<TradeItem> _itemList;
     private final List<TradeItem> _sellList;
 
     public PrivateStoreManageListSell(L2PcInstance player, boolean isPackageSale) {
@@ -30,7 +31,7 @@ public class PrivateStoreManageListSell extends L2GameServerPacket {
         writeD(_packageSale ? 1 : 0);
         writeD(_playerAdena);
 
-        writeD(_itemList.length);
+        writeD(_itemList.size());
         for (TradeItem item : _itemList) {
             writeD(item.getItem().getType2());
             writeD(item.getObjectId());

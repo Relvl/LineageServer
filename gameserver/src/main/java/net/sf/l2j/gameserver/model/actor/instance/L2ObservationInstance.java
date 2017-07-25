@@ -46,7 +46,7 @@ public final class L2ObservationInstance extends L2NpcInstance {
                 return;
             }
 
-            if (player.reduceAdena(EItemProcessPurpose.BROADCAST, cost, this, true)) {
+            if (player.getInventory().reduceAdena(EItemProcessPurpose.BROADCAST, cost, this, true)) {
                 player.enterObserverMode(x, y, z);
                 player.sendPacket(new ItemList(player, false));
             }

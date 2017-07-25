@@ -5,6 +5,7 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.itemcontainer.ItemContainer;
 import net.sf.l2j.gameserver.model.itemcontainer.PcFreight;
@@ -87,7 +88,7 @@ public final class RequestPackageSend extends L2GameClientPacket {
             if (!item.isTradable() || item.isQuestItem()) { return; }
 
             // Calculate needed adena and slots
-            if (item.getItemId() == 57) { currentAdena -= count; }
+            if (item.getItemId() == ItemConst.ADENA_ID) { currentAdena -= count; }
 
             if (!item.isStackable()) { slots += count; }
             else if (warehouse.getItemByItemId(item.getItemId()) == null) { slots++; }
@@ -100,7 +101,7 @@ public final class RequestPackageSend extends L2GameClientPacket {
         }
 
         // Check if enough adena and charge the fee
-        if (currentAdena < fee || !player.reduceAdena(EItemProcessPurpose.WAREHOUSE, fee, player.getCurrentFolkNPC(), false)) {
+        if (currentAdena < fee || !player.getInventory().reduceAdena(EItemProcessPurpose.WAREHOUSE, fee, player.getCurrentFolkNPC(), false)) {
             sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_NOT_ENOUGH_ADENA));
             return;
         }

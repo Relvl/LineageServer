@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -121,7 +122,7 @@ public class Q360_PlunderTheirSupplies extends Quest
 					htmltext = "30873-5.htm";
 					st.takeItems(SUPPLY_ITEM, -1);
 					st.takeItems(RECIPE_OF_SUPPLY, -1);
-					st.rewardItems(57, reward);
+					st.rewardItems(ItemConst.ADENA_ID, reward);
 				}
 				break;
 		}

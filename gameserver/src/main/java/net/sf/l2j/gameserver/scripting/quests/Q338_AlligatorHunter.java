@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -59,7 +60,7 @@ public class Q338_AlligatorHunter extends Quest
 				reward += 3430;
 			
 			st.takeItems(ALLIGATOR_PELT, -1);
-			st.rewardItems(57, reward);
+			st.rewardItems(ItemConst.ADENA_ID, reward);
 		}
 		else if (event.equalsIgnoreCase("30892-08.htm"))
 		{

@@ -9,7 +9,6 @@ import net.sf.l2j.gameserver.model.actor.L2Summon;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
-import net.sf.l2j.gameserver.network.client.game_to_client.SetSummonRemainTime;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillSummon;
 import net.sf.l2j.gameserver.taskmanager.DecayTaskManager;
 
@@ -51,7 +50,7 @@ public class L2SummonInstance extends L2Summon {
         }
         else { _nextItemConsumeTime = _totalLifeTime - _totalLifeTime / (_itemConsumeSteps + 1); }
 
-        _summonLifeTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new SummonLifetime(getOwner(), this), 1000, 1000);
+        _summonLifeTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new SummonLifetimeTask(getOwner(), this), 1000, 1000);
     }
 
     @Override
@@ -145,51 +144,6 @@ public class L2SummonInstance extends L2Summon {
 
     }
 
-    static class SummonLifetime implements Runnable {
-        private final L2PcInstance _activeChar;
-        private final L2SummonInstance _summon;
-
-        SummonLifetime(L2PcInstance activeChar, L2SummonInstance newpet) {
-            _activeChar = activeChar;
-            _summon = newpet;
-        }
-
-        @Override
-        public void run() {
-            try {
-                double oldTimeRemaining = _summon.getTimeRemaining();
-                int maxTime = _summon.getTotalLifeTime();
-
-                // if pet is attacking
-                if (_summon.isAttackingNow()) { _summon.decTimeRemaining(_summon.getTimeLostActive()); }
-                else { _summon.decTimeRemaining(_summon.getTimeLostIdle()); }
-
-                double newTimeRemaining = _summon.getTimeRemaining();
-
-                // check if the summon's lifetime has ran out
-                if (newTimeRemaining < 0) { _summon.unSummon(_activeChar); }
-                else if ((newTimeRemaining <= _summon.getNextItemConsumeTime()) && (oldTimeRemaining > _summon.getNextItemConsumeTime())) {
-                    _summon.decNextItemConsumeTime(maxTime / (_summon.getItemConsumeSteps() + 1));
-
-                    // check if owner has enought itemConsume, if requested
-                    if (_summon.getItemConsumeCount() > 0 && _summon.getItemConsumeId() != 0 && !_summon.isDead() && !_summon.destroyItemByItemId(EItemProcessPurpose.CONSUME, _summon.getItemConsumeId(), _summon.getItemConsumeCount(), _activeChar, true)) {
-                        _summon.unSummon(_activeChar);
-                    }
-                }
-
-                // prevent useless packet-sending when the difference isn't visible.
-                if ((_summon.lastShowntimeRemaining - newTimeRemaining) > maxTime / 352) {
-                    _activeChar.sendPacket(new SetSummonRemainTime(maxTime, (int) newTimeRemaining));
-                    _summon.lastShowntimeRemaining = (int) newTimeRemaining;
-                    _summon.updateEffectIcons();
-                }
-            }
-            catch (Exception e) {
-                LOGGER.error("Error on player [{}] summon item consume task.", _activeChar.getName(), e);
-            }
-        }
-    }
-
     @Override
     public void unSummon(L2PcInstance owner) {
         if (_summonLifeTask != null) {
@@ -210,6 +164,5 @@ public class L2SummonInstance extends L2Summon {
     }
 
     @Override
-    public void doPickupItem(L2Object object) {
-    }
+    public void doPickupItem(L2Object object) {}
 }

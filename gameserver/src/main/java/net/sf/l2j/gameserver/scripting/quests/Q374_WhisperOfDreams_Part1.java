@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -106,7 +107,7 @@ public class Q374_WhisperOfDreams_Part1 extends Quest
 				st.takeItems(CAVE_BEAST_TOOTH, -1);
 				st.takeItems(DEATH_WAVE_LIGHT, -1);
 				
-				st.rewardItems(57, reward[2]);
+				st.rewardItems(ItemConst.ADENA_ID, reward[2]);
 				st.giveItems(reward[0], reward[1]);
 			}
 			else

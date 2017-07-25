@@ -24,6 +24,7 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.L2Party;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
@@ -303,7 +304,7 @@ public class SagasSuperClass extends Quest
 					htmltext = "0-07.htm";
 					st.takeItems(Items[10], -1);
 					st.rewardExpAndSp(2299404, 0);
-					st.giveItems(57, 5000000);
+					st.giveItems(ItemConst.ADENA_ID, 5000000);
 					st.giveItems(6622, 1);
 					
 					int Class = getClassId(player);
@@ -732,7 +733,7 @@ public class SagasSuperClass extends Quest
 							st.exitQuest(false);
 							st.set("cond", "0");
 							st.rewardExpAndSp(2299404, 0);
-							st.giveItems(57, 5000000);
+							st.giveItems(ItemConst.ADENA_ID, 5000000);
 							st.giveItems(6622, 1);
 							int Class = getClassId(player);
 							int prevClass = getPrevClass(player);

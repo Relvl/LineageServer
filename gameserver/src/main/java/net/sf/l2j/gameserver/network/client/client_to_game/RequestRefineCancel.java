@@ -91,7 +91,7 @@ public final class RequestRefineCancel extends L2GameClientPacket {
         }
 
         // try to reduce the players adena
-        if (!activeChar.reduceAdena(EItemProcessPurpose.REQUEST_REFINE_CANCEL, price, null, true)) {
+        if (!activeChar.getInventory().reduceAdena(EItemProcessPurpose.REQUEST_REFINE_CANCEL, price, null, true)) {
             activeChar.sendPacket(new ExVariationCancelResult(0));
             return;
         }

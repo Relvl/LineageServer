@@ -9,6 +9,7 @@ import net.sf.l2j.gameserver.instancemanager.ClanHallManager;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import org.slf4j.Logger;
@@ -75,7 +76,7 @@ public class Auction {
         final int limit = Integer.MAX_VALUE - ClanTable.getInstance().getClanByName(Clan).getWarehouse().getAdena();
         quantity = Math.min(quantity, limit);
 
-        ClanTable.getInstance().getClanByName(Clan).getWarehouse().addItem(EItemProcessPurpose.OUTBIDDED, 57, quantity, null, null);
+        ClanTable.getInstance().getClanByName(Clan).getWarehouse().addItem(EItemProcessPurpose.OUTBIDDED, ItemConst.ADENA_ID, quantity, null, null);
     }
 
     /**
@@ -87,7 +88,7 @@ public class Auction {
      */
     public static boolean takeItem(L2PcInstance bidder, int quantity) {
         if (bidder.getClan() != null && bidder.getClan().getWarehouse().getAdena() >= quantity) {
-            bidder.getClan().getWarehouse().destroyItemByItemId(EItemProcessPurpose.BUY, 57, quantity, bidder, bidder);
+            bidder.getClan().getWarehouse().destroyItemByItemId(EItemProcessPurpose.BUY, ItemConst.ADENA_ID, quantity, bidder, bidder, true);
             return true;
         }
 

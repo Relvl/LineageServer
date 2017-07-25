@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -73,7 +74,7 @@ public class Q261_CollectorsDream extends Quest
 				{
 					htmltext = "30222-05.htm";
 					st.takeItems(GIANT_SPIDER_LEG, -1);
-					st.rewardItems(57, 1000);
+					st.rewardItems(ItemConst.ADENA_ID, 1000);
 					st.rewardExpAndSp(2000, 0);
 					st.playSound(QuestState.SOUND_FINISH);
 					st.exitQuest(true);

@@ -16,6 +16,7 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.PlayerRace;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -134,7 +135,7 @@ public class Q292_BrigandsSweep extends Quest
 								st.takeItems(SUSPICIOUS_CONTRACT, -1);
 							}
 							
-							st.rewardItems(57, ((12 * goblinNecklaces) + (36 * goblinPendants) + (33 * goblinLordPendants) + (countAll >= 10 ? 1000 : 0) + ((hasContract) ? 1120 : 0)));
+							st.rewardItems(ItemConst.ADENA_ID, ((12 * goblinNecklaces) + (36 * goblinPendants) + (33 * goblinLordPendants) + (countAll >= 10 ? 1000 : 0) + ((hasContract) ? 1120 : 0)));
 						}
 						break;
 					
@@ -146,7 +147,7 @@ public class Q292_BrigandsSweep extends Quest
 							htmltext = "30533-02.htm";
 							st.set("cond", "1");
 							st.takeItems(SUSPICIOUS_CONTRACT, -1);
-							st.rewardItems(57, 1500);
+							st.rewardItems(ItemConst.ADENA_ID, 1500);
 						}
 						break;
 				}

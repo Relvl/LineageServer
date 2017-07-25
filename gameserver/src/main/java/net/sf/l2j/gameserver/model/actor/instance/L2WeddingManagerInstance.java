@@ -66,8 +66,8 @@ public class L2WeddingManagerInstance extends L2NpcInstance {
         ptarget.setMarried(true);
 
         // reduce adenas amount according to configs
-        player.reduceAdena(EItemProcessPurpose.WEDDING, Config.WEDDING_PRICE, player.getCurrentFolkNPC(), true);
-        ptarget.reduceAdena(EItemProcessPurpose.WEDDING, Config.WEDDING_PRICE, player.getCurrentFolkNPC(), true);
+        player.getInventory().reduceAdena(EItemProcessPurpose.WEDDING, Config.WEDDING_PRICE, player.getCurrentFolkNPC(), true);
+        ptarget.getInventory().reduceAdena(EItemProcessPurpose.WEDDING, Config.WEDDING_PRICE, player.getCurrentFolkNPC(), true);
 
         // Flag players as married
         Couple couple = CoupleManager.getInstance().getCouple(player.getCoupleId());

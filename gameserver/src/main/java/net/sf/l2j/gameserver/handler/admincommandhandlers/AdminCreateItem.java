@@ -20,6 +20,7 @@ import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.ArmorSet;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.client.game_to_client.ItemList;
@@ -175,7 +176,7 @@ public class AdminCreateItem implements IAdminCommandHandler {
     }
 
     private static int getCoinId(String name) {
-        if (name.equalsIgnoreCase("adena")) { return 57; }
+        if (name.equalsIgnoreCase("adena")) { return ItemConst.ADENA_ID; }
 
         if (name.equalsIgnoreCase("ancientadena")) { return 5575; }
 

@@ -1871,7 +1871,7 @@ public class SevenSignsFestival implements SpawnListener {
                             },
                     },
                     {
-			/* Level 64 and Below */
+            /* Level 64 and Below */
                             {
                                     -76008,
                                     113566,
@@ -1961,7 +1961,7 @@ public class SevenSignsFestival implements SpawnListener {
                             },
                     },
                     {
-			/* No Level Limit */
+            /* No Level Limit */
                             {
                                     -79100,
                                     109782,
@@ -2054,7 +2054,7 @@ public class SevenSignsFestival implements SpawnListener {
     protected static final int[][][] FESTIVAL_DUSK_CHEST_SPAWNS =
             {
                     {
-			/* Level 31 and Below */
+            /* Level 31 and Below */
                             {
                                     -77016,
                                     88726,
@@ -2920,7 +2920,9 @@ public class SevenSignsFestival implements SpawnListener {
         // Remove any unused blood offerings from online players.
         for (L2PcInstance player : L2World.getInstance().getPlayers()) {
             L2ItemInstance bloodOfferings = player.getInventory().getItemByItemId(FESTIVAL_OFFERING_ID);
-            if (bloodOfferings != null) { player.destroyItem(EItemProcessPurpose.SEVEN_SIGNS, bloodOfferings, null, false); }
+            if (bloodOfferings != null) {
+                player.getInventory().destroyItem(EItemProcessPurpose.SEVEN_SIGNS, bloodOfferings, bloodOfferings.getCount(), null, false);
+            }
         }
 
         _log.info("SevenSignsFestival: Reinitialized engine for next competition period.");
@@ -3651,7 +3653,7 @@ public class SevenSignsFestival implements SpawnListener {
                     // Remove any stray blood offerings in inventory
                     L2ItemInstance bloodOfferings = participant.getInventory().getItemByItemId(FESTIVAL_OFFERING_ID);
                     if (bloodOfferings != null) {
-                        participant.destroyItem(EItemProcessPurpose.SEVEN_SIGNS, bloodOfferings, null, true);
+                        participant.getInventory().destroyItem(EItemProcessPurpose.SEVEN_SIGNS, bloodOfferings, bloodOfferings.getCount(), null, true);
                     }
                 }
             }

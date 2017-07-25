@@ -17,6 +17,7 @@ import java.util.Map;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -108,7 +109,7 @@ public class Q633_InTheForgottenVillage extends Quest
 			{
 				htmltext = "31388-08.htm";
 				st.takeItems(RIB_BONE, 200);
-				st.rewardItems(57, 25000);
+				st.rewardItems(ItemConst.ADENA_ID, 25000);
 				st.rewardExpAndSp(305235, 0);
 				st.playSound(QuestState.SOUND_FINISH);
 			}

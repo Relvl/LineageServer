@@ -16,6 +16,7 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.PlayerRace;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -88,7 +89,7 @@ public class Q275_DarkWingedSpies extends Quest
 					htmltext = "30567-05.htm";
 					st.takeItems(DARKWING_BAT_FANG, -1);
 					st.takeItems(VARANGKA_PARASITE, -1);
-					st.rewardItems(57, 4200);
+					st.rewardItems(ItemConst.ADENA_ID, 4200);
 					st.playSound(QuestState.SOUND_FINISH);
 					st.exitQuest(true);
 				}

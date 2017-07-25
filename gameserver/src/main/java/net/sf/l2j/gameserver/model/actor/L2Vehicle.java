@@ -40,7 +40,6 @@ import net.sf.l2j.gameserver.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 
 /**
  * @author DS
@@ -236,7 +235,7 @@ public abstract class L2Vehicle extends L2Character {
             if (player.isInBoat() && player.getBoat() == this) {
                 if (itemId > 0) {
                     L2ItemInstance ticket = player.getInventory().getItemByItemId(itemId);
-                    if (ticket == null || player.getInventory().destroyItem(EItemProcessPurpose.BOAT, ticket, count, player, this) == null) {
+                    if (ticket == null || player.getInventory().destroyItem(EItemProcessPurpose.BOAT, ticket, count, this, true) == null) {
                         player.sendPacket(SystemMessageId.NOT_CORRECT_BOAT_TICKET);
                         player.teleToLocation(oustX, oustY, oustZ, 20);
                         continue;

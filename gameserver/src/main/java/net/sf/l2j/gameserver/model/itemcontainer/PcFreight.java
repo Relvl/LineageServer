@@ -50,7 +50,7 @@ public class PcFreight extends ItemContainer {
     @Override
     public int getSize() {
         int size = 0;
-        for (L2ItemInstance item : _items) {
+        for (L2ItemInstance item : items) {
             if (item.getLocationSlot() == 0 || activeLocationId == 0 || item.getLocationSlot() == activeLocationId) {
                 size++;
             }
@@ -66,7 +66,7 @@ public class PcFreight extends ItemContainer {
     @Override
     public List<L2ItemInstance> getItems() {
         List<L2ItemInstance> list = new ArrayList<>();
-        for (L2ItemInstance item : _items) {
+        for (L2ItemInstance item : items) {
             if (item.getLocationSlot() == 0 || item.getLocationSlot() == activeLocationId) {
                 list.add(item);
             }
@@ -82,7 +82,7 @@ public class PcFreight extends ItemContainer {
      */
     @Override
     public L2ItemInstance getItemByItemId(int itemId) {
-        for (L2ItemInstance item : _items) {
+        for (L2ItemInstance item : items) {
             if (item.getItemId() == itemId && (item.getLocationSlot() == 0 || activeLocationId == 0 || item.getLocationSlot() == activeLocationId)) {
                 return item;
             }

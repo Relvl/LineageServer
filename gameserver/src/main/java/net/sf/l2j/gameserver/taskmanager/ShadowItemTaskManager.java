@@ -85,7 +85,7 @@ public class ShadowItemTaskManager implements Runnable, OnEquipListener {
                 player.sendPacket(iu);
 
                 // Destroy shadow item, remove from list.
-                player.destroyItem(EItemProcessPurpose.SHADOW_ITEM, item, player, false);
+                player.getInventory().destroyItem(EItemProcessPurpose.SHADOW_ITEM, item, item.getCount(), player, false);
                 player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1S_REMAINING_MANA_IS_NOW_0).addItemName(item.getItemId()));
                 _shadowItems.remove(item);
 

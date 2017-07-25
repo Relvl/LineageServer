@@ -1,5 +1,6 @@
 package net.sf.l2j.gameserver.model.itemcontainer;
 
+import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
@@ -55,7 +56,7 @@ public class PetInventory extends Inventory {
 
     @Override
     public boolean validateCapacity(int slots) {
-        return _items.size() + slots <= _owner.getInventoryLimit();
+        return items.size() + slots <= Config.INVENTORY_MAXIMUM_PET;
     }
 
     public boolean validateWeight(L2ItemInstance item, long count) {
@@ -88,7 +89,7 @@ public class PetInventory extends Inventory {
         super.restore();
 
         // check for equipped items from other pets
-        for (L2ItemInstance item : _items) {
+        for (L2ItemInstance item : items) {
             if (item.isEquipped()) {
                 if (!item.getItem().checkCondition(_owner, _owner, false)) { unEquipItemInSlot(EPaperdollSlot.getByIndex(item.getLocationSlot())); }
             }
@@ -98,18 +99,18 @@ public class PetInventory extends Inventory {
     @Override
     public void deleteMe() {
         // Transfer items only if the items list is feeded.
-        if (_items != null) {
+        if (items != null) {
             // Retrieves the master of the pet owning the inventory.
             L2PcInstance petOwner = _owner.getOwner();
             if (petOwner != null) {
                 // Transfer each item to master's inventory.
-                for (L2ItemInstance item : _items) {
+                for (L2ItemInstance item : items) {
                     _owner.transferItem(EItemProcessPurpose.RETURN, item.getObjectId(), item.getCount(), petOwner.getInventory(), petOwner, _owner);
                     L2World.getInstance().removeObject(item);
                 }
             }
             // Clear the internal inventory items list.
-            _items.clear();
+            items.clear();
         }
     }
 }

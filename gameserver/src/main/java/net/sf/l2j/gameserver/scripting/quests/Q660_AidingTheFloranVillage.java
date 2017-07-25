@@ -15,6 +15,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -41,7 +42,6 @@ public class Q660_AidingTheFloranVillage extends Quest
 	private static final int LIZARDMEN_SHAMAN = 20781;
 	
 	// Rewards
-	private static final int ADENA = 57;
 	private static final int ENCHANT_WEAPON_D = 955;
 	private static final int ENCHANT_ARMOR_D = 956;
 	
@@ -92,7 +92,7 @@ public class Q660_AidingTheFloranVillage extends Quest
 				st.takeItems(GOLEM_SHARD, -1);
 				st.takeItems(LIZARDMEN_SCALE, -1);
 				st.takeItems(WATCHING_EYES, -1);
-				st.rewardItems(ADENA, count * 100 + ((count >= 45) ? 9000 : 0));
+				st.rewardItems(ItemConst.ADENA_ID, count * 100 + ((count >= 45) ? 9000 : 0));
 			}
 		}
 		else if (event.equalsIgnoreCase("30291-06.htm"))
@@ -107,10 +107,10 @@ public class Q660_AidingTheFloranVillage extends Quest
 			else
 			{
 				if (Rnd.get(10) < 8)
-					st.rewardItems(ADENA, 1000);
+					st.rewardItems(ItemConst.ADENA_ID, 1000);
 				else
 				{
-					st.rewardItems(ADENA, 13000);
+					st.rewardItems(ItemConst.ADENA_ID, 13000);
 					st.rewardItems(ENCHANT_ARMOR_D, 1);
 				}
 			}
@@ -123,10 +123,10 @@ public class Q660_AidingTheFloranVillage extends Quest
 			{
 				final int luck = Rnd.get(15);
 				if (luck < 8)
-					st.rewardItems(ADENA, 2000);
+					st.rewardItems(ItemConst.ADENA_ID, 2000);
 				else if (luck < 12)
 				{
-					st.rewardItems(ADENA, 20000);
+					st.rewardItems(ItemConst.ADENA_ID, 20000);
 					st.rewardItems(ENCHANT_ARMOR_D, 1);
 				}
 				else
@@ -140,10 +140,10 @@ public class Q660_AidingTheFloranVillage extends Quest
 			else
 			{
 				if (Rnd.get(10) < 8)
-					st.rewardItems(ADENA, 5000);
+					st.rewardItems(ItemConst.ADENA_ID, 5000);
 				else
 				{
-					st.rewardItems(ADENA, 45000);
+					st.rewardItems(ItemConst.ADENA_ID, 45000);
 					st.rewardItems(ENCHANT_WEAPON_D, 1);
 				}
 			}
@@ -157,7 +157,7 @@ public class Q660_AidingTheFloranVillage extends Quest
 				st.takeItems(WATCHING_EYES, -1);
 				st.takeItems(LIZARDMEN_SCALE, -1);
 				st.takeItems(GOLEM_SHARD, -1);
-				st.rewardItems(ADENA, count * 100 + ((count >= 45) ? 9000 : 0));
+				st.rewardItems(ItemConst.ADENA_ID, count * 100 + ((count >= 45) ? 9000 : 0));
 			}
 			st.playSound(QuestState.SOUND_FINISH);
 			st.exitQuest(true);

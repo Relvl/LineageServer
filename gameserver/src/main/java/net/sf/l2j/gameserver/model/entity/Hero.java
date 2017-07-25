@@ -554,7 +554,7 @@ public class Hero {
 
                     for (L2ItemInstance item : player.getInventory().getAvailableItems(false, false)) {
                         if ((item != null) && item.isHeroItem()) {
-                            player.destroyItem(EItemProcessPurpose.HERO, item, null, true);
+                            player.getInventory().destroyItem(EItemProcessPurpose.HERO, item, item.getCount(), null, true);
                             InventoryUpdate iu = new InventoryUpdate();
                             iu.addRemovedItem(item);
                             player.sendPacket(iu);

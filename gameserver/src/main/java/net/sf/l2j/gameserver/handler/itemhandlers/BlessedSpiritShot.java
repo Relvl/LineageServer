@@ -5,7 +5,6 @@ import net.sf.l2j.gameserver.model.ShotType;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
-import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -39,9 +38,10 @@ public class BlessedSpiritShot implements IItemHandler {
         }
 
         // Consume bss if player has enough of them
-        if (!activeChar.destroyItemWithoutTrace(EItemProcessPurpose.CONSUME, item.getObjectId(), weaponItem.getSpiritShotCount(), null, false)) {
-            if (!activeChar.disableAutoShot(itemId)) { activeChar.sendPacket(SystemMessageId.NOT_ENOUGH_SPIRITSHOTS); }
-
+        if (activeChar.getInventory().destroyItem(null, item, weaponItem.getSpiritShotCount(), null, false) == null) {
+            if (!activeChar.disableAutoShot(itemId)) {
+                activeChar.sendPacket(SystemMessageId.NOT_ENOUGH_SPIRITSHOTS);
+            }
             return;
         }
 

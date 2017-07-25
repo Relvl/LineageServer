@@ -254,7 +254,7 @@ public final class L2FestivalGuideInstance extends L2NpcInstance {
                     }
 
                     int offeringScore = bloodOfferings.getCount() * SevenSignsFestival.FESTIVAL_OFFERING_VALUE;
-                    if (!player.destroyItem(EItemProcessPurpose.SEVEN_SIGNS, bloodOfferings, this, false)) { return; }
+                    if (player.getInventory().destroyItem(EItemProcessPurpose.SEVEN_SIGNS, bloodOfferings, bloodOfferings.getCount(), this, false) == null) { return; }
 
                     boolean isHighestScore = SevenSignsFestival.getInstance().setFinalScore(player, _festivalOracle, _festivalType, offeringScore);
 

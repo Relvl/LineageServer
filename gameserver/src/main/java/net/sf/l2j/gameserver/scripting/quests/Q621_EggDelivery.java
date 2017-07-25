@@ -15,6 +15,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -129,7 +130,7 @@ public class Q621_EggDelivery extends Quest
 			}
 			else
 			{
-				st.rewardItems(57, 18800);
+				st.rewardItems(ItemConst.ADENA_ID, 18800);
 				st.rewardItems(HASTE_POTION, 1);
 				st.playSound(QuestState.SOUND_FINISH);
 				st.exitQuest(true);

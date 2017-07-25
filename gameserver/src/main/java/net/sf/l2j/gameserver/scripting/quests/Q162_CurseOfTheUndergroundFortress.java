@@ -18,6 +18,7 @@ import java.util.Map;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.PlayerRace;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -110,7 +111,7 @@ public class Q162_CurseOfTheUndergroundFortress extends Quest
 					st.takeItems(ELF_SKULL, -1);
 					st.takeItems(BONE_FRAGMENT, -1);
 					st.giveItems(BONE_SHIELD, 1);
-					st.rewardItems(57, 24000);
+					st.rewardItems(ItemConst.ADENA_ID, 24000);
 					st.playSound(QuestState.SOUND_FINISH);
 					st.exitQuest(false);
 				}

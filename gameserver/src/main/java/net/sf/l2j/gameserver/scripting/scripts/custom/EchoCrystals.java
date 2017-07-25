@@ -20,6 +20,7 @@ import java.util.Map;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -31,7 +32,6 @@ public class EchoCrystals extends Quest
 {
 	private static final String qn = "EchoCrystals";
 	
-	private static final int ADENA = 57;
 	private static final int COST = 200;
 	
 	private static final Map<Integer, ScoreData> SCORES = new HashMap<>();
@@ -71,11 +71,11 @@ public class EchoCrystals extends Quest
 				
 				if (st.getQuestItemsCount(score) == 0)
 					htmltext = npc.getNpcId() + "-" + noscore + ".htm";
-				else if (st.getQuestItemsCount(ADENA) < COST)
+				else if (st.getQuestItemsCount(ItemConst.ADENA_ID) < COST)
 					htmltext = npc.getNpcId() + "-" + noadena + ".htm";
 				else
 				{
-					st.takeItems(ADENA, COST);
+					st.takeItems(ItemConst.ADENA_ID, COST);
 					st.giveItems(crystal, 1);
 					htmltext = npc.getNpcId() + "-" + ok + ".htm";
 				}

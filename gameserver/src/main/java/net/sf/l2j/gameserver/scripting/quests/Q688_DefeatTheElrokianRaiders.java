@@ -16,6 +16,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -64,7 +65,7 @@ public class Q688_DefeatTheElrokianRaiders extends Quest
 			if (count > 0)
 			{
 				st.takeItems(DINOSAUR_FANG_NECKLACE, -1);
-				st.rewardItems(57, count * 3000);
+				st.rewardItems(ItemConst.ADENA_ID, count * 3000);
 			}
 			st.playSound(QuestState.SOUND_FINISH);
 			st.exitQuest(true);
@@ -74,7 +75,7 @@ public class Q688_DefeatTheElrokianRaiders extends Quest
 			final int count = st.getQuestItemsCount(DINOSAUR_FANG_NECKLACE);
 			
 			st.takeItems(DINOSAUR_FANG_NECKLACE, -1);
-			st.rewardItems(57, count * 3000);
+			st.rewardItems(ItemConst.ADENA_ID, count * 3000);
 		}
 		else if (event.equalsIgnoreCase("32105-07.htm"))
 		{
@@ -82,7 +83,7 @@ public class Q688_DefeatTheElrokianRaiders extends Quest
 			if (count >= 100)
 			{
 				st.takeItems(DINOSAUR_FANG_NECKLACE, 100);
-				st.rewardItems(57, 450000);
+				st.rewardItems(ItemConst.ADENA_ID, 450000);
 			}
 			else
 				htmltext = "32105-04.htm";

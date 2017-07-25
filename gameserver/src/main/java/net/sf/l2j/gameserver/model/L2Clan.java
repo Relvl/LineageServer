@@ -1606,14 +1606,14 @@ public class L2Clan {
 
         switch (_level) {
             case 0: // upgrade to 1
-                if (player.getSp() >= 30000 && player.reduceAdena(EItemProcessPurpose.CLAN_LVL, 650000, player.getTarget(), true)) {
+                if (player.getSp() >= 30000 && player.getInventory().reduceAdena(EItemProcessPurpose.CLAN_LVL, 650000, player.getTarget(), true)) {
                     player.removeExpAndSp(0, 30000);
                     increaseClanLevel = true;
                 }
                 break;
 
             case 1: // upgrade to 2
-                if (player.getSp() >= 150000 && player.reduceAdena(EItemProcessPurpose.CLAN_LVL, 2500000, player.getTarget(), true)) {
+                if (player.getSp() >= 150000 && player.getInventory().reduceAdena(EItemProcessPurpose.CLAN_LVL, 2500000, player.getTarget(), true)) {
                     player.removeExpAndSp(0, 150000);
                     increaseClanLevel = true;
                 }

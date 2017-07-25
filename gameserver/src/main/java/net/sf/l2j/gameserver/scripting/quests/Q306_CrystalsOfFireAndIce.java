@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -118,7 +119,7 @@ public class Q306_CrystalsOfFireAndIce extends Quest
 					htmltext = "30004-05.htm";
 					st.takeItems(FLAME_SHARD, -1);
 					st.takeItems(ICE_SHARD, -1);
-					st.rewardItems(57, 30 * totalItems + ((totalItems > 10) ? 5000 : 0));
+					st.rewardItems(ItemConst.ADENA_ID, 30 * totalItems + ((totalItems > 10) ? 5000 : 0));
 				}
 				break;
 		}

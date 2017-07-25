@@ -17,6 +17,7 @@ import java.util.Map;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -95,7 +96,7 @@ public class Q366_SilverHairedShaman extends Quest
 				{
 					htmltext = "30111-4.htm";
 					st.takeItems(HAIR, -1);
-					st.rewardItems(57, 12070 + 500 * count);
+					st.rewardItems(ItemConst.ADENA_ID, 12070 + 500 * count);
 				}
 				break;
 		}

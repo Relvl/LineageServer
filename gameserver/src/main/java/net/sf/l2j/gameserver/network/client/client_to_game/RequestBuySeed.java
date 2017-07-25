@@ -117,7 +117,7 @@ public class RequestBuySeed extends L2GameClientPacket {
         // Proceed the purchase
         for (Seed i : _seeds) {
             // take adena and check seed amount once again
-            if (!player.reduceAdena(EItemProcessPurpose.BUY, i.getPrice(), player, false) || !i.updateProduction(castle)) {
+            if (!player.getInventory().reduceAdena(EItemProcessPurpose.BUY, i.getPrice(), player, false) || !i.updateProduction(castle)) {
                 // failed buy, reduce total price
                 totalPrice -= i.getPrice();
                 continue;

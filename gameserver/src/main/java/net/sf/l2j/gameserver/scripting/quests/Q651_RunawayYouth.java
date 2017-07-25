@@ -13,6 +13,7 @@
 package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.commons.random.Rnd;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -114,7 +115,7 @@ public class Q651_RunawayYouth extends Quest
 				{
 					case BATIDAE:
 						htmltext = "31989-01.htm";
-						st.rewardItems(57, 2883);
+						st.rewardItems(ItemConst.ADENA_ID, 2883);
 						st.playSound(QuestState.SOUND_FINISH);
 						st.exitQuest(true);
 						break;

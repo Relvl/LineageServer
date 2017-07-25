@@ -17,6 +17,7 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.instancemanager.FourSepulchersManager;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 import net.sf.l2j.gameserver.util.Util;
@@ -283,7 +284,7 @@ public class Q620_FourGoblets extends Quest
 		
 		if (rnd == 0)
 		{
-			st.giveItems(57, 10000);
+			st.giveItems(ItemConst.ADENA_ID, 10000);
 			reward = true;
 		}
 		else if (rnd == 1)

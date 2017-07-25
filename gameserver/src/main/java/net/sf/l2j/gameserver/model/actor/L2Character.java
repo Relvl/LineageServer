@@ -243,27 +243,17 @@ public abstract class L2Character extends L2Object {
         _isTeleporting = false;
     }
 
-    /**
-     * @return character inventory, default null, overridden in L2Playable types and in L2Npc.
-     */
-    public Inventory getInventory() {
-        return null;
-    }
+    public Inventory getInventory() { return null; }
 
-    // =========================================================
-    // Method - Private
+    public boolean destroyItemByItemId(EItemProcessPurpose process, int itemId, int count, L2Object reference, boolean sendMessage) { return true; }
 
-    public boolean destroyItemByItemId(EItemProcessPurpose process, int itemId, int count, L2Object reference, boolean sendMessage) {
-        return true;
-    }
-
-    public boolean destroyItem(EItemProcessPurpose process, int objectId, int count, L2Object reference, boolean sendMessage) {
-        return true;
-    }
+    public boolean destroyItem(EItemProcessPurpose process, int objectId, int count, L2Object reference, boolean sendMessage) { return true; }
 
     @Override
     public boolean isInsideZone(ZoneId zone) {
-        return zone == ZoneId.PVP ? _zones[ZoneId.PVP.getId()] > 0 && _zones[ZoneId.PEACE.getId()] == 0 : _zones[zone.getId()] > 0;
+        return zone == ZoneId.PVP ?
+                _zones[ZoneId.PVP.getId()] > 0 && _zones[ZoneId.PEACE.getId()] == 0 :
+                _zones[zone.getId()] > 0;
     }
 
     public void setInsideZone(ZoneId zone, boolean state) {
@@ -1096,7 +1086,9 @@ public abstract class L2Character extends L2Object {
                         _isCastingNow = false;
                     }
 
-                    if (this instanceof L2PcInstance) { getAI().setIntention(EIntention.ACTIVE); }
+                    if (isPlayer()) {
+                        getAI().setIntention(EIntention.ACTIVE);
+                    }
                     return;
                 }
             }

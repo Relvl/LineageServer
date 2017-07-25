@@ -2,8 +2,8 @@ package net.sf.l2j.gameserver.model.item.kind;
 
 import net.sf.l2j.gameserver.model.item.EItemType1;
 import net.sf.l2j.gameserver.model.item.EItemType2;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
-import net.sf.l2j.gameserver.model.itemcontainer.PcInventory;
 import net.sf.l2j.gameserver.templates.StatsSet;
 
 public final class EtcItem extends Item {
@@ -31,7 +31,7 @@ public final class EtcItem extends Item {
         if (isQuestItem()) {
             itemType2 = EItemType2.TYPE2_QUEST;
         }
-        else if (getItemId() == PcInventory.ADENA_ID || getItemId() == PcInventory.ANCIENT_ADENA_ID) {
+        else if (getItemId() == ItemConst.ADENA_ID || getItemId() == ItemConst.ANCIENT_ADENA_ID) {
             itemType2 = EItemType2.TYPE2_MONEY;
         }
 

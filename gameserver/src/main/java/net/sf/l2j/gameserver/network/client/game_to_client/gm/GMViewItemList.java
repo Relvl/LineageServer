@@ -1,5 +1,6 @@
 package net.sf.l2j.gameserver.network.client.game_to_client.gm;
 
+import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
@@ -22,7 +23,7 @@ public class GMViewItemList extends L2GameServerPacket {
     public GMViewItemList(L2PetInstance cha) {
         _items = cha.getInventory().getItems();
         _playerName = cha.getName();
-        _limit = cha.getInventoryLimit();
+        _limit = Config.INVENTORY_MAXIMUM_PET;
     }
 
     @Override

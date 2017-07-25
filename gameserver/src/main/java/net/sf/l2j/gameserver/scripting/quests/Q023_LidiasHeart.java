@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -241,7 +242,7 @@ public class Q023_LidiasHeart extends Quest
 							{
 								htmltext = "31386-03.htm";
 								st.takeItems(SILVER_SPEAR, 1);
-								st.rewardItems(57, 100000);
+								st.rewardItems(ItemConst.ADENA_ID, 100000);
 								st.playSound(QuestState.SOUND_FINISH);
 								st.exitQuest(false);
 							}

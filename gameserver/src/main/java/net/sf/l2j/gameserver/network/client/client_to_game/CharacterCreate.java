@@ -133,7 +133,7 @@ public final class CharacterCreate extends L2GameClientPacket {
 
         L2World.getInstance().addObject(newChar);
 
-        newChar.addAdena(EItemProcessPurpose.INIT, Config.STARTING_ADENA, null, false);
+        newChar.getInventory().addAdena(EItemProcessPurpose.INIT, Config.STARTING_ADENA, null, false);
         newChar.getPosition().setXYZInvisible(template.getSpawnX(), template.getSpawnY(), template.getSpawnZ());
         newChar.setTitle("");
 

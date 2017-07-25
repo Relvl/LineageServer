@@ -15,6 +15,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -52,7 +53,7 @@ public class Q383_SearchingForTreasure extends Quest
 			if (st.hasQuestItems(PIRATE_TREASURE_MAP))
 			{
 				st.takeItems(PIRATE_TREASURE_MAP, 1);
-				st.rewardItems(57, 1000);
+				st.rewardItems(ItemConst.ADENA_ID, 1000);
 			}
 			else
 				htmltext = "30890-06.htm";
@@ -160,7 +161,7 @@ public class Q383_SearchingForTreasure extends Quest
 				else
 					i1 += 500;
 				
-				st.rewardItems(57, i1);
+				st.rewardItems(ItemConst.ADENA_ID, i1);
 				
 				st.playSound(QuestState.SOUND_FINISH);
 				st.exitQuest(true);

@@ -28,16 +28,12 @@ import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.DimensionalRiftManager;
 import net.sf.l2j.gameserver.instancemanager.SevenSigns;
 import net.sf.l2j.gameserver.instancemanager.games.Lottery;
-import net.sf.l2j.gameserver.model.L2Clan;
-import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.L2Spawn;
-import net.sf.l2j.gameserver.model.ShotType;
+import net.sf.l2j.gameserver.model.*;
 import net.sf.l2j.gameserver.model.actor.instance.*;
 import net.sf.l2j.gameserver.model.actor.knownlist.NpcKnownList;
 import net.sf.l2j.gameserver.model.actor.stat.NpcStat;
 import net.sf.l2j.gameserver.model.actor.status.NpcStatus;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
-import net.sf.l2j.gameserver.model.AIType;
 import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
@@ -941,7 +937,7 @@ public class L2Npc extends L2Character {
                 else { type2 += Math.pow(2, player.getLoto(i) - 17); }
             }
 
-            if (!player.reduceAdena(EItemProcessPurpose.LOTO, price, this, true)) { return; }
+            if (!player.getInventory().reduceAdena(EItemProcessPurpose.LOTO, price, this, true)) { return; }
 
             Lottery.getInstance().increasePrize(price);
 
@@ -1009,8 +1005,8 @@ public class L2Npc extends L2Character {
             player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S2_S1_DISAPPEARED).addItemName(4442));
 
             int adena = check[1];
-            if (adena > 0) { player.addAdena(EItemProcessPurpose.LOTO, adena, this, true); }
-            player.destroyItem(EItemProcessPurpose.LOTO, item, this, false);
+            if (adena > 0) { player.getInventory().addAdena(EItemProcessPurpose.LOTO, adena, this, true); }
+            player.getInventory().destroyItem(EItemProcessPurpose.LOTO, item, item.getCount(), this, false);
             return;
         }
         html.replace("%objectId%", getObjectId());
@@ -1037,7 +1033,7 @@ public class L2Npc extends L2Character {
         }
 
         // Consume 100 adenas
-        if (player.reduceAdena(EItemProcessPurpose.RESTORE_CP, 100, player.getCurrentFolkNPC(), true)) {
+        if (player.getInventory().reduceAdena(EItemProcessPurpose.RESTORE_CP, 100, player.getCurrentFolkNPC(), true)) {
             setTarget(player);
             doCast(FrequentSkill.ARENA_CP_RECOVERY.getSkill());
             player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_CP_WILL_BE_RESTORED).addPcName(player));

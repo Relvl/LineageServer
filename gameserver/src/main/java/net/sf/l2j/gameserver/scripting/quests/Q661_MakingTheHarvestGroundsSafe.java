@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -30,8 +31,7 @@ public class Q661_MakingTheHarvestGroundsSafe extends Quest
 	private static final int TALON_OF_YOUNG_ARANEID = 8285;
 	
 	// Reward
-	private static final int ADENA = 57;
-	
+
 	// Monsters
 	private static final int GIANT_POISON_BEE = 21095;
 	private static final int CLOUDY_BEAST = 21096;
@@ -78,7 +78,7 @@ public class Q661_MakingTheHarvestGroundsSafe extends Quest
 			st.takeItems(STING_OF_GIANT_POISON_BEE, item1);
 			st.takeItems(CLOUDY_GEM, item2);
 			st.takeItems(TALON_OF_YOUNG_ARANEID, item3);
-			st.rewardItems(ADENA, sum);
+			st.rewardItems(ItemConst.ADENA_ID, sum);
 		}
 		else if (event.equalsIgnoreCase("30210-06.htm"))
 			st.exitQuest(true);

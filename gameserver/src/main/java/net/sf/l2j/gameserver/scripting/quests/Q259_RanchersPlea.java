@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -34,7 +35,6 @@ public class Q259_RanchersPlea extends Quest
 	private static final int GIANT_SPIDER_SKIN = 1495;
 	
 	// Rewards
-	private static final int ADENA = 57;
 	private static final int HEALING_POTION = 1061;
 	private static final int WOODEN_ARROW = 17;
 	
@@ -123,7 +123,7 @@ public class Q259_RanchersPlea extends Quest
 						{
 							htmltext = "30497-05.htm";
 							st.takeItems(GIANT_SPIDER_SKIN, -1);
-							st.rewardItems(ADENA, ((count >= 10) ? 250 : 0) + count * 25);
+							st.rewardItems(ItemConst.ADENA_ID, ((count >= 10) ? 250 : 0) + count * 25);
 						}
 						break;
 					

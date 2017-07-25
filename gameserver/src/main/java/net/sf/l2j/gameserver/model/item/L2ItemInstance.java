@@ -266,7 +266,7 @@ public final class L2ItemInstance extends L2Object {
                 && (item.getType2() != EItemType2.TYPE2_MONEY || item.getType1() != EItemType1.SHIELD_ARMOR) // not money, not shield
                 && (player.getPet() == null || getObjectId() != player.getPet().getControlItemId()) // Not Control item of currently summoned pet
                 && (player.getActiveEnchantItem() != this) // Not momentarily used enchant scroll
-                && (allowAdena || itemId != 57) // Not adena
+                && (allowAdena || itemId != ItemConst.ADENA_ID) // Not adena
                 && (player.getCurrentSkill().getSkill() == null || player.getCurrentSkill().getSkill().getItemConsumeId() != itemId)
                 && (!player.isCastingSimultaneouslyNow() || player.getLastSimultaneousSkillCast() == null || player.getLastSimultaneousSkillCast().getItemConsumeId() != itemId)
                 && (allowNonTradable || isTradable());
@@ -439,7 +439,7 @@ public final class L2ItemInstance extends L2Object {
 
         if (MercTicketManager.getTicketCastleId(itemId) > 0) { MercTicketManager.getInstance().removeTicket(this); }
 
-        if (itemId == 57 || itemId == 6353) {
+        if (itemId == ItemConst.ADENA_ID || itemId == 6353) {
             L2PcInstance actor = player.getActingPlayer();
             if (actor != null) {
                 QuestState qs = actor.getQuestState("Tutorial");

@@ -35,7 +35,6 @@ import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.model.zone.type.L2FishingZone;
 import net.sf.l2j.gameserver.model.zone.type.L2WaterZone;
 import net.sf.l2j.gameserver.network.SystemMessageId;
-import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
 import net.sf.l2j.gameserver.util.Util;
 
@@ -165,11 +164,7 @@ public class Fishing implements ISkillHandler {
         }
 
         // Has enough bait, consume 1 and update inventory. Start fishing follows.
-        lure2 = player.getInventory().destroyItem(EItemProcessPurpose.CONSUME, player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_LHAND), 1, player, null);
-        InventoryUpdate iu = new InventoryUpdate();
-        iu.addModifiedItem(lure2);
-        player.sendPacket(iu);
-
+        player.getInventory().destroyItem(EItemProcessPurpose.CONSUME, player.getInventory().getPaperdollObjectId(EPaperdollSlot.PAPERDOLL_LHAND), 1, player, null, false);
         // If everything else checks out, actually cast the hook and start fishing... :P
         player.startFishing(new Location(x, y, z));
     }

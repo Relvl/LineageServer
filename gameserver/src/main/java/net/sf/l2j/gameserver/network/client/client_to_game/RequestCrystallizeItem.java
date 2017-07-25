@@ -14,8 +14,8 @@
  */
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
-import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.type.CrystalType;
@@ -135,11 +135,7 @@ public final class RequestCrystallizeItem extends L2GameClientPacket {
         }
 
         // remove from inventory
-        L2ItemInstance removedItem = activeChar.getInventory().destroyItem(EItemProcessPurpose.CRYSTALIZE, _objectId, _count, activeChar, null);
-
-        InventoryUpdate iu = new InventoryUpdate();
-        iu.addRemovedItem(removedItem);
-        activeChar.sendPacket(iu);
+        L2ItemInstance removedItem = activeChar.getInventory().destroyItem(EItemProcessPurpose.CRYSTALIZE, _objectId, _count, activeChar, null, true);
 
         // add crystals
         int crystalId = itemToRemove.getItem().getCrystalItemId();

@@ -17,6 +17,7 @@ import java.util.Map;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -86,7 +87,7 @@ public class Q324_SweetestVenom extends Quest
 				{
 					htmltext = "30351-06.htm";
 					st.takeItems(VENOM_SAC, -1);
-					st.rewardItems(57, 5810);
+					st.rewardItems(ItemConst.ADENA_ID, 5810);
 					st.playSound(QuestState.SOUND_FINISH);
 					st.exitQuest(true);
 				}

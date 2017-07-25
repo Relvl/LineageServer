@@ -9,13 +9,13 @@ import java.util.List;
 public class PrivateStoreManageListBuy extends L2GameServerPacket {
     private final int _objId;
     private final int _playerAdena;
-    private final L2ItemInstance[] _itemList;
+    private final List<L2ItemInstance> _itemList;
     private final List<TradeItem> _buyList;
 
     public PrivateStoreManageListBuy(L2PcInstance player) {
         _objId = player.getObjectId();
         _playerAdena = player.getAdena();
-        _itemList = player.getInventory().getUniqueItems(false, true);
+        _itemList = player.getInventory().getUniqueItems(true, true, false);
         _buyList = player.getBuyList().getItems();
     }
 
@@ -25,7 +25,7 @@ public class PrivateStoreManageListBuy extends L2GameServerPacket {
         writeD(_objId);
         writeD(_playerAdena);
 
-        writeD(_itemList.length); // inventory items for potential buy
+        writeD(_itemList.size()); // inventory items for potential buy
         for (L2ItemInstance item : _itemList) {
             writeD(item.getItemId());
             writeH(item.getEnchantLevel());

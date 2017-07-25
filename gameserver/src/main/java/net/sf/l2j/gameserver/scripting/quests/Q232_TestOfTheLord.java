@@ -16,6 +16,7 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.ClassId;
 import net.sf.l2j.gameserver.model.base.PlayerRace;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -125,7 +126,7 @@ public class Q232_TestOfTheLord extends Quest
 		}
 		else if (event.equalsIgnoreCase("30558-02.htm"))
 		{
-			st.takeItems(57, 1000);
+			st.takeItems(ItemConst.ADENA_ID, 1000);
 			st.giveItems(NERUGA_AXE_BLADE, 1);
 			st.playSound(QuestState.SOUND_ITEMGET);
 		}
@@ -287,7 +288,7 @@ public class Q232_TestOfTheLord extends Quest
 							htmltext = "30558-04.htm";
 						else if (st.hasQuestItems(TANTUS_CHARM))
 						{
-							if (st.getQuestItemsCount(57) >= 1000)
+							if (st.getQuestItemsCount(ItemConst.ADENA_ID) >= 1000)
 								htmltext = "30558-01.htm";
 							else
 								htmltext = "30558-03.htm";

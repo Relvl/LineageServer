@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -103,7 +104,7 @@ public class Q111_ElrokianHuntersProof extends Quest
 			st.takeItems(PRACTICE_TRAP, 1);
 			st.giveItems(8763, 1);
 			st.giveItems(8764, 100);
-			st.rewardItems(57, 1022636);
+			st.rewardItems(ItemConst.ADENA_ID, 1022636);
 			st.playSound(QuestState.SOUND_FINISH);
 			st.exitQuest(false);
 		}

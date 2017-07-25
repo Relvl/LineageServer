@@ -20,6 +20,7 @@ import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.datatables.TeleportLocationTable;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.model.location.L2TeleportLocation;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
@@ -165,7 +166,7 @@ public final class L2TeleporterInstance extends L2NpcInstance {
                 if (cal.get(Calendar.HOUR_OF_DAY) >= 20 && cal.get(Calendar.HOUR_OF_DAY) <= 23 && (cal.get(Calendar.DAY_OF_WEEK) == 1 || cal.get(Calendar.DAY_OF_WEEK) == 7)) { price /= 2; }
             }
 
-            if (Config.ALT_GAME_FREE_TELEPORT || player.destroyItemByItemId(EItemProcessPurpose.TELEPORT, 57, price, this, true)) { player.teleToLocation(list.getX(), list.getY(), list.getZ(), 20); }
+            if (Config.ALT_GAME_FREE_TELEPORT || player.destroyItemByItemId(EItemProcessPurpose.TELEPORT, ItemConst.ADENA_ID, price, this, true)) { player.teleToLocation(list.getX(), list.getY(), list.getZ(), 20); }
         }
         else { LOGGER.warn("No teleport destination with id:{}", val); }
 

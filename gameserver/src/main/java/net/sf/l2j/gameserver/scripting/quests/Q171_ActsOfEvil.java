@@ -18,6 +18,7 @@ import java.util.Map;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -166,7 +167,7 @@ public class Q171_ActsOfEvil extends Quest
 						else if (cond == 11)
 						{
 							htmltext = "30381-08.htm";
-							st.rewardItems(57, 90000);
+							st.rewardItems(ItemConst.ADENA_ID, 90000);
 							st.playSound(QuestState.SOUND_FINISH);
 							st.exitQuest(false);
 						}
@@ -242,7 +243,7 @@ public class Q171_ActsOfEvil extends Quest
 								st.set("cond", "11");
 								st.playSound(QuestState.SOUND_MIDDLE);
 								st.takeItems(OL_MAHUM_HEAD, -1);
-								st.rewardItems(57, 8000);
+								st.rewardItems(ItemConst.ADENA_ID, 8000);
 							}
 							else
 								htmltext = "30617-04a.htm";

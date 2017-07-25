@@ -83,7 +83,7 @@ public class L2BufferInstance extends L2NpcInstance {
 
             L2Character target = (targetType.equalsIgnoreCase("pet")) ? player.getPet() : player;
             if (target == null) { player.sendMessage("You don't have a pet."); }
-            else if (cost == 0 || player.reduceAdena(EItemProcessPurpose.NPC_BUFFER, cost, this, true)) {
+            else if (cost == 0 || player.getInventory().reduceAdena(EItemProcessPurpose.NPC_BUFFER, cost, this, true)) {
                 for (int skillId : BufferTable.getInstance().getScheme(player.getObjectId(), schemeName)) { SkillTable.getInfo(skillId, SkillTable.getMaxLevel(skillId)).getEffects(this, target); }
             }
             showGiveBuffsWindow(player, targetType);

@@ -24,6 +24,7 @@ import net.sf.l2j.Config;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.geoengine.GeoData;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.model.location.GeoLocation;
 import net.sf.l2j.gameserver.geoengine.pathfinding.nodes.Node;
 import net.sf.l2j.gameserver.geoengine.pathfinding.nodes.NodeBufferDiag;
@@ -122,7 +123,7 @@ public class CellPathFindingDiag extends PathCheckerDiag
 					if (n.getCost() < 0)
 						dropDebugItem(1831, (int) (-n.getCost() * 10), n.getLoc()); // antidote
 					else
-						dropDebugItem(57, (int) (n.getCost() * 10), n.getLoc()); // adena
+						dropDebugItem(ItemConst.ADENA_ID, (int) (n.getCost() * 10), n.getLoc()); // adena
 				}
 			}
 			

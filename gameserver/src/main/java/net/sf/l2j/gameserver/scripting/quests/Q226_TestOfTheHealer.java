@@ -16,6 +16,7 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.ClassId;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -62,7 +63,7 @@ public class Q226_TestOfTheHealer extends Quest
 	private static final int LETO_LIZARDMAN_WIZARD = 27126;
 	private static final int LETO_LIZARDMAN_LORD = 27127;
 	private static final int TATOMA = 27134;
-	
+
 	private static L2Npc _tatoma;
 	private static L2Npc _letoLeader;
 	
@@ -126,11 +127,11 @@ public class Q226_TestOfTheHealer extends Quest
 		// GUPU
 		else if (event.equalsIgnoreCase("30658-02.htm"))
 		{
-			if (st.getQuestItemsCount(57) >= 100000)
+			if (st.getQuestItemsCount(ItemConst.ADENA_ID) >= 100000)
 			{
 				st.set("cond", "7");
 				st.playSound(QuestState.SOUND_MIDDLE);
-				st.takeItems(57, 100000);
+				st.takeItems(ItemConst.ADENA_ID, 100000);
 				st.giveItems(PICTURE_OF_WINDY, 1);
 			}
 			else

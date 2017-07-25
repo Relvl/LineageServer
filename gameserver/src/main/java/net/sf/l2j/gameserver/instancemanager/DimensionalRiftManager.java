@@ -234,7 +234,7 @@ public class DimensionalRiftManager {
 
         for (L2PcInstance p : party.getPartyMembers()) {
             i = p.getInventory().getItemByItemId(DIMENSIONAL_FRAGMENT_ITEM_ID);
-            if (!p.destroyItem(EItemProcessPurpose.RIFT, i, count, null, true)) {
+            if (p.getInventory().destroyItem(EItemProcessPurpose.RIFT, i, count, null, true) == null) {
                 NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
                 html.setFile("data/html/seven_signs/rift/NoFragments.htm");
                 html.replace("%npc_name%", npc.getName());

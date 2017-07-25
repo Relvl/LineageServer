@@ -17,6 +17,7 @@ import java.util.Map;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -243,7 +244,7 @@ public class Q378_MagnificentFeast extends Quest
 						
 						int adena = REWARDS.get(score)[2];
 						if (adena > 0)
-							st.rewardItems(57, adena);
+							st.rewardItems(ItemConst.ADENA_ID, adena);
 						
 						st.playSound(QuestState.SOUND_FINISH);
 						st.exitQuest(true);

@@ -15,6 +15,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -36,7 +37,6 @@ public class Q622_SpecialtyLiquorDelivery extends Quest
 	private static final int LIETTA = 31267;
 	
 	// Rewards
-	private static final int ADENA = 57;
 	private static final int HASTE_POTION = 1062;
 	private static final int[] RECIPES =
 	{
@@ -117,7 +117,7 @@ public class Q622_SpecialtyLiquorDelivery extends Quest
 				st.giveItems(RECIPES[Rnd.get(RECIPES.length)], 1);
 			else
 			{
-				st.rewardItems(ADENA, 18800);
+				st.rewardItems(ItemConst.ADENA_ID, 18800);
 				st.rewardItems(HASTE_POTION, 1);
 			}
 			st.playSound(QuestState.SOUND_FINISH);

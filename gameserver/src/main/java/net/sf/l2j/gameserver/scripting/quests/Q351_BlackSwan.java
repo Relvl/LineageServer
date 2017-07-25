@@ -15,6 +15,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -68,7 +69,7 @@ public class Q351_BlackSwan extends Quest
 				htmltext = "30969-02.htm";
 				
 				st.takeItems(LIZARD_FANG, -1);
-				st.rewardItems(57, lizardFangs * 20);
+				st.rewardItems(ItemConst.ADENA_ID, lizardFangs * 20);
 			}
 		}
 		else if (event.equalsIgnoreCase("30969-03a.htm"))

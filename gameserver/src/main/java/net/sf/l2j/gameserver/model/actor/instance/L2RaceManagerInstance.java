@@ -134,7 +134,7 @@ public class L2RaceManagerInstance extends L2NpcInstance {
                 int ticket = player.getRace(0);
                 int priceId = player.getRace(1);
 
-                if (!player.reduceAdena(EItemProcessPurpose.RACE, TICKET_PRICES[priceId - 1], this, true)) { return; }
+                if (!player.getInventory().reduceAdena(EItemProcessPurpose.RACE, TICKET_PRICES[priceId - 1], this, true)) { return; }
 
                 player.setRace(0, 0);
                 player.setRace(1, 0);
@@ -199,7 +199,7 @@ public class L2RaceManagerInstance extends L2NpcInstance {
             final StringBuilder sb = new StringBuilder();
 
             // Retrieve player's tickets.
-            for (L2ItemInstance ticket : player.getInventory().getAllItemsByItemId(4443)) {
+            for (L2ItemInstance ticket : player.getInventory().getAllItemsByItemId(4443, true)) {
                 // Don't list current race tickets.
                 if (ticket.getEnchantLevel() == MonsterRace.getInstance().getRaceNumber()) { continue; }
 
@@ -278,7 +278,9 @@ public class L2RaceManagerInstance extends L2NpcInstance {
             }
 
             // Destroy the ticket.
-            if (player.destroyItem(EItemProcessPurpose.RACE, ticket, this, true)) { player.addAdena(EItemProcessPurpose.RACE, (int) (bet * ((lane == info.getFirst()) ? info.getOddRate() : 0.01)), this, true); }
+            if (player.getInventory().destroyItem(EItemProcessPurpose.RACE, ticket, ticket.getCount(), this, true) != null) {
+                player.getInventory().addAdena(EItemProcessPurpose.RACE, (int) (bet * ((lane == info.getFirst()) ? info.getOddRate() : 0.01)), this, true);
+            }
 
             super.onBypassFeedback(player, "Chat 0");
             return;

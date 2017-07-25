@@ -1,5 +1,6 @@
 package net.sf.l2j.gameserver.model.zone.form;
 
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.model.zone.L2ZoneForm;
 
 public class ZoneCylinder extends L2ZoneForm {
@@ -69,7 +70,7 @@ public class ZoneCylinder extends L2ZoneForm {
         for (int i = 0; i < count; i++) {
             int x = (int) (StrictMath.cos(angle * i) * _rad);
             int y = (int) (StrictMath.sin(angle * i) * _rad);
-            dropDebugItem(57, 1, _x + x, _y + y, z);
+            dropDebugItem(ItemConst.ADENA_ID, 1, _x + x, _y + y, z);
         }
     }
 }

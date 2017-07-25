@@ -6,7 +6,6 @@ import net.sf.l2j.gameserver.model.ShotType;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
-import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -42,8 +41,10 @@ public class SoulShots implements IItemHandler {
         int ssCount = weaponItem.getSoulShotCount();
         if (weaponItem.getReducedSoulShot() > 0 && Rnd.get(100) < weaponItem.getReducedSoulShotChance()) { ssCount = weaponItem.getReducedSoulShot(); }
 
-        if (!activeChar.destroyItemWithoutTrace(EItemProcessPurpose.CONSUME, item.getObjectId(), ssCount, null, false)) {
-            if (!activeChar.disableAutoShot(itemId)) { activeChar.sendPacket(SystemMessageId.NOT_ENOUGH_SOULSHOTS); }
+        if (activeChar.getInventory().destroyItem(null, item, ssCount, null, false) == null) {
+            if (!activeChar.disableAutoShot(itemId)) {
+                activeChar.sendPacket(SystemMessageId.NOT_ENOUGH_SOULSHOTS);
+            }
 
             return;
         }

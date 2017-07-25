@@ -5,7 +5,6 @@ import net.sf.l2j.gameserver.model.ShotType;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
-import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.item.type.EWeaponType;
@@ -36,7 +35,7 @@ public class FishShots implements IItemHandler {
             return;
         }
 
-        if (!activeChar.destroyItemWithoutTrace(EItemProcessPurpose.CONSUME, item.getObjectId(), 1, null, false)) {
+        if (activeChar.getInventory().destroyItem(null, item, 1, null, false) == null) {
             activeChar.sendPacket(SystemMessageId.NOT_ENOUGH_SOULSHOTS);
             return;
         }

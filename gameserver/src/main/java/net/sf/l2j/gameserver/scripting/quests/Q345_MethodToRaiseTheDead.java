@@ -15,6 +15,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -79,7 +80,7 @@ public class Q345_MethodToRaiseTheDead extends Quest
 				htmltext = "30912-03.htm";
 				st.set("cond", "3");
 				st.playSound(QuestState.SOUND_MIDDLE);
-				st.takeItems(57, 1000);
+				st.takeItems(ItemConst.ADENA_ID, 1000);
 				st.giveItems(POWDER_TO_SUMMON_DEAD_SOULS, 1);
 			}
 		}
@@ -125,7 +126,7 @@ public class Q345_MethodToRaiseTheDead extends Quest
 			{
 				int amount = st.getQuestItemsCount(USELESS_BONE_PIECES) * 104;
 				st.takeItems(USELESS_BONE_PIECES, -1);
-				st.rewardItems(57, amount);
+				st.rewardItems(ItemConst.ADENA_ID, amount);
 			}
 			else
 				htmltext = "30971-02a.htm";
@@ -169,7 +170,7 @@ public class Q345_MethodToRaiseTheDead extends Quest
 							if (cond == 7)
 							{
 								htmltext = "30970-10.htm";
-								st.rewardItems(57, 3040 + amount);
+								st.rewardItems(ItemConst.ADENA_ID, 3040 + amount);
 								
 								// Reward can be either an Imperial Diamond or bills.
 								if (Rnd.get(100) < 10)
@@ -181,7 +182,7 @@ public class Q345_MethodToRaiseTheDead extends Quest
 							else
 							{
 								htmltext = "30970-09.htm";
-								st.rewardItems(57, 5390 + amount);
+								st.rewardItems(ItemConst.ADENA_ID, 5390 + amount);
 								st.giveItems(BILL_OF_IASON_HEINE, 3);
 							}
 							st.playSound(QuestState.SOUND_FINISH);

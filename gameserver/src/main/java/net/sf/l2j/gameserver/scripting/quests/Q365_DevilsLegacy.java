@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.datatables.SkillTable;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -66,12 +67,12 @@ public class Q365_DevilsLegacy extends Quest
 		{
 			if (!st.hasQuestItems(PIRATE_TREASURE_CHEST))
 				htmltext = "30092-02.htm";
-			else if (st.getQuestItemsCount(57) < 600)
+			else if (st.getQuestItemsCount(ItemConst.ADENA_ID) < 600)
 				htmltext = "30092-03.htm";
 			else
 			{
 				st.takeItems(PIRATE_TREASURE_CHEST, 1);
-				st.takeItems(57, 600);
+				st.takeItems(ItemConst.ADENA_ID, 600);
 				
 				int i0;
 				if (Rnd.get(100) < 80)
@@ -150,7 +151,7 @@ public class Q365_DevilsLegacy extends Quest
 							int reward = st.getQuestItemsCount(PIRATE_TREASURE_CHEST) * 400;
 							
 							st.takeItems(PIRATE_TREASURE_CHEST, -1);
-							st.rewardItems(57, reward + 19800);
+							st.rewardItems(ItemConst.ADENA_ID, reward + 19800);
 						}
 						break;
 					

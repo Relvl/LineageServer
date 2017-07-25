@@ -45,7 +45,7 @@ public final class RequestHennaEquip extends L2GameClientPacket {
         }
 
         // reduceAdena sends a message.
-        if (!activeChar.reduceAdena(EItemProcessPurpose.HENNA, henna.getPrice(), activeChar.getCurrentFolkNPC(), true)) { return; }
+        if (!activeChar.getInventory().reduceAdena(EItemProcessPurpose.HENNA, henna.getPrice(), activeChar.getCurrentFolkNPC(), true)) { return; }
 
         // destroyItemByItemId sends a message.
         if (!activeChar.destroyItemByItemId(EItemProcessPurpose.HENNA, henna.getDyeId(), Henna.getAmountDyeRequire(), activeChar, true)) { return; }

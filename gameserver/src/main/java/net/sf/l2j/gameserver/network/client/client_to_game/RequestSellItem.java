@@ -92,10 +92,10 @@ public final class RequestSellItem extends L2GameClientPacket {
                 Util.handleIllegalPlayerAction(player, player.getName() + " of account " + player.getAccountName() + " tried to purchase over " + Integer.MAX_VALUE + " adena worth of goods.", Config.DEFAULT_PUNISH);
                 return;
             }
-            item = player.getInventory().destroyItem(EItemProcessPurpose.SELL, i.getId(), i.getValue(), player, merchant);
+            player.getInventory().destroyItem(EItemProcessPurpose.SELL, i.getId(), i.getValue(), player, merchant, false);
         }
 
-        player.addAdena(EItemProcessPurpose.SELL, totalPrice, merchant, false);
+        player.getInventory().addAdena(EItemProcessPurpose.SELL, totalPrice, merchant, false);
 
         // Send the htm, if existing.
         String htmlFolder = "";

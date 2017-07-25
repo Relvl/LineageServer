@@ -10,7 +10,6 @@ import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
-import net.sf.l2j.gameserver.network.client.game_to_client.StatusUpdate;
 import net.sf.l2j.gameserver.util.Util;
 
 import java.sql.Connection;
@@ -104,17 +103,6 @@ public final class RequestDestroyItem extends L2GameClientPacket {
             }
         }
 
-        L2ItemInstance removedItem = activeChar.getInventory().destroyItem(EItemProcessPurpose.DESTROY, _objectId, _count, activeChar, null);
-        if (removedItem == null) { return; }
-
-        InventoryUpdate iu = new InventoryUpdate();
-        if (removedItem.getCount() == 0) { iu.addRemovedItem(removedItem); }
-        else { iu.addModifiedItem(removedItem); }
-
-        activeChar.sendPacket(iu);
-
-        StatusUpdate su = new StatusUpdate(activeChar);
-        su.addAttribute(StatusUpdate.CUR_LOAD, activeChar.getCurrentLoad());
-        activeChar.sendPacket(su);
+        activeChar.getInventory().destroyItem(EItemProcessPurpose.DESTROY, _objectId, _count, activeChar, null, true);
     }
 }

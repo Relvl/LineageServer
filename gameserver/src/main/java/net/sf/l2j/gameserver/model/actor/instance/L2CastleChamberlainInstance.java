@@ -311,7 +311,7 @@ public class L2CastleChamberlainInstance extends L2MerchantInstance {
                 }
 
                 if (amount > 0 && castle.getTreasury() + amount < Integer.MAX_VALUE) {
-                    if (player.reduceAdena(EItemProcessPurpose.CASTLE, amount, this, true)) { castle.addToTreasuryNoTax(amount); }
+                    if (player.getInventory().reduceAdena(EItemProcessPurpose.CASTLE, amount, this, true)) { castle.addToTreasuryNoTax(amount); }
                 }
             }
             else if (val.equalsIgnoreCase("withdraw")) {
@@ -324,7 +324,7 @@ public class L2CastleChamberlainInstance extends L2MerchantInstance {
                 if (amount > 0) {
                     if (castle.getTreasury() < amount) { filename = "data/html/chamberlain/vault-no.htm"; }
                     else {
-                        if (castle.addToTreasuryNoTax(-1 * amount)) { player.addAdena(EItemProcessPurpose.CASTLE, amount, this, true); }
+                        if (castle.addToTreasuryNoTax(-1 * amount)) { player.getInventory().addAdena(EItemProcessPurpose.CASTLE, amount, this, true); }
                     }
                 }
             }
@@ -549,7 +549,7 @@ public class L2CastleChamberlainInstance extends L2MerchantInstance {
                 html.setFile("data/html/chamberlain/doors-already-updated.htm");
                 html.replace("%level%", currentHpRatio * 100);
             }
-            else if (!player.reduceAdena(EItemProcessPurpose.DOORS_UPGRADE, price, player, true)) { html.setFile("data/html/chamberlain/not-enough-adena.htm"); }
+            else if (!player.getInventory().reduceAdena(EItemProcessPurpose.DOORS_UPGRADE, price, player, true)) { html.setFile("data/html/chamberlain/not-enough-adena.htm"); }
             else {
                 castle.upgradeDoor(id, level, true);
 
@@ -601,7 +601,7 @@ public class L2CastleChamberlainInstance extends L2MerchantInstance {
                 html.setFile("data/html/chamberlain/traps-already-updated.htm");
                 html.replace("%level%", currentLevel);
             }
-            else if (!player.reduceAdena(EItemProcessPurpose.TRAPS_UPGRADE, price, player, true)) { html.setFile("data/html/chamberlain/not-enough-adena.htm"); }
+            else if (!player.getInventory().reduceAdena(EItemProcessPurpose.TRAPS_UPGRADE, price, player, true)) { html.setFile("data/html/chamberlain/not-enough-adena.htm"); }
             else {
                 castle.setTrapUpgrade(trapIndex, level, true);
 

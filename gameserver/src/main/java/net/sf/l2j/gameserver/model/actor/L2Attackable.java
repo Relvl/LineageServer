@@ -34,10 +34,7 @@ import net.sf.l2j.gameserver.model.actor.knownlist.AttackableKnownList;
 import net.sf.l2j.gameserver.model.actor.status.AttackableStatus;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
-import net.sf.l2j.gameserver.model.item.DropCategory;
-import net.sf.l2j.gameserver.model.item.DropData;
-import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
-import net.sf.l2j.gameserver.model.item.L2ItemInstance;
+import net.sf.l2j.gameserver.model.item.*;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -668,7 +665,7 @@ public class L2Attackable extends L2Npc {
                 // We should multiply by the server's drop rate, so we always get a low chance of drop for deep blue mobs.
                 // NOTE: This is valid only for adena drops! Others drops will still obey server's rate
                 deepBlueDrop = 3;
-                if (drop.getItemId() == 57) {
+                if (drop.getItemId() == ItemConst.ADENA_ID) {
                     deepBlueDrop *= _isRaid && !_isRaidMinion ? (int) Config.RATE_DROP_ITEMS_BY_RAID : (int) Config.RATE_DROP_ITEMS;
                     if (deepBlueDrop == 0) // avoid div by 0
                     { deepBlueDrop = 1; }
@@ -680,7 +677,7 @@ public class L2Attackable extends L2Npc {
         }
 
         // Applies Drop rates
-        if (drop.getItemId() == 57) { dropChance *= Config.RATE_DROP_ADENA; }
+        if (drop.getItemId() == ItemConst.ADENA_ID) { dropChance *= Config.RATE_DROP_ADENA; }
         else if (isSweep) { dropChance *= Config.RATE_DROP_SPOIL; }
         else {
             dropChance *= isRaid() && !_isRaidMinion ? Config.RATE_DROP_ITEMS_BY_RAID : Config.RATE_DROP_ITEMS;
@@ -710,7 +707,7 @@ public class L2Attackable extends L2Npc {
             dropChance -= DropData.MAX_CHANCE;
         }
 
-        if (isChampion()) { if (drop.getItemId() == 57 || (drop.getItemId() >= 6360 && drop.getItemId() <= 6362)) { itemCount *= Config.CHAMPION_ADENAS_REWARDS; } }
+        if (isChampion()) { if (drop.getItemId() == ItemConst.ADENA_ID || (drop.getItemId() >= 6360 && drop.getItemId() <= 6362)) { itemCount *= Config.CHAMPION_ADENAS_REWARDS; } }
 
         if (itemCount > 0) { return new IntIntHolder(drop.getItemId(), itemCount); }
 
@@ -768,7 +765,7 @@ public class L2Attackable extends L2Npc {
             // if smaller.
 
             double dropChance = drop.getChance();
-            if (drop.getItemId() == 57) { dropChance *= Config.RATE_DROP_ADENA; }
+            if (drop.getItemId() == ItemConst.ADENA_ID) { dropChance *= Config.RATE_DROP_ADENA; }
             else {
                 dropChance *= isRaid() && !_isRaidMinion ? Config.RATE_DROP_ITEMS_BY_RAID : Config.RATE_DROP_ITEMS;
             }
@@ -796,7 +793,7 @@ public class L2Attackable extends L2Npc {
                 dropChance -= DropData.MAX_CHANCE;
             }
 
-            if (isChampion()) { if (drop.getItemId() == 57 || (drop.getItemId() >= 6360 && drop.getItemId() <= 6362)) { itemCount *= Config.CHAMPION_ADENAS_REWARDS; } }
+            if (isChampion()) { if (drop.getItemId() == ItemConst.ADENA_ID || (drop.getItemId() >= 6360 && drop.getItemId() <= 6362)) { itemCount *= Config.CHAMPION_ADENAS_REWARDS; } }
 
             if (itemCount > 0) { return new IntIntHolder(drop.getItemId(), itemCount); }
         }

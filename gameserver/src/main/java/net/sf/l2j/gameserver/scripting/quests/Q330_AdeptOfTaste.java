@@ -18,6 +18,7 @@ import java.util.Map;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -226,21 +227,21 @@ public class Q330_AdeptOfTaste extends Quest
 							{
 								htmltext = "30469-06t1.htm";
 								st.takeItems(MIRIEN_REVIEW_1, 1);
-								st.rewardItems(57, 7500);
+								st.rewardItems(ItemConst.ADENA_ID, 7500);
 								st.rewardExpAndSp(6000, 0);
 							}
 							else if (st.hasQuestItems(MIRIEN_REVIEW_2))
 							{
 								htmltext = "30469-06t2.htm";
 								st.takeItems(MIRIEN_REVIEW_2, 1);
-								st.rewardItems(57, 9000);
+								st.rewardItems(ItemConst.ADENA_ID, 9000);
 								st.rewardExpAndSp(7000, 0);
 							}
 							else if (st.hasQuestItems(MIRIEN_REVIEW_3))
 							{
 								htmltext = "30469-06t3.htm";
 								st.takeItems(MIRIEN_REVIEW_3, 1);
-								st.rewardItems(57, 5800);
+								st.rewardItems(ItemConst.ADENA_ID, 5800);
 								st.giveItems(JONAS_SALAD_RECIPE, 1);
 								st.rewardExpAndSp(9000, 0);
 							}
@@ -248,7 +249,7 @@ public class Q330_AdeptOfTaste extends Quest
 							{
 								htmltext = "30469-06t4.htm";
 								st.takeItems(MIRIEN_REVIEW_4, 1);
-								st.rewardItems(57, 6800);
+								st.rewardItems(ItemConst.ADENA_ID, 6800);
 								st.giveItems(JONAS_SAUCE_RECIPE, 1);
 								st.rewardExpAndSp(10500, 0);
 							}
@@ -256,7 +257,7 @@ public class Q330_AdeptOfTaste extends Quest
 							{
 								htmltext = "30469-06t5.htm";
 								st.takeItems(MIRIEN_REVIEW_5, 1);
-								st.rewardItems(57, 7800);
+								st.rewardItems(ItemConst.ADENA_ID, 7800);
 								st.giveItems(JONAS_STEAK_RECIPE, 1);
 								st.rewardExpAndSp(12000, 0);
 							}

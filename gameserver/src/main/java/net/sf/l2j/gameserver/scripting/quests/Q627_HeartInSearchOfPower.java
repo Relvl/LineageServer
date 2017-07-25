@@ -17,6 +17,7 @@ import java.util.Map;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -149,7 +150,7 @@ public class Q627_HeartInSearchOfPower extends Quest
 				
 				if (REWARDS.get(event)[0] > 0)
 					st.giveItems(REWARDS.get(event)[0], REWARDS.get(event)[1]);
-				st.rewardItems(57, REWARDS.get(event)[2]);
+				st.rewardItems(ItemConst.ADENA_ID, REWARDS.get(event)[2]);
 				
 				st.playSound(QuestState.SOUND_FINISH);
 				st.exitQuest(true);

@@ -15,6 +15,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -60,7 +61,7 @@ public class Q643_RiseAndFallOfTheElrokiTribe extends Quest
 			final int count = st.getQuestItemsCount(BONES);
 			
 			st.takeItems(BONES, count);
-			st.rewardItems(57, count * 1374);
+			st.rewardItems(ItemConst.ADENA_ID, count * 1374);
 		}
 		else if (event.equalsIgnoreCase("32106-09.htm"))
 		{

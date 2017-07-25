@@ -16,6 +16,7 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -109,12 +110,12 @@ public class Q652_AnAgedExAdventurer extends Quest {
                     case SARA:
                         if (Rnd.get(100) < 50) {
                             htmltext = "30180-01.htm";
-                            st.rewardItems(57, 5026);
+                            st.rewardItems(ItemConst.ADENA_ID, 5026);
                             st.giveItems(ENCHANT_ARMOR_D, 1);
                         }
                         else {
                             htmltext = "30180-02.htm";
-                            st.rewardItems(57, 10000);
+                            st.rewardItems(ItemConst.ADENA_ID, 10000);
                         }
                         st.playSound(QuestState.SOUND_FINISH);
                         st.exitQuest(true);

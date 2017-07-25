@@ -14,6 +14,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -124,7 +125,7 @@ public class Q124_MeetingTheElroki extends Quest
 						{
 							htmltext = "32115-05.htm";
 							st.takeItems(8778, -1);
-							st.rewardItems(57, 71318);
+							st.rewardItems(ItemConst.ADENA_ID, 71318);
 							st.playSound(QuestState.SOUND_FINISH);
 							st.exitQuest(false);
 						}

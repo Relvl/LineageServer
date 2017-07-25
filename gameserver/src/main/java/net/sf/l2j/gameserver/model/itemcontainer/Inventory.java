@@ -22,7 +22,6 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.logging.Level;
 
 public abstract class Inventory extends ItemContainer {
     private final Map<EPaperdollSlot, L2ItemInstance> paperdoll = new EnumMap<>(EPaperdollSlot.class);
@@ -101,7 +100,7 @@ public abstract class Inventory extends ItemContainer {
         if (item == null) { return null; }
 
         synchronized (item) {
-            if (!_items.contains(item)) { return null; }
+            if (!items.contains(item)) { return null; }
 
             removeItem(item);
             item.setOwnerId(process, 0, actor, reference);
@@ -129,7 +128,7 @@ public abstract class Inventory extends ItemContainer {
         if (item == null) { return null; }
 
         synchronized (item) {
-            if (!_items.contains(item)) { return null; }
+            if (!items.contains(item)) { return null; }
 
             // Adjust item quantity and create new instance to drop
             // Directly drop entire item
@@ -486,7 +485,7 @@ public abstract class Inventory extends ItemContainer {
                 pdollSlot = EPaperdollSlot.PAPERDOLL_UNDER;
                 break;
             default:
-                _log.info("Unhandled slot type: " + slot);
+                LOGGER.warn("Unhandled slot type: {}", slot);
         }
         if (pdollSlot != null) {
             L2ItemInstance old = setPaperdollItem(pdollSlot, null);
@@ -677,7 +676,7 @@ public abstract class Inventory extends ItemContainer {
                 break;
 
             default:
-                _log.warning("Unknown body slot " + targetSlot + " for Item ID:" + item.getItemId());
+                LOGGER.warn("Unknown body slot {} for Item ID:{}", targetSlot, item.getItemId());
         }
     }
 
@@ -711,7 +710,7 @@ public abstract class Inventory extends ItemContainer {
     protected void refreshWeight() {
         int weight = 0;
 
-        for (L2ItemInstance item : _items) {
+        for (L2ItemInstance item : items) {
             if (item != null && item.getItem() != null) { weight += item.getItem().getWeight() * item.getCount(); }
         }
 
@@ -781,8 +780,10 @@ public abstract class Inventory extends ItemContainer {
                 L2ItemInstance item = L2ItemInstance.restoreFromDb(getOwnerId(), inv);
                 if (item == null) { continue; }
 
-                if (getOwner() instanceof L2PcInstance) {
-                    if (!((L2PcInstance) getOwner()).isHero() && item.isHeroItem()) { item.setLocation(EItemLocation.INVENTORY); }
+                if (getOwner().isPlayer()) {
+                    if (!getOwner().getActingPlayer().isHero() && item.isHeroItem()) {
+                        item.setLocation(EItemLocation.INVENTORY);
+                    }
                 }
 
                 L2World.getInstance().addObject(item);
@@ -796,7 +797,7 @@ public abstract class Inventory extends ItemContainer {
             refreshWeight();
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Could not restore inventory: " + e.getMessage(), e);
+            LOGGER.error("Could not restore inventory: {}", e.getMessage(), e);
         }
     }
 

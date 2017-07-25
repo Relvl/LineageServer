@@ -17,6 +17,7 @@ import java.util.Map;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -80,7 +81,7 @@ public class Q357_WarehouseKeepersAmbition extends Quest
 					reward += 7400;
 				
 				st.takeItems(JADE_CRYSTAL, -1);
-				st.rewardItems(57, reward);
+				st.rewardItems(ItemConst.ADENA_ID, reward);
 			}
 		}
 		else if (event.equalsIgnoreCase("30686-8.htm"))
