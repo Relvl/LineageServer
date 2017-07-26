@@ -183,13 +183,6 @@ public abstract class L2Character extends L2Object {
         return MapRegionTable.getTown(target.getX(), target.getY(), target.getZ()) != null || attacker.isInsideZone(ZoneId.PEACE);
     }
 
-    /**
-     * This method is overidden in
-     * <ul>
-     * <li>L2PcInstance</li>
-     * <li>L2DoorInstance</li>
-     * </ul>
-     */
     public void addFuncsToNewCharacter() {
         addStatFunc(FuncPAtkMod.getInstance());
         addStatFunc(FuncMAtkMod.getInstance());
@@ -217,13 +210,6 @@ public abstract class L2Character extends L2Object {
         _hpUpdateDecCheck = getMaxHp() - _hpUpdateInterval;
     }
 
-    /**
-     * Remove the L2Character from the world when the decay task is launched.<BR>
-     * <BR>
-     * <FONT COLOR=#FF0000><B> <U>Caution</U> : This method DOESN'T REMOVE the object from _allObjects of L2World </B></FONT><BR>
-     * <FONT COLOR=#FF0000><B> <U>Caution</U> : This method DOESN'T SEND Server->Client packets to players</B></FONT><BR>
-     * <BR>
-     */
     public void onDecay() {
         L2WorldRegion reg = getWorldRegion();
         decayMe();
@@ -245,8 +231,10 @@ public abstract class L2Character extends L2Object {
 
     public Inventory getInventory() { return null; }
 
+    @Deprecated
     public boolean destroyItemByItemId(EItemProcessPurpose process, int itemId, int count, L2Object reference, boolean sendMessage) { return true; }
 
+    @Deprecated
     public boolean destroyItem(EItemProcessPurpose process, int objectId, int count, L2Object reference, boolean sendMessage) { return true; }
 
     @Override
@@ -264,36 +252,18 @@ public abstract class L2Character extends L2Object {
         }
     }
 
-    /**
-     * @return true if the player is GM.
-     */
     public boolean isGM() {
         return false;
     }
 
-    /**
-     * Send a packet to the L2Character AND to all L2PcInstance in the _KnownPlayers of the L2Character.
-     *
-     * @param mov The packet to send.
-     */
     public void broadcastPacket(L2GameServerPacket mov) {
         Broadcast.toSelfAndKnownPlayers(this, mov);
     }
 
-    /**
-     * Send a packet to the L2Character AND to all L2PcInstance in the radius (max knownlist radius) from the L2Character.
-     *
-     * @param mov    The packet to send.
-     * @param radius The radius to make check on.
-     */
     public void broadcastPacket(L2GameServerPacket mov, int radius) {
         Broadcast.toSelfAndKnownPlayersInRadius(this, mov, radius);
     }
 
-    /**
-     * @param barPixels
-     * @return boolean true if hp update should be done, false if not.
-     */
     protected boolean needHpUpdate(int barPixels) {
         double currentHp = getCurrentHp();
 
@@ -316,18 +286,6 @@ public abstract class L2Character extends L2Object {
         return false;
     }
 
-    /**
-     * Send the Server->Client packet StatusUpdate with current HP and MP to all other L2PcInstance to inform.<BR>
-     * <BR>
-     * <B><U> Actions</U> :</B>
-     * <ul>
-     * <li>Create the Server->Client packet StatusUpdate with current HP and MP</li>
-     * <li>Send the Server->Client packet StatusUpdate with current HP and MP to all L2Character called _statusListener that must be informed of HP/MP updates of this L2Character</li>
-     * </ul>
-     * <FONT COLOR=#FF0000><B> <U>Caution</U> : This method DOESN'T SEND CP information</B></FONT><BR>
-     * <BR>
-     * <B><U>Overriden in L2PcInstance</U></B> : Send current HP,MP and CP to the L2PcInstance and only current HP, MP and Level to all other L2PcInstance of the Party
-     */
     public void broadcastStatusUpdate() {
         if (getStatus().getStatusListener().isEmpty()) { return; }
 

@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-@SuppressWarnings("ClassHasNoToStringMethod")
+@SuppressWarnings({"ClassHasNoToStringMethod", "ObjectEquality"})
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Recipe {
     @JacksonXmlProperty(localName = "id", isAttribute = true)

@@ -209,12 +209,12 @@ public abstract class ItemContainer {
 
     // -===========================================================================================================-
 
-    public L2ItemInstance destroyItem(EItemProcessPurpose process, int objectId, int count, L2PcInstance actor, L2Object reference, boolean sendMessage) {
-        return destroyItem(process, getItemByObjectId(objectId), count, actor, reference, sendMessage);
-    }
-
     public L2ItemInstance destroyItemByItemId(EItemProcessPurpose process, int itemId, int count, L2PcInstance actor, L2Object reference, boolean sendMessage) {
         return destroyItem(process, getItemByItemId(itemId), count, actor, reference, sendMessage);
+    }
+
+    public L2ItemInstance destroyItem(EItemProcessPurpose process, int objectId, int count, L2PcInstance actor, L2Object reference, boolean sendMessage) {
+        return destroyItem(process, getItemByObjectId(objectId), count, actor, reference, sendMessage);
     }
 
     protected L2ItemInstance destroyItem(EItemProcessPurpose process, L2ItemInstance item, int count, L2PcInstance actor, L2Object reference, boolean sendMessage) {
@@ -256,13 +256,9 @@ public abstract class ItemContainer {
         return 0;
     }
 
-    protected void addItem(L2ItemInstance item) {
-        items.add(item);
-    }
+    protected void addItem(L2ItemInstance item) { items.add(item); }
 
-    protected boolean removeItem(L2ItemInstance item) {
-        return items.remove(item);
-    }
+    protected boolean removeItem(L2ItemInstance item) { return items.remove(item); }
 
     protected void refreshWeight() { }
 

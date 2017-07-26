@@ -214,7 +214,7 @@ public final class L2PcInstance extends L2Playable {
     private int _mountType;
     private int _mountNpcId;
     private int _mountLevel;
-    private int _mountObjectID;
+    private int mountObjectID;
     private boolean _inCrystallize;
     private boolean _inCraftMode;
     private boolean _waitTypeSitting;
@@ -273,7 +273,7 @@ public final class L2PcInstance extends L2Playable {
     private int _expertiseIndex;
     private int _expertiseArmorPenalty;
     private boolean _expertiseWeaponPenalty;
-    private L2ItemInstance _activeEnchantItem;
+    private L2ItemInstance activeEnchantItem;
     private int _team;
     private int _alliedVarkaKetra; // lvl of alliance with ketra orcs or varka silenos, used in quests and aggro checks [-5,-1] varka, 0 neutral, [1,5] ketra
     private Location _fishingLoc;
@@ -1301,11 +1301,11 @@ public final class L2PcInstance extends L2Playable {
     }
 
     public L2ItemInstance getActiveEnchantItem() {
-        return _activeEnchantItem;
+        return activeEnchantItem;
     }
 
     public void setActiveEnchantItem(L2ItemInstance scroll) {
-        _activeEnchantItem = scroll;
+        activeEnchantItem = scroll;
     }
 
     public Weapon getFistsWeaponItem() {
@@ -1547,11 +1547,11 @@ public final class L2PcInstance extends L2Playable {
             if (_mountType != 0) { return; }
 
             if (sittingState) {
-                if (_mountObjectID != 0) {
-                    L2Object obj = L2World.getInstance().getObject(_mountObjectID);
+                if (mountObjectID != 0) {
+                    L2Object obj = L2World.getInstance().getObject(mountObjectID);
                     ((L2StaticObjectInstance) obj).setBusy(false);
 
-                    _mountObjectID = 0;
+                    mountObjectID = 0;
                 }
 
                 standUp();
@@ -1561,7 +1561,7 @@ public final class L2PcInstance extends L2Playable {
 
                 if (isThrone && !((L2StaticObjectInstance) target).isBusy() && isInsideRadius(target, L2Npc.INTERACTION_DISTANCE, false, false)) {
                     ((L2StaticObjectInstance) target).setBusy(true);
-                    _mountObjectID = target.getObjectId();
+                    mountObjectID = target.getObjectId();
                     broadcastPacket(new ChairSit(getObjectId(), ((L2StaticObjectInstance) target).getStaticObjectId()));
                 }
             }
@@ -1740,41 +1740,16 @@ public final class L2PcInstance extends L2Playable {
         return null;
     }
 
+    @Deprecated
     @Override
     public boolean destroyItem(EItemProcessPurpose process, int objectId, int count, L2Object reference, boolean sendMessage) {
         return inventory.destroyItem(process, objectId, count, this, reference, sendMessage) != null;
     }
 
+    @Deprecated
     @Override
     public boolean destroyItemByItemId(EItemProcessPurpose process, int itemId, int count, L2Object reference, boolean sendMessage) {
-        if (itemId == ItemConst.ADENA_ID) {
-            return inventory.reduceAdena(process, count, reference, sendMessage);
-        }
-
-        L2ItemInstance item = inventory.getItemByItemId(itemId);
-
-        if (item == null || item.getCount() < count || inventory.destroyItemByItemId(process, itemId, count, this, reference, sendMessage) == null) {
-            if (sendMessage) {
-                sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS);
-            }
-            return false;
-        }
-
-        InventoryUpdate iu = new InventoryUpdate();
-        iu.addItem(item);
-        sendPacket(iu);
-
-        StatusUpdate su = new StatusUpdate(this);
-        su.addAttribute(StatusUpdate.CUR_LOAD, getCurrentLoad());
-        sendPacket(su);
-
-        if (sendMessage) {
-            if (count > 1) {
-                sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S2_S1_DISAPPEARED).addItemName(itemId).addItemNumber(count));
-            }
-            else { sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_DISAPPEARED).addItemName(itemId)); }
-        }
-        return true;
+        return inventory.destroyItemByItemId(process, itemId, count, this, reference, sendMessage) != null;
     }
 
     public L2ItemInstance transferItem(EItemProcessPurpose process, int objectId, int count, Inventory target, L2Object reference) {
@@ -1785,31 +1760,29 @@ public final class L2PcInstance extends L2Playable {
         if (newItem == null) { return null; }
 
         // Send inventory update packet
-        InventoryUpdate playerIU = new InventoryUpdate();
-
-        if (oldItem.getCount() > 0 && oldItem != newItem) { playerIU.addModifiedItem(oldItem); }
-        else { playerIU.addRemovedItem(oldItem); }
-
-        sendPacket(playerIU);
+        InventoryUpdate iu = new InventoryUpdate();
+        if (oldItem.getCount() > 0 && oldItem != newItem) { iu.addModifiedItem(oldItem); }
+        else { iu.addRemovedItem(oldItem); }
+        sendPacket(iu);
 
         // Update current load as well
-        StatusUpdate playerSU = new StatusUpdate(this);
-        playerSU.addAttribute(StatusUpdate.CUR_LOAD, getCurrentLoad());
-        sendPacket(playerSU);
+        StatusUpdate su = new StatusUpdate(this);
+        su.addAttribute(StatusUpdate.CUR_LOAD, getCurrentLoad());
+        sendPacket(su);
 
         // Send target update packet
         if (target instanceof PcInventory) {
             L2PcInstance targetPlayer = ((PcInventory) target).getOwner();
 
-            InventoryUpdate playerIU2 = new InventoryUpdate();
-            if (newItem.getCount() > count) { playerIU2.addModifiedItem(newItem); }
-            else { playerIU2.addNewItem(newItem); }
-            targetPlayer.sendPacket(playerIU2);
+            InventoryUpdate iu2 = new InventoryUpdate();
+            if (newItem.getCount() > count) { iu2.addModifiedItem(newItem); }
+            else { iu2.addNewItem(newItem); }
+            targetPlayer.sendPacket(iu2);
 
             // Update current load as well
-            playerSU = new StatusUpdate(targetPlayer);
-            playerSU.addAttribute(StatusUpdate.CUR_LOAD, targetPlayer.getCurrentLoad());
-            targetPlayer.sendPacket(playerSU);
+            StatusUpdate su2 = new StatusUpdate(targetPlayer);
+            su2.addAttribute(StatusUpdate.CUR_LOAD, targetPlayer.getCurrentLoad());
+            targetPlayer.sendPacket(su2);
         }
         else if (target instanceof PetInventory) {
             PetInventoryUpdate petIU = new PetInventoryUpdate();
@@ -1891,25 +1864,14 @@ public final class L2PcInstance extends L2Playable {
 
     public L2ItemInstance checkItemManipulation(int objectId, int count) {
         if (L2World.getInstance().getObject(objectId) == null) { return null; }
-
         L2ItemInstance item = inventory.getItemByObjectId(objectId);
-
         if (item == null || item.getOwnerId() != getObjectId()) { return null; }
-
         if (count < 1 || (count > 1 && !item.isStackable())) { return null; }
-
         if (count > item.getCount()) { return null; }
-
-        // Pet is summoned and not the item that summoned the pet AND not the buggle from strider you're mounting
-        if (summon != null && summon.getControlItemId() == objectId || _mountObjectID == objectId) {
-            return null;
-        }
-
-        if (_activeEnchantItem != null && _activeEnchantItem.getObjectId() == objectId) { return null; }
-
+        if (summon != null && summon.getControlItemId() == objectId || mountObjectID == objectId) { return null; }
+        if (activeEnchantItem != null && activeEnchantItem.getObjectId() == objectId) { return null; }
         // We cannot put a Weapon with Augmention in WH while casting (Possible Exploit)
         if (item.isAugmented() && (isCastingNow() || isCastingSimultaneouslyNow())) { return null; }
-
         return item;
     }
 
@@ -3111,7 +3073,7 @@ public final class L2PcInstance extends L2Playable {
         }
         else {
             // Destroy entire item and save to database
-            inventory.destroyItem(EItemProcessPurpose.CONSUME, arrows,arrows.getCount(), this, false);
+            inventory.destroyItem(EItemProcessPurpose.CONSUME, arrows, arrows.getCount(), this, false);
             inventory.unEquipItemInSlot(EPaperdollSlot.PAPERDOLL_LHAND);
             _arrowItem = null;
 
@@ -3205,7 +3167,7 @@ public final class L2PcInstance extends L2Playable {
         stopAllToggles();
         Ride mount = new Ride(getObjectId(), Ride.ACTION_MOUNT, pet.getTemplate().getNpcId());
         setMount(pet.getNpcId(), pet.getLevel(), mount.getMountType());
-        _mountObjectID = pet.getControlItemId();
+        mountObjectID = pet.getControlItemId();
         clearPetData();
         startFeed(pet.getNpcId());
         broadcastPacket(mount);
@@ -3224,7 +3186,7 @@ public final class L2PcInstance extends L2Playable {
         Ride mount = new Ride(getObjectId(), Ride.ACTION_MOUNT, npcId);
         if (setMount(npcId, getLevel(), mount.getMountType())) {
             clearPetData();
-            _mountObjectID = controlItemId;
+            mountObjectID = controlItemId;
             broadcastPacket(mount);
 
             // Notify self and others about speed change
@@ -3318,7 +3280,7 @@ public final class L2PcInstance extends L2Playable {
 
             broadcastPacket(new Ride(getObjectId(), Ride.ACTION_DISMOUNT, 0));
 
-            _mountObjectID = 0;
+            mountObjectID = 0;
             storePetFood(petId);
 
             // Notify self and others about speed change
@@ -4897,7 +4859,7 @@ public final class L2PcInstance extends L2Playable {
 
     @Override
     public boolean isSeated() {
-        return _mountObjectID > 0;
+        return mountObjectID > 0;
     }
 
     @Override
@@ -6069,11 +6031,11 @@ public final class L2PcInstance extends L2Playable {
         if (item == null || item.getOwnerId() != getObjectId()) { return false; }
 
         // Pet whom item you try to manipulate is summoned/mounted.
-        if (summon != null && summon.getControlItemId() == objectId || _mountObjectID == objectId) {
+        if (summon != null && summon.getControlItemId() == objectId || mountObjectID == objectId) {
             return false;
         }
 
-        if (_activeEnchantItem != null && _activeEnchantItem.getObjectId() == objectId) { return false; }
+        if (activeEnchantItem != null && activeEnchantItem.getObjectId() == objectId) { return false; }
 
         // Can't trade a cursed weapon.
         return !CursedWeaponsManager.getInstance().isCursed(item.getItemId());
@@ -6238,7 +6200,7 @@ public final class L2PcInstance extends L2Playable {
             }
 
             if (isSeated()) {
-                L2Object obj = L2World.getInstance().getObject(_mountObjectID);
+                L2Object obj = L2World.getInstance().getObject(mountObjectID);
                 ((L2StaticObjectInstance) obj).setBusy(false);
             }
 
@@ -6521,11 +6483,11 @@ public final class L2PcInstance extends L2Playable {
     }
 
     public int getMountObjectID() {
-        return _mountObjectID;
+        return mountObjectID;
     }
 
     public void setMountObjectID(int newID) {
-        _mountObjectID = newID;
+        mountObjectID = newID;
     }
 
     public SkillUseHolder getCurrentSkill() {
@@ -7109,7 +7071,7 @@ public final class L2PcInstance extends L2Playable {
         else {
             activeChar.sendPacket(new CharInfo(this));
             if (isSeated()) {
-                L2Object object = L2World.getInstance().getObject(_mountObjectID);
+                L2Object object = L2World.getInstance().getObject(mountObjectID);
                 if (object instanceof L2StaticObjectInstance) {
                     activeChar.sendPacket(new ChairSit(getObjectId(), ((L2StaticObjectInstance) object).getStaticObjectId()));
                 }

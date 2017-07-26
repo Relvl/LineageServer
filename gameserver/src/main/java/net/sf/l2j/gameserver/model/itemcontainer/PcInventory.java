@@ -146,20 +146,6 @@ public class PcInventory extends Inventory {
         }
     }
 
-    public boolean reduceAdena(EItemProcessPurpose process, int count, L2Object reference, boolean sendMessage) {
-        if (count > getAdena()) {
-            if (sendMessage) {
-                player.sendPacket(SystemMessageId.YOU_NOT_ENOUGH_ADENA);
-            }
-            return false;
-        }
-        if (count > 0) {
-            if (destroyItemByItemId(process, ItemConst.ADENA_ID, count, player, reference, true) == null) { return false; }
-        }
-        return true;
-
-    }
-
     public void addAncientAdena(EItemProcessPurpose process, int count, L2Object reference) {
         if (count > 0) {
             player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.EARNED_S2_S1_S).addItemName(ItemConst.ANCIENT_ADENA_ID).addNumber(count));
@@ -169,14 +155,6 @@ public class PcInventory extends Inventory {
             iu.addItem(ancientAdena);
             player.sendPacket(iu);
         }
-    }
-
-    public boolean reduceAncientAdena(EItemProcessPurpose process, int count, L2Object reference) {
-        if (count > getAncientAdena()) {
-            player.sendPacket(SystemMessageId.YOU_NOT_ENOUGH_ADENA);
-            return false;
-        }
-        return count <= 0 && destroyItemByItemId(process, ItemConst.ANCIENT_ADENA_ID, count, player, reference, true) != null;
     }
 
     @Override
@@ -210,13 +188,54 @@ public class PcInventory extends Inventory {
     @Override
     public L2ItemInstance transferItem(EItemProcessPurpose process, int objectId, int count, ItemContainer target, L2PcInstance actor, L2Object reference) {
         L2ItemInstance item = super.transferItem(process, objectId, count, target, actor, reference);
+
         if (adena != null && (adena.getCount() <= 0 || adena.getOwnerId() != getOwnerId())) { adena = null; }
         if (ancientAdena != null && (ancientAdena.getCount() <= 0 || ancientAdena.getOwnerId() != getOwnerId())) { ancientAdena = null; }
+
         return item;
     }
 
     // -===========================================================================================================-
+    @Deprecated
+    public boolean reduceAdena(EItemProcessPurpose process, int count, L2Object reference, boolean sendMessage) {
+        if (count > getAdena()) {
+            if (sendMessage) {
+                player.sendPacket(SystemMessageId.YOU_NOT_ENOUGH_ADENA);
+            }
+            return false;
+        }
+        return destroyItem(process, adena, count, player, reference, true) != null;
+    }
 
+    @Deprecated
+    public boolean reduceAncientAdena(EItemProcessPurpose process, int count, L2Object reference) {
+        if (count > getAncientAdena()) {
+            player.sendPacket(SystemMessageId.YOU_NOT_ENOUGH_ADENA);
+            return false;
+        }
+        return destroyItem(process, ancientAdena, count, player, reference, true) != null;
+    }
+
+    @Override
+    public L2ItemInstance destroyItemByItemId(EItemProcessPurpose process, int itemId, int count, L2PcInstance actor, L2Object reference, boolean sendMessage) {
+        if (itemId == ItemConst.ADENA_ID) {
+            if (count > getAncientAdena()) {
+                player.sendPacket(SystemMessageId.YOU_NOT_ENOUGH_ADENA);
+                return null;
+            }
+            return destroyItem(process, adena, count, player, reference, sendMessage);
+        }
+        if (itemId == ItemConst.ANCIENT_ADENA_ID) {
+            if (count > getAncientAdena()) {
+                player.sendPacket(SystemMessageId.YOU_NOT_ENOUGH_ADENA);
+                return null;
+            }
+            return destroyItem(process, ancientAdena, count, player, reference, sendMessage);
+        }
+        return super.destroyItemByItemId(process, itemId, count, actor, reference, sendMessage);
+    }
+
+    /**  */
     public L2ItemInstance destroyItem(EItemProcessPurpose process, L2ItemInstance item, int count, L2Object reference, boolean sendMessage) {
         return destroyItem(process, item, count, player, reference, sendMessage);
     }
@@ -241,7 +260,7 @@ public class PcInventory extends Inventory {
         player.sendPacket(su);
 
         if (sendMessage) {
-            if (item == adena) {
+            if (item.getItemId() == ItemConst.ADENA_ID) {
                 player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_DISAPPEARED_ADENA).addNumber(count));
             }
             else if (count > 1) {
@@ -276,9 +295,12 @@ public class PcInventory extends Inventory {
     @Override
     protected boolean removeItem(L2ItemInstance item) {
         player.removeItemFromShortCut(item.getObjectId());
+
         if (item.equals(player.getActiveEnchantItem())) { player.setActiveEnchantItem(null); }
+
         if (item.getItemId() == ItemConst.ADENA_ID) { adena = null; }
         else if (item.getItemId() == ItemConst.ANCIENT_ADENA_ID) { ancientAdena = null; }
+
         return super.removeItem(item);
     }
 
