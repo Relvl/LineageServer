@@ -597,21 +597,21 @@ public final class L2PcInstance extends L2Playable {
         return true;
     }
 
-    public static void teleToTarget(L2PcInstance targetChar, L2PcInstance summonerChar, L2Skill summonSkill) {
-        if (targetChar == null || summonerChar == null || summonSkill == null) { return; }
+    public static void teleToTarget(L2PcInstance targetPlayer, L2PcInstance summonerChar, L2Skill summonSkill) {
+        if (targetPlayer == null || summonerChar == null || summonSkill == null) { return; }
 
         if (!checkSummonerStatus(summonerChar)) { return; }
 
-        if (!checkSummonTargetStatus(targetChar, summonerChar)) { return; }
+        if (!checkSummonTargetStatus(targetPlayer, summonerChar)) { return; }
 
         if (summonSkill.getTargetConsumeId() != 0 && summonSkill.getTargetConsume() != 0) {
-            if (targetChar.inventory.getInventoryItemCount(summonSkill.getTargetConsumeId(), 0) < summonSkill.getTargetConsume()) {
-                targetChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_REQUIRED_FOR_SUMMONING).addItemName(summonSkill.getTargetConsumeId()));
+            if (targetPlayer.inventory.getInventoryItemCount(summonSkill.getTargetConsumeId(), 0) < summonSkill.getTargetConsume()) {
+                targetPlayer.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_REQUIRED_FOR_SUMMONING).addItemName(summonSkill.getTargetConsumeId()));
                 return;
             }
-            targetChar.destroyItemByItemId(EItemProcessPurpose.CONSUME, summonSkill.getTargetConsumeId(), summonSkill.getTargetConsume(), targetChar, true);
+            targetPlayer.inventory.destroyItemByItemId(EItemProcessPurpose.CONSUME, summonSkill.getTargetConsumeId(), summonSkill.getTargetConsume(), targetPlayer, summonerChar, true);
         }
-        targetChar.teleToLocation(summonerChar.getX(), summonerChar.getY(), summonerChar.getZ(), 20);
+        targetPlayer.teleToLocation(summonerChar.getX(), summonerChar.getY(), summonerChar.getZ(), 20);
     }
 
     public static boolean checkSummonerStatus(L2PcInstance summonerChar) {
@@ -1738,18 +1738,6 @@ public final class L2PcInstance extends L2Playable {
             }
         }
         return null;
-    }
-
-    @Deprecated
-    @Override
-    public boolean destroyItem(EItemProcessPurpose process, int objectId, int count, L2Object reference, boolean sendMessage) {
-        return inventory.destroyItem(process, objectId, count, this, reference, sendMessage) != null;
-    }
-
-    @Deprecated
-    @Override
-    public boolean destroyItemByItemId(EItemProcessPurpose process, int itemId, int count, L2Object reference, boolean sendMessage) {
-        return inventory.destroyItemByItemId(process, itemId, count, this, reference, sendMessage) != null;
     }
 
     public L2ItemInstance transferItem(EItemProcessPurpose process, int objectId, int count, Inventory target, L2Object reference) {
@@ -4315,7 +4303,9 @@ public final class L2PcInstance extends L2Playable {
         setCurrentSkill(skill, forceUse, dontMove);
 
         // Wipe queued skill.
-        if (_queuedSkill.getSkill() != null) { setQueuedSkill(null, false, false); }
+        if (_queuedSkill.getSkill() != null) {
+            setQueuedSkill(null, false, false);
+        }
 
         if (!checkUseMagicConditions(skill, forceUse, dontMove)) {
             setIsCastingNow(false);
@@ -4488,7 +4478,9 @@ public final class L2PcInstance extends L2Playable {
 
         // Check if this skill is enabled (ex : reuse time)
         if (isSkillDisabled(skill)) {
-            sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_PREPARED_FOR_REUSE).addSkillName(skill));
+            // Никогда не любил этот спам...
+            // sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_PREPARED_FOR_REUSE).addSkillName(skill));
+            sendPacket(ActionFailed.STATIC_PACKET);
             return false;
         }
 
@@ -5967,10 +5959,10 @@ public final class L2PcInstance extends L2Playable {
         // Modify the position of the pet if necessary
         L2Summon pet = summon;
         if (pet != null) {
-            pet.setFollowStatus(false);
+            pet.setFollow(false);
             pet.teleToLocation(getPosition().getX(), getPosition().getY(), getPosition().getZ(), 0);
             ((L2SummonAI) pet.getAI()).setStartFollowController(true);
-            pet.setFollowStatus(true);
+            pet.setFollow(true);
         }
     }
 
@@ -6450,12 +6442,13 @@ public final class L2PcInstance extends L2Playable {
         return _lure;
     }
 
-    public void setLure(L2ItemInstance lure) {
-        _lure = lure;
-    }
+    public void setLure(L2ItemInstance lure) { _lure = lure; }
 
     public int getInventoryLimit() {
-        return ((getRace() == PlayerRace.Dwarf) ? Config.INVENTORY_MAXIMUM_DWARF : Config.INVENTORY_MAXIMUM_NO_DWARF) + (int) getStat().calcStat(Stats.INV_LIM, 0, null, null);
+        return ((getRace() == PlayerRace.Dwarf) ?
+                Config.INVENTORY_MAXIMUM_DWARF :
+                Config.INVENTORY_MAXIMUM_NO_DWARF)
+                + (int) getStat().calcStat(Stats.INV_LIM, 0, null, null);
     }
 
     public int getWareHouseLimit() {

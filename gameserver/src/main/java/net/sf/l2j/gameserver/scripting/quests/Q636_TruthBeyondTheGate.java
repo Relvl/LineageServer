@@ -95,7 +95,9 @@ public class Q636_TruthBeyondTheGate extends Quest {
     public final String onEnterZone(L2Character character, L2ZoneType zone) {
         // QuestState already null on enter because quest is finished
         if (character instanceof L2PcInstance) {
-            if (character.getActingPlayer().destroyItemByItemId(EItemProcessPurpose.QUEST, VISITOR_MARK, 1, character, false)) { character.getActingPlayer().addItem(EItemProcessPurpose.QUEST, FADED_VISITOR_MARK, 1, character, true); }
+            if (character.getActingPlayer().getInventory().destroyItemByItemId(EItemProcessPurpose.QUEST, VISITOR_MARK, 1, character.getActingPlayer(), character, false) != null) {
+                character.getActingPlayer().addItem(EItemProcessPurpose.QUEST, FADED_VISITOR_MARK, 1, character, true);
+            }
         }
         return null;
     }

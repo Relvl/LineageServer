@@ -237,11 +237,13 @@ public class L2SepulcherNpcInstance extends L2NpcInstance {
                         if (player.isInParty()) {
                             for (L2PcInstance mem : player.getParty().getPartyMembers()) {
                                 if (mem != null && mem.getInventory().getItemByItemId(HALLS_KEY) != null) {
-                                    mem.destroyItemByItemId(EItemProcessPurpose.QUEST, HALLS_KEY, mem.getInventory().getItemByItemId(HALLS_KEY).getCount(), mem, true);
+                                    mem.getInventory().destroyItemByItemId(EItemProcessPurpose.QUEST, HALLS_KEY, mem.getInventory().getItemByItemId(HALLS_KEY).getCount(), mem, this, true);
                                 }
                             }
                         }
-                        else { player.destroyItemByItemId(EItemProcessPurpose.QUEST, HALLS_KEY, hallsKey.getCount(), player, true); }
+                        else {
+                            player.getInventory().destroyItemByItemId(EItemProcessPurpose.QUEST, HALLS_KEY, hallsKey.getCount(), player, this, true);
+                        }
                     }
                 }
             }

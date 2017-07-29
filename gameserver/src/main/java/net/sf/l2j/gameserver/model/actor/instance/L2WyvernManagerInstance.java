@@ -56,7 +56,7 @@ public class L2WyvernManagerInstance extends L2CastleChamberlainInstance {
                     // Check for strider level
                     if (player.getMountLevel() < requiredLevel) { val = "6"; }
                     // Check for items consumption
-                    else if (player.destroyItemByItemId(EItemProcessPurpose.WYVERN, 1460, neededCrystals, player, true)) {
+                    else if (player.getInventory().destroyItemByItemId(EItemProcessPurpose.WYVERN, 1460, neededCrystals, player, this, true) != null) {
                         player.dismount();
                         if (player.mount(12621, 0, true)) { val = "4"; }
                     }

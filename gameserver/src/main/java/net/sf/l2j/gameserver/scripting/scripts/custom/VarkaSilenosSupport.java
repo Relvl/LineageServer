@@ -338,7 +338,7 @@ public class VarkaSilenosSupport extends Quest {
                 L2ItemInstance item = inventory.getItemByItemId(i);
                 if (item != null) {
                     // Destroy the badge.
-                    player.destroyItemByItemId(EItemProcessPurpose.QUEST, i, item.getCount(), player, true);
+                    player.getInventory().destroyItemByItemId(EItemProcessPurpose.QUEST, i, item.getCount(), player, null, true);
 
                     // Badge lvl 1 ; no addition of badge of lower level.
                     if (i != 7221) { player.addItem(EItemProcessPurpose.QUEST, i - 1, 1, player, true); }

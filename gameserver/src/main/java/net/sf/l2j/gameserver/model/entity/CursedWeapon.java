@@ -120,7 +120,7 @@ public class CursedWeapon {
 
                 // Unequip && remove.
                 _player.useEquippableItem(_item, true);
-                _player.destroyItemByItemId(EItemProcessPurpose.CURSED_WEAPON, _itemId, 1, _player, false);
+                _player.getInventory().destroyItemByItemId(EItemProcessPurpose.CURSED_WEAPON, _itemId, 1, _player, _player, false);
 
                 _player.broadcastUserInfo();
 
@@ -156,7 +156,7 @@ public class CursedWeapon {
         else {
             // This CW is in the inventory of someone who has another cursed weapon equipped.
             if (_player != null && _player.getInventory().getItemByItemId(_itemId) != null) {
-                _player.destroyItemByItemId(EItemProcessPurpose.CURSED_WEAPON, _itemId, 1, _player, false);
+                _player.getInventory().destroyItemByItemId(EItemProcessPurpose.CURSED_WEAPON, _itemId, 1, _player, _player, false);
                 _log.info(_name + " item has been assimilated.");
             }
             // This CW is on the ground.

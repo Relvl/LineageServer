@@ -34,6 +34,7 @@ public abstract class Inventory extends ItemContainer {
         addPaperdollListener(StatsListener.getInstance());
     }
 
+    @Deprecated
     public static EPaperdollSlot getPaperdollIndex(EItemBodyPart bodyPart) {
         switch (bodyPart) {
             case SLOT_UNDERWEAR:
@@ -78,60 +79,29 @@ public abstract class Inventory extends ItemContainer {
 
     protected abstract EItemLocation getEquipLocation();
 
-    /**
-     * Returns the instance of new ChangeRecorder
-     *
-     * @return ChangeRecorder
-     */
     public ChangeRecorder newRecorder() {
         return new ChangeRecorder(this);
     }
 
-    /**
-     * Drop item from inventory and updates database
-     *
-     * @param process   : String Identifier of process triggering this action
-     * @param item      : L2ItemInstance to be dropped
-     * @param actor     : L2PcInstance Player requesting the item drop
-     * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
-     * @return L2ItemInstance corresponding to the destroyed item or the updated item in inventory
-     */
     public L2ItemInstance dropItem(EItemProcessPurpose process, L2ItemInstance item, L2PcInstance actor, L2Object reference) {
         if (item == null) { return null; }
-
         synchronized (item) {
             if (!items.contains(item)) { return null; }
-
             removeItem(item);
             item.setOwnerId(process, 0, actor, reference);
             item.setLocation(EItemLocation.VOID);
             item.setModifyState(EItemModifyState.REMOVED);
-
             item.updateDatabase();
             refreshWeight();
         }
         return item;
     }
 
-    /**
-     * Drop item from inventory by using its <B>objectID</B> and updates database
-     *
-     * @param process   : String Identifier of process triggering this action
-     * @param objectId  : int Item Instance identifier of the item to be dropped
-     * @param count     : int Quantity of items to be dropped
-     * @param actor     : L2PcInstance Player requesting the item drop
-     * @param reference : L2Object Object referencing current action like NPC selling item or previous item in transformation
-     * @return L2ItemInstance corresponding to the destroyed item or the updated item in inventory
-     */
     public L2ItemInstance dropItem(EItemProcessPurpose process, int objectId, int count, L2PcInstance actor, L2Object reference) {
         L2ItemInstance item = getItemByObjectId(objectId);
         if (item == null) { return null; }
-
         synchronized (item) {
             if (!items.contains(item)) { return null; }
-
-            // Adjust item quantity and create new instance to drop
-            // Directly drop entire item
             if (item.getCount() > count) {
                 item.changeCount(process, -count, actor, reference);
                 item.setModifyState(EItemModifyState.MODIFIED);
@@ -146,23 +116,14 @@ public abstract class Inventory extends ItemContainer {
         return dropItem(process, item, actor, reference);
     }
 
-    /**
-     * Adds item to inventory for further adjustments and Equip it if necessary (itemlocation defined)<BR>
-     * <BR>
-     *
-     * @param item : L2ItemInstance to be added from inventory
-     */
     @Override
     protected void addItem(L2ItemInstance item) {
         super.addItem(item);
-        if (item.isEquipped()) { equipItem(item); }
+        if (item.isEquipped()) {
+            equipItem(item);
+        }
     }
 
-    /**
-     * Removes item from inventory for further adjustments.
-     *
-     * @param item : L2ItemInstance to be removed from inventory
-     */
     @Override
     protected boolean removeItem(L2ItemInstance item) {
         for (Entry<EPaperdollSlot, L2ItemInstance> entry : paperdoll.entrySet()) {
@@ -173,12 +134,9 @@ public abstract class Inventory extends ItemContainer {
         return super.removeItem(item);
     }
 
-    public L2ItemInstance getPaperdollItem(EPaperdollSlot slot) {
-        return paperdoll.get(slot);
-    }
+    public L2ItemInstance getPaperdollItem(EPaperdollSlot slot) { return paperdoll.get(slot); }
 
     public List<L2ItemInstance> getPaperdollItems() {
-        // TODO .values()?
         List<L2ItemInstance> itemsList = new ArrayList<>();
         for (L2ItemInstance itemInstance : paperdoll.values()) {
             if (itemInstance != null) { itemsList.add(itemInstance); }
@@ -187,16 +145,8 @@ public abstract class Inventory extends ItemContainer {
     }
 
     @Deprecated
-    public L2ItemInstance getPaperdollItemByL2ItemId(EItemBodyPart bodyPart) {
-        return paperdoll.get(getPaperdollIndex(bodyPart));
-    }
+    public L2ItemInstance getPaperdollItemByL2ItemId(EItemBodyPart bodyPart) { return paperdoll.get(getPaperdollIndex(bodyPart)); }
 
-    /**
-     * Returns the ID of the item in the paperdol slot
-     *
-     * @param slot : int designating the slot
-     * @return int designating the ID of the item
-     */
     public int getPaperdollItemId(EPaperdollSlot slot) {
         L2ItemInstance item = paperdoll.get(slot);
         return item != null ? item.getItemId() : 0;
@@ -212,78 +162,38 @@ public abstract class Inventory extends ItemContainer {
         return 0;
     }
 
-    /**
-     * Returns the objectID associated to the item in the paperdoll slot
-     *
-     * @param slot : int pointing out the slot
-     * @return int designating the objectID
-     */
     public int getPaperdollObjectId(EPaperdollSlot slot) {
         L2ItemInstance item = paperdoll.get(slot);
         return item != null ? item.getObjectId() : 0;
     }
 
-    /**
-     * Adds new inventory's paperdoll listener
-     *
-     * @param listener PaperdollListener pointing out the listener
-     */
     public final synchronized void addPaperdollListener(OnEquipListener listener) {
         assert !paperdollListeners.contains(listener);
         paperdollListeners.add(listener);
     }
 
-    /**
-     * Removes a paperdoll listener
-     *
-     * @param listener PaperdollListener pointing out the listener to be deleted
-     */
-    public synchronized void removePaperdollListener(OnEquipListener listener) {
-        paperdollListeners.remove(listener);
-    }
+    public synchronized void removePaperdollListener(OnEquipListener listener) { paperdollListeners.remove(listener); }
 
-    /**
-     * Equips an item in the given slot of the paperdoll. <U><I>Remark :</I></U> The item <B>HAS TO BE</B> already in the inventory
-     *
-     * @param slot : int pointing out the slot of the paperdoll
-     * @param item : L2ItemInstance pointing out the item to add in slot
-     * @return L2ItemInstance designating the item placed in the slot before
-     */
     public synchronized L2ItemInstance setPaperdollItem(EPaperdollSlot slot, L2ItemInstance item) {
         L2ItemInstance old = paperdoll.get(slot);
         if (old != item) {
             if (old != null) {
                 paperdoll.remove(slot);
-                // Put old item from paperdoll slot to base location
                 old.setLocation(getBaseLocation());
                 old.setModifyState(EItemModifyState.MODIFIED);
-
-                // delete armor mask flag (in case of two-piece armor it does not matter, we need to deactivate mask too)
                 wornMask &= ~old.getItem().getItemMask();
-
-                // Notify all paperdoll listener in order to unequip old item in slot
                 for (OnEquipListener listener : paperdollListeners) {
                     if (listener == null) { continue; }
-
                     listener.onUnequip(slot, old, (L2Playable) getOwner());
                 }
                 old.updateDatabase();
             }
-            // Add new item in slot of paperdoll
             if (item != null) {
                 paperdoll.put(slot, item);
                 item.setLocation(getEquipLocation(), slot.ordinal());
                 item.setModifyState(EItemModifyState.MODIFIED);
-
-                // activate mask (check 2nd armor part for two-piece armors)
                 Item armor = item.getItem();
-                if (armor.getBodyPart() == EItemBodyPart.SLOT_CHEST) {
-                    L2ItemInstance legs = paperdoll.get(EPaperdollSlot.PAPERDOLL_LEGS);
-                    if (legs != null && legs.getItem().getItemMask() == armor.getItemMask()) {
-                        wornMask |= armor.getItemMask();
-                    }
-                }
-                else if (armor.getBodyPart() == EItemBodyPart.SLOT_LEGS) {
+                if (armor.getBodyPart() == EItemBodyPart.SLOT_CHEST || armor.getBodyPart() == EItemBodyPart.SLOT_LEGS) {
                     L2ItemInstance legs = paperdoll.get(EPaperdollSlot.PAPERDOLL_LEGS);
                     if (legs != null && legs.getItem().getItemMask() == armor.getItemMask()) {
                         wornMask |= armor.getItemMask();
@@ -295,7 +205,6 @@ public abstract class Inventory extends ItemContainer {
 
                 for (OnEquipListener listener : paperdollListeners) {
                     if (listener == null) { continue; }
-
                     listener.onEquip(slot, item, (L2Playable) getOwner());
                 }
                 item.updateDatabase();
@@ -304,14 +213,7 @@ public abstract class Inventory extends ItemContainer {
         return old;
     }
 
-    /**
-     * Return the mask of worn item
-     *
-     * @return int
-     */
-    public int getWornMask() {
-        return wornMask;
-    }
+    public int getWornMask() { return wornMask; }
 
     /** @deprecated Заменять надо на более красивый код */
     @Deprecated

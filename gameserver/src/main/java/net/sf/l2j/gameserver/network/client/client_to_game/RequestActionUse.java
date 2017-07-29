@@ -128,7 +128,7 @@ public final class RequestActionUse extends L2GameClientPacket {
                 if (pet == null) { return; }
 
                 // You can't order anymore your pet to stop if distance is superior to 2000.
-                if (pet.getFollowStatus() && Util.calculateDistance(activeChar, pet, true) > 2000) { return; }
+                if (pet.isFollow() && Util.calculateDistance(activeChar, pet, true) > 2000) { return; }
 
                 if (pet.isOutOfControl()) {
                     activeChar.sendPacket(SystemMessageId.PET_REFUSING_ORDER);
@@ -169,7 +169,7 @@ public final class RequestActionUse extends L2GameClientPacket {
 
                 // Summons can attack NPCs even when the owner cannot.
                 if (!target.isAutoAttackable(activeChar) && !_ctrlPressed && (!(target instanceof L2NpcInstance))) {
-                    pet.setFollowStatus(false);
+                    pet.setFollow(false);
                     pet.getAI().setIntention(EIntention.FOLLOW, target);
                     activeChar.sendPacket(SystemMessageId.INCORRECT_TARGET);
                     return;
@@ -183,7 +183,7 @@ public final class RequestActionUse extends L2GameClientPacket {
                 // siege golem AI doesn't support attacking other than doors at the moment
                 else if (pet.getNpcId() != L2SiegeSummonInstance.SIEGE_GOLEM_ID) {
                     if (L2Character.isInsidePeaceZone(pet, target)) {
-                        pet.setFollowStatus(false);
+                        pet.setFollow(false);
                         pet.getAI().setIntention(EIntention.FOLLOW, target);
                     }
                     else { pet.getAI().setIntention(EIntention.ATTACK, target); }
@@ -297,7 +297,7 @@ public final class RequestActionUse extends L2GameClientPacket {
                     return;
                 }
 
-                pet.setFollowStatus(false);
+                pet.setFollow(false);
                 pet.getAI().setIntention(EIntention.MOVE_TO, new HeadedLocation(target.getX(), target.getY(), target.getZ(), 0));
                 break;
 

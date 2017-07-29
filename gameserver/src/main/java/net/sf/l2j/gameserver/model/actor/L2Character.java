@@ -231,12 +231,6 @@ public abstract class L2Character extends L2Object {
 
     public Inventory getInventory() { return null; }
 
-    @Deprecated
-    public boolean destroyItemByItemId(EItemProcessPurpose process, int itemId, int count, L2Object reference, boolean sendMessage) { return true; }
-
-    @Deprecated
-    public boolean destroyItem(EItemProcessPurpose process, int objectId, int count, L2Object reference, boolean sendMessage) { return true; }
-
     @Override
     public boolean isInsideZone(ZoneId zone) {
         return zone == ZoneId.PVP ?
@@ -1033,9 +1027,8 @@ public abstract class L2Character extends L2Object {
 
         // For force buff skills, start the effect as long as the player is casting.
         if (effectWhileCasting) {
-            // Consume Items if necessary and Send the Server->Client packet InventoryUpdate with Item modification to all the L2Character
             if (skill.getItemConsumeId() > 0) {
-                if (!destroyItemByItemId(EItemProcessPurpose.CONSUME, skill.getItemConsumeId(), skill.getItemConsume(), null, true)) {
+                if (this instanceof L2Playable && getInventory().destroyItemByItemId(EItemProcessPurpose.CONSUME, skill.getItemConsumeId(), skill.getItemConsume(), getActingPlayer(), null, true) == null) {
                     sendPacket(SystemMessage.getSystemMessage(SystemMessageId.NOT_ENOUGH_ITEMS));
                     if (simultaneously) {
                         _isCastingSimultaneouslyNow = false;
@@ -1043,7 +1036,6 @@ public abstract class L2Character extends L2Object {
                     else {
                         _isCastingNow = false;
                     }
-
                     if (isPlayer()) {
                         getAI().setIntention(EIntention.ACTIVE);
                     }
@@ -1075,14 +1067,14 @@ public abstract class L2Character extends L2Object {
 
         if (this instanceof L2Playable) {
             // Send a system message USE_S1 to the L2Character
-            if (this instanceof L2PcInstance && skill.getId() != 1312) {
+            if (isPlayer() && skill.getId() != 1312) {
                 SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.USE_S1);
                 sm.addSkillName(skill);
                 sendPacket(sm);
             }
 
             if (!effectWhileCasting && skill.getItemConsumeId() > 0) {
-                if (!destroyItemByItemId(EItemProcessPurpose.CONSUME, skill.getItemConsumeId(), skill.getItemConsume(), null, true)) {
+                if (getInventory().destroyItemByItemId(EItemProcessPurpose.CONSUME, skill.getItemConsumeId(), skill.getItemConsume(), getActingPlayer(), null, true) == null) {
                     getActingPlayer().sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS);
                     abortCast();
                     return;
@@ -2775,7 +2767,7 @@ public abstract class L2Character extends L2Object {
                         // With cellpathfinding this approach could be changed but would require taking off the geonodes and some more checks.
                         // Summons will follow their masters no matter what.
                         // Currently minions also must move freely since L2AttackableAI commands them to move along with their leader
-                        if (this instanceof L2PcInstance || (!(this instanceof L2Playable) && !isMinion() && Math.abs(z - curZ) > 140) || (this instanceof L2Summon && !((L2Summon) this).getFollowStatus())) { return; }
+                        if (this instanceof L2PcInstance || (!(this instanceof L2Playable) && !isMinion() && Math.abs(z - curZ) > 140) || (this instanceof L2Summon && !((L2Summon) this).isFollow())) { return; }
 
                         newMd.disregardingGeodata = true;
                         x = originalX;
@@ -2821,7 +2813,7 @@ public abstract class L2Character extends L2Object {
 
             // If no distance to go through, the movement is canceled
             if (distance < 1 && (Config.GEODATA == 2 || this instanceof L2Playable || this instanceof L2RiftInvaderInstance || isAfraid())) {
-                if (this instanceof L2Summon) { ((L2Summon) this).setFollowStatus(false); }
+                if (this instanceof L2Summon) { ((L2Summon) this).setFollow(false); }
 
                 getAI().setIntention(EIntention.IDLE);
                 return;
@@ -4338,8 +4330,8 @@ public abstract class L2Character extends L2Object {
         getStatus().addStatusListener(object);
     }
 
-    public void reduceCurrentHp(double i, L2Character attacker, L2Skill skill) {
-        reduceCurrentHp(i, attacker, true, false, skill);
+    public void reduceCurrentHp(double damage, L2Character attacker, L2Skill skill) {
+        reduceCurrentHp(damage, attacker, true, false, skill);
     }
 
     public void reduceCurrentHpByDOT(double i, L2Character attacker, L2Skill skill) {

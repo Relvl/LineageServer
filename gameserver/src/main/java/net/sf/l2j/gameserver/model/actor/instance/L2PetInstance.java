@@ -240,45 +240,6 @@ public class L2PetInstance extends L2Summon {
     public PetInventory getInventory() { return inventory; }
 
     @Override
-    public boolean destroyItem(EItemProcessPurpose process, int objectId, int count, L2Object reference, boolean sendMessage) {
-        L2ItemInstance item = inventory.destroyItem(process, objectId, count, getOwner(), reference, sendMessage);
-        if (item == null) {
-            if (sendMessage) {
-                getOwner().sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS);
-            }
-            return false;
-        }
-
-        PetInventoryUpdate petIU = new PetInventoryUpdate();
-        petIU.addItem(item);
-        getOwner().sendPacket(petIU);
-
-        return true;
-    }
-
-    @Override
-    public boolean destroyItemByItemId(EItemProcessPurpose process, int itemId, int count, L2Object reference, boolean sendMessage) {
-        L2ItemInstance item = inventory.destroyItemByItemId(process, itemId, count, getOwner(), reference, sendMessage);
-        if (item == null) {
-            if (sendMessage) {
-                getOwner().sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS);
-            }
-            return false;
-        }
-
-        // Send Pet inventory update packet
-        PetInventoryUpdate petIU = new PetInventoryUpdate();
-        petIU.addItem(item);
-        getOwner().sendPacket(petIU);
-
-        if (sendMessage) {
-            if (count > 1) { getOwner().sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S2_S1_DISAPPEARED).addItemName(item.getItemId()).addItemNumber(count)); }
-            else { getOwner().sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_DISAPPEARED).addItemName(item.getItemId())); }
-        }
-        return true;
-    }
-
-    @Override
     public void doPickupItem(L2Object object) {
         if (isDead()) { return; }
 
@@ -393,7 +354,7 @@ public class L2PetInstance extends L2Summon {
             getOwner().sendPacket(new PetItemList(this));
         }
         getAI().setIntention(EIntention.IDLE);
-        if (getFollowStatus()) {
+        if (isFollow()) {
             followOwner();
         }
     }

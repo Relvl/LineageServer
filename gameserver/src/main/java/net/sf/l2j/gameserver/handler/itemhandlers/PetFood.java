@@ -63,16 +63,12 @@ public class PetFood implements IItemHandler {
         if (skill != null) {
             if (activeChar instanceof L2PetInstance) {
                 L2PetInstance pet = (L2PetInstance) activeChar;
-                if (pet.destroyItem(EItemProcessPurpose.CONSUME, item.getObjectId(), 1, null, false)) {
-                    // Send visual effect.
+                if (pet.getInventory().destroyItem(EItemProcessPurpose.CONSUME, item.getObjectId(), 1, pet.getActingPlayer(), null, false) != null) {
                     activeChar.broadcastPacket(new MagicSkillUse(activeChar, activeChar, magicId, 1, 0, 0));
-
-                    // Put current value.
                     pet.setCurrentFed(pet.getCurrentFed() + (skill.getFeed() * Config.PET_FOOD_RATE));
-
-                    // If pet is still hungry, send an alert.
-                    if (pet.getCurrentFed() < (55 / 100f * pet.getPetLevelData().getPetMaxFeed())) { pet.getOwner().sendPacket(SystemMessageId.YOUR_PET_ATE_A_LITTLE_BUT_IS_STILL_HUNGRY); }
-
+                    if (pet.getCurrentFed() < (55 / 100f * pet.getPetLevelData().getPetMaxFeed())) {
+                        pet.getOwner().sendPacket(SystemMessageId.YOUR_PET_ATE_A_LITTLE_BUT_IS_STILL_HUNGRY);
+                    }
                     return true;
                 }
             }
@@ -82,7 +78,7 @@ public class PetFood implements IItemHandler {
                 if (player.isMounted()) {
                     int food[] = PetDataTable.getInstance().getPetData(player.getMountNpcId()).getFood();
                     if (Util.contains(food, itemId)) {
-                        if (player.destroyItem(EItemProcessPurpose.CONSUME, item.getObjectId(), 1, null, false)) {
+                        if (player.getInventory().destroyItem(EItemProcessPurpose.CONSUME, item, 1, null, false) != null) {
                             player.broadcastPacket(new MagicSkillUse(activeChar, activeChar, magicId, 1, 0, 0));
                             player.setCurrentFeed(player.getCurrentFeed() + (skill.getFeed() * Config.PET_FOOD_RATE));
                         }

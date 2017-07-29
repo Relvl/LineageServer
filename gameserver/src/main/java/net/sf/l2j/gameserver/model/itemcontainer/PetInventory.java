@@ -2,6 +2,7 @@ package net.sf.l2j.gameserver.model.itemcontainer;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.datatables.ItemTable;
+import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
 import net.sf.l2j.gameserver.model.item.EItemLocation;
@@ -11,17 +12,20 @@ import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.type.EtcItemType;
 import net.sf.l2j.gameserver.model.world.L2World;
+import net.sf.l2j.gameserver.network.SystemMessageId;
+import net.sf.l2j.gameserver.network.client.game_to_client.PetInventoryUpdate;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 public class PetInventory extends Inventory {
-    private final L2PetInstance _owner;
+    private final L2PetInstance pet;
 
     public PetInventory(L2PetInstance owner) {
-        _owner = owner;
+        pet = owner;
     }
 
     @Override
     public L2PetInstance getOwner() {
-        return _owner;
+        return pet;
     }
 
     @Override
@@ -29,7 +33,7 @@ public class PetInventory extends Inventory {
         // gets the L2PcInstance-owner's ID
         int id;
         try {
-            id = _owner.getOwner().getObjectId();
+            id = pet.getOwner().getObjectId();
         }
         catch (NullPointerException e) {
             return 0;
@@ -43,7 +47,7 @@ public class PetInventory extends Inventory {
     @Override
     protected void refreshWeight() {
         super.refreshWeight();
-        _owner.updateAndBroadcastStatus(1);
+        pet.updateAndBroadcastStatus(1);
     }
 
     public boolean validateCapacity(L2ItemInstance item) {
@@ -71,7 +75,7 @@ public class PetInventory extends Inventory {
 
     @Override
     public boolean validateWeight(int weight) {
-        return totalWeight + weight <= _owner.getMaxLoad();
+        return totalWeight + weight <= pet.getMaxLoad();
     }
 
     @Override
@@ -91,26 +95,77 @@ public class PetInventory extends Inventory {
         // check for equipped items from other pets
         for (L2ItemInstance item : items) {
             if (item.isEquipped()) {
-                if (!item.getItem().checkCondition(_owner, _owner, false)) { unEquipItemInSlot(EPaperdollSlot.getByIndex(item.getLocationSlot())); }
+                if (!item.getItem().checkCondition(pet, pet, false)) { unEquipItemInSlot(EPaperdollSlot.getByIndex(item.getLocationSlot())); }
             }
         }
     }
 
     @Override
     public void deleteMe() {
-        // Transfer items only if the items list is feeded.
         if (items != null) {
-            // Retrieves the master of the pet owning the inventory.
-            L2PcInstance petOwner = _owner.getOwner();
+            L2PcInstance petOwner = pet.getOwner();
             if (petOwner != null) {
-                // Transfer each item to master's inventory.
                 for (L2ItemInstance item : items) {
-                    _owner.transferItem(EItemProcessPurpose.RETURN, item.getObjectId(), item.getCount(), petOwner.getInventory(), petOwner, _owner);
+                    pet.transferItem(EItemProcessPurpose.RETURN, item.getObjectId(), item.getCount(), petOwner.getInventory(), petOwner, pet);
                     L2World.getInstance().removeObject(item);
                 }
             }
-            // Clear the internal inventory items list.
             items.clear();
         }
     }
+
+    @Override
+    public L2ItemInstance destroyItemByItemId(EItemProcessPurpose process, int itemId, int count, L2PcInstance actor, L2Object reference, boolean sendMessage) {
+        L2ItemInstance item = super.destroyItemByItemId(process, itemId, count, actor, reference, sendMessage);
+        if (item != null) {
+            PetInventoryUpdate petIU = new PetInventoryUpdate();
+            petIU.addItem(item);
+            pet.sendPacket(petIU);
+            if (sendMessage) {
+                if (count > 1) { pet.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S2_S1_DISAPPEARED).addItemName(item.getItemId()).addItemNumber(count)); }
+                else { pet.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_DISAPPEARED).addItemName(item.getItemId())); }
+            }
+        }
+        else if (sendMessage) {
+            pet.sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS);
+        }
+        return item;
+    }
+
+    @Override
+    public L2ItemInstance destroyItem(EItemProcessPurpose process, L2ItemInstance item, int count, L2PcInstance actor, L2Object reference, boolean sendMessage) {
+        item = super.destroyItem(process, item, count, actor, reference, sendMessage);
+        if (item != null) {
+            PetInventoryUpdate petIU = new PetInventoryUpdate();
+            petIU.addItem(item);
+            pet.sendPacket(petIU);
+            if (sendMessage) {
+                if (count > 1) { pet.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S2_S1_DISAPPEARED).addItemName(item.getItemId()).addItemNumber(count)); }
+                else { pet.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_DISAPPEARED).addItemName(item.getItemId())); }
+            }
+        }
+        else if (sendMessage) {
+            pet.sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS);
+        }
+        return item;
+    }
+
+    @Override
+    public L2ItemInstance destroyItem(EItemProcessPurpose process, int objectId, int count, L2PcInstance actor, L2Object reference, boolean sendMessage) {
+        L2ItemInstance item = super.destroyItem(process, objectId, count, actor, reference, sendMessage);
+        if (item != null) {
+            PetInventoryUpdate petIU = new PetInventoryUpdate();
+            petIU.addItem(item);
+            pet.sendPacket(petIU);
+            if (sendMessage) {
+                if (count > 1) { pet.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S2_S1_DISAPPEARED).addItemName(item.getItemId()).addItemNumber(count)); }
+                else { pet.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_DISAPPEARED).addItemName(item.getItemId())); }
+            }
+        }
+        else if (sendMessage) {
+            pet.sendPacket(SystemMessageId.NOT_ENOUGH_ITEMS);
+        }
+        return item;
+    }
+
 }

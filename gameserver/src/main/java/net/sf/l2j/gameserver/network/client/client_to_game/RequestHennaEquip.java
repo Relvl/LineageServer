@@ -19,37 +19,37 @@ public final class RequestHennaEquip extends L2GameClientPacket {
 
     @Override
     protected void runImpl() {
-        L2PcInstance activeChar = getClient().getActiveChar();
-        if (activeChar == null) { return; }
+        L2PcInstance player = getClient().getActiveChar();
+        if (player == null) { return; }
 
         Henna henna = HennaTable.getInstance().getTemplate(_symbolId);
         if (henna == null) { return; }
 
-        if (!henna.isForThisClass(activeChar)) {
-            activeChar.sendPacket(SystemMessageId.CANT_DRAW_SYMBOL);
-            Util.handleIllegalPlayerAction(activeChar, activeChar.getName() + " of account " + activeChar.getAccountName() + " tried to add a forbidden henna.", Config.DEFAULT_PUNISH);
+        if (!henna.isForThisClass(player)) {
+            player.sendPacket(SystemMessageId.CANT_DRAW_SYMBOL);
+            Util.handleIllegalPlayerAction(player, player.getName() + " of account " + player.getAccountName() + " tried to add a forbidden henna.", Config.DEFAULT_PUNISH);
             return;
         }
 
-        if (activeChar.getHennaEmptySlots() == 0) {
-            activeChar.sendPacket(SystemMessageId.SYMBOLS_FULL);
+        if (player.getHennaEmptySlots() == 0) {
+            player.sendPacket(SystemMessageId.SYMBOLS_FULL);
             return;
         }
 
-        L2ItemInstance ownedDyes = activeChar.getInventory().getItemByItemId(henna.getDyeId());
+        L2ItemInstance ownedDyes = player.getInventory().getItemByItemId(henna.getDyeId());
         int count = (ownedDyes == null) ? 0 : ownedDyes.getCount();
 
         if (count < Henna.getAmountDyeRequire()) {
-            activeChar.sendPacket(SystemMessageId.CANT_DRAW_SYMBOL);
+            player.sendPacket(SystemMessageId.CANT_DRAW_SYMBOL);
             return;
         }
 
         // reduceAdena sends a message.
-        if (!activeChar.getInventory().reduceAdena(EItemProcessPurpose.HENNA, henna.getPrice(), activeChar.getCurrentFolkNPC(), true)) { return; }
+        if (!player.getInventory().reduceAdena(EItemProcessPurpose.HENNA, henna.getPrice(), player.getCurrentFolkNPC(), true)) { return; }
 
         // destroyItemByItemId sends a message.
-        if (!activeChar.destroyItemByItemId(EItemProcessPurpose.HENNA, henna.getDyeId(), Henna.getAmountDyeRequire(), activeChar, true)) { return; }
+        if (player.getInventory().destroyItemByItemId(EItemProcessPurpose.HENNA, henna.getDyeId(), Henna.getAmountDyeRequire(), player, player, true) == null) { return; }
 
-        activeChar.addHenna(henna);
+        player.addHenna(henna);
     }
 }

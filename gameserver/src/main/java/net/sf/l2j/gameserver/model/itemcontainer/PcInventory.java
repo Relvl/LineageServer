@@ -219,7 +219,7 @@ public class PcInventory extends Inventory {
     @Override
     public L2ItemInstance destroyItemByItemId(EItemProcessPurpose process, int itemId, int count, L2PcInstance actor, L2Object reference, boolean sendMessage) {
         if (itemId == ItemConst.ADENA_ID) {
-            if (count > getAncientAdena()) {
+            if (count > getAdena()) {
                 player.sendPacket(SystemMessageId.YOU_NOT_ENOUGH_ADENA);
                 return null;
             }
@@ -241,7 +241,7 @@ public class PcInventory extends Inventory {
     }
 
     @Override
-    protected L2ItemInstance destroyItem(EItemProcessPurpose process, L2ItemInstance item, int count, L2PcInstance actor, L2Object reference, boolean sendMessage) {
+    public L2ItemInstance destroyItem(EItemProcessPurpose process, L2ItemInstance item, int count, L2PcInstance actor, L2Object reference, boolean sendMessage) {
         item = super.destroyItem(process, item, count, actor, reference, sendMessage);
         if (adena != null && adena.getCount() <= 0) { adena = null; }
         if (ancientAdena != null && ancientAdena.getCount() <= 0) { ancientAdena = null; }

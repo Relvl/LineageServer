@@ -439,7 +439,7 @@ public class ClanHall {
         if (player == null) { return false; }
 
         if (lease > 0) {
-            if (!player.destroyItemByItemId(EItemProcessPurpose.CONSUME, ItemConst.ADENA_ID, lease, null, true)) { return false; }
+            if (!player.getInventory().reduceAdena(EItemProcessPurpose.CONSUME, lease, null, true)) { return false; }
         }
 
         if (addNew) { _functions.put(type, new ClanHallFunction(type, lvl, lease, 0, rate, 0, false)); }

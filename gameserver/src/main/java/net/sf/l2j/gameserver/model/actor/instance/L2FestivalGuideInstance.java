@@ -205,7 +205,7 @@ public final class L2FestivalGuideInstance extends L2NpcInstance {
                             break;
                     }
 
-                    if (!player.destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, stoneType, stonesNeeded, this, true)) { return; }
+                    if (player.getInventory().destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, stoneType, stonesNeeded, player, this, true) == null) { return; }
 
                     SevenSignsFestival.getInstance().setParticipants(_festivalOracle, _festivalType, playerParty);
                     SevenSignsFestival.getInstance().addAccumulatedBonus(_festivalType, stoneType, stonesNeeded);

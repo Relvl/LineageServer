@@ -30,7 +30,7 @@ public class L2SummonAI extends L2PlayableAI implements Runnable
 	private static final int AVOID_RADIUS = 70;
 	
 	private volatile boolean _thinking; // to prevent recursive thinking
-	private volatile boolean _startFollow = ((L2Summon) actor).getFollowStatus();
+	private volatile boolean _startFollow = ((L2Summon) actor).isFollow();
 	private L2Character _lastAttack = null;
 	
 	private volatile boolean _startAvoid = false;
@@ -110,7 +110,7 @@ protected 	synchronized void changeIntention(EIntention intention, Object arg0, 
 			return;
 		
 		clientStopMoving(null);
-		((L2Summon) actor).setFollowStatus(false);
+		((L2Summon) actor).setFollow(false);
 		setIntention(EIntention.IDLE);
 		
 		_startFollow = val;
@@ -176,7 +176,7 @@ protected 	synchronized void changeIntention(EIntention intention, Object arg0, 
 	protected void onEvtFinishCasting()
 	{
 		if (_lastAttack == null)
-			((L2Summon) actor).setFollowStatus(_startFollow);
+			((L2Summon) actor).setFollow(_startFollow);
 		else
 		{
 			setIntention(EIntention.ATTACK, _lastAttack);
@@ -238,7 +238,7 @@ protected 	synchronized void changeIntention(EIntention intention, Object arg0, 
 			case IDLE:
 			case MOVE_TO:
 			case PICK_UP:
-				((L2Summon) actor).setFollowStatus(_startFollow);
+				((L2Summon) actor).setFollow(_startFollow);
 		}
 	}
 	

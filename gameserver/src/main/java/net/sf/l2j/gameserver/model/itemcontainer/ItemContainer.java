@@ -217,7 +217,7 @@ public abstract class ItemContainer {
         return destroyItem(process, getItemByObjectId(objectId), count, actor, reference, sendMessage);
     }
 
-    protected L2ItemInstance destroyItem(EItemProcessPurpose process, L2ItemInstance item, int count, L2PcInstance actor, L2Object reference, boolean sendMessage) {
+    public L2ItemInstance destroyItem(EItemProcessPurpose process, L2ItemInstance item, int count, L2PcInstance actor, L2Object reference, boolean sendMessage) {
         if (item == null) { return null; }
         synchronized (item) {
             if (item.getCount() > count) {

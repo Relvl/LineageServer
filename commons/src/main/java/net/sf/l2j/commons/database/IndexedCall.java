@@ -164,20 +164,22 @@ public abstract class IndexedCall implements AutoCloseable {
                         List<FieldAccessor> cursorAccessors = ReflectionManager.getAnnotatedFields(cursorClass, OrmParamCursor.class);
 
                         try (ResultSet resultSet = (ResultSet) argument) {
-                            while (resultSet.next()) {
-                                logSb.append("{");
-                                Object cursorElement = cursorClass.getConstructor().newInstance();
-                                for (FieldAccessor cursorAccessor : cursorAccessors) {
-                                    OrmParamCursor ormParamCursor = cursorAccessor.getField().getAnnotation(OrmParamCursor.class);
-                                    Object cursorElementField = sqlType.readFromResultSet(resultSet, ormParamCursor.value());
-                                    cursorAccessor.getField().set(cursorElement, cursorElementField);
+                            if (resultSet != null) {
+                                while (resultSet.next()) {
+                                    logSb.append("{");
+                                    Object cursorElement = cursorClass.getConstructor().newInstance();
+                                    for (FieldAccessor cursorAccessor : cursorAccessors) {
+                                        OrmParamCursor ormParamCursor = cursorAccessor.getField().getAnnotation(OrmParamCursor.class);
+                                        Object cursorElementField = sqlType.readFromResultSet(resultSet, ormParamCursor.value());
+                                        cursorAccessor.getField().set(cursorElement, cursorElementField);
 
-                                    logSb.append(ormParamCursor.value()).append("=").append(StringUtil.objectToString(cursorElementField)).append(", ");
+                                        logSb.append(ormParamCursor.value()).append("=").append(StringUtil.objectToString(cursorElementField)).append(", ");
+                                    }
+                                    logSb.delete(logSb.length() - 2, logSb.length() - 1);
+                                    //noinspection unchecked
+                                    cursorList.add(cursorElement);
+                                    logSb.append("},");
                                 }
-                                logSb.delete(logSb.length() - 2, logSb.length() - 1);
-                                //noinspection unchecked
-                                cursorList.add(cursorElement);
-                                logSb.append("},");
                             }
                             logSb.delete(logSb.length() - 1, logSb.length());
                         }

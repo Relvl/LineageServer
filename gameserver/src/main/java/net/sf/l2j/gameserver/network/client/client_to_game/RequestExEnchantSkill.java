@@ -39,16 +39,16 @@ public final class RequestExEnchantSkill extends L2GameClientPacket {
             return !isInBoat();
         } */
 
-        L2PcInstance activeChar = getClient().getActiveChar();
-        if (activeChar == null) { return; }
-        if (activeChar.getClassId().level() < 3 || activeChar.getLevel() < 76) { return; }
+        L2PcInstance player = getClient().getActiveChar();
+        if (player == null) { return; }
+        if (player.getClassId().level() < 3 || player.getLevel() < 76) { return; }
 
-        L2Npc trainer = activeChar.getCurrentFolkNPC();
+        L2Npc trainer = player.getCurrentFolkNPC();
         if (trainer == null) { return; }
 
-        if (!activeChar.isInsideRadius(trainer, L2Npc.INTERACTION_DISTANCE, false, false) && !activeChar.isGM()) { return; }
+        if (!player.isInsideRadius(trainer, L2Npc.INTERACTION_DISTANCE, false, false) && !player.isGM()) { return; }
 
-        if (activeChar.getSkillLevel(skillId) >= skillLevel) { return; }
+        if (player.getSkillLevel(skillId) >= skillLevel) { return; }
 
         L2Skill skill = SkillTable.getInfo(skillId, skillLevel);
         if (skill == null) { return; }
@@ -57,7 +57,7 @@ public final class RequestExEnchantSkill extends L2GameClientPacket {
         int baseLvl = 0;
 
         // Try to find enchant skill.
-        for (L2EnchantSkillLearn esl : SkillTreeTable.getInstance().getAvailableEnchantSkills(activeChar)) {
+        for (L2EnchantSkillLearn esl : SkillTreeTable.getInstance().getAvailableEnchantSkills(player)) {
             if (esl == null) { continue; }
 
             if (esl.getId() == skillId && esl.getLevel() == skillLevel) {
@@ -70,53 +70,53 @@ public final class RequestExEnchantSkill extends L2GameClientPacket {
         if (data == null) { return; }
 
         // Check exp and sp neccessary to enchant skill.
-        if (activeChar.getSp() < data.getCostSp()) {
-            activeChar.sendPacket(SystemMessageId.YOU_DONT_HAVE_ENOUGH_SP_TO_ENCHANT_THAT_SKILL);
+        if (player.getSp() < data.getCostSp()) {
+            player.sendPacket(SystemMessageId.YOU_DONT_HAVE_ENOUGH_SP_TO_ENCHANT_THAT_SKILL);
             return;
         }
-        if (activeChar.getExp() < data.getCostExp()) {
-            activeChar.sendPacket(SystemMessageId.YOU_DONT_HAVE_ENOUGH_EXP_TO_ENCHANT_THAT_SKILL);
+        if (player.getExp() < data.getCostExp()) {
+            player.sendPacket(SystemMessageId.YOU_DONT_HAVE_ENOUGH_EXP_TO_ENCHANT_THAT_SKILL);
             return;
         }
 
         // Check item restriction, and try to consume item.
         if (Config.ES_SP_BOOK_NEEDED) {
             if (data.getItemId() != 0 && data.getItemCount() != 0) {
-                if (!activeChar.destroyItemByItemId(EItemProcessPurpose.SKILL, data.getItemId(), data.getItemCount(), trainer, true)) {
-                    activeChar.sendPacket(SystemMessageId.YOU_DONT_HAVE_ALL_OF_THE_ITEMS_NEEDED_TO_ENCHANT_THAT_SKILL);
+                if (player.getInventory().destroyItemByItemId(EItemProcessPurpose.SKILL, data.getItemId(), data.getItemCount(), player, trainer, true) == null) {
+                    player.sendPacket(SystemMessageId.YOU_DONT_HAVE_ALL_OF_THE_ITEMS_NEEDED_TO_ENCHANT_THAT_SKILL);
                     return;
                 }
             }
         }
 
         // All conditions fulfilled, consume exp and sp.
-        activeChar.removeExpAndSp(data.getCostExp(), data.getCostSp());
+        player.removeExpAndSp(data.getCostExp(), data.getCostSp());
 
         // Try to enchant skill.
-        if (Rnd.get(100) <= data.getRate(activeChar.getLevel())) {
-            activeChar.addSkill(skill, true);
-            activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_HAVE_SUCCEEDED_IN_ENCHANTING_THE_SKILL_S1).addSkillName(skillId, skillLevel));
+        if (Rnd.get(100) <= data.getRate(player.getLevel())) {
+            player.addSkill(skill, true);
+            player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_HAVE_SUCCEEDED_IN_ENCHANTING_THE_SKILL_S1).addSkillName(skillId, skillLevel));
         }
         else {
-            activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_HAVE_FAILED_TO_ENCHANT_THE_SKILL_S1).addSkillName(skillId, skillLevel));
+            player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_HAVE_FAILED_TO_ENCHANT_THE_SKILL_S1).addSkillName(skillId, skillLevel));
             if (skillLevel > 100) {
                 skillLevel = baseLvl;
-                activeChar.addSkill(SkillTable.getInfo(skillId, skillLevel), true);
+                player.addSkill(SkillTable.getInfo(skillId, skillLevel), true);
             }
         }
-        activeChar.sendSkillList();
-        activeChar.sendPacket(new UserInfo(activeChar));
+        player.sendSkillList();
+        player.sendPacket(new UserInfo(player));
 
         // Update shortcuts.
-        for (L2ShortCut sc : activeChar.getAllShortCuts()) {
+        for (L2ShortCut sc : player.getAllShortCuts()) {
             if (sc.getId() == skillId && sc.getType() == L2ShortCut.TYPE_SKILL) {
                 L2ShortCut newsc = new L2ShortCut(sc.getSlot(), sc.getPage(), L2ShortCut.TYPE_SKILL, skillId, skillLevel, 1);
-                activeChar.sendPacket(new ShortCutRegister(newsc));
-                activeChar.registerShortCut(newsc);
+                player.sendPacket(new ShortCutRegister(newsc));
+                player.registerShortCut(newsc);
             }
         }
 
         // Show enchant skill list.
-        L2NpcInstance.showEnchantSkillList(activeChar, trainer, activeChar.getClassId());
+        L2NpcInstance.showEnchantSkillList(player, trainer, player.getClassId());
     }
 }

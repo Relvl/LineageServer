@@ -273,7 +273,7 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance {
             }
 
             // Destroy the food from owner's inventory ; if none is found, delete the pet.
-            if (_tamedBeast.getOwner().destroyItemByItemId(EItemProcessPurpose.BEAST_MOB, _tamedBeast.getFoodType(), 1, _tamedBeast, true)) {
+            if (_tamedBeast.getOwner().getInventory().destroyItemByItemId(EItemProcessPurpose.BEAST_MOB, _tamedBeast.getFoodType(), 1, _tamedBeast.getOwner(), _tamedBeast, true) != null) {
                 _tamedBeast.broadcastPacket(new SocialAction(_tamedBeast, 2));
                 _tamedBeast.broadcastPacket(new NpcSay(_tamedBeast.getObjectId(), EChatType.ALL, _tamedBeast.getNpcId(), TAMED_TEXT[Rnd.get(TAMED_TEXT.length)]));
             }
@@ -324,7 +324,7 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance {
             }
 
 			/*
-			 * If the owner has less than 60% of available buff, cast a random buff. That buff is casted only if the player hasn't it.
+             * If the owner has less than 60% of available buff, cast a random buff. That buff is casted only if the player hasn't it.
 			 */
             if ((_numBuffs * 2 / 3) > totalBuffsOnOwner) {
                 if (owner.getFirstEffect(buffToGive) == null) { _tamedBeast.sitCastAndFollow(buffToGive, owner); }

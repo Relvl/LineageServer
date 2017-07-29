@@ -240,7 +240,7 @@ public class CastleManager {
             L2ItemInstance circlet = player.getInventory().getItemByItemId(circletId);
             if (circlet != null) {
                 if (circlet.isEquipped()) { player.getInventory().unEquipItemInSlot(EPaperdollSlot.getByIndex(circlet.getLocationSlot())); }
-                player.destroyItemByItemId(EItemProcessPurpose.CASTLE, circletId, 1, player, true);
+                player.getInventory().destroyItemByItemId(EItemProcessPurpose.CASTLE, circletId, 1, player, player, true);
             }
 
             // If the actual checked player is the clan leader, check for crown
@@ -248,7 +248,7 @@ public class CastleManager {
                 L2ItemInstance crown = player.getInventory().getItemByItemId(6841);
                 if (crown != null) {
                     if (crown.isEquipped()) { player.getInventory().unEquipItemInSlot(EPaperdollSlot.getByIndex(crown.getLocationSlot())); }
-                    player.destroyItemByItemId(EItemProcessPurpose.CASTLE, 6841, 1, player, true);
+                    player.getInventory().destroyItemByItemId(EItemProcessPurpose.CASTLE, 6841, 1, player, player, true);
                 }
             }
             return;

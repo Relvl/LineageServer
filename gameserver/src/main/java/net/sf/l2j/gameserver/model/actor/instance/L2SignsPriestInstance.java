@@ -160,8 +160,12 @@ public class L2SignsPriestInstance extends L2NpcInstance {
 
                             if (player.getClan() != null && player.getClan().hasCastle()) // castle owner don't need to pay anything
                             { allowJoinDawn = true; }
-                            else if (player.destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.CERTIFICATE_OF_APPROVAL_ID, 1, this, true)) { allowJoinDawn = true; }
-                            else if (player.getInventory().reduceAdena(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.ADENA_JOIN_DAWN_COST, this, true)) { allowJoinDawn = true; }
+                            else if (player.getInventory().destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.CERTIFICATE_OF_APPROVAL_ID, 1, player, this, true) != null) {
+                                allowJoinDawn = true;
+                            }
+                            else if (player.getInventory().reduceAdena(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.ADENA_JOIN_DAWN_COST, this, true)) {
+                                allowJoinDawn = true;
+                            }
 
                             if (!allowJoinDawn) {
                                 showChatWindow(player, SevenSigns.SEVEN_SIGNS_HTML_PATH + "signs_33_dawn_fee.htm");
@@ -251,11 +255,15 @@ public class L2SignsPriestInstance extends L2NpcInstance {
                             break;
                     }
 
-                    if (redContrib > 0) { contribStonesFound |= player.destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_RED_ID, redContrib, this, true); }
-
-                    if (greenContrib > 0) { contribStonesFound |= player.destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_GREEN_ID, greenContrib, this, true); }
-
-                    if (blueContrib > 0) { contribStonesFound |= player.destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_BLUE_ID, blueContrib, this, true); }
+                    if (redContrib > 0) {
+                        contribStonesFound |= player.getInventory().destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_RED_ID, redContrib, player, this, true) != null;
+                    }
+                    if (greenContrib > 0) {
+                        contribStonesFound |= player.getInventory().destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_GREEN_ID, greenContrib, player, this, true) != null;
+                    }
+                    if (blueContrib > 0) {
+                        contribStonesFound |= player.getInventory().destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_BLUE_ID, blueContrib, player, this, true) != null;
+                    }
 
                     if (!contribStonesFound) {
                         if (this instanceof L2DawnPriestInstance) { showChatWindow(player, 6, "dawn_low_stones", false); }
@@ -333,11 +341,15 @@ public class L2SignsPriestInstance extends L2NpcInstance {
                                 blueContribCount = (Config.ALT_MAXIMUM_PLAYER_CONTRIB - tempContribScore) / SevenSigns.BLUE_CONTRIB_POINTS;
                                 if (blueContribCount > blueStoneCount) { blueContribCount = blueStoneCount; }
 
-                                if (redContribCount > 0) { stonesFound |= player.destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_RED_ID, redContribCount, this, true); }
-
-                                if (greenContribCount > 0) { stonesFound |= player.destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_GREEN_ID, greenContribCount, this, true); }
-
-                                if (blueContribCount > 0) { stonesFound |= player.destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_BLUE_ID, blueContribCount, this, true); }
+                                if (redContribCount > 0) {
+                                    stonesFound |= player.getInventory().destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_RED_ID, redContribCount, player, this, true) != null;
+                                }
+                                if (greenContribCount > 0) {
+                                    stonesFound |= player.getInventory().destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_GREEN_ID, greenContribCount, player, this, true) != null;
+                                }
+                                if (blueContribCount > 0) {
+                                    stonesFound |= player.getInventory().destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_BLUE_ID, blueContribCount, player, this, true) != null;
+                                }
 
                                 if (!stonesFound) {
                                     if (this instanceof L2DawnPriestInstance) { showChatWindow(player, val, "dawn_no_stones", false); }
@@ -491,9 +503,9 @@ public class L2SignsPriestInstance extends L2NpcInstance {
                                 return;
                             }
 
-                            if (blueStoneCountAll > 0) { player.destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_BLUE_ID, blueStoneCountAll, this, true); }
-                            if (greenStoneCountAll > 0) { player.destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_GREEN_ID, greenStoneCountAll, this, true); }
-                            if (redStoneCountAll > 0) { player.destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_RED_ID, redStoneCountAll, this, true); }
+                            if (blueStoneCountAll > 0) { player.getInventory().destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_BLUE_ID, blueStoneCountAll, player, this, true); }
+                            if (greenStoneCountAll > 0) { player.getInventory().destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_GREEN_ID, greenStoneCountAll, player, this, true); }
+                            if (redStoneCountAll > 0) { player.getInventory().destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, SevenSigns.SEAL_STONE_RED_ID, redStoneCountAll, player, this, true); }
 
                             player.getInventory().addAncientAdena(EItemProcessPurpose.SEVEN_SIGNS, ancientAdenaRewardAll, this);
 
@@ -550,7 +562,7 @@ public class L2SignsPriestInstance extends L2NpcInstance {
                                     break;
                             }
 
-                            if (player.destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, convertStoneId, convertCount, this, true)) {
+                            if (player.getInventory().destroyItemByItemId(EItemProcessPurpose.SEVEN_SIGNS, convertStoneId, convertCount, player, this, true) != null) {
                                 player.getInventory().addAncientAdena(EItemProcessPurpose.SEVEN_SIGNS, ancientAdenaReward, this);
 
                                 if (this instanceof L2DawnPriestInstance) { showChatWindow(player, 18, "dawn", false); }

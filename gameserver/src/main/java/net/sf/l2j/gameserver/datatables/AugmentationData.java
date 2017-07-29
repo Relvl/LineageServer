@@ -188,7 +188,7 @@ public class AugmentationData {
                                     }
                                 }
                                 // store this stat
-                                ((ArrayList<AugmentationStat>) _augStats[(i - 1)]).add(new AugmentationStat(Stats.valueOfXml(statName), soloValues, combinedValues));
+                                ((ArrayList<AugmentationStat>) _augStats[(i - 1)]).add(new AugmentationStat(Stats.getByCode(statName), soloValues, combinedValues));
                             }
                         }
                     }

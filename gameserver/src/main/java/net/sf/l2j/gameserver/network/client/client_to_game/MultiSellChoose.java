@@ -200,7 +200,7 @@ public class MultiSellChoose extends L2GameClientPacket {
                 if (Config.ALT_BLACKSMITH_USE_RECIPES || !ingredient.getMaintainIngredient()) {
                     // if it's a stackable item, just reduce the amount from the first (only) instance that is found in the inventory
                     if (itemToTake.isStackable()) {
-                        if (!player.destroyItem(EItemProcessPurpose.MULTISELL, itemToTake.getObjectId(), ingredient.getItemCount() * _amount, player.getTarget(), true)) {
+                        if (player.getInventory().destroyItem(EItemProcessPurpose.MULTISELL, itemToTake, ingredient.getItemCount() * _amount, player.getTarget(), true) == null) {
                             return;
                         }
                     }
@@ -217,7 +217,7 @@ public class MultiSellChoose extends L2GameClientPacket {
                             for (L2ItemInstance item : enchantedIngredients) {
                                 if (item.isAugmented()) { augmentation.add(item.getAugmentation()); }
                                 int count = item.getCount();
-                                if (!player.destroyItem(EItemProcessPurpose.MULTISELL, item.getObjectId(), count, player.getTarget(), true)) { return; }
+                                if (player.getInventory().destroyItem(EItemProcessPurpose.MULTISELL, item, count, player.getTarget(), true) == null) { return; }
                                 encounter -= count;
                                 if (encounter == 0) { break; }
                             }
@@ -250,9 +250,7 @@ public class MultiSellChoose extends L2GameClientPacket {
                                         }
                                     }
                                 }
-                                if (!player.destroyItem(EItemProcessPurpose.MULTISELL, itemToTake.getObjectId(), 1, player.getTarget(), true)) {
-                                    return;
-                                }
+                                if (player.getInventory().destroyItem(EItemProcessPurpose.MULTISELL, itemToTake, 1, player.getTarget(), true) == null) { return; }
                             }
                         }
                     }

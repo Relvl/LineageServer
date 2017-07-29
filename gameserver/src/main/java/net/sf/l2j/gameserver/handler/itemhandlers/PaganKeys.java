@@ -52,7 +52,7 @@ public class PaganKeys implements IItemHandler {
             return;
         }
 
-        if (!playable.destroyItem(EItemProcessPurpose.CONSUME, item.getObjectId(), 1, null, true)) { return; }
+        if (playable.getInventory().destroyItem(EItemProcessPurpose.CONSUME, item.getObjectId(), 1, playable.getActingPlayer(), null, true) == null) { return; }
 
         int doorId = door.getDoorId();
 

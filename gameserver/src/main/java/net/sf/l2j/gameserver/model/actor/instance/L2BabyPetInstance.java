@@ -131,7 +131,7 @@ public final class L2BabyPetInstance extends L2PetInstance
 	{
 		// casting automatically stops any other action (such as autofollow or a move-to).
 		// We need to gather the necessary info to restore the previous state.
-		final boolean previousFollowStatus = getFollowStatus();
+		final boolean previousFollowStatus = isFollow();
 		
 		// pet not following and owner outside cast range
 		if (!previousFollowStatus && !isInsideRadius(getOwner(), skill.getCastRange(), true, true))
@@ -150,8 +150,8 @@ public final class L2BabyPetInstance extends L2PetInstance
 		// reverting the follow status will abort this attack! While aborting the attack
 		// in order to heal is natural, it is not acceptable to abort the attack on its own,
 		// merely because the timer stroke and without taking any other action...
-		if (previousFollowStatus != getFollowStatus())
-			setFollowStatus(previousFollowStatus);
+		if (previousFollowStatus != isFollow())
+			setFollow(previousFollowStatus);
 	}
 	
 	private class CastTask implements Runnable

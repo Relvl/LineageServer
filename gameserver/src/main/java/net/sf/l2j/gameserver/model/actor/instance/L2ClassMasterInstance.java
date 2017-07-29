@@ -198,7 +198,7 @@ public final class L2ClassMasterInstance extends L2NpcInstance {
 
         // get all required items for class transfer
         for (IntIntHolder item : neededItems) {
-            if (!player.destroyItemByItemId(EItemProcessPurpose.CLASS_MASTER, item.getId(), item.getValue(), player, true)) { return false; }
+            if (player.getInventory().destroyItemByItemId(EItemProcessPurpose.CLASS_MASTER, item.getId(), item.getValue(), player, player, true) == null) { return false; }
         }
 
         // reward player with items

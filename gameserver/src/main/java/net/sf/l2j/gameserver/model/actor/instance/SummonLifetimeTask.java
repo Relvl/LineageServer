@@ -37,15 +37,18 @@ class SummonLifetimeTask implements Runnable {
                 summon.decNextItemConsumeTime(maxTime / (summon.getItemConsumeSteps() + 1));
 
                 // check if owner has enought itemConsume, if requested
-                if (summon.getItemConsumeCount() > 0 && summon.getItemConsumeId() != 0 && !summon.isDead() && !summon.getOwner().destroyItemByItemId(EItemProcessPurpose.CONSUME, summon.getItemConsumeId(), summon.getItemConsumeCount(), player, true)) {
+                if (summon.getItemConsumeCount() > 0
+                        && summon.getItemConsumeId() != 0
+                        && !summon.isDead()
+                        && summon.getOwner().getInventory().destroyItemByItemId(EItemProcessPurpose.CONSUME, summon.getItemConsumeId(), summon.getItemConsumeCount(), summon.getOwner(), player, true) == null) {
                     summon.unSummon(player);
                 }
             }
 
             // prevent useless packet-sending when the difference isn't visible.
-            if ((summon.lastShowntimeRemaining - newTimeRemaining) > maxTime / 352) {
+            if ((summon.getLastShowntimeRemaining() - newTimeRemaining) > maxTime / 352) {
                 player.sendPacket(new SetSummonRemainTime(maxTime, (int) newTimeRemaining));
-                summon.lastShowntimeRemaining = (int) newTimeRemaining;
+                summon.setLastShowntimeRemaining((int) newTimeRemaining);
                 summon.updateEffectIcons();
             }
         }

@@ -555,7 +555,7 @@ public final class QuestState {
         }
 
         // Destroy the quantity of items wanted.
-        _player.destroyItemByItemId(EItemProcessPurpose.QUEST, itemId, itemCount, _player, true);
+        _player.getInventory().destroyItemByItemId(EItemProcessPurpose.QUEST, itemId, itemCount, _player, _player, true);
     }
 
     /**

@@ -1620,21 +1620,21 @@ public class L2Clan {
                 break;
 
             case 2:// upgrade to 3
-                if (player.getSp() >= 500000 && player.destroyItemByItemId(EItemProcessPurpose.CLAN_LVL, 1419, 1, player.getTarget(), true)) {
+                if (player.getSp() >= 500000 && player.getInventory().destroyItemByItemId(EItemProcessPurpose.CLAN_LVL, 1419, 1, player, player.getTarget(), true) != null) {
                     player.removeExpAndSp(0, 500000);
                     increaseClanLevel = true;
                 }
                 break;
 
             case 3: // upgrade to 4
-                if (player.getSp() >= 1400000 && player.destroyItemByItemId(EItemProcessPurpose.CLAN_LVL, 3874, 1, player.getTarget(), true)) {
+                if (player.getSp() >= 1400000 && player.getInventory().destroyItemByItemId(EItemProcessPurpose.CLAN_LVL, 3874, 1, player, player.getTarget(), true) != null) {
                     player.removeExpAndSp(0, 1400000);
                     increaseClanLevel = true;
                 }
                 break;
 
             case 4: // upgrade to 5
-                if (player.getSp() >= 3500000 && player.destroyItemByItemId(EItemProcessPurpose.CLAN_LVL, 3870, 1, player.getTarget(), true)) {
+                if (player.getSp() >= 3500000 && player.getInventory().destroyItemByItemId(EItemProcessPurpose.CLAN_LVL, 3870, 1, player, player.getTarget(), true) != null) {
                     player.removeExpAndSp(0, 3500000);
                     increaseClanLevel = true;
                 }
