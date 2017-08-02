@@ -16,7 +16,10 @@ package net.sf.l2j.gameserver.idfactory;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -48,7 +51,6 @@ public abstract class IdFactory {
     protected IdFactory() {
         setAllCharacterOffline();
         cleanUpDB();
-        cleanUpTimeStamps();
     }
 
     /**
@@ -61,7 +63,8 @@ public abstract class IdFactory {
             statement.close();
 
             LOGGER.info("Updated characters online status.");
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
         }
     }
 
@@ -84,8 +87,6 @@ public abstract class IdFactory {
             cleanCount += stmt.executeUpdate("DELETE FROM character_recipebook WHERE character_recipebook.char_id NOT IN (SELECT obj_Id FROM characters);");
             cleanCount += stmt.executeUpdate("DELETE FROM character_shortcuts WHERE character_shortcuts.char_obj_id NOT IN (SELECT obj_Id FROM characters);");
             cleanCount += stmt.executeUpdate("DELETE FROM character_skills WHERE character_skills.char_obj_id NOT IN (SELECT obj_Id FROM characters);");
-            cleanCount += stmt.executeUpdate("DELETE FROM character_skills_save WHERE character_skills_save.char_obj_id NOT IN (SELECT obj_Id FROM characters);");
-            cleanCount += stmt.executeUpdate("DELETE FROM character_subclasses WHERE character_subclasses.char_obj_id NOT IN (SELECT obj_Id FROM characters);");
             cleanCount += stmt.executeUpdate("DELETE FROM cursed_weapons WHERE cursed_weapons.playerId NOT IN (SELECT obj_Id FROM characters);");
             cleanCount += stmt.executeUpdate("DELETE FROM pets WHERE pets.item_obj_id NOT IN (SELECT object_id FROM items);");
             cleanCount += stmt.executeUpdate("DELETE FROM seven_signs WHERE seven_signs.char_obj_id NOT IN (SELECT obj_Id FROM characters);");
@@ -129,20 +130,8 @@ public abstract class IdFactory {
 
             stmt.close();
             LOGGER.info("Cleaned " + cleanCount + " elements from database.");
-        } catch (SQLException e) {
         }
-    }
-
-    private static void cleanUpTimeStamps() {
-        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
-            int cleanCount = 0;
-            PreparedStatement stmt = con.prepareStatement("DELETE FROM character_skills_save WHERE restore_type = 1 AND systime <= ?");
-            stmt.setLong(1, System.currentTimeMillis());
-            cleanCount += stmt.executeUpdate();
-            stmt.close();
-
-            LOGGER.info("Cleaned " + cleanCount + " expired timestamps from database.");
-        } catch (SQLException e) {
+        catch (SQLException e) {
         }
     }
 
@@ -153,8 +142,7 @@ public abstract class IdFactory {
             final Statement st = con.createStatement();
             for (String[] table : EXTRACT_OBJ_ID_TABLES) {
                 final ResultSet rs = st.executeQuery("SELECT " + table[1] + " FROM " + table[0]);
-                while (rs.next())
-                    temp.add(rs.getInt(1));
+                while (rs.next()) { temp.add(rs.getInt(1)); }
 
                 rs.close();
             }

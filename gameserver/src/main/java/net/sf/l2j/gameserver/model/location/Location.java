@@ -1,15 +1,25 @@
 package net.sf.l2j.gameserver.model.location;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import net.sf.l2j.commons.DefaultConstructor;
+import net.sf.l2j.commons.database.AUserDefinedType;
+import net.sf.l2j.commons.database.annotation.OrmTypeParam;
 
-public class Location {
+public class Location extends AUserDefinedType {
+
     @JacksonXmlProperty(localName = "X", isAttribute = true)
+    @OrmTypeParam(0)
     protected volatile int posX;
+
     @JacksonXmlProperty(localName = "Y", isAttribute = true)
+    @OrmTypeParam(1)
     protected volatile int posY;
+
     @JacksonXmlProperty(localName = "Z", isAttribute = true)
+    @OrmTypeParam(2)
     protected volatile int posZ;
 
+    @DefaultConstructor
     public Location() {}
 
     public Location(int x, int y, int z) {

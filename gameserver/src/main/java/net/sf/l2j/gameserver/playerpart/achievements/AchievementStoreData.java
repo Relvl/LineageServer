@@ -12,7 +12,7 @@ public class AchievementStoreData {
     private final Integer count;
     private final Boolean complete;
 
-    /** Конструктор для установки завершенного или удаления данных. */
+    /** РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ СѓСЃС‚Р°РЅРѕРІРєРё Р·Р°РІРµСЂС€РµРЅРЅРѕРіРѕ РёР»Рё СѓРґР°Р»РµРЅРёСЏ РґР°РЅРЅС‹С…. */
     public AchievementStoreData(Integer playerId, String achievementId, Boolean complete) {
         this.playerId = playerId;
         this.achievementId = achievementId;
@@ -35,7 +35,7 @@ public class AchievementStoreData {
 
     public Boolean isComplete() { return complete; }
 
-    /** Стоит обратить внимание, что toString в UDT постгреса должен возвращать значения в правильном порядке внутри скобочек, через запятую. */
+    /** РЎС‚РѕРёС‚ РѕР±СЂР°С‚РёС‚СЊ РІРЅРёРјР°РЅРёРµ, С‡С‚Рѕ toString РІ UDT РїРѕСЃС‚РіСЂРµСЃР° РґРѕР»Р¶РµРЅ РІРѕР·РІСЂР°С‰Р°С‚СЊ Р·РЅР°С‡РµРЅРёСЏ РІ РїСЂР°РІРёР»СЊРЅРѕРј РїРѕСЂСЏРґРєРµ РІРЅСѓС‚СЂРё СЃРєРѕР±РѕС‡РµРє, С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ. */
     @Override
-    public String toString() { return "(" + playerId + "," + achievementId + "," + count + "," + complete + ')'; }
+    public String toString() { return "(" + playerId + ',' + achievementId + ',' + count + ',' + complete + ')'; }
 }

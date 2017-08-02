@@ -7,9 +7,11 @@ import java.lang.annotation.Target;
 
 /**
  * @author Johnson / 22.07.2017
+ * @deprecated Пока нужен только для массивов структур. Надо бы переделать на новую механику.
  */
+@Deprecated
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.FIELD})
 public @interface OrmTypeName {
-    String value();
+    @Deprecated String value();
 }

@@ -557,7 +557,6 @@ public final class Config {
     /**
      * Buffs
      */
-    public static boolean STORE_SKILL_COOLTIME;
     public static int BUFFS_MAX_AMOUNT;
 
     // --------------------------------------------------
@@ -1142,7 +1141,6 @@ public final class Config {
             ALT_GAME_SUBCLASS_WITHOUT_QUESTS = players.getProperty("AltSubClassWithoutQuests", false);
 
             BUFFS_MAX_AMOUNT = players.getProperty("MaxBuffsAmount", 20);
-            STORE_SKILL_COOLTIME = players.getProperty("StoreSkillCooltime", true);
 
             // server
             ExProperties server = load(SERVER_FILE);
