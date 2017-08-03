@@ -24,12 +24,12 @@ import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2MonsterInstance;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * This class manages the spawn and respawn of a group of L2Npc that are in the same are and have the same type. <B><U> Concept</U> :</B><BR>
@@ -40,7 +40,7 @@ import java.util.logging.Logger;
  * @author Nightmare
  */
 public class L2Spawn {
-    protected static final Logger _log = Logger.getLogger(L2Spawn.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(L2Spawn.class);
 
     /** The link on the L2NpcTemplate object containing generic and static properties of this spawn (ex : RewardExp, RewardSP, AggroRange...) */
     private NpcTemplate _template;
@@ -344,7 +344,7 @@ public class L2Spawn {
             return initializeNpcInstance(mob);
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "NPC " + _template.getNpcId() + " class not found", e);
+            LOGGER.error("NPC {} class not found", _template.getNpcId(), e);
         }
         return mob;
     }
@@ -358,7 +358,7 @@ public class L2Spawn {
 
         // If Locx=0 and Locy=0, there's a problem.
         if (getLocx() == 0 && getLocy() == 0) {
-            _log.warning("L2Spawn : the following npcID: " + _template.getNpcId() + " misses X/Y informations.");
+            LOGGER.warn("L2Spawn : the following npcID: {} misses X/Y informations.", _template.getNpcId());
             return mob;
         }
 
@@ -432,7 +432,9 @@ public class L2Spawn {
      */
     public void setRespawnDelay(int i) {
         if (i < 10) {
-            if (i < 0) { _log.warning("Respawn delay is negative for spawnId: " + getNpcId()); }
+            if (i < 0) {
+                LOGGER.warn("Respawn delay is negative for spawnId: {}", getNpcId());
+            }
 
             i = 10;
         }

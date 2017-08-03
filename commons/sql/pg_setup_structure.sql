@@ -18,7 +18,6 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA pgcrypto GRANT EXECUTE ON FUNCTIONS TO PUBLIC
 ALTER DEFAULT PRIVILEGES IN SCHEMA pgcrypto GRANT USAGE ON TYPES TO PUBLIC;
 -- Задание поиска таблиц и функций по схемам.
 SET search_path = login_server, game_server, pgcrypto, public;
-
 -- Создание модуля pgcrypto для возможности работать с шифрованием в БД.
 CREATE EXTENSION pgcrypto SCHEMA pgcrypto;
 

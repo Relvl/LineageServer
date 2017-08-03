@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.model.vehicles;
 
 import net.sf.l2j.gameserver.EChatType;
@@ -22,15 +8,14 @@ import net.sf.l2j.gameserver.model.actor.instance.L2BoatInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
 import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author DS
  */
 public class BoatGludinRune implements Runnable {
-    private static final Logger _log = Logger.getLogger(BoatGludinRune.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(BoatGludinRune.class);
 
     // Time: 1151s
     private static final VehiclePathPoint[] GLUDIN_TO_RUNE =
@@ -297,8 +282,9 @@ public class BoatGludinRune implements Runnable {
             _shoutCount = 0;
             _cycle++;
             if (_cycle > 18) { _cycle = 0; }
-        } catch (Exception e) {
-            _log.log(Level.WARNING, e.getMessage());
+        }
+        catch (Exception e) {
+            LOGGER.error("", e);
         }
     }
 }

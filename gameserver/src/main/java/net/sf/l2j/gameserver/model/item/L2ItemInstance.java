@@ -26,6 +26,8 @@ import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 import net.sf.l2j.gameserver.skills.basefuncs.Func;
 import net.sf.l2j.gameserver.taskmanager.ItemsOnGroundTaskManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,12 +36,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.logging.Level;
-import java.util.logging.LogRecord;
-import java.util.logging.Logger;
 
 public final class L2ItemInstance extends L2Object {
-    private static final Logger _logItems = Logger.getLogger("item");
+    private static final Logger LOGGER = LoggerFactory.getLogger(L2ItemInstance.class);
 
     private final int itemId;
     private final Item item;
@@ -148,10 +147,7 @@ public final class L2ItemInstance extends L2Object {
     public void setOwnerId(EItemProcessPurpose process, int ownerId, L2PcInstance creator, L2Object reference) {
         setOwnerId(ownerId);
         if (Config.LOG_ITEMS) {
-            LogRecord record = new LogRecord(Level.INFO, "CHANGE:" + process);
-            record.setLoggerName("item");
-            record.setParameters(new Object[]{this, creator, reference});
-            _logItems.log(record);
+            LOGGER.info("ITEM CHANGE: {} -> {}, {}, {}", process, this, creator, reference);
         }
     }
 
@@ -192,10 +188,7 @@ public final class L2ItemInstance extends L2Object {
         storedInDb = false;
 
         if (Config.LOG_ITEMS && process != null) {
-            LogRecord record = new LogRecord(Level.INFO, "CHANGE:" + process);
-            record.setLoggerName("item");
-            record.setParameters(new Object[]{this, creator, reference});
-            _logItems.log(record);
+            LOGGER.info("ITEM CHANGE: {} -> {}, {}, {}", process, this, creator, reference);
         }
     }
 

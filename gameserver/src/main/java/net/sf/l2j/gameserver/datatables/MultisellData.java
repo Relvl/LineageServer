@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.datatables;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -25,6 +11,8 @@ import net.sf.l2j.gameserver.model.multisell.Ingredient;
 import net.sf.l2j.gameserver.model.multisell.ListContainer;
 import net.sf.l2j.gameserver.network.client.game_to_client.MultiSellList;
 import net.sf.l2j.gameserver.xmlfactory.XMLDocumentFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
@@ -33,11 +21,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class MultisellData {
-    private static final Logger _log = Logger.getLogger(MultisellData.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(MultisellData.class);
 
     private static final ListContainer EMPTY_CONTAINER = new ListContainer();
 
@@ -204,7 +190,7 @@ public class MultisellData {
     private static void hashFiles(String dirname, List<File> hash) {
         File dir = new File("./data/" + dirname);
         if (!dir.isDirectory()) {
-            _log.config("Dir " + dir.getAbsolutePath() + " doesn't exist.");
+            LOGGER.error("Dir {} doesn't exist.", dir.getAbsolutePath());
             return;
         }
 
@@ -226,7 +212,7 @@ public class MultisellData {
                 doc = XMLDocumentFactory.getInstance().loadDocument(f);
             }
             catch (Exception e) {
-                _log.log(Level.SEVERE, "Error loading file " + f, e);
+                LOGGER.error("Error loading file {}", f, e);
             }
 
             try {
@@ -235,10 +221,10 @@ public class MultisellData {
                 _entries.put(id, list);
             }
             catch (Exception e) {
-                _log.log(Level.SEVERE, "Error in file " + f, e);
+                LOGGER.error("Error in file {}", f, e);
             }
         }
-        _log.log(Level.INFO, "L2Multisell: Loaded " + _entries.size() + " files.");
+        LOGGER.info("L2Multisell: Loaded {} files.", _entries.size());
     }
 
     private static ListContainer parseDocument(Document doc) {

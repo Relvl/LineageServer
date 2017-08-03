@@ -12,7 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 
 public class CharSelectInfo extends L2GameServerPacket {
     private final String _loginName;
@@ -169,7 +168,7 @@ public class CharSelectInfo extends L2GameServerPacket {
             return characterList.toArray(new CharSelectInfoPackage[characterList.size()]);
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Could not restore char info: " + e.getMessage(), e);
+            LOGGER.error("Could not restore char info: {}", e.getMessage(), e);
         }
 
         return new CharSelectInfoPackage[0];
@@ -193,7 +192,7 @@ public class CharSelectInfo extends L2GameServerPacket {
 
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Could not restore char subclass info: " + e.getMessage(), e);
+            LOGGER.error("Could not restore char subclass info: {}", e.getMessage(), e);
         }
     }
 
@@ -265,12 +264,12 @@ public class CharSelectInfo extends L2GameServerPacket {
                 statement.close();
             }
             catch (Exception e) {
-                _log.log(Level.WARNING, "Could not restore augmentation info: " + e.getMessage(), e);
+                LOGGER.error("Could not restore augmentation info: {}", e.getMessage(), e);
             }
         }
-		
+
 		/*
-		 * Check if the base class is set to zero and alse doesn't match with the current active class, otherwise send the base class ID. This prevents chars created before base class was introduced from being displayed incorrectly.
+         * Check if the base class is set to zero and alse doesn't match with the current active class, otherwise send the base class ID. This prevents chars created before base class was introduced from being displayed incorrectly.
 		 */
         if (baseClassId == 0 && activeClassId > 0) { charInfopackage.setBaseClassId(activeClassId); }
         else { charInfopackage.setBaseClassId(baseClassId); }

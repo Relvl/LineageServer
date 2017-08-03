@@ -6,15 +6,15 @@ import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.stat.CharStat;
 import net.sf.l2j.gameserver.skills.Formulas;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Future;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class CharStatus {
-    protected static final Logger _log = Logger.getLogger(CharStatus.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(CharStatus.class);
 
     private final L2Character _activeChar;
 
@@ -255,7 +255,7 @@ public class CharStatus {
                 doRegeneration();
             }
             catch (Exception e) {
-                _log.log(Level.SEVERE, "", e);
+                LOGGER.error("", e);
             }
         }
     }

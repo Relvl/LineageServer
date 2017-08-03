@@ -84,7 +84,7 @@ public class L2BufferInstance extends L2NpcInstance {
             L2Character target = (targetType.equalsIgnoreCase("pet")) ? player.getPet() : player;
             if (target == null) { player.sendMessage("You don't have a pet."); }
             else if (cost == 0 || player.getInventory().reduceAdena(EItemProcessPurpose.NPC_BUFFER, cost, this, true)) {
-                for (int skillId : BufferTable.getInstance().getScheme(player.getObjectId(), schemeName)) { SkillTable.getInfo(skillId, SkillTable.getMaxLevel(skillId)).getEffects(this, target); }
+                for (int skillId : BufferTable.getScheme(player.getObjectId(), schemeName)) { SkillTable.getInfo(skillId, SkillTable.getMaxLevel(skillId)).getEffects(this, target); }
             }
             showGiveBuffsWindow(player, targetType);
         }
@@ -97,7 +97,7 @@ public class L2BufferInstance extends L2NpcInstance {
 
             int skillId = Integer.parseInt(st.nextToken());
 
-            List<Integer> skills = BufferTable.getInstance().getScheme(player.getObjectId(), schemeName);
+            List<Integer> skills = BufferTable.getScheme(player.getObjectId(), schemeName);
 
             if (currentCommand.startsWith("skillselect") && !schemeName.equalsIgnoreCase("none")) {
                 if (skills.size() < Config.BUFFER_MAX_SKILLS) { skills.add(skillId); }
@@ -119,7 +119,7 @@ public class L2BufferInstance extends L2NpcInstance {
                     return;
                 }
 
-                Map<String, ArrayList<Integer>> schemes = BufferTable.getInstance().getPlayerSchemes(player.getObjectId());
+                Map<String, ArrayList<Integer>> schemes = BufferTable.getPlayerSchemes(player.getObjectId());
                 if (schemes != null) {
                     if (schemes.size() == Config.BUFFER_MAX_SCHEMES) {
                         player.sendMessage("Maximum schemes amount is already reached.");
@@ -134,7 +134,7 @@ public class L2BufferInstance extends L2NpcInstance {
                     }
                 }
 
-                BufferTable.getInstance().setScheme(player.getObjectId(), schemeName.trim(), new ArrayList<Integer>());
+                BufferTable.setScheme(player.getObjectId(), schemeName.trim(), new ArrayList<Integer>());
                 showManageSchemeWindow(player);
             }
             catch (Exception e) {
@@ -145,7 +145,7 @@ public class L2BufferInstance extends L2NpcInstance {
         else if (currentCommand.startsWith("deletescheme")) {
             try {
                 String schemeName = st.nextToken();
-                Map<String, ArrayList<Integer>> schemes = BufferTable.getInstance().getPlayerSchemes(player.getObjectId());
+                Map<String, ArrayList<Integer>> schemes = BufferTable.getPlayerSchemes(player.getObjectId());
 
                 if (schemes != null && schemes.containsKey(schemeName)) { schemes.remove(schemeName); }
             }
@@ -157,7 +157,7 @@ public class L2BufferInstance extends L2NpcInstance {
         else if (currentCommand.startsWith("clearscheme")) {
             try {
                 String schemeName = st.nextToken();
-                Map<String, ArrayList<Integer>> schemes = BufferTable.getInstance().getPlayerSchemes(player.getObjectId());
+                Map<String, ArrayList<Integer>> schemes = BufferTable.getPlayerSchemes(player.getObjectId());
 
                 if (schemes != null && schemes.containsKey(schemeName)) { schemes.get(schemeName).clear(); }
             }
@@ -188,7 +188,7 @@ public class L2BufferInstance extends L2NpcInstance {
     private void showGiveBuffsWindow(L2PcInstance player, String targetType) {
         StringBuilder sb = new StringBuilder(200);
 
-        Map<String, ArrayList<Integer>> schemes = BufferTable.getInstance().getPlayerSchemes(player.getObjectId());
+        Map<String, ArrayList<Integer>> schemes = BufferTable.getPlayerSchemes(player.getObjectId());
         if (schemes == null || schemes.isEmpty()) { sb.append("<font color=\"LEVEL\">You haven't defined any scheme, please go to 'Manage my schemes' and create at least one valid scheme.</font>"); }
         else {
             for (Entry<String, ArrayList<Integer>> scheme : schemes.entrySet()) {
@@ -213,7 +213,7 @@ public class L2BufferInstance extends L2NpcInstance {
     private void showManageSchemeWindow(L2PcInstance player) {
         StringBuilder sb = new StringBuilder(200);
 
-        Map<String, ArrayList<Integer>> schemes = BufferTable.getInstance().getPlayerSchemes(player.getObjectId());
+        Map<String, ArrayList<Integer>> schemes = BufferTable.getPlayerSchemes(player.getObjectId());
         if (schemes == null || schemes.isEmpty()) { sb.append("<font color=\"LEVEL\">You haven't created any scheme.</font>"); }
         else {
             sb.append("<table>");
@@ -264,7 +264,7 @@ public class L2BufferInstance extends L2NpcInstance {
      * @return a String listing player's schemes. The scheme currently on selection isn't linkable.
      */
     private static String getPlayerSchemes(L2PcInstance player, String schemeName) {
-        Map<String, ArrayList<Integer>> schemes = BufferTable.getInstance().getPlayerSchemes(player.getObjectId());
+        Map<String, ArrayList<Integer>> schemes = BufferTable.getPlayerSchemes(player.getObjectId());
         if (schemes == null || schemes.isEmpty()) { return "Please create at least one scheme."; }
 
         StringBuilder sb = new StringBuilder(200);
@@ -340,7 +340,7 @@ public class L2BufferInstance extends L2NpcInstance {
      * @return a String representing a given scheme's content.
      */
     private static String getPlayerSchemeSkillList(L2PcInstance player, String groupType, String schemeName) {
-        List<Integer> skills = BufferTable.getInstance().getScheme(player.getObjectId(), schemeName);
+        List<Integer> skills = BufferTable.getScheme(player.getObjectId(), schemeName);
         if (skills.isEmpty()) { return "That scheme is empty."; }
 
         StringBuilder sb = new StringBuilder(500);

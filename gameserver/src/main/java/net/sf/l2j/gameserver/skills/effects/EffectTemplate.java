@@ -1,23 +1,23 @@
 package net.sf.l2j.gameserver.skills.effects;
 
-import net.sf.l2j.gameserver.model.skill.chance.ChanceCondition;
 import net.sf.l2j.gameserver.model.L2Effect;
+import net.sf.l2j.gameserver.model.skill.chance.ChanceCondition;
 import net.sf.l2j.gameserver.skills.AbnormalEffect;
 import net.sf.l2j.gameserver.skills.Env;
 import net.sf.l2j.gameserver.skills.basefuncs.FuncTemplate;
 import net.sf.l2j.gameserver.skills.basefuncs.Lambda;
 import net.sf.l2j.gameserver.skills.conditions.Condition;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public final class EffectTemplate {
-    static Logger _log = Logger.getLogger(EffectTemplate.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(EffectTemplate.class);
 
     private final Class<?> _func;
     private final Constructor<?> _constructor;
@@ -74,19 +74,18 @@ public final class EffectTemplate {
     public L2Effect getEffect(Env env) {
         if (attachCond != null && !attachCond.test(env)) { return null; }
         try {
-            L2Effect effect = (L2Effect) _constructor.newInstance(env, this);
-            return effect;
+            return (L2Effect) _constructor.newInstance(env, this);
         }
         catch (IllegalAccessException e) {
-            _log.log(Level.WARNING, "", e);
+            LOGGER.error("", e);
             return null;
         }
         catch (InstantiationException e) {
-            _log.log(Level.WARNING, "", e);
+            LOGGER.error("", e);
             return null;
         }
         catch (InvocationTargetException e) {
-            _log.log(Level.WARNING, "Error creating new instance of Class " + _func + " Exception was: " + e.getTargetException().getMessage(), e.getTargetException());
+            LOGGER.error("Error creating new instance of Class {} Exception was: {}", _func, e.getTargetException().getMessage(), e.getTargetException());
             return null;
         }
     }

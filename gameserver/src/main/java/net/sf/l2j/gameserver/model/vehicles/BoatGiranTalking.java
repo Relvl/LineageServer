@@ -22,15 +22,14 @@ import net.sf.l2j.gameserver.model.actor.instance.L2BoatInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
 import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author DS
  */
 public class BoatGiranTalking implements Runnable {
-    private static final Logger _log = Logger.getLogger(BoatGiranTalking.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(BoatGiranTalking.class);
 
     // Time: 868s
     private static final VehiclePathPoint[] GIRAN_TO_TALKING =
@@ -271,8 +270,9 @@ public class BoatGiranTalking implements Runnable {
             _shoutCount = 0;
             _cycle++;
             if (_cycle > 18) { _cycle = 0; }
-        } catch (Exception e) {
-            _log.log(Level.WARNING, e.getMessage());
+        }
+        catch (Exception e) {
+            LOGGER.error("", e);
         }
     }
 }

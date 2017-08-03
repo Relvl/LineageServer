@@ -3,9 +3,9 @@ package net.sf.l2j.gameserver.model.zone.type;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.SkillTable;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.zone.L2ZoneType;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.client.game_to_client.EtcStatusUpdate;
@@ -46,13 +46,17 @@ public class L2EffectZone extends L2ZoneType {
             String[] propertySplit = value.split(";");
             for (String skill : propertySplit) {
                 String[] skillSplit = skill.split("-");
-                if (skillSplit.length != 2) { _log.warning(getClass().getSimpleName() + ": invalid config property -> skillsIdLvl \"" + skill + "\""); }
+                if (skillSplit.length != 2) {
+                    LOGGER.warn(getClass().getSimpleName() + ": invalid config property -> skillsIdLvl \"" + skill + "\"");
+                }
                 else {
                     try {
                         _skills.put(Integer.parseInt(skillSplit[0]), Integer.parseInt(skillSplit[1]));
                     }
                     catch (NumberFormatException nfe) {
-                        if (!skill.isEmpty()) { _log.warning(getClass().getSimpleName() + ": invalid config property -> skillsIdLvl \"" + skillSplit[0] + "\"" + skillSplit[1]); }
+                        if (!skill.isEmpty()) {
+                            LOGGER.warn(getClass().getSimpleName() + ": invalid config property -> skillsIdLvl \"" + skillSplit[0] + "\"" + skillSplit[1]);
+                        }
                     }
                 }
             }

@@ -2,14 +2,15 @@ package net.sf.l2j.gameserver.datatables;
 
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.skills.DocumentSkill;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
 public class SkillTable {
-    private static final Logger _log = Logger.getLogger(SkillTable.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(SkillTable.class);
 
     private static final Map<Integer, L2Skill> _skills = new HashMap<>();
     private static final Map<Integer, Integer> _skillMaxLevel = new HashMap<>();
@@ -38,7 +39,7 @@ public class SkillTable {
             for (L2Skill skill : doc.getSkills()) { _skills.put(getSkillHashCode(skill), skill); }
         }
 
-        _log.info("SkillTable: Loaded " + _skills.size() + " skills.");
+        LOGGER.info("SkillTable: Loaded {} skills.", _skills.size());
 
         // Stores max level of skills in a map for future uses.
         for (L2Skill skill : _skills.values()) {

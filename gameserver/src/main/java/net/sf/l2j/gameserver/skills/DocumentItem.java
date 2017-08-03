@@ -11,7 +11,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 
 public final class DocumentItem extends DocumentBase {
     public class NewItem {
@@ -59,7 +58,7 @@ public final class DocumentItem extends DocumentBase {
                             resetTable();
                         }
                         catch (Exception e) {
-                            _log.log(Level.WARNING, "Cannot create item " + _currentItem.id, e);
+                            LOGGER.error("Cannot create item {}", _currentItem.id, e);
                         }
                     }
                 }

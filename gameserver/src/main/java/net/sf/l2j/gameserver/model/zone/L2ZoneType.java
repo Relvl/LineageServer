@@ -6,16 +6,17 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
 import net.sf.l2j.gameserver.scripting.EventType;
 import net.sf.l2j.gameserver.scripting.Quest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.logging.Logger;
 
 public abstract class L2ZoneType {
-    protected static final Logger _log = Logger.getLogger(L2ZoneType.class.getName());
+    protected static final Logger LOGGER = LoggerFactory.getLogger(L2ZoneType.class);
 
     private final int _id;
     protected L2ZoneForm _zone;
@@ -42,7 +43,7 @@ public abstract class L2ZoneType {
     }
 
     public void setParameter(String name, String value) {
-        _log.info(getClass().getSimpleName() + ": Unknown parameter - " + name + " in zone: " + getId());
+        LOGGER.info(getClass().getSimpleName() + ": Unknown parameter - " + name + " in zone: " + getId());
     }
 
     protected boolean isAffected(L2Character character) {

@@ -9,16 +9,17 @@ import net.sf.l2j.gameserver.model.base.ClassId;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.skill.SkillConst;
 import net.sf.l2j.gameserver.xmlfactory.XMLDocumentFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import java.io.File;
 import java.util.*;
-import java.util.logging.Logger;
 
 public class SkillTreeTable {
-    private static Logger _log = Logger.getLogger(SkillTreeTable.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(SkillTreeTable.class);
 
     private Map<ClassId, Map<Integer, L2SkillLearn>> _skillTrees;
     private List<L2SkillLearn> _fishingSkillTrees;
@@ -63,7 +64,7 @@ public class SkillTreeTable {
             }
         }
         catch (Exception e) {
-            _log.warning("FishingTable: Error while loading fishing skills: " + e);
+            LOGGER.error("FishingTable: Error while loading fishing skills: ", e);
         }
 
         // Enchant skills tree && Enchant data
@@ -124,7 +125,7 @@ public class SkillTreeTable {
             }
         }
         catch (Exception e) {
-            _log.severe("EnchantSkillTable: Error while loading enchant skills tree: " + e);
+            LOGGER.error("EnchantSkillTable: Error while loading enchant skills tree: ", e);
         }
 
         // Pledge skills tree
@@ -157,13 +158,13 @@ public class SkillTreeTable {
             }
         }
         catch (Exception e) {
-            _log.severe("PledgeTable: Error while loading pledge skills: " + e);
+            LOGGER.error("PledgeTable: Error while loading pledge skills: ", e);
         }
 
-        _log.config("FishingSkillTreeTable: Loaded " + _fishingSkillTrees.size() + " general skills.");
-        _log.config("DwarvenCraftSkillTreeTable: Loaded " + _expandDwarvenCraftSkillTrees.size() + " dwarven skills.");
-        _log.config("EnchantSkillTreeTable: Loaded " + _enchantSkillData.size() + " enchant types and " + _enchantSkillTrees.size() + " enchant skills.");
-        _log.config("PledgeSkillTreeTable: Loaded " + _pledgeSkillTrees.size() + " pledge skills.");
+        LOGGER.info("FishingSkillTreeTable: Loaded {} general skills.", _fishingSkillTrees.size());
+        LOGGER.info("DwarvenCraftSkillTreeTable: Loaded {} dwarven skills.", _expandDwarvenCraftSkillTrees.size());
+        LOGGER.info("EnchantSkillTreeTable: Loaded {} enchant types and {} enchant skills.", _enchantSkillData.size(), _enchantSkillTrees.size());
+        LOGGER.info("PledgeSkillTreeTable: Loaded {} pledge skills.", _pledgeSkillTrees.size());
     }
 
     /**

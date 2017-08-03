@@ -1,21 +1,7 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.instancemanager;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
-import net.sf.l2j.gameserver.CastleUpdater;
+import net.sf.l2j.gameserver.CastleUpdaterTask;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.model.L2Clan;
@@ -26,6 +12,8 @@ import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -33,13 +21,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class CastleManager {
-    protected static final Logger _log = Logger.getLogger(CastleManager.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(CastleManager.class);
 
-    public static final CastleManager getInstance() {
+    public static CastleManager getInstance() {
         return SingletonHolder._instance;
     }
 
@@ -119,7 +105,7 @@ public class CastleManager {
                             castle.setOwnerId(ownerId);
 
                             // Schedule owner tasks to start running
-                            ThreadPoolManager.getInstance().scheduleGeneral(new CastleUpdater(clan, 1), 3600000);
+                            ThreadPoolManager.getInstance().scheduleGeneral(new CastleUpdaterTask(clan, 1), 3600000);
                         }
                     }
                 }
@@ -133,10 +119,10 @@ public class CastleManager {
             statement.close();
             statement2.close();
 
-            _log.info("CastleManager: Loaded " + _castles.size() + " castles.");
+            LOGGER.info("CastleManager: Loaded {} castles.", _castles.size());
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Exception: loadCastleData(): " + e.getMessage(), e);
+            LOGGER.error("Exception: loadCastleData(): {}", e.getMessage(), e);
         }
     }
 
@@ -263,7 +249,7 @@ public class CastleManager {
             statement.close();
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Failed to remove castle circlets && crowns for offline player " + member.getName() + ": " + e.getMessage(), e);
+            LOGGER.error("Failed to remove castle circlets && crowns for offline player {}: {}", member.getName(), e.getMessage(), e);
         }
     }
 

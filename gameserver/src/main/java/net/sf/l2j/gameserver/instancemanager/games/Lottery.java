@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.instancemanager.games;
 
 import net.sf.l2j.Config;
@@ -22,20 +8,20 @@ import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.util.Broadcast;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Lottery {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Lottery.class);
+
     public static final long SECOND = 1000;
     public static final long MINUTE = 60000;
-
-    protected static final Logger _log = Logger.getLogger(Lottery.class.getName());
 
     private static final String INSERT_LOTTERY = "INSERT INTO games(id, idnr, enddate, prize, newprize) VALUES (?, ?, ?, ?, ?)";
     private static final String UPDATE_PRICE = "UPDATE games SET prize=?, newprize=? WHERE id = 1 AND idnr = ?";
@@ -152,7 +138,7 @@ public class Lottery {
             statement.close();
         }
         catch (SQLException e) {
-            _log.log(Level.WARNING, "Lottery: Could not check lottery ticket #" + id + ": " + e.getMessage(), e);
+            LOGGER.error("Lottery: Could not check lottery ticket #{}: {}", id, e.getMessage(), e);
         }
 
         return res;
@@ -182,7 +168,7 @@ public class Lottery {
             statement.close();
         }
         catch (SQLException e) {
-            _log.log(Level.WARNING, "Lottery: Could not increase current lottery prize: " + e.getMessage(), e);
+            LOGGER.error("Lottery: Could not increase current lottery prize: {}", e.getMessage(), e);
         }
     }
 
@@ -245,7 +231,7 @@ public class Lottery {
                 statement.close();
             }
             catch (SQLException e) {
-                _log.log(Level.WARNING, "Lottery: Could not restore lottery data: " + e.getMessage(), e);
+                LOGGER.error("Lottery: Could not restore lottery data: {}", e.getMessage(), e);
             }
 
             _isSellingTickets = true;
@@ -282,7 +268,7 @@ public class Lottery {
                 statement.close();
             }
             catch (SQLException e) {
-                _log.log(Level.WARNING, "Lottery: Could not store new lottery data: " + e.getMessage(), e);
+                LOGGER.error("Lottery: Could not store new lottery data: {}", e.getMessage(), e);
             }
         }
     }
@@ -371,7 +357,7 @@ public class Lottery {
                 statement.close();
             }
             catch (SQLException e) {
-                _log.log(Level.WARNING, "Lottery: Could restore lottery data: " + e.getMessage(), e);
+                LOGGER.error("Lottery: Could restore lottery data: {}", e.getMessage(), e);
             }
 
             int prize4 = count4 * Config.ALT_LOTTERY_2_AND_1_NUMBER_PRIZE;
@@ -407,7 +393,7 @@ public class Lottery {
                 statement.close();
             }
             catch (SQLException e) {
-                _log.log(Level.WARNING, "Lottery: Could not store finished lottery data: " + e.getMessage(), e);
+                LOGGER.error("Lottery: Could not store finished lottery data: {}", e.getMessage(), e);
             }
 
             ThreadPoolManager.getInstance().scheduleGeneral(new startLottery(), MINUTE);

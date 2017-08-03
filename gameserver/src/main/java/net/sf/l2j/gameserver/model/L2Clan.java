@@ -34,6 +34,8 @@ import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,40 +45,40 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class L2Clan {
+    private static final Logger LOGGER = LoggerFactory.getLogger(L2Clan.class);
+
     // Ally Penalty Types
     public static final int PENALTY_TYPE_CLAN_LEAVED = 1;
     public static final int PENALTY_TYPE_CLAN_DISMISSED = 2;
     public static final int PENALTY_TYPE_DISMISS_CLAN = 3;
     public static final int PENALTY_TYPE_DISSOLVE_ALLY = 4;
     // Clan Privileges
-    public static final int CP_NOTHING = 0;
-    public static final int CP_CL_JOIN_CLAN = 2;
-    public static final int CP_CL_GIVE_TITLE = 4;
-    public static final int CP_CL_VIEW_WAREHOUSE = 8;
-    public static final int CP_CL_MANAGE_RANKS = 16;
-    public static final int CP_CL_PLEDGE_WAR = 32;
-    public static final int CP_CL_DISMISS = 64;
-    public static final int CP_CL_REGISTER_CREST = 128;
-    public static final int CP_CL_MASTER_RIGHTS = 256;
-    public static final int CP_CL_MANAGE_LEVELS = 512;
-    public static final int CP_CH_OPEN_DOOR = 1024;
-    public static final int CP_CH_OTHER_RIGHTS = 2048;
-    public static final int CP_CH_AUCTION = 4096;
-    public static final int CP_CH_DISMISS = 8192;
-    public static final int CP_CH_SET_FUNCTIONS = 16384;
-    public static final int CP_CS_OPEN_DOOR = 32768;
-    public static final int CP_CS_MANOR_ADMIN = 65536;
-    public static final int CP_CS_MANAGE_SIEGE = 131072;
-    public static final int CP_CS_USE_FUNCTIONS = 262144;
-    public static final int CP_CS_DISMISS = 524288;
-    public static final int CP_CS_TAXES = 1048576;
-    public static final int CP_CS_MERCENARIES = 2097152;
-    public static final int CP_CS_SET_FUNCTIONS = 4194304;
-    public static final int CP_ALL = 8388606;
+    public static final int CP_NOTHING = 0x0;
+    public static final int CP_CL_JOIN_CLAN = 0x2;
+    public static final int CP_CL_GIVE_TITLE = 0x4;
+    public static final int CP_CL_VIEW_WAREHOUSE = 0x8;
+    public static final int CP_CL_MANAGE_RANKS = 0x10;
+    public static final int CP_CL_PLEDGE_WAR = 0x20;
+    public static final int CP_CL_DISMISS = 0x40;
+    public static final int CP_CL_REGISTER_CREST = 0x80;
+    public static final int CP_CL_MASTER_RIGHTS = 0x100;
+    public static final int CP_CL_MANAGE_LEVELS = 0x200;
+    public static final int CP_CH_OPEN_DOOR = 0x400;
+    public static final int CP_CH_OTHER_RIGHTS = 0x800;
+    public static final int CP_CH_AUCTION = 0x1000;
+    public static final int CP_CH_DISMISS = 0x2000;
+    public static final int CP_CH_SET_FUNCTIONS = 0x4000;
+    public static final int CP_CS_OPEN_DOOR = 0x8000;
+    public static final int CP_CS_MANOR_ADMIN = 0x10000;
+    public static final int CP_CS_MANAGE_SIEGE = 0x20000;
+    public static final int CP_CS_USE_FUNCTIONS = 0x40000;
+    public static final int CP_CS_DISMISS = 0x80000;
+    public static final int CP_CS_TAXES = 0x100000;
+    public static final int CP_CS_MERCENARIES = 0x200000;
+    public static final int CP_CS_SET_FUNCTIONS = 0x400000;
+    public static final int CP_ALL = 0x7ffffe;
     // Sub-unit types
     public static final int SUBUNIT_ACADEMY = -1;
     public static final int SUBUNIT_ROYAL1 = 100;
@@ -85,7 +87,6 @@ public class L2Clan {
     public static final int SUBUNIT_KNIGHT2 = 1002;
     public static final int SUBUNIT_KNIGHT3 = 2001;
     public static final int SUBUNIT_KNIGHT4 = 2002;
-    private static final Logger _log = Logger.getLogger(L2Clan.class.getName());
     private static final int MAX_NOTICE_LENGTH = 8192;
     private static final int MAX_INTRODUCTION_LENGTH = 300;
     protected final Map<Integer, L2Skill> _skills = new HashMap<>();
@@ -154,7 +155,7 @@ public class L2Clan {
             checkCrests();
         }
         catch (Exception e) {
-            _log.warning("Error while restoring clan " + e.getMessage());
+            LOGGER.error("Error while restoring clan {}", e.getMessage(), e);
         }
 
         _warehouse.restore();
@@ -318,7 +319,7 @@ public class L2Clan {
     public void removeClanMember(int objectId, long clanJoinExpiryTime) {
         L2ClanMember exMember = _members.remove(objectId);
         if (exMember == null) {
-            _log.warning("Member Object ID: " + objectId + " not found in clan while trying to remove");
+            LOGGER.warn("Member Object ID: {} not found in clan while trying to remove", objectId);
             return;
         }
 
@@ -404,7 +405,7 @@ public class L2Clan {
                 statement.close();
             }
             catch (Exception e) {
-                _log.warning("error while removing clan member in db " + e);
+                LOGGER.error("error while removing clan member in db ", e);
             }
         }
     }
@@ -434,7 +435,7 @@ public class L2Clan {
         if (subPledge.getId() == SUBUNIT_ACADEMY || leaderId == 0) { return ""; }
 
         if (!_members.containsKey(leaderId)) {
-            _log.warning("SubPledgeLeader: " + leaderId + " is missing from clan: " + _name + "[" + _clanId + "]");
+            LOGGER.warn("SubPledgeLeader: {} is missing from clan: {}[{}]", leaderId, _name, _clanId);
             return "";
         }
 
@@ -662,7 +663,7 @@ public class L2Clan {
             statement.close();
         }
         catch (Exception e) {
-            _log.warning("error while saving new clan leader to db " + e);
+            LOGGER.error("error while saving new clan leader to db ", e);
         }
     }
 
@@ -683,7 +684,7 @@ public class L2Clan {
             statement.close();
         }
         catch (Exception e) {
-            _log.warning("error while saving new clan to db " + e);
+            LOGGER.error("error while saving new clan to db ", e);
         }
     }
 
@@ -701,7 +702,7 @@ public class L2Clan {
             statement.close();
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "L2Clan : could not store clan notice: " + e.getMessage(), e);
+            LOGGER.error("L2Clan : could not store clan notice: {}", e.getMessage(), e);
         }
 
         _notice = notice;
@@ -750,7 +751,7 @@ public class L2Clan {
                 statement.close();
             }
             catch (Exception e) {
-                _log.log(Level.WARNING, "L2Clan : could not store clan introduction: " + e.getMessage(), e);
+                LOGGER.error("L2Clan : could not store clan introduction: {}", e.getMessage(), e);
             }
         }
 
@@ -796,7 +797,7 @@ public class L2Clan {
             statement.close();
         }
         catch (Exception e) {
-            _log.warning("Could not restore clan skills: " + e);
+            LOGGER.error("Could not restore clan skills: ", e);
         }
     }
 
@@ -840,7 +841,7 @@ public class L2Clan {
             }
         }
         catch (Exception e) {
-            _log.warning("Error could not store char skills: " + e);
+            LOGGER.error("Error could not store char skills: ", e);
             return;
         }
 
@@ -990,7 +991,7 @@ public class L2Clan {
             statement.close();
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Could not restore clan sub-units: " + e.getMessage(), e);
+            LOGGER.error("Could not restore clan sub-units: {}", e.getMessage(), e);
         }
     }
 
@@ -1069,7 +1070,7 @@ public class L2Clan {
             }
         }
         catch (Exception e) {
-            _log.warning("error while saving new sub_clan to db " + e);
+            LOGGER.error("error while saving new sub_clan to db ", e);
         }
 
         broadcastToOnlineMembers(new PledgeShowInfoUpdate(_leader.getClan()), new PledgeReceiveSubPledgeCreated(subPledge, _leader.getClan()));
@@ -1120,7 +1121,7 @@ public class L2Clan {
             statement.close();
         }
         catch (Exception e) {
-            _log.log(Level.SEVERE, "Error updating subpledge: " + e.getMessage(), e);
+            LOGGER.error("Error updating subpledge: {}", e.getMessage(), e);
         }
     }
 
@@ -1136,7 +1137,7 @@ public class L2Clan {
             statement.close();
         }
         catch (Exception e) {
-            _log.warning("Could not restore clan privs by rank: " + e);
+            LOGGER.error("Could not restore clan privs by rank: ", e);
         }
     }
 
@@ -1172,7 +1173,7 @@ public class L2Clan {
                 statement.close();
             }
             catch (Exception e) {
-                _log.warning("Could not store clan privs for rank: " + e);
+                LOGGER.error("Could not store clan privs for rank: ", e);
             }
 
             for (L2PcInstance member : getOnlineMembers()) {
@@ -1192,7 +1193,7 @@ public class L2Clan {
                 statement.close();
             }
             catch (Exception e) {
-                _log.warning("Could not create new rank and store clan privs for rank: " + e);
+                LOGGER.error("Could not create new rank and store clan privs for rank: ", e);
             }
         }
     }
@@ -1294,7 +1295,7 @@ public class L2Clan {
             statement.close();
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Exception on updateClanScoreInDb(): " + e.getMessage(), e);
+            LOGGER.error("Exception on updateClanScoreInDb(): {}", e.getMessage(), e);
         }
     }
 
@@ -1321,7 +1322,7 @@ public class L2Clan {
             statement.close();
         }
         catch (Exception e) {
-            _log.warning("Could not store auction for clan: " + e);
+            LOGGER.error("Could not store auction for clan: ", e);
         }
     }
 
@@ -1685,7 +1686,7 @@ public class L2Clan {
             statement.close();
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Could not increase clan level:" + e.getMessage(), e);
+            LOGGER.error("Could not increase clan level:{}", e.getMessage(), e);
         }
 
         setLevel(level);
@@ -1719,7 +1720,7 @@ public class L2Clan {
             statement.close();
         }
         catch (SQLException e) {
-            _log.log(Level.WARNING, "Could not update crest for clan " + _name + " [" + _clanId + "] : " + e.getMessage(), e);
+            LOGGER.error("Could not update crest for clan {} [{}] : {}", _name, _clanId, e.getMessage(), e);
         }
 
         for (L2PcInstance member : getOnlineMembers()) { member.broadcastUserInfo(); }
@@ -1749,7 +1750,7 @@ public class L2Clan {
             statement.close();
         }
         catch (SQLException e) {
-            _log.log(Level.WARNING, "Could not update ally crest for ally/clan id " + allyId + " : " + e.getMessage(), e);
+            LOGGER.error("Could not update ally crest for ally/clan id {} : {}", allyId, e.getMessage(), e);
         }
 
         if (onlyThisClan) {
@@ -1784,7 +1785,7 @@ public class L2Clan {
             statement.close();
         }
         catch (SQLException e) {
-            _log.log(Level.WARNING, "Could not update large crest for clan " + _name + " [" + _clanId + "] : " + e.getMessage(), e);
+            LOGGER.error("Could not update large crest for clan {} [{}] : {}", _name, _clanId, e.getMessage(), e);
         }
 
         for (L2PcInstance member : getOnlineMembers()) { member.broadcastUserInfo(); }
@@ -1793,21 +1794,21 @@ public class L2Clan {
     private void checkCrests() {
         if (_crestId != 0) {
             if (CrestCache.getInstance().getCrest(CrestType.PLEDGE, _crestId) == null) {
-                _log.log(Level.INFO, "Removing non-existent crest for clan " + _name + " [" + _clanId + "], crestId:" + _crestId);
+                LOGGER.info("Removing non-existent crest for clan {} [{}], crestId:{}", _name, _clanId, _crestId);
                 changeClanCrest(0);
             }
         }
 
         if (_crestLargeId != 0) {
             if (CrestCache.getInstance().getCrest(CrestType.PLEDGE_LARGE, _crestLargeId) == null) {
-                _log.log(Level.INFO, "Removing non-existent large crest for clan " + _name + " [" + _clanId + "], crestLargeId:" + _crestLargeId);
+                LOGGER.info("Removing non-existent large crest for clan {} [{}], crestLargeId:{}", _name, _clanId, _crestLargeId);
                 changeLargeCrest(0);
             }
         }
 
         if (_allyCrestId != 0) {
             if (CrestCache.getInstance().getCrest(CrestType.ALLY, _allyCrestId) == null) {
-                _log.log(Level.INFO, "Removing non-existent ally crest for clan " + _name + " [" + _clanId + "], allyCrestId:" + _allyCrestId);
+                LOGGER.info("Removing non-existent ally crest for clan {} [{}], allyCrestId:{}", _name, _clanId, _allyCrestId);
                 changeAllyCrest(0, true);
             }
         }

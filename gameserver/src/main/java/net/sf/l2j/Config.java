@@ -19,14 +19,12 @@ import net.sf.l2j.gameserver.geoengine.geodata.GeoFormat;
 import net.sf.l2j.gameserver.model.holder.BuffSkillHolder;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
 import net.sf.l2j.gameserver.model.item.ItemConst;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.math.BigInteger;
 import java.util.*;
-import java.util.logging.Logger;
 
 /**
  * This class contains global server configuration.<br>
@@ -37,6 +35,8 @@ import java.util.logging.Logger;
  */
 @Deprecated
 public final class Config {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Config.class);
+
     public static final String CLANS_FILE = "./config/clans.properties";
     public static final String EVENTS_FILE = "./config/events.properties";
     public static final String GEOENGINE_FILE = "./config/geoengine.properties";
@@ -46,7 +46,6 @@ public final class Config {
     public static final String PLAYERS_FILE = "./config/players.properties";
     public static final String SERVER_FILE = "./config/server.properties";
     public static final String SIEGE_FILE = "./config/siege.properties";
-    protected static final Logger _log = Logger.getLogger(Config.class.getName());
 
     // --------------------------------------------------
     // Clans settings
@@ -751,7 +750,7 @@ public final class Config {
      */
     public static void load() {
         if (Server.serverMode == Server.MODE_GAMESERVER) {
-            _log.info("Loading gameserver configuration files.");
+            LOGGER.info("Loading gameserver configuration files.");
 
             // Clans settings
             ExProperties clans = load(CLANS_FILE);
@@ -958,8 +957,7 @@ public final class Config {
 
             ALLOW_CLASS_MASTERS = npcs.getProperty("AllowClassMasters", false);
             ALLOW_ENTIRE_TREE = npcs.getProperty("AllowEntireTree", false);
-            if (ALLOW_CLASS_MASTERS)
-                CLASS_MASTER_SETTINGS = new ClassMasterSettings(npcs.getProperty("ConfigClassMaster"));
+            if (ALLOW_CLASS_MASTERS) { CLASS_MASTER_SETTINGS = new ClassMasterSettings(npcs.getProperty("ConfigClassMaster")); }
 
             ALT_GAME_FREE_TELEPORT = npcs.getProperty("AltFreeTeleporting", false);
             ANNOUNCE_MAMMON_SPAWN = npcs.getProperty("AnnounceMammonSpawn", true);
@@ -1088,14 +1086,12 @@ public final class Config {
             String[] array = KARMA_NONDROPPABLE_PET_ITEMS.split(",");
             KARMA_LIST_NONDROPPABLE_PET_ITEMS = new int[array.length];
 
-            for (int i = 0; i < array.length; i++)
-                KARMA_LIST_NONDROPPABLE_PET_ITEMS[i] = Integer.parseInt(array[i]);
+            for (int i = 0; i < array.length; i++) { KARMA_LIST_NONDROPPABLE_PET_ITEMS[i] = Integer.parseInt(array[i]); }
 
             array = KARMA_NONDROPPABLE_ITEMS.split(",");
             KARMA_LIST_NONDROPPABLE_ITEMS = new int[array.length];
 
-            for (int i = 0; i < array.length; i++)
-                KARMA_LIST_NONDROPPABLE_ITEMS[i] = Integer.parseInt(array[i]);
+            for (int i = 0; i < array.length; i++) { KARMA_LIST_NONDROPPABLE_ITEMS[i] = Integer.parseInt(array[i]); }
 
             // sorting so binarySearch can be used later
             Arrays.sort(KARMA_LIST_NONDROPPABLE_PET_ITEMS);
@@ -1163,8 +1159,7 @@ public final class Config {
             MAXIMUM_ONLINE_USERS = server.getProperty("MaximumOnlineUsers", 100);
             MIN_PROTOCOL_REVISION = server.getProperty("MinProtocolRevision", 730);
             MAX_PROTOCOL_REVISION = server.getProperty("MaxProtocolRevision", 746);
-            if (MIN_PROTOCOL_REVISION > MAX_PROTOCOL_REVISION)
-                throw new Error("MinProtocolRevision is bigger than MaxProtocolRevision in server.properties.");
+            if (MIN_PROTOCOL_REVISION > MAX_PROTOCOL_REVISION) { throw new Error("MinProtocolRevision is bigger than MaxProtocolRevision in server.properties."); }
 
             DEFAULT_PUNISH = server.getProperty("DefaultPunish", 2);
             DEFAULT_PUNISH_PARAM = server.getProperty("DefaultPunishParam", 0);
@@ -1251,8 +1246,9 @@ public final class Config {
             AUTODELETE_INVALID_QUEST_DATA = server.getProperty("AutoDeleteInvalidQuestData", false);
             ZONE_TOWN = server.getProperty("ZoneTown", 0);
             SERVER_NEWS = server.getProperty("ShowServerNews", false);
-        } else if (Server.serverMode == Server.MODE_LOGINSERVER) {
-            _log.info("Loading loginserver configuration files.");
+        }
+        else if (Server.serverMode == Server.MODE_LOGINSERVER) {
+            LOGGER.info("Loading loginserver configuration files.");
 
             ExProperties server = load(LOGIN_CONFIGURATION_FILE);
             GAME_SERVER_LOGIN_HOST = server.getProperty("LoginHostname", "*");
@@ -1280,8 +1276,8 @@ public final class Config {
             NORMAL_CONNECTION_TIME = server.getProperty("NormalConnectionTime", 700);
             FAST_CONNECTION_TIME = server.getProperty("FastConnectionTime", 350);
             MAX_CONNECTION_PER_IP = server.getProperty("MaxConnectionPerIP", 50);
-        } else
-            _log.severe("Couldn't load configs: server mode wasn't set.");
+        }
+        else { LOGGER.error("Couldn't load configs: server mode wasn't set."); }
     }
 
     /**
@@ -1292,8 +1288,7 @@ public final class Config {
      */
     private static int[][] parseItemsList(String line) {
         final String[] propertySplit = line.split(";");
-        if (propertySplit.length == 0)
-            return null;
+        if (propertySplit.length == 0) { return null; }
 
         int i = 0;
         String[] valueSplit;
@@ -1301,22 +1296,24 @@ public final class Config {
         for (String value : propertySplit) {
             valueSplit = value.split(",");
             if (valueSplit.length != 2) {
-                _log.warning("parseItemsList[Config.load()]: invalid entry -> \"" + valueSplit[0] + "\", should be itemId,itemNumber");
+                LOGGER.warn("parseItemsList[Config.load()]: invalid entry -> \"{}\", should be itemId,itemNumber", valueSplit[0]);
                 return null;
             }
 
             result[i] = new int[2];
             try {
                 result[i][0] = Integer.parseInt(valueSplit[0]);
-            } catch (NumberFormatException e) {
-                _log.warning("parseItemsList[Config.load()]: invalid itemId -> \"" + valueSplit[0] + "\"");
+            }
+            catch (NumberFormatException e) {
+                LOGGER.warn("parseItemsList[Config.load()]: invalid itemId -> \"{}\"", valueSplit[0]);
                 return null;
             }
 
             try {
                 result[i][1] = Integer.parseInt(valueSplit[1]);
-            } catch (NumberFormatException e) {
-                _log.warning("parseItemsList[Config.load()]: invalid item number -> \"" + valueSplit[1] + "\"");
+            }
+            catch (NumberFormatException e) {
+                LOGGER.warn("parseItemsList[Config.load()]: invalid item number -> \"{}\"", valueSplit[1]);
                 return null;
             }
             i++;
@@ -1333,8 +1330,9 @@ public final class Config {
 
         try {
             result.load(file);
-        } catch (IOException e) {
-            _log.warning("Error loading config : " + file.getName() + "!");
+        }
+        catch (IOException e) {
+            LOGGER.error("Error loading config : {}!", file.getName(), e);
         }
 
         return result;
@@ -1350,8 +1348,7 @@ public final class Config {
             _claimItems = new HashMap<>(3);
             _rewardItems = new HashMap<>(3);
 
-            if (configLine != null)
-                parseConfigLine(configLine.trim());
+            if (configLine != null) { parseConfigLine(configLine.trim()); }
         }
 
         private void parseConfigLine(String configLine) {
@@ -1391,11 +1388,9 @@ public final class Config {
         }
 
         public boolean isAllowed(int job) {
-            if (_allowedClassChange == null)
-                return false;
+            if (_allowedClassChange == null) { return false; }
 
-            if (_allowedClassChange.containsKey(job))
-                return _allowedClassChange.get(job);
+            if (_allowedClassChange.containsKey(job)) { return _allowedClassChange.get(job); }
 
             return false;
         }

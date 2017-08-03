@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.model.entity;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
@@ -34,25 +20,25 @@ import net.sf.l2j.gameserver.network.client.game_to_client.ExRedSky;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.network.client.game_to_client.UserInfo;
 import net.sf.l2j.gameserver.util.Broadcast;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.concurrent.ScheduledFuture;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class CursedWeapon {
-    private static final Logger _log = Logger.getLogger(CursedWeapon.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(CursedWeapon.class);
 
     private final String _name;
 
     private final int _itemId;
-    private L2ItemInstance _item = null;
+    private L2ItemInstance _item;
 
-    private int _playerId = 0;
-    protected L2PcInstance _player = null;
+    private int _playerId;
+    protected L2PcInstance _player;
 
     // Skill id and max level. Max level is took from skillid (allow custom skills).
     private final int _skillId;
@@ -69,24 +55,24 @@ public class CursedWeapon {
     // Basic number used to calculate next number of needed victims for a stage (50% to 150% the given value).
     private int _stageKills;
 
-    private boolean _isDropped = false;
-    private boolean _isActivated = false;
+    private boolean _isDropped;
+    private boolean _isActivated;
 
     private ScheduledFuture<?> _overallTimerTask;
     private ScheduledFuture<?> _dailyTimerTask;
     private ScheduledFuture<?> _dropTimerTask;
 
-    private int _playerKarma = 0;
-    private int _playerPkKills = 0;
+    private int _playerKarma;
+    private int _playerPkKills;
 
     // Number of current killed, current stage of weapon (1 by default, max is _skillMaxLevel), and number of victims needed for next stage.
-    private int _nbKills = 0;
+    private int _nbKills;
     private int _currentStage = 1;
-    private int _numberBeforeNextStage = 0;
+    private int _numberBeforeNextStage;
 
     // Hungry timer (in minutes) and overall end timer (in ms).
-    protected int _hungryTime = 0;
-    protected long _endTime = 0;
+    protected int _hungryTime;
+    protected long _endTime;
 
     public CursedWeapon(int itemId, int skillId, String name) {
         _name = name;
@@ -109,7 +95,7 @@ public class CursedWeapon {
         if (_isActivated) {
             // Player is online ; unequip weapon && destroy it.
             if (_player != null && _player.isOnline()) {
-                _log.info(_name + " being removed online.");
+                LOGGER.info("{} being removed online.", _name);
 
                 _player.abortAttack();
 
@@ -128,14 +114,16 @@ public class CursedWeapon {
             }
             // Player is offline ; make only SQL operations.
             else {
-                _log.info(_name + " being removed offline.");
+                LOGGER.info("{} being removed offline.", _name);
 
                 try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                     // Delete the item
                     PreparedStatement statement = con.prepareStatement("DELETE FROM items WHERE owner_id=? AND item_id=?");
                     statement.setInt(1, _playerId);
                     statement.setInt(2, _itemId);
-                    if (statement.executeUpdate() != 1) { _log.warning("Error while deleting itemId " + _itemId + " from userId " + _playerId); }
+                    if (statement.executeUpdate() != 1) {
+                        LOGGER.warn("Error while deleting itemId {} from userId {}", _itemId, _playerId);
+                    }
 
                     statement.close();
 
@@ -144,12 +132,14 @@ public class CursedWeapon {
                     statement.setInt(1, _playerKarma);
                     statement.setInt(2, _playerPkKills);
                     statement.setInt(3, _playerId);
-                    if (statement.executeUpdate() != 1) { _log.warning("Error while updating karma & pkkills for userId " + _playerId); }
+                    if (statement.executeUpdate() != 1) {
+                        LOGGER.warn("Error while updating karma & pkkills for userId {}", _playerId);
+                    }
 
                     statement.close();
                 }
                 catch (Exception e) {
-                    _log.log(Level.WARNING, "Could not delete : " + e.getMessage(), e);
+                    LOGGER.error("Could not delete : {}", e.getMessage(), e);
                 }
             }
         }
@@ -157,12 +147,12 @@ public class CursedWeapon {
             // This CW is in the inventory of someone who has another cursed weapon equipped.
             if (_player != null && _player.getInventory().getItemByItemId(_itemId) != null) {
                 _player.getInventory().destroyItemByItemId(EItemProcessPurpose.CURSED_WEAPON, _itemId, 1, _player, _player, false);
-                _log.info(_name + " item has been assimilated.");
+                LOGGER.info("{} item has been assimilated.", _name);
             }
             // This CW is on the ground.
             else if (_item != null) {
                 _item.decayMe();
-                _log.info(_name + " item has been removed from world.");
+                LOGGER.info("{} item has been removed from world.", _name);
             }
         }
 
@@ -219,7 +209,7 @@ public class CursedWeapon {
 
     private class DailyTimerTask implements Runnable {
         // Internal timer to delay messages to the next hour, instead of every minute.
-        private int _timer = 0;
+        private int _timer;
 
         protected DailyTimerTask() {
         }
@@ -393,7 +383,7 @@ public class CursedWeapon {
     public void reActivate(boolean fromZero) {
         if (fromZero) {
             _hungryTime = _durationLost * 60;
-            _endTime = (System.currentTimeMillis() + _duration * 3600000L);
+            _endTime = System.currentTimeMillis() + _duration * 3600000L;
 
             _overallTimerTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new OverallTimerTask(), 60000L, 60000L);
         }
@@ -507,7 +497,7 @@ public class CursedWeapon {
             statement.close();
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Could not restore CursedWeapons data: " + e.getMessage(), e);
+            LOGGER.error("Could not restore CursedWeapons data: {}", e.getMessage(), e);
         }
     }
 
@@ -531,7 +521,7 @@ public class CursedWeapon {
             statement.close();
         }
         catch (SQLException e) {
-            _log.log(Level.SEVERE, "CursedWeapon: Failed to insert data.", e);
+            LOGGER.error("CursedWeapon: Failed to insert data.", e);
         }
     }
 
@@ -552,7 +542,7 @@ public class CursedWeapon {
             statement.close();
         }
         catch (SQLException e) {
-            _log.log(Level.SEVERE, "CursedWeapon: Failed to update data.", e);
+            LOGGER.error("CursedWeapon: Failed to update data.", e);
         }
     }
 
@@ -569,7 +559,7 @@ public class CursedWeapon {
             statement.close();
         }
         catch (SQLException e) {
-            _log.log(Level.SEVERE, "CursedWeapon: Failed to remove data: " + e.getMessage(), e);
+            LOGGER.error("CursedWeapon: Failed to remove data: {}", e.getMessage(), e);
         }
     }
 

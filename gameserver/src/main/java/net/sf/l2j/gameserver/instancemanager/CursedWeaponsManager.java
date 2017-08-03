@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.instancemanager;
 
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
@@ -20,6 +6,8 @@ import net.sf.l2j.gameserver.model.actor.instance.*;
 import net.sf.l2j.gameserver.model.entity.CursedWeapon;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.xmlfactory.XMLDocumentFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -29,23 +17,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- * Manager for CWs.
- * <ul>
- * <li><u>dropRate :</u> the drop rate used to monster drop the CW. Default : 1/1000000</li>
- * <li><u>duration :</u> the overall lifetime duration in hours. Default : 72 hours (3 days)</li>
- * <li><u>durationLost :</u> the task time duration, launched when someone pickups a CW. Renewed when CW owner kills a player. Default : 24 hours.</li>
- * <li><u>disapearChance :</u> chance to dissapear when CW owner dies. Default : 50%</li>
- * <li><u>stageKills :</u> the basic number used to calculate random needed number of needed kills to rank up the CW. That number is used as a base, it takes a random number between 50% and 150% of that value. Default : 10</li>
- * </ul>
- *
- * @author Micht, Tryskell
- */
 public class CursedWeaponsManager {
-    private static final Logger _log = Logger.getLogger(CursedWeaponsManager.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(CursedWeaponsManager.class);
 
     private final Map<Integer, CursedWeapon> _cursedWeapons = new HashMap<>();
 
@@ -117,10 +91,10 @@ public class CursedWeaponsManager {
                 }
             }
 
-            _log.info("CursedWeaponsManager: Loaded " + _cursedWeapons.size() + " cursed weapons.");
+            LOGGER.info("CursedWeaponsManager: Loaded {} cursed weapons.", _cursedWeapons.size());
         }
         catch (Exception e) {
-            _log.log(Level.SEVERE, "Error parsing cursed_weapons.xml: ", e);
+            LOGGER.error("Error parsing cursed_weapons.xml: ", e);
         }
     }
 

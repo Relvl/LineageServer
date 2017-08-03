@@ -1,21 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
-
-/**
- * @author godson
- */
 package net.sf.l2j.gameserver.model.entity;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
@@ -36,6 +18,8 @@ import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
 import net.sf.l2j.gameserver.templates.StatsSet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,11 +27,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Hero {
-    private static Logger _log = Logger.getLogger(Hero.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(Hero.class);
 
     private static final String GET_HEROES = "SELECT heroes.char_id, characters.char_name, heroes.class_id, heroes.count, heroes.played, heroes.active FROM heroes, characters WHERE characters.obj_Id = heroes.char_id AND heroes.played = 1";
     private static final String GET_ALL_HEROES = "SELECT heroes.char_id, characters.char_name, heroes.class_id, heroes.count, heroes.played, heroes.active FROM heroes, characters WHERE characters.obj_Id = heroes.char_id";
@@ -208,11 +190,11 @@ public class Hero {
             statement.close();
         }
         catch (SQLException e) {
-            _log.log(Level.WARNING, "Hero: Couldnt load heroes: " + e.getMessage(), e);
+            LOGGER.error("Hero: Couldnt load heroes: {}", e.getMessage(), e);
         }
 
-        _log.info("Hero: Loaded " + _heroes.size() + " heroes.");
-        _log.info("Hero: Loaded " + _completeHeroes.size() + " all time heroes.");
+        LOGGER.info("Hero: Loaded {} heroes.", _heroes.size());
+        LOGGER.info("Hero: Loaded {} all time heroes.", _completeHeroes.size());
     }
 
     private static String calcFightTime(long FightTime) {
@@ -242,7 +224,7 @@ public class Hero {
             statement.close();
         }
         catch (SQLException e) {
-            _log.log(Level.WARNING, "Hero: Couldnt load hero message for char_id: " + charId, e);
+            LOGGER.error("Hero: Couldnt load hero message for char_id: {}", charId, e);
         }
     }
 
@@ -281,10 +263,10 @@ public class Hero {
 
             _herodiary.put(charId, _diary);
 
-            _log.info("Hero: Loaded " + diaryentries + " diary entries for hero: " + CharNameTable.getInstance().getNameById(charId));
+            LOGGER.info("Hero: Loaded {} diary entries for hero: {}", diaryentries, CharNameTable.getInstance().getNameById(charId));
         }
         catch (SQLException e) {
-            _log.log(Level.WARNING, "Hero: Couldnt load hero diary for char_id: " + charId + ", " + e.getMessage(), e);
+            LOGGER.error("Hero: Couldnt load hero diary for char_id: {}, {}", charId, e.getMessage(), e);
         }
     }
 
@@ -393,10 +375,10 @@ public class Hero {
             _herocounts.put(charId, _herocountdata);
             _herofights.put(charId, _fights);
 
-            _log.info("Hero: Loaded " + numberoffights + " fights for: " + CharNameTable.getInstance().getNameById(charId));
+            LOGGER.info("Hero: Loaded {} fights for: {}", numberoffights, CharNameTable.getInstance().getNameById(charId));
         }
         catch (SQLException e) {
-            _log.log(Level.WARNING, "Hero: Couldnt load hero fights history for char_id: " + charId + ", " + e.getMessage(), e);
+            LOGGER.error("Hero: Couldnt load hero fights history for char_id: {}, {}", charId, e.getMessage(), e);
         }
     }
 
@@ -681,7 +663,7 @@ public class Hero {
             }
         }
         catch (SQLException e) {
-            _log.log(Level.WARNING, "Hero: Couldnt update heroes: " + e.getMessage(), e);
+            LOGGER.error("Hero: Couldnt update heroes: {}", e.getMessage(), e);
         }
     }
 
@@ -750,7 +732,7 @@ public class Hero {
             statement.close();
         }
         catch (SQLException e) {
-            _log.log(Level.SEVERE, "Hero: SQL exception while saving DiaryData.", e);
+            LOGGER.error("Hero: SQL exception while saving DiaryData.", e);
         }
     }
 
@@ -780,7 +762,7 @@ public class Hero {
             statement.close();
         }
         catch (SQLException e) {
-            _log.log(Level.SEVERE, "Hero: SQL exception while saving HeroMessage.", e);
+            LOGGER.error("Hero: SQL exception while saving HeroMessage.", e);
         }
     }
 
@@ -791,7 +773,7 @@ public class Hero {
             statement.close();
         }
         catch (SQLException e) {
-            _log.log(Level.WARNING, "Hero: Couldn't delete items on db: " + e.getMessage(), e);
+            LOGGER.error("Hero: Couldn't delete items on db: {}", e.getMessage(), e);
         }
     }
 

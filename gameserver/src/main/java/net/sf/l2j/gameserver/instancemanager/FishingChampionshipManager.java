@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.instancemanager;
 
 import net.sf.l2j.Config;
@@ -24,6 +10,8 @@ import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,11 +20,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class FishingChampionshipManager {
-    protected static final Logger _log = Logger.getLogger(FishingChampionshipManager.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(FishingChampionshipManager.class);
 
     private static final String INSERT = "INSERT INTO fishing_championship(player_name,fish_length,rewarded) VALUES (?,?,?)";
     private static final String DELETE = "DELETE FROM fishing_championship";
@@ -47,8 +33,8 @@ public class FishingChampionshipManager {
     protected final List<String> _winFishLength = new ArrayList<>();
     protected final List<Fisher> _tmpPlayers = new ArrayList<>();
     protected final List<Fisher> _winPlayers = new ArrayList<>();
-    protected long _enddate = 0;
-    protected double _minFishLength = 0;
+    protected long _enddate;
+    protected double _minFishLength;
     protected boolean _needRefresh = true;
 
     protected FishingChampionshipManager() {
@@ -93,7 +79,7 @@ public class FishingChampionshipManager {
             statement.close();
         }
         catch (SQLException e) {
-            _log.log(Level.WARNING, "FishingChampionshipManager: can't restore fishing championship info: " + e.getMessage(), e);
+            LOGGER.error("FishingChampionshipManager: can't restore fishing championship info: {}", e.getMessage(), e);
         }
     }
 
@@ -222,7 +208,7 @@ public class FishingChampionshipManager {
                     if (rewardCnt > 0) {
                         pl.addItem(EItemProcessPurpose.FISHING, Config.ALT_FISH_CHAMPIONSHIP_REWARD_ITEM, rewardCnt, null, true);
 
-                        final NpcHtmlMessage html = new NpcHtmlMessage(0);
+                        NpcHtmlMessage html = new NpcHtmlMessage(0);
                         html.setFile("data/html/fisherman/championship/fish_event_reward001.htm");
                         pl.sendPacket(html);
                     }
@@ -232,7 +218,7 @@ public class FishingChampionshipManager {
     }
 
     public void showMidResult(L2PcInstance pl) {
-        final NpcHtmlMessage html = new NpcHtmlMessage(0);
+        NpcHtmlMessage html = new NpcHtmlMessage(0);
 
         if (_needRefresh) {
             html.setFile("data/html/fisherman/championship/fish_event003.htm");
@@ -262,7 +248,7 @@ public class FishingChampionshipManager {
     }
 
     public void showChampScreen(L2PcInstance pl, int objectId) {
-        final NpcHtmlMessage html = new NpcHtmlMessage(objectId);
+        NpcHtmlMessage html = new NpcHtmlMessage(objectId);
         html.setFile("data/html/fisherman/championship/fish_event001.htm");
 
         String str = null;
@@ -308,7 +294,7 @@ public class FishingChampionshipManager {
             }
         }
         catch (SQLException e) {
-            _log.log(Level.WARNING, "FishingChampionshipManager: can't update infos: " + e.getMessage(), e);
+            LOGGER.error("FishingChampionshipManager: can't update infos: {}", e.getMessage(), e);
         }
     }
 
@@ -384,7 +370,7 @@ public class FishingChampionshipManager {
             setEndOfChamp();
             shutdown();
 
-            _log.info("FishingChampionshipManager : new event period start.");
+            LOGGER.info("FishingChampionshipManager : new event period start.");
             ThreadPoolManager.getInstance().scheduleGeneral(new finishChamp(), _enddate - System.currentTimeMillis());
         }
     }

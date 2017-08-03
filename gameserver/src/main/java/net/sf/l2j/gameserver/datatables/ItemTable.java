@@ -18,6 +18,8 @@ import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.skills.DocumentItem;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.sql.Connection;
@@ -26,13 +28,9 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
-import java.util.logging.Level;
-import java.util.logging.LogRecord;
-import java.util.logging.Logger;
 
 public class ItemTable {
-    private static final Logger _log = Logger.getLogger(ItemTable.class.getName());
-    private static final Logger _logItems = Logger.getLogger("item");
+    private static final Logger LOGGER = LoggerFactory.getLogger(ItemTable.class);
 
     private Item[] templates;
     private static final Map<Integer, Armor> ARMORS = new HashMap<>();
@@ -100,10 +98,7 @@ public class ItemTable {
         if (item.isStackable() && count > 1) { item.setCount(count); }
 
         if (Config.LOG_ITEMS) {
-            LogRecord record = new LogRecord(Level.INFO, "CREATE:" + process);
-            record.setLoggerName("item");
-            record.setParameters(new Object[]{item, actor, reference});
-            _logItems.log(record);
+            LOGGER.info("ITEM CREATE: {}, {}, {}, {}", process, item, actor, reference);
         }
 
         return item;
@@ -126,10 +121,7 @@ public class ItemTable {
             IdFactory.getInstance().releaseId(item.getObjectId());
 
             if (Config.LOG_ITEMS) {
-                LogRecord record = new LogRecord(Level.INFO, "DELETE:" + process);
-                record.setLoggerName("item");
-                record.setParameters(new Object[]{item, actor, reference});
-                _logItems.log(record);
+                LOGGER.info("ITEM DELETE: {}, {}, {}, {}", process, item, actor, reference);
             }
 
             if (PetDataTable.isPetCollar(item.getItemId())) {
@@ -140,7 +132,7 @@ public class ItemTable {
                     statement.close();
                 }
                 catch (SQLException e) {
-                    _log.log(Level.WARNING, "could not delete pet objectid:", e);
+                    LOGGER.error("could not delete pet objectid:", e);
                 }
             }
         }

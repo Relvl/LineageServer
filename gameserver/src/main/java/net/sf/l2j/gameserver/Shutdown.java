@@ -184,7 +184,7 @@ public class Shutdown extends Thread {
             LOGGER.info("Fishing Championship data has been saved.");
 
             // Schemes save.
-            BufferTable.getInstance().saveSchemes();
+            BufferTable.saveSchemes();
             LOGGER.info("BufferTable data has been saved.");
 
             // Save items on ground before closing

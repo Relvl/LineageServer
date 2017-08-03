@@ -4,6 +4,8 @@ import net.sf.l2j.gameserver.model.soulcrystal.LevelingInfo;
 import net.sf.l2j.gameserver.model.soulcrystal.LevelingInfo.AbsorbCrystalType;
 import net.sf.l2j.gameserver.model.soulcrystal.SoulCrystalData;
 import net.sf.l2j.gameserver.xmlfactory.XMLDocumentFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -11,11 +13,9 @@ import org.w3c.dom.Node;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class SoulCrystalsTable {
-    private static final Logger _log = Logger.getLogger(SoulCrystalsTable.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(SoulCrystalsTable.class);
 
     private static final Map<Integer, SoulCrystalData> _soulCrystals = new HashMap<>();
     private static final Map<Integer, LevelingInfo> _npcLevelingInfos = new HashMap<>();
@@ -33,28 +33,28 @@ public class SoulCrystalsTable {
                             NamedNodeMap attrs = d.getAttributes();
                             Node att = attrs.getNamedItem("crystal");
                             if (att == null) {
-                                _log.severe("SoulCrystalsTable: Missing \"crystal\" in \"soul_crystals.xml\", skipping.");
+                                LOGGER.error("SoulCrystalsTable: Missing \"crystal\" in \"soul_crystals.xml\", skipping.");
                                 continue;
                             }
                             int crystalItemId = Integer.parseInt(att.getNodeValue());
 
                             att = attrs.getNamedItem("level");
                             if (att == null) {
-                                _log.severe("SoulCrystalsTable: Missing \"level\" in \"soul_crystals.xml\" crystal=" + crystalItemId + ", skipping.");
+                                LOGGER.error("SoulCrystalsTable: Missing \"level\" in \"soul_crystals.xml\" crystal={}, skipping.", crystalItemId);
                                 continue;
                             }
                             int level = Integer.parseInt(att.getNodeValue());
 
                             att = attrs.getNamedItem("staged");
                             if (att == null) {
-                                _log.severe("SoulCrystalsTable: Missing \"staged\" in \"soul_crystals.xml\" crystal=" + crystalItemId + ", skipping.");
+                                LOGGER.error("SoulCrystalsTable: Missing \"staged\" in \"soul_crystals.xml\" crystal={}, skipping.", crystalItemId);
                                 continue;
                             }
                             int stagedItemId = Integer.parseInt(att.getNodeValue());
 
                             att = attrs.getNamedItem("broken");
                             if (att == null) {
-                                _log.severe("SoulCrystalsTable: Missing \"broken\" in \"soul_crystals.xml\" crystal=" + crystalItemId + ", skipping.");
+                                LOGGER.error("SoulCrystalsTable: Missing \"broken\" in \"soul_crystals.xml\" crystal={}, skipping.", crystalItemId);
                                 continue;
                             }
                             int brokenItemId = Integer.parseInt(att.getNodeValue());
@@ -69,7 +69,7 @@ public class SoulCrystalsTable {
                             NamedNodeMap attrs = d.getAttributes();
                             Node att = attrs.getNamedItem("npcId");
                             if (att == null) {
-                                _log.severe("SoulCrystalsTable: Missing \"npcId\" in \"soul_crystals.xml\", skipping.");
+                                LOGGER.error("SoulCrystalsTable: Missing \"npcId\" in \"soul_crystals.xml\", skipping.");
                                 continue;
                             }
                             int npcId = Integer.parseInt(att.getNodeValue());
@@ -102,7 +102,7 @@ public class SoulCrystalsTable {
                                     for (int i = 0; i < strings.length; i++) {
                                         Integer value = Integer.parseInt(strings[i].trim());
                                         if (value == null) {
-                                            _log.severe("SoulCrystalsTable: Bad level value for npcId=" + npcId + ", token=" + strings[i]);
+                                            LOGGER.error("SoulCrystalsTable: Bad level value for npcId={}, token={}", npcId, strings[i]);
                                             continue;
                                         }
                                         levelList[i] = value;
@@ -117,10 +117,10 @@ public class SoulCrystalsTable {
             }
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "SoulCrystalsTable: Could not parse soul_crystals.xml file: " + e.getMessage(), e);
+            LOGGER.error("SoulCrystalsTable: Could not parse soul_crystals.xml file: {}", e.getMessage(), e);
         }
 
-        _log.info("SoulCrystalsTable: Loaded " + _soulCrystals.size() + " SC data and " + _npcLevelingInfos.size() + " NPC data.");
+        LOGGER.error("SoulCrystalsTable: Loaded {} SC data and {} NPC data.", _soulCrystals.size(), _npcLevelingInfos.size());
     }
 
     public static Map<Integer, SoulCrystalData> getSoulCrystalInfos() {

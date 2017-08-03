@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.datatables;
 
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
@@ -31,21 +17,22 @@ import net.sf.l2j.gameserver.model.zone.type.L2ArenaZone;
 import net.sf.l2j.gameserver.model.zone.type.L2ClanHallZone;
 import net.sf.l2j.gameserver.model.zone.type.L2TownZone;
 import net.sf.l2j.gameserver.xmlfactory.XMLDocumentFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import java.io.File;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class MapRegionTable {
+    private static final Logger LOGGER = LoggerFactory.getLogger(MapRegionTable.class);
+
     private static final int REGIONS_X = 11;
     private static final int REGIONS_Y = 16;
     private static final int[][] _regions = new int[REGIONS_X][REGIONS_Y];
     private static final int[] _castleIdArray = {0, 0, 0, 0, 0, 1, 0, 2, 3, 4, 5, 0, 0, 6, 8, 7, 9, 0, 0};
-    private static Logger _log = Logger.getLogger(MapRegionTable.class.getName());
 
     protected MapRegionTable() {
         int count = 0;
@@ -67,33 +54,33 @@ public class MapRegionTable {
             }
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "MapRegionTable: Error while loading \"map_region.xml\".", e);
+            LOGGER.error("MapRegionTable: Error while loading \"map_region.xml\".", e);
         }
-        _log.info("MapRegionTable: Loaded " + count + " regions.");
+        LOGGER.info("MapRegionTable: Loaded {} regions.", count);
     }
 
     public static MapRegionTable getInstance() {
         return SingletonHolder._instance;
     }
 
-    public static final int getMapRegion(int posX, int posY) {
+    public static int getMapRegion(int posX, int posY) {
         try {
             return _regions[getMapRegionX(posX)][getMapRegionY(posY)];
         }
         catch (ArrayIndexOutOfBoundsException e) {
             // Position sent is outside MapRegionTable area.
-            _log.log(Level.WARNING, "MapRegionTable: Player outside map regions at X,Y=" + posX + "," + posY, e);
+            LOGGER.error("MapRegionTable: Player outside map regions at X,Y={},{}", posX, posY, e);
 
             return 0;
         }
     }
 
-    public static final int getMapRegionX(int posX) {
+    public static int getMapRegionX(int posX) {
         // +4 to shift coords center
         return (posX >> 15) + 4;
     }
 
-    public static final int getMapRegionY(int posY) {
+    public static int getMapRegionY(int posY) {
         // +8 to shift coords center
         return (posY >> 15) + 8;
     }
@@ -103,7 +90,7 @@ public class MapRegionTable {
      * @param y
      * @return the castle id associated to the town, based on X/Y points.
      */
-    public static final int getAreaCastle(int x, int y) {
+    public static int getAreaCastle(int x, int y) {
         switch (getMapRegion(x, y)) {
             case 0: // Talking Island Village
             case 5: // Town of Gludio
@@ -153,7 +140,7 @@ public class MapRegionTable {
      * @param y    : The current player's Y location.
      * @return the closest L2TownZone based on a X/Y location.
      */
-    private static final L2TownZone getClosestTown(PlayerRace race, int x, int y) {
+    private static L2TownZone getClosestTown(PlayerRace race, int x, int y) {
         switch (getMapRegion(x, y)) {
             case 0: // TI
                 return getTown(2);
@@ -218,7 +205,7 @@ public class MapRegionTable {
      * @param y : The current character's Y location.
      * @return the closest L2TownZone based on a X/Y location.
      */
-    private static final L2TownZone getClosestTown(int x, int y) {
+    private static L2TownZone getClosestTown(int x, int y) {
         switch (getMapRegion(x, y)) {
             case 0: // TI
                 return getTown(2);
@@ -283,7 +270,7 @@ public class MapRegionTable {
      * @param y : The current character's Y location.
      * @return the second closest L2TownZone based on a X/Y location.
      */
-    private static final L2TownZone getSecondClosestTown(int x, int y) {
+    private static L2TownZone getSecondClosestTown(int x, int y) {
         switch (getMapRegion(x, y)) {
             case 0: // TI
             case 1: // Elven
@@ -330,7 +317,7 @@ public class MapRegionTable {
      * @param y : The current character's Y location.
      * @return the closest region based on a X/Y location.
      */
-    public static final int getClosestLocation(int x, int y) {
+    public static int getClosestLocation(int x, int y) {
         switch (getMapRegion(x, y)) {
             case 0: // TI
                 return 1;
@@ -385,7 +372,7 @@ public class MapRegionTable {
      * @param y coords to check.
      * @return true if a siege is currently in progress in that town.
      */
-    public static final boolean townHasCastleInSiege(int x, int y) {
+    public static boolean townHasCastleInSiege(int x, int y) {
         final int castleIndex = _castleIdArray[getMapRegion(x, y)];
         if (castleIndex > 0) {
             final Castle castle = CastleManager.getInstance().getCastles().get(CastleManager.getInstance().getCastleIndex(castleIndex));
@@ -398,7 +385,7 @@ public class MapRegionTable {
      * @param townId the townId to match.
      * @return a L2TownZone based on the overall list of L2TownZone, matching the townId.
      */
-    public static final L2TownZone getTown(int townId) {
+    public static L2TownZone getTown(int townId) {
         for (L2TownZone temp : ZoneManager.getInstance().getAllZones(L2TownZone.class)) {
             if (temp.getTownId() == townId) { return temp; }
         }
@@ -411,7 +398,7 @@ public class MapRegionTable {
      * @param z coords to check.
      * @return a L2TownZone based on the overall list of zones, matching a 3D location.
      */
-    public static final L2TownZone getTown(int x, int y, int z) {
+    public static L2TownZone getTown(int x, int y, int z) {
         for (L2ZoneType temp : ZoneManager.getZones(x, y, z)) {
             if (temp instanceof L2TownZone) { return (L2TownZone) temp; }
         }

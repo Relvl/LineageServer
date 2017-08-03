@@ -14,53 +14,44 @@
  */
 package net.sf.l2j.gameserver.geoengine.pathfinding;
 
-import java.util.List;
-import java.util.logging.Level;
-
 import net.sf.l2j.gameserver.datatables.DoorTable;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.model.location.Location;
 
+import java.util.List;
+
 /**
  * @author Hasha
  */
-public class NullPathFinding extends PathFinding
-{
-	public NullPathFinding()
-	{
-		_log.log(Level.INFO, "NullPathFinding: Ready.");
-	}
-	
-	@Override
-	public List<Location> findPath(int ox, int oy, int oz, int tx, int ty, int tz, boolean playable)
-	{
-		return null;
-	}
-	
-	@Override
-	public boolean canSeeTarget(int ox, int oy, int oz, int oheight, int tx, int ty, int tz, int theight)
-	{
-		return !DoorTable.getInstance().checkIfDoorsBetween(ox, oy, oz, tx, ty, tz);
-	}
-	
-	@Override
-	public boolean canMoveToTarget(int ox, int oy, int oz, int tx, int ty, int tz)
-	{
-		return !DoorTable.getInstance().checkIfDoorsBetween(ox, oy, oz, tx, ty, tz);
-	}
-	
-	@Override
-	public Location canMoveToTargetLoc(int ox, int oy, int oz, int tx, int ty, int tz)
-	{
-		if (DoorTable.getInstance().checkIfDoorsBetween(ox, oy, oz, tx, ty, tz))
-			return new Location(ox, oy, oz);
-		
-		return new Location(tx, ty, tz);
-	}
-	
-	@Override
-	public List<String> getStat()
-	{
-		return null;
-	}
+public class NullPathFinding extends PathFinding {
+    public NullPathFinding() {
+        LOGGER.info("NullPathFinding: Ready.");
+    }
+
+    @Override
+    public List<Location> findPath(int ox, int oy, int oz, int tx, int ty, int tz, boolean playable) {
+        return null;
+    }
+
+    @Override
+    public boolean canSeeTarget(int ox, int oy, int oz, int oheight, int tx, int ty, int tz, int theight) {
+        return !DoorTable.getInstance().checkIfDoorsBetween(ox, oy, oz, tx, ty, tz);
+    }
+
+    @Override
+    public boolean canMoveToTarget(int ox, int oy, int oz, int tx, int ty, int tz) {
+        return !DoorTable.getInstance().checkIfDoorsBetween(ox, oy, oz, tx, ty, tz);
+    }
+
+    @Override
+    public Location canMoveToTargetLoc(int ox, int oy, int oz, int tx, int ty, int tz) {
+        if (DoorTable.getInstance().checkIfDoorsBetween(ox, oy, oz, tx, ty, tz)) { return new Location(ox, oy, oz); }
+
+        return new Location(tx, ty, tz);
+    }
+
+    @Override
+    public List<String> getStat() {
+        return null;
+    }
 }

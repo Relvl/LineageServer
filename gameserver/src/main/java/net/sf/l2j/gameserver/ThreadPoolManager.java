@@ -2,19 +2,20 @@ package net.sf.l2j.gameserver;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.lang.StringUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.logging.Logger;
 
 public class ThreadPoolManager {
-    protected static final Logger _log = Logger.getLogger(ThreadPoolManager.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(ThreadPoolManager.class);
 
     private static final class RunnableWrapper implements Runnable {
         private final Runnable _r;
 
-        public RunnableWrapper(final Runnable r) {
+        public RunnableWrapper(Runnable r) {
             _r = r;
         }
 
@@ -22,9 +23,10 @@ public class ThreadPoolManager {
         public final void run() {
             try {
                 _r.run();
-            } catch (final Throwable e) {
-                final Thread t = Thread.currentThread();
-                final UncaughtExceptionHandler h = t.getUncaughtExceptionHandler();
+            }
+            catch (Throwable e) {
+                Thread t = Thread.currentThread();
+                UncaughtExceptionHandler h = t.getUncaughtExceptionHandler();
                 if (h != null) { h.uncaughtException(t, e); }
             }
         }
@@ -65,19 +67,21 @@ public class ThreadPoolManager {
 
     public ScheduledFuture<?> scheduleEffect(Runnable r, long delay) {
         try {
-            delay = ThreadPoolManager.validateDelay(delay);
+            delay = validateDelay(delay);
             return _effectsScheduledThreadPool.schedule(new RunnableWrapper(r), delay, TimeUnit.MILLISECONDS);
-        } catch (RejectedExecutionException e) {
+        }
+        catch (RejectedExecutionException e) {
             return null;
         }
     }
 
     public ScheduledFuture<?> scheduleEffectAtFixedRate(Runnable r, long initial, long delay) {
         try {
-            delay = ThreadPoolManager.validateDelay(delay);
-            initial = ThreadPoolManager.validateDelay(initial);
+            delay = validateDelay(delay);
+            initial = validateDelay(initial);
             return _effectsScheduledThreadPool.scheduleAtFixedRate(new RunnableWrapper(r), initial, delay, TimeUnit.MILLISECONDS);
-        } catch (RejectedExecutionException e) {
+        }
+        catch (RejectedExecutionException e) {
             return null; /* shutdown, ignore */
         }
     }
@@ -89,19 +93,21 @@ public class ThreadPoolManager {
 
     public ScheduledFuture<?> scheduleGeneral(Runnable r, long delay) {
         try {
-            delay = ThreadPoolManager.validateDelay(delay);
+            delay = validateDelay(delay);
             return _generalScheduledThreadPool.schedule(new RunnableWrapper(r), delay, TimeUnit.MILLISECONDS);
-        } catch (RejectedExecutionException e) {
+        }
+        catch (RejectedExecutionException e) {
             return null; /* shutdown, ignore */
         }
     }
 
     public ScheduledFuture<?> scheduleGeneralAtFixedRate(Runnable r, long initial, long delay) {
         try {
-            delay = ThreadPoolManager.validateDelay(delay);
-            initial = ThreadPoolManager.validateDelay(initial);
+            delay = validateDelay(delay);
+            initial = validateDelay(initial);
             return _generalScheduledThreadPool.scheduleAtFixedRate(new RunnableWrapper(r), initial, delay, TimeUnit.MILLISECONDS);
-        } catch (RejectedExecutionException e) {
+        }
+        catch (RejectedExecutionException e) {
             return null; /* shutdown, ignore */
         }
     }
@@ -113,19 +119,21 @@ public class ThreadPoolManager {
 
     public ScheduledFuture<?> scheduleAi(Runnable r, long delay) {
         try {
-            delay = ThreadPoolManager.validateDelay(delay);
+            delay = validateDelay(delay);
             return _aiScheduledThreadPool.schedule(new RunnableWrapper(r), delay, TimeUnit.MILLISECONDS);
-        } catch (RejectedExecutionException e) {
+        }
+        catch (RejectedExecutionException e) {
             return null; /* shutdown, ignore */
         }
     }
 
     public ScheduledFuture<?> scheduleAiAtFixedRate(Runnable r, long initial, long delay) {
         try {
-            delay = ThreadPoolManager.validateDelay(delay);
-            initial = ThreadPoolManager.validateDelay(initial);
+            delay = validateDelay(delay);
+            initial = validateDelay(initial);
             return _aiScheduledThreadPool.scheduleAtFixedRate(new RunnableWrapper(r), initial, delay, TimeUnit.MILLISECONDS);
-        } catch (RejectedExecutionException e) {
+        }
+        catch (RejectedExecutionException e) {
             return null; /* shutdown, ignore */
         }
     }
@@ -184,7 +192,7 @@ public class ThreadPoolManager {
         _ioPacketsThreadPool.shutdown();
         _generalThreadPool.shutdown();
 
-        _log.info("All ThreadPools are now stopped.");
+        LOGGER.info("All ThreadPools are now stopped.");
     }
 
     public boolean isShutdown() {
@@ -201,7 +209,7 @@ public class ThreadPoolManager {
     }
 
     public String getPacketStats() {
-        final StringBuilder sb = new StringBuilder(1000);
+        StringBuilder sb = new StringBuilder(1000);
         ThreadFactory tf = _generalPacketsThreadPool.getThreadFactory();
         if (tf instanceof PriorityThreadFactory) {
             PriorityThreadFactory ptf = (PriorityThreadFactory) tf;
@@ -225,7 +233,7 @@ public class ThreadPoolManager {
     }
 
     public String getIOPacketStats() {
-        final StringBuilder sb = new StringBuilder(1000);
+        StringBuilder sb = new StringBuilder(1000);
         ThreadFactory tf = _ioPacketsThreadPool.getThreadFactory();
 
         if (tf instanceof PriorityThreadFactory) {
@@ -252,7 +260,7 @@ public class ThreadPoolManager {
     }
 
     public String getGeneralStats() {
-        final StringBuilder sb = new StringBuilder(1000);
+        StringBuilder sb = new StringBuilder(1000);
         ThreadFactory tf = _generalThreadPool.getThreadFactory();
 
         if (tf instanceof PriorityThreadFactory) {

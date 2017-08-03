@@ -12,12 +12,13 @@ import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.scripting.EventType;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.templates.StatsSet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
-import java.util.logging.Logger;
 
 public final class NpcTemplate extends CharTemplate {
-    protected static final Logger _log = Logger.getLogger(NpcTemplate.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(NpcTemplate.class);
 
     private final int _npcId;
     private final int _idTemplate;
@@ -84,7 +85,7 @@ public final class NpcTemplate extends CharTemplate {
         _dropHerbGroup = set.getInteger("dropHerbGroup", 0);
 
         if (_dropHerbGroup > 0 && HerbDropTable.getInstance().getHerbDroplist(_dropHerbGroup) == null) {
-            _log.warning("Missing dropHerbGroup information for npcId: " + _npcId + ", dropHerbGroup: " + _dropHerbGroup);
+            LOGGER.warn("Missing dropHerbGroup information for npcId: {}, dropHerbGroup: {}", _npcId, _dropHerbGroup);
             _dropHerbGroup = 0;
         }
     }
@@ -224,7 +225,7 @@ public final class NpcTemplate extends CharTemplate {
 
             if (eventType.isMultipleRegistrationAllowed() || eventList.isEmpty()) { eventList.add(quest); }
             else {
-                _log.warning("Quest event not allow multiple quest registrations. Skipped addition of EventType \"" + eventType + "\" for NPC \"" + _name + "\" and quest \"" + quest.getName() + "\".");
+                LOGGER.warn("Quest event not allow multiple quest registrations. Skipped addition of EventType \"{}\" for NPC \"{}\" and quest \"{}\".", eventType, _name, quest.getName());
             }
         }
     }

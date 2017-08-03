@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.model.entity;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
@@ -28,6 +14,8 @@ import net.sf.l2j.gameserver.model.zone.type.L2ClanHallZone;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.PledgeShowInfoUpdate;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,11 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ClanHall {
-    protected static final Logger _log = Logger.getLogger(ClanHall.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(ClanHall.class);
 
     private static final int CH_RATE = 604800000;
 
@@ -154,7 +140,7 @@ public class ClanHall {
                     else { removeFunction(getType()); }
                 }
                 catch (Exception e) {
-                    _log.log(Level.SEVERE, "", e);
+                    LOGGER.error("", e);
                 }
             }
         }
@@ -172,7 +158,7 @@ public class ClanHall {
                 statement.close();
             }
             catch (Exception e) {
-                _log.log(Level.SEVERE, "Exception: ClanHall.updateFunctions(int type, int lvl, int lease, long rate, long time, boolean addNew): " + e.getMessage(), e);
+                LOGGER.error("Exception: ClanHall.updateFunctions(int type, int lvl, int lease, long rate, long time, boolean addNew): " + e.getMessage(), e);
             }
         }
     }
@@ -383,7 +369,7 @@ public class ClanHall {
             statement.close();
         }
         catch (Exception e) {
-            _log.log(Level.SEVERE, "Exception: ClanHall.loadFunctions(): " + e.getMessage(), e);
+            LOGGER.error("Exception: ClanHall.loadFunctions(): " + e.getMessage(), e);
         }
     }
 
@@ -403,7 +389,7 @@ public class ClanHall {
             statement.close();
         }
         catch (Exception e) {
-            _log.log(Level.SEVERE, "Exception: ClanHall.removeFunction(int functionType): " + e.getMessage(), e);
+            LOGGER.error("Exception: ClanHall.removeFunction(int functionType): " + e.getMessage(), e);
         }
     }
 
@@ -420,7 +406,7 @@ public class ClanHall {
             statement.close();
         }
         catch (Exception e) {
-            _log.log(Level.SEVERE, "Exception: ClanHall.removeAllFunctions(): " + e.getMessage(), e);
+            LOGGER.error("Exception: ClanHall.removeAllFunctions(): " + e.getMessage(), e);
         }
     }
 
@@ -472,7 +458,7 @@ public class ClanHall {
             statement.close();
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Exception: updateOwnerInDB(L2Clan clan): " + e.getMessage(), e);
+            LOGGER.error("Exception: updateOwnerInDB(L2Clan clan): " + e.getMessage(), e);
         }
     }
 
@@ -542,7 +528,7 @@ public class ClanHall {
                 }
             }
             catch (Exception e) {
-                _log.log(Level.SEVERE, "", e);
+                LOGGER.error("", e);
             }
         }
     }

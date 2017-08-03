@@ -1,40 +1,26 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.datatables;
 
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.instancemanager.ClanHallManager;
-import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2DoorInstance;
 import net.sf.l2j.gameserver.model.actor.template.CharTemplate;
 import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.model.entity.ClanHall;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.templates.StatsSet;
 import net.sf.l2j.gameserver.xmlfactory.XMLDocumentFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import java.io.File;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class DoorTable {
-    private static final Logger _log = Logger.getLogger(DoorTable.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(DoorTable.class);
 
     private final Map<Integer, L2DoorInstance> _staticItems = new HashMap<>();
     private final Map<Integer, ArrayList<L2DoorInstance>> _regions = new HashMap<>();
@@ -92,7 +78,7 @@ public class DoorTable {
                             // Verify if the door got an id, else skip it
                             Node att = attrs.getNamedItem("id");
                             if (att == null) {
-                                _log.severe("DoorTable: Missing id for door, skipping.");
+                                LOGGER.error("DoorTable: Missing id for door, skipping.");
                                 continue;
                             }
                             int id = Integer.valueOf(att.getNodeValue());
@@ -100,7 +86,7 @@ public class DoorTable {
                             // Verify if the door got a name, else skip it
                             att = attrs.getNamedItem("name");
                             if (att == null) {
-                                _log.severe("DoorTable: Missing name for door id: " + id + ", skipping.");
+                                LOGGER.error("DoorTable: Missing name for door id: {}, skipping.", id);
                                 continue;
                             }
                             String name = att.getNodeValue();
@@ -136,9 +122,9 @@ public class DoorTable {
                                 else if ("unlockable".equalsIgnoreCase(c.getNodeName())) { unlockable = Boolean.valueOf(attrs.getNamedItem("val").getNodeValue()); }
                             }
 
-                            if (rangeXMin > rangeXMax) { _log.severe("DoorTable: Error on rangeX min/max, ID:" + id); }
-                            if (rangeYMin > rangeYMax) { _log.severe("DoorTable: Error on rangeY min/max, ID:" + id); }
-                            if (rangeZMin > rangeZMax) { _log.severe("DoorTable: Error on rangeZ min/max, ID:" + id); }
+                            if (rangeXMin > rangeXMax) { LOGGER.error("DoorTable: Error on rangeX min/max, ID:{}", id); }
+                            if (rangeYMin > rangeYMax) { LOGGER.error("DoorTable: Error on rangeY min/max, ID:{}", id); }
+                            if (rangeZMin > rangeZMax) { LOGGER.error("DoorTable: Error on rangeZ min/max, ID:{}", id); }
 
                             if ((rangeXMax - rangeXMin) > (rangeYMax - rangeYMin)) { collisionRadius = rangeYMax - rangeYMin; }
                             else { collisionRadius = rangeXMax - rangeXMin; }
@@ -206,10 +192,10 @@ public class DoorTable {
                 }
             }
 
-            _log.info("DoorTable: Loaded " + _staticItems.size() + " doors templates for " + _regions.size() + " regions.");
+            LOGGER.info("DoorTable: Loaded {} doors templates for {} regions.", _staticItems.size(), _regions.size());
         }
         catch (Exception e) {
-            _log.warning("DoorTable: Error while creating table: " + e);
+            LOGGER.error("DoorTable: Error while creating table: ", e);
         }
     }
 
@@ -310,7 +296,7 @@ public class DoorTable {
             for (Castle castle : CastleManager.getInstance().getCastles()) { castle.loadDoorUpgrade(); }
         }
         catch (NullPointerException e) {
-            _log.log(Level.WARNING, "There are errors in doors.xml.", e);
+            LOGGER.error("There are errors in doors.xml.", e);
         }
     }
 

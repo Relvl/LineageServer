@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.scripting;
 
 import net.sf.l2j.Config;
@@ -23,19 +9,19 @@ import net.sf.l2j.gameserver.model.item.*;
 import net.sf.l2j.gameserver.model.itemcontainer.PcInventory;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * @author Luis Arias
  */
 public final class QuestState {
-    protected static final Logger _log = Logger.getLogger(Quest.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(QuestState.class);
 
     public static final String SOUND_ACCEPT = "ItemSound.quest_accept";
     public static final String SOUND_ITEMGET = "ItemSound.quest_itemget";
@@ -193,7 +179,7 @@ public final class QuestState {
             statement.close();
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "could not delete char quest:", e);
+            LOGGER.error("could not delete char quest:", e);
         }
     }
 
@@ -235,7 +221,7 @@ public final class QuestState {
                 setCond(Integer.parseInt(value), previousVal);
             }
             catch (Exception e) {
-                _log.log(Level.WARNING, _player.getName() + ", " + _quest.getName() + " cond [" + value + "] is not an integer. Value stored, but no packet was sent: " + e.getMessage(), e);
+                LOGGER.error("{}, {} cond [{}] is not an integer. Value stored, but no packet was sent: {}", _player.getName(), _quest.getName(), value, e.getMessage(), e);
             }
         }
     }
@@ -363,7 +349,7 @@ public final class QuestState {
             value = Integer.parseInt(variable);
         }
         catch (Exception e) {
-            _log.log(Level.FINER, _player.getName() + ": variable " + var + " isn't an integer: " + value + " ! " + e.getMessage(), e);
+            LOGGER.error("{}: variable {} isn't an integer: {} ! {}", _player.getName(), var, value, e.getMessage(), e);
         }
 
         return value;
@@ -386,7 +372,7 @@ public final class QuestState {
             statement.close();
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "could not insert char quest:", e);
+            LOGGER.error("could not insert char quest:", e);
         }
     }
 
@@ -405,7 +391,7 @@ public final class QuestState {
             statement.close();
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "could not delete char quest:", e);
+            LOGGER.error("could not delete char quest:", e);
         }
     }
 

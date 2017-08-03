@@ -1,20 +1,8 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.cache;
 
 import net.sf.l2j.commons.io.UnicodeReader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,13 +10,9 @@ import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
-/**
- * @author Layane, reworked by Java-man and Hasha
- */
 public class HtmCache {
-    private static final Logger _log = Logger.getLogger(HtmCache.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(HtmCache.class);
 
     private final Map<Integer, String> _htmCache;
     private final FileFilter _htmFilter;
@@ -46,7 +30,7 @@ public class HtmCache {
      * Cleans HtmCache.
      */
     public void reload() {
-        _log.info("HtmCache: Cache cleared, had " + _htmCache.size() + " entries.");
+        LOGGER.info("HtmCache: Cache cleared, had {} entries.", _htmCache.size());
 
         _htmCache.clear();
     }
@@ -58,7 +42,7 @@ public class HtmCache {
      */
     public void reloadPath(String path) {
         parseDir(new File(path));
-        _log.info("HtmCache: Reloaded specified " + path + " path.");
+        LOGGER.info("HtmCache: Reloaded specified {} path.", path);
     }
 
     /**
@@ -84,15 +68,15 @@ public class HtmCache {
             final StringBuilder sb = new StringBuilder();
             String line;
 
-            while ((line = br.readLine()) != null)
-                sb.append(line).append('\n');
+            while ((line = br.readLine()) != null) { sb.append(line).append('\n'); }
 
             final String content = sb.toString().replaceAll("\r\n", "\n");
 
             _htmCache.put(file.getPath().replace("\\", "/").hashCode(), content);
             return content;
-        } catch (Exception e) {
-            _log.warning("HtmCache: problem with loading file " + e);
+        }
+        catch (Exception e) {
+            LOGGER.error("HtmCache: problem with loading file ", e);
             return null;
         }
     }
@@ -140,7 +124,7 @@ public class HtmCache {
         String content = getHtm(filename);
         if (content == null) {
             content = "<html><body>My html is missing:<br>" + filename + "</body></html>";
-            _log.warning("HtmCache: " + filename + " is missing.");
+            LOGGER.warn("HtmCache: {} is missing.", filename);
         }
 
         return content;

@@ -4,7 +4,6 @@ import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.instancemanager.*;
 import net.sf.l2j.gameserver.model.L2SiegeClan;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
@@ -17,6 +16,7 @@ import net.sf.l2j.gameserver.model.item.kind.Armor;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import net.sf.l2j.gameserver.model.item.kind.Weapon;
 import net.sf.l2j.gameserver.model.item.type.EWeaponType;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.model.zone.type.L2MotherTreeZone;
 import net.sf.l2j.gameserver.network.SystemMessageId;
@@ -25,8 +25,6 @@ import net.sf.l2j.gameserver.skills.effects.EffectTemplate;
 import net.sf.l2j.gameserver.taskmanager.GameTimeTaskManager;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
 import net.sf.l2j.gameserver.util.Util;
-
-import java.util.logging.Logger;
 
 /**
  * Global calculations, can be modified by server admins
@@ -45,7 +43,6 @@ public final class Formulas {
     public static final double[] STRbonus = new double[MAX_STAT_VALUE];
     public static final double[] DEXbonus = new double[MAX_STAT_VALUE];
     public static final double[] CONbonus = new double[MAX_STAT_VALUE];
-    protected static final Logger _log = Logger.getLogger(Formulas.class.getName());
     protected static final double[] sqrtMENbonus = new double[MAX_STAT_VALUE];
     protected static final double[] sqrtCONbonus = new double[MAX_STAT_VALUE];
     private static final int HP_REGENERATE_PERIOD = 3000; // 3 secs

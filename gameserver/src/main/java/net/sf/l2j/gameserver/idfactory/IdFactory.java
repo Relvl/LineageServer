@@ -1,20 +1,8 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.idfactory;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,10 +12,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Logger;
 
 public abstract class IdFactory {
-    private static Logger LOGGER = Logger.getLogger(IdFactory.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(IdFactory.class);
 
     private static final String[][] EXTRACT_OBJ_ID_TABLES = {
             {"characters", "obj_Id"},
@@ -65,6 +52,7 @@ public abstract class IdFactory {
             LOGGER.info("Updated characters online status.");
         }
         catch (SQLException e) {
+            LOGGER.error("", e);
         }
     }
 
@@ -129,19 +117,20 @@ public abstract class IdFactory {
             stmt.executeUpdate("UPDATE clanhall SET ownerId=0, paidUntil=0, paid=0 WHERE clanhall.ownerId NOT IN (SELECT clan_id FROM clan_data);");
 
             stmt.close();
-            LOGGER.info("Cleaned " + cleanCount + " elements from database.");
+            LOGGER.info("Cleaned {} elements from database.", cleanCount);
         }
         catch (SQLException e) {
+            LOGGER.error("", e);
         }
     }
 
     protected static Collection<Integer> extractUsedObjectIDTable() throws SQLException {
-        final List<Integer> temp = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
 
         try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
-            final Statement st = con.createStatement();
+            Statement st = con.createStatement();
             for (String[] table : EXTRACT_OBJ_ID_TABLES) {
-                final ResultSet rs = st.executeQuery("SELECT " + table[1] + " FROM " + table[0]);
+                ResultSet rs = st.executeQuery("SELECT " + table[1] + " FROM " + table[0]);
                 while (rs.next()) { temp.add(rs.getInt(1)); }
 
                 rs.close();

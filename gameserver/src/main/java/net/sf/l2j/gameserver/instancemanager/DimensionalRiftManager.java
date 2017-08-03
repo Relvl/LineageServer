@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.instancemanager;
 
 import net.sf.l2j.Config;
@@ -28,6 +14,8 @@ import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 import net.sf.l2j.gameserver.xmlfactory.XMLDocumentFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -38,14 +26,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- * Thanks to L2Fortress and balancer.ru - kombat
- */
 public class DimensionalRiftManager {
-    private static final Logger _log = Logger.getLogger(DimensionalRiftManager.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(DimensionalRiftManager.class);
 
     private static final Map<Byte, HashMap<Byte, DimensionalRiftRoom>> _rooms = new HashMap<>(7);
     private static final int DIMENSIONAL_FRAGMENT_ITEM_ID = 7079;
@@ -63,7 +46,8 @@ public class DimensionalRiftManager {
     }
 
     private static void loadData() {
-        int countGood = 0, countBad = 0;
+        int countGood = 0;
+        int countBad = 0;
         try {
             File file = new File("./data/xml/dimensional_rift.xml");
             Document doc = XMLDocumentFactory.getInstance().loadDocument(file);
@@ -87,7 +71,7 @@ public class DimensionalRiftManager {
                                     int xT = Integer.parseInt(attrs.getNamedItem("xT").getNodeValue());
                                     int yT = Integer.parseInt(attrs.getNamedItem("yT").getNodeValue());
 
-                                    if (!_rooms.containsKey(type)) { _rooms.put(type, new HashMap<Byte, DimensionalRiftRoom>(9)); }
+                                    if (!_rooms.containsKey(type)) { _rooms.put(type, new HashMap<>(9)); }
 
                                     _rooms.get(type).put(roomId, new DimensionalRiftRoom(type, roomId, xMin, xMax, yMin, yMax, xT, yT));
 
@@ -99,9 +83,15 @@ public class DimensionalRiftManager {
                                             int count = Integer.parseInt(attrs.getNamedItem("count").getNodeValue());
 
                                             NpcTemplate template = NpcTable.getInstance().getTemplate(mobId);
-                                            if (template == null) { _log.log(Level.WARNING, "Template " + mobId + " not found!"); }
-                                            if (!_rooms.containsKey(type)) { _log.log(Level.WARNING, "Type " + type + " not found!"); }
-                                            else if (!_rooms.get(type).containsKey(roomId)) { _log.log(Level.WARNING, "Room " + roomId + " in Type " + type + " not found!"); }
+                                            if (template == null) {
+                                                LOGGER.warn("Template {} not found!", mobId);
+                                            }
+                                            if (!_rooms.containsKey(type)) {
+                                                LOGGER.warn("Type {} not found!", type);
+                                            }
+                                            else if (!_rooms.get(type).containsKey(roomId)) {
+                                                LOGGER.warn("Room {} in Type {} not found!", roomId, type);
+                                            }
 
                                             for (int i = 0; i < count; i++) {
                                                 DimensionalRiftRoom riftRoom = _rooms.get(type).get(roomId);
@@ -134,7 +124,7 @@ public class DimensionalRiftManager {
             }
         }
         catch (Exception e) {
-            _log.log(Level.WARNING, "Error on loading dimensional rift spawns: " + e);
+            LOGGER.error("Error on loading dimensional rift spawns:", e);
         }
 
         int typeSize = _rooms.keySet().size();
@@ -142,8 +132,8 @@ public class DimensionalRiftManager {
 
         for (byte b : _rooms.keySet()) { roomSize += _rooms.get(b).keySet().size(); }
 
-        _log.info("DimensionalRiftManager: Loaded " + typeSize + " room types with " + roomSize + " rooms.");
-        _log.info("DimensionalRiftManager: Loaded " + countGood + " dimensional rift spawns, " + countBad + " errors.");
+        LOGGER.info("DimensionalRiftManager: Loaded {} room types with {} rooms.", typeSize, roomSize);
+        LOGGER.info("DimensionalRiftManager: Loaded {} dimensional rift spawns, {} errors.", countGood, countBad);
     }
 
     public void reload() {

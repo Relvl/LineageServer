@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.instancemanager;
 
 import net.sf.l2j.Config;
@@ -25,21 +11,17 @@ import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
 import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
 import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
-/**
- * Petition Manager
- *
- * @author Tempy
- */
 public final class PetitionManager {
-    protected static final Logger _log = Logger.getLogger(PetitionManager.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(PetitionManager.class);
 
     private final Map<Integer, Petition> _pendingPetitions;
     private final Map<Integer, Petition> _completedPetitions;
@@ -61,14 +43,14 @@ public final class PetitionManager {
         int numPetitions = getPendingPetitionCount();
 
         getCompletedPetitions().clear();
-        _log.info("PetitionManager: Completed petition data cleared. " + numPetitions + " petition(s) removed.");
+        LOGGER.info("PetitionManager: Completed petition data cleared. {} petition(s) removed.", numPetitions);
     }
 
     public void clearPendingPetitions() {
         int numPetitions = getPendingPetitionCount();
 
         getPendingPetitions().clear();
-        _log.info("PetitionManager: Pending petition queue cleared. " + numPetitions + " petition(s) removed.");
+        LOGGER.info("PetitionManager: Pending petition queue cleared. {} petition(s) removed.", numPetitions);
     }
 
     public boolean acceptPetition(L2PcInstance respondingAdmin, int petitionId) {
@@ -95,11 +77,11 @@ public final class PetitionManager {
     public boolean cancelActivePetition(L2PcInstance player) {
         for (Petition currPetition : getPendingPetitions().values()) {
             if (currPetition.getPetitioner() != null && currPetition.getPetitioner().getObjectId() == player.getObjectId()) {
-                return (currPetition.endPetitionConsultation(PetitionState.Petitioner_Cancel));
+                return currPetition.endPetitionConsultation(PetitionState.Petitioner_Cancel);
             }
 
             if (currPetition.getResponder() != null && currPetition.getResponder().getObjectId() == player.getObjectId()) {
-                return (currPetition.endPetitionConsultation(PetitionState.Responder_Cancel));
+                return currPetition.endPetitionConsultation(PetitionState.Responder_Cancel);
             }
         }
 
@@ -127,7 +109,7 @@ public final class PetitionManager {
             if (currPetition == null) { continue; }
 
             if (currPetition.getResponder() != null && currPetition.getResponder().getObjectId() == player.getObjectId()) {
-                return (currPetition.endPetitionConsultation(PetitionState.Completed));
+                return currPetition.endPetitionConsultation(PetitionState.Completed);
             }
         }
 
@@ -184,7 +166,7 @@ public final class PetitionManager {
         if (!isValidPetition(petitionId)) { return false; }
 
         Petition currPetition = getPendingPetitions().get(petitionId);
-        return (currPetition.getState() == PetitionState.In_Process);
+        return currPetition.getState() == PetitionState.In_Process;
     }
 
     public boolean isPlayerInConsultation(L2PcInstance player) {
@@ -229,7 +211,7 @@ public final class PetitionManager {
         if (currPetition.getResponder() != null) { return false; }
 
         currPetition.setResponder(respondingAdmin);
-        return (currPetition.endPetitionConsultation(PetitionState.Responder_Reject));
+        return currPetition.endPetitionConsultation(PetitionState.Responder_Reject);
     }
 
     public boolean sendActivePetitionMessage(L2PcInstance player, String messageText) {
@@ -261,8 +243,8 @@ public final class PetitionManager {
     }
 
     public void sendPendingPetitionList(L2PcInstance activeChar) {
-        final SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        final StringBuilder sb = new StringBuilder("<html><body><center><font color=\"LEVEL\">Current Petitions</font><br><table width=\"300\">");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        StringBuilder sb = new StringBuilder("<html><body><center><font color=\"LEVEL\">Current Petitions</font><br><table width=\"300\">");
 
         if (getPendingPetitionCount() == 0) {
             sb.append("<tr><td colspan=\"4\">There are no currently pending petitions.</td></tr>");
@@ -286,7 +268,7 @@ public final class PetitionManager {
 
         sb.append("</table><br><button value=\"Refresh\" action=\"bypass -h admin_view_petitions\" width=\"50\" " + "height=\"15\" back=\"sek.cbui94\" fore=\"sek.cbui92\"><br><button value=\"Back\" action=\"bypass -h admin_admin\" " + "width=\"40\" height=\"15\" back=\"sek.cbui94\" fore=\"sek.cbui92\"></center></body></html>");
 
-        final NpcHtmlMessage html = new NpcHtmlMessage(0);
+        NpcHtmlMessage html = new NpcHtmlMessage(0);
         html.setHtml(sb.toString());
         activeChar.sendPacket(html);
     }
@@ -310,7 +292,7 @@ public final class PetitionManager {
         if (!isValidPetition(petitionId)) { return; }
 
         Petition currPetition = getPendingPetitions().get(petitionId);
-        final StringBuilder sb = new StringBuilder("<html><body>");
+        StringBuilder sb = new StringBuilder("<html><body>");
 
         sb.append("<center><br><font color=\"LEVEL\">Petition #" + currPetition.getId() + "</font><br1>");
         sb.append("<img src=\"L2UI.SquareGray\" width=\"200\" height=\"1\"></center><br>");
@@ -322,12 +304,12 @@ public final class PetitionManager {
         sb.append("<button value=\"Back\" action=\"bypass -h admin_view_petitions\" width=\"40\" height=\"15\" back=\"sek.cbui94\" " + "fore=\"sek.cbui92\"></center>");
         sb.append("</body></html>");
 
-        final NpcHtmlMessage html = new NpcHtmlMessage(0);
+        NpcHtmlMessage html = new NpcHtmlMessage(0);
         html.setHtml(sb.toString());
         activeChar.sendPacket(html);
     }
 
-    private static enum PetitionState {
+    private enum PetitionState {
         Pending,
         Responder_Cancel,
         Responder_Missing,
@@ -339,7 +321,7 @@ public final class PetitionManager {
         Completed
     }
 
-    private static enum PetitionType {
+    private enum PetitionType {
         Immobility,
         Recovery_Related,
         Bug_Report,
@@ -370,7 +352,7 @@ public final class PetitionManager {
             petitionType--;
             _id = IdFactory.getInstance().getNextId();
             if (petitionType >= PetitionType.values().length) {
-                _log.warning("PetitionManager: invalid petition type (received type was +1) : " + petitionType);
+                LOGGER.warn("PetitionManager: invalid petition type (received type was +1) : {}", petitionType);
             }
 
             _type = PetitionType.values()[petitionType];
@@ -410,7 +392,7 @@ public final class PetitionManager {
             }
 
             getCompletedPetitions().put(getId(), this);
-            return (getPendingPetitions().remove(getId()) != null);
+            return getPendingPetitions().remove(getId()) != null;
         }
 
         public String getContent() {

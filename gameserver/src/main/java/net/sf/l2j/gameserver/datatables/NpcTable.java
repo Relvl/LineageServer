@@ -1,17 +1,3 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.datatables;
 
 import net.sf.l2j.gameserver.model.L2MinionData;
@@ -23,6 +9,8 @@ import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.skill.SkillConst;
 import net.sf.l2j.gameserver.templates.StatsSet;
 import net.sf.l2j.gameserver.xmlfactory.XMLDocumentFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -33,12 +21,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class NpcTable {
-    private static Logger _log = Logger.getLogger(NpcTable.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(NpcTable.class);
 
     private final Map<Integer, NpcTemplate> _npcs = new HashMap<>();
 
@@ -171,7 +157,7 @@ public class NpcTable {
                                                 dropDat.setChance(Integer.parseInt(attrs.getNamedItem("chance").getNodeValue()));
 
                                                 if (ItemTable.getInstance().getTemplate(dropDat.getItemId()) == null) {
-                                                    _log.warning("Droplist data for undefined itemId: " + dropDat.getItemId());
+                                                    LOGGER.warn("Droplist data for undefined itemId: {}", dropDat.getItemId());
                                                     continue;
                                                 }
                                                 template.addDropData(dropDat, category);
@@ -207,9 +193,9 @@ public class NpcTable {
             }
         }
         catch (Exception e) {
-            _log.log(Level.SEVERE, "NpcTable: Error parsing NPC templates : ", e);
+            LOGGER.error("NpcTable: Error parsing NPC templates : ", e);
         }
-        _log.info("NpcTable: Loaded " + _npcs.size() + " NPC templates.");
+        LOGGER.info("NpcTable: Loaded {} NPC templates.", _npcs.size());
     }
 
     public NpcTemplate getTemplate(int id) {

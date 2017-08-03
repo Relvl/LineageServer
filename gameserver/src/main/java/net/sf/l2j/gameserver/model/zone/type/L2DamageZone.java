@@ -41,7 +41,7 @@ public class L2DamageZone extends ACastleZoneType {
             }
         }
         catch (ClassNotFoundException e) {
-            _log.warning(String.valueOf(e));
+            LOGGER.error("", e);
         }
 
         return true;

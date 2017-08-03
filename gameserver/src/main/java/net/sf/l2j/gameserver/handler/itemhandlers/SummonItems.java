@@ -20,8 +20,6 @@ import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
 import net.sf.l2j.gameserver.util.Broadcast;
 
-import java.util.logging.Level;
-
 public class SummonItems implements IItemHandler {
     @Override
     public void useItem(L2Playable playable, L2ItemInstance item, boolean forceUse) {
@@ -117,7 +115,7 @@ public class SummonItems implements IItemHandler {
                 else { _petSummon.startFeed(); }
             }
             catch (Exception e) {
-                _log.log(Level.SEVERE, "", e);
+                LOGGER.error("", e);
             }
         }
     }
@@ -175,7 +173,7 @@ public class SummonItems implements IItemHandler {
                 petSummon.broadcastStatusUpdate();
             }
             catch (Exception e) {
-                _log.log(Level.SEVERE, "", e);
+                LOGGER.error("", e);
             }
         }
     }
