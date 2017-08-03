@@ -120,7 +120,7 @@ public class SoulCrystalsTable {
             LOGGER.error("SoulCrystalsTable: Could not parse soul_crystals.xml file: {}", e.getMessage(), e);
         }
 
-        LOGGER.error("SoulCrystalsTable: Loaded {} SC data and {} NPC data.", _soulCrystals.size(), _npcLevelingInfos.size());
+        LOGGER.info("SoulCrystalsTable: Loaded {} SC data and {} NPC data.", _soulCrystals.size(), _npcLevelingInfos.size());
     }
 
     public static Map<Integer, SoulCrystalData> getSoulCrystalInfos() {
