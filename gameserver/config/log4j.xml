@@ -103,6 +103,16 @@
         <level value="WARN"/>
     </logger>
 
+    <logger name="com.mchange.v2.c3p0" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <logger name="com.mchange.v2.sql.SqlUtils" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
     <root>
         <level value="DEBUG"/>
         <appender-ref ref="CONSOLE"/>

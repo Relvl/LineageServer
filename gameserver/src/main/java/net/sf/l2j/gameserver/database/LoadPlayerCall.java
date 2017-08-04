@@ -20,7 +20,7 @@ public class LoadPlayerCall extends IndexedCall {
     private Integer resultCode;
 
     public LoadPlayerCall(Integer playerId) {
-        super("game_server.player__load", 3, false);
+        super("player__load", 3, false);
         this.playerId = playerId;
     }
 

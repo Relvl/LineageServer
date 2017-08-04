@@ -27,7 +27,7 @@ public class StorePlayerVariableCall extends IndexedCall {
     private final Boolean pi_bool_value;
 
     protected StorePlayerVariableCall(Integer playerId, String name, String strVal, Integer intVal, Boolean boolVal) {
-        super("game_server.player_variable_store", 5, true);
+        super("player_variable_store", 5, true);
         this.pi_player = playerId;
         this.pi_var_name = name;
         this.pi_str_value = strVal;

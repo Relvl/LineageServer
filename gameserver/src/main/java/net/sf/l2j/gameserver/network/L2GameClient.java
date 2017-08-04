@@ -3,8 +3,10 @@ package net.sf.l2j.gameserver.network;
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.SessionKey;
+import net.sf.l2j.commons.database.CallException;
 import net.sf.l2j.gameserver.LoginServerThread;
 import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.database.DeletePlayerCall;
 import net.sf.l2j.gameserver.datatables.CharNameTable;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.model.CharSelectInfoPackage;
@@ -151,6 +153,13 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
         }
         catch (Exception e) {
             LOGGER.error("Error deleting character.", e);
+        }
+
+        try (DeletePlayerCall call = new DeletePlayerCall(objid)) {
+            call.execute();
+        }
+        catch (CallException e) {
+            LOGGER.error("Cannot delete player {}", objid, e);
         }
     }
 

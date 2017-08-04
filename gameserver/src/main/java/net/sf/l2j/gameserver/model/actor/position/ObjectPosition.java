@@ -2,13 +2,14 @@ package net.sf.l2j.gameserver.model.actor.position;
 
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Character;
+import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.world.L2WorldRegion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ObjectPosition extends Location {
+public class ObjectPosition extends HeadedLocation {
     private static final Logger LOGGER = LoggerFactory.getLogger(ObjectPosition.class);
 
     private final L2Object activeObject;

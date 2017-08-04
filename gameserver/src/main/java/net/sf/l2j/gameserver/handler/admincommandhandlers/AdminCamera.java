@@ -51,14 +51,14 @@ public class AdminCamera implements IAdminCommandHandler
 		else if (command.equals("admin_cameramode"))
 		{
 			// lolcheck. But basically, chance to be invisible AND rooted is kinda null, except with this command
-			if (!(activeChar.getAppearance().isInvisible() && activeChar.isImmobilized()))
+			if (!(activeChar.isInvisible() && activeChar.isImmobilized()))
 			{
 				activeChar.setTarget(null);
 				activeChar.setIsImmobilized(true);
 				activeChar.sendPacket(new CameraMode(1));
 				
 				// Make the character disappears (from world too)
-				activeChar.getAppearance().setInvisible();
+				activeChar.setInvisible();
 				activeChar.broadcastUserInfo();
 				activeChar.decayMe();
 				activeChar.spawnMe();
@@ -72,7 +72,7 @@ public class AdminCamera implements IAdminCommandHandler
 				activeChar.sendPacket(NormalCamera.STATIC_PACKET);
 				
 				// Make the character appears (to world too)
-				activeChar.getAppearance().setVisible();
+				activeChar.setVisible();
 				activeChar.broadcastUserInfo();
 				
 				// Teleport back the player to beginning point

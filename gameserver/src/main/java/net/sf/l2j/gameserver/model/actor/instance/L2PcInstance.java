@@ -2,6 +2,7 @@ package net.sf.l2j.gameserver.model.actor.instance;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
+import net.sf.l2j.commons.database.CallException;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.ECtrlEvent;
@@ -12,6 +13,7 @@ import net.sf.l2j.gameserver.ai.model.L2PlayerAI;
 import net.sf.l2j.gameserver.ai.model.L2SummonAI;
 import net.sf.l2j.gameserver.communitybbs.BB.Forum;
 import net.sf.l2j.gameserver.communitybbs.Manager.ForumsBBSManager;
+import net.sf.l2j.gameserver.database.StorePlayerCall;
 import net.sf.l2j.gameserver.datatables.*;
 import net.sf.l2j.gameserver.datatables.MapRegionTable.TeleportWhereType;
 import net.sf.l2j.gameserver.datatables.SkillTable.FrequentSkill;
@@ -113,9 +115,9 @@ public final class L2PcInstance extends L2Playable {
     private static final String UPDATE_CHARACTER_SKILL_LEVEL = "UPDATE character_skills SET skill_level=? WHERE skill_id=? AND char_obj_id=? AND class_index=?";
     private static final String DELETE_SKILL_FROM_CHAR = "DELETE FROM character_skills WHERE skill_id=? AND char_obj_id=? AND class_index=?";
     private static final String DELETE_CHAR_SKILLS = "DELETE FROM character_skills WHERE char_obj_id=? AND class_index=?";
-    private static final String INSERT_CHARACTER = "INSERT INTO characters (account_name,obj_Id,char_name,level,maxHp,curHp,maxCp,curCp,maxMp,curMp,face,hairStyle,hairColor,sex,exp,sp,karma,pvpkills,pkkills,clanid,race,classid,deletetime,cancraft,title,accesslevel,online,isin7sdungeon,clan_privs,wantspeace,base_class,nobless,power_grade,last_recom_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String INSERT_CHARACTER = "INSERT INTO characters (account_name,obj_Id,char_name,level,maxHp,curHp,maxCp,curCp,maxMp,curMp,face,hairStyle,hairColor,sex,exp,sp,karma,pvpkills,pkkills,clanid,race,classid,deletetime,title,accesslevel,online,isin7sdungeon,clan_privs,wantspeace,base_class,nobless,power_grade,last_recom_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE_CHARACTER = "UPDATE characters SET level=?,maxHp=?,curHp=?,maxCp=?,curCp=?,maxMp=?,curMp=?,face=?,hairStyle=?,hairColor=?,sex=?,heading=?,x=?,y=?,z=?,exp=?,expBeforeDeath=?,sp=?,karma=?,pvpkills=?,pkkills=?,rec_have=?,rec_left=?,clanid=?,race=?,classid=?,deletetime=?,title=?,accesslevel=?,online=?,isin7sdungeon=?,clan_privs=?,wantspeace=?,base_class=?,onlinetime=?,punish_level=?,punish_timer=?,nobless=?,power_grade=?,subpledge=?,last_recom_date=?,lvl_joined_academy=?,apprentice=?,sponsor=?,varka_ketra_ally=?,clan_join_expiry_time=?,clan_create_expiry_time=?,char_name=?,death_penalty_level=? WHERE obj_id=?";
-    private static final String RESTORE_CHARACTER = "SELECT account_name, obj_Id, char_name, level, maxHp, curHp, maxCp, curCp, maxMp, curMp, face, hairStyle, hairColor, sex, heading, x, y, z, exp, expBeforeDeath, sp, karma, pvpkills, pkkills, clanid, race, classid, deletetime, cancraft, title, rec_have, rec_left, accesslevel, online, char_slot, lastAccess, clan_privs, wantspeace, base_class, onlinetime, isin7sdungeon, punish_level, punish_timer, nobless, power_grade, subpledge, last_recom_date, lvl_joined_academy, apprentice, sponsor, varka_ketra_ally,clan_join_expiry_time,clan_create_expiry_time,death_penalty_level FROM characters WHERE obj_id=?";
+    private static final String RESTORE_CHARACTER = "SELECT account_name, obj_Id, char_name, level, maxHp, curHp, maxCp, curCp, maxMp, curMp, face, hairStyle, hairColor, sex, heading, x, y, z, exp, expBeforeDeath, sp, karma, pvpkills, pkkills, clanid, race, classid, deletetime, title, rec_have, rec_left, accesslevel, online, char_slot, lastAccess, clan_privs, wantspeace, base_class, onlinetime, isin7sdungeon, punish_level, punish_timer, nobless, power_grade, subpledge, last_recom_date, lvl_joined_academy, apprentice, sponsor, varka_ketra_ally,clan_join_expiry_time,clan_create_expiry_time,death_penalty_level FROM characters WHERE obj_id=?";
     private static final String RESTORE_CHAR_SUBCLASSES = "SELECT class_id,exp,sp,level,class_index FROM character_subclasses WHERE char_obj_id=? ORDER BY class_index ASC";
     private static final String ADD_CHAR_SUBCLASS = "INSERT INTO character_subclasses (char_obj_id,class_id,exp,sp,level,class_index) VALUES (?,?,?,?,?,?)";
     private static final String UPDATE_CHAR_SUBCLASS = "UPDATE character_subclasses SET exp=?,sp=?,level=?,class_id=? WHERE char_obj_id=? AND class_index =?";
@@ -177,6 +179,7 @@ public final class L2PcInstance extends L2Playable {
     private final List<Integer> _selectedBlocksList = new ArrayList<>();
     private final String accountName;
     private final PcAppearance appearance;
+    private boolean isInvisible;
     public ScheduledFuture<?> _taskforfish;
     public int _telemode;
     private int _baseClass;
@@ -223,8 +226,6 @@ public final class L2PcInstance extends L2Playable {
     private boolean _inCraftMode;
     private boolean _waitTypeSitting;
     private boolean _observerMode;
-    private int _recomHave;
-    private int _recomLeft;
     private long _lastRecomUpdate;
     private PcWarehouse _warehouse;
     private PcFreight _freight;
@@ -1039,28 +1040,6 @@ public final class L2PcInstance extends L2Playable {
         return inventory.getTotalWeight();
     }
 
-    public int getRecomHave() {
-        return _recomHave;
-    }
-
-    public void setRecomHave(int value) {
-        if (value > 255) { _recomHave = 255; }
-        else if (value < 0) { _recomHave = 0; }
-        else { _recomHave = value; }
-    }
-
-    private void incRecomHave() {
-        if (_recomHave < 255) { _recomHave++; }
-    }
-
-    public int getRecomLeft() {
-        return _recomLeft;
-    }
-
-    private void decRecomLeft() {
-        if (_recomLeft > 0) { _recomLeft--; }
-    }
-
     public void giveRecom(L2PcInstance target) {
         try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(ADD_CHAR_RECOM);
@@ -1073,8 +1052,8 @@ public final class L2PcInstance extends L2Playable {
             LOGGER.warn("Could not update char recommendations: " + e);
         }
 
-        target.incRecomHave();
-        decRecomLeft();
+        target.appearance.incRecomHave();
+        appearance.decRecomLeft();
         _recomChars.add(target.getObjectId());
     }
 
@@ -3527,23 +3506,29 @@ public final class L2PcInstance extends L2Playable {
             statement.setInt(21, getRace().ordinal());
             statement.setInt(22, getClassId().getId());
             statement.setLong(23, _deleteTimer);
-            statement.setInt(24, recipeController.hasDwarvenCraft() ? 1 : 0);
-            statement.setString(25, getTitle());
-            statement.setInt(26, getAccessLevel().getLevel());
-            statement.setInt(27, isOnlineInt());
-            statement.setInt(28, _isIn7sDungeon ? 1 : 0);
-            statement.setInt(29, _clanPrivileges);
-            statement.setInt(30, wantsPeace() ? 1 : 0);
-            statement.setInt(31, _baseClass);
-            statement.setInt(32, _noble ? 1 : 0);
-            statement.setLong(33, 0);
-            statement.setLong(34, System.currentTimeMillis());
+            statement.setString(24, getTitle());
+            statement.setInt(25, getAccessLevel().getLevel());
+            statement.setInt(26, isOnlineInt());
+            statement.setInt(27, _isIn7sDungeon ? 1 : 0);
+            statement.setInt(28, _clanPrivileges);
+            statement.setInt(29, wantsPeace() ? 1 : 0);
+            statement.setInt(30, _baseClass);
+            statement.setInt(31, _noble ? 1 : 0);
+            statement.setLong(32, 0);
+            statement.setLong(33, System.currentTimeMillis());
             statement.executeUpdate();
             statement.close();
         }
         catch (Exception e) {
             LOGGER.error("Could not insert char data: " + e);
             return false;
+        }
+
+        try (StorePlayerCall call = new StorePlayerCall(this, accountName)) {
+            call.execute();
+        }
+        catch (CallException e) {
+            LOGGER.error("Cannot create character {} (login: {}) in database: ", this.getName(), accountName, e);
         }
         return true;
     }
@@ -3651,8 +3636,8 @@ public final class L2PcInstance extends L2Playable {
             statement.setInt(19, _karma);
             statement.setInt(20, _pvpKills);
             statement.setInt(21, _pkKills);
-            statement.setInt(22, _recomHave);
-            statement.setInt(23, _recomLeft);
+            statement.setInt(22, appearance.getRecomHave());
+            statement.setInt(23, appearance.getRecomLeft());
             statement.setInt(24, _clanId);
             statement.setInt(25, getRace().ordinal());
             statement.setInt(26, getClassId().getId());
@@ -3690,6 +3675,13 @@ public final class L2PcInstance extends L2Playable {
         }
         catch (Exception e) {
             LOGGER.error("Could not store char base data: " + e);
+        }
+
+        try (StorePlayerCall call = new StorePlayerCall(this, null)) {
+            call.execute();
+        }
+        catch (CallException e) {
+            LOGGER.error("Cannot store player {}.", this, e);
         }
     }
 
@@ -5094,7 +5086,7 @@ public final class L2PcInstance extends L2Playable {
         setIsParalyzed(true);
         startParalyze();
         setIsInvul(true);
-        appearance.setInvisible();
+        setInvisible();
 
         sendPacket(new ObservationMode(x, y, z));
         getKnownList().removeAllKnownObjects(); // reinit knownlist
@@ -5122,7 +5114,7 @@ public final class L2PcInstance extends L2Playable {
         _observerMode = true;
         setTarget(null);
         setIsInvul(true);
-        appearance.setInvisible();
+        setInvisible();
         teleToLocation(task.getZone().getSpawns().get(2), 0);
         sendPacket(new ExOlympiadMode(3));
         broadcastUserInfo();
@@ -5134,7 +5126,7 @@ public final class L2PcInstance extends L2Playable {
         getPosition().setXYZ(_savedLocation);
         setIsParalyzed(false);
         stopParalyze(false);
-        appearance.setVisible();
+        setVisible();
         setIsInvul(false);
 
         if (hasAI()) { getAI().setIntention(EIntention.IDLE); }
@@ -5157,7 +5149,7 @@ public final class L2PcInstance extends L2Playable {
         setTarget(null);
         sendPacket(new ExOlympiadMode(0));
         teleToLocation(_savedLocation, 20);
-        appearance.setVisible();
+        setVisible();
         setIsInvul(false);
 
         if (hasAI()) { getAI().setIntention(EIntention.IDLE); }
@@ -5764,7 +5756,7 @@ public final class L2PcInstance extends L2Playable {
 
         if (isGM()) {
             if (isInvul()) { sendMessage("Entering world in Invulnerable mode."); }
-            if (appearance.isInvisible()) { sendMessage("Entering world in Invisible mode."); }
+            if (isInvisible) { sendMessage("Entering world in Invisible mode."); }
             if (_messageRefusal) { sendMessage("Entering world in Message Refusal mode."); }
         }
 
@@ -5776,11 +5768,9 @@ public final class L2PcInstance extends L2Playable {
         Calendar check = Calendar.getInstance();
         check.setTimeInMillis(_lastRecomUpdate);
         check.add(Calendar.DAY_OF_MONTH, 1);
-
         Calendar min = Calendar.getInstance();
-
-        _recomHave = recsHave;
-        _recomLeft = recsLeft;
+        appearance.setRecomHave(recsHave);
+        appearance.setRecomLeft(recsLeft);
 
         if (getStat().getLevel() < 10 || check.after(min)) { return; }
 
@@ -5793,7 +5783,6 @@ public final class L2PcInstance extends L2Playable {
             statement.setInt(1, getObjectId());
             statement.execute();
             statement.close();
-
             _recomChars.clear();
         }
         catch (Exception e) {
@@ -5801,19 +5790,17 @@ public final class L2PcInstance extends L2Playable {
         }
 
         if (getStat().getLevel() < 20) {
-            _recomLeft = 3;
-            _recomHave--;
+            appearance.setRecomLeft(3);
+            appearance.decRecomHave(1);
         }
         else if (getStat().getLevel() < 40) {
-            _recomLeft = 6;
-            _recomHave -= 2;
+            appearance.setRecomLeft(6);
+            appearance.decRecomHave(2);
         }
         else {
-            _recomLeft = 9;
-            _recomHave -= 3;
+            appearance.setRecomLeft(9);
+            appearance.decRecomHave(3);
         }
-
-        if (_recomHave < 0) { _recomHave = 0; }
 
         // If we have to update last update time, but it's now before 13, we should set it to yesterday
         Calendar update = Calendar.getInstance();
@@ -7249,5 +7236,17 @@ public final class L2PcInstance extends L2Playable {
         public void run() {
             clearCharges();
         }
+    }
+
+    public boolean isInvisible() {
+        return isInvisible;
+    }
+
+    public void setInvisible() {
+        this.isInvisible = true;
+    }
+
+    public void setVisible() {
+        this.isInvisible = false;
     }
 }

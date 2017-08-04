@@ -12,6 +12,7 @@ import java.util.function.Function;
  */
 public enum ESqlTypeMapping {
     VARCHAR(Types.VARCHAR, "getString", s -> s),
+    BYTE(Types.SMALLINT, "getByte", Byte::parseByte),
     SMALLINT(Types.SMALLINT, "getShort", Short::parseShort),
     INT(Types.INTEGER, "getInt", Integer::parseInt),
     BIGINT(Types.BIGINT, "getLong", Long::parseLong),
@@ -30,6 +31,7 @@ public enum ESqlTypeMapping {
     static {
         MAPPING.put(String.class, VARCHAR);
 
+        MAPPING.put(byte.class, SMALLINT);
         MAPPING.put(Short.class, SMALLINT);
         MAPPING.put(Integer.class, INT);
         MAPPING.put(Long.class, BIGINT);

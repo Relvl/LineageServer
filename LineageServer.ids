@@ -848,94 +848,147 @@
       <identifier-quote-string>&quot;</identifier-quote-string>
     </database-info>
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact"/>
-    <schema name="game_server" catalog="newera_login"/>
-    <schema name="login_server" catalog="newera_login"/>
-    <table name="achievement_modify_data" schema="game_server" catalog="newera_login" type="TYPE"/>
-    <table name="l2_level" schema="game_server" catalog="newera_login" type="TYPE"/>
-    <table name="l2_location" schema="game_server" catalog="newera_login" type="TYPE"/>
-    <table name="l2_player" schema="game_server" catalog="newera_login" type="TYPE"/>
-    <table name="player" schema="game_server" catalog="newera_login" type="TABLE">
-      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnZ2FtZV9zZXJ2ZXIucGxheWVyc19pZF9zZXEnOjpyZWdjbGFzcyk=" autoIncrement="true"/>
-      <column name="login" sqlType="varchar" precision="32" scale="0" nullable="false" jdbcType="12"/>
-      <column name="name" sqlType="varchar" precision="32" scale="0" nullable="false" jdbcType="12"/>
-      <column name="title" sqlType="varchar" precision="32" scale="0" nullable="true" jdbcType="12"/>
-      <column name="position" sqlType="&quot;game_server&quot;.&quot;l2_location&quot;" precision="2147483647" scale="0" nullable="false" jdbcType="2002" def="Uk9XKDAsIDAsIDAsICgwKTo6bnVtZXJpYyg1LDApKTo6Z2FtZV9zZXJ2ZXIubDJfbG9jYXRpb24="/>
-      <column name="level" sqlType="&quot;game_server&quot;.&quot;l2_level&quot;" precision="2147483647" scale="0" nullable="true" jdbcType="2002" def="Uk9XKCgxKTo6c21hbGxpbnQsICgwKTo6YmlnaW50LCAoMCk6OmJpZ2ludCk6OmdhbWVfc2VydmVyLmwyX2xldmVs"/>
-      <primary-key name="players_pkey" columns="id"/>
-      <foreign-key name="players_account_fk" columns="login" ref-table="account_game" ref-schema="login_server" ref-catalog="" ref-columns="login" update-rule="0" delete-rule="3" deferrability="2"/>
-      <exported-key name="player_achievement_player_id_fk" table="player_achievement" schema="game_server" catalog="newera_login" columns="player_id"/>
-      <exported-key name="player_achievement_pertial_player_id_fk" table="player_achievement_partial" schema="game_server" catalog="newera_login" columns="player_id"/>
-      <exported-key name="player_recipe_player_id_fk" table="player_recipe" schema="game_server" catalog="newera_login" columns="player_id"/>
-      <exported-key name="player_subclasses_player_id_fk" table="player_subclasses" schema="game_server" catalog="newera_login" columns="player_id"/>
-      <exported-key name="player_variables_players_id_fk" table="player_variables" schema="game_server" catalog="newera_login" columns="player_id"/>
-      <index name="players_id_uindex" unique="true" columns="id"/>
-      <index name="players_name_uindex" unique="true" columns="name"/>
-    </table>
-    <table name="player_achievement" schema="game_server" catalog="newera_login" type="TABLE" remarks="0JLRi9C/0L7Qu9C90LXQvdC90YvQtSDQtNC+0YHRgtC40LbQtdC90LjRjyDQuNCz0YDQvtC60LA=">
-      <column name="player_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="achievement_id" sqlType="varchar" precision="64" scale="0" nullable="false" jdbcType="12"/>
-      <primary-key name="player_achievement_player_id_achievement_id_pk" columns="player_id,achievement_id"/>
-      <foreign-key name="player_achievement_player_id_fk" columns="player_id" ref-table="player" ref-schema="game_server" ref-catalog="" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
-    </table>
-    <table name="player_achievement_partial" schema="game_server" catalog="newera_login" type="TABLE">
-      <column name="player_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="achievement_id" sqlType="varchar" precision="64" scale="0" nullable="false" jdbcType="12"/>
-      <column name="count" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
-      <primary-key name="player_achievement_pertial_player_id_achievement_id_pk" columns="player_id,achievement_id"/>
-      <foreign-key name="player_achievement_pertial_player_id_fk" columns="player_id" ref-table="player" ref-schema="game_server" ref-catalog="" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
-    </table>
-    <table name="player_recipe" schema="game_server" catalog="newera_login" type="TABLE" remarks="0JfQsNC/0LjRgdCw0L3QvdGL0LUg0YDQtdGG0LXQv9GC0Ysg0LjQs9GA0L7QutC+0LI=">
-      <column name="player_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="recipe_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <primary-key name="player_recipe_pkey" columns="player_id,recipe_id"/>
-      <foreign-key name="player_recipe_player_id_fk" columns="player_id" ref-table="player" ref-schema="game_server" ref-catalog="" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
-    </table>
-    <table name="player_subclasses" schema="game_server" catalog="newera_login" type="TABLE" remarks="0KHRg9Cx0LrQu9Cw0YHRgdGLINC/0LXRgNGB0L7QvdCw0LbQtdC5">
-      <column name="player_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="subclass_index" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
-      <column name="class_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <primary-key name="player_subclasses_player_id_subclass_index_pk" columns="player_id,subclass_index"/>
-      <foreign-key name="player_subclasses_player_id_fk" columns="player_id" ref-table="player" ref-schema="game_server" ref-catalog="" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
-      <index name="player_subclasses_player_id_subclass_index_index" unique="false" columns="player_id,subclass_index"/>
-    </table>
-    <table name="player_variables" schema="game_server" catalog="newera_login" type="TABLE">
-      <column name="player_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="name" sqlType="varchar" precision="64" scale="0" nullable="false" jdbcType="12"/>
-      <column name="value_str" sqlType="text" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
-      <column name="value_int" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="value_bool" sqlType="bool" precision="1" scale="0" nullable="true" jdbcType="-7"/>
-      <primary-key name="player_variables_player_id_name_pk" columns="player_id,name"/>
-      <foreign-key name="player_variables_players_id_fk" columns="player_id" ref-table="player" ref-schema="game_server" ref-catalog="" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
-    </table>
-    <table name="players_id_seq" schema="game_server" catalog="newera_login" type="SEQUENCE"/>
-    <table name="account_game" schema="login_server" catalog="newera_login" type="TABLE" remarks="0JDQutC60LDRg9C90YLRiw==">
-      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnbG9naW5fc2VydmVyLmFjY291bnRfZ2FtZV9pZF9zZXEnOjpyZWdjbGFzcyk=" autoIncrement="true"/>
+    <schema name="public" catalog="newera_login"/>
+    <table name="account_game" schema="public" catalog="newera_login" type="TABLE">
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnYWNjb3VudF9nYW1lX2lkX3NlcSc6OnJlZ2NsYXNzKQ==" autoIncrement="true"/>
       <column name="login" sqlType="varchar" precision="32" scale="0" nullable="false" jdbcType="12"/>
       <column name="hash" sqlType="text" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
       <column name="last_active" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93" def="bm93KCk="/>
       <column name="last_server" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="regiser" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93" def="bm93KCk="/>
       <primary-key name="account_game_pkey" columns="id"/>
-      <exported-key name="players_account_fk" table="player" schema="game_server" catalog="newera_login" columns="login"/>
       <index name="account_game_id_uindex" unique="true" columns="id"/>
       <index name="account_game_login_uindex" unique="true" columns="login"/>
     </table>
-    <table name="account_game_id_seq" schema="login_server" catalog="newera_login" type="SEQUENCE"/>
-    <table name="gameservers" schema="login_server" catalog="newera_login" type="TABLE" remarks="0JjQs9GA0L7QstGL0LUg0YHQtdGA0LLQtdGA0LA=">
-      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnbG9naW5fc2VydmVyLmdhbWVzZXJ2ZXJzX2lkX3NlcSc6OnJlZ2NsYXNzKQ==" autoIncrement="true"/>
+    <table name="account_game_id_seq" schema="public" catalog="newera_login" type="SEQUENCE"/>
+    <table name="account_master" schema="public" catalog="newera_login" type="TABLE" remarks="0JzQsNGB0YLQtdGALdCw0LrQutCw0YPQvdGC0Ys=">
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnYWNjb3VudF9tYXN0ZXJfaWRfc2VxJzo6cmVnY2xhc3Mp" autoIncrement="true"/>
+      <column name="login" sqlType="varchar" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="hash" sqlType="bytea" precision="2147483647" scale="0" nullable="false" jdbcType="-2"/>
+      <column name="salt" sqlType="varchar" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="register_date" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93" def="bm93KCk="/>
+      <column name="last_login" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
+      <primary-key name="account_master_pkey" columns="id"/>
+      <index name="account_master_id_uindex" unique="true" columns="id"/>
+      <index name="account_master_login_uindex" unique="true" columns="login"/>
+    </table>
+    <table name="account_master_id_seq" schema="public" catalog="newera_login" type="SEQUENCE"/>
+    <table name="gameservers" schema="public" catalog="newera_login" type="TABLE">
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnZ2FtZXNlcnZlcnNfaWRfc2VxJzo6cmVnY2xhc3Mp" autoIncrement="true"/>
       <column name="hexid" sqlType="bytea" precision="2147483647" scale="0" nullable="false" jdbcType="-2"/>
       <primary-key name="gameservers_pkey" columns="id"/>
       <index name="gameservers_id_uindex" unique="true" columns="id"/>
     </table>
-    <table name="gameservers_id_seq" schema="login_server" catalog="newera_login" type="SEQUENCE"/>
-    <procedure name="player__load" schema="game_server" catalog="newera_login" type="2">
+    <table name="gameservers_id_seq" schema="public" catalog="newera_login" type="SEQUENCE"/>
+    <procedure name="create_account" schema="public" catalog="newera_login" type="2">
+      <prototype>
+        <parameter name="pi_login" sqlType="varchar" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="pi_password" sqlType="varchar" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="returnValue" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="5" index="0"/>
+      </prototype>
+    </procedure>
+    <procedure name="getgameservers" schema="public" catalog="newera_login" type="2">
+      <prototype>
+        <parameter name="returnValue" sqlType="refcursor" precision="0" scale="0" nullable="true" jdbcType="2012" type="5" index="0"/>
+      </prototype>
+    </procedure>
+    <procedure name="login" schema="public" catalog="newera_login" type="2">
+      <prototype>
+        <parameter name="pi_login" sqlType="varchar" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="pi_password" sqlType="varchar" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="po_account_id" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="4" index="3"/>
+        <parameter name="po_last_server" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="4" index="4"/>
+      </prototype>
+    </procedure>
+    <procedure name="set_account_last_server" schema="public" catalog="newera_login" type="2">
+      <prototype>
+        <parameter name="pi_login" sqlType="varchar" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="pi_last_server" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="2"/>
+        <parameter name="returnValue" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="5" index="0"/>
+      </prototype>
+    </procedure>
+  </data-source>
+  <data-source name="PostgreSQL - newera_game@localhost" uuid="21352538-f926-4d06-9e27-78c041dbabcb">
+    <database-info product="PostgreSQL" version="9.6.3" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4.1212">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact"/>
+    <schema name="public" catalog="newera_game"/>
+    <table name="achievement_modify_data" schema="public" catalog="newera_game" type="TYPE"/>
+    <table name="l2_level" schema="public" catalog="newera_game" type="TYPE"/>
+    <table name="l2_player" schema="public" catalog="newera_game" type="TYPE"/>
+    <table name="l2_player_appearance" schema="public" catalog="newera_game" type="TYPE"/>
+    <table name="l2_position" schema="public" catalog="newera_game" type="TYPE"/>
+    <table name="player" schema="public" catalog="newera_game" type="TABLE">
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgncGxheWVyc19pZF9zZXEnOjpyZWdjbGFzcyk=" autoIncrement="true"/>
+      <column name="login" sqlType="varchar" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="varchar" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="title" sqlType="varchar" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="position" sqlType="l2_position" precision="2147483647" scale="0" nullable="false" jdbcType="2002" def="Uk9XKDAsIDAsIDAsICgwKTo6bnVtZXJpYyg1LDApKTo6bDJfcG9zaXRpb24="/>
+      <column name="level" sqlType="l2_level" precision="2147483647" scale="0" nullable="true" jdbcType="2002" def="Uk9XKCgxKTo6c21hbGxpbnQsICgwKTo6YmlnaW50LCAoMCk6OmJpZ2ludCk6OmwyX2xldmVs"/>
+      <column name="appearance" sqlType="l2_player_appearance" precision="2147483647" scale="0" nullable="false" jdbcType="2002" def="Uk9XKCgwKTo6c21hbGxpbnQsICgwKTo6c21hbGxpbnQsICgwKTo6c21hbGxpbnQsIGZhbHNlLCAnMHhGRkZGRkYnOjpjaGFyYWN0ZXIgdmFyeWluZyg4KSwgJzB4RkZGRjc3Jzo6Y2hhcmFjdGVyIHZhcnlpbmcoOCksICgwKTo6c21hbGxpbnQsICgwKTo6c21hbGxpbnQp"/>
+      <primary-key name="player_pkey" columns="id"/>
+      <exported-key name="player_achievement_player_id_fk" table="player_achievement" schema="public" catalog="newera_game" columns="player_id"/>
+      <exported-key name="player_achievement_pertial_player_id_fk" table="player_achievement_partial" schema="public" catalog="newera_game" columns="player_id"/>
+      <exported-key name="player_recipe_player_id_fk" table="player_recipe" schema="public" catalog="newera_game" columns="player_id"/>
+      <exported-key name="player_subclasses_player_id_fk" table="player_subclasses" schema="public" catalog="newera_game" columns="player_id"/>
+      <exported-key name="player_variables_players_id_fk" table="player_variables" schema="public" catalog="newera_game" columns="player_id"/>
+      <index name="players_id_uindex" unique="true" columns="id"/>
+      <index name="players_name_uindex" unique="true" columns="name"/>
+    </table>
+    <table name="player_achievement" schema="public" catalog="newera_game" type="TABLE">
+      <column name="player_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="achievement_id" sqlType="varchar" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="player_achievement_player_id_achievement_id_pk" columns="player_id,achievement_id"/>
+      <foreign-key name="player_achievement_player_id_fk" columns="player_id" ref-table="player" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="player_achievement_partial" schema="public" catalog="newera_game" type="TABLE">
+      <column name="player_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="achievement_id" sqlType="varchar" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="count" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="player_achievement_pertial_player_id_achievement_id_pk" columns="player_id,achievement_id"/>
+      <foreign-key name="player_achievement_pertial_player_id_fk" columns="player_id" ref-table="player" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="player_recipe" schema="public" catalog="newera_game" type="TABLE">
+      <column name="player_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="recipe_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="player_recipe_pkey" columns="player_id,recipe_id"/>
+      <foreign-key name="player_recipe_player_id_fk" columns="player_id" ref-table="player" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="player_subclasses" schema="public" catalog="newera_game" type="TABLE">
+      <column name="player_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="subclass_index" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="class_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="player_subclasses_player_id_subclass_index_pk" columns="player_id,subclass_index"/>
+      <foreign-key name="player_subclasses_player_id_fk" columns="player_id" ref-table="player" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="player_subclasses_player_id_class_id_index" unique="false" columns="player_id,class_id"/>
+      <index name="player_subclasses_player_id_subclass_index_index" unique="false" columns="player_id,subclass_index"/>
+    </table>
+    <table name="player_variables" schema="public" catalog="newera_game" type="TABLE">
+      <column name="player_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="varchar" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="value_str" sqlType="text" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+      <column name="value_int" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="value_bool" sqlType="bool" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <primary-key name="player_variables_player_id_name_pk" columns="player_id,name"/>
+      <foreign-key name="player_variables_players_id_fk" columns="player_id" ref-table="player" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="players_id_seq" schema="public" catalog="newera_game" type="SEQUENCE"/>
+    <procedure name="player__load" schema="public" catalog="newera_game" type="2">
       <prototype>
         <parameter name="pi_player_id" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="1"/>
-        <parameter name="po_player" sqlType="&quot;game_server&quot;.&quot;l2_player&quot;" precision="0" scale="0" nullable="true" jdbcType="1111" type="4" index="2"/>
+        <parameter name="po_player" sqlType="l2_player" precision="0" scale="0" nullable="true" jdbcType="2002" type="4" index="2"/>
         <parameter name="po_result_code" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="4" index="3"/>
       </prototype>
     </procedure>
-    <procedure name="player_achievement_load" schema="game_server" catalog="newera_login" type="2">
+    <procedure name="player__store" schema="public" catalog="newera_game" type="2">
+      <prototype>
+        <parameter name="pi_player" sqlType="l2_player" precision="0" scale="0" nullable="true" jdbcType="2002" type="1" index="1"/>
+        <parameter name="po_result_code" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="4" index="2"/>
+        <parameter name="returnValue" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="5" index="0"/>
+      </prototype>
+    </procedure>
+    <procedure name="player_achievement_load" schema="public" catalog="newera_game" type="2">
       <prototype>
         <parameter name="pi_player" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="1"/>
         <parameter name="po_completed" sqlType="refcursor" precision="0" scale="0" nullable="true" jdbcType="2012" type="4" index="2"/>
@@ -943,21 +996,21 @@
         <parameter name="po_result_code" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="4" index="4"/>
       </prototype>
     </procedure>
-    <procedure name="player_achievement_modify" schema="game_server" catalog="newera_login" type="2">
+    <procedure name="player_achievement_modify" schema="public" catalog="newera_game" type="2">
       <prototype>
-        <parameter name="pi_data" sqlType="&quot;game_server&quot;.&quot;_achievement_modify_data&quot;" precision="0" scale="0" nullable="true" jdbcType="1111" type="1" index="1"/>
+        <parameter name="pi_data" sqlType="_achievement_modify_data" precision="0" scale="0" nullable="true" jdbcType="2003" type="1" index="1"/>
         <parameter name="po_result_code" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="4" index="2"/>
         <parameter name="returnValue" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="5" index="0"/>
       </prototype>
     </procedure>
-    <procedure name="player_recipes_load" schema="game_server" catalog="newera_login" type="2">
+    <procedure name="player_recipes_load" schema="public" catalog="newera_game" type="2">
       <prototype>
         <parameter name="pi_player" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="1"/>
         <parameter name="po_cursor_recipes" sqlType="refcursor" precision="0" scale="0" nullable="true" jdbcType="2012" type="4" index="2"/>
         <parameter name="po_error_code" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="4" index="3"/>
       </prototype>
     </procedure>
-    <procedure name="player_recipes_modify" schema="game_server" catalog="newera_login" type="2">
+    <procedure name="player_recipes_modify" schema="public" catalog="newera_game" type="2">
       <prototype>
         <parameter name="pi_player" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="1"/>
         <parameter name="pi_recipe_id" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="2"/>
@@ -966,47 +1019,20 @@
         <parameter name="returnValue" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="5" index="0"/>
       </prototype>
     </procedure>
-    <procedure name="player_variable_load" schema="game_server" catalog="newera_login" type="2">
+    <procedure name="player_variable_load" schema="public" catalog="newera_game" type="2">
       <prototype>
         <parameter name="pi_player" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="1"/>
         <parameter name="po_cursor" sqlType="refcursor" precision="0" scale="0" nullable="true" jdbcType="2012" type="4" index="2"/>
         <parameter name="po_error_code" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="4" index="3"/>
       </prototype>
     </procedure>
-    <procedure name="player_variable_store" schema="game_server" catalog="newera_login" type="2">
+    <procedure name="player_variable_store" schema="public" catalog="newera_game" type="2">
       <prototype>
         <parameter name="pi_player" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="1"/>
         <parameter name="pi_var_name" sqlType="varchar" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="2"/>
         <parameter name="pi_str_value" sqlType="text" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="3"/>
         <parameter name="pi_int_value" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="4"/>
         <parameter name="pi_bool_value" sqlType="bool" precision="0" scale="0" nullable="true" jdbcType="-7" type="1" index="5"/>
-        <parameter name="returnValue" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="5" index="0"/>
-      </prototype>
-    </procedure>
-    <procedure name="create_account" schema="login_server" catalog="newera_login" type="2">
-      <prototype>
-        <parameter name="pi_login" sqlType="varchar" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
-        <parameter name="pi_password" sqlType="varchar" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="2"/>
-        <parameter name="returnValue" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="5" index="0"/>
-      </prototype>
-    </procedure>
-    <procedure name="getgameservers" schema="login_server" catalog="newera_login" type="2">
-      <prototype>
-        <parameter name="returnValue" sqlType="refcursor" precision="0" scale="0" nullable="true" jdbcType="2012" type="5" index="0"/>
-      </prototype>
-    </procedure>
-    <procedure name="login" schema="login_server" catalog="newera_login" type="2">
-      <prototype>
-        <parameter name="pi_login" sqlType="varchar" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
-        <parameter name="pi_password" sqlType="varchar" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="2"/>
-        <parameter name="po_account_id" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="4" index="3"/>
-        <parameter name="po_last_server" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="4" index="4"/>
-      </prototype>
-    </procedure>
-    <procedure name="set_account_last_server" schema="login_server" catalog="newera_login" type="2">
-      <prototype>
-        <parameter name="pi_login" sqlType="varchar" precision="0" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
-        <parameter name="pi_last_server" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="1" index="2"/>
         <parameter name="returnValue" sqlType="int4" precision="0" scale="0" nullable="true" jdbcType="4" type="5" index="0"/>
       </prototype>
     </procedure>

@@ -20,7 +20,7 @@ public class CreateAccountCall extends IndexedCall {
     private final String pi_password;
 
     public CreateAccountCall(String login, String password) {
-        super("login_server.Create_Account", 2, true);
+        super("Create_Account", 2, true);
         this.pi_login = login;
         this.pi_password = password;
     }

@@ -20,7 +20,7 @@ public class SetAccountLastServerCall extends IndexedCall {
     private Integer resultCode;
 
     public SetAccountLastServerCall(String login, Integer lastServer) {
-        super("login_server.set_account_last_server", 2, true);
+        super("set_account_last_server", 2, true);
         this.login = login;
         this.lastServer = lastServer;
     }

@@ -5,6 +5,10 @@ package net.sf.l2j.commons.database;
  */
 public class CallException extends Exception {
 
+    public CallException(String message) {
+        super(message);
+    }
+
     public CallException(String message, Throwable cause) {
         super(message, cause);
     }

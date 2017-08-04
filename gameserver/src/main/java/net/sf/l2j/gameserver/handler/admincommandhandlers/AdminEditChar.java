@@ -188,7 +188,7 @@ public class AdminEditChar implements IAdminCommandHandler
 				else
 					return false;
 				
-				player.setRecomHave(Integer.parseInt(command.substring(10)));
+				player.getAppearance().setRecomHave(Integer.parseInt(command.substring(10)));
 				player.sendMessage("You have been recommended by a GM.");
 				player.broadcastUserInfo();
 			}

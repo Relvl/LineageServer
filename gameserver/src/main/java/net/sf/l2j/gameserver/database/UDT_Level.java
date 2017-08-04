@@ -9,16 +9,16 @@ import net.sf.l2j.commons.database.annotation.OrmTypeParam;
  */
 public class UDT_Level extends AUserDefinedType {
     @OrmTypeParam(0)
-    private Short level;
+    private Integer level;
     @OrmTypeParam(1)
     private Long exp;
     @OrmTypeParam(2)
-    private Long sp;
+    private Integer sp;
 
     @DefaultConstructor
     public UDT_Level() { }
 
-    public UDT_Level(Short level, Long exp, Long sp) {
+    public UDT_Level(Integer level, Long exp, Integer sp) {
         this.level = level;
         this.exp = exp;
         this.sp = sp;

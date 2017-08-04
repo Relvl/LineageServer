@@ -22,7 +22,7 @@ public class LoginCall extends IndexedCall {
     private Integer po_last_server;
 
     public LoginCall(String login, String password) {
-        super("login_server.Login", 4, false);
+        super("Login", 4, false);
         this.pi_login = login;
         this.pi_password = password;
     }

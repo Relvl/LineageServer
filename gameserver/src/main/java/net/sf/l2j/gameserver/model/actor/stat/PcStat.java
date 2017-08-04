@@ -166,8 +166,9 @@ public class PcStat extends PlayableStat {
 
     @Override
     public final byte getLevel() {
-        if (getActiveChar().isSubClassActive()) { return getActiveChar().getSubClasses().get(getActiveChar().getClassIndex()).getLevel(); }
-
+        if (getActiveChar().isSubClassActive()) {
+            return getActiveChar().getSubClasses().get(getActiveChar().getClassIndex()).getLevel();
+        }
         return super.getLevel();
     }
 

@@ -10,16 +10,14 @@ import net.sf.l2j.commons.reflection.FieldAccessor;
 import net.sf.l2j.commons.reflection.ReflectionManager;
 import org.postgresql.jdbc.PgArray;
 import org.postgresql.util.PGobject;
+import org.postgresql.util.PSQLException;
 import org.slf4j.Logger;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.*;
 
 /**
@@ -141,7 +139,7 @@ public abstract class IndexedCall implements AutoCloseable {
                     // User Defined Types. Штатный механизм этого драйвера постгреса мне не понравился... Делаем велосипеды.
                     else if (AUserDefinedType.class.isAssignableFrom(field.getType())) {
                         String sqlUdtString = ((AUserDefinedType) accessor.getInstanceValue(this)).getSqlString();
-                        getStatement().setString(position, sqlUdtString);
+                        getStatement().setObject(position, sqlUdtString, Types.OTHER);
                         logStatementString = logStatementString.replaceAll("\\{" + position + "\\}", sqlUdtString);
                     }
                     else {
@@ -262,9 +260,13 @@ public abstract class IndexedCall implements AutoCloseable {
 
             getLogger().info("DB <-> {}", logStatementString);
         }
+        catch (PSQLException e) {
+            getLogger().info("DB <-> {}", logStatementString.replaceAll("\\{\\d*\\}", "NULL"));
+            throw new CallException("Cannot execute call '" + getClass().getSimpleName() + "' : " + e.getMessage());
+        }
         catch (SQLException | ReflectiveOperationException e) {
-            getLogger().info("DB <-> {}", logStatementString);
-            throw new CallException("Cannot execute call '" + getClass().getSimpleName() + '\'', e);
+            getLogger().info("DB <-> {}", logStatementString.replaceAll("\\{\\d*\\}", "NULL"));
+            throw new CallException("Cannot execute call '" + getClass().getSimpleName() + "' : " + e.getMessage(), e);
         }
         finally {
             if (throwErrorOnRecultCode() && (getResultCode() == null || getResultCode() != 0)) {

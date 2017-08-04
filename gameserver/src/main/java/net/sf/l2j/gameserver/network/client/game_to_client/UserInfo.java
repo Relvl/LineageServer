@@ -202,14 +202,14 @@ public class UserInfo extends L2GameServerPacket {
 
         writeC(_activeChar.isInPartyMatchRoom() ? 1 : 0);
 
-        if (_activeChar.getAppearance().isInvisible() && _activeChar.isGM()) { writeD(_activeChar.getAbnormalEffect() | AbnormalEffect.STEALTH.getMask()); }
+        if (_activeChar.isInvisible() && _activeChar.isGM()) { writeD(_activeChar.getAbnormalEffect() | AbnormalEffect.STEALTH.getMask()); }
         else { writeD(_activeChar.getAbnormalEffect()); }
         writeC(0x00);
 
         writeD(_activeChar.getClanPrivileges());
 
-        writeH(_activeChar.getRecomLeft()); // c2 recommendations remaining
-        writeH(_activeChar.getRecomHave()); // c2 recommendations received
+        writeH(_activeChar.getAppearance().getRecomLeft()); // c2 recommendations remaining
+        writeH(_activeChar.getAppearance().getRecomHave()); // c2 recommendations received
         writeD(_activeChar.getMountNpcId() > 0 ? _activeChar.getMountNpcId() + 1000000 : 0);
         writeH(_activeChar.getInventoryLimit());
 

@@ -93,7 +93,7 @@ public class EnterWorld extends L2GameClientPacket {
             }
 
             if (Config.GM_STARTUP_INVISIBLE && AdminCommandAccessRights.getInstance().hasAccess("admin_hide", activeChar.getAccessLevel())) {
-                activeChar.getAppearance().setInvisible();
+                activeChar.setInvisible();
             }
 
             if (Config.GM_STARTUP_SILENCE && AdminCommandAccessRights.getInstance().hasAccess("admin_silence", activeChar.getAccessLevel())) {

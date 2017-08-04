@@ -73,7 +73,7 @@ public class Baium extends AbstractNpcAI
 	};
 	
 	private L2Character _actualVictim;
-	private long _lastAttackTime = 0;
+	private long _lastAttackTime;
 	private final List<L2Npc> _minions = new ArrayList<>(5);
 	
 	public Baium()
@@ -87,13 +87,13 @@ public class Baium extends AbstractNpcAI
 		// Baium onAttack, onKill, onSpawn
 		registerMob(LIVE_BAIUM, EventType.ON_ATTACK, EventType.ON_KILL, EventType.ON_SPAWN);
 		
-		final StatsSet info = GrandBossManager.getInstance().getStatsSet(LIVE_BAIUM);
-		final int status = GrandBossManager.getInstance().getBossStatus(LIVE_BAIUM);
+		StatsSet info = GrandBossManager.getInstance().getStatsSet(LIVE_BAIUM);
+		int status = GrandBossManager.getInstance().getBossStatus(LIVE_BAIUM);
 		
 		if (status == DEAD)
 		{
 			// load the unlock date and time for baium from DB
-			long temp = (info.getLong("respawn_time") - System.currentTimeMillis());
+			long temp = info.getLong("respawn_time") - System.currentTimeMillis();
 			if (temp > 0)
 			{
 				// The time has not yet expired. Mark Baium as currently locked (dead).
@@ -108,14 +108,14 @@ public class Baium extends AbstractNpcAI
 		}
 		else if (status == AWAKE)
 		{
-			final int loc_x = info.getInteger("loc_x");
-			final int loc_y = info.getInteger("loc_y");
-			final int loc_z = info.getInteger("loc_z");
-			final int heading = info.getInteger("heading");
-			final int hp = info.getInteger("currentHP");
-			final int mp = info.getInteger("currentMP");
+			int loc_x = info.getInteger("loc_x");
+			int loc_y = info.getInteger("loc_y");
+			int loc_z = info.getInteger("loc_z");
+			int heading = info.getInteger("heading");
+			int hp = info.getInteger("currentHP");
+			int mp = info.getInteger("currentMP");
 			
-			final L2Npc baium = addSpawn(LIVE_BAIUM, loc_x, loc_y, loc_z, heading, false, 0, false);
+			L2Npc baium = addSpawn(LIVE_BAIUM, loc_x, loc_y, loc_z, heading, false, 0, false);
 			GrandBossManager.getInstance().addBoss((L2GrandBossInstance) baium);
 			
 			baium.setCurrentHpMp(hp, mp);
@@ -241,7 +241,7 @@ public class Baium extends AbstractNpcAI
 			
 			for (L2Npc minion : _minions)
 			{
-				L2Attackable angel = ((L2Attackable) minion);
+				L2Attackable angel = (L2Attackable) minion;
 				L2Character victim = angel.getMostHated();
 				
 				if (Rnd.get(100) < 10) // Chaos time
@@ -284,7 +284,7 @@ public class Baium extends AbstractNpcAI
 		{
 			GrandBossManager.getInstance().setBossStatus(LIVE_BAIUM, AWAKE);
 			
-			final L2Npc baium = addSpawn(LIVE_BAIUM, npc, false, 0, false);
+			L2Npc baium = addSpawn(LIVE_BAIUM, npc, false, 0, false);
 			baium.setIsInvul(true);
 			
 			GrandBossManager.getInstance().addBoss((L2GrandBossInstance) baium);
@@ -391,13 +391,13 @@ public class Baium extends AbstractNpcAI
 		{
 			if (obj instanceof L2PcInstance)
 			{
-				if (obj.isDead() || !(PathFinding.getInstance().canSeeTarget(npc, obj)))
+				if (obj.isDead() || !PathFinding.getInstance().canSeeTarget(npc, obj))
 					continue;
 				
-				if (((L2PcInstance) obj).isGM() && ((L2PcInstance) obj).getAppearance().isInvisible())
+				if (obj.isGM() && ((L2PcInstance) obj).isInvisible())
 					continue;
 				
-				if (npcId == ARCHANGEL && ((L2PcInstance) obj).getActiveWeaponInstance() == null)
+				if (npcId == ARCHANGEL && obj.getActiveWeaponInstance() == null)
 					continue;
 				
 				result.add(obj);
@@ -430,14 +430,14 @@ public class Baium extends AbstractNpcAI
 			return;
 		
 		// Pickup a target if no or dead victim. If Baium was hitting an angel, 50% luck he reconsiders his target. 10% luck he decides to reconsiders his target.
-		if (_actualVictim == null || _actualVictim.isDead() || !(npc.getKnownList().isObjectKnown(_actualVictim)) || (_actualVictim instanceof L2MonsterInstance && Rnd.get(10) < 5) || Rnd.get(10) == 0)
+		if (_actualVictim == null || _actualVictim.isDead() || !npc.getKnownList().isObjectKnown(_actualVictim) || (_actualVictim instanceof L2MonsterInstance && Rnd.get(10) < 5) || Rnd.get(10) == 0)
 			_actualVictim = getRandomTarget(npc);
 		
 		// If result is null, return directly.
 		if (_actualVictim == null)
 			return;
 		
-		final L2Skill skill = SkillTable.getInfo(getRandomSkill(npc), 1);
+		L2Skill skill = SkillTable.getInfo(getRandomSkill(npc), 1);
 		
 		// Adapt the skill range, because Baium is fat.
 		if (Util.checkIfInRange(skill.getCastRange() + npc.getCollisionRadius(), npc, _actualVictim, true))
@@ -466,7 +466,7 @@ public class Baium extends AbstractNpcAI
 		}
 		
 		int skill = 4127; // Default attack if nothing is possible.
-		final int chance = Rnd.get(100); // Remember, it's 0 to 99, not 1 to 100.
+		int chance = Rnd.get(100); // Remember, it's 0 to 99, not 1 to 100.
 		
 		// If Baium feels surrounded or see 2+ angels, he unleashes his wrath upon heads :).
 		if (getPlayersCountInRadius(600, npc, false) >= 20 || npc.getKnownList().getKnownTypeInRadius(L2MonsterInstance.class, 600).size() >= 2)

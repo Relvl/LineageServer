@@ -27,7 +27,7 @@ public class PlayerAchievementLoadCall extends IndexedCall {
     private Integer resultCode;
 
     protected PlayerAchievementLoadCall(Integer playerId) {
-        super("game_server.player_achievement_load", 4, false);
+        super("player_achievement_load", 4, false);
         this.playerId = playerId;
     }
 

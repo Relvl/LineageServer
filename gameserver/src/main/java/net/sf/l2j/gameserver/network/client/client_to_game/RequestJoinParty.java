@@ -16,8 +16,8 @@ package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.gameserver.model.BlockList;
 import net.sf.l2j.gameserver.model.L2Party;
-import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.AskJoinParty;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
@@ -88,7 +88,7 @@ public final class RequestJoinParty extends L2GameClientPacket {
             return;
         }
 
-        if (target.equals(requestor) || target.isCursedWeaponEquipped() || requestor.isCursedWeaponEquipped() || target.getAppearance().isInvisible()) {
+        if (target.equals(requestor) || target.isCursedWeaponEquipped() || requestor.isCursedWeaponEquipped() || target.isInvisible()) {
             requestor.sendPacket(SystemMessageId.YOU_HAVE_INVITED_THE_WRONG_TARGET);
             return;
         }

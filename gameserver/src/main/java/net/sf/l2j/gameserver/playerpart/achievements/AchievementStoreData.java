@@ -5,7 +5,7 @@ import net.sf.l2j.commons.database.annotation.OrmTypeName;
 /**
  * @author Johnson / 23.07.2017
  */
-@OrmTypeName("game_server.achievement_modify_data")
+@OrmTypeName("achievement_modify_data")
 public class AchievementStoreData {
     private final Integer playerId;
     private final String achievementId;

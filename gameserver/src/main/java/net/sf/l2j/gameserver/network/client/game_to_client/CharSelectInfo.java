@@ -152,7 +152,7 @@ public class CharSelectInfo extends L2GameServerPacket {
         List<CharSelectInfoPackage> characterList = new ArrayList<>();
 
         try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
-            PreparedStatement statement = con.prepareStatement("SELECT account_name, obj_Id, char_name, level, maxHp, curHp, maxMp, curMp, face, hairStyle, hairColor, sex, heading, x, y, z, exp, sp, karma, pvpkills, pkkills, clanid, race, classid, deletetime, cancraft, title, accesslevel, online, char_slot, lastAccess, base_class FROM characters WHERE account_name=?");
+            PreparedStatement statement = con.prepareStatement("SELECT account_name, obj_Id, char_name, level, maxHp, curHp, maxMp, curMp, face, hairStyle, hairColor, sex, heading, x, y, z, exp, sp, karma, pvpkills, pkkills, clanid, race, classid, deletetime, title, accesslevel, online, char_slot, lastAccess, base_class FROM characters WHERE account_name=?");
             statement.setString(1, loginName);
             ResultSet charList = statement.executeQuery();
 

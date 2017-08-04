@@ -19,16 +19,16 @@ import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
+import net.sf.l2j.gameserver.model.AIType;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2SiegeGuardInstance;
-import net.sf.l2j.gameserver.model.AIType;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.util.Util;
 
 import java.util.List;
@@ -59,7 +59,7 @@ public class L2SiegeGuardAI extends L2AttackableAI {
         if (player == null) { return false; }
 
         // Check if the target isn't GM on hide mode.
-        if (player.isGM() && player.getAppearance().isInvisible()) { return false; }
+        if (player.isGM() && player.isInvisible()) { return false; }
 
         // Check if the target isn't in silent move mode AND too far
         if (player.isSilentMoving() && !actor.isInsideRadius(player, 250, false, false)) { return false; }

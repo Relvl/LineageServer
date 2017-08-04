@@ -24,7 +24,7 @@ public class PlayerRecipesLoadCall extends IndexedCall {
     private Integer resultCode;
 
     protected PlayerRecipesLoadCall(Integer playerId) {
-        super("game_server.player_recipes_load", 3, false);
+        super("player_recipes_load", 3, false);
         this.playerId = playerId;
     }
 

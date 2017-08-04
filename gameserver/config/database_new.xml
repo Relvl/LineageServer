@@ -1,6 +1,6 @@
 <DatabaseConfig>
   <Driver>org.postgresql.Driver</Driver>
-  <URL>jdbc:postgresql://localhost:5432/newera_login</URL>
+  <URL>jdbc:postgresql://localhost:5432/newera_game</URL>
   <User>postgres</User>
   <Password>postgres</Password>
   <MaxConnections>10</MaxConnections>

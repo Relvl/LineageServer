@@ -119,7 +119,7 @@ public class L2AttackableAI extends L2CharacterAI implements Runnable {
             L2PcInstance targetPlayer = target.getActingPlayer();
             if (targetPlayer != null) {
                 // GM checks ; check if the target is invisible or got access level
-                if (targetPlayer.isGM() && (targetPlayer.getAppearance().isInvisible() || !targetPlayer.getAccessLevel().canTakeAggro())) { return false; }
+                if (targetPlayer.isGM() && (targetPlayer.isInvisible() || !targetPlayer.getAccessLevel().canTakeAggro())) { return false; }
 
                 // Check if player is an allied Varka.
                 if (Util.contains(me.getClans(), "varka_silenos_clan") && targetPlayer.isAlliedWithVarka()) { return false; }

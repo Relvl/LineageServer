@@ -21,7 +21,7 @@ public class PlayerAchievementModifyCall extends IndexedCall {
     private Integer resultCode;
 
     protected PlayerAchievementModifyCall() {
-        super("game_server.player_achievement_modify", 2, false);
+        super("player_achievement_modify", 2, false);
     }
 
     public void clear() { data.clear(); }
