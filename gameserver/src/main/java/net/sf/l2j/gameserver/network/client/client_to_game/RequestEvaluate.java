@@ -62,11 +62,6 @@ public final class RequestEvaluate extends L2GameClientPacket {
             return;
         }
 
-        if (!activeChar.canRecom(target)) {
-            activeChar.sendPacket(SystemMessageId.THAT_CHARACTER_IS_RECOMMENDED);
-            return;
-        }
-
         activeChar.giveRecom(target);
         activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_HAVE_RECOMMENDED_S1_YOU_HAVE_S2_RECOMMENDATIONS_LEFT).addPcName(target).addNumber(activeChar.getAppearance().getRecomLeft()));
         target.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_HAVE_BEEN_RECOMMENDED_BY_S1).addPcName(activeChar));

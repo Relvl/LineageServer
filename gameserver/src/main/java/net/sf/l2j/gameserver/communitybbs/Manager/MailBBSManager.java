@@ -11,6 +11,7 @@ import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ExMailArrived;
 import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
+import net.sf.l2j.gameserver.playerpart.variables.EPlayerVariableKey;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -244,7 +245,7 @@ public class MailBBSManager extends BaseBBSManager {
         if (page > maxpage) { page = maxpage; }
         if (page < 1) { page = 1; }
 
-        activeChar.variables().set("bbs_mail_position", page);
+        activeChar.variables().set(EPlayerVariableKey.BBS_MAIL_POSITION, page);
         int index = 0, minIndex = 0, maxIndex = 0;
         maxIndex = page == 1 ? page * 9 : (page * 10) - 1;
         minIndex = maxIndex - 9;
@@ -588,8 +589,8 @@ public class MailBBSManager extends BaseBBSManager {
     }
 
     private void showLastForum(L2PcInstance activeChar) {
-        int page = activeChar.variables().getInteger("bbs_mail_position") % 1000;
-        int type = activeChar.variables().getInteger("bbs_mail_position") / 1000;
+        int page = activeChar.variables().getInteger(EPlayerVariableKey.BBS_MAIL_POSITION) % 1000;
+        int type = activeChar.variables().getInteger(EPlayerVariableKey.BBS_MAIL_POSITION) / 1000;
 
         showMailList(activeChar, page, MailType.VALUES[type]);
     }

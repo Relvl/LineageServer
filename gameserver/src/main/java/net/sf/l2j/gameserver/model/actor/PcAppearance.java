@@ -4,7 +4,6 @@ import net.sf.l2j.commons.DefaultConstructor;
 import net.sf.l2j.commons.database.AUserDefinedType;
 import net.sf.l2j.commons.database.annotation.OrmTypeParam;
 
-@Deprecated
 public class PcAppearance extends AUserDefinedType {
     @OrmTypeParam(0)
     private Byte face;
@@ -63,9 +62,7 @@ public class PcAppearance extends AUserDefinedType {
 
     public Integer getRecomHave() { return recomHave; }
 
-    public void setRecomHave(Integer recomHave) {
-        this.recomHave = Math.min(255, Math.max(0, recomHave));
-    }
+    public void setRecomHave(Integer recomHave) { this.recomHave = Math.min(255, Math.max(0, recomHave)); }
 
     public void incRecomHave() { setRecomHave(recomHave + 1); }
 
@@ -73,11 +70,7 @@ public class PcAppearance extends AUserDefinedType {
 
     public Integer getRecomLeft() { return recomLeft; }
 
-    public void setRecomLeft(Integer recomLeft) {
-        this.recomLeft = Math.max(0, recomLeft);
-    }
+    public void setRecomLeft(Integer recomLeft) { this.recomLeft = Math.max(0, recomLeft); }
 
-    public void decRecomLeft() {
-        setRecomLeft(recomLeft - 1);
-    }
+    public void decRecomLeft() { setRecomLeft(recomLeft - 1); }
 }

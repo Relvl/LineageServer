@@ -172,7 +172,9 @@ public class GameServer {
         FishingChampionshipManager.getInstance();
 
         TaskManager.getInstance();
+
         Runtime.getRuntime().addShutdownHook(Shutdown.getInstance());
+
         ForumsBBSManager.getInstance();
         LOGGER.info("IdFactory: Free ObjectIDs remaining: " + IdFactory.getInstance().size());
 
@@ -185,7 +187,6 @@ public class GameServer {
 
         long usedMem = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1048576;
         long totalMem = Runtime.getRuntime().maxMemory() / 1048576;
-
         LOGGER.info("Gameserver have started, used memory: " + usedMem + " / " + totalMem + " Mo.");
         LOGGER.info("Maximum allowed players: " + Config.MAXIMUM_ONLINE_USERS);
 

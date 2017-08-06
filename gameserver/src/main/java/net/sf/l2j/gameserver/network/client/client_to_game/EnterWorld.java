@@ -20,6 +20,7 @@ import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
+import net.sf.l2j.gameserver.playerpart.variables.EPlayerVariableKey;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 import net.sf.l2j.gameserver.scripting.ScriptManager;
@@ -228,7 +229,7 @@ public class EnterWorld extends L2GameClientPacket {
             DimensionalRiftManager.getInstance().teleportToWaitingRoom(activeChar);
         }
 
-        if (activeChar.getClanJoinExpiryTime() > System.currentTimeMillis()) {
+        if (!activeChar.variables().isTimeInPast(EPlayerVariableKey.CLAN_JOIN_EXPIRY_TIME)) {
             activeChar.sendPacket(SystemMessageId.CLAN_MEMBERSHIP_TERMINATED);
         }
 

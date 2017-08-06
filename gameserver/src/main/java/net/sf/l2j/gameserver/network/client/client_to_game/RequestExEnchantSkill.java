@@ -70,11 +70,11 @@ public final class RequestExEnchantSkill extends L2GameClientPacket {
         if (data == null) { return; }
 
         // Check exp and sp neccessary to enchant skill.
-        if (player.getSp() < data.getCostSp()) {
+        if (player.getStat().getSp() < data.getCostSp()) {
             player.sendPacket(SystemMessageId.YOU_DONT_HAVE_ENOUGH_SP_TO_ENCHANT_THAT_SKILL);
             return;
         }
-        if (player.getExp() < data.getCostExp()) {
+        if (player.getStat().getExp() < data.getCostExp()) {
             player.sendPacket(SystemMessageId.YOU_DONT_HAVE_ENOUGH_EXP_TO_ENCHANT_THAT_SKILL);
             return;
         }

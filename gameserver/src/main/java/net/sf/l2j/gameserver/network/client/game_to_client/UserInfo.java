@@ -52,7 +52,7 @@ public class UserInfo extends L2GameServerPacket {
         else { writeD(_activeChar.getBaseClass()); }
 
         writeD(_activeChar.getLevel());
-        writeQ(_activeChar.getExp());
+        writeQ(_activeChar.getStat().getExp());
         writeD(_activeChar.getSTR());
         writeD(_activeChar.getDEX());
         writeD(_activeChar.getCON());
@@ -63,7 +63,7 @@ public class UserInfo extends L2GameServerPacket {
         writeD((int) _activeChar.getCurrentHp());
         writeD(_activeChar.getMaxMp());
         writeD((int) _activeChar.getCurrentMp());
-        writeD(_activeChar.getSp());
+        writeD(_activeChar.getStat().getSp());
         writeD(_activeChar.getCurrentLoad());
         writeD(_activeChar.getMaxLoad());
 

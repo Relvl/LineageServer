@@ -39,7 +39,7 @@ public class StorePlayerCall extends IndexedCall {
         name = player.getName();
         title = player.getTitle();
         position = player.getPosition();
-        level = new UDT_Level(player.getLevel(), player.getExp(), player.getSp());
+        level = new UDT_Level(player.getLevel(), player.getStat().getExp(), player.getStat().getSp());
         appearance = player.getAppearance();
     }
 

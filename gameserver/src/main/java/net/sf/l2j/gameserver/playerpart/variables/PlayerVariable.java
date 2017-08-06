@@ -15,31 +15,28 @@ public final class PlayerVariable {
     private Boolean boolValue;
     @OrmParamCursor("STR_VALUE")
     private String stringValue;
+    @OrmParamCursor("LONG_VALUE")
+    private Long longValue;
 
     @DefaultConstructor
     public PlayerVariable() {
     }
 
-    public PlayerVariable(String name, Integer intValue, Boolean boolValue, String stringValue) {
+    public PlayerVariable(String name, Integer intValue, Boolean boolValue, String stringValue, Long longValue) {
         this.name = name;
         this.intValue = intValue;
         this.boolValue = boolValue;
         this.stringValue = stringValue;
+        this.longValue = longValue;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    public Integer getIntValue() {
-        return intValue;
-    }
+    public Integer getIntValue() { return intValue; }
 
-    public Boolean getBoolValue() {
-        return boolValue;
-    }
+    public Boolean getBoolValue() { return boolValue; }
 
-    public String getStringValue() {
-        return stringValue;
-    }
+    public String getStringValue() { return stringValue; }
+
+    public Long getLongValue() { return longValue; }
 }

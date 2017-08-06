@@ -6,8 +6,10 @@ import net.sf.l2j.gameserver.handler.IUserCommandHandler;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
+import net.sf.l2j.gameserver.playerpart.variables.EPlayerVariableKey;
 
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Map.Entry;
 
 public class ClanPenalty implements IUserCommandHandler {
@@ -21,13 +23,21 @@ public class ClanPenalty implements IUserCommandHandler {
         StringBuilder sb = new StringBuilder();
 
         // Join a clan penalty.
-        if (activeChar.getClanJoinExpiryTime() > System.currentTimeMillis()) {
-            StringUtil.append(sb, "<tr><td width=170>Unable to join a clan.</td><td width=100 align=center>", sdf.format(activeChar.getClanJoinExpiryTime()), "</td></tr>");
+        if (!activeChar.variables().isTimeInPast(EPlayerVariableKey.CLAN_JOIN_EXPIRY_TIME)) {
+            StringUtil.append(sb,
+                    "<tr><td width=170>Unable to join a clan.</td><td width=100 align=center>",
+                    activeChar.variables().getLocalDateTime(EPlayerVariableKey.CLAN_JOIN_EXPIRY_TIME).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
+                    "</td></tr>"
+            );
         }
 
         // Create a clan penalty.
-        if (activeChar.getClanCreateExpiryTime() > System.currentTimeMillis()) {
-            StringUtil.append(sb, "<tr><td width=170>Unable to create a clan.</td><td width=100 align=center>", sdf.format(activeChar.getClanCreateExpiryTime()), "</td></tr>");
+        if (!activeChar.variables().isTimeInPast(EPlayerVariableKey.CLAN_CREATE_EXPIRY_TIME)) {
+            StringUtil.append(sb,
+                    "<tr><td width=170>Unable to create a clan.</td><td width=100 align=center>",
+                    activeChar.variables().getLocalDateTime(EPlayerVariableKey.CLAN_CREATE_EXPIRY_TIME).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
+                    "</td></tr>"
+            );
         }
 
         L2Clan clan = activeChar.getClan();

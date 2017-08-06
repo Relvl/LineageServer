@@ -96,7 +96,7 @@ public class RequestAcquireSkill extends L2GameClientPacket {
                 if (!exists) { return; }
 
                 // Not enought SP.
-                if (player.getSp() < spCost) {
+                if (player.getStat().getSp() < spCost) {
                     player.sendPacket(SystemMessageId.NOT_ENOUGH_SP_TO_LEARN_SKILL);
                     L2NpcInstance.showSkillList(player, trainer, player.getSkillLearningClassId());
                     return;

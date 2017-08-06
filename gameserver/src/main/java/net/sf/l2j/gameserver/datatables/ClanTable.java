@@ -16,6 +16,7 @@ import net.sf.l2j.gameserver.network.client.game_to_client.PledgeShowInfoUpdate;
 import net.sf.l2j.gameserver.network.client.game_to_client.PledgeShowMemberListAll;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.network.client.game_to_client.UserInfo;
+import net.sf.l2j.gameserver.playerpart.variables.EPlayerVariableKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -137,7 +138,7 @@ public class ClanTable {
             return null;
         }
 
-        if (System.currentTimeMillis() < player.getClanCreateExpiryTime()) {
+        if (!player.variables().isTimeInPast(EPlayerVariableKey.CLAN_CREATE_EXPIRY_TIME)) {
             player.sendPacket(SystemMessageId.YOU_MUST_WAIT_XX_DAYS_BEFORE_CREATING_A_NEW_CLAN);
             return null;
         }
@@ -189,7 +190,9 @@ public class ClanTable {
         // Drop all items from clan warehouse.
         clan.getWarehouse().destroyAllItems(EItemProcessPurpose.CLAN_REMOVE, (clan.getLeader() == null) ? null : clan.getLeader().getPlayerInstance());
 
-        for (L2ClanMember member : clan.getMembers()) { clan.removeClanMember(member.getObjectId(), 0); }
+        for (L2ClanMember member : clan.getMembers()) {
+            clan.removeClanMember(member.getObjectId(), 0);
+        }
 
         _clans.remove(clanId);
         IdFactory.getInstance().releaseId(clanId);

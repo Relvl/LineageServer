@@ -25,14 +25,17 @@ public class StorePlayerVariableCall extends IndexedCall {
     private final Integer pi_int_value;
     @OrmParamIn(6)
     private final Boolean pi_bool_value;
+    @OrmParamIn(7)
+    private final Long pi_long_value;
 
-    protected StorePlayerVariableCall(Integer playerId, String name, String strVal, Integer intVal, Boolean boolVal) {
-        super("player_variable_store", 5, true);
+    public StorePlayerVariableCall(Integer playerId, String name, String strVal, Integer intVal, Boolean boolVal, Long longValue) {
+        super("player_variable_store", 6, true);
         this.pi_player = playerId;
         this.pi_var_name = name;
         this.pi_str_value = strVal;
         this.pi_int_value = intVal;
         this.pi_bool_value = boolVal;
+        this.pi_long_value = longValue;
     }
 
     @Override

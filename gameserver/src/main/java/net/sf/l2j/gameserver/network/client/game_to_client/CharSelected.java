@@ -52,8 +52,8 @@ public class CharSelected extends L2GameServerPacket
 		writeD(_activeChar.getZ());
 		writeF(_activeChar.getCurrentHp());
 		writeF(_activeChar.getCurrentMp());
-		writeD(_activeChar.getSp());
-		writeQ(_activeChar.getExp());
+		writeD(_activeChar.getStat().getSp());
+		writeQ(_activeChar.getStat().getExp());
 		writeD(_activeChar.getLevel());
 		writeD(_activeChar.getKarma());
 		writeD(_activeChar.getPkKills());

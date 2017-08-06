@@ -16,6 +16,7 @@ package net.sf.l2j.gameserver.model;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
+import net.sf.l2j.commons.database.CallException;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.cache.CrestCache;
 import net.sf.l2j.gameserver.cache.CrestCache.CrestType;
@@ -34,6 +35,8 @@ import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
+import net.sf.l2j.gameserver.playerpart.variables.EPlayerVariableKey;
+import net.sf.l2j.gameserver.playerpart.variables.StorePlayerVariableCall;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,6 +44,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -367,7 +371,7 @@ public class L2Clan {
 
             if (player.isClanLeader()) {
                 SiegeManager.removeSiegeSkills(player);
-                player.setClanCreateExpiryTime(System.currentTimeMillis() + Config.ALT_CLAN_CREATE_DAYS * 86400000L);
+                player.variables().set(EPlayerVariableKey.CLAN_CREATE_EXPIRY_TIME, LocalDateTime.now().plusDays(Config.ALT_CLAN_CREATE_DAYS));
             }
 
             for (L2Skill skill : player.getClan().getClanSkills()) { player.removeSkill(skill, false); }
@@ -376,7 +380,9 @@ public class L2Clan {
             player.setClan(null);
 
             // players leaving from clan academy have no penalty
-            if (exMember.getPledgeType() != -1) { player.setClanJoinExpiryTime(clanJoinExpiryTime); }
+            if (exMember.getPledgeType() != -1) {
+                player.variables().set(EPlayerVariableKey.CLAN_JOIN_EXPIRY_TIME, clanJoinExpiryTime);
+            }
 
             player.setPledgeClass(L2ClanMember.calculatePledgeClass(player));
             player.broadcastUserInfo();
@@ -386,11 +392,9 @@ public class L2Clan {
         }
         else {
             try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
-                PreparedStatement statement = con.prepareStatement("UPDATE characters SET clanid=0, title=?, clan_join_expiry_time=?, clan_create_expiry_time=?, clan_privs=0, wantspeace=0, subpledge=0, lvl_joined_academy=0, apprentice=0, sponsor=0 WHERE obj_Id=?");
+                PreparedStatement statement = con.prepareStatement("UPDATE characters SET clanid=0, title=?, clan_privs=0, wantspeace=0, subpledge=0, apprentice=0, sponsor=0 WHERE obj_Id=?");
                 statement.setString(1, "");
-                statement.setLong(2, clanJoinExpiryTime);
-                statement.setLong(3, _leader.getObjectId() == objectId ? System.currentTimeMillis() + Config.ALT_CLAN_CREATE_DAYS * 86400000L : 0);
-                statement.setInt(4, exMember.getObjectId());
+                statement.setInt(2, exMember.getObjectId());
                 statement.execute();
                 statement.close();
 
@@ -403,9 +407,38 @@ public class L2Clan {
                 statement.setInt(1, exMember.getObjectId());
                 statement.execute();
                 statement.close();
+                exMember.getPlayerInstance().variables().remove(EPlayerVariableKey.LVL_JOINED_ACADEMY);
             }
             catch (Exception e) {
                 LOGGER.error("error while removing clan member in db ", e);
+            }
+
+            try (StorePlayerVariableCall call = new StorePlayerVariableCall(
+                    exMember.getObjectId(),
+                    EPlayerVariableKey.CLAN_CREATE_EXPIRY_TIME.name(),
+                    null,
+                    null,
+                    null,
+                    _leader.getObjectId() == objectId ? System.currentTimeMillis() + Config.ALT_CLAN_CREATE_DAYS * 86400000L : null
+            )) {
+                call.execute();
+            }
+            catch (CallException e) {
+                LOGGER.error("Cannot set clan create expiry time", e);
+            }
+
+            try (StorePlayerVariableCall call = new StorePlayerVariableCall(
+                    exMember.getObjectId(),
+                    EPlayerVariableKey.CLAN_JOIN_EXPIRY_TIME.name(),
+                    null,
+                    null,
+                    null,
+                    clanJoinExpiryTime
+            )) {
+                call.execute();
+            }
+            catch (CallException e) {
+                LOGGER.error("Cannot set clan join expiry time", e);
             }
         }
     }
@@ -1362,7 +1395,7 @@ public class L2Clan {
             return false;
         }
 
-        if (target.getClanJoinExpiryTime() > System.currentTimeMillis()) {
+        if (!target.variables().isTimeInPast(EPlayerVariableKey.CLAN_JOIN_EXPIRY_TIME)) {
             activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_MUST_WAIT_BEFORE_JOINING_ANOTHER_CLAN).addPcName(target));
             return false;
         }
@@ -1607,35 +1640,35 @@ public class L2Clan {
 
         switch (_level) {
             case 0: // upgrade to 1
-                if (player.getSp() >= 30000 && player.getInventory().reduceAdena(EItemProcessPurpose.CLAN_LVL, 650000, player.getTarget(), true)) {
+                if (player.getStat().getSp() >= 30000 && player.getInventory().reduceAdena(EItemProcessPurpose.CLAN_LVL, 650000, player.getTarget(), true)) {
                     player.removeExpAndSp(0, 30000);
                     increaseClanLevel = true;
                 }
                 break;
 
             case 1: // upgrade to 2
-                if (player.getSp() >= 150000 && player.getInventory().reduceAdena(EItemProcessPurpose.CLAN_LVL, 2500000, player.getTarget(), true)) {
+                if (player.getStat().getSp() >= 150000 && player.getInventory().reduceAdena(EItemProcessPurpose.CLAN_LVL, 2500000, player.getTarget(), true)) {
                     player.removeExpAndSp(0, 150000);
                     increaseClanLevel = true;
                 }
                 break;
 
             case 2:// upgrade to 3
-                if (player.getSp() >= 500000 && player.getInventory().destroyItemByItemId(EItemProcessPurpose.CLAN_LVL, 1419, 1, player, player.getTarget(), true) != null) {
+                if (player.getStat().getSp() >= 500000 && player.getInventory().destroyItemByItemId(EItemProcessPurpose.CLAN_LVL, 1419, 1, player, player.getTarget(), true) != null) {
                     player.removeExpAndSp(0, 500000);
                     increaseClanLevel = true;
                 }
                 break;
 
             case 3: // upgrade to 4
-                if (player.getSp() >= 1400000 && player.getInventory().destroyItemByItemId(EItemProcessPurpose.CLAN_LVL, 3874, 1, player, player.getTarget(), true) != null) {
+                if (player.getStat().getSp() >= 1400000 && player.getInventory().destroyItemByItemId(EItemProcessPurpose.CLAN_LVL, 3874, 1, player, player.getTarget(), true) != null) {
                     player.removeExpAndSp(0, 1400000);
                     increaseClanLevel = true;
                 }
                 break;
 
             case 4: // upgrade to 5
-                if (player.getSp() >= 3500000 && player.getInventory().destroyItemByItemId(EItemProcessPurpose.CLAN_LVL, 3870, 1, player, player.getTarget(), true) != null) {
+                if (player.getStat().getSp() >= 3500000 && player.getInventory().destroyItemByItemId(EItemProcessPurpose.CLAN_LVL, 3870, 1, player, player.getTarget(), true) != null) {
                     player.removeExpAndSp(0, 3500000);
                     increaseClanLevel = true;
                 }
