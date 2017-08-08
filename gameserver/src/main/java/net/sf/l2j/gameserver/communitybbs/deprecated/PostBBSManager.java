@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package net.sf.l2j.gameserver.communitybbs.Manager;
+package net.sf.l2j.gameserver.communitybbs.deprecated;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -21,9 +21,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import net.sf.l2j.gameserver.communitybbs.BB.Forum;
-import net.sf.l2j.gameserver.communitybbs.BB.Post;
-import net.sf.l2j.gameserver.communitybbs.BB.Topic;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
 public class PostBBSManager extends BaseBBSManager

@@ -20,8 +20,6 @@ import net.sf.l2j.commons.database.CallException;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.cache.CrestCache;
 import net.sf.l2j.gameserver.cache.CrestCache.CrestType;
-import net.sf.l2j.gameserver.communitybbs.BB.Forum;
-import net.sf.l2j.gameserver.communitybbs.Manager.ForumsBBSManager;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
@@ -118,7 +116,6 @@ public class L2Clan {
     private int _allyPenaltyType;
     private long _charPenaltyExpiryTime;
     private long _dissolvingExpiryTime;
-    private Forum _forum;
     private int _reputationScore;
     private int _rank;
     private String _notice;
@@ -590,16 +587,6 @@ public class L2Clan {
      */
     public void setLevel(int level) {
         _level = level;
-
-        if (_level >= 2 && _forum == null) {
-            Forum forum = ForumsBBSManager.getInstance().getForumByName("ClanRoot");
-            if (forum != null) {
-                _forum = forum.getChildByName(_name);
-                if (_forum == null) {
-                    _forum = ForumsBBSManager.getInstance().createNewForum(_name, ForumsBBSManager.getInstance().getForumByName("ClanRoot"), Forum.CLAN, Forum.CLANMEMBERONLY, _clanId);
-                }
-            }
-        }
     }
 
     /**

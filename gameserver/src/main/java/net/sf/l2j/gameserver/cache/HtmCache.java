@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+@Deprecated
 public class HtmCache {
     private static final Logger LOGGER = LoggerFactory.getLogger(HtmCache.class);
 
@@ -27,37 +28,6 @@ public class HtmCache {
     }
 
     /**
-     * Cleans HtmCache.
-     */
-    public void reload() {
-        LOGGER.info("HtmCache: Cache cleared, had {} entries.", _htmCache.size());
-
-        _htmCache.clear();
-    }
-
-    /**
-     * Reloads given directory. All sub-directories are parsed, all html files are loaded to HtmCache.
-     *
-     * @param path : Directory to be reloaded.
-     */
-    public void reloadPath(String path) {
-        parseDir(new File(path));
-        LOGGER.info("HtmCache: Reloaded specified {} path.", path);
-    }
-
-    /**
-     * Parse given directory, all html files are loaded to HtmCache.
-     *
-     * @param dir : Directory to be parsed.
-     */
-    private void parseDir(File dir) {
-        for (File file : dir.listFiles(_htmFilter)) {
-            if (file.isDirectory()) { parseDir(file); }
-            else { loadFile(file); }
-        }
-    }
-
-    /**
      * Loads html file content to HtmCache.
      *
      * @param file : File to be cached.
@@ -65,12 +35,12 @@ public class HtmCache {
      */
     private String loadFile(File file) {
         try (FileInputStream fis = new FileInputStream(file); UnicodeReader ur = new UnicodeReader(fis, "UTF-8"); BufferedReader br = new BufferedReader(ur)) {
-            final StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             String line;
 
             while ((line = br.readLine()) != null) { sb.append(line).append('\n'); }
 
-            final String content = sb.toString().replaceAll("\r\n", "\n");
+            String content = sb.toString().replaceAll("\r\n", "\n");
 
             _htmCache.put(file.getPath().replace("\\", "/").hashCode(), content);
             return content;
@@ -88,7 +58,7 @@ public class HtmCache {
      * @return true if the HTM can be loaded.
      */
     public boolean isLoadable(String path) {
-        final File file = new File(path);
+        File file = new File(path);
 
         if (file.exists() && _htmFilter.accept(file) && !file.isDirectory()) { return loadFile(file) != null; }
 
@@ -103,14 +73,11 @@ public class HtmCache {
      */
     public String getHtm(String filename) {
         if (filename == null || filename.isEmpty()) { return ""; }
-
         String content = _htmCache.get(filename.hashCode());
         if (content == null) {
-            final File file = new File(filename);
-
+            File file = new File(filename);
             if (file.exists() && _htmFilter.accept(file) && !file.isDirectory()) { content = loadFile(file); }
         }
-
         return content;
     }
 

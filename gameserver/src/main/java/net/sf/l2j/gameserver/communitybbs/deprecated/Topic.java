@@ -1,7 +1,6 @@
-package net.sf.l2j.gameserver.communitybbs.BB;
+package net.sf.l2j.gameserver.communitybbs.deprecated;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
-import net.sf.l2j.gameserver.communitybbs.Manager.TopicBBSManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

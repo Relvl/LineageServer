@@ -18,14 +18,14 @@ public enum EChatType {
     TRADE(new ChatHandlerTrade()), // +msg
     ALLIANCE(new ChatHandlerAlliance()), // $msg
     ANNOUNCEMENT(null),
-    /** Судно. Не пытаться слать чат с этим типом, клиент вылетит с крашем. */
+    /** РЎСѓРґРЅРѕ. РќРµ РїС‹С‚Р°С‚СЊСЃСЏ СЃР»Р°С‚СЊ С‡Р°С‚ СЃ СЌС‚РёРј С‚РёРїРѕРј, РєР»РёРµРЅС‚ РІС‹Р»РµС‚РёС‚ СЃ РєСЂР°С€РµРј. */
     BOAT(null),
     L2FRIEND(null),
     MSNCHAT(null),
     PARTYMATCH_ROOM(new ChatHandlerPartyMatchRoom()), //
-    /** Бледно-красный, попутно вылазит уведомление справа (не умеет в русский). */
+    /** Р‘Р»РµРґРЅРѕ-РєСЂР°СЃРЅС‹Р№, РїРѕРїСѓС‚РЅРѕ РІС‹Р»Р°Р·РёС‚ СѓРІРµРґРѕРјР»РµРЅРёРµ СЃРїСЂР°РІР° (РЅРµ СѓРјРµРµС‚ РІ СЂСѓСЃСЃРєРёР№). */
     PARTYROOM_COMMANDER(new ChatHandlerPartyRoomCommander()), //
-    /** Бледно-желтый, слабо отличимый от белого. */
+    /** Р‘Р»РµРґРЅРѕ-Р¶РµР»С‚С‹Р№, СЃР»Р°Р±Рѕ РѕС‚Р»РёС‡РёРјС‹Р№ РѕС‚ Р±РµР»РѕРіРѕ. */
     PARTYROOM_ALL(new ChatHandlerPartyRoomAll()), // `msg
     HERO_VOICE(new ChatHandlerHeroVoice()), // %msg
     CRITICAL_ANNOUNCE(null),

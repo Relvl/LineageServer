@@ -11,8 +11,6 @@ import net.sf.l2j.gameserver.ai.NextAction;
 import net.sf.l2j.gameserver.ai.model.L2CharacterAI;
 import net.sf.l2j.gameserver.ai.model.L2PlayerAI;
 import net.sf.l2j.gameserver.ai.model.L2SummonAI;
-import net.sf.l2j.gameserver.communitybbs.BB.Forum;
-import net.sf.l2j.gameserver.communitybbs.Manager.ForumsBBSManager;
 import net.sf.l2j.gameserver.database.StorePlayerCall;
 import net.sf.l2j.gameserver.datatables.*;
 import net.sf.l2j.gameserver.datatables.MapRegionTable.TeleportWhereType;
@@ -280,8 +278,6 @@ public final class L2PcInstance extends L2Playable {
     private L2ItemInstance _lure;
     private L2Fishing _fishCombat;
     private FishData _fish;
-    private Forum _forumMail;
-    private Forum _forumMemo;
     private boolean _canFeed;
     private L2PetData _data;
     private L2PetLevelData _leveldata;
@@ -3448,40 +3444,6 @@ public final class L2PcInstance extends L2Playable {
             LOGGER.error("Cannot create character {} (login: {}) in database: ", this.getName(), accountName, e);
         }
         return true;
-    }
-
-    public Forum getMail() {
-        if (_forumMail == null) {
-            _forumMail = ForumsBBSManager.getInstance().getForumByName("MailRoot").getChildByName(getName());
-
-            if (_forumMail == null) {
-                ForumsBBSManager.getInstance().createNewForum(getName(), ForumsBBSManager.getInstance().getForumByName("MailRoot"), Forum.MAIL, Forum.OWNERONLY, getObjectId());
-                _forumMail = ForumsBBSManager.getInstance().getForumByName("MailRoot").getChildByName(getName());
-            }
-        }
-
-        return _forumMail;
-    }
-
-    public void setMail(Forum forum) {
-        _forumMail = forum;
-    }
-
-    public Forum getMemo() {
-        if (_forumMemo == null) {
-            _forumMemo = ForumsBBSManager.getInstance().getForumByName("MemoRoot").getChildByName(accountName);
-
-            if (_forumMemo == null) {
-                ForumsBBSManager.getInstance().createNewForum(accountName, ForumsBBSManager.getInstance().getForumByName("MemoRoot"), Forum.MEMO, Forum.OWNERONLY, getObjectId());
-                _forumMemo = ForumsBBSManager.getInstance().getForumByName("MemoRoot").getChildByName(accountName);
-            }
-        }
-
-        return _forumMemo;
-    }
-
-    public void setMemo(Forum forum) {
-        _forumMemo = forum;
     }
 
     private void restoreCharData() {

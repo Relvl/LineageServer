@@ -12,7 +12,6 @@ public final class RequestShowBoard extends L2GameClientPacket {
 
     @Override
     protected void runImpl() {
-        System.out.println(">>> RequestShowBoard: _unknown = " + _unknown);
-        CommunityBoard.getInstance().handleCommands(getClient(), "_bbshome");
+        CommunityBoard.handleCommand(getClient().getActiveChar(), "_bbshome");
     }
 }

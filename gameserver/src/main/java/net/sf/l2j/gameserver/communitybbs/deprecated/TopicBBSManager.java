@@ -1,9 +1,6 @@
-package net.sf.l2j.gameserver.communitybbs.Manager;
+package net.sf.l2j.gameserver.communitybbs.deprecated;
 
 import net.sf.l2j.commons.lang.StringUtil;
-import net.sf.l2j.gameserver.communitybbs.BB.Forum;
-import net.sf.l2j.gameserver.communitybbs.BB.Post;
-import net.sf.l2j.gameserver.communitybbs.BB.Topic;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
@@ -85,10 +82,7 @@ public class TopicBBSManager extends BaseBBSManager {
 
     @Override
     public void parseCmd(String command, L2PcInstance activeChar) {
-        if (command.equals("_bbsmemo")) {
-            showTopics(activeChar.getMemo(), activeChar, 1, activeChar.getMemo().getID());
-        }
-        else if (command.startsWith("_bbstopics;read")) {
+        if (command.startsWith("_bbstopics;read")) {
             StringTokenizer st = new StringTokenizer(command, ";");
             st.nextToken();
             st.nextToken();

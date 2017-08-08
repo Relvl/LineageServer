@@ -116,6 +116,13 @@ public final class AchievementController {
         return completed.contains(achieve);
     }
 
+    public Integer getAchievementPartialCount(IAchieveElement achieve) {
+        if (partialCompleted.containsKey(achieve)) {
+            return partialCompleted.get(achieve);
+        }
+        return 0;
+    }
+
     public static void forceStore() {
         new AchievementStoreTask().run();
     }

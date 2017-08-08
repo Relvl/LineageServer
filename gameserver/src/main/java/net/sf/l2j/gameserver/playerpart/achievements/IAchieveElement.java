@@ -1,9 +1,11 @@
 package net.sf.l2j.gameserver.playerpart.achievements;
 
+import java.io.Serializable;
+
 /**
  * @author Johnson / 23.07.2017
  */
-public interface IAchieveElement {
+public interface IAchieveElement extends Serializable {
     /** Заголовок. */
     String title();
 
@@ -15,4 +17,7 @@ public interface IAchieveElement {
 
     /**  */
     String getId();
+
+    EAchievementGroup getGroup();
+
 }

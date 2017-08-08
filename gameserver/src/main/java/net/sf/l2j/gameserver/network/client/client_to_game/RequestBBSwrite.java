@@ -29,14 +29,7 @@ public class RequestBBSwrite extends L2GameClientPacket {
         */
     @Override
     protected void runImpl() {
-        System.out.println(">>> RequestBBSwrite:");
-        System.out.println(">>> url = " + url);
-        System.out.println(">>> _arg1 = " + _arg1);
-        System.out.println(">>> _arg2 = " + _arg2);
-        System.out.println(">>> _arg3 = " + _arg3);
-        System.out.println(">>> _arg4 = " + _arg4);
-        System.out.println(">>> _arg5 = " + _arg5);
-        CommunityBoard.getInstance().handleWriteCommands(getClient(), url, _arg1, _arg2, _arg3, _arg4, _arg5);
+        CommunityBoard.getInstance().handleWriteCommand(getClient().getActiveChar(), url, _arg1, _arg2, _arg3, _arg4, _arg5);
     }
 
     @Override

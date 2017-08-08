@@ -1,7 +1,6 @@
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.communitybbs.Manager.MailBBSManager;
 import net.sf.l2j.gameserver.datatables.AdminCommandAccessRights;
 import net.sf.l2j.gameserver.datatables.AnnouncementTable;
 import net.sf.l2j.gameserver.datatables.GmListTable;
@@ -191,13 +190,6 @@ public class EnterWorld extends L2GameClientPacket {
             if (quest != null && quest.getOnEnterWorld()) { quest.notifyEnterWorld(activeChar); }
         }
         activeChar.sendPacket(new QuestList(activeChar));
-
-        // Unread mails make a popup appears.
-        if (MailBBSManager.getInstance().checkUnreadMail(activeChar) > 0) {
-            activeChar.sendPacket(SystemMessageId.NEW_MAIL);
-            activeChar.sendPacket(new PlaySound("systemmsg_e.1233"));
-            activeChar.sendPacket(ExMailArrived.STATIC_PACKET);
-        }
 
         // Clan notice, if active.
         if (clan != null && clan.isNoticeEnabled()) {

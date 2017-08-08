@@ -1,7 +1,6 @@
-package net.sf.l2j.gameserver.communitybbs.Manager;
+package net.sf.l2j.gameserver.communitybbs.deprecated;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
-import net.sf.l2j.gameserver.communitybbs.BB.Forum;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

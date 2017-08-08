@@ -6,7 +6,6 @@ import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.Server;
 import net.sf.l2j.gameserver.cache.CrestCache;
 import net.sf.l2j.gameserver.cache.HtmCache;
-import net.sf.l2j.gameserver.communitybbs.Manager.ForumsBBSManager;
 import net.sf.l2j.gameserver.config.GameServerConfig;
 import net.sf.l2j.gameserver.datatables.*;
 import net.sf.l2j.gameserver.geoengine.GeoData;
@@ -101,8 +100,6 @@ public class GameServer {
         PartyMatchRoomList.getInstance();
         RaidBossPointsManager.getInstance();
 
-        ForumsBBSManager.getInstance().initRoot();
-
         CrestCache.getInstance();
         ClanTable.getInstance();
         AuctionManager.getInstance();
@@ -175,10 +172,9 @@ public class GameServer {
 
         Runtime.getRuntime().addShutdownHook(Shutdown.getInstance());
 
-        ForumsBBSManager.getInstance();
-        LOGGER.info("IdFactory: Free ObjectIDs remaining: " + IdFactory.getInstance().size());
+        LOGGER.info("IdFactory: Free ObjectIDs remaining: {}", IdFactory.getInstance().size());
 
-        LOGGER.info("Deadlock detector is enabled. Timer: " + Config.DEADLOCK_CHECK_INTERVAL + "s.");
+        LOGGER.info("Deadlock detector is enabled. Timer: {}s.", Config.DEADLOCK_CHECK_INTERVAL);
         _deadDetectThread = new DeadLockDetector();
         _deadDetectThread.setDaemon(true);
         _deadDetectThread.start();
@@ -187,8 +183,8 @@ public class GameServer {
 
         long usedMem = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1048576;
         long totalMem = Runtime.getRuntime().maxMemory() / 1048576;
-        LOGGER.info("Gameserver have started, used memory: " + usedMem + " / " + totalMem + " Mo.");
-        LOGGER.info("Maximum allowed players: " + Config.MAXIMUM_ONLINE_USERS);
+        LOGGER.info("Gameserver have started, used memory: {} / {} Mo.", usedMem, totalMem);
+        LOGGER.info("Maximum allowed players: {}", Config.MAXIMUM_ONLINE_USERS);
 
         _loginThread = LoginServerThread.getInstance();
         _loginThread.start();
@@ -208,7 +204,7 @@ public class GameServer {
                 bindAddress = InetAddress.getByName(Config.GAMESERVER_HOSTNAME);
             }
             catch (UnknownHostException e1) {
-                LOGGER.error("WARNING: The GameServer bind address is invalid, using all available IPs. Reason: " + e1.getMessage(), e1);
+                LOGGER.error("WARNING: The GameServer bind address is invalid, using all available IPs. Reason: {}", e1.getMessage(), e1);
             }
         }
 

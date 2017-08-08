@@ -1,9 +1,6 @@
-package net.sf.l2j.gameserver.communitybbs.BB;
+package net.sf.l2j.gameserver.communitybbs.deprecated;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
-import net.sf.l2j.gameserver.communitybbs.BB.Topic.ConstructorType;
-import net.sf.l2j.gameserver.communitybbs.Manager.ForumsBBSManager;
-import net.sf.l2j.gameserver.communitybbs.Manager.TopicBBSManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -98,7 +95,7 @@ public class Forum {
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
-                Topic t = new Topic(ConstructorType.RESTORE, result.getInt("topic_id"), result.getInt("topic_forum_id"), result.getString("topic_name"), result.getLong("topic_date"), result.getString("topic_ownername"), result.getInt("topic_ownerid"), result.getInt("topic_type"), result.getInt("topic_reply"));
+                Topic t = new Topic(Topic.ConstructorType.RESTORE, result.getInt("topic_id"), result.getInt("topic_forum_id"), result.getString("topic_name"), result.getLong("topic_date"), result.getString("topic_ownername"), result.getInt("topic_ownerid"), result.getInt("topic_type"), result.getInt("topic_reply"));
 
                 _topic.put(t.getID(), t);
 

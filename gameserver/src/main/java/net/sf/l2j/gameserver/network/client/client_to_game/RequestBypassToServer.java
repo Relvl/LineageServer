@@ -6,12 +6,12 @@ import net.sf.l2j.gameserver.datatables.AdminCommandAccessRights;
 import net.sf.l2j.gameserver.handler.AdminCommandHandler;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2OlympiadManagerInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Hero;
 import net.sf.l2j.gameserver.model.olympiad.OlympiadManager;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
 import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
@@ -102,7 +102,8 @@ public final class RequestBypassToServer extends L2GameClientPacket {
                     }
 
                     activeChar.sendPacket(ActionFailed.STATIC_PACKET);
-                } catch (NumberFormatException nfe) {
+                }
+                catch (NumberFormatException nfe) {
                 }
             }
             // Navigate throught Manor windows
@@ -111,7 +112,7 @@ public final class RequestBypassToServer extends L2GameClientPacket {
                 if (object instanceof L2Npc) { ((L2Npc) object).onBypassFeedback(activeChar, command); }
             }
             else if (command.startsWith("bbs_") || command.startsWith("_bbs") || command.startsWith("_friend") || command.startsWith("_mail") || command.startsWith("_block")) {
-                CommunityBoard.getInstance().handleCommands(getClient(), command);
+                CommunityBoard.handleCommand(getClient().getActiveChar(), command);
             }
             else if (command.startsWith("Quest ")) {
                 if (!activeChar.validateBypass(command)) { return; }
@@ -153,7 +154,8 @@ public final class RequestBypassToServer extends L2GameClientPacket {
                 int arenaId = Integer.parseInt(command.substring(12).trim());
                 activeChar.enterOlympiadObserverMode(arenaId);
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             _log.error("Bad RequestBypassToServer: ", e);
         }
     }

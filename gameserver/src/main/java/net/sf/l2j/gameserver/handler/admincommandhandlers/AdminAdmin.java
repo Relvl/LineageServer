@@ -183,10 +183,6 @@ public class AdminAdmin implements IAdminCommandHandler {
                     DoorTable.getInstance().reload();
                     activeChar.sendMessage("Doors instance has been reloaded.");
                 }
-                else if (type.startsWith("htm")) {
-                    HtmCache.getInstance().reload();
-                    activeChar.sendMessage("The HTM cache has been reloaded.");
-                }
                 else if (type.startsWith("item")) {
                     ItemTable.getInstance().reload();
                     activeChar.sendMessage("Items' templates have been reloaded.");
