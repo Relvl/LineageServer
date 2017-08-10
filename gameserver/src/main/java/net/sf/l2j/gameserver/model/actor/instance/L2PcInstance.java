@@ -101,14 +101,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 
 public final class L2PcInstance extends L2Playable {
-    @Deprecated
     private static final String ADD_SKILL_SAVE = "INSERT INTO character_skills_save (char_obj_id,skill_id,skill_level,effect_count,effect_cur_time,reuse_delay,systime,restore_type,class_index,buff_index) VALUES (?,?,?,?,?,?,?,?,?,?)";
-    @Deprecated
     private static final String RESTORE_SKILL_SAVE = "SELECT skill_id,skill_level,effect_count,effect_cur_time, reuse_delay, systime, restore_type FROM character_skills_save WHERE char_obj_id=? AND class_index=? ORDER BY buff_index ASC";
-    @Deprecated
     private static final String DELETE_SKILL_SAVE = "DELETE FROM character_skills_save WHERE char_obj_id=? AND class_index=?";
-
-    public static final int REQUEST_TIMEOUT = 15;
     private static final String RESTORE_SKILLS_FOR_CHAR = "SELECT skill_id,skill_level FROM character_skills WHERE char_obj_id=? AND class_index=?";
     private static final String ADD_NEW_SKILL = "INSERT INTO character_skills (char_obj_id,skill_id,skill_level,class_index) VALUES (?,?,?,?)";
     private static final String UPDATE_CHARACTER_SKILL_LEVEL = "UPDATE character_skills SET skill_level=? WHERE skill_id=? AND char_obj_id=? AND class_index=?";
@@ -117,7 +112,7 @@ public final class L2PcInstance extends L2Playable {
 
     private static final String INSERT_CHARACTER = "INSERT INTO characters (account_name,obj_Id,char_name,level,maxHp,curHp,maxCp,curCp,maxMp,curMp,face,hairStyle,hairColor,sex,exp,sp,karma,pvpkills,pkkills,clanid,race,classid,deletetime,title,accesslevel,online,isin7sdungeon,clan_privs,wantspeace,base_class,nobless,power_grade,last_recom_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String UPDATE_CHARACTER = "UPDATE characters SET level=?,maxHp=?,curHp=?,maxCp=?,curCp=?,maxMp=?,curMp=?,face=?,hairStyle=?,hairColor=?,sex=?,heading=?,x=?,y=?,z=?,exp=?,expBeforeDeath=?,sp=?,karma=?,pvpkills=?,pkkills=?,rec_have=?,rec_left=?,clanid=?,race=?,classid=?,deletetime=?,title=?,accesslevel=?,online=?,isin7sdungeon=?,clan_privs=?,wantspeace=?,base_class=?,onlinetime=?,punish_level=?,punish_timer=?,nobless=?,power_grade=?,subpledge=?,last_recom_date=?,apprentice=?,sponsor=?,varka_ketra_ally=?,char_name=? WHERE obj_id=?";
-    private static final String RESTORE_CHARACTER = "SELECT account_name, obj_Id, char_name, level, maxHp, curHp, maxCp, curCp, maxMp, curMp, face, hairStyle, hairColor, sex, heading, x, y, z, exp, expBeforeDeath, sp, karma, pvpkills, pkkills, clanid, race, classid, deletetime, title, rec_have, rec_left, accesslevel, online, lastAccess, clan_privs, wantspeace, base_class, onlinetime, isin7sdungeon, punish_level, punish_timer, nobless, power_grade, subpledge, last_recom_date, apprentice, sponsor, varka_ketra_ally FROM characters WHERE obj_id=?";
+    private static final String RESTORE_CHARACTER = "SELECT account_name, obj_Id, char_name, level, curHp, curCp, curMp, face, hairStyle, hairColor, sex, heading, x, y, z, exp, expBeforeDeath, sp, karma, pvpkills, pkkills, clanid, race, classid, deletetime, title, rec_have, rec_left, accesslevel, online, lastAccess, clan_privs, wantspeace, base_class, onlinetime, isin7sdungeon, punish_level, punish_timer, nobless, power_grade, subpledge, last_recom_date, apprentice, sponsor, varka_ketra_ally FROM characters WHERE obj_id=?";
 
     private static final String RESTORE_CHAR_SUBCLASSES = "SELECT class_id,exp,sp,level,class_index FROM character_subclasses WHERE char_obj_id=? ORDER BY class_index ASC";
     private static final String ADD_CHAR_SUBCLASS = "INSERT INTO character_subclasses (char_obj_id,class_id,exp,sp,level,class_index) VALUES (?,?,?,?,?,?)";
@@ -129,6 +124,8 @@ public final class L2PcInstance extends L2Playable {
     private static final String DELETE_CHAR_HENNAS = "DELETE FROM character_hennas WHERE char_obj_id=? AND class_index=?";
     private static final String DELETE_CHAR_SHORTCUTS = "DELETE FROM character_shortcuts WHERE char_obj_id=? AND class_index=?";
     private static final String UPDATE_NOBLESS = "UPDATE characters SET nobless=? WHERE obj_Id=?";
+
+    public static final int REQUEST_TIMEOUT = 15;
     private static final int[] EXPERTISE_LEVELS = {
             0, // NONE
             20, // D
@@ -2471,7 +2468,7 @@ public final class L2PcInstance extends L2Playable {
                     }
 
                     // Reduce player's xp and karma.
-                    if (Config.ALT_GAME_DELEVEL && (getSkillLevel(SkillConst.SKILL_LUCKY) < 0 || getStat().getLevel() > 9)) {
+                    if (getSkillLevel(SkillConst.SKILL_LUCKY) < 0 || getStat().getLevel() > 9) {
                         deathPenalty(pk != null && clan != null && pk.clan != null && (clan.isAtWarWith(pk._clanId) || pk.clan.isAtWarWith(_clanId)), pk != null, killer instanceof L2SiegeGuardInstance);
                     }
                 }
@@ -2690,13 +2687,10 @@ public final class L2PcInstance extends L2Playable {
         if (getLevel() >= 76) { percentLost = 2.0; }
         else if (getLevel() >= 40) { percentLost = 4.0; }
 
-        if (_karma > 0) { percentLost *= Config.RATE_KARMA_EXP_LOST; }
-
         if (isFestivalParticipant() || atWar || isInsideZone(ZoneId.SIEGE)) { percentLost /= 4.0; }
 
         // Calculate the Experience loss
-        long lostExp = 0;
-
+        long lostExp;
         if (lvl < Experience.MAX_LEVEL) {
             lostExp = Math.round((getStat().getExpForLevel(lvl + 1) - getStat().getExpForLevel(lvl)) * percentLost / 100);
         }
@@ -2704,13 +2698,8 @@ public final class L2PcInstance extends L2Playable {
             lostExp = Math.round((getStat().getExpForLevel(Experience.MAX_LEVEL) - getStat().getExpForLevel(Experience.MAX_LEVEL - 1)) * percentLost / 100);
         }
 
-        // Get the Experience before applying penalty
         _expBeforeDeath = getStat().getExp();
-
-        // Set new karma
         updateKarmaLoss(lostExp);
-
-        // Set the new Experience value of the L2PcInstance
         getStat().addExp(-lostExp);
     }
 
@@ -2754,13 +2743,9 @@ public final class L2PcInstance extends L2Playable {
         this.summon = summon;
     }
 
-    public boolean hasPet() {
-        return summon instanceof L2PetInstance;
-    }
+    public boolean hasPet() { return summon instanceof L2PetInstance; }
 
-    public boolean hasServitor() {
-        return summon instanceof L2SummonInstance;
-    }
+    public boolean hasServitor() { return summon instanceof L2SummonInstance; }
 
     public L2TamedBeastInstance getTrainedBeast() {
         return _tamedBeast;
@@ -2778,7 +2763,6 @@ public final class L2PcInstance extends L2Playable {
         if (_activeRequester != null && _activeRequester.isRequestExpired() && _activeTradeList == null) {
             _activeRequester = null;
         }
-
         return _activeRequester;
     }
 

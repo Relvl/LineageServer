@@ -21,10 +21,10 @@ public class ItemSkills implements IItemHandler {
         if (playable instanceof L2SummonInstance) { return; }
 
         boolean isPet = playable instanceof L2PetInstance;
-        L2PcInstance activeChar = playable.getActingPlayer();
+        L2PcInstance player = playable.getActingPlayer();
 
         if (isPet && !item.isTradable()) {
-            activeChar.sendPacket(SystemMessageId.ITEM_NOT_FOR_PETS);
+            player.sendPacket(SystemMessageId.ITEM_NOT_FOR_PETS);
             return;
         }
 
@@ -53,8 +53,8 @@ public class ItemSkills implements IItemHandler {
                 }
 
                 playable.doSimultaneousCast(itemSkill);
-                if (!isPet && item.getItemType() == EtcItemType.HERB && activeChar.hasServitor()) {
-                    activeChar.getPet().doSimultaneousCast(itemSkill);
+                if (!isPet && item.getItemType() == EtcItemType.HERB && player.hasServitor()) {
+                    player.getPet().doSimultaneousCast(itemSkill);
                 }
             }
             else {
@@ -71,14 +71,14 @@ public class ItemSkills implements IItemHandler {
             }
 
             if (isPet) {
-                activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.PET_USES_S1).addSkillName(itemSkill));
+                player.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.PET_USES_S1).addSkillName(itemSkill));
             }
             else {
                 switch (skillInfo.getId()) {
                     case 2031: // Lesser healing potion
                     case 2032: // Healing potion
                     case 2037: // Greater Healing Potion
-                        activeChar.shortBuffStatusUpdate(skillInfo.getId(), skillInfo.getValue(), itemSkill.getBuffDuration() / 1000);
+                        player.shortBuffStatusUpdate(skillInfo.getId(), skillInfo.getValue(), itemSkill.getBuffDuration() / 1000);
                         break;
                 }
             }
@@ -95,7 +95,7 @@ public class ItemSkills implements IItemHandler {
                 if (!isPet) {
                     int group = item.getEtcItem().getSharedReuseGroup();
                     if (group >= 0) {
-                        activeChar.sendPacket(new ExUseSharedGroupItem(item.getItemId(), group, reuseDelay, reuseDelay));
+                        player.sendPacket(new ExUseSharedGroupItem(item.getItemId(), group, reuseDelay, reuseDelay));
                     }
                 }
             }

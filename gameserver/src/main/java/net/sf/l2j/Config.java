@@ -435,7 +435,6 @@ public final class Config {
     public static int MAX_PVTSTORE_SLOTS_DWARF;
     public static int MAX_PVTSTORE_SLOTS_OTHER;
     public static boolean DEEPBLUE_DROP_RULES;
-    public static boolean ALT_GAME_DELEVEL;
     public static int DEATH_PENALTY_CHANCE;
 
     /**
@@ -628,7 +627,6 @@ public final class Config {
     public static double RATE_QUEST_REWARD_SP;
     public static double RATE_QUEST_REWARD_ADENA;
 
-    public static double RATE_KARMA_EXP_LOST;
     public static double RATE_SIEGE_GUARDS_PRICE;
 
     public static int PLAYER_DROP_LIMIT;
@@ -1035,7 +1033,6 @@ public final class Config {
             MAX_PVTSTORE_SLOTS_DWARF = players.getProperty("MaxPvtStoreSlotsDwarf", 5);
             MAX_PVTSTORE_SLOTS_OTHER = players.getProperty("MaxPvtStoreSlotsOther", 4);
             DEEPBLUE_DROP_RULES = players.getProperty("UseDeepBlueDropRules", true);
-            ALT_GAME_DELEVEL = players.getProperty("Delevel", true);
             DEATH_PENALTY_CHANCE = players.getProperty("DeathPenaltyChance", 20);
 
             INVENTORY_MAXIMUM_NO_DWARF = players.getProperty("MaximumSlotsForNoDwarf", 80);
@@ -1197,7 +1194,6 @@ public final class Config {
             RATE_QUEST_REWARD_XP = server.getProperty("RateQuestRewardXP", 1.);
             RATE_QUEST_REWARD_SP = server.getProperty("RateQuestRewardSP", 1.);
             RATE_QUEST_REWARD_ADENA = server.getProperty("RateQuestRewardAdena", 1.);
-            RATE_KARMA_EXP_LOST = server.getProperty("RateKarmaExpLost", 1.);
             RATE_SIEGE_GUARDS_PRICE = server.getProperty("RateSiegeGuardsPrice", 1.);
             RATE_DROP_COMMON_HERBS = server.getProperty("RateCommonHerbs", 1.);
             RATE_DROP_HP_HERBS = server.getProperty("RateHpHerbs", 1.);

@@ -1212,14 +1212,7 @@ public abstract class L2Character extends L2Object {
         return true;
     }
 
-    /**
-     * Index according to skill id the current timestamp of use, overridden in L2PcInstance.
-     *
-     * @param skill id
-     * @param reuse delay
-     */
-    public void addTimeStamp(L2Skill skill, long reuse) {
-    }
+    public void addTimeStamp(L2Skill skill, long reuse) {}
 
     public void startFusionSkill(L2Character target, L2Skill skill) {
         if (skill.getSkillType() != L2SkillType.FUSION) { return; }
@@ -1227,28 +1220,6 @@ public abstract class L2Character extends L2Object {
         if (_fusionSkill == null) { _fusionSkill = new FusionSkill(this, target, skill); }
     }
 
-    /**
-     * Kill the L2Character.<BR>
-     * <BR>
-     * <B><U> Actions</U> :</B>
-     * <ul>
-     * <li>Set target to null and cancel Attack or Cast</li>
-     * <li>Stop movement</li>
-     * <li>Stop HP/MP/CP Regeneration task</li>
-     * <li>Stop all active skills effects in progress on the L2Character</li>
-     * <li>Send the Server->Client packet StatusUpdate with current HP and MP to all other L2PcInstance to inform</li>
-     * <li>Notify L2Character AI</li>
-     * </ul>
-     * <B><U> Overridden in </U> :</B>
-     * <ul>
-     * <li>L2Npc : Create a DecayTask to remove the corpse of the L2Npc after 7 seconds</li>
-     * <li>L2Attackable : Distribute rewards (EXP, SP, Drops...) and notify Quest Engine</li>
-     * <li>L2PcInstance : Apply Death Penalty, Manage gain/loss Karma and Item Drop</li>
-     * </ul>
-     *
-     * @param killer The L2Character who killed it
-     * @return true if successful.
-     */
     public boolean doDie(L2Character killer) {
         // killing is only possible one time
         synchronized (this) {
@@ -1294,7 +1265,6 @@ public abstract class L2Character extends L2Object {
     protected void calculateRewards(L2Character killer) {
     }
 
-    /** Sets HP, MP and CP and revives the L2Character. */
     public void doRevive() {
         if (!_isDead || _isTeleporting) { return; }
 
@@ -1308,18 +1278,10 @@ public abstract class L2Character extends L2Object {
         if (getWorldRegion() != null) { getWorldRegion().onRevive(this); }
     }
 
-    /**
-     * Revives the L2Character using skill.
-     *
-     * @param revivePower
-     */
     public void doRevive(double revivePower) {
         doRevive();
     }
 
-    /**
-     * @return the L2CharacterAI of the L2Character and if its null create a new one.
-     */
     public L2CharacterAI getAI() {
         L2CharacterAI ai = this.ai;
         if (ai == null) {
@@ -1353,18 +1315,10 @@ public abstract class L2Character extends L2Object {
         return _isRaid;
     }
 
-    /**
-     * Set this Npc as a Raid instance.
-     *
-     * @param isRaid
-     */
     public void setIsRaid(boolean isRaid) {
         _isRaid = isRaid;
     }
 
-    /**
-     * @return True if the L2Character is minion.
-     */
     public boolean isMinion() {
         return false;
     }
@@ -1380,16 +1334,8 @@ public abstract class L2Character extends L2Object {
         return _lastSimultaneousSkillCast;
     }
 
-    public void setLastSimultaneousSkillCast(L2Skill skill) {
-        _lastSimultaneousSkillCast = skill;
-    }
-
     public final L2Skill getLastSkillCast() {
         return _lastSkillCast;
-    }
-
-    public void setLastSkillCast(L2Skill skill) {
-        _lastSkillCast = skill;
     }
 
     public final boolean isNoRndWalk() {
@@ -1462,16 +1408,10 @@ public abstract class L2Character extends L2Object {
         _isImmobilized = value;
     }
 
-    /**
-     * @return True if the L2Character is dead or use fake death.
-     */
     public boolean isAlikeDead() {
         return _isDead;
     }
 
-    /**
-     * @return True if the L2Character is dead.
-     */
     public final boolean isDead() {
         return _isDead;
     }
@@ -1480,22 +1420,12 @@ public abstract class L2Character extends L2Object {
         _isDead = value;
     }
 
-    /**
-     * @return True if the L2Character is in a state where he can't move.
-     */
     public boolean isMovementDisabled() {
         return isStunned() || isImmobileUntilAttacked() || isRooted() || isSleeping() || _isOverloaded || isParalyzed() || _isImmobilized || isAlikeDead() || _isTeleporting;
     }
 
-    /**
-     * @return True if the L2Character is in a state where he can't be controlled.
-     */
     public boolean isOutOfControl() {
         return isConfused() || isAfraid() || isParalyzed() || isStunned() || isSleeping();
-    }
-
-    public final boolean isOverloaded() {
-        return _isOverloaded;
     }
 
     public final void setIsOverloaded(boolean value) {
