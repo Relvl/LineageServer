@@ -1,7 +1,7 @@
 package net.sf.l2j.gameserver.skills;
 
 import net.sf.l2j.gameserver.model.item.kind.Item;
-import net.sf.l2j.gameserver.skills.conditions.Condition;
+import net.sf.l2j.gameserver.skills.conditions.ACondition;
 import net.sf.l2j.gameserver.templates.StatsSet;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -94,7 +94,7 @@ public final class DocumentItem extends DocumentBase {
             }
             else if ("cond".equalsIgnoreCase(n.getNodeName())) {
                 makeItem();
-                Condition condition = parseCondition(n.getFirstChild(), _currentItem.item);
+                ACondition condition = parseCondition(n.getFirstChild(), _currentItem.item);
                 Node msg = n.getAttributes().getNamedItem("msg");
                 Node msgId = n.getAttributes().getNamedItem("msgId");
 

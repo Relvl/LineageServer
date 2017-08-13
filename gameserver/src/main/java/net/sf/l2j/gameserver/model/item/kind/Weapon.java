@@ -14,9 +14,9 @@ import net.sf.l2j.gameserver.model.item.type.EWeaponType;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.scripting.EventType;
 import net.sf.l2j.gameserver.scripting.Quest;
-import net.sf.l2j.gameserver.skills.Env;
+import net.sf.l2j.gameserver.skills.func.Env;
 import net.sf.l2j.gameserver.skills.Formulas;
-import net.sf.l2j.gameserver.skills.conditions.Condition;
+import net.sf.l2j.gameserver.skills.conditions.ACondition;
 import net.sf.l2j.gameserver.skills.conditions.ConditionGameChance;
 import net.sf.l2j.gameserver.templates.StatsSet;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
@@ -45,10 +45,10 @@ public final class Weapon extends Item {
     private IntIntHolder enchant4Skill; // skill that activates when item is enchanted +4 (for duals)
 
     private IntIntHolder skillsOnCast;
-    private Condition skillsOnCastCondition;
+    private ACondition skillsOnCastCondition;
 
     private IntIntHolder skillsOnCrit;
-    private Condition skillsOnCritCondition;
+    private ACondition skillsOnCritCondition;
 
     private final int reuseDelay;
 

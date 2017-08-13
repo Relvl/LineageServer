@@ -3,10 +3,10 @@ package net.sf.l2j.gameserver.skills.effects;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.skill.chance.ChanceCondition;
 import net.sf.l2j.gameserver.skills.AbnormalEffect;
-import net.sf.l2j.gameserver.skills.Env;
-import net.sf.l2j.gameserver.skills.basefuncs.FuncTemplate;
-import net.sf.l2j.gameserver.skills.basefuncs.Lambda;
-import net.sf.l2j.gameserver.skills.conditions.Condition;
+import net.sf.l2j.gameserver.skills.func.Env;
+import net.sf.l2j.gameserver.skills.conditions.ACondition;
+import net.sf.l2j.gameserver.skills.func.FuncTemplate;
+import net.sf.l2j.gameserver.skills.func.lambda.ILambda;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,9 +22,9 @@ public final class EffectTemplate {
     private final Class<?> _func;
     private final Constructor<?> _constructor;
 
-    public final Condition attachCond;
-    public final Condition applayCond;
-    public final Lambda lambda;
+    public final ACondition attachCond;
+    public final ACondition applayCond;
+    public final ILambda lambda;
     public final int counter;
     public final int period; // in seconds
     public final AbnormalEffect abnormalEffect;
@@ -39,7 +39,7 @@ public final class EffectTemplate {
     public final int triggeredLevel;
     public final ChanceCondition chanceCondition;
 
-    public EffectTemplate(Condition pAttachCond, Condition pApplayCond, String func, Lambda pLambda, int pCounter, int pPeriod, AbnormalEffect pAbnormalEffect, String pStackType, float pStackOrder, boolean showicon, double ePower, L2SkillType eType, int trigId, int trigLvl, ChanceCondition chanceCond) {
+    public EffectTemplate(ACondition pAttachCond, ACondition pApplayCond, String func, ILambda pLambda, int pCounter, int pPeriod, AbnormalEffect pAbnormalEffect, String pStackType, float pStackOrder, boolean showicon, double ePower, L2SkillType eType, int trigId, int trigLvl, ChanceCondition chanceCond) {
         attachCond = pAttachCond;
         applayCond = pApplayCond;
         lambda = pLambda;

@@ -13,10 +13,10 @@ import net.sf.l2j.gameserver.model.item.type.*;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.scripting.Quest;
-import net.sf.l2j.gameserver.skills.Env;
-import net.sf.l2j.gameserver.skills.basefuncs.Func;
-import net.sf.l2j.gameserver.skills.basefuncs.FuncTemplate;
-import net.sf.l2j.gameserver.skills.conditions.Condition;
+import net.sf.l2j.gameserver.skills.func.Env;
+import net.sf.l2j.gameserver.skills.conditions.ACondition;
+import net.sf.l2j.gameserver.skills.func.Func;
+import net.sf.l2j.gameserver.skills.func.FuncTemplate;
 import net.sf.l2j.gameserver.templates.StatsSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,7 +56,7 @@ public abstract class Item {
 
     protected List<FuncTemplate> _funcTemplates;
 
-    protected List<Condition> _preConditions;
+    protected List<ACondition> _preConditions;
     private IntIntHolder[] _skillHolder;
 
     private final List<Quest> _questEvents = new ArrayList<>();
@@ -255,7 +255,7 @@ public abstract class Item {
         _funcTemplates.add(func);
     }
 
-    public final void attach(Condition condition) {
+    public final void attach(ACondition condition) {
         if (_preConditions == null) { _preConditions = new ArrayList<>(); }
         if (!_preConditions.contains(condition)) { _preConditions.add(condition); }
     }
@@ -282,7 +282,7 @@ public abstract class Item {
         env.setCharacter(activeChar);
         if (target instanceof L2Character) { env.setTarget((L2Character) target); }
 
-        for (Condition preCondition : _preConditions) {
+        for (ACondition preCondition : _preConditions) {
             if (preCondition == null) { continue; }
 
             if (!preCondition.test(env)) {

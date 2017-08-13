@@ -11,10 +11,10 @@ import net.sf.l2j.gameserver.network.client.game_to_client.ExOlympiadSpelledInfo
 import net.sf.l2j.gameserver.network.client.game_to_client.PartySpelled;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.skills.AbnormalEffect;
-import net.sf.l2j.gameserver.skills.Env;
-import net.sf.l2j.gameserver.skills.basefuncs.Func;
-import net.sf.l2j.gameserver.skills.basefuncs.FuncTemplate;
-import net.sf.l2j.gameserver.skills.basefuncs.Lambda;
+import net.sf.l2j.gameserver.skills.func.Env;
+import net.sf.l2j.gameserver.skills.func.Func;
+import net.sf.l2j.gameserver.skills.func.FuncTemplate;
+import net.sf.l2j.gameserver.skills.func.lambda.ILambda;
 import net.sf.l2j.gameserver.skills.effects.EffectTemplate;
 import net.sf.l2j.gameserver.templates.skills.L2EffectFlag;
 import net.sf.l2j.gameserver.templates.skills.L2EffectType;
@@ -44,7 +44,7 @@ public abstract class L2Effect {
 
     private final boolean _isHerbEffect;
 
-    private final Lambda _lambda; // the value of an update
+    private final ILambda _lambda; // the value of an update
     private EffectState _state; // the current state
 
     private final int _period; // period, seconds

@@ -1,7 +1,7 @@
 package net.sf.l2j.gameserver.skills;
 
 import net.sf.l2j.gameserver.model.skill.L2Skill;
-import net.sf.l2j.gameserver.skills.conditions.Condition;
+import net.sf.l2j.gameserver.skills.conditions.ACondition;
 import net.sf.l2j.gameserver.templates.StatsSet;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
 import org.w3c.dom.Document;
@@ -165,7 +165,7 @@ public final class DocumentSkill extends DocumentBase {
             _currentSkill.currentLevel = i;
             for (n = first; n != null; n = n.getNextSibling()) {
                 if ("cond".equalsIgnoreCase(n.getNodeName())) {
-                    Condition condition = parseCondition(n.getFirstChild(), _currentSkill.currentSkills.get(i));
+                    ACondition condition = parseCondition(n.getFirstChild(), _currentSkill.currentSkills.get(i));
                     Node msg = n.getAttributes().getNamedItem("msg");
                     Node msgId = n.getAttributes().getNamedItem("msgId");
                     if (condition != null && msg != null) { condition.setMessage(msg.getNodeValue()); }
@@ -187,7 +187,7 @@ public final class DocumentSkill extends DocumentBase {
             for (n = first; n != null; n = n.getNextSibling()) {
                 if ("enchant1cond".equalsIgnoreCase(n.getNodeName())) {
                     foundCond = true;
-                    Condition condition = parseCondition(n.getFirstChild(), _currentSkill.currentSkills.get(i));
+                    ACondition condition = parseCondition(n.getFirstChild(), _currentSkill.currentSkills.get(i));
                     Node msg = n.getAttributes().getNamedItem("msg");
                     if (condition != null && msg != null) { condition.setMessage(msg.getNodeValue()); }
                     _currentSkill.currentSkills.get(i).attach(condition, false);
@@ -202,7 +202,7 @@ public final class DocumentSkill extends DocumentBase {
                 _currentSkill.currentLevel = lastLvl - 1;
                 for (n = first; n != null; n = n.getNextSibling()) {
                     if (!foundCond && "cond".equalsIgnoreCase(n.getNodeName())) {
-                        Condition condition = parseCondition(n.getFirstChild(), _currentSkill.currentSkills.get(i));
+                        ACondition condition = parseCondition(n.getFirstChild(), _currentSkill.currentSkills.get(i));
                         Node msg = n.getAttributes().getNamedItem("msg");
                         if (condition != null && msg != null) { condition.setMessage(msg.getNodeValue()); }
                         _currentSkill.currentSkills.get(i).attach(condition, false);
@@ -220,7 +220,7 @@ public final class DocumentSkill extends DocumentBase {
             for (n = first; n != null; n = n.getNextSibling()) {
                 if ("enchant2cond".equalsIgnoreCase(n.getNodeName())) {
                     foundCond = true;
-                    Condition condition = parseCondition(n.getFirstChild(), _currentSkill.currentSkills.get(i));
+                    ACondition condition = parseCondition(n.getFirstChild(), _currentSkill.currentSkills.get(i));
                     Node msg = n.getAttributes().getNamedItem("msg");
                     if (condition != null && msg != null) { condition.setMessage(msg.getNodeValue()); }
                     _currentSkill.currentSkills.get(i).attach(condition, false);
@@ -235,7 +235,7 @@ public final class DocumentSkill extends DocumentBase {
                 _currentSkill.currentLevel = lastLvl - 1;
                 for (n = first; n != null; n = n.getNextSibling()) {
                     if (!foundCond && "cond".equalsIgnoreCase(n.getNodeName())) {
-                        Condition condition = parseCondition(n.getFirstChild(), _currentSkill.currentSkills.get(i));
+                        ACondition condition = parseCondition(n.getFirstChild(), _currentSkill.currentSkills.get(i));
                         Node msg = n.getAttributes().getNamedItem("msg");
                         if (condition != null && msg != null) { condition.setMessage(msg.getNodeValue()); }
                         _currentSkill.currentSkills.get(i).attach(condition, false);

@@ -514,7 +514,6 @@ public final class Config {
     /**
      * GMs & Admin Stuff
      */
-    public static boolean EVERYBODY_HAS_ADMIN_RIGHTS;
     public static int MASTERACCESS_LEVEL;
     public static int MASTERACCESS_NAME_COLOR;
     public static int MASTERACCESS_TITLE_COLOR;
@@ -1104,7 +1103,6 @@ public final class Config {
             ALT_PARTY_RANGE2 = players.getProperty("AltPartyRange2", 1400);
             ALT_LEAVE_PARTY_LEADER = players.getProperty("AltLeavePartyLeader", false);
 
-            EVERYBODY_HAS_ADMIN_RIGHTS = players.getProperty("EverybodyHasAdminRights", false);
             MASTERACCESS_LEVEL = players.getProperty("MasterAccessLevel", 127);
             MASTERACCESS_NAME_COLOR = Integer.decode("0x" + players.getProperty("MasterNameColor", "00FF00"));
             MASTERACCESS_TITLE_COLOR = Integer.decode("0x" + players.getProperty("MasterTitleColor", "00FF00"));

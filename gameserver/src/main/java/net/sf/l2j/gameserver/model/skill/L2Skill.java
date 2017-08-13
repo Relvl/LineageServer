@@ -19,12 +19,12 @@ import net.sf.l2j.gameserver.model.skill.chance.ChanceCondition;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
-import net.sf.l2j.gameserver.skills.Env;
+import net.sf.l2j.gameserver.skills.func.Env;
 import net.sf.l2j.gameserver.skills.Formulas;
 import net.sf.l2j.gameserver.skills.Stats;
-import net.sf.l2j.gameserver.skills.basefuncs.Func;
-import net.sf.l2j.gameserver.skills.basefuncs.FuncTemplate;
-import net.sf.l2j.gameserver.skills.conditions.Condition;
+import net.sf.l2j.gameserver.skills.conditions.ACondition;
+import net.sf.l2j.gameserver.skills.func.Func;
+import net.sf.l2j.gameserver.skills.func.FuncTemplate;
 import net.sf.l2j.gameserver.skills.effects.EffectTemplate;
 import net.sf.l2j.gameserver.templates.StatsSet;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
@@ -153,8 +153,8 @@ public abstract class L2Skill implements IChanceSkillTrigger {
     private final float _sSBoost; // If true skill will have SoulShot boost (power*2)
     private final int _aggroPoints;
 
-    protected List<Condition> _preCondition;
-    protected List<Condition> _itemPreCondition;
+    protected List<ACondition> _preCondition;
+    protected List<ACondition> _itemPreCondition;
     protected List<FuncTemplate> _funcTemplates;
     public List<EffectTemplate> _effectTemplates;
     protected List<EffectTemplate> _effectTemplatesSelf;
@@ -713,7 +713,7 @@ public abstract class L2Skill implements IChanceSkillTrigger {
     }
 
     public boolean checkCondition(L2Character activeChar, L2Object target, boolean itemOrWeapon) {
-        List<Condition> preCondition = (itemOrWeapon) ? _itemPreCondition : _preCondition;
+        List<ACondition> preCondition = (itemOrWeapon) ? _itemPreCondition : _preCondition;
         if (preCondition == null || preCondition.isEmpty()) { return true; }
 
         Env env = new Env();
@@ -722,7 +722,7 @@ public abstract class L2Skill implements IChanceSkillTrigger {
 
         env.setSkill(this);
 
-        for (Condition cond : preCondition) {
+        for (ACondition cond : preCondition) {
             if (!cond.test(env)) {
                 int msgId = cond.getMessageId();
                 if (msgId == 0) {
@@ -911,7 +911,7 @@ public abstract class L2Skill implements IChanceSkillTrigger {
         _effectTemplatesSelf.add(effect);
     }
 
-    public final void attach(Condition condition, boolean itemOrWeapon) {
+    public final void attach(ACondition condition, boolean itemOrWeapon) {
         if (itemOrWeapon) {
             if (_itemPreCondition == null) { _itemPreCondition = new ArrayList<>(); }
             _itemPreCondition.add(condition);

@@ -24,7 +24,7 @@ import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
-import net.sf.l2j.gameserver.skills.basefuncs.Func;
+import net.sf.l2j.gameserver.skills.func.Func;
 import net.sf.l2j.gameserver.taskmanager.ItemsOnGroundTaskManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

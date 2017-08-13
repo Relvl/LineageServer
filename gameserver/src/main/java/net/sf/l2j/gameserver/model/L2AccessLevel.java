@@ -26,24 +26,6 @@ public class L2AccessLevel {
     private boolean _takeAggro;
     private boolean _gainExp;
 
-    /**
-     * Initializes members<br>
-     * <br>
-     *
-     * @param accessLevel      as int<br>
-     * @param name             as String<br>
-     * @param nameColor        as int<br>
-     * @param titleColor       as int<br>
-     * @param childs           as String<br>
-     * @param isGm             as boolean<br>
-     * @param allowPeaceAttack as boolean<br>
-     * @param allowFixedRes    as boolean<br>
-     * @param allowTransaction as boolean<br>
-     * @param allowAltG        as boolean<br>
-     * @param giveDamage       as boolean<br>
-     * @param takeAggro        as boolean<br>
-     * @param gainExp          as boolean<br>
-     */
     public L2AccessLevel(int accessLevel, String name, int nameColor, int titleColor, String childs, boolean isGm, boolean allowPeaceAttack, boolean allowFixedRes, boolean allowTransaction, boolean allowAltG, boolean giveDamage, boolean takeAggro, boolean gainExp) {
         _accessLevel = accessLevel;
         _name = name;
@@ -108,14 +90,6 @@ public class L2AccessLevel {
         return _gainExp;
     }
 
-    /**
-     * Returns if the access level contains allowedAccess as child<br>
-     * <br>
-     *
-     * @param accessLevel as AccessLevel<br>
-     *                    <br>
-     * @return boolean: true if a child access level is equals to allowedAccess, otherwise false<br>
-     */
     public boolean hasChildAccess(L2AccessLevel accessLevel) {
         if (_childsAccessLevel == null) {
             if (_childs == null) { return false; }

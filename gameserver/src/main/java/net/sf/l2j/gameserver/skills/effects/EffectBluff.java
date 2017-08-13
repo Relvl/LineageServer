@@ -19,7 +19,7 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2SiegeSummonInstance;
 import net.sf.l2j.gameserver.network.client.game_to_client.StartRotation;
 import net.sf.l2j.gameserver.network.client.game_to_client.StopRotation;
-import net.sf.l2j.gameserver.skills.Env;
+import net.sf.l2j.gameserver.skills.func.Env;
 import net.sf.l2j.gameserver.templates.skills.L2EffectType;
 
 /**

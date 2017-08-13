@@ -425,25 +425,19 @@ public class L2DoorInstance extends L2Character {
     }
 
     @Override
-    public void addFuncsToNewCharacter() {
-        // Doors haven't any Func.
-    }
+    public void addFuncsToNewCharacter() {}
 
     @Override
-    public void moveToLocation(int x, int y, int z, int offset) {
-    }
+    public void moveToLocation(int x, int y, int z, int offset) { }
 
     @Override
-    public void stopMove(HeadedLocation pos) {
-    }
+    public void stopMove(HeadedLocation pos) { }
 
     @Override
-    public synchronized void doAttack(L2Character target) {
-    }
+    public synchronized void doAttack(L2Character target) { }
 
     @Override
-    public void doCast(L2Skill skill) {
-    }
+    public void doCast(L2Skill skill) { }
 
     @Override
     public void sendInfo(L2PcInstance activeChar) {

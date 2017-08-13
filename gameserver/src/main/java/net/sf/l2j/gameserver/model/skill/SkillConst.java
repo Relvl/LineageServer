@@ -11,5 +11,8 @@ public final class SkillConst {
     public static final int SKILL_DIVINE_INSPIRATION = 1405;
     public static final int SKILL_NPC_RACE = 4416;
 
+    public static final int BATTLE_FORCE = 5104;
+    public static final int SPELL_FORCE = 5105;
+
     private SkillConst() {}
 }

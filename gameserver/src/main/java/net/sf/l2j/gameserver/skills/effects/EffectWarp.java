@@ -23,7 +23,7 @@ import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.network.client.game_to_client.FlyToLocation;
 import net.sf.l2j.gameserver.network.client.game_to_client.FlyToLocation.FlyType;
 import net.sf.l2j.gameserver.network.client.game_to_client.ValidateLocation;
-import net.sf.l2j.gameserver.skills.Env;
+import net.sf.l2j.gameserver.skills.func.Env;
 import net.sf.l2j.gameserver.templates.skills.L2EffectType;
 import net.sf.l2j.gameserver.util.Util;
 

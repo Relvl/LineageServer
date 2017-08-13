@@ -13,7 +13,9 @@ public class PlayableStat extends CharStat {
 
     public boolean addExp(long value) {
         if ((getExp() + value) < 0) { return true; }
-        if (getExp() + value >= getExpForLevel(Experience.MAX_LEVEL)) { value = getExpForLevel(Experience.MAX_LEVEL) - 1 - getExp(); }
+        if (getExp() + value >= getExpForLevel(Experience.MAX_LEVEL)) {
+            value = getExpForLevel(Experience.MAX_LEVEL) - 1 - getExp();
+        }
         setExp(getExp() + value);
         byte level;
         for (level = 1; level <= Experience.MAX_LEVEL; level++) {
@@ -21,7 +23,9 @@ public class PlayableStat extends CharStat {
             level--;
             break;
         }
-        if (level != getLevel()) { addLevel((byte) (level - getLevel())); }
+        if (level != getLevel()) {
+            addLevel((byte) (level - getLevel()));
+        }
         return true;
     }
 
@@ -34,15 +38,21 @@ public class PlayableStat extends CharStat {
             level--;
             break;
         }
-        if (level != getLevel()) { addLevel((byte) (level - getLevel())); }
+        if (level != getLevel()) {
+            addLevel((byte) (level - getLevel()));
+        }
         return true;
     }
 
     public boolean addExpAndSp(long addToExp, int addToSp) {
         boolean expAdded = false;
-        if (addToExp >= 0) { expAdded = addExp(addToExp); }
+        if (addToExp >= 0) {
+            expAdded = addExp(addToExp);
+        }
         boolean spAdded = false;
-        if (addToSp >= 0) { spAdded = addSp(addToSp); }
+        if (addToSp >= 0) {
+            spAdded = addSp(addToSp);
+        }
         return expAdded || spAdded;
     }
 
@@ -56,7 +66,9 @@ public class PlayableStat extends CharStat {
 
     public boolean addLevel(byte value) {
         if (getLevel() + value > Experience.MAX_LEVEL - 1) {
-            if (getLevel() < Experience.MAX_LEVEL - 1) { value = (byte) (Experience.MAX_LEVEL - 1 - getLevel()); }
+            if (getLevel() < Experience.MAX_LEVEL - 1) {
+                value = (byte) (Experience.MAX_LEVEL - 1 - getLevel());
+            }
             else { return false; }
         }
         boolean levelIncreased = getLevel() + value > getLevel();

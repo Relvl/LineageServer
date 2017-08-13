@@ -33,9 +33,11 @@ public final class Formulas {
     public static final byte SHIELD_DEFENSE_FAILED = 0; // no shield defense
     public static final byte SHIELD_DEFENSE_SUCCEED = 1; // normal shield defense
     public static final byte SHIELD_DEFENSE_PERFECT_BLOCK = 2; // perfect block
+
     public static final byte SKILL_REFLECT_FAILED = 0; // no reflect
     public static final byte SKILL_REFLECT_SUCCEED = 1; // normal reflect, some damage reflected some other not
     public static final byte SKILL_REFLECT_VENGEANCE = 2; // 100% of the damage affect both
+
     public static final int MAX_STAT_VALUE = 100;
     public static final double[] WITbonus = new double[MAX_STAT_VALUE];
     public static final double[] MENbonus = new double[MAX_STAT_VALUE];

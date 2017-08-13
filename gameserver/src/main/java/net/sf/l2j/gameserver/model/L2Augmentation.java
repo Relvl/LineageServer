@@ -22,8 +22,8 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.network.client.game_to_client.SkillCoolTime;
 import net.sf.l2j.gameserver.skills.Stats;
-import net.sf.l2j.gameserver.skills.basefuncs.FuncAdd;
-import net.sf.l2j.gameserver.skills.basefuncs.LambdaConst;
+import net.sf.l2j.gameserver.skills.func.FuncAdd;
+import net.sf.l2j.gameserver.skills.func.lambda.LambdaConst;
 
 import java.util.List;
 
