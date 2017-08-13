@@ -772,7 +772,7 @@ public abstract class L2Skill implements IChanceSkillTrigger {
         L2PcInstance targetPlayer = target.getActingPlayer();
         if (player != null && targetPlayer != null) {
             if (targetPlayer == caster || targetPlayer == player) { return false; }
-            if (targetPlayer.inObserverMode()) { return false; }
+            if (targetPlayer.isInObserverMode()) { return false; }
             if (skill.isOffensive() && player.getSiegeState() > 0 && player.isInsideZone(ZoneId.SIEGE) && player.getSiegeState() == targetPlayer.getSiegeState()) { return false; }
             if (target.isInsideZone(ZoneId.PEACE)) { return false; }
             if (player.isInParty() && targetPlayer.isInParty()) {

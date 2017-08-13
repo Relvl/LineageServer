@@ -48,6 +48,7 @@ public class PlayerRecipesLoadCall extends IndexedCall {
                 '}';
     }
 
+    @SuppressWarnings("PublicInnerClass")
     public static final class RecipeRow {
         @OrmParamCursor("PLAYER_ID")
         private Integer playerId;

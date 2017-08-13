@@ -157,7 +157,7 @@ public class L2WeddingManagerInstance extends L2NpcInstance {
             }
 
             // Simple checks to avoid exploits
-            if (partner.isInJail() || partner.isInOlympiadMode() || partner.isInDuel() || partner.isFestivalParticipant() || (partner.isInParty() && partner.getParty().isInDimensionalRift()) || partner.inObserverMode()) {
+            if (partner.isInJail() || partner.isInOlympiadMode() || partner.isInDuel() || partner.isFestivalParticipant() || (partner.isInParty() && partner.getParty().isInDimensionalRift()) || partner.isInObserverMode()) {
                 player.sendMessage("Due to the current partner's status, the teleportation failed.");
                 return;
             }
@@ -186,7 +186,7 @@ public class L2WeddingManagerInstance extends L2NpcInstance {
         }
 
         // Check if player has the target on friendlist
-        if (!player.getFriendList().contains(ptarget.getObjectId())) {
+        if (!player.getContactController().isFriend(ptarget.getObjectId())) {
             sendHtmlMessage(player, "data/html/mods/Wedding_error_friendlist.htm");
             return false;
         }

@@ -32,7 +32,7 @@ public class SummonItems implements IItemHandler {
             return;
         }
 
-        if (player.inObserverMode()) { return; }
+        if (player.isInObserverMode()) { return; }
 
         if (player.isAllSkillsDisabled() || player.isCastingNow()) { return; }
 

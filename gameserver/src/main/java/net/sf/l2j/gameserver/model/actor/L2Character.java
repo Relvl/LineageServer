@@ -397,7 +397,7 @@ public abstract class L2Character extends L2Object {
 
         L2PcInstance player = getActingPlayer();
 
-        if (player != null && player.inObserverMode()) {
+        if (player != null && player.isInObserverMode()) {
             sendPacket(SystemMessage.getSystemMessage(SystemMessageId.OBSERVERS_CANNOT_PARTICIPATE));
             sendPacket(ActionFailed.STATIC_PACKET);
             return;

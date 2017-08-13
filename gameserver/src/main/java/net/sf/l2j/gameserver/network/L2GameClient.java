@@ -75,12 +75,6 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
         try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement;
 
-            statement = con.prepareStatement("DELETE FROM character_friends WHERE char_id=? OR friend_id=?");
-            statement.setInt(1, objid);
-            statement.setInt(2, objid);
-            statement.execute();
-            statement.close();
-
             statement = con.prepareStatement("DELETE FROM character_hennas WHERE char_obj_id=?");
             statement.setInt(1, objid);
             statement.execute();
@@ -92,11 +86,6 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
             statement.close();
 
             statement = con.prepareStatement("DELETE FROM character_quests WHERE charId=?");
-            statement.setInt(1, objid);
-            statement.execute();
-            statement.close();
-
-            statement = con.prepareStatement("DELETE FROM character_recipebook WHERE char_id=?");
             statement.setInt(1, objid);
             statement.execute();
             statement.close();
@@ -322,11 +311,9 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
 
         L2PcInstance character = L2World.getInstance().getPlayer(objId);
         if (character != null) {
-            // exploit prevention, should not happens in normal way
             LOGGER.error("Attempt of double login: {}({}) {}", character.getName(), objId, _accountName);
             if (character.getClient() != null) { character.getClient().closeNow(); }
             else { character.deleteMe(); }
-
             return null;
         }
 
@@ -334,7 +321,6 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
         if (character != null) {
             character.setRunning(); // running is default
             character.standUp(); // standing is default
-
             character.setOnlineStatus(true, false);
         }
         else {

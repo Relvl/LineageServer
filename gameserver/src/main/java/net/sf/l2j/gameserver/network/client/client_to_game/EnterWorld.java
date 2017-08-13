@@ -1,7 +1,6 @@
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.datatables.AdminCommandAccessRights;
 import net.sf.l2j.gameserver.datatables.AnnouncementTable;
 import net.sf.l2j.gameserver.datatables.GmListTable;
 import net.sf.l2j.gameserver.datatables.MapRegionTable.TeleportWhereType;
@@ -88,22 +87,7 @@ public class EnterWorld extends L2GameClientPacket {
         }
 
         if (activeChar.isGM()) {
-            if (Config.GM_STARTUP_INVULNERABLE && AdminCommandAccessRights.getInstance().hasAccess("admin_invul", activeChar.getAccessLevel())) {
-                activeChar.setIsInvul(true);
-            }
-
-            if (Config.GM_STARTUP_INVISIBLE && AdminCommandAccessRights.getInstance().hasAccess("admin_hide", activeChar.getAccessLevel())) {
-                activeChar.setInvisible();
-            }
-
-            if (Config.GM_STARTUP_SILENCE && AdminCommandAccessRights.getInstance().hasAccess("admin_silence", activeChar.getAccessLevel())) {
-                activeChar.setInRefusalMode(true);
-            }
-
-            if (Config.GM_STARTUP_AUTO_LIST && AdminCommandAccessRights.getInstance().hasAccess("admin_gmlist", activeChar.getAccessLevel())) {
-                GmListTable.getInstance().addGm(activeChar, false);
-            }
-            else { GmListTable.getInstance().addGm(activeChar, true); }
+            GmListTable.getInstance().addGm(activeChar, false);
         }
 
         // Set dead status if applies

@@ -32,7 +32,7 @@ public final class RequestOlympiadMatchList extends L2GameClientPacket
 	protected void runImpl()
 	{
 		final L2PcInstance activeChar = getClient().getActiveChar();
-		if (activeChar == null || !activeChar.inObserverMode())
+		if (activeChar == null || !activeChar.isInObserverMode())
 			return;
 		
 		int i = 0;

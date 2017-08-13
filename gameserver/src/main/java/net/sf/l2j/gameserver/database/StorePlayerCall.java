@@ -31,9 +31,13 @@ public class StorePlayerCall extends IndexedCall {
     private final HeadedLocation position;
     @OrmParamIn(8)
     private final PcAppearance appearance;
+    @OrmParamIn(9)
+    private final UDT_Hitpoint hitpoint;
+    @OrmParamIn(10)
+    private final UDT_Hitpoint hitpointMax;
 
     public StorePlayerCall(L2PcInstance player, String login) {
-        super("player__store", 7, true);
+        super("player__store", 9, true);
         this.login = login;
         playerId = player.getObjectId();
         name = player.getName();
@@ -41,17 +45,15 @@ public class StorePlayerCall extends IndexedCall {
         position = player.getPosition();
         level = new UDT_Level(player.getLevel(), player.getStat().getExp(), player.getStat().getSp());
         appearance = player.getAppearance();
+        hitpoint = new UDT_Hitpoint(player.getCurrentHp(), player.getCurrentMp(), player.getCurrentCp());
+        hitpointMax = new UDT_Hitpoint(player.getMaxHp(), player.getMaxMp(), player.getMaxCp());
     }
 
     @Override
-    public Integer getResultCode() {
-        return resultCode;
-    }
+    public Integer getResultCode() { return resultCode; }
 
     @Override
-    public Logger getLogger() {
-        return LOGGER;
-    }
+    public Logger getLogger() { return LOGGER; }
 
     @Override
     public String toString() {
@@ -64,6 +66,8 @@ public class StorePlayerCall extends IndexedCall {
                 ", level=" + level +
                 ", position=" + position +
                 ", appearance=" + appearance +
+                ", hitpoint=" + hitpoint +
+                ", hitpointMax=" + hitpointMax +
                 '}';
     }
 }

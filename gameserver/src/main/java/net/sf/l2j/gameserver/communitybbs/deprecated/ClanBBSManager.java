@@ -116,7 +116,6 @@ public class ClanBBSManager extends BaseBBSManager
 					membersList.append(player.getName());
 				}
 			}
-			MailBBSManager.getInstance().sendLetter(membersList.toString(), ar4, ar5, activeChar);
 			sendClanDetails(activeChar, activeChar.getClanId());
 		}
 		else

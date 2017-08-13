@@ -12,7 +12,7 @@ public class Escape implements IUserCommandHandler {
 
     @Override
     public boolean useUserCommand(int id, L2PcInstance activeChar) {
-        if (activeChar.isCastingNow() || activeChar.isSitting() || activeChar.isMovementDisabled() || activeChar.isOutOfControl() || activeChar.isInOlympiadMode() || activeChar.inObserverMode() || activeChar.isFestivalParticipant() || activeChar.isInJail() || GrandBossManager.getInstance().isInBossZone(activeChar)) {
+        if (activeChar.isCastingNow() || activeChar.isSitting() || activeChar.isMovementDisabled() || activeChar.isOutOfControl() || activeChar.isInOlympiadMode() || activeChar.isInObserverMode() || activeChar.isFestivalParticipant() || activeChar.isInJail() || GrandBossManager.getInstance().isInBossZone(activeChar)) {
             activeChar.sendMessage("Your current state doesn't allow you to use the /unstuck command.");
             return false;
         }

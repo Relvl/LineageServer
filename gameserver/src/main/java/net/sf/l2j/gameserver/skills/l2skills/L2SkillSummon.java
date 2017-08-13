@@ -95,7 +95,7 @@ public class L2SkillSummon extends L2Skill {
                 }
             }
             else {
-                if (player.inObserverMode()) { return false; }
+                if (player.isInObserverMode()) { return false; }
 
                 if (player.getPet() != null) {
                     player.sendPacket(SystemMessageId.SUMMON_ONLY_ONE);

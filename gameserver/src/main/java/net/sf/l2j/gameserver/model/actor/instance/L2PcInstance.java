@@ -70,6 +70,7 @@ import net.sf.l2j.gameserver.playerpart.PrivateStoreType;
 import net.sf.l2j.gameserver.playerpart.PunishLevel;
 import net.sf.l2j.gameserver.playerpart.SummonRequest;
 import net.sf.l2j.gameserver.playerpart.achievements.AchievementController;
+import net.sf.l2j.gameserver.playerpart.contact.ContactController;
 import net.sf.l2j.gameserver.playerpart.recipe.RecipeController;
 import net.sf.l2j.gameserver.playerpart.variables.EPlayerVariableKey;
 import net.sf.l2j.gameserver.playerpart.variables.PlayerVariablesController;
@@ -140,6 +141,7 @@ public final class L2PcInstance extends L2Playable {
     private final PlayerVariablesController variables = new PlayerVariablesController(this);
     private final RecipeController recipeController = new RecipeController(this);
     private final AchievementController achievementController = new AchievementController(this);
+    private final ContactController contactController = new ContactController(this);
 
     private final L2Radar radar = new L2Radar(this);
     private final PcInventory inventory = new PcInventory(this);
@@ -159,7 +161,6 @@ public final class L2PcInstance extends L2Playable {
     private final Map<Integer, String> _chars = new HashMap<>();
     private final int _loto[] = new int[5];
     private final int _race[] = new int[2];
-    private final BlockList _blockList = new BlockList(this);
     private final List<String> _validBypass = new ArrayList<>();
     private final List<String> _validBypass2 = new ArrayList<>();
     private final SkillUseHolder _currentSkill = new SkillUseHolder();
@@ -168,9 +169,6 @@ public final class L2PcInstance extends L2Playable {
     private final SummonRequest _summonRequest = new SummonRequest();
     private final GatesRequest _gatesRequest = new GatesRequest();
     private final Map<Integer, TimeStamp> _reuseTimeStamps = new ConcurrentHashMap<>();
-    private final List<Integer> _friendList = new ArrayList<>();
-    private final List<Integer> _selectedFriendList = new ArrayList<>();
-    private final List<Integer> _selectedBlocksList = new ArrayList<>();
     private final String accountName;
     private final PcAppearance appearance;
     private boolean isInvisible;
@@ -255,8 +253,6 @@ public final class L2PcInstance extends L2Playable {
     private ScheduledFuture<?> _chargeTask;
     private Location _currentSkillWorldPosition;
     private L2AccessLevel _accessLevel;
-    private boolean _messageRefusal; // message refusal mode
-    private boolean _tradeRefusal; // Trade refusal
     private L2Party _party;
     private L2PcInstance _activeRequester;
     private long _requestExpireTime;
@@ -516,8 +512,6 @@ public final class L2PcInstance extends L2Playable {
                 player.refreshOverloaded();
                 player.refreshExpertisePenalty();
 
-                player.restoreFriendList();
-
                 // Retrieve the name and ID of the other characters assigned to this account.
                 PreparedStatement stmt = con.prepareStatement("SELECT obj_Id, char_name FROM characters WHERE account_name=? AND obj_Id<>?");
                 stmt.setString(1, player.accountName);
@@ -589,7 +583,7 @@ public final class L2PcInstance extends L2Playable {
     public static boolean checkSummonerStatus(L2PcInstance summonerChar) {
         if (summonerChar == null) { return false; }
 
-        return !(summonerChar._inOlympiadMode || summonerChar.inObserverMode() || summonerChar.isInsideZone(ZoneId.NO_SUMMON_FRIEND) || summonerChar.isMounted());
+        return !(summonerChar._inOlympiadMode || summonerChar.isInObserverMode() || summonerChar.isInsideZone(ZoneId.NO_SUMMON_FRIEND) || summonerChar.isMounted());
 
     }
 
@@ -622,7 +616,7 @@ public final class L2PcInstance extends L2Playable {
             return false;
         }
 
-        if (targetChar.inObserverMode() || targetChar.isInsideZone(ZoneId.NO_SUMMON_FRIEND)) {
+        if (targetChar.isInObserverMode() || targetChar.isInsideZone(ZoneId.NO_SUMMON_FRIEND)) {
             summonerChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_IN_SUMMON_BLOCKING_AREA).addCharName(targetChar));
             return false;
         }
@@ -4188,7 +4182,7 @@ public final class L2PcInstance extends L2Playable {
             return false;
         }
 
-        if (inObserverMode()) {
+        if (isInObserverMode()) {
             sendPacket(SystemMessageId.OBSERVERS_CANNOT_PARTICIPATE);
             abortCast();
             sendPacket(ActionFailed.STATIC_PACKET);
@@ -5019,7 +5013,7 @@ public final class L2PcInstance extends L2Playable {
         return _savedLocation;
     }
 
-    public boolean inObserverMode() {
+    public boolean isInObserverMode() {
         return _observerMode;
     }
 
@@ -5045,27 +5039,6 @@ public final class L2PcInstance extends L2Playable {
 
     public int getRace(int i) {
         return _race[i];
-    }
-
-    public boolean isInRefusalMode() {
-        return _messageRefusal;
-    }
-
-    public void setInRefusalMode(boolean mode) {
-        _messageRefusal = mode;
-        sendPacket(new EtcStatusUpdate(this));
-    }
-
-    public boolean getTradeRefusal() {
-        return _tradeRefusal;
-    }
-
-    public void setTradeRefusal(boolean mode) {
-        _tradeRefusal = mode;
-    }
-
-    public BlockList getBlockList() {
-        return _blockList;
     }
 
     public void setIsInOlympiadMode(boolean b) {
@@ -5586,15 +5559,8 @@ public final class L2PcInstance extends L2Playable {
 
         // Jail task
         updatePunishState();
-
-        if (isGM()) {
-            if (isInvul()) { sendMessage("Entering world in Invulnerable mode."); }
-            if (isInvisible) { sendMessage("Entering world in Invisible mode."); }
-            if (_messageRefusal) { sendMessage("Entering world in Message Refusal mode."); }
-        }
-
         revalidateZone(true);
-        notifyFriends(true);
+        contactController.notifyFriends(true);
     }
 
     private void checkRecom(int recsHave, int recsLeft) {
@@ -5972,7 +5938,7 @@ public final class L2PcInstance extends L2Playable {
 
             // Check if the L2PcInstance is in observer mode to set its position to its position
             // before entering in observer mode
-            if (inObserverMode()) {
+            if (isInObserverMode()) {
                 getPosition().setXYZInvisible(_savedLocation.getX(), _savedLocation.getY(), _savedLocation.getZ());
             }
 
@@ -6011,9 +5977,7 @@ public final class L2PcInstance extends L2Playable {
             L2World.getInstance().removeObject(this);
             L2World.getInstance().removePlayer(this); // force remove in case of crash during teleport
 
-            // friends & blocklist update
-            notifyFriends(false);
-            _blockList.playerLogout();
+            contactController.notifyFriends(false);
         }
         catch (Exception e) {
             LOGGER.error("Exception on deleteMe()" + e.getMessage(), e);
@@ -6785,71 +6749,6 @@ public final class L2PcInstance extends L2Playable {
         _fallingTimestamp = System.currentTimeMillis() + FALLING_VALIDATION_DELAY;
     }
 
-    public List<Integer> getFriendList() {
-        return _friendList;
-    }
-
-    public void selectFriend(Integer friendId) {
-        if (!_selectedFriendList.contains(friendId)) { _selectedFriendList.add(friendId); }
-    }
-
-    public void deselectFriend(Integer friendId) {
-        if (_selectedFriendList.contains(friendId)) { _selectedFriendList.remove(friendId); }
-    }
-
-    public List<Integer> getSelectedFriendList() {
-        return _selectedFriendList;
-    }
-
-    private void restoreFriendList() {
-        _friendList.clear();
-
-        try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
-            PreparedStatement statement = con.prepareStatement("SELECT friend_id FROM character_friends WHERE char_id = ? AND relation = 0");
-            statement.setInt(1, getObjectId());
-            ResultSet rset = statement.executeQuery();
-
-            int friendId;
-            while (rset.next()) {
-                friendId = rset.getInt("friend_id");
-                if (friendId == getObjectId()) { continue; }
-
-                _friendList.add(friendId);
-            }
-
-            rset.close();
-            statement.close();
-        }
-        catch (Exception e) {
-            LOGGER.error("Error found in " + getName() + "'s friendlist: " + e.getMessage(), e);
-        }
-    }
-
-    private void notifyFriends(boolean login) {
-        for (int id : _friendList) {
-            L2PcInstance friend = L2World.getInstance().getPlayer(id);
-            if (friend != null) {
-                friend.sendPacket(new FriendList(friend));
-
-                if (login) {
-                    friend.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.FRIEND_S1_HAS_LOGGED_IN).addPcName(this));
-                }
-            }
-        }
-    }
-
-    public void selectBlock(Integer friendId) {
-        if (!_selectedBlocksList.contains(friendId)) { _selectedBlocksList.add(friendId); }
-    }
-
-    public void deselectBlock(Integer friendId) {
-        if (_selectedBlocksList.contains(friendId)) { _selectedBlocksList.remove(friendId); }
-    }
-
-    public List<Integer> getSelectedBlocksList() {
-        return _selectedBlocksList;
-    }
-
     @Override
     public void broadcastRelationsChanges() {
         for (L2PcInstance player : getKnownList().getKnownType(L2PcInstance.class)) {
@@ -6915,6 +6814,8 @@ public final class L2PcInstance extends L2Playable {
     public RecipeController getRecipeController() { return recipeController; }
 
     public AchievementController getAchievementController() { return achievementController; }
+
+    public ContactController getContactController() { return contactController; }
 
     private class ShortBuffTask implements Runnable {
         @Override

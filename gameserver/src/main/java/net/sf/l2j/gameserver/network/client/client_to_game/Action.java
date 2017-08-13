@@ -25,7 +25,7 @@ public final class Action extends L2GameClientPacket {
         L2PcInstance activeChar = getClient().getActiveChar();
         if (activeChar == null) { return; }
 
-        if (activeChar.inObserverMode()) {
+        if (activeChar.isInObserverMode()) {
             activeChar.sendPacket(SystemMessageId.OBSERVERS_CANNOT_PARTICIPATE);
             activeChar.sendPacket(ActionFailed.STATIC_PACKET);
             return;

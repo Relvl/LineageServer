@@ -17,7 +17,7 @@ public class EtcStatusUpdate extends L2GameServerPacket {
         writeC(0xF3);
         writeD(player.getCharges());
         writeD(player.getWeightPenalty());
-        writeD((player.isInRefusalMode() || player.isChatBanned()) ? 1 : 0);
+        writeD((player.getContactController().isBlockAll() || player.isChatBanned()) ? 1 : 0);
         writeD(player.isInsideZone(ZoneId.DANGER_AREA) ? 1 : 0);
         writeD((player.getExpertiseWeaponPenalty() || player.getExpertiseArmorPenalty() > 0) ? 1 : 0);
         writeD(player.isAffected(L2EffectFlag.CHARM_OF_COURAGE) ? 1 : 0);

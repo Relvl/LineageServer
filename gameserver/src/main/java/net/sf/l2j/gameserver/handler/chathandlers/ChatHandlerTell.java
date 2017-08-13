@@ -2,11 +2,11 @@ package net.sf.l2j.gameserver.handler.chathandlers;
 
 import net.sf.l2j.gameserver.EChatType;
 import net.sf.l2j.gameserver.handler.IChatHandler;
-import net.sf.l2j.gameserver.model.BlockList;
-import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
+import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 public class ChatHandlerTell implements IChatHandler {
     @Override
@@ -29,9 +29,15 @@ public class ChatHandlerTell implements IChatHandler {
             return;
         }
 
-        if (!activeChar.isGM() && (receiver.isInRefusalMode() || BlockList.isBlocked(receiver, activeChar))) {
-            activeChar.sendPacket(SystemMessageId.THE_PERSON_IS_IN_MESSAGE_REFUSAL_MODE);
-            return;
+        if (!activeChar.isGM()) {
+            if (receiver.getContactController().isBlockAll()) {
+                activeChar.sendPacket(SystemMessageId.THE_PERSON_IS_IN_MESSAGE_REFUSAL_MODE);
+                return;
+            }
+            if (receiver.getContactController().isBlocked(activeChar)) {
+                activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_HAS_ADDED_YOU_TO_IGNORE_LIST2).addPcName(receiver));
+                return;
+            }
         }
 
         receiver.sendPacket(new CreatureSay(activeChar.getObjectId(), type, activeChar.getName(), text));

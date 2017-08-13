@@ -39,7 +39,7 @@ public class PcKnownList extends PlayableKnownList {
 
     public final void refreshInfos() {
         for (L2Object kanownObject : knownObjects.values()) {
-            if (kanownObject.isPlayer() && kanownObject.getActingPlayer().inObserverMode()) { continue; }
+            if (kanownObject.isPlayer() && kanownObject.getActingPlayer().isInObserverMode()) { continue; }
             sendInfoFrom(kanownObject);
         }
     }

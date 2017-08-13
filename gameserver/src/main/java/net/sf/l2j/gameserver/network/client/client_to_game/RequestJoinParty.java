@@ -1,20 +1,5 @@
-/*
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
-import net.sf.l2j.gameserver.model.BlockList;
 import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.world.L2World;
@@ -26,13 +11,9 @@ import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
  * format cdd
  */
 public final class RequestJoinParty extends L2GameClientPacket {
-    private String _name;
-    private int _itemDistribution;
+    private String name;
+    private int itemDistribution;
 
-    /**
-     * @param target
-     * @param requestor
-     */
     private static void addTargetToParty(L2PcInstance target, L2PcInstance requestor) {
         L2Party party = requestor.getParty();
         if (party == null) { return; }
@@ -68,8 +49,8 @@ public final class RequestJoinParty extends L2GameClientPacket {
 
     @Override
     protected void readImpl() {
-        _name = readS();
-        _itemDistribution = readD();
+        name = readS();
+        itemDistribution = readD();
     }
 
     @Override
@@ -77,13 +58,13 @@ public final class RequestJoinParty extends L2GameClientPacket {
         L2PcInstance requestor = getClient().getActiveChar();
         if (requestor == null) { return; }
 
-        L2PcInstance target = L2World.getInstance().getPlayer(_name);
+        L2PcInstance target = L2World.getInstance().getPlayer(name);
         if (target == null) {
             requestor.sendPacket(SystemMessageId.FIRST_SELECT_USER_TO_INVITE_TO_PARTY);
             return;
         }
 
-        if (BlockList.isBlocked(target, requestor)) {
+        if (target.getContactController().isBlocked(requestor)) {
             requestor.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_HAS_ADDED_YOU_TO_IGNORE_LIST).addPcName(target));
             return;
         }
@@ -118,10 +99,10 @@ public final class RequestJoinParty extends L2GameClientPacket {
 
     private void createNewParty(L2PcInstance target, L2PcInstance requestor) {
         if (!target.isProcessingRequest()) {
-            requestor.setParty(new L2Party(requestor, _itemDistribution));
+            requestor.setParty(new L2Party(requestor, itemDistribution));
 
             requestor.onTransactionRequest(target);
-            target.sendPacket(new AskJoinParty(requestor.getName(), _itemDistribution));
+            target.sendPacket(new AskJoinParty(requestor.getName(), itemDistribution));
             requestor.getParty().setPendingInvitation(true);
             requestor.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_INVITED_S1_TO_PARTY).addPcName(target));
         }

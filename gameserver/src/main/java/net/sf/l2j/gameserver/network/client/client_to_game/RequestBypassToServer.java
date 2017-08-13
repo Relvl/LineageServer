@@ -141,7 +141,7 @@ public final class RequestBypassToServer extends L2GameClientPacket {
                 boolean isManager = activeChar.getCurrentFolkNPC() instanceof L2OlympiadManagerInstance;
                 if (!isManager) {
                     // Without npc, command can be used only in observer mode on arena
-                    if (!activeChar.inObserverMode() || activeChar.isInOlympiadMode() || activeChar.getOlympiadGameId() < 0) {
+                    if (!activeChar.isInObserverMode() || activeChar.isInOlympiadMode() || activeChar.getOlympiadGameId() < 0) {
                         return;
                     }
                 }

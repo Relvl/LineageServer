@@ -120,7 +120,7 @@ public class L2CastleMagicianInstance extends L2NpcInstance
 	
 	private static final boolean validateGateCondition(L2PcInstance clanLeader, L2PcInstance player)
 	{
-		if (clanLeader.isAlikeDead() || clanLeader.isInStoreMode() || clanLeader.isRooted() || clanLeader.isInCombat() || clanLeader.isInOlympiadMode() || clanLeader.isFestivalParticipant() || clanLeader.inObserverMode() || clanLeader.isInsideZone(ZoneId.NO_SUMMON_FRIEND))
+		if (clanLeader.isAlikeDead() || clanLeader.isInStoreMode() || clanLeader.isRooted() || clanLeader.isInCombat() || clanLeader.isInOlympiadMode() || clanLeader.isFestivalParticipant() || clanLeader.isInObserverMode() || clanLeader.isInsideZone(ZoneId.NO_SUMMON_FRIEND))
 		{
 			player.sendMessage("Couldn't teleport to clan leader. The requirements was not meet.");
 			return false;

@@ -202,7 +202,7 @@ public class L2Party {
 
     public void broadcastCSToPartyMembers(CreatureSay msg, L2PcInstance broadcaster) {
         for (L2PcInstance member : _members) {
-            if (member != null && !BlockList.isBlocked(member, broadcaster)) {
+            if (member != null && !member.getContactController().isBlocked(broadcaster)) {
                 member.sendPacket(msg);
             }
         }
