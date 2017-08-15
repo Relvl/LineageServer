@@ -1,7 +1,7 @@
 package net.sf.l2j.gameserver.scripting;
 
 import net.sf.l2j.gameserver.scripting.quests.*;
-import net.sf.l2j.gameserver.scripting.quests.SagasScripts.SagasSuperClass;
+import net.sf.l2j.gameserver.scripting.quests.SagasScripts.*;
 import net.sf.l2j.gameserver.scripting.scripts.ai.group.*;
 import net.sf.l2j.gameserver.scripting.scripts.ai.individual.*;
 import net.sf.l2j.gameserver.scripting.scripts.custom.*;
@@ -334,7 +334,37 @@ public enum EScript {
     QUEST_Q688_DefeatTheElrokianRaiders(Q688_DefeatTheElrokianRaiders::new),
 
     /** TODO Какая-то лютая магия с этими сагами... Надо во-первых, проверить, а во-вторых, разобраться и описать хоть как-то. */
-    QUEST_SagasSuperClass(SagasSuperClass::new),
+    QUEST_Q070_SagaOfThePhoenixKnight(Q070_SagaOfThePhoenixKnight::new),
+    QUEST_Q071_SagaOfEvasTemplar(Q071_SagaOfEvasTemplar::new),
+    QUEST_Q072_SagaOfTheSwordMuse(Q072_SagaOfTheSwordMuse::new),
+    QUEST_Q073_SagaOfTheDuelist(Q073_SagaOfTheDuelist::new),
+    QUEST_Q074_SagaOfTheDreadnought(Q074_SagaOfTheDreadnought::new),
+    QUEST_Q075_SagaOfTheTitan(Q075_SagaOfTheTitan::new),
+    QUEST_Q076_SagaOfTheGrandKhavatari(Q076_SagaOfTheGrandKhavatari::new),
+    QUEST_Q077_SagaOfTheDominator(Q077_SagaOfTheDominator::new),
+    QUEST_Q078_SagaOfTheDoomcryer(Q078_SagaOfTheDoomcryer::new),
+    QUEST_Q079_SagaOfTheAdventurer(Q079_SagaOfTheAdventurer::new),
+    QUEST_Q080_SagaOfTheWindRider(Q080_SagaOfTheWindRider::new),
+    QUEST_Q081_SagaOfTheGhostHunter(Q081_SagaOfTheGhostHunter::new),
+    QUEST_Q082_SagaOfTheSagittarius(Q082_SagaOfTheSagittarius::new),
+    QUEST_Q083_SagaOfTheMoonlightSentinel(Q083_SagaOfTheMoonlightSentinel::new),
+    QUEST_Q084_SagaOfTheGhostSentinel(Q084_SagaOfTheGhostSentinel::new),
+    QUEST_Q085_SagaOfTheCardinal(Q085_SagaOfTheCardinal::new),
+    QUEST_Q086_SagaOfTheHierophant(Q086_SagaOfTheHierophant::new),
+    QUEST_Q087_SagaOfEvasSaint(Q087_SagaOfEvasSaint::new),
+    QUEST_Q088_SagaOfTheArchmage(Q088_SagaOfTheArchmage::new),
+    QUEST_Q089_SagaOfTheMysticMuse(Q089_SagaOfTheMysticMuse::new),
+    QUEST_Q090_SagaOfTheStormScreamer(Q090_SagaOfTheStormScreamer::new),
+    QUEST_Q091_SagaOfTheArcanaLord(Q091_SagaOfTheArcanaLord::new),
+    QUEST_Q092_SagaOfTheElementalMaster(Q092_SagaOfTheElementalMaster::new),
+    QUEST_Q093_SagaOfTheSpectralMaster(Q093_SagaOfTheSpectralMaster::new),
+    QUEST_Q094_SagaOfTheSoultaker(Q094_SagaOfTheSoultaker::new),
+    QUEST_Q095_SagaOfTheHellKnight(Q095_SagaOfTheHellKnight::new),
+    QUEST_Q096_SagaOfTheSpectralDancer(Q096_SagaOfTheSpectralDancer::new),
+    QUEST_Q097_SagaOfTheShillienTemplar(Q097_SagaOfTheShillienTemplar::new),
+    QUEST_Q098_SagaOfTheShillienSaint(Q098_SagaOfTheShillienSaint::new),
+    QUEST_Q099_SagaOfTheFortuneSeeker(Q099_SagaOfTheFortuneSeeker::new),
+    QUEST_Q100_SagaOfTheMaestro(Q100_SagaOfTheMaestro::new),
     //quests.Tutorial
 
     //    <!-- AI Section -->
