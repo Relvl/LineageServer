@@ -47,7 +47,7 @@ public class Q353_PowerOfDarkness extends Quest
 		
 		if (event.equalsIgnoreCase("31044-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -70,11 +70,11 @@ public class Q353_PowerOfDarkness extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 55) ? "31044-01.htm" : "31044-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int stones = st.getQuestItemsCount(STONE);
 				if (stones == 0)
 					htmltext = "31044-05.htm";
@@ -93,7 +93,7 @@ public class Q353_PowerOfDarkness extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

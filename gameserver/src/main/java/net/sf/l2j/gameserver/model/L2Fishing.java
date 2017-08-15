@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.model;
 
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.instancemanager.FishingChampionshipManager;

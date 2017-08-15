@@ -3,7 +3,7 @@ package net.sf.l2j.gameserver.instancemanager.games;
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
@@ -215,11 +215,11 @@ public class Lottery {
 
                         if (_enddate > System.currentTimeMillis()) {
                             _isStarted = true;
-                            ThreadPoolManager.getInstance().scheduleGeneral(new finishLottery(), _enddate - System.currentTimeMillis());
+                            ThreadPoolManager.getInstance().schedule(new finishLottery(), _enddate - System.currentTimeMillis());
 
                             if (_enddate > System.currentTimeMillis() + 12 * MINUTE) {
                                 _isSellingTickets = true;
-                                ThreadPoolManager.getInstance().scheduleGeneral(new stopSellingTickets(), _enddate - System.currentTimeMillis() - 10 * MINUTE);
+                                ThreadPoolManager.getInstance().schedule(new stopSellingTickets(), _enddate - System.currentTimeMillis() - 10 * MINUTE);
                             }
                             rset.close();
                             statement.close();
@@ -254,8 +254,8 @@ public class Lottery {
                 _enddate = finishtime.getTimeInMillis();
             }
 
-            ThreadPoolManager.getInstance().scheduleGeneral(new stopSellingTickets(), _enddate - System.currentTimeMillis() - 10 * MINUTE);
-            ThreadPoolManager.getInstance().scheduleGeneral(new finishLottery(), _enddate - System.currentTimeMillis());
+            ThreadPoolManager.getInstance().schedule(new stopSellingTickets(), _enddate - System.currentTimeMillis() - 10 * MINUTE);
+            ThreadPoolManager.getInstance().schedule(new finishLottery(), _enddate - System.currentTimeMillis());
 
             try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
                 PreparedStatement statement = con.prepareStatement(INSERT_LOTTERY);
@@ -396,7 +396,7 @@ public class Lottery {
                 LOGGER.error("Lottery: Could not store finished lottery data: {}", e.getMessage(), e);
             }
 
-            ThreadPoolManager.getInstance().scheduleGeneral(new startLottery(), MINUTE);
+            ThreadPoolManager.getInstance().schedule(new startLottery(), MINUTE);
             _number++;
 
             _isStarted = false;

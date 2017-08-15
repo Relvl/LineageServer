@@ -97,7 +97,7 @@ public class Q224_TestOfSagittarius extends Quest {
 
         // BERNARD
         if (event.equalsIgnoreCase("30702-04a.htm")) {
-            st.setState(STATE_STARTED);
+            st.setState(QuestState.STATE_STARTED);
             st.set("cond", "1");
             st.playSound(QuestState.SOUND_ACCEPT);
             st.giveItems(BERNARD_INTRODUCTION, 1);
@@ -139,13 +139,13 @@ public class Q224_TestOfSagittarius extends Quest {
         if (st == null) { return htmltext; }
 
         switch (st.getState()) {
-            case STATE_CREATED:
+            case QuestState.STATE_CREATED:
                 if (player.getClassId() != ClassId.rogue && player.getClassId() != ClassId.elvenScout && player.getClassId() != ClassId.assassin) { htmltext = "30702-02.htm"; }
                 else if (player.getLevel() < 39) { htmltext = "30702-01.htm"; }
                 else { htmltext = "30702-03.htm"; }
                 break;
 
-            case STATE_STARTED:
+            case QuestState.STATE_STARTED:
                 int cond = st.getInt("cond");
                 switch (npc.getNpcId()) {
                     case BERNARD:
@@ -225,7 +225,7 @@ public class Q224_TestOfSagittarius extends Quest {
                 }
                 break;
 
-            case STATE_COMPLETED:
+            case QuestState.STATE_COMPLETED:
                 htmltext = getAlreadyCompletedMsg();
                 break;
         }
@@ -235,7 +235,7 @@ public class Q224_TestOfSagittarius extends Quest {
 
     @Override
     public String onKill(L2Npc npc, L2PcInstance player, boolean isPet) {
-        QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+        QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
         if (st == null) { return null; }
 
         switch (npc.getNpcId()) {

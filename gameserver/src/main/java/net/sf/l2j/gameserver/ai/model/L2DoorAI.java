@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.ai.model;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.skill.L2Skill;

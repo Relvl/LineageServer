@@ -100,7 +100,7 @@ public class Q225_TestOfTheSearcher extends Quest
 		// LUTHER
 		if (event.equalsIgnoreCase("30690-05a.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(LUTHER_LETTER, 1);
@@ -187,7 +187,7 @@ public class Q225_TestOfTheSearcher extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getClassId() != ClassId.rogue && player.getClassId() != ClassId.elvenScout && player.getClassId() != ClassId.assassin && player.getClassId() != ClassId.scavenger)
 					htmltext = "30690-01.htm";
 				else if (player.getLevel() < 39)
@@ -196,7 +196,7 @@ public class Q225_TestOfTheSearcher extends Quest
 					htmltext = (player.getClassId() == ClassId.scavenger) ? "30690-04.htm" : "30690-03.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -365,7 +365,7 @@ public class Q225_TestOfTheSearcher extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}
@@ -376,7 +376,7 @@ public class Q225_TestOfTheSearcher extends Quest
 	@Override
 	public String onAttack(L2Npc npc, L2PcInstance attacker, int damage, boolean isPet)
 	{
-		QuestState st = checkPlayerState(attacker, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(attacker, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

@@ -79,7 +79,7 @@ public class Q644_GraveRobberAnnihilation extends Quest
 		
 		if (event.equalsIgnoreCase("32017-02.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -108,11 +108,11 @@ public class Q644_GraveRobberAnnihilation extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 20) ? "32017-06.htm" : "32017-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				if (cond == 1)
 					htmltext = "32017-05.htm";

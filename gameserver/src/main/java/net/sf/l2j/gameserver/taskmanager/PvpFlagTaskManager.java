@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.taskmanager;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
 /**
@@ -36,7 +36,7 @@ public final class PvpFlagTaskManager implements Runnable
 	protected PvpFlagTaskManager()
 	{
 		// Run task each second.
-		ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(this, 1000, 1000);
+		ThreadPoolManager.getInstance().scheduleAtFixedRate(this, 1000, 1000);
 	}
 	
 	/**

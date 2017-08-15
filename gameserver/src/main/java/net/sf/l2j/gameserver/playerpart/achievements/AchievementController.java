@@ -1,7 +1,7 @@
 package net.sf.l2j.gameserver.playerpart.achievements;
 
 import net.sf.l2j.commons.database.CallException;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillUse;
 import net.sf.l2j.gameserver.playerpart.achievements.PlayerAchievementLoadCall.AchievementData;
@@ -30,7 +30,7 @@ public final class AchievementController {
     private static final Queue<AchievementStoreData> STORE_QUEUE = new ConcurrentLinkedQueue<>();
     /**  */
     @SuppressWarnings("unused")
-    private static final ScheduledFuture<?> STORE_TASK = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new AchievementStoreTask(), 1000, 5000);
+    private static final ScheduledFuture<?> STORE_TASK = ThreadPoolManager.getInstance().scheduleAtFixedRate(new AchievementStoreTask(), 1000, 5000);
 
     private final L2PcInstance player;
     private final Collection<IAchieveElement> completed = new ArrayList<>();

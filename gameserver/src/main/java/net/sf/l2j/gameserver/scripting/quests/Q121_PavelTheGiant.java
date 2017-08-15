@@ -43,7 +43,7 @@ public class Q121_PavelTheGiant extends Quest
 		
 		if (event.equalsIgnoreCase("31961-2.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -67,11 +67,11 @@ public class Q121_PavelTheGiant extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 46) ? "31961-1a.htm" : "31961-1.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				switch (npc.getNpcId())
 				{
 					case NEWYEAR:
@@ -84,7 +84,7 @@ public class Q121_PavelTheGiant extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

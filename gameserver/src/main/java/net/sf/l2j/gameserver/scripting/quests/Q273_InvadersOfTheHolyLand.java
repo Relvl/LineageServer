@@ -53,7 +53,7 @@ public class Q273_InvadersOfTheHolyLand extends Quest
 		
 		if (event.equalsIgnoreCase("30566-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -76,7 +76,7 @@ public class Q273_InvadersOfTheHolyLand extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.Orc)
 					htmltext = "30566-00.htm";
 				else if (player.getLevel() < 6)
@@ -85,7 +85,7 @@ public class Q273_InvadersOfTheHolyLand extends Quest
 					htmltext = "30566-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int red = st.getQuestItemsCount(RED_SOULSTONE);
 				int black = st.getQuestItemsCount(BLACK_SOULSTONE);
 				
@@ -120,7 +120,7 @@ public class Q273_InvadersOfTheHolyLand extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

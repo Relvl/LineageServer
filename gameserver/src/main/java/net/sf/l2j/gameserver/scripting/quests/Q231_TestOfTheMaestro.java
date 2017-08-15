@@ -89,7 +89,7 @@ public class Q231_TestOfTheMaestro extends Quest
 		// LOCKIRIN
 		if (event.equalsIgnoreCase("30531-04a.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(DIMENSIONAL_DIAMOND, 23);
@@ -149,7 +149,7 @@ public class Q231_TestOfTheMaestro extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getClassId() != ClassId.artisan)
 					htmltext = "30531-01.htm";
 				else if (player.getLevel() < 39)
@@ -158,7 +158,7 @@ public class Q231_TestOfTheMaestro extends Quest
 					htmltext = "30531-03.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				switch (npc.getNpcId())
 				{
 					case LOCKIRIN:
@@ -334,7 +334,7 @@ public class Q231_TestOfTheMaestro extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

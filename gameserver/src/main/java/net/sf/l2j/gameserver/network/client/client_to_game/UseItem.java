@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.handler.ItemHandler;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -178,7 +178,7 @@ public final class UseItem extends L2GameClientPacket {
             { return; }
 
             if (activeChar.isAttackingNow()) {
-                ThreadPoolManager.getInstance().scheduleGeneral(new WeaponEquipTask(item, activeChar), activeChar.getAttackEndTime() - System.currentTimeMillis());
+                ThreadPoolManager.getInstance().schedule(new WeaponEquipTask(item, activeChar), activeChar.getAttackEndTime() - System.currentTimeMillis());
                 return;
             }
 

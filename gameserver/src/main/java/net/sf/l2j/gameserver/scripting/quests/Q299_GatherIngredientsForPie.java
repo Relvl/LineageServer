@@ -54,7 +54,7 @@ public class Q299_GatherIngredientsForPie extends Quest
 		
 		if (event.equalsIgnoreCase("30620-1.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -109,11 +109,11 @@ public class Q299_GatherIngredientsForPie extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 34) ? "30620-0a.htm" : "30620-0.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{

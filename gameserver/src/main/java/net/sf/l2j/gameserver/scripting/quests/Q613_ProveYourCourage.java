@@ -50,7 +50,7 @@ public class Q613_ProveYourCourage extends Quest
 		
 		if (event.equalsIgnoreCase("31377-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -85,7 +85,7 @@ public class Q613_ProveYourCourage extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getLevel() < 75)
 					htmltext = "31377-03.htm";
 				else if (player.getAllianceWithVarkaKetra() <= -3 && st.hasQuestItems(VARKA_ALLIANCE_3) && !st.hasQuestItems(FEATHER_OF_VALOR))
@@ -94,7 +94,7 @@ public class Q613_ProveYourCourage extends Quest
 					htmltext = "31377-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				htmltext = (st.hasQuestItems(HEAD_OF_HEKATON)) ? "31377-05.htm" : "31377-06.htm";
 				break;
 		}

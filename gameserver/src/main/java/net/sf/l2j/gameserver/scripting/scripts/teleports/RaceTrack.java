@@ -59,7 +59,7 @@ public class RaceTrack extends Quest
 		if (RETURN_LOCATIONS.containsKey(npc.getNpcId()))
 		{
 			player.teleToLocation(12661, 181687, -3560, 0);
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("id", Integer.toString(npc.getNpcId()));
 		}
 		else if (st.isStarted() && npc.getNpcId() == RACE_MANAGER)

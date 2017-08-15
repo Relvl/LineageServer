@@ -2,7 +2,7 @@ package net.sf.l2j.gameserver.model.olympiad;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.instancemanager.ZoneManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.ClassId;
@@ -138,7 +138,7 @@ public class Olympiad {
             case 1:
                 if (_validationEnd > Calendar.getInstance().getTimeInMillis()) {
                     loadNoblesRank();
-                    _scheduledValdationTask = ThreadPoolManager.getInstance().scheduleGeneral(new ValidationEndTask(), getMillisToValidationEnd());
+                    _scheduledValdationTask = ThreadPoolManager.getInstance().schedule(new ValidationEndTask(), getMillisToValidationEnd());
                 }
                 else {
                     _currentCycle++;
@@ -251,7 +251,7 @@ public class Olympiad {
 
         if (_scheduledOlympiadEnd != null) { _scheduledOlympiadEnd.cancel(true); }
 
-        _scheduledOlympiadEnd = ThreadPoolManager.getInstance().scheduleGeneral(new OlympiadEndTask(), getMillisToOlympiadEnd());
+        _scheduledOlympiadEnd = ThreadPoolManager.getInstance().schedule(new OlympiadEndTask(), getMillisToOlympiadEnd());
 
         updateCompStatus();
     }
@@ -277,7 +277,7 @@ public class Olympiad {
             _validationEnd = validationEnd.getTimeInMillis() + VALIDATION_PERIOD;
 
             loadNoblesRank();
-            _scheduledValdationTask = ThreadPoolManager.getInstance().scheduleGeneral(new ValidationEndTask(), getMillisToValidationEnd());
+            _scheduledValdationTask = ThreadPoolManager.getInstance().schedule(new ValidationEndTask(), getMillisToValidationEnd());
         }
     }
 
@@ -316,7 +316,7 @@ public class Olympiad {
             LOGGER.info("Olympiad: Event starts/started : " + _compStart.getTime());
         }
 
-        _scheduledCompStart = ThreadPoolManager.getInstance().scheduleGeneral(new Runnable() {
+        _scheduledCompStart = ThreadPoolManager.getInstance().schedule(new Runnable() {
             @Override
             public void run() {
                 if (isOlympiadEnd()) { return; }
@@ -326,12 +326,12 @@ public class Olympiad {
                 Broadcast.toAllOnlinePlayers(SystemMessage.getSystemMessage(SystemMessageId.THE_OLYMPIAD_GAME_HAS_STARTED));
                 LOGGER.info("Olympiad: Olympiad game started.");
 
-                _gameManager = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(OlympiadGameManager.getInstance(), 30000, 30000);
-                if (Config.ALT_OLY_ANNOUNCE_GAMES) { _gameAnnouncer = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new OlympiadAnnouncer(), 30000, 500); }
+                _gameManager = ThreadPoolManager.getInstance().scheduleAtFixedRate(OlympiadGameManager.getInstance(), 30000, 30000);
+                if (Config.ALT_OLY_ANNOUNCE_GAMES) { _gameAnnouncer = ThreadPoolManager.getInstance().scheduleAtFixedRate(new OlympiadAnnouncer(), 30000, 500); }
 
                 long regEnd = getMillisToCompEnd() - 600000;
                 if (regEnd > 0) {
-                    ThreadPoolManager.getInstance().scheduleGeneral(new Runnable() {
+                    ThreadPoolManager.getInstance().schedule(new Runnable() {
                         @Override
                         public void run() {
                             Broadcast.toAllOnlinePlayers(SystemMessage.getSystemMessage(SystemMessageId.OLYMPIAD_REGISTRATION_PERIOD_ENDED));
@@ -339,7 +339,7 @@ public class Olympiad {
                     }, regEnd);
                 }
 
-                _scheduledCompEnd = ThreadPoolManager.getInstance().scheduleGeneral(new Runnable() {
+                _scheduledCompEnd = ThreadPoolManager.getInstance().schedule(new Runnable() {
                     @Override
                     public void run() {
                         if (isOlympiadEnd()) { return; }
@@ -384,7 +384,7 @@ public class Olympiad {
     public void manualSelectHeroes() {
         if (_scheduledOlympiadEnd != null) { _scheduledOlympiadEnd.cancel(true); }
 
-        _scheduledOlympiadEnd = ThreadPoolManager.getInstance().scheduleGeneral(new OlympiadEndTask(), 0);
+        _scheduledOlympiadEnd = ThreadPoolManager.getInstance().schedule(new OlympiadEndTask(), 0);
     }
 
     protected long getMillisToValidationEnd() {
@@ -449,7 +449,7 @@ public class Olympiad {
     }
 
     private void scheduleWeeklyChange() {
-        _scheduledWeeklyTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new Runnable() {
+        _scheduledWeeklyTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
                 addWeeklyPoints();

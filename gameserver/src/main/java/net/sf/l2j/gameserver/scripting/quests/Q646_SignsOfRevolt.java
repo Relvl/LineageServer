@@ -67,7 +67,7 @@ public class Q646_SignsOfRevolt extends Quest {
         if (st == null) { return htmltext; }
 
         if (event.equalsIgnoreCase("32016-03.htm")) {
-            st.setState(STATE_STARTED);
+            st.setState(QuestState.STATE_STARTED);
             st.set("cond", "1");
             st.playSound(QuestState.SOUND_ACCEPT);
         }
@@ -92,11 +92,11 @@ public class Q646_SignsOfRevolt extends Quest {
         if (st == null) { return htmltext; }
 
         switch (st.getState()) {
-            case STATE_CREATED:
+            case QuestState.STATE_CREATED:
                 htmltext = (player.getLevel() < 40) ? "32016-02.htm" : "32016-01.htm";
                 break;
 
-            case STATE_STARTED:
+            case QuestState.STATE_STARTED:
                 final int cond = st.getInt("cond");
                 if (cond == 1) { htmltext = "32016-04.htm"; }
                 else if (cond == 2) { htmltext = "32016-05.htm"; }

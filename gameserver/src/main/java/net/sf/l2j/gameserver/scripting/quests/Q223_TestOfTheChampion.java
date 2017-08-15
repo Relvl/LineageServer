@@ -93,7 +93,7 @@ public class Q223_TestOfTheChampion extends Quest
 		
 		if (event.equals("30624-06.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(ASCALON_LETTER_1, 1);
@@ -156,7 +156,7 @@ public class Q223_TestOfTheChampion extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				final ClassId classId = player.getClassId();
 				if (classId != ClassId.warrior && classId != ClassId.orcRaider)
 					htmltext = "30624-01.htm";
@@ -166,7 +166,7 @@ public class Q223_TestOfTheChampion extends Quest
 					htmltext = (classId == ClassId.warrior) ? "30624-03.htm" : "30624-04.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -265,7 +265,7 @@ public class Q223_TestOfTheChampion extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}
@@ -276,7 +276,7 @@ public class Q223_TestOfTheChampion extends Quest
 	@Override
 	public String onAttack(L2Npc npc, L2PcInstance attacker, int damage, boolean isPet)
 	{
-		QuestState st = checkPlayerState(attacker, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(attacker, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		
@@ -325,7 +325,7 @@ public class Q223_TestOfTheChampion extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

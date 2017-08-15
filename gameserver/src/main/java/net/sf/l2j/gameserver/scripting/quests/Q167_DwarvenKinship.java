@@ -51,7 +51,7 @@ public class Q167_DwarvenKinship extends Quest
 		
 		if (event.equalsIgnoreCase("30350-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(CARLON_LETTER, 1);
@@ -91,11 +91,11 @@ public class Q167_DwarvenKinship extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 15) ? "30350-02.htm" : "30350-03.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -118,7 +118,7 @@ public class Q167_DwarvenKinship extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

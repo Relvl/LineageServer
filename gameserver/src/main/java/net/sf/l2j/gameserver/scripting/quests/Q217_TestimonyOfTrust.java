@@ -114,7 +114,7 @@ public class Q217_TestimonyOfTrust extends Quest
 		
 		if (event.equalsIgnoreCase("30191-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(LETTER_TO_ELF, 1);
@@ -196,7 +196,7 @@ public class Q217_TestimonyOfTrust extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getClassId().level() != 1)
 					htmltext = "30191-01a.htm";
 				else if (player.getRace() != PlayerRace.Human)
@@ -207,7 +207,7 @@ public class Q217_TestimonyOfTrust extends Quest
 					htmltext = "30191-03.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -390,7 +390,7 @@ public class Q217_TestimonyOfTrust extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}
@@ -401,7 +401,7 @@ public class Q217_TestimonyOfTrust extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

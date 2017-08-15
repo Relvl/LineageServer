@@ -1,7 +1,7 @@
 package net.sf.l2j.gameserver.idfactory;
 
 import net.sf.l2j.commons.math.PrimeFinder;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +19,7 @@ public class BitSetIDFactory extends IdFactory {
         super();
         initialize();
 
-        ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new BitSetCapacityCheck(), 30000, 30000);
+        ThreadPoolManager.getInstance().scheduleAtFixedRate(new BitSetCapacityCheck(), 30000, 30000);
     }
 
     private void initialize() {

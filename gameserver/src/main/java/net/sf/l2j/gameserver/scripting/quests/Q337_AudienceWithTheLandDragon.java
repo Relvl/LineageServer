@@ -188,7 +188,7 @@ public class Q337_AudienceWithTheLandDragon extends Quest
 		// Gabrielle
 		if (event.equalsIgnoreCase("30753-05.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.set("drop1", "1");
 			st.set("drop2", "1");
@@ -238,11 +238,11 @@ public class Q337_AudienceWithTheLandDragon extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 50) ? "30753-02.htm" : "30753-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -463,7 +463,7 @@ public class Q337_AudienceWithTheLandDragon extends Quest
 	@Override
 	public String onAttack(L2Npc npc, L2PcInstance attacker, int damage, boolean isPet)
 	{
-		QuestState st = checkPlayerState(attacker, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(attacker, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return super.onAttack(npc, attacker, damage, isPet);
 		
@@ -544,7 +544,7 @@ public class Q337_AudienceWithTheLandDragon extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		final QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		final QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

@@ -2,7 +2,7 @@ package net.sf.l2j.gameserver.taskmanager;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.instancemanager.CursedWeaponsManager;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
@@ -35,7 +35,7 @@ public final class ItemsOnGroundTaskManager implements Runnable {
 
     public ItemsOnGroundTaskManager() {
         // Run task each 5 seconds.
-        ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(this, 5000, 5000);
+        ThreadPoolManager.getInstance().scheduleAtFixedRate(this, 5000, 5000);
 
         // Item saving is disabled, return.
         if (!Config.SAVE_DROPPED_ITEM) { return; }

@@ -74,7 +74,7 @@ public class Q162_CurseOfTheUndergroundFortress extends Quest
 		
 		if (event.equalsIgnoreCase("30147-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -92,7 +92,7 @@ public class Q162_CurseOfTheUndergroundFortress extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() == PlayerRace.DarkElf)
 					htmltext = "30147-00.htm";
 				else if (player.getLevel() < 12)
@@ -101,7 +101,7 @@ public class Q162_CurseOfTheUndergroundFortress extends Quest
 					htmltext = "30147-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				if (cond == 1)
 					htmltext = "30147-05.htm";
@@ -117,7 +117,7 @@ public class Q162_CurseOfTheUndergroundFortress extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

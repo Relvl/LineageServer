@@ -22,7 +22,7 @@ import java.util.concurrent.Future;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.instancemanager.DimensionalRiftManager;
 import net.sf.l2j.gameserver.model.L2Party;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
@@ -142,11 +142,9 @@ public class DimensionalRift
 			long jumpTime = calcTimeToNextJump();
 			teleporterTimer.schedule(teleporterTimerTask, jumpTime); // Teleporter task, 8-10 minutes
 			
-			earthQuakeTask = ThreadPoolManager.getInstance().scheduleGeneral(new Runnable()
-			{
+			earthQuakeTask = ThreadPoolManager.getInstance().schedule(new Runnable() {
 				@Override
-				public void run()
-				{
+				public void run() {
 					for (L2PcInstance p : _party.getPartyMembers())
 						if (!revivedInWaitingRoom.contains(p))
 							p.sendPacket(new Earthquake(p.getX(), p.getY(), p.getZ(), 65, 9));

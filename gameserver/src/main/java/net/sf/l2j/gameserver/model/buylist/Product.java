@@ -1,7 +1,7 @@
 package net.sf.l2j.gameserver.model.buylist;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.item.kind.Item;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -76,7 +76,7 @@ public class Product {
     public boolean decreaseCount(int val) {
         if (_count == null) { return false; }
 
-        if (_restockTask == null || _restockTask.isDone()) { _restockTask = ThreadPoolManager.getInstance().scheduleGeneral(new RestockTask(), getRestockDelay()); }
+        if (_restockTask == null || _restockTask.isDone()) { _restockTask = ThreadPoolManager.getInstance().schedule(new RestockTask(), getRestockDelay()); }
 
         boolean result = _count.addAndGet(-val) >= 0;
         save();
@@ -89,7 +89,7 @@ public class Product {
 
     public void restartRestockTask(long nextRestockTime) {
         final long remainingTime = nextRestockTime - System.currentTimeMillis();
-        if (remainingTime > 0) { _restockTask = ThreadPoolManager.getInstance().scheduleGeneral(new RestockTask(), remainingTime); }
+        if (remainingTime > 0) { _restockTask = ThreadPoolManager.getInstance().schedule(new RestockTask(), remainingTime); }
         else { restock(); }
     }
 

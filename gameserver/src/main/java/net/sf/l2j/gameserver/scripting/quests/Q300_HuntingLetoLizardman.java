@@ -68,7 +68,7 @@ public class Q300_HuntingLetoLizardman extends Quest
 		
 		if (event.equalsIgnoreCase("30126-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -105,11 +105,11 @@ public class Q300_HuntingLetoLizardman extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 34) ? "30126-01.htm" : "30126-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				htmltext = (st.getInt("cond") == 1) ? "30126-04a.htm" : "30126-04.htm";
 				break;
 		}

@@ -19,12 +19,12 @@ import net.sf.l2j.gameserver.EChatType;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2TamedBeastInstance;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.network.client.game_to_client.NpcSay;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 import net.sf.l2j.gameserver.scripting.EventType;
@@ -528,7 +528,7 @@ public class FeedableBeasts extends AbstractNpcAI {
             }
             else {
                 /*
-				 * If not tamed, there is a small chance that have "mad cow" disease. that is a stronger-than-normal animal that attacks its feeder
+                 * If not tamed, there is a small chance that have "mad cow" disease. that is a stronger-than-normal animal that attacks its feeder
 				 */
                 if (Rnd.get(5) == 0) { nextNpcId = _GrowthCapableMobs.get(npcId).getMob(food, 0, 1); }
                 else { nextNpcId = _GrowthCapableMobs.get(npcId).getMob(food, 0, 0); }
@@ -625,7 +625,7 @@ public class FeedableBeasts extends AbstractNpcAI {
             }
         }
 
-        return super.onAdvEvent(event, npc, player);
+        return null;
     }
 
     @Override

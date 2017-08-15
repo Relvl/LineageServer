@@ -53,7 +53,7 @@ public class Q637_ThroughTheGateOnceMore extends Quest
 		
 		if (event.equalsIgnoreCase("32010-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -73,7 +73,7 @@ public class Q637_ThroughTheGateOnceMore extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getLevel() < 73 || !st.hasQuestItems(FADED_VISITOR_MARK))
 					htmltext = "32010-01a.htm";
 				else if (st.hasQuestItems(PAGAN_MARK))
@@ -82,7 +82,7 @@ public class Q637_ThroughTheGateOnceMore extends Quest
 					htmltext = "32010-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getInt("cond") == 2)
 				{
 					if (st.getQuestItemsCount(NECROMANCER_HEART) == 10)

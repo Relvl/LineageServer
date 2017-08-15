@@ -133,7 +133,7 @@ public class Q385_YokeOfThePast extends Quest
 		
 		if (event.equalsIgnoreCase("05.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -156,11 +156,11 @@ public class Q385_YokeOfThePast extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 20) ? "02.htm" : "01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (!st.hasQuestItems(ANCIENT_SCROLL))
 					htmltext = "08.htm";
 				else
@@ -179,7 +179,7 @@ public class Q385_YokeOfThePast extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, STATE_STARTED);
+		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, QuestState.STATE_STARTED);
 		if (partyMember == null)
 			return null;
 		

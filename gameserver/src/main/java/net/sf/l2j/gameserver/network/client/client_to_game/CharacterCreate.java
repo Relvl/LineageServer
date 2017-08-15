@@ -33,8 +33,6 @@ import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.client.game_to_client.CharCreateFail;
 import net.sf.l2j.gameserver.network.client.game_to_client.CharCreateOk;
 import net.sf.l2j.gameserver.network.client.game_to_client.CharSelectInfo;
-import net.sf.l2j.gameserver.scripting.Quest;
-import net.sf.l2j.gameserver.scripting.ScriptManager;
 
 @SuppressWarnings("unused")
 public final class CharacterCreate extends L2GameClientPacket {
@@ -160,10 +158,13 @@ public final class CharacterCreate extends L2GameClientPacket {
             if (skill.getId() == 1216) { newChar.registerShortCut(new L2ShortCut(9, 0, 2, skill.getId(), 1, 1)); }
         }
 
-        if (newChar.getQuestState("Tutorial") == null) {
-            Quest q = ScriptManager.getInstance().getQuest("Tutorial");
-            if (q != null) { q.newQuestState(newChar).setState(Quest.STATE_STARTED); }
-        }
+        // TODO Сделать тутор!
+//        if (newChar.getQuestState("Tutorial") == null) {
+//            Quest q = ScriptManager.getInstance().getQuest("Tutorial");
+//            if (q != null) {
+//                q.newQuestState(newChar).setState(QuestState.STATE_STARTED);
+//            }
+//        }
 
         newChar.setOnlineStatus(true, false);
         newChar.deleteMe();

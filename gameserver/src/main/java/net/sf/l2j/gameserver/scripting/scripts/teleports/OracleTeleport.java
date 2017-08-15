@@ -250,13 +250,13 @@ public class OracleTeleport extends Quest {
 
         int npcId = npc.getNpcId();
         if (event.equalsIgnoreCase("Return")) {
-            if (Util.contains(TEMPLE_PRIEST, npcId) && st.getState() == STATE_STARTED) {
+            if (Util.contains(TEMPLE_PRIEST, npcId) && st.getState() == QuestState.STATE_STARTED) {
                 Location loc = RETURN_LOCS[st.getInt("id")];
                 player.teleToLocation(loc.getX(), loc.getY(), loc.getZ(), 0);
                 player.setIsIn7sDungeon(false);
                 st.exitQuest(true);
             }
-            else if (Util.contains(RIFT_POSTERS, npcId) && st.getState() == STATE_STARTED) {
+            else if (Util.contains(RIFT_POSTERS, npcId) && st.getState() == QuestState.STATE_STARTED) {
                 Location loc = RETURN_LOCS[st.getInt("id")];
                 player.teleToLocation(loc.getX(), loc.getY(), loc.getZ(), 0);
                 htmltext = "rift_back.htm";
@@ -290,7 +290,7 @@ public class OracleTeleport extends Quest {
             }
 
             st.set("id", Integer.toString(i));
-            st.setState(STATE_STARTED);
+            st.setState(QuestState.STATE_STARTED);
             player.teleToLocation(-114755, -179466, -6752, 0);
         }
         else if (event.equalsIgnoreCase("6.htm")) {
@@ -313,7 +313,7 @@ public class OracleTeleport extends Quest {
             }
 
             st.set("id", Integer.toString(i));
-            st.setState(STATE_STARTED);
+            st.setState(QuestState.STATE_STARTED);
             st.playSound(QuestState.SOUND_ACCEPT);
             htmltext = "ziggurat_rift.htm";
             player.teleToLocation(-114755, -179466, -6752, 0);
@@ -330,7 +330,7 @@ public class OracleTeleport extends Quest {
         int npcId = npc.getNpcId();
 
         if (Util.contains(TOWN_DAWN, npcId)) {
-            st.setState(STATE_STARTED);
+            st.setState(QuestState.STATE_STARTED);
 
             int i = 0;
             for (int dawn : TELEPORTERS) {
@@ -345,7 +345,7 @@ public class OracleTeleport extends Quest {
         }
 
         if (Util.contains(TOWN_DUSK, npcId)) {
-            st.setState(STATE_STARTED);
+            st.setState(QuestState.STATE_STARTED);
 
             int i = 0;
             for (int dusk : TELEPORTERS) {
@@ -369,7 +369,7 @@ public class OracleTeleport extends Quest {
             }
             else if (!st.hasQuestItems(7079)) { htmltext = "3.htm"; }
             else {
-                st.setState(STATE_CREATED);
+                st.setState(QuestState.STATE_CREATED);
                 htmltext = "4.htm";
             }
         }

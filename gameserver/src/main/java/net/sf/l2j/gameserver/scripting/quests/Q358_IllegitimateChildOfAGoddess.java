@@ -60,7 +60,7 @@ public class Q358_IllegitimateChildOfAGoddess extends Quest
 		
 		if (event.equalsIgnoreCase("30862-05.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -78,11 +78,11 @@ public class Q358_IllegitimateChildOfAGoddess extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 63) ? "30862-01.htm" : "30862-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getInt("cond") == 1)
 					htmltext = "30862-06.htm";
 				else

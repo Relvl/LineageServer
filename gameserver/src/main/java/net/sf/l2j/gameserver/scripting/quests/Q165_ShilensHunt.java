@@ -66,7 +66,7 @@ public class Q165_ShilensHunt extends Quest
 		
 		if (event.equalsIgnoreCase("30348-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -84,7 +84,7 @@ public class Q165_ShilensHunt extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.DarkElf)
 					htmltext = "30348-00.htm";
 				else if (player.getLevel() < 3)
@@ -93,7 +93,7 @@ public class Q165_ShilensHunt extends Quest
 					htmltext = "30348-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getQuestItemsCount(DARK_BEZOAR) >= 13)
 				{
 					htmltext = "30348-05.htm";
@@ -107,7 +107,7 @@ public class Q165_ShilensHunt extends Quest
 					htmltext = "30348-04.htm";
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

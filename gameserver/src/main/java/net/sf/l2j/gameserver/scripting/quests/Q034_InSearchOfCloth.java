@@ -61,7 +61,7 @@ public class Q034_InSearchOfCloth extends Quest
 		
 		if (event.equalsIgnoreCase("30088-1.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -115,7 +115,7 @@ public class Q034_InSearchOfCloth extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getLevel() >= 60)
 				{
 					QuestState fwear = player.getQuestState("Q037_MakeFormalWear");
@@ -128,7 +128,7 @@ public class Q034_InSearchOfCloth extends Quest
 					htmltext = "30088-0b.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -168,7 +168,7 @@ public class Q034_InSearchOfCloth extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

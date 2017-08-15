@@ -79,7 +79,7 @@ public class Q105_SkirmishWithTheOrcs extends Quest
 		
 		if (event.equalsIgnoreCase("30218-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(Rnd.get(1836, 1839), 1); // Kendell's orders 1 to 4.
@@ -97,7 +97,7 @@ public class Q105_SkirmishWithTheOrcs extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.Elf)
 					htmltext = "30218-00.htm";
 				else if (player.getLevel() < 10)
@@ -106,7 +106,7 @@ public class Q105_SkirmishWithTheOrcs extends Quest
 					htmltext = "30218-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				if (cond == 1)
 					htmltext = "30218-05.htm";
@@ -164,7 +164,7 @@ public class Q105_SkirmishWithTheOrcs extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}
@@ -174,7 +174,7 @@ public class Q105_SkirmishWithTheOrcs extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

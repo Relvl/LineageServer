@@ -47,7 +47,7 @@ public class Q319_ScentOfDeath extends Quest
 		
 		if (event.equalsIgnoreCase("30138-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -65,11 +65,11 @@ public class Q319_ScentOfDeath extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 11) ? "30138-02.htm" : "30138-03.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getInt("cond") == 1)
 					htmltext = "30138-05.htm";
 				else

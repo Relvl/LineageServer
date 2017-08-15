@@ -52,7 +52,7 @@ public class Q326_VanquishRemnants extends Quest
 		
 		if (event.equalsIgnoreCase("30435-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -75,11 +75,11 @@ public class Q326_VanquishRemnants extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 21) ? "30435-01.htm" : "30435-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int redBadges = st.getQuestItemsCount(RED_CROSS_BADGE);
 				final int blueBadges = st.getQuestItemsCount(BLUE_CROSS_BADGE);
 				final int blackBadges = st.getQuestItemsCount(BLACK_CROSS_BADGE);
@@ -118,7 +118,7 @@ public class Q326_VanquishRemnants extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

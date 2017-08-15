@@ -98,7 +98,7 @@ public class Q620_FourGoblets extends Quest
 		}
 		else if (event.equalsIgnoreCase("31453-13.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -216,7 +216,7 @@ public class Q620_FourGoblets extends Quest
 		int id = st.getState();
 		int cond = st.getInt("cond");
 		
-		if (id == STATE_CREATED)
+		if (id == QuestState.STATE_CREATED)
 			st.set("cond", "0");
 		
 		if (npcId == GHOST_OF_WIGOTH_1)
@@ -264,7 +264,7 @@ public class Q620_FourGoblets extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, STATE_STARTED);
+		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, QuestState.STATE_STARTED);
 		if (partyMember == null)
 			return null;
 		

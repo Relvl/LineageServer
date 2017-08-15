@@ -3,7 +3,7 @@ package net.sf.l2j.gameserver.instancemanager;
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.DoorTable;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.datatables.SpawnTable;
@@ -305,25 +305,25 @@ public class FourSepulchersManager {
         if (currentTime >= _coolDownTimeEnd && currentTime < _entryTimeEnd) // entry time check
         {
             clean();
-            _changeEntryTimeTask = ThreadPoolManager.getInstance().scheduleGeneral(new ChangeEntryTime(), 0);
+            _changeEntryTimeTask = ThreadPoolManager.getInstance().schedule(new ChangeEntryTime(), 0);
             LOGGER.info("FourSepulchersManager: entry time.");
         }
         else if (currentTime >= _entryTimeEnd && currentTime < _warmUpTimeEnd) // warmup time check
         {
             clean();
-            _changeWarmUpTimeTask = ThreadPoolManager.getInstance().scheduleGeneral(new ChangeWarmUpTime(), 0);
+            _changeWarmUpTimeTask = ThreadPoolManager.getInstance().schedule(new ChangeWarmUpTime(), 0);
             LOGGER.info("FourSepulchersManager: warmUp time.");
         }
         else if (currentTime >= _warmUpTimeEnd && currentTime < _attackTimeEnd) // attack time check
         {
             clean();
-            _changeAttackTimeTask = ThreadPoolManager.getInstance().scheduleGeneral(new ChangeAttackTime(), 0);
+            _changeAttackTimeTask = ThreadPoolManager.getInstance().schedule(new ChangeAttackTime(), 0);
             LOGGER.info("FourSepulchersManager: attack time.");
         }
         else
         // else cooldown time and without cleanup because it's already implemented
         {
-            _changeCoolDownTimeTask = ThreadPoolManager.getInstance().scheduleGeneral(new ChangeCoolDownTime(), 0);
+            _changeCoolDownTimeTask = ThreadPoolManager.getInstance().schedule(new ChangeCoolDownTime(), 0);
             LOGGER.info("FourSepulchersManager: cooldown time.");
         }
     }
@@ -1434,7 +1434,7 @@ public class FourSepulchersManager {
                 if (tmp.get(Calendar.MINUTE) + 5 < Config.FS_TIME_ATTACK) {
                     // byte because minute cannot be more than 59
                     managerSay((byte) tmp.get(Calendar.MINUTE));
-                    ThreadPoolManager.getInstance().scheduleGeneral(new ManagerSay(), 5 * 60000);
+                    ThreadPoolManager.getInstance().schedule(new ManagerSay(), 5 * 60000);
                 }
                 // attack time ending chat
                 else if (tmp.get(Calendar.MINUTE) + 5 >= Config.FS_TIME_ATTACK) {
@@ -1461,7 +1461,7 @@ public class FourSepulchersManager {
             }
 
             // launching saying process...
-            ThreadPoolManager.getInstance().scheduleGeneral(new ManagerSay(), 0);
+            ThreadPoolManager.getInstance().schedule(new ManagerSay(), 0);
             _changeWarmUpTimeTask = ThreadPoolManager.getInstance().scheduleEffect(new ChangeWarmUpTime(), interval);
 
             if (_changeEntryTimeTask != null) {
@@ -1484,7 +1484,7 @@ public class FourSepulchersManager {
             if (_firstTimeRun) { interval = _warmUpTimeEnd - Calendar.getInstance().getTimeInMillis(); }
             else { interval = Config.FS_TIME_WARMUP * 60000l; }
 
-            _changeAttackTimeTask = ThreadPoolManager.getInstance().scheduleGeneral(new ChangeAttackTime(), interval);
+            _changeAttackTimeTask = ThreadPoolManager.getInstance().schedule(new ChangeAttackTime(), interval);
 
             if (_changeWarmUpTimeTask != null) {
                 _changeWarmUpTimeTask.cancel(true);
@@ -1518,12 +1518,12 @@ public class FourSepulchersManager {
                         LOGGER.info("FourSepulchersManager: attack time announced.");
                         Calendar inter = Calendar.getInstance();
                         inter.set(Calendar.MINUTE, (int) min);
-                        ThreadPoolManager.getInstance().scheduleGeneral(new ManagerSay(), inter.getTimeInMillis() - Calendar.getInstance().getTimeInMillis());
+                        ThreadPoolManager.getInstance().schedule(new ManagerSay(), inter.getTimeInMillis() - Calendar.getInstance().getTimeInMillis());
                         break;
                     }
                 }
             }
-            else { ThreadPoolManager.getInstance().scheduleGeneral(new ManagerSay(), 5 * 60400); }
+            else { ThreadPoolManager.getInstance().schedule(new ManagerSay(), 5 * 60400); }
 
             // searching time when attack time will be ended:
             // counting difference between time when attack time ends and current time
@@ -1531,7 +1531,7 @@ public class FourSepulchersManager {
             if (_firstTimeRun) { interval = _attackTimeEnd - Calendar.getInstance().getTimeInMillis(); }
             else { interval = Config.FS_TIME_ATTACK * 60000l; }
 
-            _changeCoolDownTimeTask = ThreadPoolManager.getInstance().scheduleGeneral(new ChangeCoolDownTime(), interval);
+            _changeCoolDownTimeTask = ThreadPoolManager.getInstance().schedule(new ChangeCoolDownTime(), interval);
 
             if (_changeAttackTimeTask != null) {
                 _changeAttackTimeTask.cancel(true);
@@ -1560,7 +1560,7 @@ public class FourSepulchersManager {
             }
 
             long interval = time.getTimeInMillis() - Calendar.getInstance().getTimeInMillis();
-            _changeEntryTimeTask = ThreadPoolManager.getInstance().scheduleGeneral(new ChangeEntryTime(), interval);
+            _changeEntryTimeTask = ThreadPoolManager.getInstance().schedule(new ChangeEntryTime(), interval);
 
             if (_changeCoolDownTimeTask != null) {
                 _changeCoolDownTimeTask.cancel(true);

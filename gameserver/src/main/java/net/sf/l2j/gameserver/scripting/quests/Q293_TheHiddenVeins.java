@@ -63,7 +63,7 @@ public class Q293_TheHiddenVeins extends Quest
 		
 		if (event.equalsIgnoreCase("30535-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -96,7 +96,7 @@ public class Q293_TheHiddenVeins extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.Dwarf)
 					htmltext = "30535-00.htm";
 				else if (player.getLevel() < 6)
@@ -105,7 +105,7 @@ public class Q293_TheHiddenVeins extends Quest
 					htmltext = "30535-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				switch (npc.getNpcId())
 				{
 					case FILAUR:
@@ -154,7 +154,7 @@ public class Q293_TheHiddenVeins extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

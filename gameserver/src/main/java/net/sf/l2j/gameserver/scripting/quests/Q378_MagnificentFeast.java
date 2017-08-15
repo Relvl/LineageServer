@@ -115,7 +115,7 @@ public class Q378_MagnificentFeast extends Quest
 		
 		if (event.equalsIgnoreCase("30594-2.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -220,11 +220,11 @@ public class Q378_MagnificentFeast extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 20) ? "30594-0.htm" : "30594-1.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				if (cond == 1)
 					htmltext = "30594-3.htm";

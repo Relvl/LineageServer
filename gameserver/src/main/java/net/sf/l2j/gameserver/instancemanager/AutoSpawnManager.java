@@ -2,7 +2,7 @@ package net.sf.l2j.gameserver.instancemanager;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.datatables.SpawnTable;

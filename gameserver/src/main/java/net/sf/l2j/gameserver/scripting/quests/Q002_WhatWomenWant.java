@@ -59,7 +59,7 @@ public class Q002_WhatWomenWant extends Quest
 		
 		if (event.equalsIgnoreCase("30223-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(ARUJIEN_LETTER_1, 1);
@@ -92,7 +92,7 @@ public class Q002_WhatWomenWant extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.Elf && player.getRace() != PlayerRace.Human)
 					htmltext = "30223-00.htm";
 				else if (player.getLevel() < 2)
@@ -101,7 +101,7 @@ public class Q002_WhatWomenWant extends Quest
 					htmltext = "30223-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -167,7 +167,7 @@ public class Q002_WhatWomenWant extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

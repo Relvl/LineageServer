@@ -67,7 +67,7 @@ public class Q101_SwordOfSolidarity extends Quest
 		
 		if (event.equalsIgnoreCase("30008-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(ROIENS_LETTER, 1);
@@ -123,7 +123,7 @@ public class Q101_SwordOfSolidarity extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.Human)
 					htmltext = "30008-01a.htm";
 				else if (player.getLevel() < 9)
@@ -132,7 +132,7 @@ public class Q101_SwordOfSolidarity extends Quest
 					htmltext = "30008-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = (st.getInt("cond"));
 				switch (npc.getNpcId())
 				{
@@ -178,7 +178,7 @@ public class Q101_SwordOfSolidarity extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

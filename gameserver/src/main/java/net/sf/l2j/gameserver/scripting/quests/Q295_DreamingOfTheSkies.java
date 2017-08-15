@@ -51,7 +51,7 @@ public class Q295_DreamingOfTheSkies extends Quest
 		
 		if (event.equalsIgnoreCase("30536-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -69,11 +69,11 @@ public class Q295_DreamingOfTheSkies extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 11) ? "30536-01.htm" : "30536-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getInt("cond") == 1)
 					htmltext = "30536-04.htm";
 				else

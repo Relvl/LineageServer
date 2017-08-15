@@ -282,7 +282,6 @@ public abstract class Inventory extends ItemContainer {
      */
     public L2ItemInstance[] unEquipItemInBodySlotAndRecord(EItemBodyPart slot) {
         ChangeRecorder recorder = newRecorder();
-
         try {
             unEquipItemInBodySlot(slot);
         }

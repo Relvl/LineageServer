@@ -55,7 +55,7 @@ public class Q379_FantasyWine extends Quest
 		
 		if (event.equalsIgnoreCase("30074-3.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -100,11 +100,11 @@ public class Q379_FantasyWine extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 20) ? "30074-0a.htm" : "30074-0.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int leaf = st.getQuestItemsCount(LEAF);
 				final int stone = st.getQuestItemsCount(STONE);
 				
@@ -125,7 +125,7 @@ public class Q379_FantasyWine extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

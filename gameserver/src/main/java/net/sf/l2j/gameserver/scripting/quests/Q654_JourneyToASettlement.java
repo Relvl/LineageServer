@@ -49,7 +49,7 @@ public class Q654_JourneyToASettlement extends Quest
 		
 		if (event.equalsIgnoreCase("31453-02.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -79,12 +79,12 @@ public class Q654_JourneyToASettlement extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				QuestState prevSt = player.getQuestState("Q119_LastImperialPrince");
 				htmltext = (prevSt == null || !prevSt.isCompleted() || player.getLevel() < 74) ? "31453-00.htm" : "31453-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				if (cond == 1)
 					htmltext = "31453-02.htm";

@@ -51,7 +51,7 @@ public class Q119_LastImperialPrince extends Quest
 		{
 			if (st.hasQuestItems(ANTIQUE_BROOCH))
 			{
-				st.setState(STATE_STARTED);
+				st.setState(QuestState.STATE_STARTED);
 				st.set("cond", "1");
 				st.playSound(QuestState.SOUND_ACCEPT);
 			}
@@ -93,11 +93,11 @@ public class Q119_LastImperialPrince extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (!st.hasQuestItems(ANTIQUE_BROOCH) || player.getLevel() < 74) ? "31453-00a.htm" : "31453-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -117,7 +117,7 @@ public class Q119_LastImperialPrince extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = "31453-00b.htm";
 				break;
 		}

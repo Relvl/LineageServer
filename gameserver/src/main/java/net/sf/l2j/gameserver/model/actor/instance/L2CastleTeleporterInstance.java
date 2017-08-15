@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.model.actor.instance;
 
 import net.sf.l2j.gameserver.EChatType;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
@@ -49,7 +49,7 @@ public class L2CastleTeleporterInstance extends L2NpcInstance {
                 else { _delay = 0; }
 
                 _currentTask = true;
-                ThreadPoolManager.getInstance().scheduleGeneral(new oustAllPlayers(), _delay);
+                ThreadPoolManager.getInstance().schedule(new oustAllPlayers(), _delay);
             }
 
             final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());

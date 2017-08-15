@@ -24,8 +24,9 @@ import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.L2GameClient;
 import net.sf.l2j.gameserver.network.L2GamePacketHandler;
 import net.sf.l2j.gameserver.playerpart.recipe.RecipeController;
-import net.sf.l2j.gameserver.scripting.ScriptManager;
+import net.sf.l2j.gameserver.scripting.EScript;
 import net.sf.l2j.gameserver.taskmanager.*;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.xmlfactory.XMLDocumentFactory;
 import net.sf.l2j.util.DeadLockDetector;
 import net.sf.l2j.util.IPv4Filter;
@@ -154,7 +155,7 @@ public class GameServer {
 
         FourSepulchersManager.getInstance().init();
 
-        ScriptManager.getInstance();
+        LOGGER.info("Loaded {} scripts and {} quests.", EScript.getScriptsCount(), EScript.getQuestsCount());
 
         BoatManager.getInstance();
         BoatGiranTalking.load();

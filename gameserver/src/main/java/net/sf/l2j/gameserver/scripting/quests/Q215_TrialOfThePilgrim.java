@@ -86,7 +86,7 @@ public class Q215_TrialOfThePilgrim extends Quest
 		
 		if (event.equalsIgnoreCase("30648-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(VOUCHER_OF_TRIAL, 1);
@@ -141,7 +141,7 @@ public class Q215_TrialOfThePilgrim extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getClassId() != ClassId.cleric && player.getClassId() != ClassId.oracle && player.getClassId() != ClassId.shillienOracle && player.getClassId() != ClassId.orcShaman)
 					htmltext = "30648-02.htm";
 				else if (player.getLevel() < 35)
@@ -150,7 +150,7 @@ public class Q215_TrialOfThePilgrim extends Quest
 					htmltext = "30648-03.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -321,7 +321,7 @@ public class Q215_TrialOfThePilgrim extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}
@@ -332,7 +332,7 @@ public class Q215_TrialOfThePilgrim extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

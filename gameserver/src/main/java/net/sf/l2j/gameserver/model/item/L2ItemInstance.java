@@ -2,7 +2,7 @@ package net.sf.l2j.gameserver.model.item;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.instancemanager.MercTicketManager;

@@ -52,7 +52,7 @@ public class Q271_ProofOfValor extends Quest
 		
 		if (event.equalsIgnoreCase("30577-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			
@@ -73,7 +73,7 @@ public class Q271_ProofOfValor extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.Orc)
 					htmltext = "30577-00.htm";
 				else if (player.getLevel() < 4)
@@ -82,7 +82,7 @@ public class Q271_ProofOfValor extends Quest
 					htmltext = (st.hasAtLeastOneQuestItem(NECKLACE_OF_COURAGE, NECKLACE_OF_VALOR)) ? "30577-06.htm" : "30577-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getInt("cond") == 1)
 					htmltext = (st.hasAtLeastOneQuestItem(NECKLACE_OF_COURAGE, NECKLACE_OF_VALOR)) ? "30577-07.htm" : "30577-04.htm";
 				else

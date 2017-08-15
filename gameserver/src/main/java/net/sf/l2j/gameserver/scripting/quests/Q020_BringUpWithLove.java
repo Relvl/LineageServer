@@ -45,7 +45,7 @@ public class Q020_BringUpWithLove extends Quest
 		
 		if (event.equalsIgnoreCase("31537-09.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -70,18 +70,18 @@ public class Q020_BringUpWithLove extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 65) ? "31537-02.htm" : "31537-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getInt("cond") == 2)
 					htmltext = "31537-11.htm";
 				else
 					htmltext = "31537-10.htm";
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

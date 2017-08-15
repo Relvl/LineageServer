@@ -5,7 +5,7 @@ import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.EChatType;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.*;
 import net.sf.l2j.gameserver.model.L2Clan;
@@ -2699,7 +2699,7 @@ public class SevenSignsFestival implements SpawnListener {
         // at the specified time, then invoke it automatically after every cycle.
         FestivalManager fm = new FestivalManager();
         setNextFestivalStart(Config.ALT_FESTIVAL_MANAGER_START + FESTIVAL_SIGNUP_TIME);
-        _managerScheduledTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(fm, Config.ALT_FESTIVAL_MANAGER_START, Config.ALT_FESTIVAL_CYCLE_LENGTH);
+        _managerScheduledTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(fm, Config.ALT_FESTIVAL_MANAGER_START, Config.ALT_FESTIVAL_CYCLE_LENGTH);
 
         LOGGER.info("SevenSignsFestival: The first Festival of Darkness cycle begins in {} minute(s).", Config.ALT_FESTIVAL_MANAGER_START / 60000);
     }

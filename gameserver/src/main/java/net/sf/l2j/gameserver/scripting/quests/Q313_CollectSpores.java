@@ -47,7 +47,7 @@ public class Q313_CollectSpores extends Quest
 		
 		if (event.equalsIgnoreCase("30150-05.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -65,11 +65,11 @@ public class Q313_CollectSpores extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 8) ? "30150-02.htm" : "30150-03.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getInt("cond") == 1)
 					htmltext = "30150-06.htm";
 				else

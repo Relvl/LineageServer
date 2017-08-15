@@ -52,7 +52,7 @@ public class Q431_WeddingMarch extends Quest
 		
 		if (event.equalsIgnoreCase("31042-02.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -82,11 +82,11 @@ public class Q431_WeddingMarch extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 38) ? "31042-00.htm" : "31042-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				if (cond == 1)
 					htmltext = "31042-02.htm";

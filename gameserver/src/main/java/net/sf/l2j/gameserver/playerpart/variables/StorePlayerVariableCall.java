@@ -16,35 +16,49 @@ public class StorePlayerVariableCall extends IndexedCall {
     private Integer resultCode;
 
     @OrmParamIn(2)
-    private final Integer pi_player;
+    private final Integer playerId;
     @OrmParamIn(3)
-    private final String pi_var_name;
+    private String variableName;
     @OrmParamIn(4)
-    private final String pi_str_value;
+    private String strValue;
     @OrmParamIn(5)
-    private final Integer pi_int_value;
+    private Integer intValue;
     @OrmParamIn(6)
-    private final Boolean pi_bool_value;
+    private Boolean boolValue;
     @OrmParamIn(7)
-    private final Long pi_long_value;
+    private Long longValue;
 
     public StorePlayerVariableCall(Integer playerId, String name, String strVal, Integer intVal, Boolean boolVal, Long longValue) {
         super("player_variable_store", 6, true);
-        this.pi_player = playerId;
-        this.pi_var_name = name;
-        this.pi_str_value = strVal;
-        this.pi_int_value = intVal;
-        this.pi_bool_value = boolVal;
-        this.pi_long_value = longValue;
+        this.playerId = playerId;
+        this.variableName = name;
+        this.strValue = strVal;
+        this.intValue = intVal;
+        this.boolValue = boolVal;
+        this.longValue = longValue;
     }
 
     @Override
-    public Logger getLogger() {
-        return LOGGER;
-    }
+    public Logger getLogger() { return LOGGER; }
 
     @Override
-    public Integer getResultCode() {
-        return resultCode;
+    public Integer getResultCode() { return resultCode; }
+
+    public void setVariableName(String variableName) { this.variableName = variableName; }
+
+    public void setStrValue(String strValue) { this.strValue = strValue; }
+
+    public void setIntValue(Integer intValue) { this.intValue = intValue; }
+
+    public void setBoolValue(Boolean boolValue) { this.boolValue = boolValue; }
+
+    public void setLongValue(Long longValue) { this.longValue = longValue; }
+
+    public void reset() {
+        this.variableName = null;
+        this.strValue = null;
+        this.intValue = null;
+        this.boolValue = null;
+        this.longValue = null;
     }
 }

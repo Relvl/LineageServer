@@ -690,7 +690,6 @@ public final class Config {
      * Misc
      */
     public static boolean L2WALKER_PROTECTION;
-    public static boolean AUTODELETE_INVALID_QUEST_DATA;
     public static boolean SERVER_NEWS;
     public static int ZONE_TOWN;
 
@@ -1237,7 +1236,6 @@ public final class Config {
             SOCIAL_TIME = server.getProperty("SocialTime", 2000);
 
             L2WALKER_PROTECTION = server.getProperty("L2WalkerProtection", false);
-            AUTODELETE_INVALID_QUEST_DATA = server.getProperty("AutoDeleteInvalidQuestData", false);
             ZONE_TOWN = server.getProperty("ZoneTown", 0);
             SERVER_NEWS = server.getProperty("ShowServerNews", false);
         }

@@ -2,7 +2,7 @@ package net.sf.l2j.gameserver.instancemanager.games;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
@@ -85,7 +85,7 @@ public class MonsterRace {
         _first = new int[2];
         _second = new int[2];
 
-        ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new Announcement(), 0, 1000);
+        ThreadPoolManager.getInstance().scheduleAtFixedRate(new Announcement(), 0, 1000);
     }
 
     public static MonsterRace getInstance() {

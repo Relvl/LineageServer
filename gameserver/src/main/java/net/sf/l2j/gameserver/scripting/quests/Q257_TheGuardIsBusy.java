@@ -54,7 +54,7 @@ public class Q257_TheGuardIsBusy extends Quest
 		
 		if (event.equalsIgnoreCase("30039-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(GLUDIO_LORD_MARK, 1);
@@ -79,11 +79,11 @@ public class Q257_TheGuardIsBusy extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 6) ? "30039-01.htm" : "30039-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int amulets = st.getQuestItemsCount(ORC_AMULET);
 				final int necklaces = st.getQuestItemsCount(ORC_NECKLACE);
 				final int fangs = st.getQuestItemsCount(WEREWOLF_FANG);
@@ -130,7 +130,7 @@ public class Q257_TheGuardIsBusy extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

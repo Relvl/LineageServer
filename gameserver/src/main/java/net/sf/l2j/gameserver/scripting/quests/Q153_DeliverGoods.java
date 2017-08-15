@@ -60,7 +60,7 @@ public class Q153_DeliverGoods extends Quest
 		
 		if (event.equalsIgnoreCase("30041-02.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(DELIVERY_LIST, 1);
@@ -82,11 +82,11 @@ public class Q153_DeliverGoods extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 2) ? "30041-00.htm" : "30041-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				switch (npc.getNpcId())
 				{
 					case ARNOLD:
@@ -167,7 +167,7 @@ public class Q153_DeliverGoods extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

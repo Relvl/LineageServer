@@ -70,7 +70,7 @@ public class Q405_PathToACleric extends Quest
 		
 		if (event.equalsIgnoreCase("30022-05.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(LETTER_OF_ORDER_1, 1);
@@ -89,7 +89,7 @@ public class Q405_PathToACleric extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getClassId() != ClassId.mage)
 					htmltext = (player.getClassId() == ClassId.cleric) ? "30022-02a.htm" : "30022-02.htm";
 				else if (player.getLevel() < 19)
@@ -100,7 +100,7 @@ public class Q405_PathToACleric extends Quest
 					htmltext = "30022-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{

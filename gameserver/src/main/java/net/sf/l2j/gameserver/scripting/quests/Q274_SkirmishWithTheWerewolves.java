@@ -54,7 +54,7 @@ public class Q274_SkirmishWithTheWerewolves extends Quest
 		
 		if (event.equalsIgnoreCase("30569-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -72,7 +72,7 @@ public class Q274_SkirmishWithTheWerewolves extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.Orc)
 					htmltext = "30569-00.htm";
 				else if (player.getLevel() < 9)
@@ -83,7 +83,7 @@ public class Q274_SkirmishWithTheWerewolves extends Quest
 					htmltext = "30569-07.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getInt("cond") == 1)
 					htmltext = "30569-04.htm";
 				else

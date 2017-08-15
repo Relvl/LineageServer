@@ -5,7 +5,7 @@ import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.SessionKey;
 import net.sf.l2j.commons.database.CallException;
 import net.sf.l2j.gameserver.LoginServerThread;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.database.DeletePlayerCall;
 import net.sf.l2j.gameserver.datatables.CharNameTable;
 import net.sf.l2j.gameserver.datatables.ClanTable;
@@ -38,7 +38,7 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
     private static final Logger LOGGER = LoggerFactory.getLogger(L2GameClient.class);
 
     // Task
-    protected final ScheduledFuture<?> _autoSaveInDB;
+    private final ScheduledFuture<?> _autoSaveInDB;
     private final ReentrantLock _activeCharLock = new ReentrantLock();
     // floodprotectors
     private final long[] _floodProtectors = new long[Action.VALUES_LENGTH];
@@ -47,7 +47,7 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
     private final ReentrantLock _queueLock = new ReentrantLock();
     public GameClientState _state;
     public GameCrypt _crypt;
-    protected ScheduledFuture<?> _cleanupTask;
+    private ScheduledFuture<?> _cleanupTask;
     // Info
     private String _accountName;
     private SessionKey _sessionId;
@@ -64,7 +64,7 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
         _stats = new ClientStats();
         _packetQueue = new ArrayBlockingQueue<>(Config.CLIENT_PACKET_QUEUE_SIZE);
 
-        _autoSaveInDB = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new AutoSaveTask(), 300000L, 900000L);
+        _autoSaveInDB = ThreadPoolManager.getInstance().scheduleAtFixedRate(new AutoSaveTask(), 300000L, 900000L);
     }
 
     public static void deleteCharByObjId(int objid) {
@@ -158,9 +158,7 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
         return key;
     }
 
-    public GameClientState getState() {
-        return _state;
-    }
+    public GameClientState getState() { return _state; }
 
     public void setState(GameClientState pState) {
         if (_state != pState) {
@@ -169,9 +167,7 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
         }
     }
 
-    public ClientStats getStats() {
-        return _stats;
-    }
+    public ClientStats getStats() { return _stats; }
 
     @Override
     public boolean decrypt(ByteBuffer buf, int size) {
@@ -186,56 +182,33 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
         return true;
     }
 
-    public L2PcInstance getActiveChar() {
-        return _activeChar;
-    }
+    public L2PcInstance getActiveChar() { return _activeChar; }
 
-    public void setActiveChar(L2PcInstance pActiveChar) {
-        _activeChar = pActiveChar;
-    }
+    public void setActiveChar(L2PcInstance pActiveChar) { _activeChar = pActiveChar; }
 
-    public ReentrantLock getActiveCharLock() {
-        return _activeCharLock;
-    }
+    public ReentrantLock getActiveCharLock() { return _activeCharLock; }
 
-    public long[] getFloodProtectors() {
-        return _floodProtectors;
-    }
+    public long[] getFloodProtectors() { return _floodProtectors; }
 
-    public void setGameGuardOk(boolean val) {
-        _isAuthedGG = val;
-    }
+    public void setGameGuardOk(boolean val) { _isAuthedGG = val; }
 
-    public String getAccountName() {
-        return _accountName;
-    }
+    public String getAccountName() { return _accountName; }
 
-    public void setAccountName(String pAccountName) {
-        _accountName = pAccountName;
-    }
+    public void setAccountName(String pAccountName) { _accountName = pAccountName; }
 
-    public SessionKey getSessionId() {
-        return _sessionId;
-    }
+    public SessionKey getSessionId() { return _sessionId; }
 
-    public void setSessionId(SessionKey sk) {
-        _sessionId = sk;
-    }
+    public void setSessionId(SessionKey sk) { _sessionId = sk; }
 
     public void sendPacket(L2GameServerPacket gsp) {
         if (_isDetached) { return; }
-
         getConnection().sendPacket(gsp);
         gsp.runImpl();
     }
 
-    public boolean isDetached() {
-        return _isDetached;
-    }
+    public boolean isDetached() { return _isDetached; }
 
-    public void setDetached(boolean b) {
-        _isDetached = b;
-    }
+    public void setDetached(boolean b) { _isDetached = b; }
 
     /**
      * Method to handle character deletion
@@ -330,9 +303,7 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
         return character;
     }
 
-    public void setCharSelection(CharSelectInfoPackage... chars) {
-        _charSlotMapping = chars;
-    }
+    public void setCharSelection(CharSelectInfoPackage... chars) { _charSlotMapping = chars; }
 
     public CharSelectInfoPackage getCharSelection(int charslot) {
         if ((_charSlotMapping == null) || (charslot < 0) || (charslot >= _charSlotMapping.length)) { return null; }
@@ -340,9 +311,7 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
         return _charSlotMapping[charslot];
     }
 
-    public void close(L2GameServerPacket gsp) {
-        getConnection().close(gsp);
-    }
+    public void close(L2GameServerPacket gsp) { getConnection().close(gsp); }
 
     private int getObjectIdForSlot(int charslot) {
         CharSelectInfoPackage info = getCharSelection(charslot);
@@ -376,7 +345,7 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
         synchronized (this) {
             if (_cleanupTask != null) { cancelCleanup(); }
 
-            _cleanupTask = ThreadPoolManager.getInstance().scheduleGeneral(new CleanupTask(), 0); // instant
+            _cleanupTask = ThreadPoolManager.getInstance().schedule(new CleanupTask(), 0); // instant
         }
     }
 
@@ -407,7 +376,7 @@ public final class L2GameClient extends MMOClient<MMOConnection<L2GameClient>> i
         try {
             synchronized (this) {
                 if (_cleanupTask == null) {
-                    _cleanupTask = ThreadPoolManager.getInstance().scheduleGeneral(new CleanupTask(), fast ? 5 : 15000L);
+                    _cleanupTask = ThreadPoolManager.getInstance().schedule(new CleanupTask(), fast ? 5 : 15000L);
                 }
             }
         }

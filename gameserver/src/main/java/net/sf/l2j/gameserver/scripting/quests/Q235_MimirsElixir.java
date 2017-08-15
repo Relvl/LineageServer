@@ -62,7 +62,7 @@ public class Q235_MimirsElixir extends Quest
 		
 		if (event.equalsIgnoreCase("30721-06.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -137,7 +137,7 @@ public class Q235_MimirsElixir extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getLevel() < 75)
 					htmltext = "30721-01b.htm";
 				else if (!st.hasQuestItems(STAR_OF_DESTINY))
@@ -146,7 +146,7 @@ public class Q235_MimirsElixir extends Quest
 					htmltext = "30721-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -196,7 +196,7 @@ public class Q235_MimirsElixir extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}
@@ -207,7 +207,7 @@ public class Q235_MimirsElixir extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

@@ -47,7 +47,7 @@ public class Q261_CollectorsDream extends Quest
 		
 		if (event.equalsIgnoreCase("30222-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -65,11 +65,11 @@ public class Q261_CollectorsDream extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 15) ? "30222-01.htm" : "30222-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getInt("cond") == 2)
 				{
 					htmltext = "30222-05.htm";
@@ -83,7 +83,7 @@ public class Q261_CollectorsDream extends Quest
 					htmltext = "30222-04.htm";
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

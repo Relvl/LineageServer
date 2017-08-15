@@ -1,7 +1,7 @@
 package net.sf.l2j.gameserver.model.olympiad;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.zone.type.L2OlympiadStadiumZone;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
@@ -211,7 +211,7 @@ public final class OlympiadGameTask implements Runnable {
                     return;
                 }
             }
-            ThreadPoolManager.getInstance().scheduleGeneral(this, delay * 1000);
+            ThreadPoolManager.getInstance().schedule(this, delay * 1000);
         }
         catch (Exception e) {
             switch (_state) {
@@ -228,7 +228,7 @@ public final class OlympiadGameTask implements Runnable {
 
             LOGGER.warn("Exception in " + _state + ", trying to port players back: " + e.getMessage(), e);
             _state = GameState.GAME_STOPPED;
-            ThreadPoolManager.getInstance().scheduleGeneral(this, 1000);
+            ThreadPoolManager.getInstance().schedule(this, 1000);
         }
     }
 

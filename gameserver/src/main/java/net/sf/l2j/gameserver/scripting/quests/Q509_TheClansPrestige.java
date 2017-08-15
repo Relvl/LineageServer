@@ -132,7 +132,7 @@ public class Q509_TheClansPrestige extends Quest
 		if (StringUtil.isDigit(event))
 		{
 			htmltext = "31331-" + event + ".htm";
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.set("raid", event);
 			st.playSound(QuestState.SOUND_ACCEPT);
@@ -167,7 +167,7 @@ public class Q509_TheClansPrestige extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (!player.isClanLeader())
 					htmltext = "31331-0a.htm";
 				else if (clan.getLevel() < 6)
@@ -176,7 +176,7 @@ public class Q509_TheClansPrestige extends Quest
 					htmltext = "31331-0c.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int raid = st.getInt("raid");
 				final int item = reward_list[raid - 1][1];
 				

@@ -58,7 +58,7 @@ public class Q381_LetsBecomeARoyalMember extends Quest
 			st.set("aCond", "1"); // Alternative cond used for Sandra.
 		else if (event.equalsIgnoreCase("30232-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -76,11 +76,11 @@ public class Q381_LetsBecomeARoyalMember extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 55 || !st.hasQuestItems(COIN_COLLECTOR_MEMBERSHIP)) ? "30232-02.htm" : "30232-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				switch (npc.getNpcId())
 				{
 					case SORINT:
@@ -129,7 +129,7 @@ public class Q381_LetsBecomeARoyalMember extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

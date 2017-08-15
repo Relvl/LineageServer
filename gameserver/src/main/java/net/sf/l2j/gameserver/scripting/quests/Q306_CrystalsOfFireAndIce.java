@@ -83,7 +83,7 @@ public class Q306_CrystalsOfFireAndIce extends Quest
 		
 		if (event.equalsIgnoreCase("30004-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -106,11 +106,11 @@ public class Q306_CrystalsOfFireAndIce extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 17) ? "30004-01.htm" : "30004-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int totalItems = st.getQuestItemsCount(FLAME_SHARD) + st.getQuestItemsCount(ICE_SHARD);
 				if (totalItems == 0)
 					htmltext = "30004-04.htm";
@@ -130,7 +130,7 @@ public class Q306_CrystalsOfFireAndIce extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

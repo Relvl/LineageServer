@@ -49,7 +49,7 @@ public class Q352_HelpRoodRaiseANewPet extends Quest
 		
 		if (event.equalsIgnoreCase("31067-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -72,11 +72,11 @@ public class Q352_HelpRoodRaiseANewPet extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 39) ? "31067-00.htm" : "31067-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int eggs1 = st.getQuestItemsCount(LIENRIK_EGG_1);
 				final int eggs2 = st.getQuestItemsCount(LIENRIK_EGG_2);
 				
@@ -120,7 +120,7 @@ public class Q352_HelpRoodRaiseANewPet extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

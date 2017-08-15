@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.model.zone.type;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.zone.ACastleZoneType;
@@ -55,7 +55,7 @@ public class L2DamageZone extends ACastleZoneType {
 
             synchronized (this) {
                 if (task == null) {
-                    task = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new ApplyDamage(this), startTask, reuseTask);
+                    task = ThreadPoolManager.getInstance().scheduleAtFixedRate(new ApplyDamage(this), startTask, reuseTask);
 
                     // Message for castle traps.
                     if (getCastle() != null) { getCastle().getSiege().announceToPlayer(SystemMessage.getSystemMessage(SystemMessageId.A_TRAP_DEVICE_HAS_BEEN_TRIPPED), false); }

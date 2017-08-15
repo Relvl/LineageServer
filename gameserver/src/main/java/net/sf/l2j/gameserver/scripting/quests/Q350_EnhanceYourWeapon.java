@@ -55,7 +55,7 @@ public class Q350_EnhanceYourWeapon extends Quest
 		// Start the quest.
 		if (event.endsWith("-04.htm"))
 		{
-			st.setState(Quest.STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -94,14 +94,14 @@ public class Q350_EnhanceYourWeapon extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getLevel() < 40)
 					htmltext = npc.getNpcId() + "-lvl.htm";
 				else
 					htmltext = npc.getNpcId() + "-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				// Check inventory for soul crystals.
 				for (L2ItemInstance item : player.getInventory().getItems())
 				{
@@ -155,18 +155,18 @@ public class Q350_EnhanceYourWeapon extends Quest
 				final L2Attackable mob = (L2Attackable) npc;
 				final int chance = Rnd.get(100);
 				
-				for (L2PcInstance player : getPartyMembersState(killer, npc, Quest.STATE_STARTED))
+				for (L2PcInstance player : getPartyMembersState(killer, npc, QuestState.STATE_STARTED))
 					tryToStageCrystal(player, mob, npcInfo, chance);
 				break;
 			
 			case PARTY_ONE_RANDOM:
-				final L2PcInstance player = getRandomPartyMemberState(killer, npc, Quest.STATE_STARTED);
+				final L2PcInstance player = getRandomPartyMemberState(killer, npc, QuestState.STATE_STARTED);
 				if (player != null)
 					tryToStageCrystal(player, (L2Attackable) npc, npcInfo, Rnd.get(100));
 				break;
 			
 			case LAST_HIT:
-				if (checkPlayerState(killer, npc, Quest.STATE_STARTED) != null)
+				if (checkPlayerState(killer, npc, QuestState.STATE_STARTED) != null)
 					tryToStageCrystal(killer, (L2Attackable) npc, npcInfo, Rnd.get(100));
 				break;
 		}

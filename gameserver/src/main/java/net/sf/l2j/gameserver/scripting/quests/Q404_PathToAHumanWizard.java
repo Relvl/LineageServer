@@ -70,7 +70,7 @@ public class Q404_PathToAHumanWizard extends Quest
 		
 		if (event.equalsIgnoreCase("30391-08.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -96,7 +96,7 @@ public class Q404_PathToAHumanWizard extends Quest
 		final int cond = st.getInt("cond");
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getClassId() != ClassId.mage)
 					htmltext = (player.getClassId() == ClassId.wizard) ? "30391-02a.htm" : "30391-01.htm";
 				else if (player.getLevel() < 19)
@@ -107,7 +107,7 @@ public class Q404_PathToAHumanWizard extends Quest
 					htmltext = "30391-04.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				switch (npc.getNpcId())
 				{
 					case PARINA:
@@ -235,7 +235,7 @@ public class Q404_PathToAHumanWizard extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

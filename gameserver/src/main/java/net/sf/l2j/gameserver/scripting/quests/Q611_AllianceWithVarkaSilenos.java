@@ -116,7 +116,7 @@ public class Q611_AllianceWithVarkaSilenos extends Quest
 				htmltext = "31378-02a.htm";
 			else
 			{
-				st.setState(STATE_STARTED);
+				st.setState(QuestState.STATE_STARTED);
 				st.playSound(QuestState.SOUND_ACCEPT);
 				for (int i = VARKA_ALLIANCE_1; i <= VARKA_ALLIANCE_5; i++)
 				{
@@ -222,7 +222,7 @@ public class Q611_AllianceWithVarkaSilenos extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getLevel() >= 74)
 					htmltext = "31378-01.htm";
 				else
@@ -233,7 +233,7 @@ public class Q611_AllianceWithVarkaSilenos extends Quest
 				}
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				if (cond == 1)
 				{
@@ -292,7 +292,7 @@ public class Q611_AllianceWithVarkaSilenos extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, STATE_STARTED);
+		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, QuestState.STATE_STARTED);
 		if (partyMember == null)
 			return null;
 		

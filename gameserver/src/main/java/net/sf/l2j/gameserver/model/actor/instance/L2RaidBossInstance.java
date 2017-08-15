@@ -18,7 +18,7 @@ import java.util.concurrent.ScheduledFuture;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.instancemanager.RaidBossPointsManager;
 import net.sf.l2j.gameserver.instancemanager.RaidBossSpawnManager;
 import net.sf.l2j.gameserver.instancemanager.RaidBossSpawnManager.StatusEnum;
@@ -124,11 +124,9 @@ public class L2RaidBossInstance extends L2MonsterInstance
 	{
 		super.startMaintenanceTask();
 		
-		_maintenanceTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new Runnable()
-		{
+		_maintenanceTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new Runnable() {
 			@Override
-			public void run()
-			{
+			public void run() {
 				checkAndReturnToSpawn();
 			}
 		}, 60000, 30000);

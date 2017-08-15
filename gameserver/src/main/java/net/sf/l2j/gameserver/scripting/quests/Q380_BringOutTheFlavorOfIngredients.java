@@ -59,7 +59,7 @@ public class Q380_BringOutTheFlavorOfIngredients extends Quest
 		
 		if (event.equalsIgnoreCase("30069-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -83,11 +83,11 @@ public class Q380_BringOutTheFlavorOfIngredients extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 24) ? "30069-00.htm" : "30069-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				if (cond == 1)
 					htmltext = "30069-06.htm";

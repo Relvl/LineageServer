@@ -77,7 +77,7 @@ public class Q421_LittleWingsBigAdventure extends Quest
 					final L2ItemInstance item = player.getInventory().getItemByItemId(i);
 					if (item != null && item.getEnchantLevel() >= 55)
 					{
-						st.setState(STATE_STARTED);
+						st.setState(QuestState.STATE_STARTED);
 						st.set("cond", "1");
 						st.set("iCond", "1");
 						st.set("summonOid", String.valueOf(item.getObjectId()));
@@ -123,7 +123,7 @@ public class Q421_LittleWingsBigAdventure extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				// Wrong level.
 				if (player.getLevel() < 45)
 					htmltext = "30610-01.htm";
@@ -145,7 +145,7 @@ public class Q421_LittleWingsBigAdventure extends Quest
 				}
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				switch (npc.getNpcId())
 				{
 					case CRONOS:

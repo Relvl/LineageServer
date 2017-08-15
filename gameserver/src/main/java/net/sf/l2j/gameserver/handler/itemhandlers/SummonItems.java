@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.handler.itemhandlers;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.datatables.SummonItemsData;
 import net.sf.l2j.gameserver.handler.IItemHandler;
@@ -91,7 +91,7 @@ public class SummonItems implements IItemHandler {
                 player.sendPacket(SystemMessageId.SUMMON_A_PET);
                 player.setIsCastingNow(true);
 
-                ThreadPoolManager.getInstance().scheduleGeneral(new PetSummonFinalizer(player, npcTemplate, item), 5000);
+                ThreadPoolManager.getInstance().schedule(new PetSummonFinalizer(player, npcTemplate, item), 5000);
                 break;
             case 2: // wyvern
                 player.mount(sitem.getNpcId(), item.getObjectId(), true);
@@ -164,7 +164,7 @@ public class SummonItems implements IItemHandler {
                 petSummon.startFeed();
                 _item.setEnchantLevel(petSummon.getLevel());
 
-                if (petSummon.getCurrentFed() <= 0) { ThreadPoolManager.getInstance().scheduleGeneral(new PetSummonFeedWait(_activeChar, petSummon), 60000); }
+                if (petSummon.getCurrentFed() <= 0) { ThreadPoolManager.getInstance().schedule(new PetSummonFeedWait(_activeChar, petSummon), 60000); }
                 else { petSummon.startFeed(); }
 
                 petSummon.setFollow(true);

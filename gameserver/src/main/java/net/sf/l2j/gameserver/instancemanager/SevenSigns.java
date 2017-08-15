@@ -2,7 +2,7 @@ package net.sf.l2j.gameserver.instancemanager;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.instancemanager.AutoSpawnManager.AutoSpawnInstance;
@@ -150,7 +150,7 @@ public class SevenSigns {
         }
 
         // Schedule a time for the next period change.
-        ThreadPoolManager.getInstance().scheduleGeneral(new SevenSignsPeriodChange(), milliToChange);
+        ThreadPoolManager.getInstance().schedule(new SevenSignsPeriodChange(), milliToChange);
 
         // Thanks to http://rainbow.arch.scriptmania.com/scripts/timezone_countdown.html for help with this.
         double numSecs = (milliToChange / 1000) % 60;
@@ -1160,7 +1160,7 @@ public class SevenSigns {
 
             setCalendarForNextPeriodChange();
 
-            ThreadPoolManager.getInstance().scheduleGeneral(new SevenSignsPeriodChange(), getMilliToPeriodChange());
+            ThreadPoolManager.getInstance().schedule(new SevenSignsPeriodChange(), getMilliToPeriodChange());
         }
     }
 

@@ -59,7 +59,7 @@ public class Q296_TarantulasSpiderSilk extends Quest
 		{
 			if (st.hasAtLeastOneQuestItem(RING_OF_RACCOON, RING_OF_FIREFLY))
 			{
-				st.setState(STATE_STARTED);
+				st.setState(QuestState.STATE_STARTED);
 				st.set("cond", "1");
 				st.playSound(QuestState.SOUND_ACCEPT);
 			}
@@ -97,11 +97,11 @@ public class Q296_TarantulasSpiderSilk extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 15) ? "30519-01.htm" : "30519-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				switch (npc.getNpcId())
 				{
 					case MION:
@@ -128,7 +128,7 @@ public class Q296_TarantulasSpiderSilk extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

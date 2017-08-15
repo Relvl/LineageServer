@@ -56,7 +56,7 @@ public class Q021_HiddenTruth extends Quest {
         if (st == null) { return htmltext; }
 
         if (event.equalsIgnoreCase("31522-02.htm")) {
-            st.setState(STATE_STARTED);
+            st.setState(QuestState.STATE_STARTED);
             st.set("cond", "1");
             st.playSound(QuestState.SOUND_ACCEPT);
         }
@@ -135,11 +135,11 @@ public class Q021_HiddenTruth extends Quest {
         if (st == null) { return htmltext; }
 
         switch (st.getState()) {
-            case STATE_CREATED:
+            case QuestState.STATE_CREATED:
                 htmltext = (player.getLevel() < 63) ? "31522-03.htm" : "31522-01.htm";
                 break;
 
-            case STATE_STARTED:
+            case QuestState.STATE_STARTED:
                 int cond = st.getInt("cond");
                 switch (npc.getNpcId()) {
                     case MYSTERIOUS_WIZARD:
@@ -238,7 +238,7 @@ public class Q021_HiddenTruth extends Quest {
                 }
                 break;
 
-            case STATE_COMPLETED:
+            case QuestState.STATE_COMPLETED:
                 if (npc.getNpcId() == INNOCENTIN) { htmltext = "31328-06.htm"; }
                 else { htmltext = getAlreadyCompletedMsg(); }
                 break;

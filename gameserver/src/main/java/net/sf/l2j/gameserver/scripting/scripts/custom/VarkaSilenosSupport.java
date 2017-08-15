@@ -199,7 +199,7 @@ public class VarkaSilenosSupport extends Quest {
                 break;
 
             case UDAN:
-                st.setState(STATE_STARTED);
+                st.setState(QuestState.STATE_STARTED);
                 if (allianceLevel > -1) { htmltext = "31379-3.htm"; }
                 else if (allianceLevel > -3 && allianceLevel < 0) { htmltext = "31379-1.htm"; }
                 else if (allianceLevel < -2) {

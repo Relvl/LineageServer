@@ -49,7 +49,7 @@ public class Q155_FindSirWindawood extends Quest
 		
 		if (event.equalsIgnoreCase("30042-02.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(OFFICIAL_LETTER, 1);
@@ -68,11 +68,11 @@ public class Q155_FindSirWindawood extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 3) ? "30042-01a.htm" : "30042-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				switch (npc.getNpcId())
 				{
 					case ABELLOS:
@@ -92,7 +92,7 @@ public class Q155_FindSirWindawood extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

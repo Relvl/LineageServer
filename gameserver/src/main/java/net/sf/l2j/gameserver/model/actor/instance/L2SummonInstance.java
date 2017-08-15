@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.model.actor.instance;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.AggroInfo;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
@@ -51,7 +51,7 @@ public class L2SummonInstance extends L2Summon {
             nextItemConsumeTime = totalLifeTime - totalLifeTime / (itemConsumeSteps + 1);
         }
 
-        summonLifeTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new SummonLifetimeTask(getOwner(), this), 1000, 1000);
+        summonLifeTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new SummonLifetimeTask(getOwner(), this), 1000, 1000);
     }
 
     @Override

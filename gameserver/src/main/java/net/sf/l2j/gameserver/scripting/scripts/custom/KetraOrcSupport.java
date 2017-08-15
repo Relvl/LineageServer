@@ -200,7 +200,7 @@ public class KetraOrcSupport extends Quest {
                 break;
 
             case ASEFA:
-                st.setState(STATE_STARTED);
+                st.setState(QuestState.STATE_STARTED);
                 if (allianceLevel < 1) { htmltext = "31372-3.htm"; }
                 else if (allianceLevel < 3 && allianceLevel > 0) { htmltext = "31372-1.htm"; }
                 else if (allianceLevel > 2) {

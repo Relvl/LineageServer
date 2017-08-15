@@ -76,7 +76,7 @@ public class Q367_ElectrifyingRecharge extends Quest
 		
 		if (event.equalsIgnoreCase("30673-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(LORAIN_LAMP, 1);
@@ -110,11 +110,11 @@ public class Q367_ElectrifyingRecharge extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 37) ? "30673-02.htm" : "30673-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				if (cond == 1)
 				{

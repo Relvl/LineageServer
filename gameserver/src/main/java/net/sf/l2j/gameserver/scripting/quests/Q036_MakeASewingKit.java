@@ -51,7 +51,7 @@ public class Q036_MakeASewingKit extends Quest
 		
 		if (event.equalsIgnoreCase("30847-1.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -88,7 +88,7 @@ public class Q036_MakeASewingKit extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getLevel() >= 60)
 				{
 					QuestState fwear = player.getQuestState("Q037_MakeFormalWear");
@@ -101,7 +101,7 @@ public class Q036_MakeASewingKit extends Quest
 					htmltext = "30847-0b.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				if (cond == 1)
 					htmltext = "30847-1a.htm";
@@ -111,7 +111,7 @@ public class Q036_MakeASewingKit extends Quest
 					htmltext = (st.getQuestItemsCount(ORIHARUKON) < 10 || st.getQuestItemsCount(ARTISANS_FRAME) < 10) ? "30847-4a.htm" : "30847-4.htm";
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

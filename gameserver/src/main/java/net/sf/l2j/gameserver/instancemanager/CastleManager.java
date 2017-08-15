@@ -2,7 +2,7 @@ package net.sf.l2j.gameserver.instancemanager;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.CastleUpdaterTask;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2ClanMember;
@@ -105,7 +105,7 @@ public class CastleManager {
                             castle.setOwnerId(ownerId);
 
                             // Schedule owner tasks to start running
-                            ThreadPoolManager.getInstance().scheduleGeneral(new CastleUpdaterTask(clan, 1), 3600000);
+                            ThreadPoolManager.getInstance().schedule(new CastleUpdaterTask(clan, 1), 3600000);
                         }
                     }
                 }

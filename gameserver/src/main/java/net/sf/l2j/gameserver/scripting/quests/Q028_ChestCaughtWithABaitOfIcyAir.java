@@ -50,7 +50,7 @@ public class Q028_ChestCaughtWithABaitOfIcyAir extends Quest
 		
 		if (event.equalsIgnoreCase("31572-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -92,7 +92,7 @@ public class Q028_ChestCaughtWithABaitOfIcyAir extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getLevel() < 36)
 					htmltext = "31572-02.htm";
 				else
@@ -105,7 +105,7 @@ public class Q028_ChestCaughtWithABaitOfIcyAir extends Quest
 				}
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -123,7 +123,7 @@ public class Q028_ChestCaughtWithABaitOfIcyAir extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

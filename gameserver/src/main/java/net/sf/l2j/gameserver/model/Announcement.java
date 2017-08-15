@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.model;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.util.Broadcast;
 
 import java.util.concurrent.ScheduledFuture;
@@ -35,12 +35,12 @@ public class Announcement implements Runnable {
         if (_auto) {
             switch (_limit) {
                 case 0: // unlimited
-                    _task = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(this, _initialDelay * 1000, _delay * 1000); // self schedule at fixed rate
+                    _task = ThreadPoolManager.getInstance().scheduleAtFixedRate(this, _initialDelay * 1000, _delay * 1000); // self schedule at fixed rate
                     _unlimited = true;
                     break;
 
                 default:
-                    _task = ThreadPoolManager.getInstance().scheduleGeneral(this, _initialDelay * 1000); // self schedule (initial)
+                    _task = ThreadPoolManager.getInstance().schedule(this, _initialDelay * 1000); // self schedule (initial)
                     _tempLimit = _limit;
                     break;
             }
@@ -52,7 +52,7 @@ public class Announcement implements Runnable {
         if (!_unlimited) {
             if (_tempLimit == 0) { return; }
 
-            _task = ThreadPoolManager.getInstance().scheduleGeneral(this, _delay * 1000); // self schedule (worker)
+            _task = ThreadPoolManager.getInstance().schedule(this, _delay * 1000); // self schedule (worker)
             _tempLimit--;
         }
         Broadcast.announceToOnlinePlayers(_message, _critical);
@@ -95,12 +95,12 @@ public class Announcement implements Runnable {
         if (_auto) {
             switch (_limit) {
                 case 0: // unlimited
-                    _task = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(this, _initialDelay * 1000, _delay * 1000); // self schedule at fixed rate
+                    _task = ThreadPoolManager.getInstance().scheduleAtFixedRate(this, _initialDelay * 1000, _delay * 1000); // self schedule at fixed rate
                     _unlimited = true;
                     break;
 
                 default:
-                    _task = ThreadPoolManager.getInstance().scheduleGeneral(this, _initialDelay * 1000); // self schedule (initial)
+                    _task = ThreadPoolManager.getInstance().schedule(this, _initialDelay * 1000); // self schedule (initial)
                     _tempLimit = _limit;
                     break;
             }

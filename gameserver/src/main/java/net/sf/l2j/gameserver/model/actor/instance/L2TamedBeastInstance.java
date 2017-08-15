@@ -16,7 +16,7 @@ package net.sf.l2j.gameserver.model.actor.instance;
 
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.EChatType;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
@@ -87,7 +87,7 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance {
             if (_foodTask != null) { _foodTask.cancel(true); }
 
             // Start the food check.
-            _foodTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new FoodCheck(this), DURATION_CHECK_INTERVAL, DURATION_CHECK_INTERVAL);
+            _foodTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new FoodCheck(this), DURATION_CHECK_INTERVAL, DURATION_CHECK_INTERVAL);
         }
     }
 
@@ -133,7 +133,7 @@ public final class L2TamedBeastInstance extends L2FeedableBeastInstance {
             if (_buffTask != null) { _buffTask.cancel(true); }
 
             // Start the buff task.
-            _buffTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new CheckOwnerBuffs(this, getTemplate().getBuffSkills().size()), BUFF_INTERVAL, BUFF_INTERVAL);
+            _buffTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new CheckOwnerBuffs(this, getTemplate().getBuffSkills().size()), BUFF_INTERVAL, BUFF_INTERVAL);
         }
         // Despawn if no owner
         else { deleteMe(); }

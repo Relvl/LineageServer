@@ -94,7 +94,7 @@ public class Q422_RepentYourSins extends Quest
 				htmltext = "30981-06.htm";
 				st.set("cond", "5");
 			}
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
 		else if (event.equalsIgnoreCase("30981-11.htm"))
@@ -126,7 +126,7 @@ public class Q422_RepentYourSins extends Quest
 		{
 			if (st.hasQuestItems(LEFT_PENITENT_MANACLES))
 			{
-				st.setState(STATE_STARTED);
+				st.setState(QuestState.STATE_STARTED);
 				st.set("cond", "16");
 				st.playSound(QuestState.SOUND_ACCEPT);
 			}
@@ -198,14 +198,14 @@ public class Q422_RepentYourSins extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getPkKills() >= 1)
 					htmltext = (st.hasQuestItems(LEFT_PENITENT_MANACLES)) ? "30981-18.htm" : "30981-02.htm";
 				else
 					htmltext = "30981-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -358,7 +358,7 @@ public class Q422_RepentYourSins extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

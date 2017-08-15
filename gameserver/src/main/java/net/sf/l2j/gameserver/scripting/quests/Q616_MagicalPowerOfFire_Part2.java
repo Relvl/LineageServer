@@ -85,7 +85,7 @@ public class Q616_MagicalPowerOfFire_Part2 extends Quest {
         // Udan Mardui
         if (event.equalsIgnoreCase("31379-04.htm")) {
             if (st.hasQuestItems(RED_TOTEM)) {
-                st.setState(STATE_STARTED);
+                st.setState(QuestState.STATE_STARTED);
                 st.set("cond", "1");
                 st.playSound(QuestState.SOUND_ACCEPT);
             }
@@ -125,13 +125,13 @@ public class Q616_MagicalPowerOfFire_Part2 extends Quest {
         if (st == null) { return htmltext; }
 
         switch (st.getState()) {
-            case STATE_CREATED:
+            case QuestState.STATE_CREATED:
                 if (!st.hasQuestItems(RED_TOTEM)) { htmltext = "31379-02.htm"; }
                 else if (player.getLevel() < 75 && player.getAllianceWithVarkaKetra() > -2) { htmltext = "31379-03.htm"; }
                 else { htmltext = "31379-01.htm"; }
                 break;
 
-            case STATE_STARTED:
+            case QuestState.STATE_STARTED:
                 final int cond = st.getInt("cond");
                 switch (npc.getNpcId()) {
                     case UDAN_MARDUI:

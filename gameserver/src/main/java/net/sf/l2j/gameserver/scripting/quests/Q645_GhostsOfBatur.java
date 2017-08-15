@@ -77,7 +77,7 @@ public class Q645_GhostsOfBatur extends Quest
 		
 		if (event.equalsIgnoreCase("32017-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -106,11 +106,11 @@ public class Q645_GhostsOfBatur extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 23) ? "32017-02.htm" : "32017-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				if (cond == 1)
 					htmltext = "32017-04.htm";

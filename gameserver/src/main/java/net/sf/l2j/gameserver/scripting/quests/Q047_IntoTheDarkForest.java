@@ -58,7 +58,7 @@ public class Q047_IntoTheDarkForest extends Quest
 		
 		if (event.equalsIgnoreCase("30097-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(ORDER_DOCUMENT_1, 1);
@@ -120,7 +120,7 @@ public class Q047_IntoTheDarkForest extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() == PlayerRace.DarkElf && player.getLevel() >= 3)
 				{
 					if (st.hasQuestItems(MARK_OF_TRAVELER))
@@ -132,7 +132,7 @@ public class Q047_IntoTheDarkForest extends Quest
 					htmltext = "30097-01a.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -174,7 +174,7 @@ public class Q047_IntoTheDarkForest extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

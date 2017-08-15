@@ -16,7 +16,7 @@ package net.sf.l2j.gameserver.ai.model;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.instancemanager.DimensionalRiftManager;

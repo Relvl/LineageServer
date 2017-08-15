@@ -84,7 +84,7 @@ public class Q632_NecromancersRequest extends Quest
 		
 		if (event.equalsIgnoreCase("31522-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -119,11 +119,11 @@ public class Q632_NecromancersRequest extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 63) ? "31522-01.htm" : "31522-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				htmltext = (st.getQuestItemsCount(VAMPIRE_HEART) >= 200) ? "31522-05.htm" : "31522-04.htm";
 				break;
 		}
@@ -134,7 +134,7 @@ public class Q632_NecromancersRequest extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, STATE_STARTED);
+		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, QuestState.STATE_STARTED);
 		if (partyMember == null)
 			return null;
 		

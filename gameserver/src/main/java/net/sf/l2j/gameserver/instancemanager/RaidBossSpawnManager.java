@@ -2,7 +2,7 @@ package net.sf.l2j.gameserver.instancemanager;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.datatables.SpawnTable;
 import net.sf.l2j.gameserver.model.L2Spawn;
@@ -134,7 +134,7 @@ public class RaidBossSpawnManager {
             if (!_schedules.containsKey(boss.getNpcId())) {
                 LOGGER.info("RaidBoss: {} - {} ({}h).", boss.getName(), new SimpleDateFormat("dd-MM-yyyy HH:mm").format(respawnTime), respawnDelay);
 
-                _schedules.put(boss.getNpcId(), ThreadPoolManager.getInstance().scheduleGeneral(new spawnSchedule(boss.getNpcId()), respawnDelay * 3600000));
+                _schedules.put(boss.getNpcId(), ThreadPoolManager.getInstance().schedule(new spawnSchedule(boss.getNpcId()), respawnDelay * 3600000));
                 updateDb();
             }
         }
@@ -185,7 +185,7 @@ public class RaidBossSpawnManager {
         }
         else {
             long spawnTime = respawnTime - Calendar.getInstance().getTimeInMillis();
-            _schedules.put(bossId, ThreadPoolManager.getInstance().scheduleGeneral(new spawnSchedule(bossId), spawnTime));
+            _schedules.put(bossId, ThreadPoolManager.getInstance().schedule(new spawnSchedule(bossId), spawnTime));
         }
 
         _spawns.put(bossId, spawnDat);

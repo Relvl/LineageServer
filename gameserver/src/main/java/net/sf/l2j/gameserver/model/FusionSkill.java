@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.model;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.model.actor.L2Character;
@@ -46,7 +46,7 @@ public final class FusionSkill {
                 LOGGER.warn("Triggered skill [{};{}] not found!", _fusionId, _fusionLevel);
             }
         }
-        _geoCheckTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new GeoCheckTask(), 1000, 1000);
+        _geoCheckTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new GeoCheckTask(), 1000, 1000);
     }
 
     public void onCastAbort() {

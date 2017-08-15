@@ -58,7 +58,7 @@ public class Q111_ElrokianHuntersProof extends Quest
 		
 		if (event.equalsIgnoreCase("32113-002.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -122,11 +122,11 @@ public class Q111_ElrokianHuntersProof extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 75) ? "32113-000.htm" : "32113-001.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -189,7 +189,7 @@ public class Q111_ElrokianHuntersProof extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}
@@ -200,7 +200,7 @@ public class Q111_ElrokianHuntersProof extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, STATE_STARTED);
+		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, QuestState.STATE_STARTED);
 		if (partyMember == null)
 			return null;
 		

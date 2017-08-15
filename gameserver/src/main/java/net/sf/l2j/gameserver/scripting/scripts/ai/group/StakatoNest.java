@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.scripting.scripts.ai.group;
 
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2MonsterInstance;
@@ -69,7 +69,7 @@ public class StakatoNest extends AbstractNpcAI
 				{
 					npc.setIsCastingNow(true);
 					npc.broadcastPacket(new MagicSkillUse(npc, follower, (npc.getNpcId() == CannibalisticStakatoLeader2) ? 4072 : 4073, 1, 3000, 0));
-					ThreadPoolManager.getInstance().scheduleGeneral(new EatTask(npc, follower), 3000L);
+					ThreadPoolManager.getInstance().schedule(new EatTask(npc, follower), 3000L);
 					break;
 				}
 			}

@@ -48,7 +48,7 @@ public class Q320_BonesTellTheFuture extends Quest
 		
 		if (event.equalsIgnoreCase("30359-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -66,7 +66,7 @@ public class Q320_BonesTellTheFuture extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.DarkElf)
 					htmltext = "30359-00.htm";
 				else if (player.getLevel() < 10)
@@ -75,7 +75,7 @@ public class Q320_BonesTellTheFuture extends Quest
 					htmltext = "30359-03.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getInt("cond") == 1)
 					htmltext = "30359-05.htm";
 				else

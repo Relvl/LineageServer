@@ -111,7 +111,7 @@ public class Q233_TestOfTheWarSpirit extends Quest
 		// SOMAK
 		if (event.equalsIgnoreCase("30510-05e.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(DIMENSIONAL_DIAMOND, 92);
@@ -160,14 +160,14 @@ public class Q233_TestOfTheWarSpirit extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getClassId() == ClassId.orcShaman)
 					htmltext = (player.getLevel() < 39) ? "30510-03.htm" : "30510-04.htm";
 				else
 					htmltext = (player.getRace() == PlayerRace.Orc) ? "30510-02.htm" : "30510-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -362,7 +362,7 @@ public class Q233_TestOfTheWarSpirit extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}
@@ -373,7 +373,7 @@ public class Q233_TestOfTheWarSpirit extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

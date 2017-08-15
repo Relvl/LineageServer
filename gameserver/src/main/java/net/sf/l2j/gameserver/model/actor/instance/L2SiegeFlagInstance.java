@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.model.actor.instance;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager;
 import net.sf.l2j.gameserver.model.L2Clan;
@@ -85,7 +85,7 @@ public class L2SiegeFlagInstance extends L2Npc {
         if (isScriptValue(1) && _clan != null && getCastle() != null && getCastle().getSiege().isInProgress()) {
             _clan.broadcastToOnlineMembers(SystemMessage.getSystemMessage(SystemMessageId.BASE_UNDER_ATTACK));
             setScriptValue(0);
-            ThreadPoolManager.getInstance().scheduleGeneral(new ScheduleTalkTask(), 20000);
+            ThreadPoolManager.getInstance().schedule(new ScheduleTalkTask(), 20000);
         }
         super.reduceCurrentHp(damage, attacker, skill);
     }

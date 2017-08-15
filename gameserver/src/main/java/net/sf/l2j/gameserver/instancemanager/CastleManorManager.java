@@ -3,7 +3,7 @@ package net.sf.l2j.gameserver.instancemanager;
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2Manor;
@@ -155,10 +155,10 @@ public class CastleManorManager {
     public void updateManorRefresh() {
         LOGGER.info("CastleManorManager: Manor refresh updated.");
 
-        _scheduledManorRefresh = ThreadPoolManager.getInstance().scheduleGeneral(() -> {
+        _scheduledManorRefresh = ThreadPoolManager.getInstance().schedule(() -> {
             setUnderMaintenance(true);
             LOGGER.info("CastleManorManager: Under maintenance mode started.");
-            _scheduledMaintenanceEnd = ThreadPoolManager.getInstance().scheduleGeneral(() -> {
+            _scheduledMaintenanceEnd = ThreadPoolManager.getInstance().schedule(() -> {
                 LOGGER.info("CastleManorManager: Next period started.");
                 setNextPeriod();
                 try {
@@ -176,7 +176,7 @@ public class CastleManorManager {
     public void updatePeriodApprove() {
         LOGGER.info("CastleManorManager: Manor period approve updated.");
 
-        _scheduledNextPeriodapprove = ThreadPoolManager.getInstance().scheduleGeneral(new Runnable() {
+        _scheduledNextPeriodapprove = ThreadPoolManager.getInstance().schedule(new Runnable() {
             @Override
             public void run() {
                 approveNextPeriod();

@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.model.world;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
@@ -175,7 +175,7 @@ public final class L2WorldRegion {
             }
 
             // then, set a timer to activate the neighbors
-            updateNeighborsActiveTask = ThreadPoolManager.getInstance().scheduleGeneral(new NeighborsTask(true), 1000);
+            updateNeighborsActiveTask = ThreadPoolManager.getInstance().schedule(new NeighborsTask(true), 1000);
         }
     }
 
@@ -185,7 +185,7 @@ public final class L2WorldRegion {
                 updateNeighborsActiveTask.cancel(true);
                 updateNeighborsActiveTask = null;
             }
-            updateNeighborsActiveTask = ThreadPoolManager.getInstance().scheduleGeneral(new NeighborsTask(false), 120000);
+            updateNeighborsActiveTask = ThreadPoolManager.getInstance().schedule(new NeighborsTask(false), 120000);
         }
     }
 

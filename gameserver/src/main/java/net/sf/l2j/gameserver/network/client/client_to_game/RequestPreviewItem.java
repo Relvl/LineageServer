@@ -15,7 +15,7 @@
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.BuyListTable;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
@@ -139,7 +139,7 @@ public final class RequestPreviewItem extends L2GameClientPacket {
             activeChar.sendPacket(new ShopPreviewInfo(_itemList));
 
             // Schedule task
-            ThreadPoolManager.getInstance().scheduleGeneral(new RemoveWearItemsTask(activeChar), Config.WEAR_DELAY * 1000);
+            ThreadPoolManager.getInstance().schedule(new RemoveWearItemsTask(activeChar), Config.WEAR_DELAY * 1000);
         }
     }
 

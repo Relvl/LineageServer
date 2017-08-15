@@ -62,7 +62,7 @@ public class Q127_KamaelAWindowToTheFuture extends Quest
 		
 		if (event.equalsIgnoreCase("31350-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(MARK_DOMINIC, 1);
@@ -140,11 +140,11 @@ public class Q127_KamaelAWindowToTheFuture extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = "31350-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				switch (npc.getNpcId())
 				{
 					case KLAUS:
@@ -188,7 +188,7 @@ public class Q127_KamaelAWindowToTheFuture extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				return htmltext;
 		}

@@ -141,7 +141,7 @@ public class Orfen extends AbstractNpcAI {
             // Orfen already ported once and is lured out of her lair ; teleport her back.
             else if (_isTeleported && !ORFEN_LAIR.isInsideZone(npc)) { goTo(npc, ORFEN_LOCATION[0]); }
         }
-        return super.onAdvEvent(event, npc, player);
+        return null;
     }
 
     @Override

@@ -1,7 +1,7 @@
 package net.sf.l2j.gameserver.taskmanager;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.taskmanager.tasks.*;
 import net.sf.l2j.gameserver.taskmanager.tasks.ATask.TaskType;
 import org.slf4j.Logger;
@@ -158,13 +158,13 @@ public final class TaskManager {
 
             case TYPE_SHEDULED:
                 delay = Long.valueOf(task.getParams()[0]);
-                task._scheduled = scheduler.scheduleGeneral(task, delay);
+                task._scheduled = scheduler.schedule(task, delay);
                 return true;
 
             case TYPE_FIXED_SHEDULED:
                 delay = Long.valueOf(task.getParams()[0]);
                 interval = Long.valueOf(task.getParams()[1]);
-                task._scheduled = scheduler.scheduleGeneralAtFixedRate(task, delay, interval);
+                task._scheduled = scheduler.scheduleAtFixedRate(task, delay, interval);
                 return true;
 
             case TYPE_TIME:
@@ -172,7 +172,7 @@ public final class TaskManager {
                     Date desired = DateFormat.getInstance().parse(task.getParams()[0]);
                     long diff = desired.getTime() - System.currentTimeMillis();
                     if (diff >= 0) {
-                        task._scheduled = scheduler.scheduleGeneral(task, diff);
+                        task._scheduled = scheduler.schedule(task, diff);
                         return true;
                     }
                     LOGGER.info("Task {} is obsoleted.", task.getId());
@@ -217,7 +217,7 @@ public final class TaskManager {
 
                 if (check.after(min) || delay < 0) { delay += interval; }
 
-                task._scheduled = scheduler.scheduleGeneralAtFixedRate(task, delay, interval);
+                task._scheduled = scheduler.scheduleAtFixedRate(task, delay, interval);
                 return false;
 
             default:

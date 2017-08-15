@@ -67,7 +67,7 @@ public class Q370_AnElderSowsSeeds extends Quest
 		
 		if (event.equalsIgnoreCase("30612-3.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -102,11 +102,11 @@ public class Q370_AnElderSowsSeeds extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 28) ? "30612-0a.htm" : "30612-0.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				htmltext = "30612-4.htm";
 				break;
 		}
@@ -117,7 +117,7 @@ public class Q370_AnElderSowsSeeds extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, STATE_STARTED);
+		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, QuestState.STATE_STARTED);
 		if (partyMember == null)
 			return null;
 		

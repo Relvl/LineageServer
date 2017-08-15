@@ -52,7 +52,7 @@ public class Q109_InSearchOfTheNest extends Quest
 		
 		if (event.equalsIgnoreCase("31553-01.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -88,7 +88,7 @@ public class Q109_InSearchOfTheNest extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				// Must worn one or other Golden Ram Badge in order to be accepted.
 				if (player.getLevel() >= 66 && st.hasAtLeastOneQuestItem(RECRUIT_BADGE, SOLDIER_BADGE))
 					htmltext = "31553-00.htm";
@@ -96,7 +96,7 @@ public class Q109_InSearchOfTheNest extends Quest
 					htmltext = "31553-00a.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -123,7 +123,7 @@ public class Q109_InSearchOfTheNest extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

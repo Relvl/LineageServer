@@ -73,7 +73,7 @@ public class Q103_SpiritOfCraftsman extends Quest
 		
 		if (event.equalsIgnoreCase("30307-05.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(KARROD_LETTER, 1);
@@ -92,7 +92,7 @@ public class Q103_SpiritOfCraftsman extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.DarkElf)
 					htmltext = "30307-00.htm";
 				else if (player.getLevel() < 11)
@@ -101,7 +101,7 @@ public class Q103_SpiritOfCraftsman extends Quest
 					htmltext = "30307-03.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -205,7 +205,7 @@ public class Q103_SpiritOfCraftsman extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}
@@ -216,7 +216,7 @@ public class Q103_SpiritOfCraftsman extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

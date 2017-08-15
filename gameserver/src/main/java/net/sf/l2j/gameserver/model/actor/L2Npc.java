@@ -18,9 +18,9 @@ import net.sf.l2j.Config;
 import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.EChatType;
-import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.cache.HtmCache;
+import net.sf.l2j.gameserver.cache.HtmlCacheNew;
 import net.sf.l2j.gameserver.datatables.*;
 import net.sf.l2j.gameserver.datatables.SkillTable.FrequentSkill;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
@@ -46,15 +46,16 @@ import net.sf.l2j.gameserver.model.zone.type.L2TownZone;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.AbstractNpcInfo.NpcInfo;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
+import net.sf.l2j.gameserver.scripting.EScript;
 import net.sf.l2j.gameserver.scripting.EventType;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
-import net.sf.l2j.gameserver.scripting.ScriptManager;
 import net.sf.l2j.gameserver.taskmanager.DecayTaskManager;
 import net.sf.l2j.gameserver.taskmanager.RandomAnimationTaskManager;
 import net.sf.l2j.gameserver.templates.L2HelperBuff;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
 import net.sf.l2j.gameserver.util.Broadcast;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -77,14 +78,14 @@ public class L2Npc extends L2Character {
 
     private L2Spawn _spawn;
 
-    volatile boolean _isDecayed = false;
+    volatile boolean _isDecayed;
 
     private int _castleIndex = -2;
-    private boolean _isInTown = false;
+    private boolean _isInTown;
 
-    private int _spoilerId = 0;
+    private int _spoilerId;
 
-    private long _lastSocialBroadcast = 0;
+    private long _lastSocialBroadcast;
 
     private int _currentLHandId;
     private int _currentRHandId;
@@ -93,11 +94,11 @@ public class L2Npc extends L2Character {
     private int _currentCollisionHeight; // used for npc grow effect skills
     private int _currentCollisionRadius; // used for npc grow effect skills
 
-    private int _currentSsCount = 0;
-    private int _currentSpsCount = 0;
-    private int _shotsMask = 0;
+    private int _currentSsCount;
+    private int _currentSpsCount;
+    private int _shotsMask;
 
-    private int _scriptValue = 0;
+    private int _scriptValue;
 
     public int getSsCount() {
         return getTemplate().getAIData().getSsCount();
@@ -149,7 +150,7 @@ public class L2Npc extends L2Character {
      * @param id the animation id.
      */
     public void onRandomAnimation(int id) {
-        final long now = System.currentTimeMillis();
+        long now = System.currentTimeMillis();
         if (now - _lastSocialBroadcast > SOCIAL_INTERVAL) {
             _lastSocialBroadcast = now;
             broadcastPacket(new SocialAction(this, id));
@@ -162,7 +163,7 @@ public class L2Npc extends L2Character {
     public void startRandomAnimationTimer() {
         if (!hasRandomAnimation()) { return; }
 
-        final int timer = (isMob()) ? Rnd.get(Config.MIN_MONSTER_ANIMATION, Config.MAX_MONSTER_ANIMATION) : Rnd.get(Config.MIN_NPC_ANIMATION, Config.MAX_NPC_ANIMATION);
+        int timer = (isMob()) ? Rnd.get(Config.MIN_MONSTER_ANIMATION, Config.MAX_MONSTER_ANIMATION) : Rnd.get(Config.MIN_NPC_ANIMATION, Config.MAX_NPC_ANIMATION);
         RandomAnimationTaskManager.getInstance().add(this, timer);
     }
 
@@ -170,7 +171,7 @@ public class L2Npc extends L2Character {
      * @return true if the server allows Random Animation, false if not or the AItype is a corpse.
      */
     public boolean hasRandomAnimation() {
-        return (Config.MAX_NPC_ANIMATION > 0 && !getAiType().equals(AIType.CORPSE));
+        return Config.MAX_NPC_ANIMATION > 0 && !getAiType().equals(AIType.CORPSE);
     }
 
     /**
@@ -365,7 +366,7 @@ public class L2Npc extends L2Character {
                 if (!isAlikeDead()) { player.getAI().setIntention(EIntention.ATTACK, this); }
                 else {
                     // Rotate the player to face the instance
-                    player.sendPacket(new MoveToPawn(player, this, L2Npc.INTERACTION_DISTANCE));
+                    player.sendPacket(new MoveToPawn(player, this, INTERACTION_DISTANCE));
 
                     // Send ActionFailed to the player in order to avoid he stucks
                     player.sendPacket(ActionFailed.STATIC_PACKET);
@@ -381,7 +382,7 @@ public class L2Npc extends L2Character {
                 }
                 else {
                     // Rotate the player to face the instance
-                    player.sendPacket(new MoveToPawn(player, this, L2Npc.INTERACTION_DISTANCE));
+                    player.sendPacket(new MoveToPawn(player, this, INTERACTION_DISTANCE));
 
                     // Send ActionFailed to the player in order to avoid he stucks
                     player.sendPacket(ActionFailed.STATIC_PACKET);
@@ -406,7 +407,7 @@ public class L2Npc extends L2Character {
     public void onActionShift(L2PcInstance player) {
         // Check if the L2PcInstance is a GM
         if (player.isGM()) {
-            final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
+            NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
             html.setFile("data/html/admin/npcinfo.htm");
             html.replace("%class%", getClass().getSimpleName());
             html.replace("%id%", getTemplate().getNpcId());
@@ -414,7 +415,7 @@ public class L2Npc extends L2Character {
             html.replace("%name%", getTemplate().getName());
             html.replace("%race%", getTemplate().getRace().toString());
             html.replace("%tmplid%", getTemplate().getIdTemplate());
-            html.replace("%aggro%", (this instanceof L2Attackable) ? ((L2Attackable) this).getAggroRange() : 0);
+            html.replace("%aggro%", (this instanceof L2Attackable) ? this.getAggroRange() : 0);
             html.replace("%corpse%", getTemplate().getCorpseTime());
             html.replace("%enchant%", getTemplate().getEnchantEffect());
             html.replace("%hp%", (int) getCurrentHp());
@@ -476,7 +477,7 @@ public class L2Npc extends L2Character {
             html.replace("%ai_seed%", String.valueOf(isSeedable()));
             html.replace("%ai_ssinfo%", _currentSsCount + "[" + getSsCount() + "] - " + getSsRate() + "%");
             html.replace("%ai_spsinfo%", _currentSpsCount + "[" + getSpsCount() + "] - " + getSpsRate() + "%");
-            html.replace("%butt%", ((this instanceof L2MerchantInstance) ? "<button value=\"Shop\" action=\"bypass -h admin_show_shop " + getNpcId() + "\" width=65 height=19 back=\"L2UI_ch3.smallbutton2_over\" fore=\"L2UI_ch3.smallbutton2\">" : ""));
+            html.replace("%butt%", this instanceof L2MerchantInstance ? "<button value=\"Shop\" action=\"bypass -h admin_show_shop " + getNpcId() + "\" width=65 height=19 back=\"L2UI_ch3.smallbutton2_over\" fore=\"L2UI_ch3.smallbutton2\">" : "");
             player.sendPacket(html);
             player.sendPacket(ActionFailed.STATIC_PACKET);
         }
@@ -535,7 +536,7 @@ public class L2Npc extends L2Character {
      */
     public void onBypassFeedback(L2PcInstance player, String command) {
         if (command.equalsIgnoreCase("TerritoryStatus")) {
-            final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
+            NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 
             if (getCastle().getOwnerId() > 0) {
                 html.setFile("data/html/territorystatus.htm");
@@ -563,7 +564,7 @@ public class L2Npc extends L2Character {
             }
 
             if (quest.isEmpty()) { showQuestWindowGeneral(player, this); }
-            else { showQuestWindowSingle(player, this, ScriptManager.getInstance().getQuest(quest)); }
+            else { showQuestWindowSingle(player, this, EScript.getQuest(quest)); }
         }
         else if (command.startsWith("Chat")) {
             int val = 0;
@@ -581,7 +582,7 @@ public class L2Npc extends L2Character {
             String path = command.substring(5).trim();
             if (path.indexOf("..") != -1) { return; }
 
-            final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
+            NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
             html.setFile("data/html/" + path);
             html.replace("%objectId%", getObjectId());
             player.sendPacket(html);
@@ -655,15 +656,12 @@ public class L2Npc extends L2Character {
      */
     public static void showQuestWindowGeneral(L2PcInstance player, L2Npc npc) {
         List<Quest> quests = new ArrayList<>();
-
         List<Quest> awaits = npc.getTemplate().getEventQuests(EventType.ON_TALK);
         if (awaits != null) {
             for (Quest quest : awaits) {
                 if (quest == null || !quest.isRealQuest() || quests.contains(quest)) { continue; }
-
                 QuestState qs = player.getQuestState(quest.getName());
                 if (qs == null || qs.isCreated()) { continue; }
-
                 quests.add(quest);
             }
         }
@@ -672,7 +670,6 @@ public class L2Npc extends L2Character {
         if (starts != null) {
             for (Quest quest : starts) {
                 if (quest == null || !quest.isRealQuest() || quests.contains(quest)) { continue; }
-
                 quests.add(quest);
             }
         }
@@ -691,10 +688,9 @@ public class L2Npc extends L2Character {
      */
     public static void showQuestWindowSingle(L2PcInstance player, L2Npc npc, Quest quest) {
         if (quest == null) {
-            final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
+            NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
             html.setHtml(Quest.getNoQuestMsg());
             player.sendPacket(html);
-
             player.sendPacket(ActionFailed.STATIC_PACKET);
             return;
         }
@@ -707,8 +703,8 @@ public class L2Npc extends L2Character {
         QuestState qs = player.getQuestState(quest.getName());
         if (qs == null) {
             if (quest.isRealQuest() && player.getAllQuests(false).size() >= 25) {
-                final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
-                html.setHtml(Quest.getTooMuchQuestsMsg());
+                NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
+                html.setHtml(HtmlCacheNew.getInstance().getHtml("data/html/scripts/quests/TooMuchQuests.htm"));
                 player.sendPacket(html);
 
                 player.sendPacket(ActionFailed.STATIC_PACKET);
@@ -716,7 +712,9 @@ public class L2Npc extends L2Character {
             }
 
             List<Quest> qlst = npc.getTemplate().getEventQuests(EventType.QUEST_START);
-            if (qlst != null && qlst.contains(quest)) { qs = quest.newQuestState(player); }
+            if (qlst != null && qlst.contains(quest)) {
+                qs = quest.newQuestState(player);
+            }
         }
 
         if (qs != null) { quest.notifyTalk(npc, qs.getPlayer()); }
@@ -730,12 +728,12 @@ public class L2Npc extends L2Character {
      * @param quests The list containing quests of the L2Npc.
      */
     public static void showQuestWindowChoose(L2PcInstance player, L2Npc npc, List<Quest> quests) {
-        final StringBuilder sb = new StringBuilder("<html><body>");
+        StringBuilder sb = new StringBuilder("<html><body>");
 
         for (Quest q : quests) {
             StringUtil.append(sb, "<a action=\"bypass -h npc_%objectId%_Quest ", q.getName(), "\">[", q.getDescr());
 
-            final QuestState qs = player.getQuestState(q.getName());
+            QuestState qs = player.getQuestState(q.getName());
             if (qs != null && qs.isStarted()) { sb.append(" (In Progress)]</a><br>"); }
             else if (qs != null && qs.isCompleted()) { sb.append(" (Done)]</a><br>"); }
             else { sb.append("]</a><br>"); }
@@ -743,7 +741,7 @@ public class L2Npc extends L2Character {
 
         sb.append("</body></html>");
 
-        final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
+        NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
         html.setHtml(sb.toString());
         html.replace("%objectId%", npc.getObjectId());
         player.sendPacket(html);
@@ -848,7 +846,7 @@ public class L2Npc extends L2Character {
     public void showLotoWindow(L2PcInstance player, int val) {
         int npcId = getTemplate().getNpcId();
 
-        final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
+        NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 
         if (val == 0) // 0 - first buy lottery ticket window
         {
@@ -956,9 +954,9 @@ public class L2Npc extends L2Character {
         }
         else if (val == 24) // 24 - Previous winning numbers/Prize claim
         {
-            final int lotoNumber = Lottery.getInstance().getId();
+            int lotoNumber = Lottery.getInstance().getId();
 
-            final StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             for (L2ItemInstance item : player.getInventory().getItems()) {
                 if (item == null) { continue; }
 
@@ -1077,7 +1075,7 @@ public class L2Npc extends L2Character {
 
         // If the player is too high level, display a message and return
         if (player_level > higestLevel || !player.isNewbie()) {
-            final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
+            NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
             html.setHtml("<html><body>Newbie Guide:<br>Only a <font color=\"LEVEL\">novice character of level " + higestLevel + " or less</font> can receive my support magic.<br>Your novice character is the first one that you created and raised in this world.</body></html>");
             html.replace("%objectId%", getObjectId());
             player.sendPacket(html);
@@ -1086,7 +1084,7 @@ public class L2Npc extends L2Character {
 
         // If the player is too low level, display a message and return
         if (player_level < lowestLevel) {
-            final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
+            NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
             html.setHtml("<html><body>Come back here when you have reached level " + lowestLevel + ". I will give you support magic then.</body></html>");
             html.replace("%objectId%", getObjectId());
             player.sendPacket(html);
@@ -1116,7 +1114,7 @@ public class L2Npc extends L2Character {
     private boolean showPkDenyChatWindow(L2PcInstance player, String type) {
         String content = HtmCache.getInstance().getHtm("data/html/" + type + "/" + getNpcId() + "-pk.htm");
         if (content != null) {
-            final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
+            NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
             html.setHtml(content);
             player.sendPacket(html);
             player.sendPacket(ActionFailed.STATIC_PACKET);
@@ -1151,7 +1149,7 @@ public class L2Npc extends L2Character {
             }
         }
 
-        final int npcId = getNpcId();
+        int npcId = getNpcId();
         String filename;
 
         if (npcId >= 31865 && npcId <= 31918) {
@@ -1159,7 +1157,7 @@ public class L2Npc extends L2Character {
         }
         else { filename = getHtmlPath(npcId, val); }
 
-        final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
+        NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
         html.setFile(filename);
         html.replace("%objectId%", getObjectId());
         player.sendPacket(html);
@@ -1178,7 +1176,7 @@ public class L2Npc extends L2Character {
      * @param filename The filename that contains the text to send
      */
     public void showChatWindow(L2PcInstance player, String filename) {
-        final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
+        NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
         html.setFile(filename);
         html.replace("%objectId%", getObjectId());
         player.sendPacket(html);
@@ -1292,7 +1290,7 @@ public class L2Npc extends L2Character {
         // Decay
         onDecay();
 
-        final L2WorldRegion region = getWorldRegion();
+        L2WorldRegion region = getWorldRegion();
         if (region != null) { region.removeFromZones(this); }
 
         // Remove all L2Object from _knownObjects and _knownPlayer of the L2Character then cancel Attak or Cast and notify AI
@@ -1381,7 +1379,7 @@ public class L2Npc extends L2Character {
     }
 
     public L2Npc scheduleDespawn(long delay) {
-        ThreadPoolManager.getInstance().scheduleGeneral(this.new DespawnTask(), delay);
+        ThreadPoolManager.getInstance().schedule(this.new DespawnTask(), delay);
         return this;
     }
 

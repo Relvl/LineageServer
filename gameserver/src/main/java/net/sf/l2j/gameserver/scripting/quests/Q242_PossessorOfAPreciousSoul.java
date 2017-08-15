@@ -173,7 +173,7 @@ public class Q242_PossessorOfAPreciousSoul extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (st.hasQuestItems(VIRGIL_LETTER))
 				{
 					if (!player.isSubClassActive() || player.getLevel() < 60)
@@ -181,7 +181,7 @@ public class Q242_PossessorOfAPreciousSoul extends Quest
 					else
 					{
 						htmltext = "31742-03.htm";
-						st.setState(STATE_STARTED);
+						st.setState(QuestState.STATE_STARTED);
 						st.set("cond", "1");
 						st.playSound(QuestState.SOUND_ACCEPT);
 						st.takeItems(VIRGIL_LETTER, 1);
@@ -189,7 +189,7 @@ public class Q242_PossessorOfAPreciousSoul extends Quest
 				}
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (!player.isSubClassActive())
 					break;
 				
@@ -344,7 +344,7 @@ public class Q242_PossessorOfAPreciousSoul extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

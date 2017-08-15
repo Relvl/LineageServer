@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.model.zone.type;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.world.L2WorldRegion;
@@ -20,7 +20,7 @@ public class L2DynamicZone extends L2ZoneType {
         _owner = owner;
         _skill = skill;
 
-        task = ThreadPoolManager.getInstance().scheduleGeneral(this::remove, skill.getBuffDuration());
+        task = ThreadPoolManager.getInstance().schedule(this::remove, skill.getBuffDuration());
     }
 
     protected void setTask(Future<?> task) {

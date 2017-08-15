@@ -93,7 +93,7 @@ public class Q633_InTheForgottenVillage extends Quest
 		
 		if (event.equalsIgnoreCase("31388-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -129,11 +129,11 @@ public class Q633_InTheForgottenVillage extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 65) ? "31388-03.htm" : "31388-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				if (cond == 1)
 					htmltext = "31388-06.htm";
@@ -152,7 +152,7 @@ public class Q633_InTheForgottenVillage extends Quest
 		
 		if (UNDEADS.containsKey(npcId))
 		{
-			L2PcInstance partyMember = getRandomPartyMemberState(player, npc, STATE_STARTED);
+			L2PcInstance partyMember = getRandomPartyMemberState(player, npc, QuestState.STATE_STARTED);
 			if (partyMember == null)
 				return null;
 			

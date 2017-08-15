@@ -49,7 +49,7 @@ public class Q050_LanoscosSpecialBait extends Quest
 		
 		if (event.equalsIgnoreCase("31570-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -75,15 +75,15 @@ public class Q050_LanoscosSpecialBait extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 27) ? "31570-02.htm" : "31570-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				htmltext = (st.getQuestItemsCount(ESSENCE_OF_WIND) == 100) ? "31570-04.htm" : "31570-05.htm";
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

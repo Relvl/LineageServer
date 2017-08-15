@@ -56,7 +56,7 @@ public class Q168_DeliverSupplies extends Quest
 		
 		if (event.equalsIgnoreCase("30349-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(JENNA_LETTER, 1);
@@ -75,7 +75,7 @@ public class Q168_DeliverSupplies extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.DarkElf)
 					htmltext = "30349-00.htm";
 				else if (player.getLevel() < 3)
@@ -84,7 +84,7 @@ public class Q168_DeliverSupplies extends Quest
 					htmltext = "30349-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -169,7 +169,7 @@ public class Q168_DeliverSupplies extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

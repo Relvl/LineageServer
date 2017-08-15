@@ -51,7 +51,7 @@ public class Q647_InfluxOfMachines extends Quest
 		
 		if (event.equalsIgnoreCase("32069-02.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -76,11 +76,11 @@ public class Q647_InfluxOfMachines extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 46) ? "32069-03.htm" : "32069-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				if (cond == 1)
 					htmltext = "32069-04.htm";

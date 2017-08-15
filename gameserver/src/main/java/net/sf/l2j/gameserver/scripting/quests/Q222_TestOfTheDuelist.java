@@ -96,7 +96,7 @@ public class Q222_TestOfTheDuelist extends Quest
 		}
 		else if (event.equalsIgnoreCase("30623-07.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.set("cond", "2");
 			st.playSound(QuestState.SOUND_ACCEPT);
@@ -148,7 +148,7 @@ public class Q222_TestOfTheDuelist extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				final int classId = player.getClassId().getId();
 				if (classId != 0x01 && classId != 0x2f && classId != 0x13 && classId != 0x20)
 					htmltext = "30623-02.htm";
@@ -158,7 +158,7 @@ public class Q222_TestOfTheDuelist extends Quest
 					htmltext = "30623-03.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				if (cond == 2)
 					htmltext = "30623-07a.htm";
@@ -183,7 +183,7 @@ public class Q222_TestOfTheDuelist extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}
@@ -194,7 +194,7 @@ public class Q222_TestOfTheDuelist extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

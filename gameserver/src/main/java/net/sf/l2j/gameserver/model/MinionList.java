@@ -2,7 +2,7 @@ package net.sf.l2j.gameserver.model;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.actor.L2Character;
@@ -152,7 +152,7 @@ public class MinionList {
         _minionReferences.remove(minion);
 
         int time = _master.isRaid() ? (int) Config.RAID_MINION_RESPAWN_TIMER : respawnTime;
-        if (time > 0 && !_master.isAlikeDead()) { ThreadPoolManager.getInstance().scheduleGeneral(new MinionRespawnTask(minion), time); }
+        if (time > 0 && !_master.isAlikeDead()) { ThreadPoolManager.getInstance().schedule(new MinionRespawnTask(minion), time); }
     }
 
     /**

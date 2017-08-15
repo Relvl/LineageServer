@@ -60,7 +60,7 @@ public class Q260_HuntTheOrcs extends Quest
 		
 		if (event.equalsIgnoreCase("30221-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -83,7 +83,7 @@ public class Q260_HuntTheOrcs extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.Elf)
 					htmltext = "30221-00.htm";
 				else if (player.getLevel() < 6)
@@ -92,7 +92,7 @@ public class Q260_HuntTheOrcs extends Quest
 					htmltext = "30221-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int amulet = st.getQuestItemsCount(ORC_AMULET);
 				int necklace = st.getQuestItemsCount(ORC_NECKLACE);
 				
@@ -114,7 +114,7 @@ public class Q260_HuntTheOrcs extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

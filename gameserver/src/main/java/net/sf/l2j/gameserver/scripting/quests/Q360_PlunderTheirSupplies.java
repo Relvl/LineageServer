@@ -81,7 +81,7 @@ public class Q360_PlunderTheirSupplies extends Quest
 		
 		if (event.equalsIgnoreCase("30873-2.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -107,11 +107,11 @@ public class Q360_PlunderTheirSupplies extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 52) ? "30873-0a.htm" : "30873-0.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int supplyItems = st.getQuestItemsCount(SUPPLY_ITEM);
 				if (supplyItems == 0)
 					htmltext = "30873-3.htm";
@@ -133,7 +133,7 @@ public class Q360_PlunderTheirSupplies extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

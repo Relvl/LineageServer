@@ -50,7 +50,7 @@ public class Q634_InSearchOfFragmentsOfDimension extends Quest
 		
 		if (event.equalsIgnoreCase("02.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -73,11 +73,11 @@ public class Q634_InSearchOfFragmentsOfDimension extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 20) ? "01a.htm" : "01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				htmltext = "03.htm";
 				break;
 		}
@@ -88,7 +88,7 @@ public class Q634_InSearchOfFragmentsOfDimension extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, STATE_STARTED);
+		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, QuestState.STATE_STARTED);
 		if (partyMember == null)
 			return null;
 		

@@ -49,7 +49,7 @@ public class Q432_BirthdayPartySong extends Quest
 		
 		if (event.equalsIgnoreCase("31043-02.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -78,11 +78,11 @@ public class Q432_BirthdayPartySong extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 31) ? "31043-00.htm" : "31043-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				htmltext = (st.getQuestItemsCount(RED_CRYSTAL) < 50) ? "31043-03.htm" : "31043-04.htm";
 				break;
 		}

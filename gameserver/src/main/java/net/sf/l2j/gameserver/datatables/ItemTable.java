@@ -2,7 +2,7 @@ package net.sf.l2j.gameserver.datatables;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
@@ -82,13 +82,13 @@ public class ItemTable {
                 L2Attackable raidBoss = (L2Attackable) reference;
                 if (raidBoss.getFirstCommandChannelAttacked() != null) {
                     item.setOwnerId(raidBoss.getFirstCommandChannelAttacked().getChannelLeader().getObjectId());
-                    itemLootShedule = ThreadPoolManager.getInstance().scheduleGeneral(new ResetOwner(item), 300000);
+                    itemLootShedule = ThreadPoolManager.getInstance().schedule(new ResetOwner(item), 300000);
                     item.setItemLootTask(itemLootShedule);
                 }
             }
             else if (!Config.AUTO_LOOT) {
                 item.setOwnerId(actor.getObjectId());
-                itemLootShedule = ThreadPoolManager.getInstance().scheduleGeneral(new ResetOwner(item), 15000);
+                itemLootShedule = ThreadPoolManager.getInstance().schedule(new ResetOwner(item), 15000);
                 item.setItemLootTask(itemLootShedule);
             }
         }

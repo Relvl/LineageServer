@@ -85,7 +85,7 @@ public final class Q125_TheNameOfEvil_1 extends Quest
 		
 		if (event.equalsIgnoreCase("32114-05.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -136,7 +136,7 @@ public final class Q125_TheNameOfEvil_1 extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				QuestState first = player.getQuestState(Q124_MeetingTheElroki.qn);
 				if (first != null && first.isCompleted() && player.getLevel() >= 76)
 					htmltext = "32114-01.htm";
@@ -144,7 +144,7 @@ public final class Q125_TheNameOfEvil_1 extends Quest
 					htmltext = "32114-00.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -224,7 +224,7 @@ public final class Q125_TheNameOfEvil_1 extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

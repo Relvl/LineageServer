@@ -186,7 +186,7 @@ public class Q230_TestOfTheSummoner extends Quest
 		// GALATEA
 		if (event.equals("30634-08a.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.set("Belthus", "1");
 			st.set("Brynthea", "1");
@@ -336,7 +336,7 @@ public class Q230_TestOfTheSummoner extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getClassId() != ClassId.wizard && player.getClassId() != ClassId.elvenWizard && player.getClassId() != ClassId.darkWizard) // wizard, elven wizard, dark wizard
 					htmltext = "30634-01.htm";
 				else if (player.getLevel() < 39)
@@ -345,7 +345,7 @@ public class Q230_TestOfTheSummoner extends Quest
 					htmltext = "30634-03.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				switch (npcId)
 				{
 					case LARA:
@@ -579,7 +579,7 @@ public class Q230_TestOfTheSummoner extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}
@@ -593,7 +593,7 @@ public class Q230_TestOfTheSummoner extends Quest
 		if (!(killer instanceof L2Attackable))
 			return null;
 		
-		QuestState st = checkPlayerState(player, (L2Npc) killer, STATE_STARTED);
+		QuestState st = checkPlayerState(player, (L2Npc) killer, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		
@@ -654,7 +654,7 @@ public class Q230_TestOfTheSummoner extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		
@@ -820,7 +820,7 @@ public class Q230_TestOfTheSummoner extends Quest
 	@Override
 	public String onAttack(L2Npc npc, L2PcInstance attacker, int damage, boolean isPet)
 	{
-		QuestState st = checkPlayerState(attacker, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(attacker, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

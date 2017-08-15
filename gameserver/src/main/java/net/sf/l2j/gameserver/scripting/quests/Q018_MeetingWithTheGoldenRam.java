@@ -50,7 +50,7 @@ public class Q018_MeetingWithTheGoldenRam extends Quest
 		
 		if (event.equalsIgnoreCase("31314-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -82,11 +82,11 @@ public class Q018_MeetingWithTheGoldenRam extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 66) ? "31314-02.htm" : "31314-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -108,7 +108,7 @@ public class Q018_MeetingWithTheGoldenRam extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

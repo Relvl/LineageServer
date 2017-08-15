@@ -52,7 +52,7 @@ public class Q126_TheNameOfEvil_2 extends Quest
 		
 		if (event.equalsIgnoreCase("32115-05.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -264,7 +264,7 @@ public class Q126_TheNameOfEvil_2 extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getLevel() < 77)
 					htmltext = "32115-02.htm";
 				else
@@ -277,7 +277,7 @@ public class Q126_TheNameOfEvil_2 extends Quest
 				}
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -380,7 +380,7 @@ public class Q126_TheNameOfEvil_2 extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

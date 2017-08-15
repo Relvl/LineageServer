@@ -3,7 +3,7 @@ package net.sf.l2j.gameserver.model.entity;
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.CastleUpdaterTask;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.instancemanager.*;
 import net.sf.l2j.gameserver.instancemanager.CastleManorManager.CropProcure;
@@ -449,7 +449,7 @@ public class Castle {
             if (clan != null) {
                 clan.setCastle(_castleId); // Set castle flag for new owner
                 clan.broadcastToOnlineMembers(new PledgeShowInfoUpdate(clan), new PlaySound(1, "Siege_Victory", 0, 0, 0, 0, 0));
-                ThreadPoolManager.getInstance().scheduleGeneral(new CastleUpdaterTask(clan, 1), 3600000); // Schedule owner tasks to start running
+                ThreadPoolManager.getInstance().schedule(new CastleUpdaterTask(clan, 1), 3600000); // Schedule owner tasks to start running
             }
         }
         catch (Exception e) {

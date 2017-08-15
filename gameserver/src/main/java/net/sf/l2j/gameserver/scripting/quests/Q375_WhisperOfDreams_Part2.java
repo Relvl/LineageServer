@@ -65,7 +65,7 @@ public class Q375_WhisperOfDreams_Part2 extends Quest
 		// Manakia
 		if (event.equalsIgnoreCase("30515-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.takeItems(MYSTERIOUS_STONE, 1);
@@ -89,11 +89,11 @@ public class Q375_WhisperOfDreams_Part2 extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (!st.hasQuestItems(MYSTERIOUS_STONE) || player.getLevel() < 60) ? "30515-01.htm" : "30515-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getQuestItemsCount(KARIK_HORN) >= 100 && st.getQuestItemsCount(CAVE_HOWLER_SKULL) >= 100)
 				{
 					htmltext = "30515-05.htm";
@@ -113,7 +113,7 @@ public class Q375_WhisperOfDreams_Part2 extends Quest
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
 		// Drop horn or skull to anyone.
-		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, STATE_STARTED);
+		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, QuestState.STATE_STARTED);
 		if (partyMember == null)
 			return null;
 		

@@ -61,7 +61,7 @@ public class Q366_SilverHairedShaman extends Quest
 		
 		if (event.equalsIgnoreCase("30111-2.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -84,11 +84,11 @@ public class Q366_SilverHairedShaman extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 48) ? "30111-0.htm" : "30111-1.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int count = st.getQuestItemsCount(HAIR);
 				if (count == 0)
 					htmltext = "30111-3.htm";
@@ -107,7 +107,7 @@ public class Q366_SilverHairedShaman extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, STATE_STARTED);
+		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, QuestState.STATE_STARTED);
 		if (partyMember == null)
 			return null;
 		

@@ -49,7 +49,7 @@ public class Q297_GatekeepersFavor extends Quest
 		
 		if (event.equalsIgnoreCase("30540-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -67,11 +67,11 @@ public class Q297_GatekeepersFavor extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 15) ? "30540-01.htm" : "30540-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getInt("cond") == 1)
 					htmltext = "30540-04.htm";
 				else

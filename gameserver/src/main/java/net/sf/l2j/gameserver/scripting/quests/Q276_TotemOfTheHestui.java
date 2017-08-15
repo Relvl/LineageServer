@@ -53,7 +53,7 @@ public class Q276_TotemOfTheHestui extends Quest
 		
 		if (event.equalsIgnoreCase("30571-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -71,7 +71,7 @@ public class Q276_TotemOfTheHestui extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.Orc)
 					htmltext = "30571-00.htm";
 				else if (player.getLevel() < 15)
@@ -80,7 +80,7 @@ public class Q276_TotemOfTheHestui extends Quest
 					htmltext = "30571-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getInt("cond") == 1)
 					htmltext = "30571-04.htm";
 				else

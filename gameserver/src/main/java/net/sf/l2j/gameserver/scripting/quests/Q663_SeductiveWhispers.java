@@ -137,7 +137,7 @@ public class Q663_SeductiveWhispers extends Quest {
         int state = st.getInt("state");
 
         if (event.equalsIgnoreCase("30846-03.htm")) {
-            st.setState(STATE_STARTED);
+            st.setState(QuestState.STATE_STARTED);
             st.set("cond", "1");
             st.set("state", "1");
             st.playSound(QuestState.SOUND_ACCEPT);
@@ -385,11 +385,11 @@ public class Q663_SeductiveWhispers extends Quest {
         if (st == null) { return htmltext; }
 
         switch (st.getState()) {
-            case STATE_CREATED:
+            case QuestState.STATE_CREATED:
                 htmltext = (player.getLevel() < 50) ? "30846-02.htm" : "30846-01.htm";
                 break;
 
-            case STATE_STARTED:
+            case QuestState.STATE_STARTED:
                 int state = st.getInt("state");
 
                 if (state < 4) {
@@ -422,7 +422,7 @@ public class Q663_SeductiveWhispers extends Quest {
 
     @Override
     public String onKill(L2Npc npc, L2PcInstance player, boolean isPet) {
-        L2PcInstance partyMember = getRandomPartyMemberState(player, npc, STATE_STARTED);
+        L2PcInstance partyMember = getRandomPartyMemberState(player, npc, QuestState.STATE_STARTED);
         if (partyMember == null) { return null; }
 
         partyMember.getQuestState(qn).dropItems(SPIRIT_BEAD, 1, 0, CHANCES.get(npc.getNpcId()));

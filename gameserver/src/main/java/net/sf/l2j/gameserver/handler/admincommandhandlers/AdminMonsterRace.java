@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.handler.admincommandhandlers;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.instancemanager.games.MonsterRace;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -77,7 +77,7 @@ public class AdminMonsterRace implements IAdminCommandHandler
 				activeChar.broadcastPacket(new PlaySound(0, "ItemSound2.race_start", 1, 121209259, 12125, 182487, -3559));
 				activeChar.broadcastPacket(new MonRaceInfo(codes[state][0], codes[state][1], race.getMonsters(), race.getSpeeds()));
 				
-				ThreadPoolManager.getInstance().scheduleGeneral(new RunRace(codes, activeChar), 5000);
+				ThreadPoolManager.getInstance().schedule(new RunRace(codes, activeChar), 5000);
 			}
 		}
 		return true;
@@ -99,7 +99,7 @@ public class AdminMonsterRace implements IAdminCommandHandler
 		public void run()
 		{
 			activeChar.broadcastPacket(new MonRaceInfo(codes[2][0], codes[2][1], MonsterRace.getInstance().getMonsters(), MonsterRace.getInstance().getSpeeds()));
-			ThreadPoolManager.getInstance().scheduleGeneral(new RunEnd(activeChar), 30000);
+			ThreadPoolManager.getInstance().schedule(new RunEnd(activeChar), 30000);
 		}
 	}
 	

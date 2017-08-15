@@ -96,7 +96,7 @@ public class Q232_TestOfTheLord extends Quest
 		
 		if (event.equalsIgnoreCase("30565-05.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(ORDEAL_NECKLACE, 1);
@@ -185,7 +185,7 @@ public class Q232_TestOfTheLord extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.Orc)
 					htmltext = "30565-01.htm";
 				else if (player.getClassId() != ClassId.orcShaman)
@@ -196,7 +196,7 @@ public class Q232_TestOfTheLord extends Quest
 					htmltext = "30565-04.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -458,7 +458,7 @@ public class Q232_TestOfTheLord extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}
@@ -469,7 +469,7 @@ public class Q232_TestOfTheLord extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

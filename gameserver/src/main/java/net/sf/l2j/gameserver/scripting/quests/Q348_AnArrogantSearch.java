@@ -99,7 +99,7 @@ public class Q348_AnArrogantSearch extends Quest
 		
 		if (event.equalsIgnoreCase("30864-05.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.set("cond", "2");
 			st.playSound(QuestState.SOUND_ACCEPT);
@@ -168,7 +168,7 @@ public class Q348_AnArrogantSearch extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (st.hasQuestItems(BLOODED_FABRIC))
 					htmltext = "30864-00.htm";
 				else if (player.getLevel() < 60)
@@ -177,7 +177,7 @@ public class Q348_AnArrogantSearch extends Quest
 					htmltext = "30864-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -563,7 +563,7 @@ public class Q348_AnArrogantSearch extends Quest
 	@Override
 	public String onAttack(L2Npc npc, L2PcInstance attacker, int damage, boolean isPet)
 	{
-		QuestState st = checkPlayerState(attacker, npc, Quest.STATE_STARTED);
+		QuestState st = checkPlayerState(attacker, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		
@@ -631,7 +631,7 @@ public class Q348_AnArrogantSearch extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, Quest.STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

@@ -58,7 +58,7 @@ public class Q324_SweetestVenom extends Quest
 		
 		if (event.equalsIgnoreCase("30351-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -76,11 +76,11 @@ public class Q324_SweetestVenom extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 18) ? "30351-02.htm" : "30351-03.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getInt("cond") == 1)
 					htmltext = "30351-05.htm";
 				else

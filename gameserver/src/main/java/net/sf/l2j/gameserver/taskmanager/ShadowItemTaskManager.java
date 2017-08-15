@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.taskmanager;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
@@ -32,7 +32,7 @@ public class ShadowItemTaskManager implements Runnable, OnEquipListener {
 
     protected ShadowItemTaskManager() {
         // Run task each second.
-        ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(this, 1000, 1000);
+        ThreadPoolManager.getInstance().scheduleAtFixedRate(this, 1000, 1000);
     }
 
     @Override

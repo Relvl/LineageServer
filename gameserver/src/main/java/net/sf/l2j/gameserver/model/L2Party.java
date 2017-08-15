@@ -2,7 +2,7 @@ package net.sf.l2j.gameserver.model;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.instancemanager.DuelManager;
 import net.sf.l2j.gameserver.instancemanager.SevenSignsFestival;
@@ -241,7 +241,7 @@ public class L2Party {
             player.sendPacket(ExOpenMPCC.STATIC_PACKET);
         }
         if (_positionBroadcastTask == null) {
-            _positionBroadcastTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new PositionBroadcast(), PARTY_POSITION_BROADCAST / 2, PARTY_POSITION_BROADCAST);
+            _positionBroadcastTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new PositionBroadcast(), PARTY_POSITION_BROADCAST / 2, PARTY_POSITION_BROADCAST);
         }
     }
 

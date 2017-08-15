@@ -65,7 +65,7 @@ public class Q357_WarehouseKeepersAmbition extends Quest
 		
 		if (event.equalsIgnoreCase("30686-2.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -103,11 +103,11 @@ public class Q357_WarehouseKeepersAmbition extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 47) ? "30686-0a.htm" : "30686-0.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				htmltext = (!st.hasQuestItems(JADE_CRYSTAL)) ? "30686-4.htm" : "30686-6.htm";
 				break;
 		}
@@ -118,7 +118,7 @@ public class Q357_WarehouseKeepersAmbition extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, STATE_STARTED);
+		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, QuestState.STATE_STARTED);
 		if (partyMember == null)
 			return null;
 		

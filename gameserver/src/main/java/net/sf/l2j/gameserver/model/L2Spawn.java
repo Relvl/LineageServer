@@ -16,7 +16,7 @@ package net.sf.l2j.gameserver.model;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.geoengine.GeoData;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
@@ -264,7 +264,7 @@ public class L2Spawn {
             final int randomTime = (_randomRespawnDelay > 0) ? Rnd.get(-_randomRespawnDelay, _randomRespawnDelay) * 1000 : 0;
 
             // Create a new SpawnTask to launch after the respawn Delay
-            ThreadPoolManager.getInstance().scheduleGeneral(new SpawnTask(oldNpc), _respawnDelay + randomTime);
+            ThreadPoolManager.getInstance().schedule(new SpawnTask(oldNpc), _respawnDelay + randomTime);
         }
     }
 

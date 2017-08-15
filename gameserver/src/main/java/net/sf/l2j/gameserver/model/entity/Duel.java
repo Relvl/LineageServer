@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Future;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.instancemanager.DuelManager;
 import net.sf.l2j.gameserver.model.L2Effect;
@@ -96,10 +96,10 @@ public class Duel
 		savePlayerConditions();
 		
 		// Start task, used for countdowns and startDuel method call. Can be shutdowned if the check task commands it.
-		_startTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new StartTask(), 1000, 1000);
+		_startTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new StartTask(), 1000, 1000);
 		
 		// Check task, used to verify if duel is disturbed.
-		_checkTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new CheckTask(), 1000, 1000);
+		_checkTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new CheckTask(), 1000, 1000);
 	}
 	
 	/**

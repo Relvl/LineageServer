@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.datatables.MapRegionTable.TeleportWhereType;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
@@ -40,7 +40,7 @@ public final class RequestRestartPoint extends L2GameClientPacket {
         if (castle != null && castle.getSiege().isInProgress()) {
             if (activeChar.getClan() != null && castle.getSiege().checkIsAttacker(activeChar.getClan())) {
                 // Schedule respawn delay for attacker
-                ThreadPoolManager.getInstance().scheduleGeneral(new DeathTask(activeChar), SiegeManager.ATTACKERS_RESPAWN_DELAY);
+                ThreadPoolManager.getInstance().schedule(new DeathTask(activeChar), SiegeManager.ATTACKERS_RESPAWN_DELAY);
 
                 if (SiegeManager.ATTACKERS_RESPAWN_DELAY > 0) {
                     activeChar.sendMessage("You will be teleported in " + SiegeManager.ATTACKERS_RESPAWN_DELAY / 1000 + " seconds.");

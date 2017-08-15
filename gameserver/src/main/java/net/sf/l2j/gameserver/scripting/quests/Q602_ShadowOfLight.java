@@ -83,7 +83,7 @@ public class Q602_ShadowOfLight extends Quest
 				htmltext = "31683-02a.htm";
 			else
 			{
-				st.setState(STATE_STARTED);
+				st.setState(QuestState.STATE_STARTED);
 				st.set("cond", "1");
 				st.playSound(QuestState.SOUND_ACCEPT);
 			}
@@ -123,11 +123,11 @@ public class Q602_ShadowOfLight extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = "31683-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				if (cond == 1)
 					htmltext = "31683-03.htm";

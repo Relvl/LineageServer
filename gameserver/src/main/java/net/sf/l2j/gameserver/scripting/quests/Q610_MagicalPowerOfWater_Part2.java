@@ -85,7 +85,7 @@ public class Q610_MagicalPowerOfWater_Part2 extends Quest {
         // Asefa
         if (event.equalsIgnoreCase("31372-04.htm")) {
             if (st.hasQuestItems(GREEN_TOTEM)) {
-                st.setState(STATE_STARTED);
+                st.setState(QuestState.STATE_STARTED);
                 st.set("cond", "1");
                 st.playSound(QuestState.SOUND_ACCEPT);
             }
@@ -125,13 +125,13 @@ public class Q610_MagicalPowerOfWater_Part2 extends Quest {
         if (st == null) { return htmltext; }
 
         switch (st.getState()) {
-            case STATE_CREATED:
+            case QuestState.STATE_CREATED:
                 if (!st.hasQuestItems(GREEN_TOTEM)) { htmltext = "31372-02.htm"; }
                 else if (player.getLevel() < 75 && player.getAllianceWithVarkaKetra() < 2) { htmltext = "31372-03.htm"; }
                 else { htmltext = "31372-01.htm"; }
                 break;
 
-            case STATE_STARTED:
+            case QuestState.STATE_STARTED:
                 final int cond = st.getInt("cond");
                 switch (npc.getNpcId()) {
                     case ASEFA:

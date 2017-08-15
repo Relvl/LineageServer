@@ -77,7 +77,7 @@ public class Q601_WatchingEyes extends Quest
 				htmltext = "31683-02.htm";
 			else
 			{
-				st.setState(STATE_STARTED);
+				st.setState(QuestState.STATE_STARTED);
 				st.set("cond", "1");
 				st.playSound(QuestState.SOUND_ACCEPT);
 			}
@@ -118,11 +118,11 @@ public class Q601_WatchingEyes extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = "31683-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				if (cond == 1)
 					htmltext = (st.hasQuestItems(PROOF_OF_AVENGER)) ? "31683-05.htm" : "31683-04.htm";

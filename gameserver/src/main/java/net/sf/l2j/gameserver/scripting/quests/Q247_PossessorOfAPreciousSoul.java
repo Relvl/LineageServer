@@ -49,7 +49,7 @@ public class Q247_PossessorOfAPreciousSoul extends Quest
 		// Caradine
 		if (event.equalsIgnoreCase("31740-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.takeItems(CARADINE_LETTER, 1);
@@ -83,12 +83,12 @@ public class Q247_PossessorOfAPreciousSoul extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (st.hasQuestItems(CARADINE_LETTER))
 					htmltext = (!player.isSubClassActive() || player.getLevel() < 75) ? "31740-02.htm" : "31740-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (!player.isSubClassActive())
 					break;
 				
@@ -109,7 +109,7 @@ public class Q247_PossessorOfAPreciousSoul extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

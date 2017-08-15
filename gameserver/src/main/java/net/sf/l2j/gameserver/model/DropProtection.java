@@ -1,6 +1,6 @@
 package net.sf.l2j.gameserver.model;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
 
@@ -56,6 +56,6 @@ public class DropProtection implements Runnable {
 
         if ((_owner = player) == null) { throw new NullPointerException("Trying to protect dropped item to null owner"); }
 
-        _task = ThreadPoolManager.getInstance().scheduleGeneral(this, PROTECTED_MILLIS_TIME);
+        _task = ThreadPoolManager.getInstance().schedule(this, PROTECTED_MILLIS_TIME);
     }
 }

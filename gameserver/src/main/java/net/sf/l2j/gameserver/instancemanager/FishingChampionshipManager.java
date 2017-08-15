@@ -3,7 +3,7 @@ package net.sf.l2j.gameserver.instancemanager;
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
@@ -46,7 +46,7 @@ public class FishingChampionshipManager {
             _enddate = System.currentTimeMillis();
             new finishChamp().run();
         }
-        else { ThreadPoolManager.getInstance().scheduleGeneral(new finishChamp(), _enddate - System.currentTimeMillis()); }
+        else { ThreadPoolManager.getInstance().schedule(new finishChamp(), _enddate - System.currentTimeMillis()); }
     }
 
     public static final FishingChampionshipManager getInstance() {
@@ -225,7 +225,7 @@ public class FishingChampionshipManager {
             pl.sendPacket(html);
 
             refreshResult();
-            ThreadPoolManager.getInstance().scheduleGeneral(new needRefresh(), 60000);
+            ThreadPoolManager.getInstance().schedule(new needRefresh(), 60000);
             return;
         }
 
@@ -371,7 +371,7 @@ public class FishingChampionshipManager {
             shutdown();
 
             LOGGER.info("FishingChampionshipManager : new event period start.");
-            ThreadPoolManager.getInstance().scheduleGeneral(new finishChamp(), _enddate - System.currentTimeMillis());
+            ThreadPoolManager.getInstance().schedule(new finishChamp(), _enddate - System.currentTimeMillis());
         }
     }
 

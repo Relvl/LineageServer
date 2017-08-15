@@ -96,7 +96,7 @@ public class Q604_DaimonTheWhiteEyed_Part2 extends Quest {
         // Eye of Argos
         if (event.equalsIgnoreCase("31683-03.htm")) {
             if (st.hasQuestItems(UNFINISHED_SUMMON_CRYSTAL)) {
-                st.setState(STATE_STARTED);
+                st.setState(QuestState.STATE_STARTED);
                 st.set("cond", "1");
                 st.playSound(QuestState.SOUND_ACCEPT);
                 st.takeItems(UNFINISHED_SUMMON_CRYSTAL, 1);
@@ -138,7 +138,7 @@ public class Q604_DaimonTheWhiteEyed_Part2 extends Quest {
         if (st == null) { return htmltext; }
 
         switch (st.getState()) {
-            case STATE_CREATED:
+            case QuestState.STATE_CREATED:
                 if (player.getLevel() < 73) {
                     htmltext = "31683-02.htm";
                     st.exitQuest(true);
@@ -146,7 +146,7 @@ public class Q604_DaimonTheWhiteEyed_Part2 extends Quest {
                 else { htmltext = "31683-01.htm"; }
                 break;
 
-            case STATE_STARTED:
+            case QuestState.STATE_STARTED:
                 int cond = st.getInt("cond");
                 switch (npc.getNpcId()) {
                     case EYE_OF_ARGOS:

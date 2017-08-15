@@ -1,7 +1,7 @@
 package net.sf.l2j.gameserver.model.entity;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.instancemanager.AuctionManager;
@@ -160,7 +160,7 @@ public class Auction {
         }
         else { taskDelay = _endDate - currentTime; }
 
-        ThreadPoolManager.getInstance().scheduleGeneral(new AutoEndTask(), taskDelay);
+        ThreadPoolManager.getInstance().schedule(new AutoEndTask(), taskDelay);
     }
 
     /** Save Auction Data End */
@@ -325,7 +325,7 @@ public class Auction {
             ClanHallManager.getInstance().setOwner(_itemId, newOwner);
         }
         // Task waiting ClanHallManager is loaded every 3s
-        else { ThreadPoolManager.getInstance().scheduleGeneral(new AutoEndTask(), 3000); }
+        else { ThreadPoolManager.getInstance().schedule(new AutoEndTask(), 3000); }
     }
 
     /**

@@ -71,7 +71,7 @@ public class Q629_CleanUpTheSwampOfScreams extends Quest
 		{
 			if (player.getLevel() >= 66)
 			{
-				st.setState(STATE_STARTED);
+				st.setState(QuestState.STATE_STARTED);
 				st.set("cond", "1");
 				st.playSound(QuestState.SOUND_ACCEPT);
 			}
@@ -113,11 +113,11 @@ public class Q629_CleanUpTheSwampOfScreams extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 66) ? "31553-0a.htm" : "31553-0.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				htmltext = (st.getQuestItemsCount(TALON_OF_STAKATO) >= 100) ? "31553-2.htm" : "31553-1a.htm";
 				break;
 		}
@@ -128,7 +128,7 @@ public class Q629_CleanUpTheSwampOfScreams extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, STATE_STARTED);
+		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, QuestState.STATE_STARTED);
 		if (partyMember == null)
 			return null;
 		

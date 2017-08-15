@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.taskmanager;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;

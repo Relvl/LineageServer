@@ -17,7 +17,6 @@ package net.sf.l2j.gameserver.model.actor;
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.EChatType;
-import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.model.L2AttackableAI;
@@ -43,6 +42,7 @@ import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.scripting.EventType;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.util.Util;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -140,7 +140,7 @@ public class L2Attackable extends L2Npc {
                         if (_firstCommandChannelAttacked != null) {
                             _commandChannelTimer = new CommandChannelTimer(this);
                             _commandChannelLastAttack = System.currentTimeMillis();
-                            ThreadPoolManager.getInstance().scheduleGeneral(_commandChannelTimer, 10000); // check for last attack
+                            ThreadPoolManager.getInstance().schedule(_commandChannelTimer, 10000); // check for last attack
                             _firstCommandChannelAttacked.broadcastToChannelMembers(new CreatureSay(0, EChatType.PARTYROOM_ALL, "", "You have looting rights!")); // TODO: retail msg
                         }
                     }
@@ -1411,7 +1411,7 @@ public class L2Attackable extends L2Npc {
                 _monster.setCommandChannelLastAttack(0);
             }
             else {
-                ThreadPoolManager.getInstance().scheduleGeneral(this, 10000); // 10sec
+                ThreadPoolManager.getInstance().schedule(this, 10000); // 10sec
             }
         }
     }

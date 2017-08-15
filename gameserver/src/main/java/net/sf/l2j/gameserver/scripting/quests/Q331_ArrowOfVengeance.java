@@ -49,7 +49,7 @@ public class Q331_ArrowOfVengeance extends Quest
 		
 		if (event.equalsIgnoreCase("30125-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -72,11 +72,11 @@ public class Q331_ArrowOfVengeance extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 32) ? "30125-01.htm" : "30125-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int harpyFeather = st.getQuestItemsCount(HARPY_FEATHER);
 				final int medusaVenom = st.getQuestItemsCount(MEDUSA_VENOM);
 				final int wyrmTooth = st.getQuestItemsCount(WYRM_TOOTH);
@@ -105,7 +105,7 @@ public class Q331_ArrowOfVengeance extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

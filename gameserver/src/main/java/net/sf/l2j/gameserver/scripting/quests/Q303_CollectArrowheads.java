@@ -47,7 +47,7 @@ public class Q303_CollectArrowheads extends Quest
 		
 		if (event.equalsIgnoreCase("30029-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -65,11 +65,11 @@ public class Q303_CollectArrowheads extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 10) ? "30029-01.htm" : "30029-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getInt("cond") == 1)
 					htmltext = "30029-04.htm";
 				else

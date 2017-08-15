@@ -145,7 +145,7 @@ public class Q508_AClansReputation extends Quest
 		if (StringUtil.isDigit(event))
 		{
 			htmltext = "30868-" + event + ".htm";
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.set("raid", event);
 			st.playSound(QuestState.SOUND_ACCEPT);
@@ -180,7 +180,7 @@ public class Q508_AClansReputation extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (!player.isClanLeader())
 					htmltext = "30868-0a.htm";
 				else if (clan.getLevel() < 5)
@@ -189,7 +189,7 @@ public class Q508_AClansReputation extends Quest
 					htmltext = "30868-0c.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int raid = st.getInt("raid");
 				final int item = reward_list[raid - 1][1];
 				

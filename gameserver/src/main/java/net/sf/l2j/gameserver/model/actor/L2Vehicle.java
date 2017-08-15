@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.model.actor;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.model.L2CharacterAI;
 import net.sf.l2j.gameserver.datatables.MapRegionTable;
@@ -74,7 +74,7 @@ public abstract class L2Vehicle extends L2Character {
     }
 
     public void runEngine(int delay) {
-        if (_engine != null) { ThreadPoolManager.getInstance().scheduleGeneral(_engine, delay); }
+        if (_engine != null) { ThreadPoolManager.getInstance().schedule(_engine, delay); }
     }
 
     public void executePath(VehiclePathPoint[] path) {

@@ -160,7 +160,7 @@ public class DrChaos extends AbstractNpcAI {
             }
         }
 
-        return super.onAdvEvent(event, npc, player);
+        return null;
     }
 
     @Override

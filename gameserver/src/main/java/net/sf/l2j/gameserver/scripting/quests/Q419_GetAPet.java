@@ -151,7 +151,7 @@ public class Q419_GetAPet extends Quest
 			final int race = player.getRace().ordinal();
 			
 			htmltext = "30731-0" + (race + 4) + ".htm";
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(ANIMAL_SLAYER_LIST_1 + race, 1);
@@ -219,11 +219,11 @@ public class Q419_GetAPet extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 15) ? "30731-01.htm" : "30731-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				switch (npc.getNpcId())
 				{
 					case MARTIN:
@@ -264,7 +264,7 @@ public class Q419_GetAPet extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

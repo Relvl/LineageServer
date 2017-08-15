@@ -114,7 +114,7 @@ public class Q631_DeliciousTopChoiceMeat extends Quest
 		{
 			if (player.getLevel() >= 65)
 			{
-				st.setState(STATE_STARTED);
+				st.setState(QuestState.STATE_STARTED);
 				st.set("cond", "1");
 				st.playSound(QuestState.SOUND_ACCEPT);
 			}
@@ -157,11 +157,11 @@ public class Q631_DeliciousTopChoiceMeat extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = "31537-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				if (cond == 1)
 					htmltext = "31537-03a.htm";

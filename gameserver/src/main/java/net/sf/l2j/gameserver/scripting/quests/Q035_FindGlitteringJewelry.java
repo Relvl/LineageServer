@@ -56,7 +56,7 @@ public class Q035_FindGlitteringJewelry extends Quest
 		
 		if (event.equalsIgnoreCase("30091-1.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -99,7 +99,7 @@ public class Q035_FindGlitteringJewelry extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getLevel() >= 60)
 				{
 					QuestState fwear = player.getQuestState("Q037_MakeFormalWear");
@@ -112,7 +112,7 @@ public class Q035_FindGlitteringJewelry extends Quest
 					htmltext = "30091-0b.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -134,7 +134,7 @@ public class Q035_FindGlitteringJewelry extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

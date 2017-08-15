@@ -2,7 +2,7 @@ package net.sf.l2j.gameserver.model.actor;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.model.L2AttackableAI;
@@ -46,10 +46,13 @@ import net.sf.l2j.gameserver.network.client.game_to_client.*;
 import net.sf.l2j.gameserver.network.client.game_to_client.FlyToLocation.FlyType;
 import net.sf.l2j.gameserver.scripting.EventType;
 import net.sf.l2j.gameserver.scripting.Quest;
-import net.sf.l2j.gameserver.skills.*;
-import net.sf.l2j.gameserver.skills.func.Func;
+import net.sf.l2j.gameserver.skills.AbnormalEffect;
+import net.sf.l2j.gameserver.skills.Calculator;
+import net.sf.l2j.gameserver.skills.Formulas;
+import net.sf.l2j.gameserver.skills.Stats;
 import net.sf.l2j.gameserver.skills.effects.EffectChanceSkillTrigger;
 import net.sf.l2j.gameserver.skills.func.EFunction;
+import net.sf.l2j.gameserver.skills.func.Func;
 import net.sf.l2j.gameserver.taskmanager.AttackStanceTaskManager;
 import net.sf.l2j.gameserver.taskmanager.MovementTaskManager;
 import net.sf.l2j.gameserver.templates.skills.L2EffectFlag;
@@ -493,7 +496,11 @@ public abstract class L2Character extends L2Object {
                     if (victim != null) {
                         L2Npc mob = (L2Npc) this;
                         List<Quest> quests = mob.getTemplate().getEventQuests(EventType.ON_ATTACK_ACT);
-                        if (quests != null) { for (Quest quest : quests) { quest.notifyAttackAct(mob, victim); } }
+                        if (quests != null) {
+                            for (Quest quest : quests) {
+                                quest.notifyAttackAct(mob, victim);
+                            }
+                        }
                     }
                 }
                 catch (Exception e) {
@@ -1216,8 +1223,9 @@ public abstract class L2Character extends L2Object {
         L2CharacterAI ai = this.ai;
         if (ai == null) {
             synchronized (this) {
-                if (this.ai == null) { this.ai = new L2CharacterAI(this); }
-
+                if (this.ai == null) {
+                    this.ai = new L2CharacterAI(this);
+                }
                 return this.ai;
             }
         }
@@ -1227,27 +1235,17 @@ public abstract class L2Character extends L2Object {
     public void setAI(L2CharacterAI newAI) {
         L2CharacterAI oldAI = getAI();
         if (oldAI != null && oldAI != newAI && oldAI instanceof L2AttackableAI) { oldAI.stopAITask(); }
-
         ai = newAI;
     }
 
-    /**
-     * @return True if the L2Character has a L2CharacterAI.
-     */
     public boolean hasAI() { return ai != null; }
 
-    /**
-     * @return True if the L2Character is RaidBoss or his minion.
-     */
     public boolean isRaid() { return _isRaid; }
 
     public void setIsRaid(boolean isRaid) { _isRaid = isRaid; }
 
     public boolean isMinion() { return false; }
 
-    /**
-     * @return True if the L2Character is Raid minion.
-     */
     public boolean isRaidMinion() { return false; }
 
     public final L2Skill getLastSimultaneousSkillCast() { return _lastSimultaneousSkillCast; }
@@ -1276,14 +1274,8 @@ public abstract class L2Character extends L2Object {
 
     public final boolean isImmobileUntilAttacked() { return isAffected(L2EffectFlag.MEDITATING); }
 
-    /**
-     * @return True if the L2Character can't use its skills (ex : stun, sleep...).
-     */
     public final boolean isAllSkillsDisabled() { return _allSkillsDisabled || isStunned() || isImmobileUntilAttacked() || isSleeping() || isParalyzed(); }
 
-    /**
-     * @return True if the L2Character can't attack (stun, sleep, attackEndTime, fakeDeath, paralyse).
-     */
     public boolean isAttackingDisabled() { return isFlying() || isStunned() || isImmobileUntilAttacked() || isSleeping() || isAttackingNow() || isParalyzed() || isAlikeDead() || isCoreAIDisabled(); }
 
     public final Calculator[] getCalculators() { return calculators; }
@@ -1308,11 +1300,6 @@ public abstract class L2Character extends L2Object {
 
     public final void setIsParalyzed(boolean value) { _isParalyzed = value; }
 
-    /**
-     * Overriden in L2PcInstance.
-     *
-     * @return the L2Summon of the L2Character.
-     */
     public L2Summon getPet() { return null; }
 
     public boolean isSeated() { return false; }
@@ -1534,10 +1521,7 @@ public abstract class L2Character extends L2Object {
         broadcastPacket(new Revive(this));
 
         // Schedule a paralyzed task to wait for the animation to finish
-        ThreadPoolManager.getInstance().scheduleGeneral(new Runnable() {
-            @Override
-            public void run() { player.setIsParalyzed(false); }
-        }, player.getAnimationTimer());
+        ThreadPoolManager.getInstance().schedule(() -> player.setIsParalyzed(false), player.getAnimationTimer());
         _isParalyzed = true;
     }
 

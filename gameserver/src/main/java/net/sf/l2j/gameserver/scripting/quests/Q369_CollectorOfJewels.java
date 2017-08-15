@@ -92,7 +92,7 @@ public class Q369_CollectorOfJewels extends Quest
 		
 		if (event.equalsIgnoreCase("30376-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -117,11 +117,11 @@ public class Q369_CollectorOfJewels extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 25) ? "30376-01.htm" : "30376-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				final int flare = st.getQuestItemsCount(FLARE_SHARD);
 				final int freezing = st.getQuestItemsCount(FREEZING_SHARD);
@@ -157,7 +157,7 @@ public class Q369_CollectorOfJewels extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, STATE_STARTED);
+		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, QuestState.STATE_STARTED);
 		if (partyMember == null)
 			return null;
 		

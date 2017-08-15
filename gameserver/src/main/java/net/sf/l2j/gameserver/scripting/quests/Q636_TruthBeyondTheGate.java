@@ -47,7 +47,7 @@ public class Q636_TruthBeyondTheGate extends Quest {
         if (st == null) { return htmltext; }
 
         if (event.equalsIgnoreCase("31329-04.htm")) {
-            st.setState(STATE_STARTED);
+            st.setState(QuestState.STATE_STARTED);
             st.set("cond", "1");
             st.playSound(QuestState.SOUND_ACCEPT);
         }
@@ -67,11 +67,11 @@ public class Q636_TruthBeyondTheGate extends Quest {
         if (st == null) { return htmltext; }
 
         switch (st.getState()) {
-            case STATE_CREATED:
+            case QuestState.STATE_CREATED:
                 htmltext = (player.getLevel() < 73) ? "31329-01.htm" : "31329-02.htm";
                 break;
 
-            case STATE_STARTED:
+            case QuestState.STATE_STARTED:
                 switch (npc.getNpcId()) {
                     case ELIYAH:
                         htmltext = "31329-05.htm";
@@ -83,7 +83,7 @@ public class Q636_TruthBeyondTheGate extends Quest {
                 }
                 break;
 
-            case STATE_COMPLETED:
+            case QuestState.STATE_COMPLETED:
                 htmltext = getAlreadyCompletedMsg();
                 break;
         }

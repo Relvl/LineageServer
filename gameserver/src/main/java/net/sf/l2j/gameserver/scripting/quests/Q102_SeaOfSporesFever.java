@@ -76,7 +76,7 @@ public class Q102_SeaOfSporesFever extends Quest
 		
 		if (event.equalsIgnoreCase("30284-02.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(ALBERIUS_LETTER, 1);
@@ -95,7 +95,7 @@ public class Q102_SeaOfSporesFever extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.Elf)
 					htmltext = "30284-00.htm";
 				else if (player.getLevel() < 12)
@@ -104,7 +104,7 @@ public class Q102_SeaOfSporesFever extends Quest
 					htmltext = "30284-07.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -216,7 +216,7 @@ public class Q102_SeaOfSporesFever extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

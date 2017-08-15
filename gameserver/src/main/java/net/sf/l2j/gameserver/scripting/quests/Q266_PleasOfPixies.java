@@ -54,7 +54,7 @@ public class Q266_PleasOfPixies extends Quest
 		
 		if (event.equalsIgnoreCase("31852-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -72,7 +72,7 @@ public class Q266_PleasOfPixies extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.Elf)
 					htmltext = "31852-00.htm";
 				else if (player.getLevel() < 3)
@@ -81,7 +81,7 @@ public class Q266_PleasOfPixies extends Quest
 					htmltext = "31852-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getQuestItemsCount(PREDATOR_FANG) < 100)
 					htmltext = "31852-04.htm";
 				else

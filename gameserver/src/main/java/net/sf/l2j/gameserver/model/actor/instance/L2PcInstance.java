@@ -4,7 +4,8 @@ import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.database.CallException;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.scripting.EScript;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.NextAction;
@@ -20,6 +21,7 @@ import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.handler.ItemHandler;
 import net.sf.l2j.gameserver.handler.admincommandhandlers.AdminEditChar;
 import net.sf.l2j.gameserver.instancemanager.*;
+import net.sf.l2j.gameserver.listenerbus.ListenerBus;
 import net.sf.l2j.gameserver.model.*;
 import net.sf.l2j.gameserver.model.L2Party.MessageType;
 import net.sf.l2j.gameserver.model.L2PetData.L2PetLevelData;
@@ -71,18 +73,18 @@ import net.sf.l2j.gameserver.playerpart.PunishLevel;
 import net.sf.l2j.gameserver.playerpart.SummonRequest;
 import net.sf.l2j.gameserver.playerpart.achievements.AchievementController;
 import net.sf.l2j.gameserver.playerpart.contact.ContactController;
+import net.sf.l2j.gameserver.playerpart.quest.QuestController;
 import net.sf.l2j.gameserver.playerpart.recipe.RecipeController;
 import net.sf.l2j.gameserver.playerpart.variables.EPlayerVariableKey;
 import net.sf.l2j.gameserver.playerpart.variables.PlayerVariablesController;
 import net.sf.l2j.gameserver.scripting.EventType;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
-import net.sf.l2j.gameserver.scripting.ScriptManager;
-import net.sf.l2j.gameserver.skills.func.EFunction;
-import net.sf.l2j.gameserver.skills.func.Env;
 import net.sf.l2j.gameserver.skills.Formulas;
 import net.sf.l2j.gameserver.skills.Stats;
 import net.sf.l2j.gameserver.skills.effects.EffectTemplate;
+import net.sf.l2j.gameserver.skills.func.EFunction;
+import net.sf.l2j.gameserver.skills.func.Env;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillSiegeFlag;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillSummon;
 import net.sf.l2j.gameserver.taskmanager.*;
@@ -111,9 +113,9 @@ public final class L2PcInstance extends L2Playable {
     private static final String DELETE_SKILL_FROM_CHAR = "DELETE FROM character_skills WHERE skill_id=? AND char_obj_id=? AND class_index=?";
     private static final String DELETE_CHAR_SKILLS = "DELETE FROM character_skills WHERE char_obj_id=? AND class_index=?";
 
-    private static final String INSERT_CHARACTER = "INSERT INTO characters (account_name,obj_Id,char_name,level,maxHp,curHp,maxCp,curCp,maxMp,curMp,face,hairStyle,hairColor,sex,exp,sp,karma,pvpkills,pkkills,clanid,race,classid,deletetime,title,accesslevel,online,isin7sdungeon,clan_privs,wantspeace,base_class,nobless,power_grade,last_recom_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    private static final String UPDATE_CHARACTER = "UPDATE characters SET level=?,maxHp=?,curHp=?,maxCp=?,curCp=?,maxMp=?,curMp=?,face=?,hairStyle=?,hairColor=?,sex=?,heading=?,x=?,y=?,z=?,exp=?,expBeforeDeath=?,sp=?,karma=?,pvpkills=?,pkkills=?,rec_have=?,rec_left=?,clanid=?,race=?,classid=?,deletetime=?,title=?,accesslevel=?,online=?,isin7sdungeon=?,clan_privs=?,wantspeace=?,base_class=?,onlinetime=?,punish_level=?,punish_timer=?,nobless=?,power_grade=?,subpledge=?,last_recom_date=?,apprentice=?,sponsor=?,varka_ketra_ally=?,char_name=? WHERE obj_id=?";
-    private static final String RESTORE_CHARACTER = "SELECT account_name, obj_Id, char_name, level, curHp, curCp, curMp, face, hairStyle, hairColor, sex, heading, x, y, z, exp, expBeforeDeath, sp, karma, pvpkills, pkkills, clanid, race, classid, deletetime, title, rec_have, rec_left, accesslevel, online, lastAccess, clan_privs, wantspeace, base_class, onlinetime, isin7sdungeon, punish_level, punish_timer, nobless, power_grade, subpledge, last_recom_date, apprentice, sponsor, varka_ketra_ally FROM characters WHERE obj_id=?";
+    private static final String INSERT_CHARACTER = "INSERT INTO characters (account_name,obj_Id,char_name,level,maxHp,curHp,maxCp,curCp,maxMp,curMp,face,hairStyle,hairColor,sex,exp,sp,karma,pvpkills,pkkills,clanid,race,classid,deletetime,title,accesslevel,online,isin7sdungeon,clan_privs,base_class,nobless,power_grade,last_recom_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String UPDATE_CHARACTER = "UPDATE characters SET level=?,maxHp=?,curHp=?,maxCp=?,curCp=?,maxMp=?,curMp=?,face=?,hairStyle=?,hairColor=?,sex=?,heading=?,x=?,y=?,z=?,exp=?,expBeforeDeath=?,sp=?,karma=?,pvpkills=?,pkkills=?,rec_have=?,rec_left=?,clanid=?,race=?,classid=?,deletetime=?,title=?,accesslevel=?,online=?,isin7sdungeon=?,clan_privs=?,base_class=?,onlinetime=?,punish_level=?,punish_timer=?,nobless=?,power_grade=?,subpledge=?,last_recom_date=?,apprentice=?,sponsor=?,varka_ketra_ally=?,char_name=? WHERE obj_id=?";
+    private static final String RESTORE_CHARACTER = "SELECT account_name, obj_Id, char_name, level, curHp, curCp, curMp, face, hairStyle, hairColor, sex, heading, x, y, z, exp, expBeforeDeath, sp, karma, pvpkills, pkkills, clanid, race, classid, deletetime, title, rec_have, rec_left, accesslevel, online, lastAccess, clan_privs, base_class, onlinetime, isin7sdungeon, punish_level, punish_timer, nobless, power_grade, subpledge, last_recom_date, apprentice, sponsor, varka_ketra_ally FROM characters WHERE obj_id=?";
 
     private static final String RESTORE_CHAR_SUBCLASSES = "SELECT class_id,exp,sp,level,class_index FROM character_subclasses WHERE char_obj_id=? ORDER BY class_index ASC";
     private static final String ADD_CHAR_SUBCLASS = "INSERT INTO character_subclasses (char_obj_id,class_id,exp,sp,level,class_index) VALUES (?,?,?,?,?,?)";
@@ -142,6 +144,7 @@ public final class L2PcInstance extends L2Playable {
     private final RecipeController recipeController = new RecipeController(this);
     private final AchievementController achievementController = new AchievementController(this);
     private final ContactController contactController = new ContactController(this);
+    private final QuestController questController = new QuestController(this);
 
     private final L2Radar radar = new L2Radar(this);
     private final PcInventory inventory = new PcInventory(this);
@@ -249,7 +252,6 @@ public final class L2PcInstance extends L2Playable {
     private int _clanPrivileges;
     private int _pledgeClass;
     private int _pledgeType;
-    private boolean _wantsPeace;
     private ScheduledFuture<?> _chargeTask;
     private Location _currentSkillWorldPosition;
     private L2AccessLevel _accessLevel;
@@ -388,8 +390,6 @@ public final class L2PcInstance extends L2Playable {
                 player._expBeforeDeath = rset.getLong("expBeforeDeath");
                 player.getStat().setLevel(rset.getByte("level"));
                 player.getStat().setSp(rset.getInt("sp"));
-
-                player._wantsPeace = rset.getInt("wantspeace") == 1;
 
                 player.setHeading(rset.getInt("heading"));
 
@@ -795,7 +795,7 @@ public final class L2PcInstance extends L2Playable {
     }
 
     public void processQuestEvent(String questName, String event) {
-        Quest quest = ScriptManager.getInstance().getQuest(questName);
+        Quest quest = EScript.getQuest(questName);
         if (quest == null) { return; }
 
         QuestState qs = getQuestState(questName);
@@ -1272,7 +1272,7 @@ public final class L2PcInstance extends L2Playable {
             _waitTypeSitting = true;
             broadcastPacket(new ChangeWaitType(this, ChangeWaitType.WT_SITTING));
             getAI().setIntention(EIntention.REST);
-            ThreadPoolManager.getInstance().scheduleGeneral(new SitDownTask(), 2500);
+            ThreadPoolManager.getInstance().schedule(new SitDownTask(), 2500);
             setIsParalyzed(true);
         }
     }
@@ -1282,7 +1282,7 @@ public final class L2PcInstance extends L2Playable {
             if (_effects.isAffected(L2EffectFlag.RELAXING)) { stopEffects(L2EffectType.RELAXING); }
 
             broadcastPacket(new ChangeWaitType(this, ChangeWaitType.WT_STANDING));
-            ThreadPoolManager.getInstance().scheduleGeneral(new StandUpTask(), 2500);
+            ThreadPoolManager.getInstance().schedule(new StandUpTask(), 2500);
             setIsParalyzed(true);
         }
     }
@@ -1652,7 +1652,7 @@ public final class L2PcInstance extends L2Playable {
     public void setProtection(boolean protect) {
         if (protect) {
             if (_protectTask == null) {
-                _protectTask = ThreadPoolManager.getInstance().scheduleGeneral(new ProtectTask(), Config.PLAYER_SPAWN_PROTECTION * 1000);
+                _protectTask = ThreadPoolManager.getInstance().schedule(new ProtectTask(), Config.PLAYER_SPAWN_PROTECTION * 1000);
             }
         }
         else {
@@ -1675,11 +1675,7 @@ public final class L2PcInstance extends L2Playable {
     public void setIsFakeDeath(boolean value) { _isFakeDeath = value; }
 
     @Override
-    public boolean isAlikeDead() {
-        if (super.isAlikeDead()) { return true; }
-
-        return _isFakeDeath;
-    }
+    public boolean isAlikeDead() { return super.isAlikeDead() || _isFakeDeath; }
 
     public L2GameClient getClient() { return _client; }
 
@@ -2050,7 +2046,7 @@ public final class L2PcInstance extends L2Playable {
         }
 
         // Schedule a paralyzed task to wait for the animation to finish
-        ThreadPoolManager.getInstance().scheduleGeneral(new Runnable() {
+        ThreadPoolManager.getInstance().schedule(new Runnable() {
             @Override
             public void run() { setIsParalyzed(false); }
         }, 250);
@@ -2357,6 +2353,8 @@ public final class L2PcInstance extends L2Playable {
 
         // Icons update in order to get retained buffs list
         updateEffectIcons();
+
+        ListenerBus.onPlayerDied(this, killer);
 
         return true;
     }
@@ -2984,14 +2982,14 @@ public final class L2PcInstance extends L2Playable {
             _controlItemId = summon.getControlItemId();
             sendPacket(new SetupGauge(3, _curFeed * 10000 / getFeedConsume(), getMaxFeed() * 10000 / getFeedConsume()));
             if (!isDead()) {
-                _mountFeedTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new FeedTask(), 10000, 10000);
+                _mountFeedTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new FeedTask(), 10000, 10000);
             }
         }
         else if (_canFeed) {
             setCurrentFeed(getMaxFeed());
             sendPacket(new SetupGauge(3, _curFeed * 10000 / getFeedConsume(), getMaxFeed() * 10000 / getFeedConsume()));
             if (!isDead()) {
-                _mountFeedTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new FeedTask(), 10000, 10000);
+                _mountFeedTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new FeedTask(), 10000, 10000);
             }
         }
     }
@@ -3157,39 +3155,39 @@ public final class L2PcInstance extends L2Playable {
     private boolean createDb() {
         try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             PreparedStatement statement = con.prepareStatement(INSERT_CHARACTER);
-            statement.setString(1, accountName);
-            statement.setInt(2, getObjectId());
-            statement.setString(3, getName());
-            statement.setInt(4, getLevel());
-            statement.setInt(5, getMaxHp());
-            statement.setDouble(6, getCurrentHp());
-            statement.setInt(7, getMaxCp());
-            statement.setDouble(8, getCurrentCp());
-            statement.setInt(9, getMaxMp());
-            statement.setDouble(10, getCurrentMp());
-            statement.setInt(11, appearance.getFace());
-            statement.setInt(12, appearance.getHairStyle());
-            statement.setInt(13, appearance.getHairColor());
-            statement.setInt(14, appearance.isFemale() ? 1 : 0);
-            statement.setLong(15, getStat().getExp());
-            statement.setInt(16, getStat().getSp());
-            statement.setInt(17, _karma);
-            statement.setInt(18, _pvpKills);
-            statement.setInt(19, _pkKills);
-            statement.setInt(20, _clanId);
-            statement.setInt(21, getRace().ordinal());
-            statement.setInt(22, getClassId().getId());
-            statement.setLong(23, _deleteTimer);
-            statement.setString(24, getTitle());
-            statement.setInt(25, getAccessLevel().getLevel());
-            statement.setInt(26, isOnlineInt());
-            statement.setInt(27, _isIn7sDungeon ? 1 : 0);
-            statement.setInt(28, _clanPrivileges);
-            statement.setInt(29, wantsPeace() ? 1 : 0);
-            statement.setInt(30, _baseClass);
-            statement.setInt(31, _noble ? 1 : 0);
-            statement.setLong(32, 0);
-            statement.setLong(33, System.currentTimeMillis());
+            int i = 1;
+            statement.setString(i++, accountName);
+            statement.setInt(i++, getObjectId());
+            statement.setString(i++, getName());
+            statement.setInt(i++, getLevel());
+            statement.setInt(i++, getMaxHp());
+            statement.setDouble(i++, getCurrentHp());
+            statement.setInt(i++, getMaxCp());
+            statement.setDouble(i++, getCurrentCp());
+            statement.setInt(i++, getMaxMp());
+            statement.setDouble(i++, getCurrentMp());
+            statement.setInt(i++, appearance.getFace());
+            statement.setInt(i++, appearance.getHairStyle());
+            statement.setInt(i++, appearance.getHairColor());
+            statement.setInt(i++, appearance.isFemale() ? 1 : 0);
+            statement.setLong(i++, getStat().getExp());
+            statement.setInt(i++, getStat().getSp());
+            statement.setInt(i++, _karma);
+            statement.setInt(i++, _pvpKills);
+            statement.setInt(i++, _pkKills);
+            statement.setInt(i++, _clanId);
+            statement.setInt(i++, getRace().ordinal());
+            statement.setInt(i++, getClassId().getId());
+            statement.setLong(i++, _deleteTimer);
+            statement.setString(i++, getTitle());
+            statement.setInt(i++, getAccessLevel().getLevel());
+            statement.setInt(i++, isOnlineInt());
+            statement.setInt(i++, _isIn7sDungeon ? 1 : 0);
+            statement.setInt(i++, _clanPrivileges);
+            statement.setInt(i++, _baseClass);
+            statement.setInt(i++, _noble ? 1 : 0);
+            statement.setLong(i++, 0);
+            statement.setLong(i++, System.currentTimeMillis());
             statement.executeUpdate();
             statement.close();
         }
@@ -3282,7 +3280,6 @@ public final class L2PcInstance extends L2Playable {
             statement.setInt(i++, isOnlineInt());
             statement.setInt(i++, _isIn7sDungeon ? 1 : 0);
             statement.setInt(i++, _clanPrivileges);
-            statement.setInt(i++, wantsPeace() ? 1 : 0);
             statement.setInt(i++, _baseClass);
 
             long totalOnlineTime = _onlineTime;
@@ -3824,7 +3821,10 @@ public final class L2PcInstance extends L2Playable {
                 }
 
                 // Check if clan is at war
-                if (clan.isAtWarWith(cha._clanId) && !wantsPeace() && !cha.wantsPeace() && !variables.hasVariable(EPlayerVariableKey.LVL_JOINED_ACADEMY)) {
+                if (clan.isAtWarWith(cha._clanId)
+                        && !variables.getBoolean(EPlayerVariableKey.WANTS_PEACE)
+                        && !cha.variables.getBoolean(EPlayerVariableKey.WANTS_PEACE)
+                        && !variables.hasVariable(EPlayerVariableKey.LVL_JOINED_ACADEMY)) {
                     return true;
                 }
             }
@@ -4496,7 +4496,7 @@ public final class L2PcInstance extends L2Playable {
     public void tempInventoryDisable() {
         _inventoryDisable = true;
 
-        ThreadPoolManager.getInstance().scheduleGeneral(new InventoryEnable(), 1500);
+        ThreadPoolManager.getInstance().schedule(new InventoryEnable(), 1500);
     }
 
     public boolean isInventoryDisabled() { return _inventoryDisable; }
@@ -4847,10 +4847,6 @@ public final class L2PcInstance extends L2Playable {
 
     public void setTeam(int team) { _team = team; }
 
-    public void setWantsPeace(boolean wantsPeace) { _wantsPeace = wantsPeace; }
-
-    public boolean wantsPeace() { return _wantsPeace; }
-
     public boolean isFishing() { return _fishingLoc != null; }
 
     /** [-5,-1] varka, 0 neutral, [1,5] ketra */
@@ -5169,10 +5165,8 @@ public final class L2PcInstance extends L2Playable {
             CursedWeaponsManager.getInstance().getCursedWeapon(_cursedWeaponEquippedId).cursedOnLogin();
         }
 
-        // Add to the GameTimeTask to keep inform about activity time.
         GameTimeTaskManager.getInstance().add(this);
 
-        // Teleport player if the Seven Signs period isn't the good one, or if the player isn't in a cabal.
         if (_isIn7sDungeon && !isGM()) {
             if (SevenSigns.getInstance().isSealValidationPeriod() || SevenSigns.getInstance().isCompResultsPeriod()) {
                 if (SevenSigns.getInstance().getPlayerCabal(getObjectId()) != SevenSigns.getInstance().getCabalHighestScore()) {
@@ -5186,7 +5180,6 @@ public final class L2PcInstance extends L2Playable {
             }
         }
 
-        // Jail task
         updatePunishState();
         revalidateZone(true);
         contactController.notifyFriends(true);
@@ -5246,11 +5239,10 @@ public final class L2PcInstance extends L2Playable {
         }
 
         // Schedule a paralyzed task to wait for the animation to finish
-        ThreadPoolManager.getInstance().scheduleGeneral(new Runnable() {
-            @Override
-            public void run() { setIsParalyzed(false); }
-        }, getAnimationTimer());
+        ThreadPoolManager.getInstance().schedule(() -> setIsParalyzed(false), getAnimationTimer());
         setIsParalyzed(true);
+
+        ListenerBus.onPlayerRevived(this);
     }
 
     @Override
@@ -5927,7 +5919,7 @@ public final class L2PcInstance extends L2Playable {
                     _punishTimer = delayInMilliseconds;
 
                     // start the countdown
-                    _punishTask = ThreadPoolManager.getInstance().scheduleGeneral(new PunishTask(), _punishTimer);
+                    _punishTask = ThreadPoolManager.getInstance().schedule(new PunishTask(), _punishTimer);
                     sendMessage("Chatting has been suspended for " + delayInMinutes + " minute(s).");
                 }
                 else { sendMessage("Chatting has been suspended."); }
@@ -5947,7 +5939,7 @@ public final class L2PcInstance extends L2Playable {
                     _punishTimer = delayInMilliseconds;
 
                     // start the countdown
-                    _punishTask = ThreadPoolManager.getInstance().scheduleGeneral(new PunishTask(), _punishTimer);
+                    _punishTask = ThreadPoolManager.getInstance().schedule(new PunishTask(), _punishTimer);
                     sendMessage("You are jailed for " + delayInMinutes + " minutes.");
                 }
 
@@ -5984,7 +5976,7 @@ public final class L2PcInstance extends L2Playable {
         if (_punishLevel != PunishLevel.NONE) {
             // If punish timer exists, restart punishtask.
             if (_punishTimer > 0) {
-                _punishTask = ThreadPoolManager.getInstance().scheduleGeneral(new PunishTask(), _punishTimer);
+                _punishTask = ThreadPoolManager.getInstance().schedule(new PunishTask(), _punishTimer);
                 sendMessage("You are still " + _punishLevel.string() + " for " + Math.round(_punishTimer / 60000f) + " minutes.");
             }
             if (_punishLevel == PunishLevel.JAIL) {
@@ -6021,7 +6013,7 @@ public final class L2PcInstance extends L2Playable {
             _shortBuffTask.cancel(false);
             _shortBuffTask = null;
         }
-        _shortBuffTask = ThreadPoolManager.getInstance().scheduleGeneral(new ShortBuffTask(), time * 1000);
+        _shortBuffTask = ThreadPoolManager.getInstance().schedule(new ShortBuffTask(), time * 1000);
 
         sendPacket(new ShortBuffStatusUpdate(magicId, level, time));
     }
@@ -6134,7 +6126,7 @@ public final class L2PcInstance extends L2Playable {
         }
     }
 
-    public void enteredNoLanding(int delay) { _dismountTask = ThreadPoolManager.getInstance().scheduleGeneral(new Dismount(), delay * 1000); }
+    public void enteredNoLanding(int delay) { _dismountTask = ThreadPoolManager.getInstance().schedule(new Dismount(), delay * 1000); }
 
     public void exitedNoLanding() {
         if (_dismountTask != null) {
@@ -6194,7 +6186,7 @@ public final class L2PcInstance extends L2Playable {
             _chargeTask.cancel(false);
             _chargeTask = null;
         }
-        _chargeTask = ThreadPoolManager.getInstance().scheduleGeneral(new ChargeTask(), 600000);
+        _chargeTask = ThreadPoolManager.getInstance().schedule(new ChargeTask(), 600000);
     }
 
     public void stopChargeTask() {
@@ -6333,6 +6325,8 @@ public final class L2PcInstance extends L2Playable {
     public AchievementController getAchievementController() { return achievementController; }
 
     public ContactController getContactController() { return contactController; }
+
+    public QuestController getQuestController() { return questController; }
 
     private class ShortBuffTask implements Runnable {
         @Override

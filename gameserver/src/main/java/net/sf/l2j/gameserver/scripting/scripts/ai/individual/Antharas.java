@@ -237,7 +237,7 @@ public class Antharas extends AbstractNpcAI {
         else if (event.equalsIgnoreCase("antharas_unlock")) { GrandBossManager.getInstance().setBossStatus(ANTHARAS, DORMANT); }
         else if (event.equalsIgnoreCase("remove_players")) { ANTHARAS_LAIR.oustAllPlayers(); }
 
-        return super.onAdvEvent(event, npc, player);
+        return null;
     }
 
     @Override

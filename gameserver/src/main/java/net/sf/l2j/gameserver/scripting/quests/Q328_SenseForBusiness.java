@@ -64,7 +64,7 @@ public class Q328_SenseForBusiness extends Quest
 		
 		if (event.equalsIgnoreCase("30436-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -87,11 +87,11 @@ public class Q328_SenseForBusiness extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 21) ? "30436-01.htm" : "30436-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int carcasses = st.getQuestItemsCount(MONSTER_EYE_CARCASS);
 				final int lenses = st.getQuestItemsCount(MONSTER_EYE_LENS);
 				final int gizzards = st.getQuestItemsCount(BASILISK_GIZZARD);
@@ -117,7 +117,7 @@ public class Q328_SenseForBusiness extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

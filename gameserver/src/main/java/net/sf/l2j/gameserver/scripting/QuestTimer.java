@@ -1,71 +1,54 @@
 package net.sf.l2j.gameserver.scripting;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 import java.util.concurrent.ScheduledFuture;
 
-public class QuestTimer {
+@SuppressWarnings("FieldNotUsedInToString")
+public final class QuestTimer implements Runnable {
+    private final Quest quest;
+    private final String event;
+    private final L2Npc npc;
+    private final L2PcInstance player;
+    private final boolean repeating;
 
-    protected final Quest _quest;
-    protected final String _name;
-    protected final L2Npc _npc;
-    protected final L2PcInstance _player;
-    protected final boolean _isRepeating;
+    private ScheduledFuture<?> scheduler;
 
-    protected ScheduledFuture<?> _schedular;
-
-    public QuestTimer(Quest quest, String name, L2Npc npc, L2PcInstance player, long time, boolean repeating) {
-        _quest = quest;
-        _name = name;
-        _npc = npc;
-        _player = player;
-        _isRepeating = repeating;
-
-        if (repeating) { _schedular = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new ScheduleTimerTask(), time, time); }
-        else { _schedular = ThreadPoolManager.getInstance().scheduleGeneral(new ScheduleTimerTask(), time); }
+    public QuestTimer(Quest quest, String event, L2Npc npc, L2PcInstance player, long time, boolean repeating) {
+        this.quest = quest;
+        this.event = event;
+        this.npc = npc;
+        this.player = player;
+        this.repeating = repeating;
+        this.scheduler = repeating ?
+                ThreadPoolManager.getInstance().weakScheduleAtFixedRate(this, time, time) :
+                ThreadPoolManager.getInstance().weakSchedule(this, time);
     }
 
     @Override
-    public final String toString() {
-        return _name;
+    public String toString() { return event; }
+
+    @Override
+    public void run() {
+        if (scheduler == null) { return; }
+        if (!repeating) { cancel(); }
+        quest.notifyEvent(event, npc, player);
     }
 
-    protected final class ScheduleTimerTask implements Runnable {
-        @Override
-        public void run() {
-            if (_schedular == null) { return; }
-
-            if (!_isRepeating) { cancel(); }
-
-            _quest.notifyEvent(_name, _npc, _player);
+    public void cancel() {
+        if (scheduler != null) {
+            scheduler.cancel(false);
+            scheduler = null;
         }
+        quest.removeQuestTimer(this);
     }
 
-    public final void cancel() {
-        if (_schedular != null) {
-            _schedular.cancel(false);
-            _schedular = null;
-        }
-
-        _quest.removeQuestTimer(this);
-    }
-
-    /**
-     * public method to compare if this timer matches with the key attributes passed.
-     *
-     * @param quest  : Quest instance to which the timer is attached
-     * @param name   : Name of the timer
-     * @param npc    : Npc instance attached to the desired timer (null if no npc attached)
-     * @param player : Player instance attached to the desired timer (null if no player attached)
-     * @return boolean
-     */
-    public final boolean equals(Quest quest, String name, L2Npc npc, L2PcInstance player) {
-        if (quest == null || quest != _quest) { return false; }
-
-        if (name == null || !name.equals(_name)) { return false; }
-
-        return ((npc == _npc) && (player == _player));
+    @SuppressWarnings({"ObjectEquality", "SimplifiableIfStatement"})
+    public boolean equals(Quest quest, String event, L2Npc npc, L2PcInstance player) {
+        if (quest == null || quest != this.quest) { return false; }
+        if (event == null || !event.equals(this.event)) { return false; }
+        return (npc == this.npc) && (player == this.player);
     }
 }

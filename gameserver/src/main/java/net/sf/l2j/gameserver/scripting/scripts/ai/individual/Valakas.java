@@ -255,7 +255,7 @@ public class Valakas extends AbstractNpcAI {
             }
             else if (event.equalsIgnoreCase("remove_players")) { VALAKAS_LAIR.oustAllPlayers(); }
         }
-        return super.onAdvEvent(event, npc, player);
+        return null;
     }
 
     @Override

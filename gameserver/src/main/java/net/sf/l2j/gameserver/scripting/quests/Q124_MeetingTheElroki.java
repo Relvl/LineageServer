@@ -47,7 +47,7 @@ public class Q124_MeetingTheElroki extends Quest
 		
 		if (event.equalsIgnoreCase("32113-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -96,11 +96,11 @@ public class Q124_MeetingTheElroki extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 75) ? "32113-01a.htm" : "32113-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -151,7 +151,7 @@ public class Q124_MeetingTheElroki extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				if (npc.getNpcId() == ASAMAH)
 					htmltext = "32115-06.htm";
 				else

@@ -96,7 +96,7 @@ public class Q625_TheFinestIngredients_Part2 extends Quest {
         // Jeremy
         if (event.equalsIgnoreCase("31521-03.htm")) {
             if (st.hasQuestItems(SOY_SAUCE_JAR)) {
-                st.setState(STATE_STARTED);
+                st.setState(QuestState.STATE_STARTED);
                 st.set("cond", "1");
                 st.playSound(QuestState.SOUND_ACCEPT);
                 st.takeItems(SOY_SAUCE_JAR, 1);
@@ -138,11 +138,11 @@ public class Q625_TheFinestIngredients_Part2 extends Quest {
         if (st == null) { return htmltext; }
 
         switch (st.getState()) {
-            case STATE_CREATED:
+            case QuestState.STATE_CREATED:
                 htmltext = (player.getLevel() < 73) ? "31521-02.htm" : "31521-01.htm";
                 break;
 
-            case STATE_STARTED:
+            case QuestState.STATE_STARTED:
                 final int cond = st.getInt("cond");
                 switch (npc.getNpcId()) {
                     case JEREMY:

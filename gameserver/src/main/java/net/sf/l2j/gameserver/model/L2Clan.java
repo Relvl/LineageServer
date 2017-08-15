@@ -384,12 +384,14 @@ public class L2Clan {
             player.setPledgeClass(L2ClanMember.calculatePledgeClass(player));
             player.broadcastUserInfo();
 
+            player.variables().remove(EPlayerVariableKey.WANTS_PEACE);
+
             // disable clan tab
             player.sendPacket(PledgeShowMemberListDeleteAll.STATIC_PACKET);
         }
         else {
             try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
-                PreparedStatement statement = con.prepareStatement("UPDATE characters SET clanid=0, title=?, clan_privs=0, wantspeace=0, subpledge=0, apprentice=0, sponsor=0 WHERE obj_Id=?");
+                PreparedStatement statement = con.prepareStatement("UPDATE characters SET clanid=0, title=?, clan_privs=0, subpledge=0, apprentice=0, sponsor=0 WHERE obj_Id=?");
                 statement.setString(1, "");
                 statement.setInt(2, exMember.getObjectId());
                 statement.execute();
@@ -410,14 +412,12 @@ public class L2Clan {
                 LOGGER.error("error while removing clan member in db ", e);
             }
 
-            try (StorePlayerVariableCall call = new StorePlayerVariableCall(
-                    exMember.getObjectId(),
-                    EPlayerVariableKey.CLAN_CREATE_EXPIRY_TIME.name(),
-                    null,
-                    null,
-                    null,
-                    _leader.getObjectId() == objectId ? System.currentTimeMillis() + Config.ALT_CLAN_CREATE_DAYS * 86400000L : null
-            )) {
+            try (StorePlayerVariableCall call = new StorePlayerVariableCall(exMember.getObjectId(),
+                    EPlayerVariableKey.CLAN_CREATE_EXPIRY_TIME.name(), null, null, null,
+                    _leader.getObjectId() == objectId ? System.currentTimeMillis() + Config.ALT_CLAN_CREATE_DAYS * 86400000L : null)) {
+                call.execute();
+                call.reset();
+                call.setVariableName(EPlayerVariableKey.WANTS_PEACE.name());
                 call.execute();
             }
             catch (CallException e) {

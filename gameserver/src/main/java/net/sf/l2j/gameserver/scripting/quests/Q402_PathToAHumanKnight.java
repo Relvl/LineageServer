@@ -89,7 +89,7 @@ public class Q402_PathToAHumanKnight extends Quest
 		}
 		else if (event.equalsIgnoreCase("30417-08.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(MARK_OF_ESQUIRE, 1);
@@ -155,11 +155,11 @@ public class Q402_PathToAHumanKnight extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = "30417-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				switch (npc.getNpcId())
 				{
 					case SIR_KLAUS_VASPER:
@@ -321,7 +321,7 @@ public class Q402_PathToAHumanKnight extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

@@ -54,7 +54,7 @@ public class Q258_BringWolfPelts extends Quest
 		
 		if (event.equalsIgnoreCase("30001-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -72,11 +72,11 @@ public class Q258_BringWolfPelts extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 3) ? "30001-01.htm" : "30001-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getQuestItemsCount(WOLF_PELT) < 40)
 					htmltext = "30001-05.htm";
 				else

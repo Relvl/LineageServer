@@ -18,7 +18,7 @@ import java.util.Calendar;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.instancemanager.DayNightSpawnManager;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
@@ -66,7 +66,7 @@ public final class GameTimeTaskManager implements Runnable
 		_night = isNight();
 		
 		// Run task each 10 seconds.
-		ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(this, MILLISECONDS_PER_GAME_MINUTE, MILLISECONDS_PER_GAME_MINUTE);
+		ThreadPoolManager.getInstance().scheduleAtFixedRate(this, MILLISECONDS_PER_GAME_MINUTE, MILLISECONDS_PER_GAME_MINUTE);
 	}
 	
 	/**

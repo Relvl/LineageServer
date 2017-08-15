@@ -47,7 +47,7 @@ public class Q329_CuriosityOfADwarf extends Quest
 		
 		if (event.equalsIgnoreCase("30437-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -70,11 +70,11 @@ public class Q329_CuriosityOfADwarf extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 33) ? "30437-01.htm" : "30437-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int golem = st.getQuestItemsCount(GOLEM_HEARTSTONE);
 				final int broken = st.getQuestItemsCount(BROKEN_HEARTSTONE);
 				
@@ -96,7 +96,7 @@ public class Q329_CuriosityOfADwarf extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

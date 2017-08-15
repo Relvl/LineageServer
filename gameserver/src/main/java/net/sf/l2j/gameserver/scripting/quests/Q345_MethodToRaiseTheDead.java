@@ -64,7 +64,7 @@ public class Q345_MethodToRaiseTheDead extends Quest
 		
 		if (event.equalsIgnoreCase("30970-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -145,11 +145,11 @@ public class Q345_MethodToRaiseTheDead extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 35) ? "30970-00.htm" : "30970-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{

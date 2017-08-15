@@ -30,6 +30,7 @@ import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.taskmanager.ItemsOnGroundTaskManager;
 import net.sf.l2j.gameserver.taskmanager.MovementTaskManager;
 import net.sf.l2j.gameserver.util.Broadcast;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

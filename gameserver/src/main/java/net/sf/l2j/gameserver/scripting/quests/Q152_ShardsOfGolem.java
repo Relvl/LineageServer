@@ -59,7 +59,7 @@ public class Q152_ShardsOfGolem extends Quest
 		
 		if (event.equalsIgnoreCase("30035-02.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(HARRIS_RECEIPT_1, 1);
@@ -85,11 +85,11 @@ public class Q152_ShardsOfGolem extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 10) ? "30035-01a.htm" : "30035-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{
@@ -127,7 +127,7 @@ public class Q152_ShardsOfGolem extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

@@ -68,7 +68,7 @@ public class Q642_APowerfulPrimevalCreature extends Quest
 		
 		if (event.equalsIgnoreCase("32105-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -116,11 +116,11 @@ public class Q642_APowerfulPrimevalCreature extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 75) ? "32105-00.htm" : "32105-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				htmltext = (!st.hasQuestItems(DINOSAUR_TISSUE)) ? "32105-08.htm" : "32105-05.htm";
 				break;
 		}
@@ -131,7 +131,7 @@ public class Q642_APowerfulPrimevalCreature extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

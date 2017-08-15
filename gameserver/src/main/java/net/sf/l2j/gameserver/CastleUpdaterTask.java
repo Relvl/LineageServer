@@ -4,6 +4,7 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.entity.Castle;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,7 +33,7 @@ public class CastleUpdaterTask implements Runnable {
                     }
                 }
                 _runCount++;
-                ThreadPoolManager.getInstance().scheduleGeneral(new CastleUpdaterTask(_clan, _runCount), 3600000);
+                ThreadPoolManager.getInstance().schedule(new CastleUpdaterTask(_clan, _runCount), 3600000);
             }
         }
         catch (Throwable e) {

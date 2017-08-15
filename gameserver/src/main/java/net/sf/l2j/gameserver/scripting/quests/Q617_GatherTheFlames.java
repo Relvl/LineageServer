@@ -103,7 +103,7 @@ public class Q617_GatherTheFlames extends Quest
 		
 		if (event.equalsIgnoreCase("31539-03.htm") || event.equalsIgnoreCase("31271-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -146,11 +146,11 @@ public class Q617_GatherTheFlames extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = npc.getNpcId() + ((player.getLevel() >= 74) ? "-01.htm" : "-02.htm");
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				switch (npc.getNpcId())
 				{
 					case VULCAN:
@@ -174,7 +174,7 @@ public class Q617_GatherTheFlames extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, STATE_STARTED);
+		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, QuestState.STATE_STARTED);
 		if (partyMember == null)
 			return null;
 		

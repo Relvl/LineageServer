@@ -49,7 +49,7 @@ public class Q019_GoToThePastureland extends Quest
 		
 		if (event.equalsIgnoreCase("31302-01.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(YOUNG_WILD_BEAST_MEAT, 1);
@@ -80,11 +80,11 @@ public class Q019_GoToThePastureland extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 63) ? "31302-03.htm" : "31302-00.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				switch (npc.getNpcId())
 				{
 					case VLADIMIR:
@@ -97,7 +97,7 @@ public class Q019_GoToThePastureland extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

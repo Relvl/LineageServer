@@ -71,7 +71,7 @@ public class MissQueen extends Quest
 					htmltext = "31760-01.htm";
 				else
 				{
-					st.setState(STATE_STARTED);
+					st.setState(QuestState.STATE_STARTED);
 					htmltext = "31760-02.htm";
 					st.set("reward_1", "1");
 					st.giveItems(COUPON_ONE, 1);
@@ -88,7 +88,7 @@ public class MissQueen extends Quest
 					htmltext = "31760-04.htm";
 				else
 				{
-					st.setState(STATE_STARTED);
+					st.setState(QuestState.STATE_STARTED);
 					htmltext = "31760-05.htm";
 					st.set("reward_2", "1");
 					st.giveItems(COUPON_TWO, 1);

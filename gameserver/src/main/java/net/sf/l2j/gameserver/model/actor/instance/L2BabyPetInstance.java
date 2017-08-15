@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.model.actor.instance;
 import java.util.concurrent.Future;
 
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.skill.ESkillTargetType;

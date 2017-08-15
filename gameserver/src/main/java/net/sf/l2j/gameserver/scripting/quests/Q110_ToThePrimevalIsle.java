@@ -49,7 +49,7 @@ public class Q110_ToThePrimevalIsle extends Quest
 		
 		if (event.equalsIgnoreCase("31338-02.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(ANCIENT_BOOK, 1);
@@ -75,11 +75,11 @@ public class Q110_ToThePrimevalIsle extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 75) ? "31338-00.htm" : "31338-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				switch (npc.getNpcId())
 				{
 					case ANTON:
@@ -92,7 +92,7 @@ public class Q110_ToThePrimevalIsle extends Quest
 				}
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

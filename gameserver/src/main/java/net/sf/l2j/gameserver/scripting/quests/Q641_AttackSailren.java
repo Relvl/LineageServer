@@ -53,7 +53,7 @@ public final class Q641_AttackSailren extends Quest
 		
 		if (event.equalsIgnoreCase("32109-5.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -87,7 +87,7 @@ public final class Q641_AttackSailren extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getLevel() < 77)
 					htmltext = "32109-3.htm";
 				else
@@ -97,7 +97,7 @@ public final class Q641_AttackSailren extends Quest
 				}
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				if (cond == 1)
 					htmltext = "32109-5.htm";

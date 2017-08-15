@@ -17,7 +17,7 @@ package net.sf.l2j.gameserver.model.actor.instance;
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.datatables.PetDataTable;
@@ -546,7 +546,7 @@ public class L2PetInstance extends L2Summon {
     public synchronized void startFeed() {
         stopFeed();
         if (!isDead() && getOwner().getPet() == this) {
-            _feedTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new FeedTask(), 10000, 10000);
+            _feedTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new FeedTask(), 10000, 10000);
         }
     }
 

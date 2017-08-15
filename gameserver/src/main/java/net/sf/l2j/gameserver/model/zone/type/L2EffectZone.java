@@ -1,7 +1,7 @@
 package net.sf.l2j.gameserver.model.zone.type;
 
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -87,7 +87,7 @@ public class L2EffectZone extends L2ZoneType {
     protected void onEnter(L2Character character) {
         if (_task == null) {
             synchronized (this) {
-                if (_task == null) { _task = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new ApplySkill(), _initialDelay, _reuse); }
+                if (_task == null) { _task = ThreadPoolManager.getInstance().scheduleAtFixedRate(new ApplySkill(), _initialDelay, _reuse); }
             }
         }
 

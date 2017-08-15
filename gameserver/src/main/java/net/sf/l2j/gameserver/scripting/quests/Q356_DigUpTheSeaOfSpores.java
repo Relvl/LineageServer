@@ -52,7 +52,7 @@ public class Q356_DigUpTheSeaOfSpores extends Quest
 		
 		if (event.equalsIgnoreCase("30717-06.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -96,11 +96,11 @@ public class Q356_DigUpTheSeaOfSpores extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 43) ? "30717-01.htm" : "30717-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				int cond = st.getInt("cond");
 				if (cond == 1)
 					htmltext = "30717-07.htm";
@@ -124,7 +124,7 @@ public class Q356_DigUpTheSeaOfSpores extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

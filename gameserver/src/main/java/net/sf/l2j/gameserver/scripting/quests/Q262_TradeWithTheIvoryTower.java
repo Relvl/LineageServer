@@ -47,7 +47,7 @@ public class Q262_TradeWithTheIvoryTower extends Quest
 		
 		if (event.equalsIgnoreCase("30137-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -65,11 +65,11 @@ public class Q262_TradeWithTheIvoryTower extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 8) ? "30137-01.htm" : "30137-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getQuestItemsCount(FUNGUS_SAC) < 10)
 					htmltext = "30137-04.htm";
 				else

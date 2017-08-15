@@ -67,7 +67,7 @@ public class Q660_AidingTheFloranVillage extends Quest
 		
 		if (event.equalsIgnoreCase("30608-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -77,7 +77,7 @@ public class Q660_AidingTheFloranVillage extends Quest
 				htmltext = "30291-02a.htm";
 			else
 			{
-				st.setState(STATE_STARTED);
+				st.setState(QuestState.STATE_STARTED);
 				st.set("cond", "2");
 				st.playSound(QuestState.SOUND_ACCEPT);
 			}
@@ -176,7 +176,7 @@ public class Q660_AidingTheFloranVillage extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				switch (npc.getNpcId())
 				{
 					case MARIA:
@@ -189,7 +189,7 @@ public class Q660_AidingTheFloranVillage extends Quest
 				}
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				switch (npc.getNpcId())
 				{
 					case MARIA:

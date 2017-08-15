@@ -60,7 +60,7 @@ public class Q259_RanchersPlea extends Quest
 		
 		if (event.equalsIgnoreCase("30497-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -108,11 +108,11 @@ public class Q259_RanchersPlea extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 15) ? "30497-01.htm" : "30497-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int count = st.getQuestItemsCount(GIANT_SPIDER_SKIN);
 				switch (npc.getNpcId())
 				{
@@ -140,7 +140,7 @@ public class Q259_RanchersPlea extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

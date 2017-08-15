@@ -52,7 +52,7 @@ public class Q650_ABrokenDream extends Quest
 		
 		if (event.equalsIgnoreCase("32054-01a.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -80,7 +80,7 @@ public class Q650_ABrokenDream extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				QuestState st2 = player.getQuestState("Q117_TheOceanOfDistantStars");
 				if (st2 != null && st2.isCompleted() && player.getLevel() >= 39)
 					htmltext = "32054-01.htm";
@@ -91,7 +91,7 @@ public class Q650_ABrokenDream extends Quest
 				}
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				htmltext = "32054-02.htm";
 				break;
 		}
@@ -102,7 +102,7 @@ public class Q650_ABrokenDream extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

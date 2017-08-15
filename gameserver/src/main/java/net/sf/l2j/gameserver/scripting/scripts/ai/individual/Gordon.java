@@ -369,7 +369,7 @@ public class Gordon extends AbstractNpcAI {
                 if (gordon_ai != null) {
                     _isSpawned = true;
                     startQuestTimer("Start", 1000, gordon_ai, null, true);
-                    return super.onAdvEvent(event, npc, player);
+                    return null;
                 }
             }
         }
@@ -384,13 +384,13 @@ public class Gordon extends AbstractNpcAI {
                             _isAttacked = true;
                             cancelQuestTimer("time_isAttacked", null, null);
                             startQuestTimer("time_isAttacked", 180000, npc, null, false);
-                            return super.onAdvEvent(event, npc, player);
+                            return null;
                         }
                     }
                 }
 
                 // end check
-                if (_isAttacked) { return super.onAdvEvent(event, npc, player); }
+                if (_isAttacked) { return null; }
 
                 if (npc.getNpcId() == GORDON && (npc.getX() - 50) <= X && (npc.getX() + 50) >= X && (npc.getY() - 50) <= Y && (npc.getY() + 50) >= Y) {
                     _isWalkTo++;
@@ -414,7 +414,7 @@ public class Gordon extends AbstractNpcAI {
                     _npcBlock++;
                     if (_npcBlock > 2) {
                         npc.teleToLocation(X, Y, Z, 0);
-                        return super.onAdvEvent(event, npc, player);
+                        return null;
                     }
 
                     if (_npcBlock > 0) { npc.getAI().setIntention(EIntention.MOVE_TO, new HeadedLocation(X, Y, Z, 0)); }
@@ -422,7 +422,7 @@ public class Gordon extends AbstractNpcAI {
                 // End Test unblock Npc
             }
         }
-        return super.onAdvEvent(event, npc, player);
+        return null;
     }
 
     @Override

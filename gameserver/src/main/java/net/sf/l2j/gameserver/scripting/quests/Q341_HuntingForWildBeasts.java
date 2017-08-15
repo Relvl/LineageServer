@@ -59,7 +59,7 @@ public class Q341_HuntingForWildBeasts extends Quest
 		
 		if (event.equalsIgnoreCase("30078-02.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -77,11 +77,11 @@ public class Q341_HuntingForWildBeasts extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 20) ? "30078-00.htm" : "30078-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getQuestItemsCount(BEAR_SKIN) < 20)
 					htmltext = "30078-03.htm";
 				else
@@ -101,7 +101,7 @@ public class Q341_HuntingForWildBeasts extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

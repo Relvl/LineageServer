@@ -52,7 +52,7 @@ public class Q298_LizardmensConspiracy extends Quest
 		
 		if (event.equalsIgnoreCase("30333-1.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			st.giveItems(PATROL_REPORT, 1);
@@ -89,11 +89,11 @@ public class Q298_LizardmensConspiracy extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 25) ? "30333-0b.htm" : "30333-0a.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				switch (npc.getNpcId())
 				{
 					case PRAGA:

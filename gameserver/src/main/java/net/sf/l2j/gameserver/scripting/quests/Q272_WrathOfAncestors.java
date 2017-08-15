@@ -48,7 +48,7 @@ public class Q272_WrathOfAncestors extends Quest
 		
 		if (event.equalsIgnoreCase("30572-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -66,7 +66,7 @@ public class Q272_WrathOfAncestors extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.Orc)
 					htmltext = "30572-00.htm";
 				else if (player.getLevel() < 5)
@@ -75,7 +75,7 @@ public class Q272_WrathOfAncestors extends Quest
 					htmltext = "30572-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.getInt("cond") == 1)
 					htmltext = "30572-04.htm";
 				else

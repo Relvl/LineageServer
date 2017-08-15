@@ -64,7 +64,7 @@ public class Q652_AnAgedExAdventurer extends Quest {
 
         if (event.equalsIgnoreCase("32012-02.htm")) {
             if (st.getQuestItemsCount(SOULSHOT_C) >= 100) {
-                st.setState(STATE_STARTED);
+                st.setState(QuestState.STATE_STARTED);
                 st.set("cond", "1");
                 st.playSound(QuestState.SOUND_ACCEPT);
                 st.takeItems(SOULSHOT_C, 100);
@@ -101,11 +101,11 @@ public class Q652_AnAgedExAdventurer extends Quest {
         if (st == null) { return htmltext; }
 
         switch (st.getState()) {
-            case STATE_CREATED:
+            case QuestState.STATE_CREATED:
                 htmltext = (player.getLevel() < 46) ? "32012-00.htm" : "32012-01.htm";
                 break;
 
-            case STATE_STARTED:
+            case QuestState.STATE_STARTED:
                 switch (npc.getNpcId()) {
                     case SARA:
                         if (Rnd.get(100) < 50) {

@@ -14,7 +14,7 @@
  */
 package net.sf.l2j.gameserver.model.actor.instance;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.model.L2CharacterAI;
 import net.sf.l2j.gameserver.ai.model.L2DoorAI;
@@ -156,7 +156,7 @@ public class L2DoorInstance extends L2Character {
 
         if (actionDelay > -1) {
             AutoOpenClose ao = new AutoOpenClose();
-            ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(ao, actionDelay, actionDelay);
+            ThreadPoolManager.getInstance().scheduleAtFixedRate(ao, actionDelay, actionDelay);
         }
         else {
             if (_autoActionTask != null) { _autoActionTask.cancel(false); }
@@ -293,7 +293,7 @@ public class L2DoorInstance extends L2Character {
     }
 
     public void onOpen() {
-        ThreadPoolManager.getInstance().scheduleGeneral(new CloseTask(), 60000);
+        ThreadPoolManager.getInstance().schedule(new CloseTask(), 60000);
     }
 
     public void onClose() {

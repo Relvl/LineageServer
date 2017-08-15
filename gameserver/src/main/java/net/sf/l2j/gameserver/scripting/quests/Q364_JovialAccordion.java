@@ -58,7 +58,7 @@ public class Q364_JovialAccordion extends Quest
 		
 		if (event.equalsIgnoreCase("30959-02.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.set("items", "0");
 			st.playSound(QuestState.SOUND_ACCEPT);
@@ -110,11 +110,11 @@ public class Q364_JovialAccordion extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 15) ? "30959-00.htm" : "30959-01.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				final int stolenItems = st.getInt("items");
 				

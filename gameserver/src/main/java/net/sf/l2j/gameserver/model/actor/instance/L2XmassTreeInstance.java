@@ -16,7 +16,7 @@ package net.sf.l2j.gameserver.model.actor.instance;
 
 import java.util.concurrent.ScheduledFuture;
 
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
@@ -37,7 +37,7 @@ public class L2XmassTreeInstance extends L2NpcInstance
 		super(objectId, template);
 		
 		if (template.isSpecialTree())
-			_aiTask = ThreadPoolManager.getInstance().scheduleGeneralAtFixedRate(new XmassAI(this, XTREE_SKILL), 3000, 3000);
+			_aiTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new XmassAI(this, XTREE_SKILL), 3000, 3000);
 	}
 	
 	private class XmassAI implements Runnable

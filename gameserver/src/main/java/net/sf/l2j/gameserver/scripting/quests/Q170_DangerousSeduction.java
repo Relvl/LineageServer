@@ -48,7 +48,7 @@ public class Q170_DangerousSeduction extends Quest
 		
 		if (event.equalsIgnoreCase("30305-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -66,7 +66,7 @@ public class Q170_DangerousSeduction extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.DarkElf)
 					htmltext = "30305-00.htm";
 				else if (player.getLevel() < 21)
@@ -75,7 +75,7 @@ public class Q170_DangerousSeduction extends Quest
 					htmltext = "30305-03.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (st.hasQuestItems(NIGHTMARE_CRYSTAL))
 				{
 					htmltext = "30305-06.htm";
@@ -88,7 +88,7 @@ public class Q170_DangerousSeduction extends Quest
 					htmltext = "30305-05.htm";
 				break;
 			
-			case STATE_COMPLETED:
+			case QuestState.STATE_COMPLETED:
 				htmltext = getAlreadyCompletedMsg();
 				break;
 		}

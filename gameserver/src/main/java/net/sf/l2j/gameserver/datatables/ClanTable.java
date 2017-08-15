@@ -3,7 +3,7 @@ package net.sf.l2j.gameserver.datatables;
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.lang.StringUtil;
-import net.sf.l2j.gameserver.ThreadPoolManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager;
 import net.sf.l2j.gameserver.model.L2Clan;
@@ -239,7 +239,7 @@ public class ClanTable {
     public void scheduleRemoveClan(L2Clan clan) {
         if (clan == null) { return; }
 
-        ThreadPoolManager.getInstance().scheduleGeneral(new Runnable() {
+        ThreadPoolManager.getInstance().schedule(new Runnable() {
             @Override
             public void run() {
                 if (clan.getDissolvingExpiryTime() != 0) { destroyClan(clan.getClanId()); }
@@ -316,9 +316,10 @@ public class ClanTable {
     public void checkSurrender(L2Clan clan1, L2Clan clan2) {
         int count = 0;
         for (L2ClanMember player : clan1.getMembers()) {
-            if (player != null && player.getPlayerInstance().wantsPeace()) { count++; }
+            if (player != null && player.getPlayerInstance().variables().getBoolean(EPlayerVariableKey.WANTS_PEACE)) {
+                count++;
+            }
         }
-
         if (count == clan1.getMembersCount() - 1) {
             clan1.deleteEnemyClan(clan2.getClanId());
             clan2.deleteEnemyClan(clan1.getClanId());
@@ -326,9 +327,6 @@ public class ClanTable {
         }
     }
 
-    /**
-     * Restore wars, checking penalties.
-     */
     private void restoreWars() {
         try (Connection con = L2DatabaseFactoryOld.getInstance().getConnection()) {
             // Delete deprecated wars (server was offline).

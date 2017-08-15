@@ -48,7 +48,7 @@ public class Q608_SlayTheEnemyCommander extends Quest
 		
 		if (event.equalsIgnoreCase("31370-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -83,7 +83,7 @@ public class Q608_SlayTheEnemyCommander extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getLevel() >= 75)
 				{
 					if (player.getAllianceWithVarkaKetra() >= 4 && st.hasQuestItems(KETRA_ALLIANCE_4) && !st.hasQuestItems(TOTEM_OF_WISDOM))
@@ -95,7 +95,7 @@ public class Q608_SlayTheEnemyCommander extends Quest
 					htmltext = "31370-03.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				htmltext = (st.hasQuestItems(HEAD_OF_MOS)) ? "31370-05.htm" : "31370-06.htm";
 				break;
 		}

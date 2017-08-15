@@ -56,7 +56,7 @@ public class Q615_MagicalPowerOfFire_Part1 extends Quest
 		
 		if (event.equalsIgnoreCase("31378-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.set("spawned", "0");
 			st.playSound(QuestState.SOUND_ACCEPT);
@@ -96,11 +96,11 @@ public class Q615_MagicalPowerOfFire_Part1 extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() >= 74 && player.getAllianceWithVarkaKetra() <= -2) ? "31378-01.htm" : "31378-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int cond = st.getInt("cond");
 				switch (npc.getNpcId())
 				{

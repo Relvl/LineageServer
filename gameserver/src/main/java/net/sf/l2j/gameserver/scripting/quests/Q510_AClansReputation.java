@@ -53,7 +53,7 @@ public class Q510_AClansReputation extends Quest
 		
 		if (event.equalsIgnoreCase("31331-3.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -76,11 +76,11 @@ public class Q510_AClansReputation extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (!player.isClanLeader() || player.getClan().getLevel() < 5) ? "31331-0.htm" : "31331-1.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int count = 50 * st.getQuestItemsCount(TYRANNOSAURUS_CLAW);
 				if (count > 0)
 				{

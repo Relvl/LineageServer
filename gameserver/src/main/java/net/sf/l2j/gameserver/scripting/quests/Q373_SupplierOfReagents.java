@@ -280,7 +280,7 @@ public class Q373_SupplierOfReagents extends Quest
 		// Wesley
 		if (event.equalsIgnoreCase("30166-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 			
@@ -375,11 +375,11 @@ public class Q373_SupplierOfReagents extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 57) ? "30166-01.htm" : "30166-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				if (npc.getNpcId() == WESLEY)
 					htmltext = "30166-05.htm";
 				else
@@ -392,7 +392,7 @@ public class Q373_SupplierOfReagents extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, STATE_STARTED);
+		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, QuestState.STATE_STARTED);
 		if (partyMember == null)
 			return null;
 		

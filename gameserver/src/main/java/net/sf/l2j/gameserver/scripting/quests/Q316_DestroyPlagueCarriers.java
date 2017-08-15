@@ -54,7 +54,7 @@ public class Q316_DestroyPlagueCarriers extends Quest
 		
 		if (event.equalsIgnoreCase("30155-04.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -77,7 +77,7 @@ public class Q316_DestroyPlagueCarriers extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				if (player.getRace() != PlayerRace.Elf)
 					htmltext = "30155-00.htm";
 				else if (player.getLevel() < 18)
@@ -86,7 +86,7 @@ public class Q316_DestroyPlagueCarriers extends Quest
 					htmltext = "30155-03.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int ratFangs = st.getQuestItemsCount(WERERAT_FANG);
 				final int varoolFangs = st.getQuestItemsCount(VAROOL_FOULCLAW_FANG);
 				
@@ -108,7 +108,7 @@ public class Q316_DestroyPlagueCarriers extends Quest
 	@Override
 	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
 	{
-		QuestState st = checkPlayerState(player, npc, STATE_STARTED);
+		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
 		if (st == null)
 			return null;
 		

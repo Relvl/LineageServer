@@ -56,7 +56,7 @@ public class Q264_KeenClaws extends Quest
 		
 		if (event.equalsIgnoreCase("30136-03.htm"))
 		{
-			st.setState(STATE_STARTED);
+			st.setState(QuestState.STATE_STARTED);
 			st.set("cond", "1");
 			st.playSound(QuestState.SOUND_ACCEPT);
 		}
@@ -74,11 +74,11 @@ public class Q264_KeenClaws extends Quest
 		
 		switch (st.getState())
 		{
-			case STATE_CREATED:
+			case QuestState.STATE_CREATED:
 				htmltext = (player.getLevel() < 3) ? "30136-01.htm" : "30136-02.htm";
 				break;
 			
-			case STATE_STARTED:
+			case QuestState.STATE_STARTED:
 				final int count = st.getQuestItemsCount(WOLF_CLAW);
 				if (count < 50)
 					htmltext = "30136-04.htm";

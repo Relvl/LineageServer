@@ -60,7 +60,7 @@ public class MapRegionTable {
     }
 
     public static MapRegionTable getInstance() {
-        return SingletonHolder._instance;
+        return SingletonHolder.INSTANCE;
     }
 
     public static int getMapRegion(int posX, int posY) {
@@ -373,9 +373,9 @@ public class MapRegionTable {
      * @return true if a siege is currently in progress in that town.
      */
     public static boolean townHasCastleInSiege(int x, int y) {
-        final int castleIndex = _castleIdArray[getMapRegion(x, y)];
+        int castleIndex = _castleIdArray[getMapRegion(x, y)];
         if (castleIndex > 0) {
-            final Castle castle = CastleManager.getInstance().getCastles().get(CastleManager.getInstance().getCastleIndex(castleIndex));
+            Castle castle = CastleManager.getInstance().getCastles().get(CastleManager.getInstance().getCastleIndex(castleIndex));
             if (castle != null) { return castle.getSiege().isInProgress(); }
         }
         return false;
@@ -400,16 +400,13 @@ public class MapRegionTable {
      */
     public static L2TownZone getTown(int x, int y, int z) {
         for (L2ZoneType temp : ZoneManager.getZones(x, y, z)) {
-            if (temp instanceof L2TownZone) { return (L2TownZone) temp; }
+            if (temp instanceof L2TownZone) {
+                return (L2TownZone) temp;
+            }
         }
         return null;
     }
 
-    /**
-     * @param x
-     * @param y
-     * @return a String consisting of town name, based on X/Y points.
-     */
     public String getClosestTownName(int x, int y) {
         return getClosestTownName(getMapRegion(x, y));
     }
@@ -418,61 +415,42 @@ public class MapRegionTable {
         switch (townId) {
             case 0:
                 return "Talking Island Village";
-
             case 1:
                 return "Elven Village";
-
             case 2:
                 return "Dark Elven Village";
-
             case 3:
                 return "Orc Village";
-
             case 4:
                 return "Dwarven Village";
-
             case 5:
                 return "Town of Gludio";
-
             case 6:
                 return "Gludin Village";
-
             case 7:
                 return "Town of Dion";
-
             case 8:
                 return "Town of Giran";
-
             case 9:
                 return "Town of Oren";
-
             case 10:
                 return "Town of Aden";
-
             case 11:
                 return "Hunters Village";
-
             case 12:
                 return "Giran Harbor";
-
             case 13:
                 return "Heine";
-
             case 14:
                 return "Rune Township";
-
             case 15:
                 return "Town of Goddard";
-
             case 16:
                 return "Town of Schuttgart";
-
             case 17:
                 return "Floran Village";
-
             case 18:
                 return "Primeval Isle";
-
             default:
                 return "Town of Aden";
         }
@@ -480,7 +458,7 @@ public class MapRegionTable {
 
     public Location getTeleToLocation(L2Character activeChar, TeleportWhereType teleportWhere) {
         if (activeChar instanceof L2PcInstance) {
-            L2PcInstance player = ((L2PcInstance) activeChar);
+            L2PcInstance player = (L2PcInstance) activeChar;
 
             // If in Monster Derby Track
             if (player.isInsideZone(ZoneId.MONSTER_TRACK)) { return new Location(12661, 181687, -3560); }
@@ -555,14 +533,14 @@ public class MapRegionTable {
         return getClosestTown(activeChar.getX(), activeChar.getY()).getSpawnLoc();
     }
 
-    public static enum TeleportWhereType {
+    public enum TeleportWhereType {
         Castle,
         ClanHall,
         SiegeFlag,
         Town
     }
 
-    private static class SingletonHolder {
-        protected static final MapRegionTable _instance = new MapRegionTable();
+    private static final class SingletonHolder {
+        private static final MapRegionTable INSTANCE = new MapRegionTable();
     }
 }
