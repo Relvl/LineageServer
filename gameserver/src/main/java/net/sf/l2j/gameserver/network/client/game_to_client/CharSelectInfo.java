@@ -189,7 +189,6 @@ public class CharSelectInfo extends L2GameServerPacket {
 
             charList.close();
             statement.close();
-
         }
         catch (Exception e) {
             LOGGER.error("Could not restore char subclass info: {}", e.getMessage(), e);

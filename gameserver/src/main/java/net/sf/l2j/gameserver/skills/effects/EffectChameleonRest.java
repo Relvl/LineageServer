@@ -24,67 +24,53 @@ import net.sf.l2j.gameserver.templates.skills.L2EffectFlag;
 import net.sf.l2j.gameserver.templates.skills.L2EffectType;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
 
-public class EffectChameleonRest extends L2Effect
-{
-	public EffectChameleonRest(Env env, EffectTemplate template)
-	{
-		super(env, template);
-	}
-	
-	@Override
-	public L2EffectType getEffectType()
-	{
-		return L2EffectType.RELAXING;
-	}
-	
-	@Override
-	public boolean onStart()
-	{
-		if (getEffected() instanceof L2PcInstance)
-			((L2PcInstance) getEffected()).sitDown(false);
-		else
-			getEffected().getAI().setIntention(EIntention.REST);
-		
-		return super.onStart();
-	}
-	
-	@Override
-	public void onExit()
-	{
-		super.onExit();
-	}
-	
-	@Override
-	public boolean onActionTime()
-	{
-		if (getEffected().isDead())
-			return false;
-		
-		// Only cont skills shouldn't end
-		if (getSkill().getSkillType() != L2SkillType.CONT)
-			return false;
-		
-		if (getEffected() instanceof L2PcInstance)
-		{
-			if (!((L2PcInstance) getEffected()).isSitting())
-				return false;
-		}
-		
-		double manaDam = calc();
-		
-		if (manaDam > getEffected().getCurrentMp())
-		{
-			getEffected().sendPacket(SystemMessage.getSystemMessage(SystemMessageId.SKILL_REMOVED_DUE_LACK_MP));
-			return false;
-		}
-		
-		getEffected().reduceCurrentMp(manaDam);
-		return true;
-	}
-	
-	@Override
-	public int getEffectFlags()
-	{
-		return L2EffectFlag.SILENT_MOVE.getMask() | L2EffectFlag.RELAXING.getMask();
-	}
+public class EffectChameleonRest extends L2Effect {
+    public EffectChameleonRest(Env env, EffectTemplate template) {
+        super(env, template);
+    }
+
+    @Override
+    public L2EffectType getEffectType() {
+        return L2EffectType.RELAXING;
+    }
+
+    @Override
+    public boolean onStart() {
+        if (getEffected() instanceof L2PcInstance) { ((L2PcInstance) getEffected()).sitDown(false); }
+        else { getEffected().getAI().setIntention(EIntention.REST); }
+
+        return super.onStart();
+    }
+
+    @Override
+    public void onExit() {
+        super.onExit();
+    }
+
+    @Override
+    public boolean onActionTime() {
+        if (getEffected().isDead()) { return false; }
+
+        // Only cont skills shouldn't end
+        if (getSkill().getSkillType() != L2SkillType.CONT) { return false; }
+
+        if (getEffected() instanceof L2PcInstance) {
+            if (!((L2PcInstance) getEffected()).isSitting()) { return false; }
+        }
+
+        double manaDam = calc();
+
+        if (manaDam > getEffected().getCurrentMp()) {
+            getEffected().sendPacket(SystemMessage.getSystemMessage(SystemMessageId.SKILL_REMOVED_DUE_LACK_MP));
+            return false;
+        }
+
+        getEffected().reduceCurrentMp(manaDam);
+        return true;
+    }
+
+    @Override
+    public int getEffectFlags() {
+        return L2EffectFlag.SILENT_MOVE.getMask() | L2EffectFlag.RELAXING.getMask();
+    }
 }

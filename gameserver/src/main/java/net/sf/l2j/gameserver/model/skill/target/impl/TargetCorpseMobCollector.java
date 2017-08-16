@@ -25,6 +25,6 @@ public class TargetCorpseMobCollector implements ISkillTargetCollector {
             activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.CORPSE_TOO_OLD_SKILL_NOT_USED));
             return EMPTY_TARGET_LIST;
         }
-        return new L2Character[]{target};
+        return new L2Character[]{ target };
     }
 }

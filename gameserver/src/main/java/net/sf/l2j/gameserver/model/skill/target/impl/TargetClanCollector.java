@@ -30,7 +30,7 @@ public class TargetClanCollector implements ISkillTargetCollector {
         if (activeChar instanceof L2Playable) {
             L2PcInstance player = activeChar.getActingPlayer();
             if (player == null) { return EMPTY_TARGET_LIST; }
-            if (onlyFirst || player.isInOlympiadMode()) { return new L2Character[]{activeChar}; }
+            if (onlyFirst || player.isInOlympiadMode()) { return new L2Character[]{ activeChar }; }
             targetList.add(player);
             if (canAddSummon(activeChar, player, skill.getSkillRadius(), false)) { targetList.add(player.getPet()); }
             L2Clan clan = player.getClan();

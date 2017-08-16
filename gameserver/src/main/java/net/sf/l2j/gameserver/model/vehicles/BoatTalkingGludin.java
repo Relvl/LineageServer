@@ -1,13 +1,14 @@
 package net.sf.l2j.gameserver.model.vehicles;
 
 import net.sf.l2j.gameserver.EChatType;
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.instancemanager.BoatManager;
 import net.sf.l2j.gameserver.model.VehiclePathPoint;
 import net.sf.l2j.gameserver.model.actor.instance.L2BoatInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
 import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -81,8 +82,8 @@ public class BoatTalkingGludin implements Runnable {
     private final PlaySound TALKING_SOUND_LEAVE_1MIN;
     private final PlaySound GLUDIN_SOUND_LEAVE_5MIN;
     private final PlaySound GLUDIN_SOUND_LEAVE_1MIN;
-    private int _cycle = 0;
-    private int _shoutCount = 0;
+    private int _cycle;
+    private int _shoutCount;
 
     public BoatTalkingGludin(L2BoatInstance boat) {
         _boat = boat;
@@ -111,18 +112,18 @@ public class BoatTalkingGludin implements Runnable {
         ARRIVAL_TALKING5 = new CreatureSay(0, EChatType.BOAT, 801, SystemMessageId.FERRY_FROM_GLUDIN_ARRIVE_AT_TALKING_5_MINUTES);
         ARRIVAL_TALKING1 = new CreatureSay(0, EChatType.BOAT, 801, SystemMessageId.FERRY_FROM_GLUDIN_ARRIVE_AT_TALKING_1_MINUTE);
 
-        TALKING_SOUND = new PlaySound(0, "itemsound.ship_arrival_departure", 1, _boat.getObjectId(), TALKING_DOCK[0].x, TALKING_DOCK[0].y, TALKING_DOCK[0].z);
-        GLUDIN_SOUND = new PlaySound(0, "itemsound.ship_arrival_departure", 1, _boat.getObjectId(), GLUDIN_DOCK[0].x, GLUDIN_DOCK[0].y, GLUDIN_DOCK[0].z);
+        TALKING_SOUND = new PlaySound(ESound.itemsound_ship_arrival_departure, _boat.getObjectId(), TALKING_DOCK[0].x, TALKING_DOCK[0].y, TALKING_DOCK[0].z);
+        GLUDIN_SOUND = new PlaySound(ESound.itemsound_ship_arrival_departure, _boat.getObjectId(), GLUDIN_DOCK[0].x, GLUDIN_DOCK[0].y, GLUDIN_DOCK[0].z);
 
-        TALKING_SOUND_LEAVE_5MIN = new PlaySound(0, "itemsound.ship_5min", 1, _boat.getObjectId(), TALKING_DOCK[0].x, TALKING_DOCK[0].y, TALKING_DOCK[0].z);
-        TALKING_SOUND_LEAVE_1MIN = new PlaySound(0, "itemsound.ship_1min", 1, _boat.getObjectId(), TALKING_DOCK[0].x, TALKING_DOCK[0].y, TALKING_DOCK[0].z);
+        TALKING_SOUND_LEAVE_5MIN = new PlaySound(ESound.itemsound_ship_5min, _boat.getObjectId(), TALKING_DOCK[0].x, TALKING_DOCK[0].y, TALKING_DOCK[0].z);
+        TALKING_SOUND_LEAVE_1MIN = new PlaySound(ESound.itemsound_ship_1min, _boat.getObjectId(), TALKING_DOCK[0].x, TALKING_DOCK[0].y, TALKING_DOCK[0].z);
 
-        GLUDIN_SOUND_LEAVE_5MIN = new PlaySound(0, "itemsound.ship_5min", 1, _boat.getObjectId(), GLUDIN_DOCK[0].x, GLUDIN_DOCK[0].y, GLUDIN_DOCK[0].z);
-        GLUDIN_SOUND_LEAVE_1MIN = new PlaySound(0, "itemsound.ship_1min", 1, _boat.getObjectId(), GLUDIN_DOCK[0].x, GLUDIN_DOCK[0].y, GLUDIN_DOCK[0].z);
+        GLUDIN_SOUND_LEAVE_5MIN = new PlaySound(ESound.itemsound_ship_5min, _boat.getObjectId(), GLUDIN_DOCK[0].x, GLUDIN_DOCK[0].y, GLUDIN_DOCK[0].z);
+        GLUDIN_SOUND_LEAVE_1MIN = new PlaySound(ESound.itemsound_ship_1min, _boat.getObjectId(), GLUDIN_DOCK[0].x, GLUDIN_DOCK[0].y, GLUDIN_DOCK[0].z);
     }
 
     public static void load() {
-        final L2BoatInstance boat = BoatManager.getInstance().getNewBoat(1, -96622, 261660, -3610, 32768);
+        L2BoatInstance boat = BoatManager.getInstance().getNewBoat(1, -96622, 261660, -3610, 32768);
         if (boat != null) {
             boat.registerEngine(new BoatTalkingGludin(boat));
             boat.runEngine(180000);

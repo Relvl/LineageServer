@@ -18,6 +18,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillUse;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -41,7 +42,7 @@ public class Q653_WildMaiden extends Quest {
             };
 
     // Current position
-    private int _currentPosition = 0;
+    private int _currentPosition;
 
     public Q653_WildMaiden() {
         super(653, "Wild Maiden");
@@ -62,7 +63,7 @@ public class Q653_WildMaiden extends Quest {
             if (st.hasQuestItems(SCROLL_OF_ESCAPE)) {
                 st.setState(QuestState.STATE_STARTED);
                 st.set("cond", "1");
-                st.playSound(QuestState.SOUND_ACCEPT);
+                st.playSound(ESound.ItemSound_quest_accept);
                 st.takeItems(SCROLL_OF_ESCAPE, 1);
 
                 npc.broadcastPacket(new MagicSkillUse(npc, npc, 2013, 1, 3500, 0));
@@ -106,7 +107,7 @@ public class Q653_WildMaiden extends Quest {
                     case GALIBREDO:
                         htmltext = "30181-01.htm";
                         st.rewardItems(ItemConst.ADENA_ID, 2883);
-                        st.playSound(QuestState.SOUND_FINISH);
+                        st.playSound(ESound.ItemSound_quest_finish);
                         st.exitQuest(true);
                         break;
 

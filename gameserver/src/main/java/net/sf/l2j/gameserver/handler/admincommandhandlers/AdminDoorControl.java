@@ -30,82 +30,59 @@ import net.sf.l2j.gameserver.network.SystemMessageId;
  * <li>closeall = close all doors registered on doors.xml.</li>
  * </ul>
  */
-public class AdminDoorControl implements IAdminCommandHandler
-{
-	private static final String[] ADMIN_COMMANDS =
-	{
-		"admin_open",
-		"admin_close",
-		"admin_openall",
-		"admin_closeall"
-	};
-	
-	@Override
-	public boolean useAdminCommand(String command, L2PcInstance activeChar)
-	{
-		if (command.startsWith("admin_open"))
-		{
-			if (command.equals("admin_openall"))
-			{
-				for (L2DoorInstance door : DoorTable.getInstance().getDoors())
-					door.openMe();
-			}
-			else
-			{
-				try
-				{
-					final L2DoorInstance door = DoorTable.getInstance().getDoor(Integer.parseInt(command.substring(11)));
-					if (door != null)
-						door.openMe();
-					else
-						activeChar.sendPacket(SystemMessageId.INCORRECT_TARGET);
-				}
-				catch (Exception e)
-				{
-					final L2Object target = activeChar.getTarget();
-					
-					if (target instanceof L2DoorInstance)
-						((L2DoorInstance) target).openMe();
-					else
-						activeChar.sendPacket(SystemMessageId.INCORRECT_TARGET);
-				}
-			}
-		}
-		else if (command.startsWith("admin_close"))
-		{
-			if (command.equals("admin_closeall"))
-			{
-				for (L2DoorInstance door : DoorTable.getInstance().getDoors())
-					door.closeMe();
-			}
-			else
-			{
-				try
-				{
-					final L2DoorInstance door = DoorTable.getInstance().getDoor(Integer.parseInt(command.substring(12)));
-					if (door != null)
-						door.closeMe();
-					else
-						activeChar.sendPacket(SystemMessageId.INCORRECT_TARGET);
-				}
-				catch (Exception e)
-				{
-					final L2Object target = activeChar.getTarget();
-					
-					if (target instanceof L2DoorInstance)
-						((L2DoorInstance) target).closeMe();
-					else
-						activeChar.sendPacket(SystemMessageId.INCORRECT_TARGET);
-				}
-			}
-		}
-		
-		return true;
-	}
-	
-	@Override
-	public String[] getAdminCommandList()
-	{
-		return ADMIN_COMMANDS;
-	}
+public class AdminDoorControl implements IAdminCommandHandler {
+    private static final String[] ADMIN_COMMANDS =
+            {
+                    "admin_open",
+                    "admin_close",
+                    "admin_openall",
+                    "admin_closeall"
+            };
+
+    @Override
+    public boolean useAdminCommand(String command, L2PcInstance activeChar) {
+        if (command.startsWith("admin_open")) {
+            if (command.equals("admin_openall")) {
+                for (L2DoorInstance door : DoorTable.getInstance().getDoors()) { door.openMe(); }
+            }
+            else {
+                try {
+                    final L2DoorInstance door = DoorTable.getInstance().getDoor(Integer.parseInt(command.substring(11)));
+                    if (door != null) { door.openMe(); }
+                    else { activeChar.sendPacket(SystemMessageId.INCORRECT_TARGET); }
+                }
+                catch (Exception e) {
+                    final L2Object target = activeChar.getTarget();
+
+                    if (target instanceof L2DoorInstance) { ((L2DoorInstance) target).openMe(); }
+                    else { activeChar.sendPacket(SystemMessageId.INCORRECT_TARGET); }
+                }
+            }
+        }
+        else if (command.startsWith("admin_close")) {
+            if (command.equals("admin_closeall")) {
+                for (L2DoorInstance door : DoorTable.getInstance().getDoors()) { door.closeMe(); }
+            }
+            else {
+                try {
+                    final L2DoorInstance door = DoorTable.getInstance().getDoor(Integer.parseInt(command.substring(12)));
+                    if (door != null) { door.closeMe(); }
+                    else { activeChar.sendPacket(SystemMessageId.INCORRECT_TARGET); }
+                }
+                catch (Exception e) {
+                    final L2Object target = activeChar.getTarget();
+
+                    if (target instanceof L2DoorInstance) { ((L2DoorInstance) target).closeMe(); }
+                    else { activeChar.sendPacket(SystemMessageId.INCORRECT_TARGET); }
+                }
+            }
+        }
+
+        return true;
+    }
+
+    @Override
+    public String[] getAdminCommandList() {
+        return ADMIN_COMMANDS;
+    }
 }

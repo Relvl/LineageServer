@@ -43,7 +43,7 @@ public class WeakList<T> extends AbstractList<T> {
     }
 
     /** Удаляет все WeakReference, объект которых уже удалён мусорщиком. */
-    @SuppressWarnings({"SuspiciousMethodCalls", "ForLoopReplaceableByForEach", "ForLoopWithMissingComponent"})
+    @SuppressWarnings({ "SuspiciousMethodCalls", "ForLoopReplaceableByForEach", "ForLoopWithMissingComponent" })
     public void clearReleased() {
         for (Iterator<WeakReference<T>> it = innerList.iterator(); it.hasNext(); ) {
             WeakReference<T> ref = it.next();
@@ -91,5 +91,4 @@ public class WeakList<T> extends AbstractList<T> {
             throw new UnsupportedOperationException("Iterator is a lie!");
         }
     }
-
 }

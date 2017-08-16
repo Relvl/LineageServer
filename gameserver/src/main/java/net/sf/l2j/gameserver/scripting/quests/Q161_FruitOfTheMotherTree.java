@@ -4,6 +4,8 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.PlayerRace;
 import net.sf.l2j.gameserver.model.item.ItemConst;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -36,7 +38,7 @@ public class Q161_FruitOfTheMotherTree extends Quest {
         if (event.equalsIgnoreCase("30362-04.htm")) {
             st.setState(QuestState.STATE_STARTED);
             st.set("cond", "1");
-            st.playSound(QuestState.SOUND_ACCEPT);
+            st.playSound(ESound.ItemSound_quest_accept);
             st.giveItems(ANDELLIA_LETTER, 1);
         }
 
@@ -66,7 +68,7 @@ public class Q161_FruitOfTheMotherTree extends Quest {
                             st.takeItems(MOTHERTREE_FRUIT, 1);
                             st.rewardItems(ItemConst.ADENA_ID, 1000);
                             st.rewardExpAndSp(1000, 0);
-                            st.playSound(QuestState.SOUND_FINISH);
+                            st.playSound(ESound.ItemSound_quest_finish);
                             st.exitQuest(false);
                         }
                         break;
@@ -75,7 +77,7 @@ public class Q161_FruitOfTheMotherTree extends Quest {
                         if (cond == 1) {
                             htmltext = "30371-01.htm";
                             st.set("cond", "2");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(ANDELLIA_LETTER, 1);
                             st.giveItems(MOTHERTREE_FRUIT, 1);
                         }

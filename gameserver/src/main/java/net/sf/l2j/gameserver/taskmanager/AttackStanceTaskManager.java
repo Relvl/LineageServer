@@ -1,10 +1,10 @@
 package net.sf.l2j.gameserver.taskmanager;
 
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2CubicInstance;
 import net.sf.l2j.gameserver.network.client.game_to_client.AutoAttackStop;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 import java.util.Map;
 import java.util.Map.Entry;

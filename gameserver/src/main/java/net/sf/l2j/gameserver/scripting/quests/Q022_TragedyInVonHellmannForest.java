@@ -18,6 +18,7 @@ import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -71,7 +72,7 @@ public class Q022_TragedyInVonHellmannForest extends Quest {
         else if (event.equalsIgnoreCase("31334-04.htm")) {
             st.setState(QuestState.STATE_STARTED);
             st.set("cond", "1");
-            st.playSound(QuestState.SOUND_ACCEPT);
+            st.playSound(ESound.ItemSound_quest_accept);
         }
         else if (event.equalsIgnoreCase("31334-07.htm")) {
             if (!st.hasQuestItems(CROSS_OF_EINHASAD)) { st.set("cond", "2"); }
@@ -80,7 +81,7 @@ public class Q022_TragedyInVonHellmannForest extends Quest {
         else if (event.equalsIgnoreCase("31334-08.htm")) {
             if (st.hasQuestItems(CROSS_OF_EINHASAD)) {
                 st.set("cond", "4");
-                st.playSound(QuestState.SOUND_MIDDLE);
+                st.playSound(ESound.ItemSound_quest_middle);
                 st.takeItems(CROSS_OF_EINHASAD, 1);
             }
             else {
@@ -95,7 +96,7 @@ public class Q022_TragedyInVonHellmannForest extends Quest {
             }
             else {
                 st.set("cond", "7");
-                st.playSound(QuestState.SOUND_MIDDLE);
+                st.playSound(ESound.ItemSound_quest_middle);
                 st.takeItems(LOST_SKULL_OF_ELF, 1);
 
                 _ghostOfPriestInstance = addSpawn(GHOST_OF_PRIEST, 38418, -49894, -1104, 0, false, 120000, true);
@@ -105,7 +106,7 @@ public class Q022_TragedyInVonHellmannForest extends Quest {
         }
         else if (event.equalsIgnoreCase("31528-08.htm")) {
             st.set("cond", "8");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
 
             cancelQuestTimer("ghost_cleanup", null, player);
 
@@ -116,12 +117,12 @@ public class Q022_TragedyInVonHellmannForest extends Quest {
         }
         else if (event.equalsIgnoreCase("31328-10.htm")) {
             st.set("cond", "9");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.giveItems(LETTER_OF_INNOCENTIN, 1);
         }
         else if (event.equalsIgnoreCase("31529-12.htm")) {
             st.set("cond", "10");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.takeItems(LETTER_OF_INNOCENTIN, 1);
             st.giveItems(GREEN_JEWEL_OF_ADVENTURER, 1);
         }
@@ -136,18 +137,18 @@ public class Q022_TragedyInVonHellmannForest extends Quest {
         }
         else if (event.equalsIgnoreCase("attack_timer")) {
             st.set("cond", "11");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.takeItems(GREEN_JEWEL_OF_ADVENTURER, 1);
             st.giveItems(RED_JEWEL_OF_ADVENTURER, 1);
         }
         else if (event.equalsIgnoreCase("31328-13.htm")) {
             st.set("cond", "15");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.takeItems(REPORT_BOX, 1);
         }
         else if (event.equalsIgnoreCase("31328-21.htm")) {
             st.set("cond", "16");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
         }
         else if (event.equalsIgnoreCase("ghost_cleanup")) {
             _ghostOfPriestInstance.broadcastNpcSay("I'm confused! Maybe it's time to go back.");
@@ -172,7 +173,7 @@ public class Q022_TragedyInVonHellmannForest extends Quest {
                             if (!st.hasQuestItems(CROSS_OF_EINHASAD)) {
                                 htmltext = "31328-01.htm";
                                 st.giveItems(CROSS_OF_EINHASAD, 1);
-                                st.playSound(QuestState.SOUND_ITEMGET);
+                                st.playSound(ESound.ItemSound_quest_itemget);
                             }
                             else { htmltext = "31328-01b.htm"; }
                         }
@@ -206,7 +207,7 @@ public class Q022_TragedyInVonHellmannForest extends Quest {
                             if (!st.hasQuestItems(CROSS_OF_EINHASAD)) {
                                 htmltext = "31328-01.htm";
                                 st.set("cond", "3");
-                                st.playSound(QuestState.SOUND_ITEMGET);
+                                st.playSound(ESound.ItemSound_quest_itemget);
                                 st.giveItems(CROSS_OF_EINHASAD, 1);
                             }
                             else { htmltext = "31328-01b.htm"; }
@@ -222,7 +223,7 @@ public class Q022_TragedyInVonHellmannForest extends Quest {
                         else if (cond == 16) {
                             htmltext = (player.getLevel() < 64) ? "31328-23.htm" : "31328-22.htm";
                             st.exitQuest(false);
-                            st.playSound(QuestState.SOUND_FINISH);
+                            st.playSound(ESound.ItemSound_quest_finish);
                         }
                         break;
 
@@ -244,7 +245,7 @@ public class Q022_TragedyInVonHellmannForest extends Quest {
                             if (st.hasQuestItems(RED_JEWEL_OF_ADVENTURER)) {
                                 htmltext = "31529-17.htm";
                                 st.set("cond", "12");
-                                st.playSound(QuestState.SOUND_MIDDLE);
+                                st.playSound(ESound.ItemSound_quest_middle);
                                 st.takeItems(RED_JEWEL_OF_ADVENTURER, 1);
                             }
                             else {
@@ -257,7 +258,7 @@ public class Q022_TragedyInVonHellmannForest extends Quest {
                             if (st.hasQuestItems(SEALED_REPORT_BOX)) {
                                 htmltext = "31529-18.htm";
                                 st.set("cond", "14");
-                                st.playSound(QuestState.SOUND_MIDDLE);
+                                st.playSound(ESound.ItemSound_quest_middle);
                                 st.takeItems(SEALED_REPORT_BOX, 1);
                                 st.giveItems(REPORT_BOX, 1);
                             }
@@ -275,7 +276,7 @@ public class Q022_TragedyInVonHellmannForest extends Quest {
                         else if (cond == 12) {
                             htmltext = "31527-04.htm";
                             st.set("cond", "13");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.giveItems(SEALED_REPORT_BOX, 1);
                         }
                         else if (cond > 12) { htmltext = "31527-05.htm"; }

@@ -1,10 +1,10 @@
 package net.sf.l2j.gameserver.model.zone.type;
 
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.zone.L2ZoneType;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 public class L2JailZone extends L2ZoneType {
     public L2JailZone(int id) {

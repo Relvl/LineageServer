@@ -1,9 +1,9 @@
 <NetworkConfig host="*" port="7777">
-  <communicationHost>127.0.0.1</communicationHost>
-  <communicationPort>9013</communicationPort>
-  <communicationProtocol>258</communicationProtocol>
-  <SelectorSleepTime>20</SelectorSleepTime>
-  <MaxSendPerPass>12</MaxSendPerPass>
-  <MaxReadPerPass>12</MaxReadPerPass>
-  <HelperBufferCount>20</HelperBufferCount>
+    <communicationHost>127.0.0.1</communicationHost>
+    <communicationPort>9013</communicationPort>
+    <communicationProtocol>258</communicationProtocol>
+    <SelectorSleepTime>20</SelectorSleepTime>
+    <MaxSendPerPass>12</MaxSendPerPass>
+    <MaxReadPerPass>12</MaxReadPerPass>
+    <HelperBufferCount>20</HelperBufferCount>
 </NetworkConfig>

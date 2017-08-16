@@ -35,7 +35,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-@SuppressWarnings({"BooleanMethodNameMustStartWithQuestion", "EqualsAndHashcode"})
+@SuppressWarnings({ "BooleanMethodNameMustStartWithQuestion", "EqualsAndHashcode" })
 public abstract class Quest {
     protected static final Logger LOGGER = LoggerFactory.getLogger(Quest.class);
 
@@ -711,5 +711,4 @@ public abstract class Quest {
             showResult(npc, player, res);
         }
     }
-
 }

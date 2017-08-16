@@ -16,20 +16,17 @@ package net.sf.l2j.gameserver.network.client.game_to_client;
 
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
-public class RecipeShopMsg extends L2GameServerPacket
-{
-	private final L2PcInstance _activeChar;
-	
-	public RecipeShopMsg(L2PcInstance player)
-	{
-		_activeChar = player;
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
-		writeC(0xdb);
-		writeD(_activeChar.getObjectId());
-		writeS(_activeChar.getCreateList().getStoreName());
-	}
+public class RecipeShopMsg extends L2GameServerPacket {
+    private final L2PcInstance _activeChar;
+
+    public RecipeShopMsg(L2PcInstance player) {
+        _activeChar = player;
+    }
+
+    @Override
+    protected final void writeImpl() {
+        writeC(0xdb);
+        writeD(_activeChar.getObjectId());
+        writeS(_activeChar.getCreateList().getStoreName());
+    }
 }

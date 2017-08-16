@@ -14,17 +14,14 @@
  */
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
-public final class TradePressOwnOk extends L2GameServerPacket
-{
-	public static final TradePressOwnOk STATIC_PACKET = new TradePressOwnOk();
-	
-	private TradePressOwnOk()
-	{
-	}
-	
-	@Override
-	protected void writeImpl()
-	{
-		writeC(0x75);
-	}
+public final class TradePressOwnOk extends L2GameServerPacket {
+    public static final TradePressOwnOk STATIC_PACKET = new TradePressOwnOk();
+
+    private TradePressOwnOk() {
+    }
+
+    @Override
+    protected void writeImpl() {
+        writeC(0x75);
+    }
 }

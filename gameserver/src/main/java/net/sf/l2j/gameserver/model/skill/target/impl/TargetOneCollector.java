@@ -17,6 +17,6 @@ public class TargetOneCollector implements ISkillTargetCollector {
         if (target == null || target.isDead() || (target == activeChar && !skill.isSelfLegit())) {
             return sendIncorrect(activeChar);
         }
-        return new L2Character[]{target};
+        return new L2Character[]{ target };
     }
 }

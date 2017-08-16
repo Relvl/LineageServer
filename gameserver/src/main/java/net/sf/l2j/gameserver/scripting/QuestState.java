@@ -9,6 +9,7 @@ import net.sf.l2j.gameserver.model.item.*;
 import net.sf.l2j.gameserver.model.itemcontainer.PcInventory;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,15 +25,6 @@ public final class QuestState {
     public static final byte STATE_CREATED = 0;
     public static final byte STATE_STARTED = 1;
     public static final byte STATE_COMPLETED = 2;
-
-    public static final String SOUND_ACCEPT = "ItemSound.quest_accept";
-    public static final String SOUND_ITEMGET = "ItemSound.quest_itemget";
-    public static final String SOUND_MIDDLE = "ItemSound.quest_middle";
-    public static final String SOUND_FINISH = "ItemSound.quest_finish";
-    public static final String SOUND_GIVEUP = "ItemSound.quest_giveup";
-    public static final String SOUND_JACKPOT = "ItemSound.quest_jackpot";
-    public static final String SOUND_FANFARE = "ItemSound.quest_fanfare_2";
-    public static final String SOUND_BEFORE_BATTLE = "Itemsound.quest_before_battle";
 
     private static final String QUEST_SET_VAR = "REPLACE INTO character_quests (charId,name,var,value) VALUES (?,?,?,?)";
     private static final String QUEST_DEL_VAR = "DELETE FROM character_quests WHERE charId=? AND name=? AND var=?";
@@ -369,7 +361,7 @@ public final class QuestState {
             }
             if (!player.getInventory().validateCapacityByItemId(itemId)) { return false; }
             giveItems(itemId, amount, 0);
-            playSound(reached ? SOUND_MIDDLE : SOUND_ITEMGET);
+            playSound(reached ? ESound.ItemSound_quest_middle : ESound.ItemSound_quest_itemget);
         }
         return neededCount > 0 && reached;
     }
@@ -418,7 +410,9 @@ public final class QuestState {
                 }
             }
         }
-        if (sendSound) { playSound((reached) ? SOUND_MIDDLE : SOUND_ITEMGET); }
+        if (sendSound) {
+            playSound((reached) ? ESound.ItemSound_quest_middle : ESound.ItemSound_quest_itemget);
+        }
         return reached;
     }
 
@@ -440,9 +434,9 @@ public final class QuestState {
     public void removeRadar(int x, int y, int z) { player.getRadar().removeMarker(x, y, z); }
 
     public void clearRadar() { player.getRadar().removeAllMarkers(); }
-
     // endregion STUFF THAT WILL PROBABLY BE CHANGED
-    public void playSound(String sound) { player.sendPacket(new PlaySound(sound)); }
+
+    public void playSound(ESound sound) { player.sendPacket(new PlaySound(sound)); }
 
     public void showQuestionMark(int number) { player.sendPacket(new TutorialShowQuestionMark(number)); }
 

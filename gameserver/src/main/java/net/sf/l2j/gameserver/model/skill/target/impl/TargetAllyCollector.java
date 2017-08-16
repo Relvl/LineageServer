@@ -23,7 +23,7 @@ public class TargetAllyCollector implements ISkillTargetCollector {
         L2PcInstance player = activeChar.getActingPlayer();
         if (player == null) { return EMPTY_TARGET_LIST; }
 
-        if (onlyFirst || player.isInOlympiadMode()) { return new L2Character[]{activeChar}; }
+        if (onlyFirst || player.isInOlympiadMode()) { return new L2Character[]{ activeChar }; }
 
         List<L2Character> targetList = new ArrayList<>();
         targetList.add(player);

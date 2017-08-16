@@ -20,20 +20,17 @@ import net.sf.l2j.gameserver.taskmanager.TaskManager.ExecutedTask;
 /**
  * @author Layane
  */
-public final class TaskRestart extends ATask
-{
-	public static final String NAME = "restart";
-	
-	@Override
-	public String getName()
-	{
-		return NAME;
-	}
-	
-	@Override
-	public void onTimeElapsed(ExecutedTask task)
-	{
-		Shutdown handler = new Shutdown(Integer.valueOf(task.getParams()[2]), true);
-		handler.start();
-	}
+public final class TaskRestart extends ATask {
+    public static final String NAME = "restart";
+
+    @Override
+    public String getName() {
+        return NAME;
+    }
+
+    @Override
+    public void onTimeElapsed(ExecutedTask task) {
+        Shutdown handler = new Shutdown(Integer.valueOf(task.getParams()[2]), true);
+        handler.start();
+    }
 }

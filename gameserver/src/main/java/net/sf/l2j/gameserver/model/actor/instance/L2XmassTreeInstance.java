@@ -14,75 +14,63 @@
  */
 package net.sf.l2j.gameserver.model.actor.instance;
 
-import java.util.concurrent.ScheduledFuture;
-
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.SkillTable;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
+
+import java.util.concurrent.ScheduledFuture;
 
 /**
  * @author Drunkard Zabb0x Lets drink2code!
  */
-public class L2XmassTreeInstance extends L2NpcInstance
-{
-	private static final L2Skill XTREE_SKILL = SkillTable.getInfo(2139, 1);
-	public static final int SPECIAL_TREE_ID = 13007;
-	protected ScheduledFuture<?> _aiTask;
-	
-	public L2XmassTreeInstance(int objectId, NpcTemplate template)
-	{
-		super(objectId, template);
-		
-		if (template.isSpecialTree())
-			_aiTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new XmassAI(this, XTREE_SKILL), 3000, 3000);
-	}
-	
-	private class XmassAI implements Runnable
-	{
-		private final L2XmassTreeInstance _caster;
-		private final L2Skill _skill;
-		
-		protected XmassAI(L2XmassTreeInstance caster, L2Skill skill)
-		{
-			_caster = caster;
-			_skill = skill;
-		}
-		
-		@Override
-		public void run()
-		{
-			if (_skill == null || _caster.isInsideZone(ZoneId.TOWN))
-			{
-				_caster._aiTask.cancel(false);
-				_caster._aiTask = null;
-				return;
-			}
-			
-			for (L2PcInstance player : getKnownList().getKnownTypeInRadius(L2PcInstance.class, 200))
-			{
-				if (player.getFirstEffect(_skill.getId()) == null)
-					_skill.getEffects(player, player);
-			}
-		}
-	}
-	
-	@Override
-	public void deleteMe()
-	{
-		if (_aiTask != null)
-		{
-			_aiTask.cancel(true);
-			_aiTask = null;
-		}
-		super.deleteMe();
-	}
-	
-	@Override
-	public void onAction(L2PcInstance player)
-	{
-		player.sendPacket(ActionFailed.STATIC_PACKET);
-	}
+public class L2XmassTreeInstance extends L2NpcInstance {
+    private static final L2Skill XTREE_SKILL = SkillTable.getInfo(2139, 1);
+    public static final int SPECIAL_TREE_ID = 13007;
+    protected ScheduledFuture<?> _aiTask;
+
+    public L2XmassTreeInstance(int objectId, NpcTemplate template) {
+        super(objectId, template);
+
+        if (template.isSpecialTree()) { _aiTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new XmassAI(this, XTREE_SKILL), 3000, 3000); }
+    }
+
+    private class XmassAI implements Runnable {
+        private final L2XmassTreeInstance _caster;
+        private final L2Skill _skill;
+
+        protected XmassAI(L2XmassTreeInstance caster, L2Skill skill) {
+            _caster = caster;
+            _skill = skill;
+        }
+
+        @Override
+        public void run() {
+            if (_skill == null || _caster.isInsideZone(ZoneId.TOWN)) {
+                _caster._aiTask.cancel(false);
+                _caster._aiTask = null;
+                return;
+            }
+
+            for (L2PcInstance player : getKnownList().getKnownTypeInRadius(L2PcInstance.class, 200)) {
+                if (player.getFirstEffect(_skill.getId()) == null) { _skill.getEffects(player, player); }
+            }
+        }
+    }
+
+    @Override
+    public void deleteMe() {
+        if (_aiTask != null) {
+            _aiTask.cancel(true);
+            _aiTask = null;
+        }
+        super.deleteMe();
+    }
+
+    @Override
+    public void onAction(L2PcInstance player) {
+        player.sendPacket(ActionFailed.STATIC_PACKET);
+    }
 }

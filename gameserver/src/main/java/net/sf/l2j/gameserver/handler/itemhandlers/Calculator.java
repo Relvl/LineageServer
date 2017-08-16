@@ -23,14 +23,11 @@ import net.sf.l2j.gameserver.network.client.game_to_client.ShowCalculator;
 /**
  * @author Zoey76
  */
-public class Calculator implements IItemHandler
-{
-	@Override
-	public void useItem(L2Playable playable, L2ItemInstance item, boolean forceUse)
-	{
-		if (!(playable instanceof L2PcInstance))
-			return;
-		
-		playable.sendPacket(new ShowCalculator(item.getItemId()));
-	}
+public class Calculator implements IItemHandler {
+    @Override
+    public void useItem(L2Playable playable, L2ItemInstance item, boolean forceUse) {
+        if (!(playable instanceof L2PcInstance)) { return; }
+
+        playable.sendPacket(new ShowCalculator(item.getItemId()));
+    }
 }

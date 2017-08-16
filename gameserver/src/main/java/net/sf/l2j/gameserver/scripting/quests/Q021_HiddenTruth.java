@@ -16,6 +16,7 @@ import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -58,16 +59,16 @@ public class Q021_HiddenTruth extends Quest {
         if (event.equalsIgnoreCase("31522-02.htm")) {
             st.setState(QuestState.STATE_STARTED);
             st.set("cond", "1");
-            st.playSound(QuestState.SOUND_ACCEPT);
+            st.playSound(ESound.ItemSound_quest_accept);
         }
         else if (event.equalsIgnoreCase("31523-03.htm")) {
             st.set("cond", "2");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             spawnVonHellmann(st);
         }
         else if (event.equalsIgnoreCase("31524-06.htm")) {
             st.set("cond", "3");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
 
             // Spawn the page.
             if (_vonHellmannPage == null) {
@@ -81,11 +82,11 @@ public class Q021_HiddenTruth extends Quest {
         }
         else if (event.equalsIgnoreCase("31526-08.htm")) {
             st.set("cond", "5");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
         }
         else if (event.equalsIgnoreCase("31526-14.htm")) {
             st.set("cond", "6");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.giveItems(CROSS_OF_EINHASAD, 1);
         }
         else if (event.equalsIgnoreCase("1")) {
@@ -119,7 +120,7 @@ public class Q021_HiddenTruth extends Quest {
             if (st.hasQuestItems(CROSS_OF_EINHASAD)) {
                 st.takeItems(CROSS_OF_EINHASAD, 1);
                 st.giveItems(CROSS_OF_EINHASAD_NEXT_QUEST, 1);
-                st.playSound(QuestState.SOUND_FINISH);
+                st.playSound(ESound.ItemSound_quest_finish);
                 st.exitQuest(false);
             }
         }
@@ -168,7 +169,7 @@ public class Q021_HiddenTruth extends Quest {
                                 htmltext = "31525-02.htm";
                                 if (cond == 3) {
                                     st.set("cond", "4");
-                                    st.playSound(QuestState.SOUND_MIDDLE);
+                                    st.playSound(ESound.ItemSound_quest_middle);
                                 }
                             }
                         }
@@ -180,7 +181,7 @@ public class Q021_HiddenTruth extends Quest {
 
                             if (!_vonHellmannPage.isMoving()) {
                                 st.set("cond", "5");
-                                st.playSound(QuestState.SOUND_MIDDLE);
+                                st.playSound(ESound.ItemSound_quest_middle);
 
                                 if (_vonHellmannPage != null) {
                                     _vonHellmannPage.deleteMe();
@@ -223,7 +224,7 @@ public class Q021_HiddenTruth extends Quest {
 
                                 if (st.getInt(String.valueOf(npcId1)) == 1 && st.getInt(String.valueOf(npcId2)) == 1) {
                                     st.set("cond", "7");
-                                    st.playSound(QuestState.SOUND_MIDDLE);
+                                    st.playSound(ESound.ItemSound_quest_middle);
                                 }
                                 else { st.set(String.valueOf(npcId), "1"); }
                             }

@@ -19,61 +19,55 @@ import net.sf.l2j.gameserver.datatables.AccessLevels;
 /**
  * @author FBIagent<br>
  */
-public class L2AdminCommandAccessRight
-{
-	private String _adminCommand = null;
-	private L2AccessLevel[] _accessLevels = null;
-	
-	/**
-	 * Initialized members
-	 * @param adminCommand as String
-	 * @param accessLevels as String
-	 */
-	public L2AdminCommandAccessRight(String adminCommand, String accessLevels)
-	{
-		_adminCommand = adminCommand;
-		
-		String[] accessLevelsSplit = accessLevels.split(",");
-		int numLevels = accessLevelsSplit.length;
-		
-		_accessLevels = new L2AccessLevel[numLevels];
-		
-		for (int i = 0; i < numLevels; ++i)
-		{
-			try
-			{
-				_accessLevels[i] = AccessLevels.getInstance().getAccessLevel(Integer.parseInt(accessLevelsSplit[i]));
-			}
-			catch (NumberFormatException nfe)
-			{
-				_accessLevels[i] = null;
-			}
-		}
-	}
-	
-	/**
-	 * Returns the admin command the access right belongs to<br>
-	 * <br>
-	 * @return String: the admin command the access right belongs to<br>
-	 */
-	public String getAdminCommand()
-	{
-		return _adminCommand;
-	}
-	
-	/**
-	 * Checks if the given characterAccessLevel is allowed to use the admin command which belongs to this access right.
-	 * @param characterAccessLevel The L2AccessLevel to check.
-	 * @return true if characterAccessLevel is allowed to use the admin command which belongs to this access right, otherwise false
-	 */
-	public boolean hasAccess(L2AccessLevel characterAccessLevel)
-	{
-		for (L2AccessLevel accessLevel : _accessLevels)
-		{
-			if (accessLevel != null && (accessLevel.getLevel() == characterAccessLevel.getLevel() || characterAccessLevel.hasChildAccess(accessLevel)))
-				return true;
-		}
-		
-		return false;
-	}
+public class L2AdminCommandAccessRight {
+    private String _adminCommand = null;
+    private L2AccessLevel[] _accessLevels = null;
+
+    /**
+     * Initialized members
+     *
+     * @param adminCommand as String
+     * @param accessLevels as String
+     */
+    public L2AdminCommandAccessRight(String adminCommand, String accessLevels) {
+        _adminCommand = adminCommand;
+
+        String[] accessLevelsSplit = accessLevels.split(",");
+        int numLevels = accessLevelsSplit.length;
+
+        _accessLevels = new L2AccessLevel[numLevels];
+
+        for (int i = 0; i < numLevels; ++i) {
+            try {
+                _accessLevels[i] = AccessLevels.getInstance().getAccessLevel(Integer.parseInt(accessLevelsSplit[i]));
+            }
+            catch (NumberFormatException nfe) {
+                _accessLevels[i] = null;
+            }
+        }
+    }
+
+    /**
+     * Returns the admin command the access right belongs to<br>
+     * <br>
+     *
+     * @return String: the admin command the access right belongs to<br>
+     */
+    public String getAdminCommand() {
+        return _adminCommand;
+    }
+
+    /**
+     * Checks if the given characterAccessLevel is allowed to use the admin command which belongs to this access right.
+     *
+     * @param characterAccessLevel The L2AccessLevel to check.
+     * @return true if characterAccessLevel is allowed to use the admin command which belongs to this access right, otherwise false
+     */
+    public boolean hasAccess(L2AccessLevel characterAccessLevel) {
+        for (L2AccessLevel accessLevel : _accessLevels) {
+            if (accessLevel != null && (accessLevel.getLevel() == characterAccessLevel.getLevel() || characterAccessLevel.hasChildAccess(accessLevel))) { return true; }
+        }
+
+        return false;
+    }
 }

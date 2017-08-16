@@ -15,88 +15,79 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.ItemConst;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
-public class Q113_StatusOfTheBeaconTower extends Quest
-{
-	private static final String qn = "Q113_StatusOfTheBeaconTower";
-	
-	// NPCs
-	private static final int MOIRA = 31979;
-	private static final int TORRANT = 32016;
-	
-	// Item
-	private static final int BOX = 8086;
-	
-	public Q113_StatusOfTheBeaconTower()
-	{
-		super(113, "Status of the Beacon Tower");
-		
-		setItemsIds(BOX);
-		
-		addStartNpc(MOIRA);
-		addTalkId(MOIRA, TORRANT);
-	}
-	
-	@Override
-	public String onAdvEvent(String event, L2Npc npc, L2PcInstance player)
-	{
-		String htmltext = event;
-		QuestState st = player.getQuestState(qn);
-		if (st == null)
-			return htmltext;
-		
-		if (event.equalsIgnoreCase("31979-02.htm"))
-		{
-			st.setState(QuestState.STATE_STARTED);
-			st.set("cond", "1");
-			st.playSound(QuestState.SOUND_ACCEPT);
-			st.giveItems(BOX, 1);
-		}
-		else if (event.equalsIgnoreCase("32016-02.htm"))
-		{
-			st.takeItems(BOX, 1);
-			st.rewardItems(ItemConst.ADENA_ID, 21578);
-			st.playSound(QuestState.SOUND_FINISH);
-			st.exitQuest(false);
-		}
-		
-		return htmltext;
-	}
-	
-	@Override
-	public String onTalk(L2Npc npc, L2PcInstance player)
-	{
-		QuestState st = player.getQuestState(qn);
-		String htmltext = getNoQuestMsg();
-		if (st == null)
-			return htmltext;
-		
-		switch (st.getState())
-		{
-			case QuestState.STATE_CREATED:
-				htmltext = (player.getLevel() < 40) ? "31979-00.htm" : "31979-01.htm";
-				break;
-			
-			case QuestState.STATE_STARTED:
-				switch (npc.getNpcId())
-				{
-					case MOIRA:
-						htmltext = "31979-03.htm";
-						break;
-					
-					case TORRANT:
-						htmltext = "32016-01.htm";
-						break;
-				}
-				break;
-			
-			case QuestState.STATE_COMPLETED:
-				htmltext = getAlreadyCompletedMsg();
-				break;
-		}
-		
-		return htmltext;
-	}
+public class Q113_StatusOfTheBeaconTower extends Quest {
+    private static final String qn = "Q113_StatusOfTheBeaconTower";
+
+    // NPCs
+    private static final int MOIRA = 31979;
+    private static final int TORRANT = 32016;
+
+    // Item
+    private static final int BOX = 8086;
+
+    public Q113_StatusOfTheBeaconTower() {
+        super(113, "Status of the Beacon Tower");
+
+        setItemsIds(BOX);
+
+        addStartNpc(MOIRA);
+        addTalkId(MOIRA, TORRANT);
+    }
+
+    @Override
+    public String onAdvEvent(String event, L2Npc npc, L2PcInstance player) {
+        String htmltext = event;
+        QuestState st = player.getQuestState(qn);
+        if (st == null) { return htmltext; }
+
+        if (event.equalsIgnoreCase("31979-02.htm")) {
+            st.setState(QuestState.STATE_STARTED);
+            st.set("cond", "1");
+            st.playSound(ESound.ItemSound_quest_accept);
+            st.giveItems(BOX, 1);
+        }
+        else if (event.equalsIgnoreCase("32016-02.htm")) {
+            st.takeItems(BOX, 1);
+            st.rewardItems(ItemConst.ADENA_ID, 21578);
+            st.playSound(ESound.ItemSound_quest_finish);
+            st.exitQuest(false);
+        }
+
+        return htmltext;
+    }
+
+    @Override
+    public String onTalk(L2Npc npc, L2PcInstance player) {
+        QuestState st = player.getQuestState(qn);
+        String htmltext = getNoQuestMsg();
+        if (st == null) { return htmltext; }
+
+        switch (st.getState()) {
+            case QuestState.STATE_CREATED:
+                htmltext = (player.getLevel() < 40) ? "31979-00.htm" : "31979-01.htm";
+                break;
+
+            case QuestState.STATE_STARTED:
+                switch (npc.getNpcId()) {
+                    case MOIRA:
+                        htmltext = "31979-03.htm";
+                        break;
+
+                    case TORRANT:
+                        htmltext = "32016-01.htm";
+                        break;
+                }
+                break;
+
+            case QuestState.STATE_COMPLETED:
+                htmltext = getAlreadyCompletedMsg();
+                break;
+        }
+
+        return htmltext;
+    }
 }

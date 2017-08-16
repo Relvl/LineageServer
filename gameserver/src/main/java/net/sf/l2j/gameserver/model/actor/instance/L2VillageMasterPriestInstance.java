@@ -19,28 +19,22 @@ import net.sf.l2j.gameserver.model.base.ClassType;
 import net.sf.l2j.gameserver.model.base.PlayerClass;
 import net.sf.l2j.gameserver.model.base.PlayerRace;
 
-public final class L2VillageMasterPriestInstance extends L2VillageMasterInstance
-{
-	public L2VillageMasterPriestInstance(int objectId, NpcTemplate template)
-	{
-		super(objectId, template);
-	}
-	
-	@Override
-	protected final boolean checkVillageMasterRace(PlayerClass pclass)
-	{
-		if (pclass == null)
-			return false;
-		
-		return pclass.isOfRace(PlayerRace.Human) || pclass.isOfRace(PlayerRace.Elf);
-	}
-	
-	@Override
-	protected final boolean checkVillageMasterTeachType(PlayerClass pclass)
-	{
-		if (pclass == null)
-			return false;
-		
-		return pclass.isOfType(ClassType.Priest);
-	}
+public final class L2VillageMasterPriestInstance extends L2VillageMasterInstance {
+    public L2VillageMasterPriestInstance(int objectId, NpcTemplate template) {
+        super(objectId, template);
+    }
+
+    @Override
+    protected final boolean checkVillageMasterRace(PlayerClass pclass) {
+        if (pclass == null) { return false; }
+
+        return pclass.isOfRace(PlayerRace.Human) || pclass.isOfRace(PlayerRace.Elf);
+    }
+
+    @Override
+    protected final boolean checkVillageMasterTeachType(PlayerClass pclass) {
+        if (pclass == null) { return false; }
+
+        return pclass.isOfType(ClassType.Priest);
+    }
 }

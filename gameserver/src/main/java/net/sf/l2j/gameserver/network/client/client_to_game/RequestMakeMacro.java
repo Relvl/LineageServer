@@ -49,7 +49,6 @@ public final class RequestMakeMacro extends L2GameClientPacket {
 
             _commandsLenght += command.length();
             commands[i] = new L2MacroCmd(entry, type, d1, d2, command);
-
         }
         _macro = new L2Macro(_id, _icon, _name, _desc, _acronym, commands);
     }

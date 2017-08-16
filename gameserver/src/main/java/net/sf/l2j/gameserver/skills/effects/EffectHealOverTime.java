@@ -20,39 +20,32 @@ import net.sf.l2j.gameserver.network.client.game_to_client.StatusUpdate;
 import net.sf.l2j.gameserver.skills.func.Env;
 import net.sf.l2j.gameserver.templates.skills.L2EffectType;
 
-class EffectHealOverTime extends L2Effect
-{
-	public EffectHealOverTime(Env env, EffectTemplate template)
-	{
-		super(env, template);
-	}
-	
-	@Override
-	public L2EffectType getEffectType()
-	{
-		return L2EffectType.HEAL_OVER_TIME;
-	}
-	
-	@Override
-	public boolean onActionTime()
-	{
-		if (getEffected().isDead())
-			return false;
-		
-		if (getEffected() instanceof L2DoorInstance)
-			return false;
-		
-		double hp = getEffected().getCurrentHp();
-		double maxhp = getEffected().getMaxHp();
-		hp += calc();
-		if (hp > maxhp)
-		{
-			hp = maxhp;
-		}
-		getEffected().setCurrentHp(hp);
-		StatusUpdate suhp = new StatusUpdate(getEffected());
-		suhp.addAttribute(StatusUpdate.CUR_HP, (int) hp);
-		getEffected().sendPacket(suhp);
-		return true;
-	}
+class EffectHealOverTime extends L2Effect {
+    public EffectHealOverTime(Env env, EffectTemplate template) {
+        super(env, template);
+    }
+
+    @Override
+    public L2EffectType getEffectType() {
+        return L2EffectType.HEAL_OVER_TIME;
+    }
+
+    @Override
+    public boolean onActionTime() {
+        if (getEffected().isDead()) { return false; }
+
+        if (getEffected() instanceof L2DoorInstance) { return false; }
+
+        double hp = getEffected().getCurrentHp();
+        double maxhp = getEffected().getMaxHp();
+        hp += calc();
+        if (hp > maxhp) {
+            hp = maxhp;
+        }
+        getEffected().setCurrentHp(hp);
+        StatusUpdate suhp = new StatusUpdate(getEffected());
+        suhp.addAttribute(StatusUpdate.CUR_HP, (int) hp);
+        getEffected().sendPacket(suhp);
+        return true;
+    }
 }

@@ -354,7 +354,6 @@ public class L2CastleChamberlainInstance extends L2MerchantInstance {
             html.setFile((open) ? "data/html/chamberlain/doors-open.htm" : "data/html/chamberlain/doors-close.htm");
             html.replace("%objectId%", getObjectId());
             player.sendPacket(html);
-
         }
         else if (actualCommand.equalsIgnoreCase("tax_set")) // tax rates control
         {

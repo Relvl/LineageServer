@@ -17,20 +17,16 @@ package net.sf.l2j.gameserver.network.client.client_to_game;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.client.game_to_client.ShowMiniMap;
 
-public final class RequestShowMiniMap extends L2GameClientPacket
-{
-	@Override
-	protected void readImpl()
-	{
-	}
-	
-	@Override
-	protected final void runImpl()
-	{
-		final L2PcInstance activeChar = getClient().getActiveChar();
-		if (activeChar == null)
-			return;
-		
-		activeChar.sendPacket(ShowMiniMap.REGULAR_MAP);
-	}
+public final class RequestShowMiniMap extends L2GameClientPacket {
+    @Override
+    protected void readImpl() {
+    }
+
+    @Override
+    protected final void runImpl() {
+        final L2PcInstance activeChar = getClient().getActiveChar();
+        if (activeChar == null) { return; }
+
+        activeChar.sendPacket(ShowMiniMap.REGULAR_MAP);
+    }
 }

@@ -14,59 +14,52 @@
  */
 package net.sf.l2j.gameserver.geoengine.geodata.blocks;
 
-import java.nio.ByteBuffer;
-
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.geoengine.geodata.GeoFormat;
+
+import java.nio.ByteBuffer;
 
 /**
  * @author Hasha
  */
-public class FlatBlock extends Block
-{
-	private final short _height;
-	private byte _nswe;
-	
-	/**
-	 * Creates FlatBlock.
-	 * @param bb : Input byte buffer.
-	 */
-	public FlatBlock(ByteBuffer bb)
-	{
-		_height = bb.getShort();
-		_nswe = Config.GEODATA_FORMAT != GeoFormat.L2D ? 0x0F : (byte) (0xFF);
-		
-		if (Config.GEODATA_FORMAT == GeoFormat.L2OFF)
-			bb.getShort();
-	}
-	
-	@Override
-	public boolean hasGeoPos()
-	{
-		return true;
-	}
-	
-	@Override
-	public short getHeightNearest(int geoX, int geoY, int worldZ)
-	{
-		return _height;
-	}
-	
-	@Override
-	public short getHeightAbove(int geoX, int geoY, int worldZ)
-	{
-		return _height;
-	}
-	
-	@Override
-	public short getHeightBelow(int geoX, int geoY, int worldZ)
-	{
-		return _height;
-	}
-	
-	@Override
-	public byte getNsweNearest(int geoX, int geoY, int worldZ)
-	{
-		return _nswe;
-	}
+public class FlatBlock extends Block {
+    private final short _height;
+    private byte _nswe;
+
+    /**
+     * Creates FlatBlock.
+     *
+     * @param bb : Input byte buffer.
+     */
+    public FlatBlock(ByteBuffer bb) {
+        _height = bb.getShort();
+        _nswe = Config.GEODATA_FORMAT != GeoFormat.L2D ? 0x0F : (byte) (0xFF);
+
+        if (Config.GEODATA_FORMAT == GeoFormat.L2OFF) { bb.getShort(); }
+    }
+
+    @Override
+    public boolean hasGeoPos() {
+        return true;
+    }
+
+    @Override
+    public short getHeightNearest(int geoX, int geoY, int worldZ) {
+        return _height;
+    }
+
+    @Override
+    public short getHeightAbove(int geoX, int geoY, int worldZ) {
+        return _height;
+    }
+
+    @Override
+    public short getHeightBelow(int geoX, int geoY, int worldZ) {
+        return _height;
+    }
+
+    @Override
+    public byte getNsweNearest(int geoX, int geoY, int worldZ) {
+        return _nswe;
+    }
 }

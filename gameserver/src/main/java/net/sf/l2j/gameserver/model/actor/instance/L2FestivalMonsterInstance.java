@@ -19,7 +19,6 @@ public class L2FestivalMonsterInstance extends L2MonsterInstance {
     @Override
     public boolean isAutoAttackable(L2Character attacker) {
         return !(attacker instanceof L2FestivalMonsterInstance);
-
     }
 
     @Override

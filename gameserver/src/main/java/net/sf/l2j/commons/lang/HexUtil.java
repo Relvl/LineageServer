@@ -30,8 +30,7 @@ public class HexUtil {
 
         int rest = data.length % 16;
         if (rest > 0) {
-            for (int i = 0; i < 17 - rest; i++)
-                result.append("   ");
+            for (int i = 0; i < 17 - rest; i++) { result.append("   "); }
 
             int charpoint = data.length - rest;
             for (int a = 0; a < rest; a++) {

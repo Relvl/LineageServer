@@ -7,7 +7,7 @@ import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 public class PartyInfo implements IUserCommandHandler {
-    private static final int[] COMMAND_IDS = {81};
+    private static final int[] COMMAND_IDS = { 81 };
 
     @Override
     public boolean useUserCommand(int id, L2PcInstance activeChar) {

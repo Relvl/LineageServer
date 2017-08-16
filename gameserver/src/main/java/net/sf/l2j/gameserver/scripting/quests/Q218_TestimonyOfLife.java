@@ -17,6 +17,7 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.PlayerRace;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -94,26 +95,26 @@ public class Q218_TestimonyOfLife extends Quest {
         if (event.equalsIgnoreCase("30460-04.htm")) {
             st.setState(QuestState.STATE_STARTED);
             st.set("cond", "1");
-            st.playSound(QuestState.SOUND_ACCEPT);
+            st.playSound(ESound.ItemSound_quest_accept);
             st.giveItems(CARDIEN_LETTER, 1);
             st.giveItems(DIMENSIONAL_DIAMOND, 16);
         }
         else if (event.equalsIgnoreCase("30154-07.htm")) {
             st.set("cond", "2");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.takeItems(CARDIEN_LETTER, 1);
             st.giveItems(HIERARCH_LETTER, 1);
             st.giveItems(MOONFLOWER_CHARM, 1);
         }
         else if (event.equalsIgnoreCase("30371-03.htm")) {
             st.set("cond", "3");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.takeItems(HIERARCH_LETTER, 1);
             st.giveItems(GRAIL_DIAGRAM, 1);
         }
         else if (event.equalsIgnoreCase("30371-11.htm")) {
             st.takeItems(STARDUST, 1);
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
 
             if (player.getLevel() < 38) {
                 htmltext = "30371-10.htm";
@@ -127,13 +128,13 @@ public class Q218_TestimonyOfLife extends Quest {
         }
         else if (event.equalsIgnoreCase("30300-06.htm")) {
             st.set("cond", "4");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.takeItems(GRAIL_DIAGRAM, 1);
             st.giveItems(PUSHKIN_LIST, 1);
         }
         else if (event.equalsIgnoreCase("30300-10.htm")) {
             st.set("cond", "6");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.takeItems(PUSHKIN_LIST, 1);
             st.takeItems(ANT_SOLDIER_ACID, -1);
             st.takeItems(PURE_MITHRIL_ORE, -1);
@@ -142,20 +143,20 @@ public class Q218_TestimonyOfLife extends Quest {
         }
         else if (event.equalsIgnoreCase("30419-04.htm")) {
             st.set("cond", "8");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.takeItems(THALIA_LETTER_1, 1);
             st.giveItems(ARKENIA_CONTRACT, 1);
             st.giveItems(ARKENIA_INSTRUCTIONS, 1);
         }
         else if (event.equalsIgnoreCase("30375-02.htm")) {
             st.set("cond", "9");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.takeItems(ARKENIA_INSTRUCTIONS, 1);
             st.giveItems(ADONIUS_LIST, 1);
         }
         else if (event.equalsIgnoreCase("30655-02.htm")) {
             st.set("cond", "15");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.takeItems(THALIA_LETTER_2, 1);
             st.giveItems(ISAEL_INSTRUCTIONS, 1);
         }
@@ -185,7 +186,7 @@ public class Q218_TestimonyOfLife extends Quest {
                         else if (cond == 20) {
                             htmltext = "30154-09.htm";
                             st.set("cond", "21");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(MOONFLOWER_CHARM, 1);
                             st.takeItems(WATER_OF_LIFE, 1);
                             st.giveItems(CAMOMILE_CHARM, 1);
@@ -208,7 +209,7 @@ public class Q218_TestimonyOfLife extends Quest {
                         else if (cond == 6) {
                             htmltext = "30371-06.htm";
                             st.set("cond", "7");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(PURE_MITHRIL_CUP, 1);
                             st.giveItems(THALIA_LETTER_1, 1);
                         }
@@ -220,7 +221,7 @@ public class Q218_TestimonyOfLife extends Quest {
                             else {
                                 htmltext = "30371-13.htm";
                                 st.set("cond", "14");
-                                st.playSound(QuestState.SOUND_MIDDLE);
+                                st.playSound(ESound.ItemSound_quest_middle);
                                 st.takeItems(THALIA_INSTRUCTIONS, 1);
                                 st.giveItems(THALIA_LETTER_2, 1);
                             }
@@ -230,7 +231,7 @@ public class Q218_TestimonyOfLife extends Quest {
                         else if (cond == 17) {
                             htmltext = "30371-16.htm";
                             st.set("cond", "18");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(ISAEL_LETTER, 1);
                             st.giveItems(GRAIL_OF_PURITY, 1);
                         }
@@ -238,7 +239,7 @@ public class Q218_TestimonyOfLife extends Quest {
                         else if (cond == 19) {
                             htmltext = "30371-18.htm";
                             st.set("cond", "20");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(TEARS_OF_UNICORN, 1);
                             st.giveItems(WATER_OF_LIFE, 1);
                         }
@@ -251,7 +252,7 @@ public class Q218_TestimonyOfLife extends Quest {
                         else if (cond == 10) {
                             htmltext = "30375-04.htm";
                             st.set("cond", "11");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(ADONIUS_LIST, 1);
                             st.takeItems(HARPY_DOWN, -1);
                             st.takeItems(SPIDER_ICHOR, -1);
@@ -267,7 +268,7 @@ public class Q218_TestimonyOfLife extends Quest {
                         else if (cond == 11) {
                             htmltext = "30419-06.htm";
                             st.set("cond", "12");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(ANDARIEL_SCRIPTURE_COPY, 1);
                             st.takeItems(ARKENIA_CONTRACT, 1);
                             st.giveItems(STARDUST, 1);
@@ -285,7 +286,7 @@ public class Q218_TestimonyOfLife extends Quest {
                             st.giveItems(MARK_OF_LIFE, 1);
                             st.rewardExpAndSp(104591, 11250);
                             player.broadcastPacket(new SocialAction(player, 3));
-                            st.playSound(QuestState.SOUND_FINISH);
+                            st.playSound(ESound.ItemSound_quest_finish);
                             st.exitQuest(false);
                         }
                         break;
@@ -297,7 +298,7 @@ public class Q218_TestimonyOfLife extends Quest {
                             if (st.hasQuestItems(TALINS_PIECES)) {
                                 htmltext = "30655-04.htm";
                                 st.set("cond", "17");
-                                st.playSound(QuestState.SOUND_MIDDLE);
+                                st.playSound(ESound.ItemSound_quest_middle);
 
                                 for (int itemId : TALINS_PIECES) { st.takeItems(itemId, 1); }
 
@@ -310,7 +311,6 @@ public class Q218_TestimonyOfLife extends Quest {
                         else if (cond == 17) { htmltext = "30655-05.htm"; }
                         else if (cond > 17) { htmltext = "30655-06.htm"; }
                         break;
-
                 }
                 break;
 
@@ -355,7 +355,7 @@ public class Q218_TestimonyOfLife extends Quest {
             case 27077:
                 if (st.getInt("cond") == 18 && st.getItemEquipped(EPaperdollSlot.PAPERDOLL_RHAND) == TALINS_SPEAR) {
                     st.set("cond", "19");
-                    st.playSound(QuestState.SOUND_MIDDLE);
+                    st.playSound(ESound.ItemSound_quest_middle);
                     st.takeItems(GRAIL_OF_PURITY, 1);
                     st.takeItems(TALINS_SPEAR, 1);
                     st.giveItems(TEARS_OF_UNICORN, 1);
@@ -367,13 +367,13 @@ public class Q218_TestimonyOfLife extends Quest {
                 if (st.getInt("cond") == 15 && Rnd.nextBoolean()) {
                     for (int itemId : TALINS_PIECES) {
                         if (!st.hasQuestItems(itemId)) {
-                            st.playSound(QuestState.SOUND_ITEMGET);
+                            st.playSound(ESound.ItemSound_quest_itemget);
                             st.giveItems(itemId, 1);
                             return null;
                         }
                     }
                     st.set("cond", "16");
-                    st.playSound(QuestState.SOUND_MIDDLE);
+                    st.playSound(ESound.ItemSound_quest_middle);
                 }
                 break;
         }

@@ -9,7 +9,7 @@ import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
 
 public class Craft implements ISkillHandler {
-    private static final L2SkillType[] SKILL_IDS = {L2SkillType.COMMON_CRAFT, L2SkillType.DWARVEN_CRAFT};
+    private static final L2SkillType[] SKILL_IDS = { L2SkillType.COMMON_CRAFT, L2SkillType.DWARVEN_CRAFT };
 
     @Override
     public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets) {

@@ -3,6 +3,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.ItemConst;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -58,14 +59,14 @@ public class Q626_ADarkTwilight extends Quest {
         if (event.equalsIgnoreCase("31517-03.htm")) {
             st.setState(QuestState.STATE_STARTED);
             st.set("cond", "1");
-            st.playSound(QuestState.SOUND_ACCEPT);
+            st.playSound(ESound.ItemSound_quest_accept);
         }
         else if (event.equalsIgnoreCase("reward1")) {
             if (st.getQuestItemsCount(BLOOD_OF_SAINT) == 300) {
                 htmltext = "31517-07.htm";
                 st.takeItems(BLOOD_OF_SAINT, 300);
                 st.rewardExpAndSp(162773, 12500);
-                st.playSound(QuestState.SOUND_FINISH);
+                st.playSound(ESound.ItemSound_quest_finish);
                 st.exitQuest(false);
             }
             else { htmltext = "31517-08.htm"; }
@@ -75,7 +76,7 @@ public class Q626_ADarkTwilight extends Quest {
                 htmltext = "31517-07.htm";
                 st.takeItems(BLOOD_OF_SAINT, 300);
                 st.rewardItems(ItemConst.ADENA_ID, 100000);
-                st.playSound(QuestState.SOUND_FINISH);
+                st.playSound(ESound.ItemSound_quest_finish);
                 st.exitQuest(false);
             }
             else { htmltext = "31517-08.htm"; }
@@ -95,7 +96,7 @@ public class Q626_ADarkTwilight extends Quest {
                 break;
 
             case QuestState.STATE_STARTED:
-                final int cond = st.getInt("cond");
+                int cond = st.getInt("cond");
                 if (cond == 1) { htmltext = "31517-05.htm"; }
                 else { htmltext = "31517-04.htm"; }
                 break;

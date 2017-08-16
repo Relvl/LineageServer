@@ -16,10 +16,10 @@ public class SkillTable {
     private static final Map<Integer, Integer> _skillMaxLevel = new HashMap<>();
 
     private static final L2Skill[] _heroSkills = new L2Skill[5];
-    private static final int[] _heroSkillsId = {395, 396, 1374, 1375, 1376};
+    private static final int[] _heroSkillsId = { 395, 396, 1374, 1375, 1376 };
 
     private static final L2Skill[] _nobleSkills = new L2Skill[8];
-    private static final int[] _nobleSkillsId = {325, 326, 327, 1323, 1324, 1325, 1326, 1327};
+    private static final int[] _nobleSkillsId = { 325, 326, 327, 1323, 1324, 1325, 1326, 1327 };
 
     public static SkillTable getInstance() {
         return SingletonHolder.INSTANCE;

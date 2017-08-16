@@ -1,6 +1,5 @@
 package net.sf.l2j.gameserver.model.actor.instance;
 
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.AggroInfo;
 import net.sf.l2j.gameserver.model.L2Object;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
@@ -10,6 +9,7 @@ import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillSummon;
 import net.sf.l2j.gameserver.taskmanager.DecayTaskManager;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 import java.util.concurrent.Future;
 

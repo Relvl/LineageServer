@@ -1,8 +1,8 @@
 package net.sf.l2j.gameserver.skills.func;
 
+import net.sf.l2j.gameserver.skills.Stats;
 import net.sf.l2j.gameserver.skills.conditions.ACondition;
 import net.sf.l2j.gameserver.skills.func.lambda.ILambda;
-import net.sf.l2j.gameserver.skills.Stats;
 
 public final class FuncTemplate {
     private final EFunction function;

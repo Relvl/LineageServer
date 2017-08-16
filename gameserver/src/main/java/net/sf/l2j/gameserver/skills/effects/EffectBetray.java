@@ -25,48 +25,40 @@ import net.sf.l2j.gameserver.templates.skills.L2EffectType;
 /**
  * @author decad
  */
-final class EffectBetray extends L2Effect
-{
-	public EffectBetray(Env env, EffectTemplate template)
-	{
-		super(env, template);
-	}
-	
-	@Override
-	public L2EffectType getEffectType()
-	{
-		return L2EffectType.BETRAY;
-	}
-	
-	/** Notify started */
-	@Override
-	public boolean onStart()
-	{
-		if (getEffector() instanceof L2PcInstance && getEffected() instanceof L2Summon)
-		{
-			L2PcInstance targetOwner = getEffected().getActingPlayer();
-			getEffected().getAI().setIntention(EIntention.ATTACK, targetOwner);
-			return true;
-		}
-		return false;
-	}
-	
-	/** Notify exited */
-	@Override
-	public void onExit()
-	{
-		getEffected().getAI().setIntention(EIntention.IDLE);
-	}
-	
-	@Override
-	public boolean onActionTime()
-	{
-		return false;
-	}
-	
-	@Override
-	public int getEffectFlags()
-	{
-		return L2EffectFlag.BETRAYED.getMask();
-	}
+final class EffectBetray extends L2Effect {
+    public EffectBetray(Env env, EffectTemplate template) {
+        super(env, template);
+    }
+
+    @Override
+    public L2EffectType getEffectType() {
+        return L2EffectType.BETRAY;
+    }
+
+    /** Notify started */
+    @Override
+    public boolean onStart() {
+        if (getEffector() instanceof L2PcInstance && getEffected() instanceof L2Summon) {
+            L2PcInstance targetOwner = getEffected().getActingPlayer();
+            getEffected().getAI().setIntention(EIntention.ATTACK, targetOwner);
+            return true;
+        }
+        return false;
+    }
+
+    /** Notify exited */
+    @Override
+    public void onExit() {
+        getEffected().getAI().setIntention(EIntention.IDLE);
+    }
+
+    @Override
+    public boolean onActionTime() {
+        return false;
+    }
+
+    @Override
+    public int getEffectFlags() {
+        return L2EffectFlag.BETRAYED.getMask();
+    }
 }

@@ -30,7 +30,6 @@ public class GatekeeperSpirit extends Quest {
                 // exit_necropolis_boss_anakim
                 addSpawn(EXIT_GK, 184466, -13106, -5488, 0, false, 900000, false);
                 break;
-
         }
         return null;
     }

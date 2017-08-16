@@ -17,7 +17,6 @@ package net.sf.l2j.gameserver.model.actor.instance;
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.datatables.PetDataTable;
@@ -51,6 +50,7 @@ import net.sf.l2j.gameserver.network.client.game_to_client.*;
 import net.sf.l2j.gameserver.taskmanager.DecayTaskManager;
 import net.sf.l2j.gameserver.taskmanager.ItemsOnGroundTaskManager;
 import net.sf.l2j.gameserver.util.Util;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

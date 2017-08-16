@@ -72,5 +72,4 @@ public class PlayerContactsLoadCall extends IndexedCall {
                     '}';
         }
     }
-
 }

@@ -106,7 +106,7 @@ public final class L2AuctioneerInstance extends L2NpcInstance {
                 showChatWindow(player);
                 return;
             }
-			/* Clanless or clan members without enough power are kicked directly. */
+            /* Clanless or clan members without enough power are kicked directly. */
             else {
                 if (player.getClan() == null || !((player.getClanPrivileges() & L2Clan.CP_CH_AUCTION) == L2Clan.CP_CH_AUCTION)) {
                     showAuctionsList("1", player); // Force to display page 1.
@@ -181,7 +181,8 @@ public final class L2AuctioneerInstance extends L2NpcInstance {
 
                     StringBuilder sb = new StringBuilder();
                     for (Bidder bidder : AuctionManager.getInstance().getAuction(auctionId).getBidders().values()) {
-                        StringUtil.append(sb, "<tr><td>", bidder.getClanName(), "</td><td>", bidder.getName(), "</td><td>", bidder.getTimeBid().get(Calendar.YEAR), "/", bidder.getTimeBid().get(Calendar.MONTH) + 1, "/", bidder.getTimeBid().get(Calendar.DATE), "</td></tr>");
+                        StringUtil.append(sb, "<tr><td>", bidder.getClanName(), "</td><td>", bidder.getName(), "</td><td>", bidder.getTimeBid().get(Calendar.YEAR), "/", bidder.getTimeBid().get(Calendar.MONTH) + 1, "/", bidder.getTimeBid()
+                                                                                                                                                                                                                                 .get(Calendar.DATE), "</td></tr>");
                     }
 
                     NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
@@ -397,7 +398,11 @@ public final class L2AuctioneerInstance extends L2NpcInstance {
             }
             else { i++; }
 
-            StringUtil.append(sb, "<tr><td><font color=\"aaaaff\">", ClanHallManager.getInstance().getClanHallById(a.getItemId()).getLocation(), "</font></td><td><font color=\"ffffaa\"><a action=\"bypass -h npc_", getObjectId(), "_bidding ", a.getId(), "\">", a.getItemName(), " [", a.getBidders().size(), "]</a></font></td><td>", sdf.format(a.getEndDate()), "</td><td><font color=\"aaffff\">", a.getStartingBid(), "</font></td></tr>");
+            StringUtil.append(sb, "<tr><td><font color=\"aaaaff\">", ClanHallManager.getInstance()
+                                                                                    .getClanHallById(a.getItemId())
+                                                                                    .getLocation(), "</font></td><td><font color=\"ffffaa\"><a action=\"bypass -h npc_", getObjectId(), "_bidding ", a.getId(), "\">", a.getItemName(), " [", a.getBidders()
+                                                                                                                                                                                                                                               .size(), "]</a></font></td><td>", sdf
+                    .format(a.getEndDate()), "</td><td><font color=\"aaffff\">", a.getStartingBid(), "</font></td></tr>");
         }
         sb.append("</table>");
 

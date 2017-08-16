@@ -14,7 +14,6 @@
  */
 package net.sf.l2j.gameserver.model.actor;
 
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.model.L2CharacterAI;
 import net.sf.l2j.gameserver.datatables.MapRegionTable;
@@ -37,6 +36,7 @@ import net.sf.l2j.gameserver.network.client.game_to_client.InventoryUpdate;
 import net.sf.l2j.gameserver.network.client.game_to_client.L2GameServerPacket;
 import net.sf.l2j.gameserver.taskmanager.MovementTaskManager;
 import net.sf.l2j.gameserver.util.Util;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 import java.util.ArrayList;
 import java.util.List;

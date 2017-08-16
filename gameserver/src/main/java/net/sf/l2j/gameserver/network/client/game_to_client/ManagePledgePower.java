@@ -16,25 +16,22 @@ package net.sf.l2j.gameserver.network.client.game_to_client;
 
 import net.sf.l2j.gameserver.model.L2Clan;
 
-public class ManagePledgePower extends L2GameServerPacket
-{
-	private final int _action;
-	private final L2Clan _clan;
-	private final int _rank;
-	
-	public ManagePledgePower(L2Clan clan, int action, int rank)
-	{
-		_clan = clan;
-		_action = action;
-		_rank = rank;
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
-		writeC(0x30);
-		writeD(_rank);
-		writeD(_action);
-		writeD(_clan.getRankPrivs(_rank));
-	}
+public class ManagePledgePower extends L2GameServerPacket {
+    private final int _action;
+    private final L2Clan _clan;
+    private final int _rank;
+
+    public ManagePledgePower(L2Clan clan, int action, int rank) {
+        _clan = clan;
+        _action = action;
+        _rank = rank;
+    }
+
+    @Override
+    protected final void writeImpl() {
+        writeC(0x30);
+        writeD(_rank);
+        writeD(_action);
+        writeD(_clan.getRankPrivs(_rank));
+    }
 }

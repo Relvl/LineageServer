@@ -7,7 +7,7 @@ import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
 public class OlympiadStat implements IUserCommandHandler {
-    private static final int[] COMMAND_IDS = {109};
+    private static final int[] COMMAND_IDS = { 109 };
 
     @Override
     public boolean useUserCommand(int id, L2PcInstance activeChar) {

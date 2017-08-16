@@ -19,6 +19,8 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.ItemConst;
 import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.network.SystemMessageId;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 import net.sf.l2j.gameserver.util.Util;
@@ -314,7 +316,7 @@ public class OracleTeleport extends Quest {
 
             st.set("id", Integer.toString(i));
             st.setState(QuestState.STATE_STARTED);
-            st.playSound(QuestState.SOUND_ACCEPT);
+            st.playSound(ESound.ItemSound_quest_accept);
             htmltext = "ziggurat_rift.htm";
             player.teleToLocation(-114755, -179466, -6752, 0);
         }
@@ -339,7 +341,7 @@ public class OracleTeleport extends Quest {
             }
 
             st.set("id", Integer.toString(i));
-            st.playSound(QuestState.SOUND_ACCEPT);
+            st.playSound(ESound.ItemSound_quest_accept);
             player.teleToLocation(-80157, 111344, -4901, 0);
             player.setIsIn7sDungeon(true);
         }
@@ -354,7 +356,7 @@ public class OracleTeleport extends Quest {
             }
 
             st.set("id", Integer.toString(i));
-            st.playSound(QuestState.SOUND_ACCEPT);
+            st.playSound(ESound.ItemSound_quest_accept);
             player.teleToLocation(-81261, 86531, -5157, 0);
             player.setIsIn7sDungeon(true);
         }

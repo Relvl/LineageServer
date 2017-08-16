@@ -456,7 +456,8 @@ public abstract class Inventory extends ItemContainer {
 
             case SLOT_L_HAND:
                 L2ItemInstance rh = getPaperdollItem(EPaperdollSlot.PAPERDOLL_RHAND);
-                if (rh != null && rh.getItem().getBodyPart() == EItemBodyPart.SLOT_LR_HAND && !((rh.getItemType() == EWeaponType.BOW && item.getItemType() == EtcItemType.ARROW) || (rh.getItemType() == EWeaponType.FISHINGROD && item.getItemType() == EtcItemType.LURE))) {
+                if (rh != null && rh.getItem()
+                                    .getBodyPart() == EItemBodyPart.SLOT_LR_HAND && !((rh.getItemType() == EWeaponType.BOW && item.getItemType() == EtcItemType.ARROW) || (rh.getItemType() == EWeaponType.FISHINGROD && item.getItemType() == EtcItemType.LURE))) {
                     setPaperdollItem(EPaperdollSlot.PAPERDOLL_RHAND, null);
                 }
 

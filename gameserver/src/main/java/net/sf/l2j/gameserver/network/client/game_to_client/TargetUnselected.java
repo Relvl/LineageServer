@@ -16,28 +16,25 @@ package net.sf.l2j.gameserver.network.client.game_to_client;
 
 import net.sf.l2j.gameserver.model.actor.L2Character;
 
-public class TargetUnselected extends L2GameServerPacket
-{
-	private final int _targetObjId;
-	private final int _x;
-	private final int _y;
-	private final int _z;
-	
-	public TargetUnselected(L2Character character)
-	{
-		_targetObjId = character.getObjectId();
-		_x = character.getX();
-		_y = character.getY();
-		_z = character.getZ();
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
-		writeC(0x2a);
-		writeD(_targetObjId);
-		writeD(_x);
-		writeD(_y);
-		writeD(_z);
-	}
+public class TargetUnselected extends L2GameServerPacket {
+    private final int _targetObjId;
+    private final int _x;
+    private final int _y;
+    private final int _z;
+
+    public TargetUnselected(L2Character character) {
+        _targetObjId = character.getObjectId();
+        _x = character.getX();
+        _y = character.getY();
+        _z = character.getZ();
+    }
+
+    @Override
+    protected final void writeImpl() {
+        writeC(0x2a);
+        writeD(_targetObjId);
+        writeD(_x);
+        writeD(_y);
+        writeD(_z);
+    }
 }

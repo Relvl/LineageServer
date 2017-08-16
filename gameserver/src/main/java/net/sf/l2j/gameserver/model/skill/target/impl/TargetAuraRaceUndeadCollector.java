@@ -25,7 +25,7 @@ public class TargetAuraRaceUndeadCollector implements ISkillTargetCollector {
             else { continue; }
             if (target.isAlikeDead() || !target.isUndead()) { continue; }
             if (!PathFinding.getInstance().canSeeTarget(activeChar, target)) { continue; }
-            if (onlyFirst) { return new L2Character[]{obj}; }
+            if (onlyFirst) { return new L2Character[]{ obj }; }
             targetList.add(obj);
         }
         if (targetList.isEmpty()) { return EMPTY_TARGET_LIST; }

@@ -428,7 +428,9 @@ public class Hero {
             for (int i = ((page - 1) * perpage); i < _list.size(); i++) {
                 breakat = i;
                 StatsSet _diaryentry = _list.get(i);
-                StringUtil.append(sb, "<tr><td>", ((color) ? "<table width=270 bgcolor=\"131210\">" : "<table width=270>"), "<tr><td width=270><font color=\"LEVEL\">", _diaryentry.getString("date"), ":xx</font></td></tr><tr><td width=270>", _diaryentry.getString("action"), "</td></tr><tr><td>&nbsp;</td></tr></table></td></tr>");
+                StringUtil.append(sb, "<tr><td>", ((color)
+                                                   ? "<table width=270 bgcolor=\"131210\">"
+                                                   : "<table width=270>"), "<tr><td width=270><font color=\"LEVEL\">", _diaryentry.getString("date"), ":xx</font></td></tr><tr><td width=270>", _diaryentry.getString("action"), "</td></tr><tr><td>&nbsp;</td></tr></table></td></tr>");
                 color = !color;
 
                 counter++;
@@ -484,7 +486,12 @@ public class Hero {
             for (int i = ((page - 1) * perpage); i < _list.size(); i++) {
                 breakat = i;
                 StatsSet fight = _list.get(i);
-                StringUtil.append(sb, "<tr><td>", ((color) ? "<table width=270 bgcolor=\"131210\">" : "<table width=270><tr><td width=220><font color=\"LEVEL\">"), fight.getString("start"), "</font>&nbsp;&nbsp;", fight.getString("result"), "</td><td width=50 align=right>", ((fight.getInteger("classed") > 0) ? "<font color=\"FFFF99\">cls</font>" : "<font color=\"999999\">non-cls<font>"), "</td></tr><tr><td width=220>vs ", fight.getString("oponent"), " (", fight.getString("oponentclass"), ")</td><td width=50 align=right>(", fight.getString("time"), ")</td></tr><tr><td colspan=2>&nbsp;</td></tr></table></td></tr>");
+                StringUtil.append(sb, "<tr><td>", ((color)
+                                                   ? "<table width=270 bgcolor=\"131210\">"
+                                                   : "<table width=270><tr><td width=220><font color=\"LEVEL\">"), fight.getString("start"), "</font>&nbsp;&nbsp;", fight.getString("result"), "</td><td width=50 align=right>", ((fight.getInteger("classed") > 0)
+                                                                                                                                                                                                                                  ? "<font color=\"FFFF99\">cls</font>"
+                                                                                                                                                                                                                                  : "<font color=\"999999\">non-cls<font>"), "</td></tr><tr><td width=220>vs ", fight
+                        .getString("oponent"), " (", fight.getString("oponentclass"), ")</td><td width=50 align=right>(", fight.getString("time"), ")</td></tr><tr><td colspan=2>&nbsp;</td></tr></table></td></tr>");
                 color = !color;
 
                 counter++;

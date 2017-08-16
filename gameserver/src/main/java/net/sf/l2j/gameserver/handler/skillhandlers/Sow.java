@@ -12,12 +12,12 @@ import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
-import net.sf.l2j.gameserver.scripting.QuestState;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
 
 public class Sow implements ISkillHandler {
-    private static final L2SkillType[] SKILL_IDS = {L2SkillType.SOW};
+    private static final L2SkillType[] SKILL_IDS = { L2SkillType.SOW };
 
     @Override
     public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets) {
@@ -38,7 +38,7 @@ public class Sow implements ISkillHandler {
 
         SystemMessage sm;
         if (calcSuccess(activeChar, target, seedId)) {
-            player.sendPacket(new PlaySound(QuestState.SOUND_ITEMGET));
+            player.sendPacket(new PlaySound(ESound.ItemSound_quest_itemget));
             target.setSeeded(activeChar.getObjectId());
             sm = SystemMessage.getSystemMessage(SystemMessageId.THE_SEED_WAS_SUCCESSFULLY_SOWN);
         }

@@ -14,30 +14,26 @@
  */
 package net.sf.l2j.gameserver.model.actor.instance;
 
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.zone.ZoneId;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 
-public class L2SiegeSummonInstance extends L2SummonInstance
-{
-	public static final int SIEGE_GOLEM_ID = 14737;
-	public static final int HOG_CANNON_ID = 14768;
-	public static final int SWOOP_CANNON_ID = 14839;
-	
-	public L2SiegeSummonInstance(int objectId, NpcTemplate template, L2PcInstance owner, L2Skill skill)
-	{
-		super(objectId, template, owner, skill);
-	}
-	
-	@Override
-	public void onSpawn()
-	{
-		super.onSpawn();
-		if (!isInsideZone(ZoneId.SIEGE))
-		{
-			unSummon(getOwner());
-			getOwner().sendPacket(SystemMessageId.YOUR_SERVITOR_HAS_VANISHED);
-		}
-	}
+public class L2SiegeSummonInstance extends L2SummonInstance {
+    public static final int SIEGE_GOLEM_ID = 14737;
+    public static final int HOG_CANNON_ID = 14768;
+    public static final int SWOOP_CANNON_ID = 14839;
+
+    public L2SiegeSummonInstance(int objectId, NpcTemplate template, L2PcInstance owner, L2Skill skill) {
+        super(objectId, template, owner, skill);
+    }
+
+    @Override
+    public void onSpawn() {
+        super.onSpawn();
+        if (!isInsideZone(ZoneId.SIEGE)) {
+            unSummon(getOwner());
+            getOwner().sendPacket(SystemMessageId.YOUR_SERVITOR_HAS_VANISHED);
+        }
+    }
 }

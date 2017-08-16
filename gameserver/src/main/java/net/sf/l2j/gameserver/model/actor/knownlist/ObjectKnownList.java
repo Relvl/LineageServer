@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-@SuppressWarnings({"ObjectEquality", "ClassHasNoToStringMethod"})
+@SuppressWarnings({ "ObjectEquality", "ClassHasNoToStringMethod" })
 public class ObjectKnownList {
     protected final L2Object object;
     protected final Map<Integer, L2Object> knownObjects;

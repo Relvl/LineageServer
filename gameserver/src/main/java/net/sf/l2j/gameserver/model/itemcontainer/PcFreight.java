@@ -2,9 +2,9 @@ package net.sf.l2j.gameserver.model.itemcontainer;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.item.EItemLocation;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
-import net.sf.l2j.gameserver.model.item.EItemLocation;
 
 import java.util.ArrayList;
 import java.util.List;

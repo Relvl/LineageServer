@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
  */
 public class AdminHeal implements IAdminCommandHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(AdminHeal.class);
-    private static final String[] ADMIN_COMMANDS = {"admin_heal"};
+    private static final String[] ADMIN_COMMANDS = { "admin_heal" };
 
     private static void handleRes(L2PcInstance activeChar) {
         handleRes(activeChar, null);

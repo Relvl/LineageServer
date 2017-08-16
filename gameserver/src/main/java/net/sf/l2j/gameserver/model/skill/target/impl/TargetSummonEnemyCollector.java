@@ -20,8 +20,9 @@ public class TargetSummonEnemyCollector implements ISkillTargetCollector {
         if (target.isSummon()) {
             L2Summon targetSummon = (L2Summon) target;
             L2PcInstance summonOwner = targetSummon.getActingPlayer();
-            if (activeChar instanceof L2PcInstance && activeChar.getPet() != targetSummon && !targetSummon.isDead() && (summonOwner.getPvpFlag() != 0 || summonOwner.getKarma() > 0) || (summonOwner.isInsideZone(ZoneId.PVP) && activeChar.isInsideZone(ZoneId.PVP)) || (summonOwner.isInDuel() && ((L2PcInstance) activeChar).isInDuel() && summonOwner.getDuelId() == ((L2PcInstance) activeChar).getDuelId())) {
-                return new L2Character[]{targetSummon};
+            if (activeChar instanceof L2PcInstance && activeChar.getPet() != targetSummon && !targetSummon.isDead() && (summonOwner.getPvpFlag() != 0 || summonOwner.getKarma() > 0) || (summonOwner.isInsideZone(ZoneId.PVP) && activeChar.isInsideZone(ZoneId.PVP)) || (summonOwner
+                    .isInDuel() && ((L2PcInstance) activeChar).isInDuel() && summonOwner.getDuelId() == ((L2PcInstance) activeChar).getDuelId())) {
+                return new L2Character[]{ targetSummon };
             }
         }
         return sendIncorrect(activeChar);

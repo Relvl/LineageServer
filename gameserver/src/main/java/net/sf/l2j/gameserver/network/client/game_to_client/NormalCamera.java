@@ -14,17 +14,14 @@
  */
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
-public class NormalCamera extends L2GameServerPacket
-{
-	public static final NormalCamera STATIC_PACKET = new NormalCamera();
-	
-	private NormalCamera()
-	{
-	}
-	
-	@Override
-	public void writeImpl()
-	{
-		writeC(0xc8);
-	}
+public class NormalCamera extends L2GameServerPacket {
+    public static final NormalCamera STATIC_PACKET = new NormalCamera();
+
+    private NormalCamera() {
+    }
+
+    @Override
+    public void writeImpl() {
+        writeC(0xc8);
+    }
 }

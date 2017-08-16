@@ -38,7 +38,8 @@ public final class CharacterDelete extends L2GameClientPacket {
                     sendPacket(new CharDeleteFail(CharDeleteFail.REASON_CLAN_LEADERS_MAY_NOT_BE_DELETED));
                     break;
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             _log.error("Error:", e);
         }
 

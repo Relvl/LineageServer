@@ -4,6 +4,8 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.ClassId;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -50,18 +52,18 @@ public class Q401_PathToAWarrior extends Quest {
         else if (event.equalsIgnoreCase("30010-06.htm")) {
             st.setState(QuestState.STATE_STARTED);
             st.set("cond", "1");
-            st.playSound(QuestState.SOUND_ACCEPT);
+            st.playSound(ESound.ItemSound_quest_accept);
             st.giveItems(AURON_LETTER, 1);
         }
         else if (event.equalsIgnoreCase("30253-02.htm")) {
             st.set("cond", "2");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.takeItems(AURON_LETTER, 1);
             st.giveItems(WARRIOR_GUILD_MARK, 1);
         }
         else if (event.equalsIgnoreCase("30010-11.htm")) {
             st.set("cond", "5");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.takeItems(RUSTED_BRONZE_SWORD_2, 1);
             st.takeItems(SIMPLON_LETTER, 1);
             st.giveItems(RUSTED_BRONZE_SWORD_3, 1);
@@ -82,7 +84,7 @@ public class Q401_PathToAWarrior extends Quest {
                 break;
 
             case QuestState.STATE_STARTED:
-                final int cond = st.getInt("cond");
+                int cond = st.getInt("cond");
                 switch (npc.getNpcId()) {
                     case AURON:
                         if (cond == 1) { htmltext = "30010-07.htm"; }
@@ -96,7 +98,7 @@ public class Q401_PathToAWarrior extends Quest {
                             st.giveItems(MEDALLION_OF_WARRIOR, 1);
                             st.rewardExpAndSp(3200, 1500);
                             player.broadcastPacket(new SocialAction(player, 3));
-                            st.playSound(QuestState.SOUND_FINISH);
+                            st.playSound(ESound.ItemSound_quest_finish);
                             st.exitQuest(true);
                         }
                         break;
@@ -110,7 +112,7 @@ public class Q401_PathToAWarrior extends Quest {
                         else if (cond == 3) {
                             htmltext = "30253-04.htm";
                             st.set("cond", "4");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(RUSTED_BRONZE_SWORD_1, 10);
                             st.takeItems(WARRIOR_GUILD_MARK, 1);
                             st.giveItems(RUSTED_BRONZE_SWORD_2, 1);

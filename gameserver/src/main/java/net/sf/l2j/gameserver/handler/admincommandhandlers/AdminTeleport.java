@@ -5,8 +5,8 @@ import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 
 import java.util.NoSuchElementException;
@@ -47,7 +47,8 @@ public class AdminTeleport implements IAdminCommandHandler {
             activeChar.teleToLocation(x, y, z, 0);
 
             activeChar.sendMessage("You have been teleported to " + Cords + ".");
-        } catch (NoSuchElementException nsee) {
+        }
+        catch (NoSuchElementException nsee) {
             activeChar.sendMessage("Coordinates you entered as parameter [" + Cords + "] are wrong.");
         }
     }
@@ -109,7 +110,8 @@ public class AdminTeleport implements IAdminCommandHandler {
                 }
 
                 teleportCharacter(player, activeChar.getX(), activeChar.getY(), activeChar.getZ());
-            } catch (StringIndexOutOfBoundsException e) {
+            }
+            catch (StringIndexOutOfBoundsException e) {
             }
         }
         else if (command.startsWith("admin_recall_party")) {
@@ -132,7 +134,8 @@ public class AdminTeleport implements IAdminCommandHandler {
                     activeChar.sendMessage("You recall " + player.getName() + ", but he isn't in a party.");
                     teleportCharacter(player, activeChar.getX(), activeChar.getY(), activeChar.getZ());
                 }
-            } catch (StringIndexOutOfBoundsException e) {
+            }
+            catch (StringIndexOutOfBoundsException e) {
             }
         }
         else if (command.startsWith("admin_recall_clan")) {
@@ -156,14 +159,16 @@ public class AdminTeleport implements IAdminCommandHandler {
                     activeChar.sendMessage("You recall " + player.getName() + ", but he isn't a clan member.");
                     teleportCharacter(player, activeChar.getX(), activeChar.getY(), activeChar.getZ());
                 }
-            } catch (StringIndexOutOfBoundsException e) {
+            }
+            catch (StringIndexOutOfBoundsException e) {
             }
         }
         else if (command.startsWith("admin_move_to")) {
             try {
                 String val = command.substring(14);
                 teleportTo(activeChar, val);
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 // Case of empty or missing coordinates
                 AdminHelpPage.showHelpPage(activeChar, "teleports.htm");
             }

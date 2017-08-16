@@ -17,72 +17,59 @@ package net.sf.l2j.gameserver.handler.skillhandlers;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.ShotType;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.StatusUpdate;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.skills.Stats;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
 
-public class ManaHeal implements ISkillHandler
-{
-	private static final L2SkillType[] SKILL_IDS =
-	{
-		L2SkillType.MANAHEAL,
-		L2SkillType.MANARECHARGE
-	};
-	
-	@Override
-	public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets)
-	{
-		for (L2Object obj : targets)
-		{
-			if (!(obj instanceof L2Character))
-				continue;
-			
-			final L2Character target = ((L2Character) obj);
-			if (target.isInvul())
-				continue;
-			
-			double mp = skill.getPower();
-			
-			if (skill.getSkillType() == L2SkillType.MANAHEAL_PERCENT)
-				mp = target.getMaxMp() * mp / 100.0;
-			else
-				mp = (skill.getSkillType() == L2SkillType.MANARECHARGE) ? target.calcStat(Stats.RECHARGE_MP_RATE, mp, null, null) : mp;
-			
-			// It's not to be the IL retail way, but it make the message more logical
-			if ((target.getCurrentMp() + mp) >= target.getMaxMp())
-				mp = target.getMaxMp() - target.getCurrentMp();
-			
-			target.setCurrentMp(mp + target.getCurrentMp());
-			StatusUpdate sump = new StatusUpdate(target);
-			sump.addAttribute(StatusUpdate.CUR_MP, (int) target.getCurrentMp());
-			target.sendPacket(sump);
-			
-			if (activeChar instanceof L2PcInstance && activeChar != target)
-				target.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S2_MP_RESTORED_BY_S1).addCharName(activeChar).addNumber((int) mp));
-			else
-				target.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_MP_RESTORED).addNumber((int) mp));
-		}
-		
-		if (skill.hasSelfEffects())
-		{
-			final L2Effect effect = activeChar.getFirstEffect(skill.getId());
-			if (effect != null && effect.isSelfEffect())
-				effect.exit();
-			
-			skill.getEffectsSelf(activeChar);
-		}
-		activeChar.setChargedShot(activeChar.isChargedShot(ShotType.BLESSED_SPIRITSHOT) ? ShotType.BLESSED_SPIRITSHOT : ShotType.SPIRITSHOT, skill.isStaticReuse());
-	}
-	
-	@Override
-	public L2SkillType[] getSkillIds()
-	{
-		return SKILL_IDS;
-	}
+public class ManaHeal implements ISkillHandler {
+    private static final L2SkillType[] SKILL_IDS =
+            {
+                    L2SkillType.MANAHEAL,
+                    L2SkillType.MANARECHARGE
+            };
+
+    @Override
+    public void useSkill(L2Character activeChar, L2Skill skill, L2Object[] targets) {
+        for (L2Object obj : targets) {
+            if (!(obj instanceof L2Character)) { continue; }
+
+            final L2Character target = ((L2Character) obj);
+            if (target.isInvul()) { continue; }
+
+            double mp = skill.getPower();
+
+            if (skill.getSkillType() == L2SkillType.MANAHEAL_PERCENT) { mp = target.getMaxMp() * mp / 100.0; }
+            else { mp = (skill.getSkillType() == L2SkillType.MANARECHARGE) ? target.calcStat(Stats.RECHARGE_MP_RATE, mp, null, null) : mp; }
+
+            // It's not to be the IL retail way, but it make the message more logical
+            if ((target.getCurrentMp() + mp) >= target.getMaxMp()) { mp = target.getMaxMp() - target.getCurrentMp(); }
+
+            target.setCurrentMp(mp + target.getCurrentMp());
+            StatusUpdate sump = new StatusUpdate(target);
+            sump.addAttribute(StatusUpdate.CUR_MP, (int) target.getCurrentMp());
+            target.sendPacket(sump);
+
+            if (activeChar instanceof L2PcInstance && activeChar != target) { target.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S2_MP_RESTORED_BY_S1).addCharName(activeChar).addNumber((int) mp)); }
+            else { target.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_MP_RESTORED).addNumber((int) mp)); }
+        }
+
+        if (skill.hasSelfEffects()) {
+            final L2Effect effect = activeChar.getFirstEffect(skill.getId());
+            if (effect != null && effect.isSelfEffect()) { effect.exit(); }
+
+            skill.getEffectsSelf(activeChar);
+        }
+        activeChar.setChargedShot(activeChar.isChargedShot(ShotType.BLESSED_SPIRITSHOT) ? ShotType.BLESSED_SPIRITSHOT : ShotType.SPIRITSHOT, skill.isStaticReuse());
+    }
+
+    @Override
+    public L2SkillType[] getSkillIds() {
+        return SKILL_IDS;
+    }
 }

@@ -77,34 +77,34 @@ public class PcInventory extends Inventory {
 
     public List<L2ItemInstance> getAllItemsByItemId(int itemId, boolean includeEquipped) {
         return items.stream()
-                .filter(item -> item != null && item.getItemId() == itemId && (includeEquipped || !item.isEquipped()))
-                .collect(Collectors.toList());
+                    .filter(item -> item != null && item.getItemId() == itemId && (includeEquipped || !item.isEquipped()))
+                    .collect(Collectors.toList());
     }
 
     public List<L2ItemInstance> getAllItemsByItemId(int itemId, int enchantment) {
         return items.stream()
-                .filter(item -> item != null && item.getItemId() == itemId && item.getEnchantLevel() == enchantment)
-                .collect(Collectors.toList());
+                    .filter(item -> item != null && item.getItemId() == itemId && item.getEnchantLevel() == enchantment)
+                    .collect(Collectors.toList());
     }
 
     public List<L2ItemInstance> getAvailableItems(boolean allowAdena, boolean allowNonTradeable) {
         return items.stream()
-                .filter(item -> item != null && item.isAvailable(player, allowAdena, allowNonTradeable))
-                .collect(Collectors.toList());
+                    .filter(item -> item != null && item.isAvailable(player, allowAdena, allowNonTradeable))
+                    .collect(Collectors.toList());
     }
 
     public List<L2ItemInstance> getAugmentedItems() {
         return items.stream()
-                .filter(item -> item != null && item.isAugmented())
-                .collect(Collectors.toList());
+                    .filter(item -> item != null && item.isAugmented())
+                    .collect(Collectors.toList());
     }
 
     public List<TradeItem> getAvailableItems(TradeList tradeList) {
         return items.stream()
-                .filter(item -> item != null && item.isAvailable(player, false, false))
-                .map(tradeList::adjustAvailableItem)
-                .filter(Objects::nonNull)
-                .collect(Collectors.toList());
+                    .filter(item -> item != null && item.isAvailable(player, false, false))
+                    .map(tradeList::adjustAvailableItem)
+                    .filter(Objects::nonNull)
+                    .collect(Collectors.toList());
     }
 
     /** @deprecated Почти точно такой же метод есть в TradeItem. Нужно решить и выбрать один. */

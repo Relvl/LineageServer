@@ -19,7 +19,7 @@ public class TargetRaceUndeadCollector implements ISkillTargetCollector {
             if (!target.isUndead() || target.isDead()) {
                 return sendIncorrect(activeChar);
             }
-            return new L2Character[]{target};
+            return new L2Character[]{ target };
         }
         return sendIncorrect(activeChar);
     }

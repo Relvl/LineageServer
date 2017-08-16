@@ -14,36 +14,32 @@
  */
 package net.sf.l2j.gameserver.taskmanager.tasks;
 
-import java.util.concurrent.ScheduledFuture;
-
 import net.sf.l2j.gameserver.taskmanager.TaskManager.ExecutedTask;
+
+import java.util.concurrent.ScheduledFuture;
 
 /**
  * @author Layane
  */
-public abstract class ATask
-{
-	public enum TaskType
-	{
-		TYPE_NONE,
-		TYPE_TIME,
-		TYPE_SHEDULED,
-		TYPE_FIXED_SHEDULED,
-		TYPE_GLOBAL_TASK,
-		TYPE_STARTUP,
-		TYPE_SPECIAL
-	}
-	
-	public ScheduledFuture<?> launchSpecial(ExecutedTask instance)
-	{
-		return null;
-	}
-	
-	public abstract String getName();
-	
-	public void initializate()
-	{
-	}
-	
-	public abstract void onTimeElapsed(ExecutedTask task);
+public abstract class ATask {
+    public enum TaskType {
+        TYPE_NONE,
+        TYPE_TIME,
+        TYPE_SHEDULED,
+        TYPE_FIXED_SHEDULED,
+        TYPE_GLOBAL_TASK,
+        TYPE_STARTUP,
+        TYPE_SPECIAL
+    }
+
+    public ScheduledFuture<?> launchSpecial(ExecutedTask instance) {
+        return null;
+    }
+
+    public abstract String getName();
+
+    public void initializate() {
+    }
+
+    public abstract void onTimeElapsed(ExecutedTask task);
 }

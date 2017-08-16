@@ -15,5 +15,4 @@ public class RecipesXmlFile {
     @JacksonXmlProperty(localName = "item")
     @JacksonXmlElementWrapper(useWrapping = false)
     public List<Recipe> list = new ArrayList<>();
-
 }

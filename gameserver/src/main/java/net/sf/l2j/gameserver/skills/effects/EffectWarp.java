@@ -18,8 +18,8 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.model.L2Effect;
-import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.L2Character;
+import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.network.client.game_to_client.FlyToLocation;
 import net.sf.l2j.gameserver.network.client.game_to_client.FlyToLocation.FlyType;
 import net.sf.l2j.gameserver.network.client.game_to_client.ValidateLocation;
@@ -34,69 +34,63 @@ import net.sf.l2j.gameserver.util.Util;
  * <br>
  * If target is effector, put in XML self = "1". This will make _actor = getEffector(). This, combined with target type, allows more complex actions like flying target's backwards or player's backwards.<br>
  * <br>
+ *
  * @author House
  */
-public class EffectWarp extends L2Effect
-{
-	private int x, y, z;
-	private L2Character _actor;
-	
-	public EffectWarp(Env env, EffectTemplate template)
-	{
-		super(env, template);
-	}
-	
-	@Override
-	public L2EffectType getEffectType()
-	{
-		return L2EffectType.WARP;
-	}
-	
-	@Override
-	public boolean onStart()
-	{
-		_actor = isSelfEffect() ? getEffector() : getEffected();
-		
-		if (_actor.isMovementDisabled())
-			return false;
-		
-		int _radius = getSkill().getFlyRadius();
-		
-		double angle = Util.convertHeadingToDegree(_actor.getHeading());
-		double radian = Math.toRadians(angle);
-		double course = Math.toRadians(getSkill().getFlyCourse());
-		
-		int x1 = (int) (Math.cos(Math.PI + radian + course) * _radius);
-		int y1 = (int) (Math.sin(Math.PI + radian + course) * _radius);
-		
-		x = _actor.getX() + x1;
-		y = _actor.getY() + y1;
-		z = _actor.getZ();
-		
-		if (Config.GEODATA > 0)
-		{
-			Location destiny = PathFinding.getInstance().canMoveToTargetLoc(_actor.getX(), _actor.getY(), _actor.getZ(), x, y, z);
-			x = destiny.getX();
-			y = destiny.getY();
-			z = destiny.getZ();
-		}
-		
-		// TODO: check if this AI intention is retail-like. This stops player's previous movement
-		_actor.getAI().setIntention(EIntention.IDLE);
-		
-		_actor.broadcastPacket(new FlyToLocation(_actor, x, y, z, FlyType.DUMMY));
-		_actor.abortAttack();
-		_actor.abortCast();
-		
-		_actor.getPosition().setXYZ(x, y, z);
-		_actor.broadcastPacket(new ValidateLocation(_actor));
-		
-		return true;
-	}
-	
-	@Override
-	public boolean onActionTime()
-	{
-		return false;
-	}
+public class EffectWarp extends L2Effect {
+    private int x, y, z;
+    private L2Character _actor;
+
+    public EffectWarp(Env env, EffectTemplate template) {
+        super(env, template);
+    }
+
+    @Override
+    public L2EffectType getEffectType() {
+        return L2EffectType.WARP;
+    }
+
+    @Override
+    public boolean onStart() {
+        _actor = isSelfEffect() ? getEffector() : getEffected();
+
+        if (_actor.isMovementDisabled()) { return false; }
+
+        int _radius = getSkill().getFlyRadius();
+
+        double angle = Util.convertHeadingToDegree(_actor.getHeading());
+        double radian = Math.toRadians(angle);
+        double course = Math.toRadians(getSkill().getFlyCourse());
+
+        int x1 = (int) (Math.cos(Math.PI + radian + course) * _radius);
+        int y1 = (int) (Math.sin(Math.PI + radian + course) * _radius);
+
+        x = _actor.getX() + x1;
+        y = _actor.getY() + y1;
+        z = _actor.getZ();
+
+        if (Config.GEODATA > 0) {
+            Location destiny = PathFinding.getInstance().canMoveToTargetLoc(_actor.getX(), _actor.getY(), _actor.getZ(), x, y, z);
+            x = destiny.getX();
+            y = destiny.getY();
+            z = destiny.getZ();
+        }
+
+        // TODO: check if this AI intention is retail-like. This stops player's previous movement
+        _actor.getAI().setIntention(EIntention.IDLE);
+
+        _actor.broadcastPacket(new FlyToLocation(_actor, x, y, z, FlyType.DUMMY));
+        _actor.abortAttack();
+        _actor.abortCast();
+
+        _actor.getPosition().setXYZ(x, y, z);
+        _actor.broadcastPacket(new ValidateLocation(_actor));
+
+        return true;
+    }
+
+    @Override
+    public boolean onActionTime() {
+        return false;
+    }
 }

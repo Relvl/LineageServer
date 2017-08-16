@@ -4,7 +4,6 @@ import net.sf.l2j.gameserver.EChatType;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
-import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -71,7 +70,8 @@ public final class Say2 extends L2GameClientPacket {
             else {
                 CHAT_LOG.info(text);
             }
-        } finally {
+        }
+        finally {
             MDC.remove("CHAT_TYPE");
             MDC.remove("CHAT_PLAYER");
         }

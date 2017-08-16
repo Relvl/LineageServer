@@ -23,14 +23,11 @@ import net.sf.l2j.gameserver.network.client.game_to_client.ShowMiniMap;
 /**
  * This class provides handling for items that should display a map when double clicked.
  */
-public class Maps implements IItemHandler
-{
-	@Override
-	public void useItem(L2Playable playable, L2ItemInstance item, boolean forceUse)
-	{
-		if (!(playable instanceof L2PcInstance))
-			return;
-		
-		playable.sendPacket(new ShowMiniMap(item.getItemId()));
-	}
+public class Maps implements IItemHandler {
+    @Override
+    public void useItem(L2Playable playable, L2ItemInstance item, boolean forceUse) {
+        if (!(playable instanceof L2PcInstance)) { return; }
+
+        playable.sendPacket(new ShowMiniMap(item.getItemId()));
+    }
 }

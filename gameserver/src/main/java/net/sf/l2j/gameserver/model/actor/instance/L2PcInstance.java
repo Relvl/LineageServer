@@ -4,8 +4,6 @@ import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.database.CallException;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.scripting.EScript;
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.NextAction;
@@ -67,6 +65,7 @@ import net.sf.l2j.gameserver.network.L2GameClient;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.AbstractNpcInfo.PcMorphInfo;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.playerpart.GatesRequest;
 import net.sf.l2j.gameserver.playerpart.PrivateStoreType;
 import net.sf.l2j.gameserver.playerpart.PunishLevel;
@@ -77,6 +76,7 @@ import net.sf.l2j.gameserver.playerpart.quest.QuestController;
 import net.sf.l2j.gameserver.playerpart.recipe.RecipeController;
 import net.sf.l2j.gameserver.playerpart.variables.EPlayerVariableKey;
 import net.sf.l2j.gameserver.playerpart.variables.PlayerVariablesController;
+import net.sf.l2j.gameserver.scripting.EScript;
 import net.sf.l2j.gameserver.scripting.EventType;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -93,6 +93,7 @@ import net.sf.l2j.gameserver.templates.skills.L2EffectType;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
 import net.sf.l2j.gameserver.util.Broadcast;
 import net.sf.l2j.gameserver.util.Util;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -137,7 +138,7 @@ public final class L2PcInstance extends L2Playable {
             61, // A
             76, // S
     };
-    private static final int[] COMMON_CRAFT_LEVELS = {5, 20, 28, 36, 43, 49, 55, 62};
+    private static final int[] COMMON_CRAFT_LEVELS = { 5, 20, 28, 36, 43, 49, 55, 62 };
     private static final int FALLING_VALIDATION_DELAY = 10000;
 
     private final PlayerVariablesController variables = new PlayerVariablesController(this);
@@ -584,7 +585,6 @@ public final class L2PcInstance extends L2Playable {
         if (summonerChar == null) { return false; }
 
         return !(summonerChar._inOlympiadMode || summonerChar.isInObserverMode() || summonerChar.isInsideZone(ZoneId.NO_SUMMON_FRIEND) || summonerChar.isMounted());
-
     }
 
     public static boolean checkSummonTargetStatus(L2Object target, L2PcInstance summonerChar) {
@@ -2398,7 +2398,9 @@ public final class L2PcInstance extends L2Playable {
 
                 for (L2ItemInstance itemDrop : inventory.getItems()) {
                     // Don't drop those following things
-                    if (!itemDrop.isDropable() || itemDrop.isShadowItem() || itemDrop.getItemId() == ItemConst.ADENA_ID || itemDrop.getItem().getType2() == EItemType2.TYPE2_QUEST || summon != null && summon.getControlItemId() == itemDrop.getItemId() || Arrays.binarySearch(Config.KARMA_LIST_NONDROPPABLE_ITEMS, itemDrop.getItemId()) >= 0 || Arrays.binarySearch(Config.KARMA_LIST_NONDROPPABLE_PET_ITEMS, itemDrop.getItemId()) >= 0) {
+                    if (!itemDrop.isDropable() || itemDrop.isShadowItem() || itemDrop.getItemId() == ItemConst.ADENA_ID || itemDrop.getItem()
+                                                                                                                                   .getType2() == EItemType2.TYPE2_QUEST || summon != null && summon.getControlItemId() == itemDrop.getItemId() || Arrays
+                            .binarySearch(Config.KARMA_LIST_NONDROPPABLE_ITEMS, itemDrop.getItemId()) >= 0 || Arrays.binarySearch(Config.KARMA_LIST_NONDROPPABLE_PET_ITEMS, itemDrop.getItemId()) >= 0) {
                         continue;
                     }
 
@@ -3804,7 +3806,6 @@ public final class L2PcInstance extends L2Playable {
             // Check if the attacker is in olympiad and olympiad start
             if (attacker instanceof L2PcInstance && cha._inOlympiadMode) {
                 return _inOlympiadMode && _OlympiadStart && cha._olympiadGameId == _olympiadGameId;
-
             }
 
             // is AutoAttackable if both players are in the same duel and the duel is still going on
@@ -3850,7 +3851,6 @@ public final class L2PcInstance extends L2Playable {
 
         // Check if the L2PcInstance has Karma
         return _karma > 0 || _pvpFlag > 0;
-
     }
 
     @Override
@@ -4261,7 +4261,8 @@ public final class L2PcInstance extends L2Playable {
                 }
         }
 
-        if ((sklTargetType == ESkillTargetType.TARGET_HOLY && !checkIfOkToCastSealOfRule(CastleManager.getInstance().getCastle(this), false, skill, target)) || (sklType == L2SkillType.SIEGEFLAG && !L2SkillSiegeFlag.checkIfOkToPlaceFlag(this, false)) || (sklType == L2SkillType.STRSIEGEASSAULT && !checkIfOkToUseStriderSiegeAssault(skill)) || (sklType == L2SkillType.SUMMON_FRIEND && !(checkSummonerStatus(this) && checkSummonTargetStatus(target, this)))) {
+        if ((sklTargetType == ESkillTargetType.TARGET_HOLY && !checkIfOkToCastSealOfRule(CastleManager.getInstance()
+                                                                                                      .getCastle(this), false, skill, target)) || (sklType == L2SkillType.SIEGEFLAG && !L2SkillSiegeFlag.checkIfOkToPlaceFlag(this, false)) || (sklType == L2SkillType.STRSIEGEASSAULT && !checkIfOkToUseStriderSiegeAssault(skill)) || (sklType == L2SkillType.SUMMON_FRIEND && !(checkSummonerStatus(this) && checkSummonTargetStatus(target, this)))) {
             sendPacket(ActionFailed.STATIC_PACKET);
             abortCast();
             return false;
@@ -4411,7 +4412,6 @@ public final class L2PcInstance extends L2Playable {
             }
 
             return targetPlayer._pvpFlag > 0 || targetPlayer._karma > 0;
-
         }
         return true;
     }
@@ -5417,7 +5417,6 @@ public final class L2PcInstance extends L2Playable {
 
         // Can't trade a cursed weapon.
         return !CursedWeaponsManager.getInstance().isCursed(item.getItemId());
-
     }
 
     public synchronized void clearBypass() {
@@ -5597,7 +5596,7 @@ public final class L2PcInstance extends L2Playable {
         sendPacket(SystemMessageId.CAST_LINE_AND_START_FISHING);
 
         broadcastPacket(new ExFishingStart(this, _fish.getType(_lure.isNightLure()), loc, _lure.isNightLure()));
-        sendPacket(new PlaySound(1, "SF_P_01", 0, 0, 0, 0, 0));
+        sendPacket(new PlaySound(ESound.SF_P_01));
         startLookingForFishTask();
     }
 
@@ -5889,7 +5888,7 @@ public final class L2PcInstance extends L2Playable {
                         stopPunishTask(true);
                         sendPacket(new EtcStatusUpdate(this));
                         sendMessage("Chatting is now available.");
-                        sendPacket(new PlaySound("systemmsg_e.345"));
+                        sendPacket(new PlaySound(ESound.systemmsg_e_345));
                         break;
                     case JAIL:
                         _punishLevel = state;
@@ -5925,7 +5924,7 @@ public final class L2PcInstance extends L2Playable {
                 else { sendMessage("Chatting has been suspended."); }
 
                 // Send same sound packet in both "delay" cases.
-                sendPacket(new PlaySound("systemmsg_e.346"));
+                sendPacket(new PlaySound(ESound.systemmsg_e_346));
                 break;
 
             case JAIL: // Jail Player

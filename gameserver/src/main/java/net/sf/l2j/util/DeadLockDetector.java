@@ -52,8 +52,7 @@ public class DeadLockDetector extends Thread {
                     StringBuilder info = new StringBuilder();
                     info.append("DeadLock Found!\n");
 
-                    for (ThreadInfo ti : tis)
-                        info.append(ti.toString());
+                    for (ThreadInfo ti : tis) { info.append(ti.toString()); }
 
                     for (ThreadInfo ti : tis) {
                         LockInfo[] locks = ti.getLockedSynchronizers();
@@ -92,7 +91,8 @@ public class DeadLockDetector extends Thread {
                     }
                 }
                 Thread.sleep(_sleepTime);
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 LOGGER.error("DeadLockDetector: ", e);
             }
         }

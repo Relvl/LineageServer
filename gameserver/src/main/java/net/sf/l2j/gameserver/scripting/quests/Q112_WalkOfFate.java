@@ -15,85 +15,76 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.ItemConst;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
-public class Q112_WalkOfFate extends Quest
-{
-	private static final String qn = "Q112_WalkOfFate";
-	
-	// NPCs
-	private static final int LIVINA = 30572;
-	private static final int KARUDA = 32017;
-	
-	// Rewards
-	private static final int ENCHANT_D = 956;
-	
-	public Q112_WalkOfFate()
-	{
-		super(112, "Walk of Fate");
-		
-		addStartNpc(LIVINA);
-		addTalkId(LIVINA, KARUDA);
-	}
-	
-	@Override
-	public String onAdvEvent(String event, L2Npc npc, L2PcInstance player)
-	{
-		String htmltext = event;
-		QuestState st = player.getQuestState(qn);
-		if (st == null)
-			return htmltext;
-		
-		if (event.equalsIgnoreCase("30572-02.htm"))
-		{
-			st.setState(QuestState.STATE_STARTED);
-			st.set("cond", "1");
-			st.playSound(QuestState.SOUND_ACCEPT);
-		}
-		else if (event.equalsIgnoreCase("32017-02.htm"))
-		{
-			st.giveItems(ENCHANT_D, 1);
-			st.rewardItems(ItemConst.ADENA_ID, 4665);
-			st.playSound(QuestState.SOUND_FINISH);
-			st.exitQuest(false);
-		}
-		
-		return htmltext;
-	}
-	
-	@Override
-	public String onTalk(L2Npc npc, L2PcInstance player)
-	{
-		QuestState st = player.getQuestState(qn);
-		String htmltext = getNoQuestMsg();
-		if (st == null)
-			return htmltext;
-		
-		switch (st.getState())
-		{
-			case QuestState.STATE_CREATED:
-				htmltext = (player.getLevel() < 20) ? "30572-00.htm" : "30572-01.htm";
-				break;
-			
-			case QuestState.STATE_STARTED:
-				switch (npc.getNpcId())
-				{
-					case LIVINA:
-						htmltext = "30572-03.htm";
-						break;
-					
-					case KARUDA:
-						htmltext = "32017-01.htm";
-						break;
-				}
-				break;
-			
-			case QuestState.STATE_COMPLETED:
-				htmltext = getAlreadyCompletedMsg();
-				break;
-		}
-		
-		return htmltext;
-	}
+public class Q112_WalkOfFate extends Quest {
+    private static final String qn = "Q112_WalkOfFate";
+
+    // NPCs
+    private static final int LIVINA = 30572;
+    private static final int KARUDA = 32017;
+
+    // Rewards
+    private static final int ENCHANT_D = 956;
+
+    public Q112_WalkOfFate() {
+        super(112, "Walk of Fate");
+
+        addStartNpc(LIVINA);
+        addTalkId(LIVINA, KARUDA);
+    }
+
+    @Override
+    public String onAdvEvent(String event, L2Npc npc, L2PcInstance player) {
+        String htmltext = event;
+        QuestState st = player.getQuestState(qn);
+        if (st == null) { return htmltext; }
+
+        if (event.equalsIgnoreCase("30572-02.htm")) {
+            st.setState(QuestState.STATE_STARTED);
+            st.set("cond", "1");
+            st.playSound(ESound.ItemSound_quest_accept);
+        }
+        else if (event.equalsIgnoreCase("32017-02.htm")) {
+            st.giveItems(ENCHANT_D, 1);
+            st.rewardItems(ItemConst.ADENA_ID, 4665);
+            st.playSound(ESound.ItemSound_quest_finish);
+            st.exitQuest(false);
+        }
+
+        return htmltext;
+    }
+
+    @Override
+    public String onTalk(L2Npc npc, L2PcInstance player) {
+        QuestState st = player.getQuestState(qn);
+        String htmltext = getNoQuestMsg();
+        if (st == null) { return htmltext; }
+
+        switch (st.getState()) {
+            case QuestState.STATE_CREATED:
+                htmltext = (player.getLevel() < 20) ? "30572-00.htm" : "30572-01.htm";
+                break;
+
+            case QuestState.STATE_STARTED:
+                switch (npc.getNpcId()) {
+                    case LIVINA:
+                        htmltext = "30572-03.htm";
+                        break;
+
+                    case KARUDA:
+                        htmltext = "32017-01.htm";
+                        break;
+                }
+                break;
+
+            case QuestState.STATE_COMPLETED:
+                htmltext = getAlreadyCompletedMsg();
+                break;
+        }
+
+        return htmltext;
+    }
 }

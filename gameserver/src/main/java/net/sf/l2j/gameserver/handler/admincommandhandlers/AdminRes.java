@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 public class AdminRes implements IAdminCommandHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(AdminRes.class);
-    private static final String[] ADMIN_COMMANDS = {"admin_res", "admin_res_monster"};
+    private static final String[] ADMIN_COMMANDS = { "admin_res", "admin_res_monster" };
 
     private static void handleRes(L2PcInstance activeChar) {
         handleRes(activeChar, null);

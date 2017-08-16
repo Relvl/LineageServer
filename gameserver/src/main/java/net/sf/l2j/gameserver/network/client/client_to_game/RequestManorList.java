@@ -19,22 +19,19 @@ import net.sf.l2j.gameserver.network.client.game_to_client.ExSendManorList;
 
 /**
  * Format: ch
+ *
  * @author l3x
  */
-public class RequestManorList extends L2GameClientPacket
-{
-	@Override
-	protected void readImpl()
-	{
-	}
-	
-	@Override
-	protected void runImpl()
-	{
-		final L2PcInstance player = getClient().getActiveChar();
-		if (player == null)
-			return;
-		
-		player.sendPacket(ExSendManorList.STATIC_PACKET);
-	}
+public class RequestManorList extends L2GameClientPacket {
+    @Override
+    protected void readImpl() {
+    }
+
+    @Override
+    protected void runImpl() {
+        final L2PcInstance player = getClient().getActiveChar();
+        if (player == null) { return; }
+
+        player.sendPacket(ExSendManorList.STATIC_PACKET);
+    }
 }

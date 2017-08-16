@@ -410,7 +410,7 @@ public enum EScript {
     Custom_HeroCirclet(HeroCirclet::new),
     Custom_HeroWeapon(HeroWeapon::new),
 
-//    <!-- Events -->
+    //    <!-- Events -->
     //scripts.events.GiftOfVitality
     //scripts.events.HeavyMedal
     //scripts.events.TheValentineEvent

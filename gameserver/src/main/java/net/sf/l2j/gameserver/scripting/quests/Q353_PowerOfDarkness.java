@@ -15,90 +15,78 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.ItemConst;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
-public class Q353_PowerOfDarkness extends Quest
-{
-	private static final String qn = "Q353_PowerOfDarkness";
-	
-	// Item
-	private static final int STONE = 5862;
-	
-	public Q353_PowerOfDarkness()
-	{
-		super(353, "Power of Darkness");
-		
-		setItemsIds(STONE);
-		
-		addStartNpc(31044); // Galman
-		addTalkId(31044);
-		
-		addKillId(20244, 20245, 20283, 20284);
-	}
-	
-	@Override
-	public String onAdvEvent(String event, L2Npc npc, L2PcInstance player)
-	{
-		String htmltext = event;
-		QuestState st = player.getQuestState(qn);
-		if (st == null)
-			return htmltext;
-		
-		if (event.equalsIgnoreCase("31044-04.htm"))
-		{
-			st.setState(QuestState.STATE_STARTED);
-			st.set("cond", "1");
-			st.playSound(QuestState.SOUND_ACCEPT);
-		}
-		else if (event.equalsIgnoreCase("31044-08.htm"))
-		{
-			st.playSound(QuestState.SOUND_FINISH);
-			st.exitQuest(true);
-		}
-		
-		return htmltext;
-	}
-	
-	@Override
-	public String onTalk(L2Npc npc, L2PcInstance player)
-	{
-		String htmltext = getNoQuestMsg();
-		QuestState st = player.getQuestState(qn);
-		if (st == null)
-			return htmltext;
-		
-		switch (st.getState())
-		{
-			case QuestState.STATE_CREATED:
-				htmltext = (player.getLevel() < 55) ? "31044-01.htm" : "31044-02.htm";
-				break;
-			
-			case QuestState.STATE_STARTED:
-				final int stones = st.getQuestItemsCount(STONE);
-				if (stones == 0)
-					htmltext = "31044-05.htm";
-				else
-				{
-					htmltext = "31044-06.htm";
-					st.takeItems(STONE, -1);
-					st.rewardItems(ItemConst.ADENA_ID, 2500 + 230 * stones);
-				}
-				break;
-		}
-		
-		return htmltext;
-	}
-	
-	@Override
-	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
-	{
-		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
-		if (st == null)
-			return null;
-		
-		st.dropItems(STONE, 1, 0, (npc.getNpcId() == 20244 || npc.getNpcId() == 20283) ? 480000 : 500000);
-		
-		return null;
-	}
+public class Q353_PowerOfDarkness extends Quest {
+    private static final String qn = "Q353_PowerOfDarkness";
+
+    // Item
+    private static final int STONE = 5862;
+
+    public Q353_PowerOfDarkness() {
+        super(353, "Power of Darkness");
+
+        setItemsIds(STONE);
+
+        addStartNpc(31044); // Galman
+        addTalkId(31044);
+
+        addKillId(20244, 20245, 20283, 20284);
+    }
+
+    @Override
+    public String onAdvEvent(String event, L2Npc npc, L2PcInstance player) {
+        String htmltext = event;
+        QuestState st = player.getQuestState(qn);
+        if (st == null) { return htmltext; }
+
+        if (event.equalsIgnoreCase("31044-04.htm")) {
+            st.setState(QuestState.STATE_STARTED);
+            st.set("cond", "1");
+            st.playSound(ESound.ItemSound_quest_accept);
+        }
+        else if (event.equalsIgnoreCase("31044-08.htm")) {
+            st.playSound(ESound.ItemSound_quest_finish);
+            st.exitQuest(true);
+        }
+
+        return htmltext;
+    }
+
+    @Override
+    public String onTalk(L2Npc npc, L2PcInstance player) {
+        String htmltext = getNoQuestMsg();
+        QuestState st = player.getQuestState(qn);
+        if (st == null) { return htmltext; }
+
+        switch (st.getState()) {
+            case QuestState.STATE_CREATED:
+                htmltext = (player.getLevel() < 55) ? "31044-01.htm" : "31044-02.htm";
+                break;
+
+            case QuestState.STATE_STARTED:
+                int stones = st.getQuestItemsCount(STONE);
+                if (stones == 0) { htmltext = "31044-05.htm"; }
+                else {
+                    htmltext = "31044-06.htm";
+                    st.takeItems(STONE, -1);
+                    st.rewardItems(ItemConst.ADENA_ID, 2500 + 230 * stones);
+                }
+                break;
+        }
+
+        return htmltext;
+    }
+
+    @Override
+    public String onKill(L2Npc npc, L2PcInstance player, boolean isPet) {
+        QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
+        if (st == null) { return null; }
+
+        st.dropItems(STONE, 1, 0, (npc.getNpcId() == 20244 || npc.getNpcId() == 20283) ? 480000 : 500000);
+
+        return null;
+    }
 }

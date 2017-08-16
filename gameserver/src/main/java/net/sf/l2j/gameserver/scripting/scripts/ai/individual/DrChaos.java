@@ -22,6 +22,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2GrandBossInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 import net.sf.l2j.gameserver.network.client.game_to_client.SpecialCamera;
 import net.sf.l2j.gameserver.scripting.scripts.ai.AbstractNpcAI;
@@ -47,7 +48,7 @@ public class DrChaos extends AbstractNpcAI {
     private static final byte CRAZY = 1; // Dr. Chaos entered on golem form.
     private static final byte DEAD = 2; // Dr. Chaos has been killed and has not yet spawned.
 
-    private long _lastAttackTime = 0;
+    private long _lastAttackTime;
     private int _pissedOffTimer;
 
     public DrChaos() {
@@ -64,7 +65,7 @@ public class DrChaos extends AbstractNpcAI {
 
         // Load the reset date and time for Dr. Chaos from DB.
         if (status == DEAD) {
-            long temp = (info.getLong("respawn_time") - System.currentTimeMillis());
+            long temp = info.getLong("respawn_time") - System.currentTimeMillis();
             if (temp > 0) { startQuestTimer("reset_drchaos", temp, null, null, false); }
             else {
                 // The time has already expired while the server was offline. Delete the saved time and
@@ -79,13 +80,13 @@ public class DrChaos extends AbstractNpcAI {
             int loc_y = info.getInteger("loc_y");
             int loc_z = info.getInteger("loc_z");
             int heading = info.getInteger("heading");
-            final int hp = info.getInteger("currentHP");
-            final int mp = info.getInteger("currentMP");
+            int hp = info.getInteger("currentHP");
+            int mp = info.getInteger("currentMP");
 
             L2GrandBossInstance golem = (L2GrandBossInstance) addSpawn(CHAOS_GOLEM, loc_x, loc_y, loc_z, heading, false, 0, false);
             GrandBossManager.getInstance().addBoss(golem);
 
-            final L2Npc _golem = golem;
+            L2Npc _golem = golem;
 
             _golem.setCurrentHpMp(hp, mp);
             _golem.setRunning();
@@ -137,7 +138,7 @@ public class DrChaos extends AbstractNpcAI {
             npc = golem;
             npc.broadcastPacket(new SpecialCamera(npc.getObjectId(), 30, 200, 20, 6000, 8000, 0, 0, 1, 0));
             npc.broadcastPacket(new SocialAction(npc, 1));
-            npc.broadcastPacket(new PlaySound(1, "Rm03_A", 0, 0, 0, 0, 0));
+            npc.broadcastPacket(new PlaySound(ESound.RM_03_A));
 
             // start monitoring Dr. Chaos's inactivity
             _lastAttackTime = System.currentTimeMillis();

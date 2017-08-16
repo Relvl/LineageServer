@@ -19,22 +19,19 @@ import net.sf.l2j.gameserver.model.actor.L2Character;
 /**
  * @author devScarlet
  */
-public class TitleUpdate extends L2GameServerPacket
-{
-	private final String _title;
-	private final int _objectId;
-	
-	public TitleUpdate(L2Character cha)
-	{
-		_objectId = cha.getObjectId();
-		_title = cha.getTitle();
-	}
-	
-	@Override
-	protected void writeImpl()
-	{
-		writeC(0xcc);
-		writeD(_objectId);
-		writeS(_title);
-	}
+public class TitleUpdate extends L2GameServerPacket {
+    private final String _title;
+    private final int _objectId;
+
+    public TitleUpdate(L2Character cha) {
+        _objectId = cha.getObjectId();
+        _title = cha.getTitle();
+    }
+
+    @Override
+    protected void writeImpl() {
+        writeC(0xcc);
+        writeD(_objectId);
+        writeS(_title);
+    }
 }

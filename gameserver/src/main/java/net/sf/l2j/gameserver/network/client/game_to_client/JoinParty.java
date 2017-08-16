@@ -17,19 +17,16 @@ package net.sf.l2j.gameserver.network.client.game_to_client;
 /**
  * format cd
  */
-public final class JoinParty extends L2GameServerPacket
-{
-	private final int _response;
-	
-	public JoinParty(int response)
-	{
-		_response = response;
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
-		writeC(0x3a);
-		writeD(_response);
-	}
+public final class JoinParty extends L2GameServerPacket {
+    private final int _response;
+
+    public JoinParty(int response) {
+        _response = response;
+    }
+
+    @Override
+    protected final void writeImpl() {
+        writeC(0x3a);
+        writeD(_response);
+    }
 }

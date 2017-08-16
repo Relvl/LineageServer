@@ -16,6 +16,6 @@ public class TargetUnlockableCollector implements ISkillTargetCollector {
     @Override
     public L2Object[] getTargetList(L2Character activeChar, boolean onlyFirst, L2Character target, L2Skill skill) {
         if (!(target instanceof L2DoorInstance) && !(target instanceof L2ChestInstance)) { return EMPTY_TARGET_LIST; }
-        return new L2Character[]{target};
+        return new L2Character[]{ target };
     }
 }

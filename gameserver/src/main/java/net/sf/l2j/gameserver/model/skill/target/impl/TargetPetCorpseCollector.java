@@ -15,7 +15,7 @@ public class TargetPetCorpseCollector implements ISkillTargetCollector {
     @Override
     public L2Object[] getTargetList(L2Character activeChar, boolean onlyFirst, L2Character target, L2Skill skill) {
         return activeChar.isPlayer() && activeChar.getPet() != null && activeChar.getPet().isDead() ?
-                new L2Character[]{activeChar.getPet()} :
-                sendIncorrect(activeChar);
+               new L2Character[]{ activeChar.getPet() } :
+               sendIncorrect(activeChar);
     }
 }

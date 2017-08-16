@@ -27,63 +27,53 @@ import net.sf.l2j.gameserver.templates.skills.L2EffectType;
 /**
  * @author Forsaiken
  */
-public class EffectSignetAntiSummon extends L2Effect
-{
-	private L2EffectPointInstance _actor;
-	
-	public EffectSignetAntiSummon(Env env, EffectTemplate template)
-	{
-		super(env, template);
-	}
-	
-	@Override
-	public L2EffectType getEffectType()
-	{
-		return L2EffectType.SIGNET_GROUND;
-	}
-	
-	@Override
-	public boolean onStart()
-	{
-		_actor = (L2EffectPointInstance) getEffected();
-		return true;
-	}
-	
-	@Override
-	public boolean onActionTime()
-	{
-		if (getCount() == getTotalCount() - 1)
-			return true; // do nothing first time
-			
-		final int mpConsume = getSkill().getMpConsume();
-		final L2PcInstance caster = (L2PcInstance) getEffector();
-		
-		for (L2Playable cha : _actor.getKnownList().getKnownTypeInRadius(L2Playable.class, getSkill().getSkillRadius()))
-		{
-			if (!caster.canAttackCharacter(cha))
-				continue;
-			
-			final L2PcInstance owner = cha.getActingPlayer();
-			if (owner != null && owner.getPet() != null)
-			{
-				if (mpConsume > getEffector().getCurrentMp())
-				{
-					getEffector().sendPacket(SystemMessage.getSystemMessage(SystemMessageId.SKILL_REMOVED_DUE_LACK_MP));
-					return false;
-				}
-				getEffector().reduceCurrentMp(mpConsume);
-				
-				owner.getPet().unSummon(owner);
-				owner.getAI().notifyEvent(ECtrlEvent.EVT_ATTACKED, getEffector());
-			}
-		}
-		return true;
-	}
-	
-	@Override
-	public void onExit()
-	{
-		if (_actor != null)
-			_actor.deleteMe();
-	}
+public class EffectSignetAntiSummon extends L2Effect {
+    private L2EffectPointInstance _actor;
+
+    public EffectSignetAntiSummon(Env env, EffectTemplate template) {
+        super(env, template);
+    }
+
+    @Override
+    public L2EffectType getEffectType() {
+        return L2EffectType.SIGNET_GROUND;
+    }
+
+    @Override
+    public boolean onStart() {
+        _actor = (L2EffectPointInstance) getEffected();
+        return true;
+    }
+
+    @Override
+    public boolean onActionTime() {
+        if (getCount() == getTotalCount() - 1) {
+            return true; // do nothing first time
+        }
+
+        final int mpConsume = getSkill().getMpConsume();
+        final L2PcInstance caster = (L2PcInstance) getEffector();
+
+        for (L2Playable cha : _actor.getKnownList().getKnownTypeInRadius(L2Playable.class, getSkill().getSkillRadius())) {
+            if (!caster.canAttackCharacter(cha)) { continue; }
+
+            final L2PcInstance owner = cha.getActingPlayer();
+            if (owner != null && owner.getPet() != null) {
+                if (mpConsume > getEffector().getCurrentMp()) {
+                    getEffector().sendPacket(SystemMessage.getSystemMessage(SystemMessageId.SKILL_REMOVED_DUE_LACK_MP));
+                    return false;
+                }
+                getEffector().reduceCurrentMp(mpConsume);
+
+                owner.getPet().unSummon(owner);
+                owner.getAI().notifyEvent(ECtrlEvent.EVT_ATTACKED, getEffector());
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public void onExit() {
+        if (_actor != null) { _actor.deleteMe(); }
+    }
 }

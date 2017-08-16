@@ -22,16 +22,14 @@ import net.sf.l2j.gameserver.network.client.game_to_client.SSQStatus;
 
 /**
  * Item Handler for Seven Signs Record
+ *
  * @author Tempy
  */
-public class SevenSignsRecord implements IItemHandler
-{
-	@Override
-	public void useItem(L2Playable playable, L2ItemInstance item, boolean forceUse)
-	{
-		if (!(playable instanceof L2PcInstance))
-			return;
-		
-		playable.sendPacket(new SSQStatus(playable.getObjectId(), 1));
-	}
+public class SevenSignsRecord implements IItemHandler {
+    @Override
+    public void useItem(L2Playable playable, L2ItemInstance item, boolean forceUse) {
+        if (!(playable instanceof L2PcInstance)) { return; }
+
+        playable.sendPacket(new SSQStatus(playable.getObjectId(), 1));
+    }
 }

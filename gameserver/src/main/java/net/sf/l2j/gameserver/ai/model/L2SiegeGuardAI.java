@@ -15,7 +15,6 @@
 package net.sf.l2j.gameserver.ai.model;
 
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
@@ -30,6 +29,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2SiegeGuardInstance;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.util.Util;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 import java.util.List;
 
@@ -206,7 +206,6 @@ public class L2SiegeGuardAI extends L2AttackableAI {
                     return;
                 }
             }
-
         }
 
         /**
@@ -260,7 +259,9 @@ public class L2SiegeGuardAI extends L2AttackableAI {
                     if (cha.isAlikeDead() || !PathFinding.getInstance().canSeeTarget(actor, cha) || (cha.getCurrentHp() / cha.getMaxHp() > 0.75)) { continue; }
 
                     // Will affect only defenders or NPCs from same faction.
-                    if (!actor.isAttackingDisabled() && (cha instanceof L2PcInstance && actor.getCastle().getSiege().checkIsDefender(((L2PcInstance) cha).getClan())) || (cha instanceof L2Npc && Util.contains(clans, ((L2Npc) cha).getClans()))) {
+                    if (!actor.isAttackingDisabled() && (cha instanceof L2PcInstance && actor.getCastle()
+                                                                                             .getSiege()
+                                                                                             .checkIsDefender(((L2PcInstance) cha).getClan())) || (cha instanceof L2Npc && Util.contains(clans, ((L2Npc) cha).getClans()))) {
                         for (L2Skill sk : defaultList) {
                             if (!Util.checkIfInRange(sk.getCastRange(), actor, cha, true)) { continue; }
 

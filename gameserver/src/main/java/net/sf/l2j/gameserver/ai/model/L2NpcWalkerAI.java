@@ -14,13 +14,13 @@
  */
 package net.sf.l2j.gameserver.ai.model;
 
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.NpcWalkerRoutesTable;
 import net.sf.l2j.gameserver.model.L2NpcWalkerNode;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcWalkerInstance;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 import java.util.List;
 

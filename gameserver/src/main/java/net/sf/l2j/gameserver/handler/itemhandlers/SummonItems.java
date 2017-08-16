@@ -1,6 +1,5 @@
 package net.sf.l2j.gameserver.handler.itemhandlers;
 
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.datatables.SummonItemsData;
 import net.sf.l2j.gameserver.handler.IItemHandler;
@@ -19,6 +18,7 @@ import net.sf.l2j.gameserver.model.item.SummonItem;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
 import net.sf.l2j.gameserver.util.Broadcast;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 public class SummonItems implements IItemHandler {
     @Override

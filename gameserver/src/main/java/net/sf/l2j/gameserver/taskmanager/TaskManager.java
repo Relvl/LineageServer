@@ -1,9 +1,9 @@
 package net.sf.l2j.gameserver.taskmanager;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.taskmanager.tasks.*;
 import net.sf.l2j.gameserver.taskmanager.tasks.ATask.TaskType;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -93,7 +93,6 @@ public final class TaskManager {
 
             _currentTasks.remove(this);
         }
-
     }
 
     public static final TaskManager getInstance() {

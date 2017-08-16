@@ -20,42 +20,35 @@ import net.sf.l2j.gameserver.geoengine.geodata.GeoFormat;
 /**
  * @author Hasha
  */
-public class NullBlock extends Block
-{
-	private byte _nswe;
-	
-	public NullBlock()
-	{
-		_nswe = Config.GEODATA_FORMAT != GeoFormat.L2D ? 0x0F : (byte) 0xFF;
-	}
-	
-	@Override
-	public boolean hasGeoPos()
-	{
-		return false;
-	}
-	
-	@Override
-	public short getHeightNearest(int geoX, int geoY, int worldZ)
-	{
-		return (short) worldZ;
-	}
-	
-	@Override
-	public short getHeightAbove(int geoX, int geoY, int worldZ)
-	{
-		return (short) worldZ;
-	}
-	
-	@Override
-	public short getHeightBelow(int geoX, int geoY, int worldZ)
-	{
-		return (short) worldZ;
-	}
-	
-	@Override
-	public byte getNsweNearest(int geoX, int geoY, int worldZ)
-	{
-		return _nswe;
-	}
+public class NullBlock extends Block {
+    private byte _nswe;
+
+    public NullBlock() {
+        _nswe = Config.GEODATA_FORMAT != GeoFormat.L2D ? 0x0F : (byte) 0xFF;
+    }
+
+    @Override
+    public boolean hasGeoPos() {
+        return false;
+    }
+
+    @Override
+    public short getHeightNearest(int geoX, int geoY, int worldZ) {
+        return (short) worldZ;
+    }
+
+    @Override
+    public short getHeightAbove(int geoX, int geoY, int worldZ) {
+        return (short) worldZ;
+    }
+
+    @Override
+    public short getHeightBelow(int geoX, int geoY, int worldZ) {
+        return (short) worldZ;
+    }
+
+    @Override
+    public byte getNsweNearest(int geoX, int geoY, int worldZ) {
+        return _nswe;
+    }
 }

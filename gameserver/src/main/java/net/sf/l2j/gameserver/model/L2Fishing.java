@@ -15,7 +15,6 @@
 package net.sf.l2j.gameserver.model;
 
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.NpcTable;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.instancemanager.FishingChampionshipManager;
@@ -26,18 +25,20 @@ import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ExFishingHpRegen;
 import net.sf.l2j.gameserver.network.client.game_to_client.ExFishingStartCombat;
 import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 import java.util.concurrent.Future;
 
 public class L2Fishing implements Runnable {
     private L2PcInstance _fisher;
     private int _time;
-    private int _stop = 0;
-    private int _goodUse = 0;
-    private int _anim = 0;
-    private int _mode = 0;
-    private int _deceptiveMode = 0;
+    private int _stop;
+    private int _goodUse;
+    private int _anim;
+    private int _mode;
+    private int _deceptiveMode;
     private Future<?> _fishAiTask;
     private boolean _thinking;
 
@@ -47,7 +48,7 @@ public class L2Fishing implements Runnable {
     private int _fishCurHp;
     private final double _regenHp;
     private final boolean _isUpperGrade;
-    private int _lureType;
+    private final int _lureType;
     private final int _lureId;
 
     @Override
@@ -89,7 +90,7 @@ public class L2Fishing implements Runnable {
         _mode = Rnd.get(100) >= 80 ? 1 : 0;
 
         _fisher.broadcastPacket(new ExFishingStartCombat(_fisher, _time, _fishMaxHp, _mode, _lureType, _deceptiveMode));
-        _fisher.sendPacket(new PlaySound(1, "SF_S_01", 0, 0, 0, 0, 0));
+        _fisher.sendPacket(new PlaySound(ESound.SF_S_01));
 
         // Succeeded in getting a bite
         _fisher.sendPacket(SystemMessageId.GOT_A_BITE);

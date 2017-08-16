@@ -325,7 +325,6 @@ public class AdminEditChar implements IAdminCommandHandler {
 
             if (target instanceof L2PetInstance) { activeChar.sendPacket(new GMViewItemList((L2PetInstance) target)); }
             else { activeChar.sendPacket(SystemMessageId.INCORRECT_TARGET); }
-
         }
         else if (command.startsWith("admin_fullfood")) {
             L2Object target = activeChar.getTarget();
@@ -438,7 +437,8 @@ public class AdminEditChar implements IAdminCommandHandler {
 
         // Second use of sb, add player info into new table row.
         for (L2PcInstance player : players) {
-            StringUtil.append(sb, "<tr><td width=80><a action=\"bypass -h admin_character_info ", player.getName(), "\">", player.getName(), "</a></td><td width=110>", player.getTemplate().getClassName(), "</td><td width=40>", player.getLevel(), "</td></tr>");
+            StringUtil.append(sb, "<tr><td width=80><a action=\"bypass -h admin_character_info ", player.getName(), "\">", player.getName(), "</a></td><td width=110>", player.getTemplate()
+                                                                                                                                                                              .getClassName(), "</td><td width=40>", player.getLevel(), "</td></tr>");
         }
 
         html.replace("%players%", sb.toString());
@@ -742,10 +742,13 @@ public class AdminEditChar implements IAdminCommandHandler {
         final StringBuilder sb = new StringBuilder(400);
         for (L2PcInstance member : target.getParty().getPartyMembers()) {
             if (member.getParty().getPartyLeaderOID() != member.getObjectId()) {
-                StringUtil.append(sb, "<tr><td><table width=270 border=0 cellpadding=2><tr><td width=30 align=right>", member.getLevel(), "</td><td width=130><a action=\"bypass -h admin_character_info ", member.getName(), "\">", member.getName(), "</a></td><td width=110 align=right>", member.getClassId().toString(), "</td></tr></table></td></tr>");
+                StringUtil.append(sb, "<tr><td><table width=270 border=0 cellpadding=2><tr><td width=30 align=right>", member.getLevel(), "</td><td width=130><a action=\"bypass -h admin_character_info ", member.getName(), "\">", member.getName(), "</a></td><td width=110 align=right>", member
+                        .getClassId()
+                        .toString(), "</td></tr></table></td></tr>");
             }
             else {
-                StringUtil.append(sb, "<tr><td><table width=270 border=0 cellpadding=2><tr><td width=30 align=right><font color=\"LEVEL\">", member.getLevel(), "</td><td width=130><a action=\"bypass -h admin_character_info ", member.getName(), "\">", member.getName(), " (Party leader)</a></td><td width=110 align=right>", member.getClassId().toString(), "</font></td></tr></table></td></tr>");
+                StringUtil.append(sb, "<tr><td><table width=270 border=0 cellpadding=2><tr><td width=30 align=right><font color=\"LEVEL\">", member.getLevel(), "</td><td width=130><a action=\"bypass -h admin_character_info ", member.getName(), "\">", member
+                        .getName(), " (Party leader)</a></td><td width=110 align=right>", member.getClassId().toString(), "</font></td></tr></table></td></tr>");
             }
         }
 

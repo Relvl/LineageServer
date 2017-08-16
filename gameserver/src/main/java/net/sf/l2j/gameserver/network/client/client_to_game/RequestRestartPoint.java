@@ -1,6 +1,5 @@
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.MapRegionTable;
 import net.sf.l2j.gameserver.datatables.MapRegionTable.TeleportWhereType;
 import net.sf.l2j.gameserver.instancemanager.CastleManager;
@@ -11,6 +10,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.model.entity.ClanHall;
 import net.sf.l2j.gameserver.model.location.Location;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 public final class RequestRestartPoint extends L2GameClientPacket {
     protected int _requestedPointType;

@@ -19,5 +19,4 @@ public interface IAchieveElement extends Serializable {
     String getId();
 
     EAchievementGroup getGroup();
-
 }

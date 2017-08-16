@@ -141,14 +141,15 @@ public class AnnouncementTable {
         StringBuilder sb = new StringBuilder(HEADER);
         sb.append("<list> \n");
         for (Announcement announce : announcements.values()) {
-            StringUtil.append(sb, "<announcement message=\"", announce.getMessage(), "\" critical=\"", announce.isCritical(), "\" auto=\"", announce.isAuto(), "\" initial_delay=\"", announce.getInitialDelay(), "\" delay=\"", announce.getDelay(), "\" limit=\"", announce.getLimit(), "\" /> \n");
+            StringUtil.append(sb, "<announcement message=\"", announce.getMessage(), "\" critical=\"", announce.isCritical(), "\" auto=\"", announce.isAuto(), "\" initial_delay=\"", announce.getInitialDelay(), "\" delay=\"", announce.getDelay(), "\" limit=\"", announce
+                    .getLimit(), "\" /> \n");
         }
         sb.append("</list>");
         try (FileWriter fw = new FileWriter(new File(DATA_XML_ANNOUNCEMENTS_XML))) {
             fw.write(sb.toString());
         }
         catch (Exception e) {
-           LOGGER.error("", e);
+            LOGGER.error("", e);
         }
     }
 

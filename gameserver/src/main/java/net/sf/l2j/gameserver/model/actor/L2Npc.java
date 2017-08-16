@@ -472,12 +472,19 @@ public class L2Npc extends L2Character {
             }
 
             html.replace("%ai_type%", getAiType().name());
-            html.replace("%ai_clan%", (getClans() != null) ? "<tr><td width=100><font color=\"LEVEL\">Clan:</font></td><td align=right width=170>" + Arrays.toString(getClans()) + " " + getClanRange() + "</td></tr>" + ((getIgnoredIds() != null) ? "<tr><td width=100><font color=\"LEVEL\">Ignored ids:</font></td><td align=right width=170>" + Arrays.toString(getIgnoredIds()) + "</td></tr>" : "") : "");
+            html.replace("%ai_clan%", (getClans() != null)
+                                      ? "<tr><td width=100><font color=\"LEVEL\">Clan:</font></td><td align=right width=170>" + Arrays.toString(getClans()) + " " + getClanRange() + "</td></tr>" + ((getIgnoredIds() != null)
+                                                                                                                                                                                                     ? "<tr><td width=100><font color=\"LEVEL\">Ignored ids:</font></td><td align=right width=170>" + Arrays
+                    .toString(getIgnoredIds()) + "</td></tr>"
+                                                                                                                                                                                                     : "")
+                                      : "");
             html.replace("%ai_move%", String.valueOf(canMove()));
             html.replace("%ai_seed%", String.valueOf(isSeedable()));
             html.replace("%ai_ssinfo%", _currentSsCount + "[" + getSsCount() + "] - " + getSsRate() + "%");
             html.replace("%ai_spsinfo%", _currentSpsCount + "[" + getSpsCount() + "] - " + getSpsRate() + "%");
-            html.replace("%butt%", this instanceof L2MerchantInstance ? "<button value=\"Shop\" action=\"bypass -h admin_show_shop " + getNpcId() + "\" width=65 height=19 back=\"L2UI_ch3.smallbutton2_over\" fore=\"L2UI_ch3.smallbutton2\">" : "");
+            html.replace("%butt%", this instanceof L2MerchantInstance
+                                   ? "<button value=\"Shop\" action=\"bypass -h admin_show_shop " + getNpcId() + "\" width=65 height=19 back=\"L2UI_ch3.smallbutton2_over\" fore=\"L2UI_ch3.smallbutton2\">"
+                                   : "");
             player.sendPacket(html);
             player.sendPacket(ActionFailed.STATIC_PACKET);
         }

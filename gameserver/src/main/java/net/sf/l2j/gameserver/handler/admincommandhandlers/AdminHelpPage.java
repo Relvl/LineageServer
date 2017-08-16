@@ -21,43 +21,36 @@ import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 /**
  * This class handles following admin commands: - help path = shows /data/html/admin/path file to char, should not be used by GM's directly
  */
-public class AdminHelpPage implements IAdminCommandHandler
-{
-	private static final String[] ADMIN_COMMANDS =
-	{
-		"admin_help"
-	};
-	
-	@Override
-	public boolean useAdminCommand(String command, L2PcInstance activeChar)
-	{
-		if (command.startsWith("admin_help"))
-		{
-			try
-			{
-				String val = command.substring(11);
-				showHelpPage(activeChar, val);
-			}
-			catch (StringIndexOutOfBoundsException e)
-			{
-			}
-		}
-		
-		return true;
-	}
-	
-	@Override
-	public String[] getAdminCommandList()
-	{
-		return ADMIN_COMMANDS;
-	}
-	
-	// FIXME: implement method to send html to player in L2PcInstance directly
-	// PUBLIC & STATIC so other classes from package can include it directly
-	public static void showHelpPage(L2PcInstance targetChar, String filename)
-	{
-		final NpcHtmlMessage html = new NpcHtmlMessage(0);
-		html.setFile("data/html/admin/" + filename);
-		targetChar.sendPacket(html);
-	}
+public class AdminHelpPage implements IAdminCommandHandler {
+    private static final String[] ADMIN_COMMANDS =
+            {
+                    "admin_help"
+            };
+
+    @Override
+    public boolean useAdminCommand(String command, L2PcInstance activeChar) {
+        if (command.startsWith("admin_help")) {
+            try {
+                String val = command.substring(11);
+                showHelpPage(activeChar, val);
+            }
+            catch (StringIndexOutOfBoundsException e) {
+            }
+        }
+
+        return true;
+    }
+
+    @Override
+    public String[] getAdminCommandList() {
+        return ADMIN_COMMANDS;
+    }
+
+    // FIXME: implement method to send html to player in L2PcInstance directly
+    // PUBLIC & STATIC so other classes from package can include it directly
+    public static void showHelpPage(L2PcInstance targetChar, String filename) {
+        final NpcHtmlMessage html = new NpcHtmlMessage(0);
+        html.setFile("data/html/admin/" + filename);
+        targetChar.sendPacket(html);
+    }
 }

@@ -24,16 +24,16 @@ public class TargetPartyOtherMemberCollector implements ISkillTargetCollector {
             // FORCE BUFFS may cancel here but there should be a proper condition
             case 426:
                 if (!((L2PcInstance) target).isMageClass()) {
-                    return new L2Character[]{target};
+                    return new L2Character[]{ target };
                 }
                 return sendIncorrect(activeChar);
             case 427:
                 if (((L2PcInstance) target).isMageClass()) {
-                    return new L2Character[]{target};
+                    return new L2Character[]{ target };
                 }
                 return sendIncorrect(activeChar);
         }
 
-        return new L2Character[]{target};
+        return new L2Character[]{ target };
     }
 }

@@ -18,29 +18,23 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.scripting.Quest;
 
-public class ElrokiTeleporters extends Quest
-{
-	public ElrokiTeleporters()
-	{
-		super(-1, "teleports");
-		
-		addStartNpc(32111, 32112);
-		addTalkId(32111, 32112);
-	}
-	
-	@Override
-	public String onTalk(L2Npc npc, L2PcInstance player)
-	{
-		if (npc.getNpcId() == 32111)
-		{
-			if (player.isInCombat())
-				return "32111-no.htm";
-			
-			player.teleToLocation(4990, -1879, -3178, 0);
-		}
-		else
-			player.teleToLocation(7557, -5513, -3221, 0);
-		
-		return null;
-	}
+public class ElrokiTeleporters extends Quest {
+    public ElrokiTeleporters() {
+        super(-1, "teleports");
+
+        addStartNpc(32111, 32112);
+        addTalkId(32111, 32112);
+    }
+
+    @Override
+    public String onTalk(L2Npc npc, L2PcInstance player) {
+        if (npc.getNpcId() == 32111) {
+            if (player.isInCombat()) { return "32111-no.htm"; }
+
+            player.teleToLocation(4990, -1879, -3178, 0);
+        }
+        else { player.teleToLocation(7557, -5513, -3221, 0); }
+
+        return null;
+    }
 }

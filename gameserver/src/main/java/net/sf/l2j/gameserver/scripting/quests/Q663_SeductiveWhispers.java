@@ -16,6 +16,7 @@ import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.ItemConst;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -140,7 +141,7 @@ public class Q663_SeductiveWhispers extends Quest {
             st.setState(QuestState.STATE_STARTED);
             st.set("cond", "1");
             st.set("state", "1");
-            st.playSound(QuestState.SOUND_ACCEPT);
+            st.playSound(ESound.ItemSound_quest_accept);
         }
         else if (event.equalsIgnoreCase("30846-09.htm") && (state % 10) <= 4) {
             if ((state / 10) < 1) {
@@ -371,7 +372,7 @@ public class Q663_SeductiveWhispers extends Quest {
             }
         }
         else if (event.equalsIgnoreCase("30846-30.htm")) {
-            st.playSound(QuestState.SOUND_FINISH);
+            st.playSound(ESound.ItemSound_quest_finish);
             st.exitQuest(true);
         }
 

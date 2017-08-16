@@ -32,7 +32,7 @@ public class MapRegionTable {
     private static final int REGIONS_X = 11;
     private static final int REGIONS_Y = 16;
     private static final int[][] _regions = new int[REGIONS_X][REGIONS_Y];
-    private static final int[] _castleIdArray = {0, 0, 0, 0, 0, 1, 0, 2, 3, 4, 5, 0, 0, 6, 8, 7, 9, 0, 0};
+    private static final int[] _castleIdArray = { 0, 0, 0, 0, 0, 1, 0, 2, 3, 4, 5, 0, 0, 6, 8, 7, 9, 0, 0 };
 
     protected MapRegionTable() {
         int count = 0;

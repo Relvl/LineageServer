@@ -14,17 +14,14 @@
  */
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
-public class SunRise extends L2GameServerPacket
-{
-	public static final SunRise STATIC_PACKET = new SunRise();
-	
-	private SunRise()
-	{
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
-		writeC(0x1c);
-	}
+public class SunRise extends L2GameServerPacket {
+    public static final SunRise STATIC_PACKET = new SunRise();
+
+    private SunRise() {
+    }
+
+    @Override
+    protected final void writeImpl() {
+        writeC(0x1c);
+    }
 }

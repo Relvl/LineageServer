@@ -16,7 +16,6 @@ package net.sf.l2j.gameserver.model.actor.instance;
 
 import net.sf.l2j.commons.random.Rnd;
 import net.sf.l2j.gameserver.EChatType;
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.DoorTable;
 import net.sf.l2j.gameserver.instancemanager.FourSepulchersManager;
@@ -32,6 +31,7 @@ import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 import net.sf.l2j.gameserver.scripting.EventType;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.util.Util;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 import java.util.List;
 import java.util.concurrent.Future;

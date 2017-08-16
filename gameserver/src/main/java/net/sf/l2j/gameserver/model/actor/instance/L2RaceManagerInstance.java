@@ -203,7 +203,8 @@ public class L2RaceManagerInstance extends L2NpcInstance {
                 // Don't list current race tickets.
                 if (ticket.getEnchantLevel() == MonsterRace.getInstance().getRaceNumber()) { continue; }
 
-                StringUtil.append(sb, "<tr><td><a action=\"bypass -h npc_%objectId%_ShowTicket ", ticket.getObjectId(), "\">", ticket.getEnchantLevel(), " Race Number</a></td><td align=right><font color=\"LEVEL\">", ticket.getCustomType1(), "</font> Number</td><td align=right><font color=\"LEVEL\">", ticket.getCustomType2() * 100, "</font> Adena</td></tr>");
+                StringUtil.append(sb, "<tr><td><a action=\"bypass -h npc_%objectId%_ShowTicket ", ticket.getObjectId(), "\">", ticket.getEnchantLevel(), " Race Number</a></td><td align=right><font color=\"LEVEL\">", ticket.getCustomType1(), "</font> Number</td><td align=right><font color=\"LEVEL\">", ticket
+                        .getCustomType2() * 100, "</font> Adena</td></tr>");
             }
 
             final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
@@ -293,7 +294,8 @@ public class L2RaceManagerInstance extends L2NpcInstance {
             final List<HistoryInfo> history = MonsterRace.getInstance().getHistory();
             for (int i = history.size() - 1; i >= Math.max(0, history.size() - 7); i--) {
                 final HistoryInfo info = history.get(i);
-                StringUtil.append(sb, "<tr><td><font color=\"LEVEL\">", info.getRaceId(), "</font> th</td><td><font color=\"LEVEL\">", info.getFirst(), "</font> Lane </td><td><font color=\"LEVEL\">", info.getSecond(), "</font> Lane</td><td align=right><font color=00ffff>", String.format(Locale.ENGLISH, "%.2f", info.getOddRate()), "</font> Times</td></tr>");
+                StringUtil.append(sb, "<tr><td><font color=\"LEVEL\">", info.getRaceId(), "</font> th</td><td><font color=\"LEVEL\">", info.getFirst(), "</font> Lane </td><td><font color=\"LEVEL\">", info.getSecond(), "</font> Lane</td><td align=right><font color=00ffff>", String
+                        .format(Locale.ENGLISH, "%.2f", info.getOddRate()), "</font> Times</td></tr>");
             }
 
             final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());

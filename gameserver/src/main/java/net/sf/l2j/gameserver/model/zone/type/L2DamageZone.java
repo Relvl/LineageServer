@@ -1,6 +1,5 @@
 package net.sf.l2j.gameserver.model.zone.type;
 
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.zone.ACastleZoneType;
@@ -9,6 +8,7 @@ import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.EtcStatusUpdate;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.skills.Stats;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 import java.util.concurrent.Future;
 

@@ -16,22 +16,19 @@ package net.sf.l2j.gameserver.network.client.game_to_client;
 
 import net.sf.l2j.gameserver.model.actor.L2Character;
 
-public class SocialAction extends L2GameServerPacket
-{
-	private final int _charObjId;
-	private final int _actionId;
-	
-	public SocialAction(L2Character cha, int actionId)
-	{
-		_charObjId = cha.getObjectId();
-		_actionId = actionId;
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
-		writeC(0x2d);
-		writeD(_charObjId);
-		writeD(_actionId);
-	}
+public class SocialAction extends L2GameServerPacket {
+    private final int _charObjId;
+    private final int _actionId;
+
+    public SocialAction(L2Character cha, int actionId) {
+        _charObjId = cha.getObjectId();
+        _actionId = actionId;
+    }
+
+    @Override
+    protected final void writeImpl() {
+        writeC(0x2d);
+        writeD(_charObjId);
+        writeD(_actionId);
+    }
 }

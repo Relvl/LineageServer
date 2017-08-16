@@ -21,73 +21,64 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 /**
  * format dSS dddddddddSdd d (Sddddd) dddSS dddddddddSdd d (Sdddddd)
  */
-public class PledgeShowMemberListAll extends L2GameServerPacket
-{
-	private final L2Clan _clan;
-	private final int _pledgeType;
-	private final String _pledgeName;
-	
-	public PledgeShowMemberListAll(L2Clan clan, int pledgeType)
-	{
-		_clan = clan;
-		_pledgeType = pledgeType;
-		
-		if (_pledgeType == 0) // main clan
-			_pledgeName = clan.getName();
-		else if (_clan.getSubPledge(_pledgeType) != null)
-			_pledgeName = _clan.getSubPledge(_pledgeType).getName();
-		else
-			_pledgeName = "";
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
-		writeC(0x53);
-		
-		writeD((_pledgeType == 0) ? 0 : 1);
-		writeD(_clan.getClanId());
-		writeD(_pledgeType);
-		writeS(_pledgeName);
-		writeS(_clan.getSubPledgeLeaderName(_pledgeType));
-		
-		writeD(_clan.getCrestId());
-		writeD(_clan.getLevel());
-		writeD(_clan.getCastleId());
-		writeD(_clan.getHideoutId());
-		writeD(_clan.getRank());
-		writeD(_clan.getReputationScore());
-		writeD(0); // 0
-		writeD(0); // 0
-		writeD(_clan.getAllyId());
-		writeS(_clan.getAllyName());
-		writeD(_clan.getAllyCrestId());
-		writeD(_clan.isAtWar() ? 1 : 0);// new c3
-		writeD(_clan.getSubPledgeMembersCount(_pledgeType));
-		
-		for (L2ClanMember m : _clan.getMembers())
-		{
-			if (m.getPledgeType() != _pledgeType)
-				continue;
-			
-			writeS(m.getName());
-			writeD(m.getLevel());
-			writeD(m.getClassId());
-			
-			L2PcInstance player = m.getPlayerInstance();
-			if (player != null)
-			{
-				writeD((player.getAppearance().isFemale()) ? 1 : 0); // no visible effect
-				writeD(player.getRace().ordinal());// writeD(1);
-			}
-			else
-			{
-				writeD(0x01); // no visible effect
-				writeD(0x01); // writeD(1);
-			}
-			
-			writeD((m.isOnline()) ? m.getObjectId() : 0);
-			writeD((m.getSponsor() != 0 || m.getApprentice() != 0) ? 1 : 0);
-		}
-	}
+public class PledgeShowMemberListAll extends L2GameServerPacket {
+    private final L2Clan _clan;
+    private final int _pledgeType;
+    private final String _pledgeName;
+
+    public PledgeShowMemberListAll(L2Clan clan, int pledgeType) {
+        _clan = clan;
+        _pledgeType = pledgeType;
+
+        if (_pledgeType == 0) // main clan
+        { _pledgeName = clan.getName(); }
+        else if (_clan.getSubPledge(_pledgeType) != null) { _pledgeName = _clan.getSubPledge(_pledgeType).getName(); }
+        else { _pledgeName = ""; }
+    }
+
+    @Override
+    protected final void writeImpl() {
+        writeC(0x53);
+
+        writeD((_pledgeType == 0) ? 0 : 1);
+        writeD(_clan.getClanId());
+        writeD(_pledgeType);
+        writeS(_pledgeName);
+        writeS(_clan.getSubPledgeLeaderName(_pledgeType));
+
+        writeD(_clan.getCrestId());
+        writeD(_clan.getLevel());
+        writeD(_clan.getCastleId());
+        writeD(_clan.getHideoutId());
+        writeD(_clan.getRank());
+        writeD(_clan.getReputationScore());
+        writeD(0); // 0
+        writeD(0); // 0
+        writeD(_clan.getAllyId());
+        writeS(_clan.getAllyName());
+        writeD(_clan.getAllyCrestId());
+        writeD(_clan.isAtWar() ? 1 : 0);// new c3
+        writeD(_clan.getSubPledgeMembersCount(_pledgeType));
+
+        for (L2ClanMember m : _clan.getMembers()) {
+            if (m.getPledgeType() != _pledgeType) { continue; }
+
+            writeS(m.getName());
+            writeD(m.getLevel());
+            writeD(m.getClassId());
+
+            L2PcInstance player = m.getPlayerInstance();
+            if (player != null) {
+                writeD((player.getAppearance().isFemale()) ? 1 : 0); // no visible effect
+                writeD(player.getRace().ordinal());// writeD(1);
+            }
+            else {
+                writeD(0x01); // no visible effect
+                writeD(0x01); // writeD(1);
+            }
+
+            writeD((m.isOnline()) ? m.getObjectId() : 0);
+            writeD((m.getSponsor() != 0 || m.getApprentice() != 0) ? 1 : 0);
+        }
+    }
 }

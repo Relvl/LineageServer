@@ -15,163 +15,138 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.ItemConst;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
-public class Q347_GoGetTheCalculator extends Quest
-{
-	private static final String qn = "Q347_GoGetTheCalculator";
-	
-	// NPCs
-	private static final int BRUNON = 30526;
-	private static final int SILVERA = 30527;
-	private static final int SPIRON = 30532;
-	private static final int BALANKI = 30533;
-	
-	// Items
-	private static final int GEMSTONE_BEAST_CRYSTAL = 4286;
-	private static final int CALCULATOR_QUEST = 4285;
-	private static final int CALCULATOR_REAL = 4393;
-	
-	public Q347_GoGetTheCalculator()
-	{
-		super(347, "Go Get the Calculator");
-		
-		setItemsIds(GEMSTONE_BEAST_CRYSTAL, CALCULATOR_QUEST);
-		
-		addStartNpc(BRUNON);
-		addTalkId(BRUNON, SILVERA, SPIRON, BALANKI);
-		
-		addKillId(20540);
-	}
-	
-	@Override
-	public String onAdvEvent(String event, L2Npc npc, L2PcInstance player)
-	{
-		String htmltext = event;
-		QuestState st = player.getQuestState(qn);
-		if (st == null)
-			return htmltext;
-		
-		if (event.equalsIgnoreCase("30526-05.htm"))
-		{
-			st.setState(QuestState.STATE_STARTED);
-			st.set("cond", "1");
-			st.playSound(QuestState.SOUND_ACCEPT);
-		}
-		else if (event.equalsIgnoreCase("30533-03.htm"))
-		{
-			if (st.getQuestItemsCount(ItemConst.ADENA_ID) >= 100)
-			{
-				htmltext = "30533-02.htm";
-				st.takeItems(ItemConst.ADENA_ID, 100);
-				
-				if (st.getInt("cond") == 3)
-					st.set("cond", "4");
-				else
-					st.set("cond", "2");
-				
-				st.playSound(QuestState.SOUND_MIDDLE);
-			}
-		}
-		else if (event.equalsIgnoreCase("30532-02.htm"))
-		{
-			if (st.getInt("cond") == 2)
-				st.set("cond", "4");
-			else
-				st.set("cond", "3");
-			
-			st.playSound(QuestState.SOUND_MIDDLE);
-		}
-		else if (event.equalsIgnoreCase("30526-08.htm"))
-		{
-			st.takeItems(CALCULATOR_QUEST, -1);
-			st.giveItems(CALCULATOR_REAL, 1);
-			st.playSound(QuestState.SOUND_FINISH);
-			st.exitQuest(true);
-		}
-		else if (event.equalsIgnoreCase("30526-09.htm"))
-		{
-			st.takeItems(CALCULATOR_QUEST, -1);
-			st.rewardItems(ItemConst.ADENA_ID, 1000);
-			st.playSound(QuestState.SOUND_FINISH);
-			st.exitQuest(true);
-		}
-		
-		return htmltext;
-	}
-	
-	@Override
-	public String onTalk(L2Npc npc, L2PcInstance player)
-	{
-		QuestState st = player.getQuestState(qn);
-		String htmltext = getNoQuestMsg();
-		if (st == null)
-			return htmltext;
-		
-		switch (st.getState())
-		{
-			case QuestState.STATE_CREATED:
-				htmltext = (player.getLevel() < 12) ? "30526-00.htm" : "30526-01.htm";
-				break;
-			
-			case QuestState.STATE_STARTED:
-				int cond = st.getInt("cond");
-				switch (npc.getNpcId())
-				{
-					case BRUNON:
-						htmltext = (!st.hasQuestItems(CALCULATOR_QUEST)) ? "30526-06.htm" : "30526-07.htm";
-						break;
-					
-					case SPIRON:
-						htmltext = (cond < 4) ? "30532-01.htm" : "30532-05.htm";
-						break;
-					
-					case BALANKI:
-						htmltext = (cond < 4) ? "30533-01.htm" : "30533-04.htm";
-						break;
-					
-					case SILVERA:
-						if (cond < 4)
-							htmltext = "30527-00.htm";
-						else if (cond == 4)
-						{
-							htmltext = "30527-01.htm";
-							st.set("cond", "5");
-							st.playSound(QuestState.SOUND_MIDDLE);
-						}
-						else if (cond == 5)
-						{
-							if (st.getQuestItemsCount(GEMSTONE_BEAST_CRYSTAL) < 10)
-								htmltext = "30527-02.htm";
-							else
-							{
-								htmltext = "30527-03.htm";
-								st.set("cond", "6");
-								st.takeItems(GEMSTONE_BEAST_CRYSTAL, -1);
-								st.giveItems(CALCULATOR_QUEST, 1);
-								st.playSound(QuestState.SOUND_MIDDLE);
-							}
-						}
-						else if (cond == 6)
-							htmltext = "30527-04.htm";
-						break;
-				}
-				break;
-		}
-		
-		return htmltext;
-	}
-	
-	@Override
-	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
-	{
-		QuestState st = checkPlayerCondition(player, npc, "cond", "5");
-		if (st == null)
-			return null;
-		
-		st.dropItems(GEMSTONE_BEAST_CRYSTAL, 1, 10, 500000);
-		
-		return null;
-	}
+public class Q347_GoGetTheCalculator extends Quest {
+    private static final String qn = "Q347_GoGetTheCalculator";
+
+    // NPCs
+    private static final int BRUNON = 30526;
+    private static final int SILVERA = 30527;
+    private static final int SPIRON = 30532;
+    private static final int BALANKI = 30533;
+
+    // Items
+    private static final int GEMSTONE_BEAST_CRYSTAL = 4286;
+    private static final int CALCULATOR_QUEST = 4285;
+    private static final int CALCULATOR_REAL = 4393;
+
+    public Q347_GoGetTheCalculator() {
+        super(347, "Go Get the Calculator");
+
+        setItemsIds(GEMSTONE_BEAST_CRYSTAL, CALCULATOR_QUEST);
+
+        addStartNpc(BRUNON);
+        addTalkId(BRUNON, SILVERA, SPIRON, BALANKI);
+
+        addKillId(20540);
+    }
+
+    @Override
+    public String onAdvEvent(String event, L2Npc npc, L2PcInstance player) {
+        String htmltext = event;
+        QuestState st = player.getQuestState(qn);
+        if (st == null) { return htmltext; }
+
+        if (event.equalsIgnoreCase("30526-05.htm")) {
+            st.setState(QuestState.STATE_STARTED);
+            st.set("cond", "1");
+            st.playSound(ESound.ItemSound_quest_accept);
+        }
+        else if (event.equalsIgnoreCase("30533-03.htm")) {
+            if (st.getQuestItemsCount(ItemConst.ADENA_ID) >= 100) {
+                htmltext = "30533-02.htm";
+                st.takeItems(ItemConst.ADENA_ID, 100);
+
+                if (st.getInt("cond") == 3) { st.set("cond", "4"); }
+                else { st.set("cond", "2"); }
+
+                st.playSound(ESound.ItemSound_quest_middle);
+            }
+        }
+        else if (event.equalsIgnoreCase("30532-02.htm")) {
+            if (st.getInt("cond") == 2) { st.set("cond", "4"); }
+            else { st.set("cond", "3"); }
+
+            st.playSound(ESound.ItemSound_quest_middle);
+        }
+        else if (event.equalsIgnoreCase("30526-08.htm")) {
+            st.takeItems(CALCULATOR_QUEST, -1);
+            st.giveItems(CALCULATOR_REAL, 1);
+            st.playSound(ESound.ItemSound_quest_finish);
+            st.exitQuest(true);
+        }
+        else if (event.equalsIgnoreCase("30526-09.htm")) {
+            st.takeItems(CALCULATOR_QUEST, -1);
+            st.rewardItems(ItemConst.ADENA_ID, 1000);
+            st.playSound(ESound.ItemSound_quest_finish);
+            st.exitQuest(true);
+        }
+
+        return htmltext;
+    }
+
+    @Override
+    public String onTalk(L2Npc npc, L2PcInstance player) {
+        QuestState st = player.getQuestState(qn);
+        String htmltext = getNoQuestMsg();
+        if (st == null) { return htmltext; }
+
+        switch (st.getState()) {
+            case QuestState.STATE_CREATED:
+                htmltext = (player.getLevel() < 12) ? "30526-00.htm" : "30526-01.htm";
+                break;
+
+            case QuestState.STATE_STARTED:
+                int cond = st.getInt("cond");
+                switch (npc.getNpcId()) {
+                    case BRUNON:
+                        htmltext = (!st.hasQuestItems(CALCULATOR_QUEST)) ? "30526-06.htm" : "30526-07.htm";
+                        break;
+
+                    case SPIRON:
+                        htmltext = (cond < 4) ? "30532-01.htm" : "30532-05.htm";
+                        break;
+
+                    case BALANKI:
+                        htmltext = (cond < 4) ? "30533-01.htm" : "30533-04.htm";
+                        break;
+
+                    case SILVERA:
+                        if (cond < 4) { htmltext = "30527-00.htm"; }
+                        else if (cond == 4) {
+                            htmltext = "30527-01.htm";
+                            st.set("cond", "5");
+                            st.playSound(ESound.ItemSound_quest_middle);
+                        }
+                        else if (cond == 5) {
+                            if (st.getQuestItemsCount(GEMSTONE_BEAST_CRYSTAL) < 10) { htmltext = "30527-02.htm"; }
+                            else {
+                                htmltext = "30527-03.htm";
+                                st.set("cond", "6");
+                                st.takeItems(GEMSTONE_BEAST_CRYSTAL, -1);
+                                st.giveItems(CALCULATOR_QUEST, 1);
+                                st.playSound(ESound.ItemSound_quest_middle);
+                            }
+                        }
+                        else if (cond == 6) { htmltext = "30527-04.htm"; }
+                        break;
+                }
+                break;
+        }
+
+        return htmltext;
+    }
+
+    @Override
+    public String onKill(L2Npc npc, L2PcInstance player, boolean isPet) {
+        QuestState st = checkPlayerCondition(player, npc, "cond", "5");
+        if (st == null) { return null; }
+
+        st.dropItems(GEMSTONE_BEAST_CRYSTAL, 1, 10, 500000);
+
+        return null;
+    }
 }

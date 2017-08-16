@@ -91,7 +91,7 @@ public class SSQStatus extends L2GameServerPacket {
                 int duskFestivalScore = SevenSigns.getInstance().getCurrentFestivalScore(SevenSigns.CABAL_DUSK);
 
                 double totalStoneScore = duskStoneScore + dawnStoneScore;
-				
+
 				/*
 				 * Scoring seems to be proportionate to a set base value, so base this on the maximum obtainable score from festivals, which is 500.
 				 */

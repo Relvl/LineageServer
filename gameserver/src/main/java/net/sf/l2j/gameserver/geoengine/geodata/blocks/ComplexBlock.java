@@ -14,100 +14,91 @@
  */
 package net.sf.l2j.gameserver.geoengine.geodata.blocks;
 
-import java.nio.ByteBuffer;
-
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.geoengine.geodata.GeoFormat;
 import net.sf.l2j.gameserver.geoengine.geodata.GeoStructure;
 
+import java.nio.ByteBuffer;
+
 /**
  * @author Hasha
  */
-public final class ComplexBlock extends Block
-{
-	private final byte[] _buffer;
-	
-	/**
-	 * Creates ComplexBlock.
-	 * @param bb : Input byte buffer.
-	 */
-	public ComplexBlock(ByteBuffer bb)
-	{
-		// initialize buffer
-		_buffer = new byte[GeoStructure.BLOCK_CELLS * 3];
-		
-		// load data
-		for (int i = 0; i < GeoStructure.BLOCK_CELLS; i++)
-		{
-			if (Config.GEODATA_FORMAT != GeoFormat.L2D)
-			{
-				// get data
-				short data = bb.getShort();
-				
-				// get nswe
-				_buffer[i * 3] = (byte) (data & 0x000F);
-				
-				// get height
-				data = (short) ((short) (data & 0xFFF0) >> 1);
-				_buffer[i * 3 + 1] = (byte) (data & 0x00FF);
-				_buffer[i * 3 + 2] = (byte) (data >> 8);
-			}
-			else
-			{
-				// get nswe
-				_buffer[i * 3] = bb.get();
-				
-				// get height
-				short height = bb.getShort();
-				_buffer[i * 3 + 1] = (byte) (height & 0x00FF);
-				_buffer[i * 3 + 2] = (byte) (height >> 8);
-			}
-		}
-	}
-	
-	@Override
-	public boolean hasGeoPos()
-	{
-		return true;
-	}
-	
-	@Override
-	public short getHeightNearest(int geoX, int geoY, int worldZ)
-	{
-		// get cell index
-		final int index = ((geoX % GeoStructure.BLOCK_CELLS_X) * GeoStructure.BLOCK_CELLS_Y + (geoY % GeoStructure.BLOCK_CELLS_Y)) * 3;
-		
-		// get height
-		return (short) (_buffer[index + 1] & 0x00FF | _buffer[index + 2] << 8);
-	}
-	
-	@Override
-	public short getHeightAbove(int geoX, int geoY, int worldZ)
-	{
-		// get cell index
-		final int index = ((geoX % GeoStructure.BLOCK_CELLS_X) * GeoStructure.BLOCK_CELLS_Y + (geoY % GeoStructure.BLOCK_CELLS_Y)) * 3;
-		
-		// get height
-		return (short) (_buffer[index + 1] & 0x00FF | _buffer[index + 2] << 8);
-	}
-	
-	@Override
-	public short getHeightBelow(int geoX, int geoY, int worldZ)
-	{
-		// get cell index
-		final int index = ((geoX % GeoStructure.BLOCK_CELLS_X) * GeoStructure.BLOCK_CELLS_Y + (geoY % GeoStructure.BLOCK_CELLS_Y)) * 3;
-		
-		// get height
-		return (short) (_buffer[index + 1] & 0x00FF | _buffer[index + 2] << 8);
-	}
-	
-	@Override
-	public byte getNsweNearest(int geoX, int geoY, int worldZ)
-	{
-		// get cell index
-		final int index = ((geoX % GeoStructure.BLOCK_CELLS_X) * GeoStructure.BLOCK_CELLS_Y + (geoY % GeoStructure.BLOCK_CELLS_Y)) * 3;
-		
-		// get nswe
-		return _buffer[index];
-	}
+public final class ComplexBlock extends Block {
+    private final byte[] _buffer;
+
+    /**
+     * Creates ComplexBlock.
+     *
+     * @param bb : Input byte buffer.
+     */
+    public ComplexBlock(ByteBuffer bb) {
+        // initialize buffer
+        _buffer = new byte[GeoStructure.BLOCK_CELLS * 3];
+
+        // load data
+        for (int i = 0; i < GeoStructure.BLOCK_CELLS; i++) {
+            if (Config.GEODATA_FORMAT != GeoFormat.L2D) {
+                // get data
+                short data = bb.getShort();
+
+                // get nswe
+                _buffer[i * 3] = (byte) (data & 0x000F);
+
+                // get height
+                data = (short) ((short) (data & 0xFFF0) >> 1);
+                _buffer[i * 3 + 1] = (byte) (data & 0x00FF);
+                _buffer[i * 3 + 2] = (byte) (data >> 8);
+            }
+            else {
+                // get nswe
+                _buffer[i * 3] = bb.get();
+
+                // get height
+                short height = bb.getShort();
+                _buffer[i * 3 + 1] = (byte) (height & 0x00FF);
+                _buffer[i * 3 + 2] = (byte) (height >> 8);
+            }
+        }
+    }
+
+    @Override
+    public boolean hasGeoPos() {
+        return true;
+    }
+
+    @Override
+    public short getHeightNearest(int geoX, int geoY, int worldZ) {
+        // get cell index
+        final int index = ((geoX % GeoStructure.BLOCK_CELLS_X) * GeoStructure.BLOCK_CELLS_Y + (geoY % GeoStructure.BLOCK_CELLS_Y)) * 3;
+
+        // get height
+        return (short) (_buffer[index + 1] & 0x00FF | _buffer[index + 2] << 8);
+    }
+
+    @Override
+    public short getHeightAbove(int geoX, int geoY, int worldZ) {
+        // get cell index
+        final int index = ((geoX % GeoStructure.BLOCK_CELLS_X) * GeoStructure.BLOCK_CELLS_Y + (geoY % GeoStructure.BLOCK_CELLS_Y)) * 3;
+
+        // get height
+        return (short) (_buffer[index + 1] & 0x00FF | _buffer[index + 2] << 8);
+    }
+
+    @Override
+    public short getHeightBelow(int geoX, int geoY, int worldZ) {
+        // get cell index
+        final int index = ((geoX % GeoStructure.BLOCK_CELLS_X) * GeoStructure.BLOCK_CELLS_Y + (geoY % GeoStructure.BLOCK_CELLS_Y)) * 3;
+
+        // get height
+        return (short) (_buffer[index + 1] & 0x00FF | _buffer[index + 2] << 8);
+    }
+
+    @Override
+    public byte getNsweNearest(int geoX, int geoY, int worldZ) {
+        // get cell index
+        final int index = ((geoX % GeoStructure.BLOCK_CELLS_X) * GeoStructure.BLOCK_CELLS_Y + (geoY % GeoStructure.BLOCK_CELLS_Y)) * 3;
+
+        // get nswe
+        return _buffer[index];
+    }
 }

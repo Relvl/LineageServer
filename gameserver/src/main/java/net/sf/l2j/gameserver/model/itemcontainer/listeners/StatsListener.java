@@ -18,24 +18,20 @@ import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 
-public class StatsListener implements OnEquipListener
-{
-	private static StatsListener instance = new StatsListener();
-	
-	public static StatsListener getInstance()
-	{
-		return instance;
-	}
-	
-	@Override
-	public void onEquip(EPaperdollSlot slot, L2ItemInstance item, L2Playable playable)
-	{
-		playable.addStatFuncs(item.getStatFuncs(playable));
-	}
-	
-	@Override
-	public void onUnequip(EPaperdollSlot slot, L2ItemInstance item, L2Playable playable)
-	{
-		playable.removeStatsByOwner(item);
-	}
+public class StatsListener implements OnEquipListener {
+    private static StatsListener instance = new StatsListener();
+
+    public static StatsListener getInstance() {
+        return instance;
+    }
+
+    @Override
+    public void onEquip(EPaperdollSlot slot, L2ItemInstance item, L2Playable playable) {
+        playable.addStatFuncs(item.getStatFuncs(playable));
+    }
+
+    @Override
+    public void onUnequip(EPaperdollSlot slot, L2ItemInstance item, L2Playable playable) {
+        playable.removeStatsByOwner(item);
+    }
 }

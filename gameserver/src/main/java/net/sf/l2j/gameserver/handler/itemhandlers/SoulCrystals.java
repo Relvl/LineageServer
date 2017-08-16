@@ -16,57 +16,47 @@ package net.sf.l2j.gameserver.handler.itemhandlers;
 
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.handler.IItemHandler;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.holder.IntIntHolder;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 import net.sf.l2j.gameserver.model.item.kind.EtcItem;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 
 /**
  * Template for item skills handler.
+ *
  * @author Hasha
  */
-public class SoulCrystals implements IItemHandler
-{
-	@Override
-	public void useItem(L2Playable playable, L2ItemInstance item, boolean forceUse)
-	{
-		if (!(playable instanceof L2PcInstance))
-			return;
-		
-		final EtcItem etcItem = item.getEtcItem();
-		
-		final IntIntHolder[] skills = etcItem.getSkills();
-		if (skills == null)
-			return;
-		
-		final L2Skill itemSkill = skills[0].getSkill();
-		if (itemSkill == null || itemSkill.getId() != 2096)
-			return;
-		
-		final L2PcInstance player = (L2PcInstance) playable;
-		
-		if (player.isCastingNow())
-			return;
-		
-		if (!itemSkill.checkCondition(player, player.getTarget(), false))
-			return;
-		
-		// No message on retail, the use is just forgotten.
-		if (player.isSkillDisabled(itemSkill))
-			return;
-		
-		player.getAI().setIntention(EIntention.IDLE);
-		if (!player.useMagic(itemSkill, forceUse, false))
-			return;
-		
-		int reuseDelay = itemSkill.getReuseDelay();
-		if (etcItem.getReuseDelay() > reuseDelay)
-			reuseDelay = etcItem.getReuseDelay();
-		
-		player.addTimeStamp(itemSkill, reuseDelay);
-		if (reuseDelay != 0)
-			player.disableSkill(itemSkill, reuseDelay);
-	}
+public class SoulCrystals implements IItemHandler {
+    @Override
+    public void useItem(L2Playable playable, L2ItemInstance item, boolean forceUse) {
+        if (!(playable instanceof L2PcInstance)) { return; }
+
+        final EtcItem etcItem = item.getEtcItem();
+
+        final IntIntHolder[] skills = etcItem.getSkills();
+        if (skills == null) { return; }
+
+        final L2Skill itemSkill = skills[0].getSkill();
+        if (itemSkill == null || itemSkill.getId() != 2096) { return; }
+
+        final L2PcInstance player = (L2PcInstance) playable;
+
+        if (player.isCastingNow()) { return; }
+
+        if (!itemSkill.checkCondition(player, player.getTarget(), false)) { return; }
+
+        // No message on retail, the use is just forgotten.
+        if (player.isSkillDisabled(itemSkill)) { return; }
+
+        player.getAI().setIntention(EIntention.IDLE);
+        if (!player.useMagic(itemSkill, forceUse, false)) { return; }
+
+        int reuseDelay = itemSkill.getReuseDelay();
+        if (etcItem.getReuseDelay() > reuseDelay) { reuseDelay = etcItem.getReuseDelay(); }
+
+        player.addTimeStamp(itemSkill, reuseDelay);
+        if (reuseDelay != 0) { player.disableSkill(itemSkill, reuseDelay); }
+    }
 }

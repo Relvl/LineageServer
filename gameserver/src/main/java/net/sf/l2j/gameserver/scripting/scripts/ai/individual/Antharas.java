@@ -21,14 +21,15 @@ import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.datatables.SkillTable.FrequentSkill;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.instancemanager.GrandBossManager;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2GrandBossInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.zone.type.L2BossZone;
 import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 import net.sf.l2j.gameserver.network.client.game_to_client.SpecialCamera;
 import net.sf.l2j.gameserver.scripting.EventType;
@@ -62,7 +63,7 @@ public class Antharas extends AbstractNpcAI {
     public static final byte FIGHTING = 2; // Antharas is engaged in battle, annihilating his foes. Entry is locked.
     public static final byte DEAD = 3; // Antharas has been killed. Entry is locked.
 
-    private long _timeTracker = 0; // Time tracker for last attack on Antharas.
+    private long _timeTracker; // Time tracker for last attack on Antharas.
     private L2PcInstance _actualVictim; // Actual target of Antharas.
     private final List<L2Npc> _monsters = new CopyOnWriteArrayList<>(); // amount of Antharas minions.
 
@@ -91,11 +92,11 @@ public class Antharas extends AbstractNpcAI {
         registerMobs(ANTHARAS_IDS, EventType.ON_ATTACK, EventType.ON_SPAWN);
         registerMobs(allIds, EventType.ON_KILL);
 
-        final StatsSet info = GrandBossManager.getInstance().getStatsSet(ANTHARAS);
+        StatsSet info = GrandBossManager.getInstance().getStatsSet(ANTHARAS);
 
         switch (GrandBossManager.getInstance().getBossStatus(ANTHARAS)) {
             case DEAD: // Launch the timer to set DORMANT, or set DORMANT directly if timer expired while offline.
-                long temp = (info.getLong("respawn_time") - System.currentTimeMillis());
+                long temp = info.getLong("respawn_time") - System.currentTimeMillis();
                 if (temp > 0) { startQuestTimer("antharas_unlock", temp, null, null, false); }
                 else { GrandBossManager.getInstance().setBossStatus(ANTHARAS, DORMANT); }
                 break;
@@ -105,17 +106,17 @@ public class Antharas extends AbstractNpcAI {
                 break;
 
             case FIGHTING:
-                final int loc_x = info.getInteger("loc_x");
-                final int loc_y = info.getInteger("loc_y");
-                final int loc_z = info.getInteger("loc_z");
-                final int heading = info.getInteger("heading");
-                final int hp = info.getInteger("currentHP");
-                final int mp = info.getInteger("currentMP");
+                int loc_x = info.getInteger("loc_x");
+                int loc_y = info.getInteger("loc_y");
+                int loc_z = info.getInteger("loc_z");
+                int heading = info.getInteger("heading");
+                int hp = info.getInteger("currentHP");
+                int mp = info.getInteger("currentMP");
 
                 // Update Antharas informations.
                 updateAntharas();
 
-                final L2Npc antharas = addSpawn(_antharasId, loc_x, loc_y, loc_z, heading, false, 0, false);
+                L2Npc antharas = addSpawn(_antharasId, loc_x, loc_y, loc_z, heading, false, 0, false);
                 GrandBossManager.getInstance().addBoss(ANTHARAS, (L2GrandBossInstance) antharas);
 
                 antharas.setCurrentHpMp(hp, mp);
@@ -185,16 +186,16 @@ public class Antharas extends AbstractNpcAI {
             for (int i = 0; i < mobNumber; i++) {
                 if (_monsters.size() > 9) { break; }
 
-                final int npcId = isBehemoth ? 29069 : Rnd.get(29070, 29076);
-                final L2Npc dragon = addSpawn(npcId, npc.getX() + Rnd.get(-200, 200), npc.getY() + Rnd.get(-200, 200), npc.getZ(), 0, false, 0, true);
+                int npcId = isBehemoth ? 29069 : Rnd.get(29070, 29076);
+                L2Npc dragon = addSpawn(npcId, npc.getX() + Rnd.get(-200, 200), npc.getY() + Rnd.get(-200, 200), npc.getZ(), 0, false, 0, true);
                 ((L2Attackable) dragon).setIsRaidMinion(true);
 
                 _monsters.add(dragon);
 
-                final L2PcInstance victim = getRandomPlayer(dragon);
-                if (victim != null) { attack(((L2Attackable) dragon), victim); }
+                L2PcInstance victim = getRandomPlayer(dragon);
+                if (victim != null) { attack((L2Attackable) dragon, victim); }
 
-                if (!isBehemoth) { startQuestTimer("self_destruct", (_minionTimer / 3), dragon, null, false); }
+                if (!isBehemoth) { startQuestTimer("self_destruct", _minionTimer / 3, dragon, null, false); }
             }
         }
         else if (event.equalsIgnoreCase("self_destruct")) {
@@ -217,7 +218,7 @@ public class Antharas extends AbstractNpcAI {
         else if (event.equalsIgnoreCase("beginning")) {
             updateAntharas();
 
-            final L2Npc antharas = addSpawn(_antharasId, 181323, 114850, -7623, 32542, false, 0, false);
+            L2Npc antharas = addSpawn(_antharasId, 181323, 114850, -7623, 32542, false, 0, false);
             GrandBossManager.getInstance().addBoss(ANTHARAS, (L2GrandBossInstance) antharas);
             antharas.setIsInvul(true);
 
@@ -257,7 +258,7 @@ public class Antharas extends AbstractNpcAI {
 
         // Debuff strider-mounted players.
         if (attacker.getMountType() == 1) {
-            final L2Skill skill = SkillTable.getInfo(4258, 1);
+            L2Skill skill = SkillTable.getInfo(4258, 1);
             if (attacker.getFirstEffect(skill) == null) {
                 npc.setTarget(attacker);
                 npc.doCast(skill);
@@ -276,7 +277,7 @@ public class Antharas extends AbstractNpcAI {
 
             // Launch death animation.
             ANTHARAS_LAIR.broadcastPacket(new SpecialCamera(npc.getObjectId(), 1200, 20, -10, 10000, 13000, 0, 0, 0, 0));
-            ANTHARAS_LAIR.broadcastPacket(new PlaySound(1, "BS01_D", 0, 0, 0, 0, 0));
+            ANTHARAS_LAIR.broadcastPacket(new PlaySound(ESound.BS01_D));
             startQuestTimer("die_1", 8000, null, null, false);
 
             GrandBossManager.getInstance().setBossStatus(ANTHARAS, DEAD);
@@ -302,7 +303,7 @@ public class Antharas extends AbstractNpcAI {
         if (npc.isInvul() || npc.isCastingNow()) { return; }
 
         // Pickup a target if no or dead victim. 10% luck he decides to reconsiders his target.
-        if (_actualVictim == null || _actualVictim.isDead() || !(npc.getKnownList().isObjectKnown(_actualVictim)) || Rnd.get(10) == 0) { _actualVictim = getRandomPlayer(npc); }
+        if (_actualVictim == null || _actualVictim.isDead() || !npc.getKnownList().isObjectKnown(_actualVictim) || Rnd.get(10) == 0) { _actualVictim = getRandomPlayer(npc); }
 
         // If result is still null, Antharas will roam. Don't go deeper in skill AI.
         if (_actualVictim == null) {
@@ -319,7 +320,7 @@ public class Antharas extends AbstractNpcAI {
             return;
         }
 
-        final L2Skill skill = getRandomSkill(npc);
+        L2Skill skill = getRandomSkill(npc);
 
         // Cast the skill or follow the target.
         if (Util.checkIfInRange((skill.getCastRange() < 600) ? 600 : skill.getCastRange(), npc, _actualVictim, true)) {
@@ -338,10 +339,10 @@ public class Antharas extends AbstractNpcAI {
      * @return a usable skillId
      */
     private static L2Skill getRandomSkill(L2Npc npc) {
-        final double hpRatio = npc.getCurrentHp() / npc.getMaxHp();
+        double hpRatio = npc.getCurrentHp() / npc.getMaxHp();
 
         // Find enemies surrounding Antharas.
-        final int[] playersAround = getPlayersCountInPositions(1100, npc, false);
+        int[] playersAround = getPlayersCountInPositions(1100, npc, false);
 
         if (hpRatio < 0.25) {
             if (Rnd.get(100) < 30) { return FrequentSkill.ANTHARAS_MOUTH.getSkill(); }
@@ -398,7 +399,7 @@ public class Antharas extends AbstractNpcAI {
      * Used when server restarted and Antharas is fighting, or used while the cinematic occurs (after the 30min timer).
      */
     private void updateAntharas() {
-        final int playersNumber = ANTHARAS_LAIR.getAllowedPlayers().size();
+        int playersNumber = ANTHARAS_LAIR.getAllowedPlayers().size();
         if (playersNumber < 45) {
             _antharasId = ANTHARAS_IDS[0];
             _skillRegen = SkillTable.getInfo(4239, 1);

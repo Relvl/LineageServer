@@ -85,7 +85,6 @@ public final class L2Radar {
             if (posY != other.posY) { return false; }
 
             return posZ == other.posZ;
-
         }
     }
 

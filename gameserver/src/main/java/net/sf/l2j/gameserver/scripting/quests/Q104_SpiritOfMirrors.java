@@ -4,6 +4,7 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.PlayerRace;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -56,7 +57,7 @@ public class Q104_SpiritOfMirrors extends Quest {
         if (event.equalsIgnoreCase("30017-03.htm")) {
             st.setState(QuestState.STATE_STARTED);
             st.set("cond", "1");
-            st.playSound(QuestState.SOUND_ACCEPT);
+            st.playSound(ESound.ItemSound_quest_accept);
             st.giveItems(GALLINS_OAK_WAND, 1);
             st.giveItems(GALLINS_OAK_WAND, 1);
             st.giveItems(GALLINS_OAK_WAND, 1);
@@ -114,7 +115,7 @@ public class Q104_SpiritOfMirrors extends Quest {
                             st.giveItems(ECHO_FEAST, 10);
                             st.giveItems(ECHO_CELEBRATION, 10);
                             player.broadcastPacket(new SocialAction(player, 3));
-                            st.playSound(QuestState.SOUND_FINISH);
+                            st.playSound(ESound.ItemSound_quest_finish);
                             st.exitQuest(false);
                         }
                         break;
@@ -125,7 +126,7 @@ public class Q104_SpiritOfMirrors extends Quest {
                         htmltext = npc.getNpcId() + "-01.htm";
                         if (cond == 1) {
                             st.set("cond", "2");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                         }
                         break;
                 }
@@ -153,9 +154,9 @@ public class Q104_SpiritOfMirrors extends Quest {
 
                         if (st.hasQuestItems(WAND_SPIRITBOUND_2, WAND_SPIRITBOUND_3)) {
                             st.set("cond", "3");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                         }
-                        else { st.playSound(QuestState.SOUND_ITEMGET); }
+                        else { st.playSound(ESound.ItemSound_quest_itemget); }
                     }
                     break;
 
@@ -166,9 +167,9 @@ public class Q104_SpiritOfMirrors extends Quest {
 
                         if (st.hasQuestItems(WAND_SPIRITBOUND_1, WAND_SPIRITBOUND_3)) {
                             st.set("cond", "3");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                         }
-                        else { st.playSound(QuestState.SOUND_ITEMGET); }
+                        else { st.playSound(ESound.ItemSound_quest_itemget); }
                     }
                     break;
 
@@ -179,9 +180,9 @@ public class Q104_SpiritOfMirrors extends Quest {
 
                         if (st.hasQuestItems(WAND_SPIRITBOUND_1, WAND_SPIRITBOUND_2)) {
                             st.set("cond", "3");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                         }
-                        else { st.playSound(QuestState.SOUND_ITEMGET); }
+                        else { st.playSound(ESound.ItemSound_quest_itemget); }
                     }
                     break;
             }

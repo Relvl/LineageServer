@@ -25,5 +25,4 @@ public class ZoneXmlFile {
     public List<ZoneElement> getZones() {
         return zoneElements;
     }
-
 }

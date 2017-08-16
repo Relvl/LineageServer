@@ -1,13 +1,14 @@
 package net.sf.l2j.gameserver.model.vehicles;
 
 import net.sf.l2j.gameserver.EChatType;
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.instancemanager.BoatManager;
 import net.sf.l2j.gameserver.model.VehiclePathPoint;
 import net.sf.l2j.gameserver.model.actor.instance.L2BoatInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
 import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,8 +62,8 @@ public class BoatRunePrimeval implements Runnable {
     private final CreatureSay BUSY_RUNE;
     private final PlaySound RUNE_SOUND;
     private final PlaySound PRIMEVAL_SOUND;
-    private int _cycle = 0;
-    private int _shoutCount = 0;
+    private int _cycle;
+    private int _shoutCount;
 
     public BoatRunePrimeval(L2BoatInstance boat) {
         _boat = boat;
@@ -75,12 +76,12 @@ public class BoatRunePrimeval implements Runnable {
         LEAVING_PRIMEVAL = new CreatureSay(0, EChatType.BOAT, 801, SystemMessageId.FERRY_LEAVING_PRIMEVAL_FOR_RUNE_NOW);
         BUSY_RUNE = new CreatureSay(0, EChatType.BOAT, 801, SystemMessageId.FERRY_FROM_PRIMEVAL_TO_RUNE_DELAYED);
 
-        RUNE_SOUND = new PlaySound(0, "itemsound.ship_arrival_departure", 1, _boat.getObjectId(), RUNE_DOCK[0].x, RUNE_DOCK[0].y, RUNE_DOCK[0].z);
-        PRIMEVAL_SOUND = new PlaySound(0, "itemsound.ship_arrival_departure", 1, _boat.getObjectId(), PRIMEVAL_DOCK.x, PRIMEVAL_DOCK.y, PRIMEVAL_DOCK.z);
+        RUNE_SOUND = new PlaySound(ESound.itemsound_ship_arrival_departure, _boat.getObjectId(), RUNE_DOCK[0].x, RUNE_DOCK[0].y, RUNE_DOCK[0].z);
+        PRIMEVAL_SOUND = new PlaySound(ESound.itemsound_ship_arrival_departure, _boat.getObjectId(), PRIMEVAL_DOCK.x, PRIMEVAL_DOCK.y, PRIMEVAL_DOCK.z);
     }
 
     public static void load() {
-        final L2BoatInstance boat = BoatManager.getInstance().getNewBoat(5, 34381, -37680, -3610, 40785);
+        L2BoatInstance boat = BoatManager.getInstance().getNewBoat(5, 34381, -37680, -3610, 40785);
         if (boat != null) {
             boat.registerEngine(new BoatRunePrimeval(boat));
             boat.runEngine(180000);

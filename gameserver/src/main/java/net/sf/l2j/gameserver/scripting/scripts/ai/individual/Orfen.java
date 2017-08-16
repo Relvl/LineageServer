@@ -20,7 +20,6 @@ import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.instancemanager.GrandBossManager;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.L2Spawn;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
 import net.sf.l2j.gameserver.model.actor.L2Character;
@@ -28,8 +27,10 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2GrandBossInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.zone.type.L2BossZone;
 import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.scripts.ai.AbstractNpcAI;
 import net.sf.l2j.gameserver.templates.StatsSet;
 
@@ -64,7 +65,7 @@ public class Orfen extends AbstractNpcAI {
     private static final byte ALIVE = 0;
     private static final byte DEAD = 1;
 
-    private static long _lastAttackTime = 0;
+    private static long _lastAttackTime;
     private static boolean _isTeleported;
     private static int _currentIndex;
 
@@ -78,8 +79,8 @@ public class Orfen extends AbstractNpcAI {
 
         _isTeleported = false;
 
-        final StatsSet info = GrandBossManager.getInstance().getStatsSet(ORFEN);
-        final int status = GrandBossManager.getInstance().getBossStatus(ORFEN);
+        StatsSet info = GrandBossManager.getInstance().getStatsSet(ORFEN);
+        int status = GrandBossManager.getInstance().getBossStatus(ORFEN);
 
         if (status == DEAD) {
             // load the unlock date and time for Orfen from DB
@@ -92,20 +93,20 @@ public class Orfen extends AbstractNpcAI {
                 // The time has already expired while the server was offline. Spawn Orfen in a random place.
                 _currentIndex = Rnd.get(1, 3);
 
-                final L2GrandBossInstance orfen = (L2GrandBossInstance) addSpawn(ORFEN, ORFEN_LOCATION[_currentIndex], false, 0, false);
+                L2GrandBossInstance orfen = (L2GrandBossInstance) addSpawn(ORFEN, ORFEN_LOCATION[_currentIndex], false, 0, false);
                 GrandBossManager.getInstance().setBossStatus(ORFEN, ALIVE);
                 spawnBoss(orfen);
             }
         }
         else {
-            final int loc_x = info.getInteger("loc_x");
-            final int loc_y = info.getInteger("loc_y");
-            final int loc_z = info.getInteger("loc_z");
-            final int heading = info.getInteger("heading");
-            final int hp = info.getInteger("currentHP");
-            final int mp = info.getInteger("currentMP");
+            int loc_x = info.getInteger("loc_x");
+            int loc_y = info.getInteger("loc_y");
+            int loc_z = info.getInteger("loc_z");
+            int heading = info.getInteger("heading");
+            int hp = info.getInteger("currentHP");
+            int mp = info.getInteger("currentMP");
 
-            final L2GrandBossInstance orfen = (L2GrandBossInstance) addSpawn(ORFEN, loc_x, loc_y, loc_z, heading, false, 0, false);
+            L2GrandBossInstance orfen = (L2GrandBossInstance) addSpawn(ORFEN, loc_x, loc_y, loc_z, heading, false, 0, false);
             orfen.setCurrentHpMp(hp, mp);
             spawnBoss(orfen);
         }
@@ -116,7 +117,7 @@ public class Orfen extends AbstractNpcAI {
         if (event.equalsIgnoreCase("orfen_unlock")) {
             _currentIndex = Rnd.get(1, 3);
 
-            final L2GrandBossInstance orfen = (L2GrandBossInstance) addSpawn(ORFEN, ORFEN_LOCATION[_currentIndex], false, 0, false);
+            L2GrandBossInstance orfen = (L2GrandBossInstance) addSpawn(ORFEN, ORFEN_LOCATION[_currentIndex], false, 0, false);
             GrandBossManager.getInstance().setBossStatus(ORFEN, ALIVE);
             spawnBoss(orfen);
         }
@@ -208,7 +209,7 @@ public class Orfen extends AbstractNpcAI {
 
     @Override
     public String onKill(L2Npc npc, L2PcInstance killer, boolean isPet) {
-        npc.broadcastPacket(new PlaySound(1, "BS02_D", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
+        npc.broadcastPacket(new PlaySound(ESound.BS02_D, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
         GrandBossManager.getInstance().setBossStatus(ORFEN, DEAD);
 
         long respawnTime = (long) Config.SPAWN_INTERVAL_ORFEN + Rnd.get(-Config.RANDOM_SPAWN_TIME_ORFEN, Config.RANDOM_SPAWN_TIME_ORFEN);
@@ -249,7 +250,7 @@ public class Orfen extends AbstractNpcAI {
 
     private void spawnBoss(L2GrandBossInstance npc) {
         GrandBossManager.getInstance().addBoss(npc);
-        npc.broadcastPacket(new PlaySound(1, "BS01_A", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
+        npc.broadcastPacket(new PlaySound(ESound.BS01_A, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
         startQuestTimer("check_orfen_pos", 60000, npc, null, true);
 
         // start monitoring Orfen's inactivity

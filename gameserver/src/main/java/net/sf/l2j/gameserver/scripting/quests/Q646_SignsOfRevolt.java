@@ -16,6 +16,7 @@ import net.sf.l2j.commons.lang.StringUtil;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.ItemConst;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -69,16 +70,16 @@ public class Q646_SignsOfRevolt extends Quest {
         if (event.equalsIgnoreCase("32016-03.htm")) {
             st.setState(QuestState.STATE_STARTED);
             st.set("cond", "1");
-            st.playSound(QuestState.SOUND_ACCEPT);
+            st.playSound(ESound.ItemSound_quest_accept);
         }
         else if (StringUtil.isDigit(event)) {
             htmltext = "32016-07.htm";
             st.takeItems(CURSED_DOLL, -1);
 
-            final int reward[] = REWARDS[Integer.parseInt(event)];
+            int reward[] = REWARDS[Integer.parseInt(event)];
             st.giveItems(reward[0], reward[1]);
 
-            st.playSound(QuestState.SOUND_FINISH);
+            st.playSound(ESound.ItemSound_quest_finish);
             st.exitQuest(true);
         }
 
@@ -97,7 +98,7 @@ public class Q646_SignsOfRevolt extends Quest {
                 break;
 
             case QuestState.STATE_STARTED:
-                final int cond = st.getInt("cond");
+                int cond = st.getInt("cond");
                 if (cond == 1) { htmltext = "32016-04.htm"; }
                 else if (cond == 2) { htmltext = "32016-05.htm"; }
                 break;

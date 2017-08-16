@@ -22,41 +22,34 @@ import net.sf.l2j.gameserver.templates.skills.L2EffectType;
 /**
  * @author mkizub
  */
-final class EffectRoot extends L2Effect
-{
-	public EffectRoot(Env env, EffectTemplate template)
-	{
-		super(env, template);
-	}
-	
-	@Override
-	public L2EffectType getEffectType()
-	{
-		return L2EffectType.ROOT;
-	}
-	
-	@Override
-	public boolean onStart()
-	{
-		getEffected().startRooted();
-		return true;
-	}
-	
-	@Override
-	public void onExit()
-	{
-		getEffected().stopRooting(false);
-	}
-	
-	@Override
-	public boolean onActionTime()
-	{
-		return false;
-	}
-	
-	@Override
-	public int getEffectFlags()
-	{
-		return L2EffectFlag.ROOTED.getMask();
-	}
+final class EffectRoot extends L2Effect {
+    public EffectRoot(Env env, EffectTemplate template) {
+        super(env, template);
+    }
+
+    @Override
+    public L2EffectType getEffectType() {
+        return L2EffectType.ROOT;
+    }
+
+    @Override
+    public boolean onStart() {
+        getEffected().startRooted();
+        return true;
+    }
+
+    @Override
+    public void onExit() {
+        getEffected().stopRooting(false);
+    }
+
+    @Override
+    public boolean onActionTime() {
+        return false;
+    }
+
+    @Override
+    public int getEffectFlags() {
+        return L2EffectFlag.ROOTED.getMask();
+    }
 }

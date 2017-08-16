@@ -21,7 +21,7 @@ public class TargetAreaSummonCollector implements ISkillTargetCollector {
     public L2Object[] getTargetList(L2Character activeChar, boolean onlyFirst, L2Character target, L2Skill skill) {
         target = activeChar.getPet();
         if (target == null || !target.isSummon() || target.isDead()) { return EMPTY_TARGET_LIST; }
-        if (onlyFirst) { return new L2Character[]{target}; }
+        if (onlyFirst) { return new L2Character[]{ target }; }
         boolean srcInArena = activeChar.isInArena();
         List<L2Character> targetList = new ArrayList<>();
         for (L2Character obj : target.getKnownList().getKnownType(L2Character.class)) {

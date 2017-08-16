@@ -148,8 +148,8 @@ public class EnterWorld extends L2GameClientPacket {
 
         if (player.getRace() == PlayerRace.DarkElf && player.getSkillLevel(294) == 1) {
             player.sendPacket(SystemMessage.getSystemMessage((GameTimeTaskManager.getInstance().isNight()) ?
-                            SystemMessageId.NIGHT_S1_EFFECT_APPLIES :
-                            SystemMessageId.DAY_S1_EFFECT_DISAPPEARS
+                                                             SystemMessageId.NIGHT_S1_EFFECT_APPLIES :
+                                                             SystemMessageId.DAY_S1_EFFECT_DISAPPEARS
             ).addSkillName(294));
         }
 

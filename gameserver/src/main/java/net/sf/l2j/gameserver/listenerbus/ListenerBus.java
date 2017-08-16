@@ -71,5 +71,4 @@ public final class ListenerBus {
         ON_PLAYER_REVIVED_LISTENERS.clearReleased();
         for (OnPlayerRevivedListener listener : ON_PLAYER_REVIVED_LISTENERS) { listener.onPlayerRevived(player); }
     }
-
 }

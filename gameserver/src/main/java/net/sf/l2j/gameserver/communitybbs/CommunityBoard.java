@@ -63,8 +63,8 @@ public class CommunityBoard {
         for (int i = 1; i <= Math.max(HTML_MIN_CHUNKS, Math.round(html.length() / HTML_CHUNK_SIZE)); i++) {
             player.sendPacket(new ShowBoard(
                     offset < html.length() ?
-                            html.substring(offset, Math.min(html.length(), offset + HTML_CHUNK_SIZE)) :
-                            null,
+                    html.substring(offset, Math.min(html.length(), offset + HTML_CHUNK_SIZE)) :
+                    null,
                     "10" + i
             ));
             offset += HTML_CHUNK_SIZE;

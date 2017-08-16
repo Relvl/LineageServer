@@ -17,6 +17,7 @@ import net.sf.l2j.gameserver.instancemanager.RaidBossSpawnManager.StatusEnum;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2RaidBossInstance;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -37,7 +38,7 @@ public class Q610_MagicalPowerOfWater_Part2 extends Quest {
     // Other
     private static final int CHECK_INTERVAL = 600000; // 10 minutes
     private static final int IDLE_INTERVAL = 2; // (X * CHECK_INTERVAL) = 20 minutes
-    private static L2Npc _npc = null;
+    private static L2Npc _npc;
     private static int _status = -1;
 
     public Q610_MagicalPowerOfWater_Part2() {
@@ -87,7 +88,7 @@ public class Q610_MagicalPowerOfWater_Part2 extends Quest {
             if (st.hasQuestItems(GREEN_TOTEM)) {
                 st.setState(QuestState.STATE_STARTED);
                 st.set("cond", "1");
-                st.playSound(QuestState.SOUND_ACCEPT);
+                st.playSound(ESound.ItemSound_quest_accept);
             }
             else { htmltext = "31372-02.htm"; }
         }
@@ -95,7 +96,7 @@ public class Q610_MagicalPowerOfWater_Part2 extends Quest {
             if (st.hasQuestItems(ICE_HEART_OF_ASHUTAR)) {
                 st.takeItems(ICE_HEART_OF_ASHUTAR, 1);
                 st.rewardExpAndSp(10000, 0);
-                st.playSound(QuestState.SOUND_FINISH);
+                st.playSound(ESound.ItemSound_quest_finish);
                 st.exitQuest(true);
             }
             else { htmltext = "31372-08.htm"; }
@@ -106,7 +107,7 @@ public class Q610_MagicalPowerOfWater_Part2 extends Quest {
                 if (_status < 0) {
                     if (spawnRaid()) {
                         st.set("cond", "2");
-                        st.playSound(QuestState.SOUND_MIDDLE);
+                        st.playSound(ESound.ItemSound_quest_middle);
                         st.takeItems(GREEN_TOTEM, 1);
                     }
                 }
@@ -132,7 +133,7 @@ public class Q610_MagicalPowerOfWater_Part2 extends Quest {
                 break;
 
             case QuestState.STATE_STARTED:
-                final int cond = st.getInt("cond");
+                int cond = st.getInt("cond");
                 switch (npc.getNpcId()) {
                     case ASEFA:
                         htmltext = (cond < 3) ? "31372-05.htm" : "31372-06.htm";
@@ -160,7 +161,7 @@ public class Q610_MagicalPowerOfWater_Part2 extends Quest {
         for (L2PcInstance partyMember : getPartyMembers(player, npc, "cond", "2")) {
             QuestState st = partyMember.getQuestState(qn);
             st.set("cond", "3");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.giveItems(ICE_HEART_OF_ASHUTAR, 1);
         }
 

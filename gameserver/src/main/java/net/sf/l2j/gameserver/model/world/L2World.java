@@ -2,9 +2,9 @@ package net.sf.l2j.gameserver.model.world;
 
 import net.sf.l2j.gameserver.datatables.CharNameTable;
 import net.sf.l2j.gameserver.model.L2Object;
-import net.sf.l2j.gameserver.model.location.Location;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
+import net.sf.l2j.gameserver.model.location.Location;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

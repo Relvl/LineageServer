@@ -49,12 +49,12 @@ public final class Formulas {
     protected static final double[] sqrtCONbonus = new double[MAX_STAT_VALUE];
     private static final int HP_REGENERATE_PERIOD = 3000; // 3 secs
     private static final byte MELEE_ATTACK_RANGE = 40;
-    private static final double[] STRCompute = new double[]{1.036, 34.845};
-    private static final double[] INTCompute = new double[]{1.020, 31.375};
-    private static final double[] DEXCompute = new double[]{1.009, 19.360};
-    private static final double[] WITCompute = new double[]{1.050, 20.000};
-    private static final double[] CONCompute = new double[]{1.030, 27.632};
-    private static final double[] MENCompute = new double[]{1.010, -0.060};
+    private static final double[] STRCompute = new double[]{ 1.036, 34.845 };
+    private static final double[] INTCompute = new double[]{ 1.020, 31.375 };
+    private static final double[] DEXCompute = new double[]{ 1.009, 19.360 };
+    private static final double[] WITCompute = new double[]{ 1.050, 20.000 };
+    private static final double[] CONCompute = new double[]{ 1.030, 27.632 };
+    private static final double[] MENCompute = new double[]{ 1.010, -0.060 };
     private static final double[] karmaMods = {
             0,
             0.772184315,

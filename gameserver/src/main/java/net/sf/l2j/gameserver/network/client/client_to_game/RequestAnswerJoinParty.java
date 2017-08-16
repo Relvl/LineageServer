@@ -26,92 +26,71 @@ import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 /**
  * format cdd
  */
-public final class RequestAnswerJoinParty extends L2GameClientPacket
-{
-	private int _response;
-	
-	@Override
-	protected void readImpl()
-	{
-		_response = readD();
-	}
-	
-	@Override
-	protected void runImpl()
-	{
-		final L2PcInstance player = getClient().getActiveChar();
-		if (player == null)
-			return;
-		
-		final L2PcInstance requestor = player.getActiveRequester();
-		if (requestor == null)
-			return;
-		
-		requestor.sendPacket(new JoinParty(_response));
-		
-		if (_response == 1)
-		{
-			if (requestor.isInParty())
-			{
-				if (requestor.getParty().getMemberCount() >= 9)
-				{
-					SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.PARTY_FULL);
-					player.sendPacket(sm);
-					requestor.sendPacket(sm);
-					return;
-				}
-			}
-			player.joinParty(requestor.getParty());
-			
-			if (requestor.isInPartyMatchRoom() && player.isInPartyMatchRoom())
-			{
-				final PartyMatchRoomList list = PartyMatchRoomList.getInstance();
-				if (list != null && (list.getPlayerRoomId(requestor) == list.getPlayerRoomId(player)))
-				{
-					final PartyMatchRoom room = list.getPlayerRoom(requestor);
-					if (room != null)
-					{
-						final ExManagePartyRoomMember packet = new ExManagePartyRoomMember(player, room, 1);
-						for (L2PcInstance member : room.getPartyMembers())
-						{
-							if (member != null)
-								member.sendPacket(packet);
-						}
-					}
-				}
-			}
-			else if (requestor.isInPartyMatchRoom() && !player.isInPartyMatchRoom())
-			{
-				final PartyMatchRoomList list = PartyMatchRoomList.getInstance();
-				if (list != null)
-				{
-					final PartyMatchRoom room = list.getPlayerRoom(requestor);
-					if (room != null)
-					{
-						room.addMember(player);
-						ExManagePartyRoomMember packet = new ExManagePartyRoomMember(player, room, 1);
-						for (L2PcInstance member : room.getPartyMembers())
-						{
-							if (member != null)
-								member.sendPacket(packet);
-						}
-						player.setPartyRoom(room.getId());
-						player.broadcastUserInfo();
-					}
-				}
-			}
-		}
-		else
-		{
-			// activate garbage collection if there are no other members in party (happens when we were creating new one)
-			if (requestor.isInParty() && requestor.getParty().getMemberCount() == 1)
-				requestor.getParty().removePartyMember(requestor, MessageType.None);
-		}
-		
-		if (requestor.isInParty())
-			requestor.getParty().setPendingInvitation(false);
-		
-		player.setActiveRequester(null);
-		requestor.onTransactionResponse();
-	}
+public final class RequestAnswerJoinParty extends L2GameClientPacket {
+    private int _response;
+
+    @Override
+    protected void readImpl() {
+        _response = readD();
+    }
+
+    @Override
+    protected void runImpl() {
+        final L2PcInstance player = getClient().getActiveChar();
+        if (player == null) { return; }
+
+        final L2PcInstance requestor = player.getActiveRequester();
+        if (requestor == null) { return; }
+
+        requestor.sendPacket(new JoinParty(_response));
+
+        if (_response == 1) {
+            if (requestor.isInParty()) {
+                if (requestor.getParty().getMemberCount() >= 9) {
+                    SystemMessage sm = SystemMessage.getSystemMessage(SystemMessageId.PARTY_FULL);
+                    player.sendPacket(sm);
+                    requestor.sendPacket(sm);
+                    return;
+                }
+            }
+            player.joinParty(requestor.getParty());
+
+            if (requestor.isInPartyMatchRoom() && player.isInPartyMatchRoom()) {
+                final PartyMatchRoomList list = PartyMatchRoomList.getInstance();
+                if (list != null && (list.getPlayerRoomId(requestor) == list.getPlayerRoomId(player))) {
+                    final PartyMatchRoom room = list.getPlayerRoom(requestor);
+                    if (room != null) {
+                        final ExManagePartyRoomMember packet = new ExManagePartyRoomMember(player, room, 1);
+                        for (L2PcInstance member : room.getPartyMembers()) {
+                            if (member != null) { member.sendPacket(packet); }
+                        }
+                    }
+                }
+            }
+            else if (requestor.isInPartyMatchRoom() && !player.isInPartyMatchRoom()) {
+                final PartyMatchRoomList list = PartyMatchRoomList.getInstance();
+                if (list != null) {
+                    final PartyMatchRoom room = list.getPlayerRoom(requestor);
+                    if (room != null) {
+                        room.addMember(player);
+                        ExManagePartyRoomMember packet = new ExManagePartyRoomMember(player, room, 1);
+                        for (L2PcInstance member : room.getPartyMembers()) {
+                            if (member != null) { member.sendPacket(packet); }
+                        }
+                        player.setPartyRoom(room.getId());
+                        player.broadcastUserInfo();
+                    }
+                }
+            }
+        }
+        else {
+            // activate garbage collection if there are no other members in party (happens when we were creating new one)
+            if (requestor.isInParty() && requestor.getParty().getMemberCount() == 1) { requestor.getParty().removePartyMember(requestor, MessageType.None); }
+        }
+
+        if (requestor.isInParty()) { requestor.getParty().setPendingInvitation(false); }
+
+        player.setActiveRequester(null);
+        requestor.onTransactionResponse();
+    }
 }

@@ -1,13 +1,13 @@
 CREATE TABLE IF NOT EXISTS `auction` (
-  id int(11) NOT NULL default '0',
-  sellerId int(11) NOT NULL default '0',
-  sellerName varchar(20) NOT NULL default '',
-  sellerClanName varchar(20) NOT NULL default '',
-  itemId int(11) NOT NULL default '0',
-  itemName varchar(40) NOT NULL default '',
-  startingBid int(11) NOT NULL default '0',
-  currentBid int(11) NOT NULL default '0',
-  endDate decimal(20,0) NOT NULL default '0',
+  id             INT(11)        NOT NULL DEFAULT '0',
+  sellerId       INT(11)        NOT NULL DEFAULT '0',
+  sellerName     VARCHAR(20)    NOT NULL DEFAULT '',
+  sellerClanName VARCHAR(20)    NOT NULL DEFAULT '',
+  itemId         INT(11)        NOT NULL DEFAULT '0',
+  itemName       VARCHAR(40)    NOT NULL DEFAULT '',
+  startingBid    INT(11)        NOT NULL DEFAULT '0',
+  currentBid     INT(11)        NOT NULL DEFAULT '0',
+  endDate        DECIMAL(20, 0) NOT NULL DEFAULT '0',
   PRIMARY KEY (`itemId`),
   KEY `id` (`id`)
 );

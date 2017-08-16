@@ -17,70 +17,66 @@ package net.sf.l2j.gameserver.network.client.game_to_client;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.taskmanager.GameTimeTaskManager;
 
-public class CharSelected extends L2GameServerPacket
-{
-	private final L2PcInstance _activeChar;
-	private final int _sessionId;
-	
-	public CharSelected(L2PcInstance cha, int sessionId)
-	{
-		_activeChar = cha;
-		_sessionId = sessionId;
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
-		writeC(0x15);
-		
-		writeS(_activeChar.getName());
-		writeD(_activeChar.getObjectId());
-		writeS(_activeChar.getTitle());
-		writeD(_sessionId);
-		writeD(_activeChar.getClanId());
-		
-		writeD(0x00); // unknown
-		
-		writeD(_activeChar.getAppearance().isFemale() ? 1 : 0);
-		writeD(_activeChar.getRace().ordinal());
-		writeD(_activeChar.getClassId().getId());
-		
-		writeD(0x01);
-		
-		writeD(_activeChar.getX());
-		writeD(_activeChar.getY());
-		writeD(_activeChar.getZ());
-		writeF(_activeChar.getCurrentHp());
-		writeF(_activeChar.getCurrentMp());
-		writeD(_activeChar.getStat().getSp());
-		writeQ(_activeChar.getStat().getExp());
-		writeD(_activeChar.getLevel());
-		writeD(_activeChar.getKarma());
-		writeD(_activeChar.getPkKills());
-		writeD(_activeChar.getINT());
-		writeD(_activeChar.getSTR());
-		writeD(_activeChar.getCON());
-		writeD(_activeChar.getMEN());
-		writeD(_activeChar.getDEX());
-		writeD(_activeChar.getWIT());
-		
-		for (int i = 0; i < 30; i++)
-		{
-			writeD(0x00);
-		}
-		
-		writeD(0x00); // c3 work
-		writeD(0x00); // c3 work
-		
-		writeD(GameTimeTaskManager.getInstance().getGameTime());
-		
-		writeD(0x00); // c3
-		
-		writeD(_activeChar.getClassId().getId());
-		
-		writeD(0x00); // c3 InspectorBin
-		writeD(0x00); // c3
-		writeD(0x00); // c3
-		writeD(0x00); // c3
-	}
+public class CharSelected extends L2GameServerPacket {
+    private final L2PcInstance _activeChar;
+    private final int _sessionId;
+
+    public CharSelected(L2PcInstance cha, int sessionId) {
+        _activeChar = cha;
+        _sessionId = sessionId;
+    }
+
+    @Override
+    protected final void writeImpl() {
+        writeC(0x15);
+
+        writeS(_activeChar.getName());
+        writeD(_activeChar.getObjectId());
+        writeS(_activeChar.getTitle());
+        writeD(_sessionId);
+        writeD(_activeChar.getClanId());
+
+        writeD(0x00); // unknown
+
+        writeD(_activeChar.getAppearance().isFemale() ? 1 : 0);
+        writeD(_activeChar.getRace().ordinal());
+        writeD(_activeChar.getClassId().getId());
+
+        writeD(0x01);
+
+        writeD(_activeChar.getX());
+        writeD(_activeChar.getY());
+        writeD(_activeChar.getZ());
+        writeF(_activeChar.getCurrentHp());
+        writeF(_activeChar.getCurrentMp());
+        writeD(_activeChar.getStat().getSp());
+        writeQ(_activeChar.getStat().getExp());
+        writeD(_activeChar.getLevel());
+        writeD(_activeChar.getKarma());
+        writeD(_activeChar.getPkKills());
+        writeD(_activeChar.getINT());
+        writeD(_activeChar.getSTR());
+        writeD(_activeChar.getCON());
+        writeD(_activeChar.getMEN());
+        writeD(_activeChar.getDEX());
+        writeD(_activeChar.getWIT());
+
+        for (int i = 0; i < 30; i++) {
+            writeD(0x00);
+        }
+
+        writeD(0x00); // c3 work
+        writeD(0x00); // c3 work
+
+        writeD(GameTimeTaskManager.getInstance().getGameTime());
+
+        writeD(0x00); // c3
+
+        writeD(_activeChar.getClassId().getId());
+
+        writeD(0x00); // c3 InspectorBin
+        writeD(0x00); // c3
+        writeD(0x00); // c3
+        writeD(0x00); // c3
+    }
 }

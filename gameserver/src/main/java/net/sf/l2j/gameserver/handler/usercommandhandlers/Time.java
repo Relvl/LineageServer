@@ -7,7 +7,7 @@ import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.taskmanager.GameTimeTaskManager;
 
 public class Time implements IUserCommandHandler {
-    private static final int[] COMMAND_IDS = {77};
+    private static final int[] COMMAND_IDS = { 77 };
 
     @Override
     public boolean useUserCommand(int id, L2PcInstance activeChar) {

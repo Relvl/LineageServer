@@ -326,7 +326,10 @@ public class CharEffectList {
     public final void stopSkillEffects(L2SkillType skillType, int negateLvl) {
         if (_buffs != null && !_buffs.isEmpty()) {
             for (L2Effect e : _buffs) {
-                if (e != null && (e.getSkill().getSkillType() == skillType || (e.getSkill().getEffectType() != null && e.getSkill().getEffectType() == skillType)) && (negateLvl == -1 || (e.getSkill().getEffectType() != null && e.getSkill().getEffectAbnormalLvl() >= 0 && e.getSkill().getEffectAbnormalLvl() <= negateLvl) || (e.getSkill().getAbnormalLvl() >= 0 && e.getSkill().getAbnormalLvl() <= negateLvl))) {
+                if (e != null && (e.getSkill().getSkillType() == skillType || (e.getSkill().getEffectType() != null && e.getSkill().getEffectType() == skillType)) && (negateLvl == -1 || (e.getSkill().getEffectType() != null && e.getSkill()
+                                                                                                                                                                                                                                    .getEffectAbnormalLvl() >= 0 && e
+                        .getSkill()
+                        .getEffectAbnormalLvl() <= negateLvl) || (e.getSkill().getAbnormalLvl() >= 0 && e.getSkill().getAbnormalLvl() <= negateLvl))) {
                     e.exit();
                 }
             }
@@ -334,7 +337,10 @@ public class CharEffectList {
 
         if (_debuffs != null && !_debuffs.isEmpty()) {
             for (L2Effect e : _debuffs) {
-                if (e != null && (e.getSkill().getSkillType() == skillType || (e.getSkill().getEffectType() != null && e.getSkill().getEffectType() == skillType)) && (negateLvl == -1 || (e.getSkill().getEffectType() != null && e.getSkill().getEffectAbnormalLvl() >= 0 && e.getSkill().getEffectAbnormalLvl() <= negateLvl) || (e.getSkill().getAbnormalLvl() >= 0 && e.getSkill().getAbnormalLvl() <= negateLvl))) {
+                if (e != null && (e.getSkill().getSkillType() == skillType || (e.getSkill().getEffectType() != null && e.getSkill().getEffectType() == skillType)) && (negateLvl == -1 || (e.getSkill().getEffectType() != null && e.getSkill()
+                                                                                                                                                                                                                                    .getEffectAbnormalLvl() >= 0 && e
+                        .getSkill()
+                        .getEffectAbnormalLvl() <= negateLvl) || (e.getSkill().getAbnormalLvl() >= 0 && e.getSkill().getAbnormalLvl() <= negateLvl))) {
                     e.exit();
                 }
             }
@@ -509,7 +515,8 @@ public class CharEffectList {
             if (_debuffs == null) { _debuffs = new CopyOnWriteArrayList<>(); }
 
             for (L2Effect e : _debuffs) {
-                if (e != null && e.getSkill().getId() == newEffect.getSkill().getId() && e.getEffectType() == newEffect.getEffectType() && e.getStackOrder() == newEffect.getStackOrder() && e.getStackType().equals(newEffect.getStackType())) {
+                if (e != null && e.getSkill().getId() == newEffect.getSkill().getId() && e.getEffectType() == newEffect.getEffectType() && e.getStackOrder() == newEffect.getStackOrder() && e.getStackType()
+                                                                                                                                                                                              .equals(newEffect.getStackType())) {
                     // Started scheduled timer needs to be canceled.
                     newEffect.stopEffectTask();
                     return;
@@ -521,7 +528,8 @@ public class CharEffectList {
             if (_buffs == null) { _buffs = new CopyOnWriteArrayList<>(); }
 
             for (L2Effect e : _buffs) {
-                if (e != null && e.getSkill().getId() == newEffect.getSkill().getId() && e.getEffectType() == newEffect.getEffectType() && e.getStackOrder() == newEffect.getStackOrder() && e.getStackType().equals(newEffect.getStackType())) {
+                if (e != null && e.getSkill().getId() == newEffect.getSkill().getId() && e.getEffectType() == newEffect.getEffectType() && e.getStackOrder() == newEffect.getStackOrder() && e.getStackType()
+                                                                                                                                                                                              .equals(newEffect.getStackType())) {
                     e.exit(); // exit this
                 }
             }

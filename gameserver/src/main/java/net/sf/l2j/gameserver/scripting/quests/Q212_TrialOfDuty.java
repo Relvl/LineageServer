@@ -17,6 +17,7 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.ClassId;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -73,12 +74,12 @@ public class Q212_TrialOfDuty extends Quest {
         if (event.equalsIgnoreCase("30109-04.htm")) {
             st.setState(QuestState.STATE_STARTED);
             st.set("cond", "1");
-            st.playSound(QuestState.SOUND_ACCEPT);
+            st.playSound(ESound.ItemSound_quest_accept);
             st.giveItems(DIMENSIONAL_DIAMOND, 61);
         }
         else if (event.equalsIgnoreCase("30116-05.htm")) {
             st.set("cond", "14");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.takeItems(TEAR_OF_LOYALTY, 1);
         }
 
@@ -108,7 +109,7 @@ public class Q212_TrialOfDuty extends Quest {
                             st.giveItems(MARK_OF_DUTY, 1);
                             st.rewardExpAndSp(79832, 3750);
                             player.broadcastPacket(new SocialAction(player, 3));
-                            st.playSound(QuestState.SOUND_FINISH);
+                            st.playSound(ESound.ItemSound_quest_finish);
                             st.exitQuest(false);
                         }
                         else { htmltext = "30109-04a.htm"; }
@@ -118,14 +119,14 @@ public class Q212_TrialOfDuty extends Quest {
                         if (cond == 1) {
                             htmltext = "30653-01.htm";
                             st.set("cond", "2");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.giveItems(OLD_KNIGHT_SWORD, 1);
                         }
                         else if (cond == 2) { htmltext = "30653-02.htm"; }
                         else if (cond == 3) {
                             htmltext = "30653-03.htm";
                             st.set("cond", "4");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(KNIGHTS_TEAR, 1);
                             st.takeItems(OLD_KNIGHT_SWORD, 1);
                         }
@@ -136,20 +137,20 @@ public class Q212_TrialOfDuty extends Quest {
                         if (cond == 4) {
                             htmltext = "30654-01.htm";
                             st.set("cond", "5");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                         }
                         else if (cond == 5) { htmltext = "30654-02.htm"; }
                         else if (cond == 6) {
                             htmltext = "30654-03.htm";
                             st.set("cond", "7");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.giveItems(MIRROR_OF_ORPIC, 1);
                         }
                         else if (cond == 7) { htmltext = "30654-04.htm"; }
                         else if (cond == 9) {
                             htmltext = "30654-05.htm";
                             st.set("cond", "10");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(TEAR_OF_CONFESSION, 1);
                         }
                         else if (cond > 9) { htmltext = "30654-06.htm"; }
@@ -159,7 +160,7 @@ public class Q212_TrialOfDuty extends Quest {
                         if (cond == 8) {
                             htmltext = "30656-01.htm";
                             st.set("cond", "9");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(MIRROR_OF_ORPIC, 1);
                             st.takeItems(REPORT_PIECE_2, 1);
                             st.giveItems(TEAR_OF_CONFESSION, 1);
@@ -175,14 +176,14 @@ public class Q212_TrialOfDuty extends Quest {
                             else {
                                 htmltext = "30655-02.htm";
                                 st.set("cond", "11");
-                                st.playSound(QuestState.SOUND_MIDDLE);
+                                st.playSound(ESound.ItemSound_quest_middle);
                             }
                         }
                         else if (cond == 11) { htmltext = "30655-03.htm"; }
                         else if (cond == 12) {
                             htmltext = "30655-04.htm";
                             st.set("cond", "13");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(MILITAS_ARTICLE, -1);
                             st.giveItems(TEAR_OF_LOYALTY, 1);
                         }
@@ -195,7 +196,7 @@ public class Q212_TrialOfDuty extends Quest {
                         else if (cond == 15) {
                             htmltext = "30116-07.htm";
                             st.set("cond", "16");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(ATHEBALDT_SKULL, 1);
                             st.takeItems(ATHEBALDT_RIBS, 1);
                             st.takeItems(ATHEBALDT_SHIN, 1);
@@ -205,7 +206,7 @@ public class Q212_TrialOfDuty extends Quest {
                         else if (cond == 17) {
                             htmltext = "30116-08.htm";
                             st.set("cond", "18");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(LETTER_OF_WINDAWOOD, 1);
                             st.giveItems(LETTER_OF_DUSTIN, 1);
                         }
@@ -216,7 +217,7 @@ public class Q212_TrialOfDuty extends Quest {
                         if (cond == 16) {
                             htmltext = "30311-01.htm";
                             st.set("cond", "17");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(SAINTS_ASHES_URN, 1);
                             st.giveItems(LETTER_OF_WINDAWOOD, 1);
                         }
@@ -243,7 +244,7 @@ public class Q212_TrialOfDuty extends Quest {
             case 20190:
             case 20191:
                 if (cond == 2 && Rnd.get(10) < 1) {
-                    st.playSound(QuestState.SOUND_BEFORE_BATTLE);
+                    st.playSound(ESound.Itemsound_quest_before_battle);
                     addSpawn(27119, npc, false, 120000, true);
                 }
                 break;
@@ -251,7 +252,7 @@ public class Q212_TrialOfDuty extends Quest {
             case 27119:
                 if (cond == 2 && st.getItemEquipped(EPaperdollSlot.PAPERDOLL_RHAND) == OLD_KNIGHT_SWORD) {
                     st.set("cond", "3");
-                    st.playSound(QuestState.SOUND_MIDDLE);
+                    st.playSound(ESound.ItemSound_quest_middle);
                     st.giveItems(KNIGHTS_TEAR, 1);
                 }
                 break;
@@ -269,7 +270,7 @@ public class Q212_TrialOfDuty extends Quest {
                 if ((cond == 7 || cond == 8) && Rnd.get(100) < 33) {
                     if (cond == 7) {
                         st.set("cond", "8");
-                        st.playSound(QuestState.SOUND_MIDDLE);
+                        st.playSound(ESound.ItemSound_quest_middle);
                     }
                     addSpawn(30656, npc, false, 300000, true);
                 }
@@ -287,16 +288,16 @@ public class Q212_TrialOfDuty extends Quest {
             case 20270:
                 if (cond == 14 && Rnd.nextBoolean()) {
                     if (!st.hasQuestItems(ATHEBALDT_SKULL)) {
-                        st.playSound(QuestState.SOUND_ITEMGET);
+                        st.playSound(ESound.ItemSound_quest_itemget);
                         st.giveItems(ATHEBALDT_SKULL, 1);
                     }
                     else if (!st.hasQuestItems(ATHEBALDT_RIBS)) {
-                        st.playSound(QuestState.SOUND_ITEMGET);
+                        st.playSound(ESound.ItemSound_quest_itemget);
                         st.giveItems(ATHEBALDT_RIBS, 1);
                     }
                     else if (!st.hasQuestItems(ATHEBALDT_SHIN)) {
                         st.set("cond", "15");
-                        st.playSound(QuestState.SOUND_MIDDLE);
+                        st.playSound(ESound.ItemSound_quest_middle);
                         st.giveItems(ATHEBALDT_SHIN, 1);
                     }
                 }

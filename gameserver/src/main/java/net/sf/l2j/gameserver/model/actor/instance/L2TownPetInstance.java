@@ -15,13 +15,13 @@
 package net.sf.l2j.gameserver.model.actor.instance;
 
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
 import net.sf.l2j.gameserver.network.client.game_to_client.MoveToPawn;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 public class L2TownPetInstance extends L2NpcInstance {
     int randomX, randomY, spawnX, spawnY;

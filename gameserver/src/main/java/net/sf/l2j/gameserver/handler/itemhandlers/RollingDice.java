@@ -26,25 +26,21 @@ import net.sf.l2j.gameserver.util.Broadcast;
 import net.sf.l2j.gameserver.util.FloodProtectors;
 import net.sf.l2j.gameserver.util.FloodProtectors.Action;
 
-public class RollingDice implements IItemHandler
-{
-	@Override
-	public void useItem(L2Playable playable, L2ItemInstance item, boolean forceUse)
-	{
-		if (!(playable instanceof L2PcInstance))
-			return;
-		
-		final L2PcInstance activeChar = (L2PcInstance) playable;
-		
-		if (!FloodProtectors.performAction(activeChar.getClient(), Action.ROLL_DICE))
-		{
-			activeChar.sendPacket(SystemMessageId.YOU_MAY_NOT_THROW_THE_DICE_AT_THIS_TIME_TRY_AGAIN_LATER);
-			return;
-		}
-		
-		final int number = Rnd.get(1, 6);
-		
-		Broadcast.toSelfAndKnownPlayers(activeChar, new Dice(activeChar.getObjectId(), item.getItemId(), number, activeChar.getX() - 30, activeChar.getY() - 30, activeChar.getZ()));
-		Broadcast.toSelfAndKnownPlayers(activeChar, SystemMessage.getSystemMessage(SystemMessageId.S1_ROLLED_S2).addPcName(activeChar).addNumber(number));
-	}
+public class RollingDice implements IItemHandler {
+    @Override
+    public void useItem(L2Playable playable, L2ItemInstance item, boolean forceUse) {
+        if (!(playable instanceof L2PcInstance)) { return; }
+
+        final L2PcInstance activeChar = (L2PcInstance) playable;
+
+        if (!FloodProtectors.performAction(activeChar.getClient(), Action.ROLL_DICE)) {
+            activeChar.sendPacket(SystemMessageId.YOU_MAY_NOT_THROW_THE_DICE_AT_THIS_TIME_TRY_AGAIN_LATER);
+            return;
+        }
+
+        final int number = Rnd.get(1, 6);
+
+        Broadcast.toSelfAndKnownPlayers(activeChar, new Dice(activeChar.getObjectId(), item.getItemId(), number, activeChar.getX() - 30, activeChar.getY() - 30, activeChar.getZ()));
+        Broadcast.toSelfAndKnownPlayers(activeChar, SystemMessage.getSystemMessage(SystemMessageId.S1_ROLLED_S2).addPcName(activeChar).addNumber(number));
+    }
 }

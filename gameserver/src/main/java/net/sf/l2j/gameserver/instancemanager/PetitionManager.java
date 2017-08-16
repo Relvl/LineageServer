@@ -176,7 +176,8 @@ public final class PetitionManager {
 
                 if (currPetition.getState() != PetitionState.In_Process) { continue; }
 
-                if ((currPetition.getPetitioner() != null && currPetition.getPetitioner().getObjectId() == player.getObjectId()) || (currPetition.getResponder() != null && currPetition.getResponder().getObjectId() == player.getObjectId())) {
+                if ((currPetition.getPetitioner() != null && currPetition.getPetitioner().getObjectId() == player.getObjectId()) || (currPetition.getResponder() != null && currPetition.getResponder()
+                                                                                                                                                                                        .getObjectId() == player.getObjectId())) {
                     return true;
                 }
             }

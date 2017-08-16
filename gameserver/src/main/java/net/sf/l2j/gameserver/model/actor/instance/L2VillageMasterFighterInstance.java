@@ -19,28 +19,22 @@ import net.sf.l2j.gameserver.model.base.ClassType;
 import net.sf.l2j.gameserver.model.base.PlayerClass;
 import net.sf.l2j.gameserver.model.base.PlayerRace;
 
-public final class L2VillageMasterFighterInstance extends L2VillageMasterInstance
-{
-	public L2VillageMasterFighterInstance(int objectId, NpcTemplate template)
-	{
-		super(objectId, template);
-	}
-	
-	@Override
-	protected final boolean checkVillageMasterRace(PlayerClass pclass)
-	{
-		if (pclass == null)
-			return false;
-		
-		return pclass.isOfRace(PlayerRace.Human) || pclass.isOfRace(PlayerRace.Elf);
-	}
-	
-	@Override
-	protected final boolean checkVillageMasterTeachType(PlayerClass pclass)
-	{
-		if (pclass == null)
-			return false;
-		
-		return pclass.isOfType(ClassType.Fighter);
-	}
+public final class L2VillageMasterFighterInstance extends L2VillageMasterInstance {
+    public L2VillageMasterFighterInstance(int objectId, NpcTemplate template) {
+        super(objectId, template);
+    }
+
+    @Override
+    protected final boolean checkVillageMasterRace(PlayerClass pclass) {
+        if (pclass == null) { return false; }
+
+        return pclass.isOfRace(PlayerRace.Human) || pclass.isOfRace(PlayerRace.Elf);
+    }
+
+    @Override
+    protected final boolean checkVillageMasterTeachType(PlayerClass pclass) {
+        if (pclass == null) { return false; }
+
+        return pclass.isOfType(ClassType.Fighter);
+    }
 }

@@ -4,8 +4,8 @@ import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.skills.Calculator;
-import net.sf.l2j.gameserver.skills.func.Env;
 import net.sf.l2j.gameserver.skills.Stats;
+import net.sf.l2j.gameserver.skills.func.Env;
 
 public class CharStat {
     private final L2Character activeChar;

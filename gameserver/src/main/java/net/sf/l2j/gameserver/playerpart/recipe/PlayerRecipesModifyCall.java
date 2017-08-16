@@ -53,5 +53,4 @@ public class PlayerRecipesModifyCall extends IndexedCall {
                 ", resultCode=" + resultCode +
                 '}';
     }
-
 }

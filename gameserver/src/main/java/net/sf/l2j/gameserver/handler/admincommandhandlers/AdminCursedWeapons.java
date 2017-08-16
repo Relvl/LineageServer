@@ -102,10 +102,16 @@ public class AdminCursedWeapons implements IAdminCommandHandler {
 
                         if (cw.isActivated()) {
                             L2PcInstance pl = cw.getPlayer();
-                            StringUtil.append(sb, "<tr><td>Owner:</td><td>", ((pl == null) ? "null" : pl.getName()), "</td></tr><tr><td>Stored values:</td><td>Karma=", cw.getPlayerKarma(), " PKs=", cw.getPlayerPkKills(), "</td></tr><tr><td>Current stage:</td><td>", cw.getCurrentStage(), "</td></tr><tr><td>Overall time:</td><td>", numDays, "d. ", numHours, "h. ", numMins, "m.</td></tr><tr><td>Hungry time:</td><td>", cw.getHungryTime(), "m.</td></tr><tr><td>Current kills:</td><td>", cw.getNbKills(), " / ", cw.getNumberBeforeNextStage(), "</td></tr><tr><td><button value=\"Remove\" action=\"bypass -h admin_cw_remove ", cw.getItemId(), "\" width=75 height=21 back=\"L2UI_ch3.Btn1_normalOn\" fore=\"L2UI_ch3.Btn1_normal\"></td><td><button value=\"Go\" action=\"bypass -h admin_cw_goto ", cw.getItemId(), "\" width=75 height=21 back=\"L2UI_ch3.Btn1_normalOn\" fore=\"L2UI_ch3.Btn1_normal\"></td></tr>");
+                            StringUtil.append(sb, "<tr><td>Owner:</td><td>", ((pl == null)
+                                                                              ? "null"
+                                                                              : pl.getName()), "</td></tr><tr><td>Stored values:</td><td>Karma=", cw.getPlayerKarma(), " PKs=", cw.getPlayerPkKills(), "</td></tr><tr><td>Current stage:</td><td>", cw
+                                    .getCurrentStage(), "</td></tr><tr><td>Overall time:</td><td>", numDays, "d. ", numHours, "h. ", numMins, "m.</td></tr><tr><td>Hungry time:</td><td>", cw.getHungryTime(), "m.</td></tr><tr><td>Current kills:</td><td>", cw
+                                    .getNbKills(), " / ", cw.getNumberBeforeNextStage(), "</td></tr><tr><td><button value=\"Remove\" action=\"bypass -h admin_cw_remove ", cw.getItemId(), "\" width=75 height=21 back=\"L2UI_ch3.Btn1_normalOn\" fore=\"L2UI_ch3.Btn1_normal\"></td><td><button value=\"Go\" action=\"bypass -h admin_cw_goto ", cw
+                                    .getItemId(), "\" width=75 height=21 back=\"L2UI_ch3.Btn1_normalOn\" fore=\"L2UI_ch3.Btn1_normal\"></td></tr>");
                         }
                         else if (cw.isDropped()) {
-                            StringUtil.append(sb, "<tr><td>Position:</td><td>Lying on the ground</td></tr><tr><td>Overall time:</td><td>", numDays, "d. ", numHours, "h. ", numMins, "m.</td></tr><tr><td><button value=\"Remove\" action=\"bypass -h admin_cw_remove ", cw.getItemId(), "\" width=75 height=21 back=\"L2UI_ch3.Btn1_normalOn\" fore=\"L2UI_ch3.Btn1_normal\"></td><td><button value=\"Go\" action=\"bypass -h admin_cw_goto ", cw.getItemId(), "\" width=75 height=21 back=\"L2UI_ch3.Btn1_normalOn\" fore=\"L2UI_ch3.Btn1_normal\"></td></tr>");
+                            StringUtil.append(sb, "<tr><td>Position:</td><td>Lying on the ground</td></tr><tr><td>Overall time:</td><td>", numDays, "d. ", numHours, "h. ", numMins, "m.</td></tr><tr><td><button value=\"Remove\" action=\"bypass -h admin_cw_remove ", cw
+                                    .getItemId(), "\" width=75 height=21 back=\"L2UI_ch3.Btn1_normalOn\" fore=\"L2UI_ch3.Btn1_normal\"></td><td><button value=\"Go\" action=\"bypass -h admin_cw_goto ", cw.getItemId(), "\" width=75 height=21 back=\"L2UI_ch3.Btn1_normalOn\" fore=\"L2UI_ch3.Btn1_normal\"></td></tr>");
                         }
                     }
                     else {

@@ -15,7 +15,7 @@ import java.util.Map.Entry;
 public class ClanPenalty implements IUserCommandHandler {
     private static final String NO_PENALTY = "<tr><td width=170>No penalty is imposed.</td><td width=100 align=center></td></tr>";
 
-    private static final int[] COMMAND_IDS = {100};
+    private static final int[] COMMAND_IDS = { 100 };
 
     @Override
     public boolean useUserCommand(int id, L2PcInstance activeChar) {

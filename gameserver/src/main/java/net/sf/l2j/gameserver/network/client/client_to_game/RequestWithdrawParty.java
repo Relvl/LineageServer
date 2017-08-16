@@ -23,44 +23,35 @@ import net.sf.l2j.gameserver.network.client.game_to_client.ExClosePartyRoom;
 import net.sf.l2j.gameserver.network.client.game_to_client.ExPartyRoomMember;
 import net.sf.l2j.gameserver.network.client.game_to_client.PartyMatchDetail;
 
-public final class RequestWithdrawParty extends L2GameClientPacket
-{
-	@Override
-	protected void readImpl()
-	{
-	}
-	
-	@Override
-	protected void runImpl()
-	{
-		final L2PcInstance player = getClient().getActiveChar();
-		if (player == null)
-			return;
-		
-		final L2Party party = player.getParty();
-		if (party == null)
-			return;
-		
-		if (party.isInDimensionalRift() && !party.getDimensionalRift().getRevivedAtWaitingRoom().contains(player))
-			player.sendMessage("You can't exit party when you are in Dimensional Rift.");
-		else
-		{
-			party.removePartyMember(player, MessageType.Left);
-			
-			if (player.isInPartyMatchRoom())
-			{
-				PartyMatchRoom _room = PartyMatchRoomList.getInstance().getPlayerRoom(player);
-				if (_room != null)
-				{
-					player.sendPacket(new PartyMatchDetail(_room));
-					player.sendPacket(new ExPartyRoomMember(_room, 0));
-					player.sendPacket(ExClosePartyRoom.STATIC_PACKET);
-					
-					_room.deleteMember(player);
-				}
-				player.setPartyRoom(0);
-				player.broadcastUserInfo();
-			}
-		}
-	}
+public final class RequestWithdrawParty extends L2GameClientPacket {
+    @Override
+    protected void readImpl() {
+    }
+
+    @Override
+    protected void runImpl() {
+        final L2PcInstance player = getClient().getActiveChar();
+        if (player == null) { return; }
+
+        final L2Party party = player.getParty();
+        if (party == null) { return; }
+
+        if (party.isInDimensionalRift() && !party.getDimensionalRift().getRevivedAtWaitingRoom().contains(player)) { player.sendMessage("You can't exit party when you are in Dimensional Rift."); }
+        else {
+            party.removePartyMember(player, MessageType.Left);
+
+            if (player.isInPartyMatchRoom()) {
+                PartyMatchRoom _room = PartyMatchRoomList.getInstance().getPlayerRoom(player);
+                if (_room != null) {
+                    player.sendPacket(new PartyMatchDetail(_room));
+                    player.sendPacket(new ExPartyRoomMember(_room, 0));
+                    player.sendPacket(ExClosePartyRoom.STATIC_PACKET);
+
+                    _room.deleteMember(player);
+                }
+                player.setPartyRoom(0);
+                player.broadcastUserInfo();
+            }
+        }
+    }
 }

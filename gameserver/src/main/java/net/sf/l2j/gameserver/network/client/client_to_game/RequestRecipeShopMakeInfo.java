@@ -14,36 +14,31 @@
  */
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
-import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
-import net.sf.l2j.gameserver.playerpart.PrivateStoreType;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.client.game_to_client.RecipeShopItemInfo;
+import net.sf.l2j.gameserver.playerpart.PrivateStoreType;
 
 /**
  * cdd
  */
-public final class RequestRecipeShopMakeInfo extends L2GameClientPacket
-{
-	private int _playerObjectId, _recipeId;
-	
-	@Override
-	protected void readImpl()
-	{
-		_playerObjectId = readD();
-		_recipeId = readD();
-	}
-	
-	@Override
-	protected void runImpl()
-	{
-		final L2PcInstance player = getClient().getActiveChar();
-		if (player == null)
-			return;
-		
-		final L2PcInstance shop = L2World.getInstance().getPlayer(_playerObjectId);
-		if (shop == null || shop.getPrivateStoreType() != PrivateStoreType.MANUFACTURE)
-			return;
-		
-		player.sendPacket(new RecipeShopItemInfo(shop, _recipeId));
-	}
+public final class RequestRecipeShopMakeInfo extends L2GameClientPacket {
+    private int _playerObjectId, _recipeId;
+
+    @Override
+    protected void readImpl() {
+        _playerObjectId = readD();
+        _recipeId = readD();
+    }
+
+    @Override
+    protected void runImpl() {
+        final L2PcInstance player = getClient().getActiveChar();
+        if (player == null) { return; }
+
+        final L2PcInstance shop = L2World.getInstance().getPlayer(_playerObjectId);
+        if (shop == null || shop.getPrivateStoreType() != PrivateStoreType.MANUFACTURE) { return; }
+
+        player.sendPacket(new RecipeShopItemInfo(shop, _recipeId));
+    }
 }

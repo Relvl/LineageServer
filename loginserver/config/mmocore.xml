@@ -1,6 +1,6 @@
 <MMOCoreConfig>
-  <SelectorSleepTime>20</SelectorSleepTime>
-  <MaxSendPerPass>12</MaxSendPerPass>
-  <MaxReadPerPass>12</MaxReadPerPass>
-  <HelperBufferCount>20</HelperBufferCount>
+    <SelectorSleepTime>20</SelectorSleepTime>
+    <MaxSendPerPass>12</MaxSendPerPass>
+    <MaxReadPerPass>12</MaxReadPerPass>
+    <HelperBufferCount>20</HelperBufferCount>
 </MMOCoreConfig>

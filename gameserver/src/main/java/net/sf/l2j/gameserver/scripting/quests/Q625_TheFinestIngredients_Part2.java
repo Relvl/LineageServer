@@ -18,6 +18,7 @@ import net.sf.l2j.gameserver.instancemanager.RaidBossSpawnManager.StatusEnum;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2RaidBossInstance;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -48,7 +49,7 @@ public class Q625_TheFinestIngredients_Part2 extends Quest {
     // Other
     private static final int CHECK_INTERVAL = 600000; // 10 minutes
     private static final int IDLE_INTERVAL = 3; // (X * CHECK_INTERVAL) = 30 minutes
-    private static L2Npc _npc = null;
+    private static L2Npc _npc;
     private static int _status = -1;
 
     public Q625_TheFinestIngredients_Part2() {
@@ -98,7 +99,7 @@ public class Q625_TheFinestIngredients_Part2 extends Quest {
             if (st.hasQuestItems(SOY_SAUCE_JAR)) {
                 st.setState(QuestState.STATE_STARTED);
                 st.set("cond", "1");
-                st.playSound(QuestState.SOUND_ACCEPT);
+                st.playSound(ESound.ItemSound_quest_accept);
                 st.takeItems(SOY_SAUCE_JAR, 1);
                 st.giveItems(FOOD_FOR_BUMBALUMP, 1);
             }
@@ -108,7 +109,7 @@ public class Q625_TheFinestIngredients_Part2 extends Quest {
             if (st.hasQuestItems(SPECIAL_YETI_MEAT)) {
                 st.takeItems(SPECIAL_YETI_MEAT, 1);
                 st.rewardItems(REWARD_DYE[Rnd.get(REWARD_DYE.length)], 5);
-                st.playSound(QuestState.SOUND_FINISH);
+                st.playSound(ESound.ItemSound_quest_finish);
                 st.exitQuest(true);
             }
             else { htmltext = "31521-09.htm"; }
@@ -119,7 +120,7 @@ public class Q625_TheFinestIngredients_Part2 extends Quest {
                 if (_status < 0) {
                     if (spawnRaid()) {
                         st.set("cond", "2");
-                        st.playSound(QuestState.SOUND_MIDDLE);
+                        st.playSound(ESound.ItemSound_quest_middle);
                         st.takeItems(FOOD_FOR_BUMBALUMP, 1);
                     }
                 }
@@ -143,7 +144,7 @@ public class Q625_TheFinestIngredients_Part2 extends Quest {
                 break;
 
             case QuestState.STATE_STARTED:
-                final int cond = st.getInt("cond");
+                int cond = st.getInt("cond");
                 switch (npc.getNpcId()) {
                     case JEREMY:
                         if (cond == 1) { htmltext = "31521-05.htm"; }
@@ -174,7 +175,7 @@ public class Q625_TheFinestIngredients_Part2 extends Quest {
             QuestState st = partyMember.getQuestState(qn);
 
             st.set("cond", "3");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.giveItems(SPECIAL_YETI_MEAT, 1);
         }
 

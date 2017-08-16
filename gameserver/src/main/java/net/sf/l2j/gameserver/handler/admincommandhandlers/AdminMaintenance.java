@@ -17,8 +17,8 @@ package net.sf.l2j.gameserver.handler.admincommandhandlers;
 import net.sf.l2j.gameserver.LoginServerThread;
 import net.sf.l2j.gameserver.Shutdown;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
-import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 import net.sf.l2j.gameserver.taskmanager.GameTimeTaskManager;
 
@@ -50,14 +50,16 @@ public class AdminMaintenance implements IAdminCommandHandler {
         else if (command.startsWith("admin_server_shutdown")) {
             try {
                 Shutdown.getInstance().startShutdown(activeChar, null, Integer.parseInt(command.substring(22)), false);
-            } catch (StringIndexOutOfBoundsException e) {
+            }
+            catch (StringIndexOutOfBoundsException e) {
                 sendHtmlForm(activeChar);
             }
         }
         else if (command.startsWith("admin_server_restart")) {
             try {
                 Shutdown.getInstance().startShutdown(activeChar, null, Integer.parseInt(command.substring(21)), true);
-            } catch (StringIndexOutOfBoundsException e) {
+            }
+            catch (StringIndexOutOfBoundsException e) {
                 sendHtmlForm(activeChar);
             }
         }

@@ -22,45 +22,36 @@ import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2NpcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 
-public class AttackableKnownList extends NpcKnownList
-{
-	public AttackableKnownList(L2Attackable activeChar)
-	{
-		super(activeChar);
-	}
-	
-	@Override
-	public boolean removeKnownObject(L2Object object)
-	{
-		if (!super.removeKnownObject(object))
-			return false;
-		
-		// get attackable
-		final L2Attackable attackable = (L2Attackable) this.object;
-		
-		// remove object from agro list
-		if (object instanceof L2Character)
-			attackable.getAggroList().remove(object);
-		
-		// check AI for players and set AI to idle
-		if (attackable.hasAI() && getKnownType(L2PcInstance.class).isEmpty())
-			attackable.getAI().setIntention(EIntention.IDLE, null);
-		
-		return true;
-	}
-	
-	@Override
-	public int getDistanceToWatchObject(L2Object object)
-	{
-		if (object instanceof L2NpcInstance || !(object instanceof L2Character))
-			return 0;
-		
-		if (object instanceof L2Playable)
-			return object.getKnownList().getDistanceToWatchObject(this.object);
-		
-		// get attackable
-		final L2Attackable attackable = (L2Attackable) this.object;
-		
-		return Math.max(300, Math.max(attackable.getAggroRange(), attackable.getClanRange()));
-	}
+public class AttackableKnownList extends NpcKnownList {
+    public AttackableKnownList(L2Attackable activeChar) {
+        super(activeChar);
+    }
+
+    @Override
+    public boolean removeKnownObject(L2Object object) {
+        if (!super.removeKnownObject(object)) { return false; }
+
+        // get attackable
+        final L2Attackable attackable = (L2Attackable) this.object;
+
+        // remove object from agro list
+        if (object instanceof L2Character) { attackable.getAggroList().remove(object); }
+
+        // check AI for players and set AI to idle
+        if (attackable.hasAI() && getKnownType(L2PcInstance.class).isEmpty()) { attackable.getAI().setIntention(EIntention.IDLE, null); }
+
+        return true;
+    }
+
+    @Override
+    public int getDistanceToWatchObject(L2Object object) {
+        if (object instanceof L2NpcInstance || !(object instanceof L2Character)) { return 0; }
+
+        if (object instanceof L2Playable) { return object.getKnownList().getDistanceToWatchObject(this.object); }
+
+        // get attackable
+        final L2Attackable attackable = (L2Attackable) this.object;
+
+        return Math.max(300, Math.max(attackable.getAggroRange(), attackable.getClanRange()));
+    }
 }

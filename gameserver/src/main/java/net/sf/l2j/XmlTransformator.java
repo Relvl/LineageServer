@@ -79,5 +79,4 @@ public class XmlTransformator {
         @JacksonXmlProperty(localName = "type", isAttribute = true)
         private String type;
     }
-
 }

@@ -7,8 +7,8 @@ import net.sf.l2j.commons.serialize.Serializer;
 import net.sf.l2j.gameserver.model.L2ShortCut;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.skill.SkillConst;
-import net.sf.l2j.gameserver.playerpart.recipe.PlayerRecipesLoadCall.RecipeRow;
 import net.sf.l2j.gameserver.network.client.game_to_client.RecipeBookItemList;
+import net.sf.l2j.gameserver.playerpart.recipe.PlayerRecipesLoadCall.RecipeRow;
 import net.sf.l2j.gameserver.skills.Stats;
 import net.sf.l2j.gameserver.util.Util;
 import org.slf4j.Logger;
@@ -107,7 +107,6 @@ public final class RecipeController {
         catch (CallException e) {
             LOGGER.error("Cannot store unregistered recipe {} for player {}", id, player.getObjectId(), e);
         }
-
     }
 
     public boolean hasDwarvenCraft() { return player.getSkillLevel(SkillConst.SKILL_CREATE_DWARVEN) >= 1; }
@@ -162,5 +161,4 @@ public final class RecipeController {
     }
 
     // endregion RECIPES TABLE
-
 }

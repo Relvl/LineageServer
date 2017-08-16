@@ -22,6 +22,7 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2GrandBossInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.scripts.ai.AbstractNpcAI;
 import net.sf.l2j.gameserver.templates.StatsSet;
 
@@ -50,31 +51,31 @@ public class Core extends AbstractNpcAI {
         addAttackId(CORE);
         addKillId(CORE, DEATH_KNIGHT, DOOM_WRAITH, SUSCEPTOR);
 
-        final StatsSet info = GrandBossManager.getInstance().getStatsSet(CORE);
-        final int status = GrandBossManager.getInstance().getBossStatus(CORE);
+        StatsSet info = GrandBossManager.getInstance().getStatsSet(CORE);
+        int status = GrandBossManager.getInstance().getBossStatus(CORE);
         if (status == DEAD) {
             // load the unlock date and time for Core from DB
-            final long temp = (info.getLong("respawn_time") - System.currentTimeMillis());
+            long temp = info.getLong("respawn_time") - System.currentTimeMillis();
             if (temp > 0) {
                 // The time has not yet expired. Mark Core as currently locked (dead).
                 startQuestTimer("core_unlock", temp, null, null, false);
             }
             else {
                 // The time has expired while the server was offline. Spawn Core.
-                final L2GrandBossInstance core = (L2GrandBossInstance) addSpawn(CORE, 17726, 108915, -6480, 0, false, 0, false);
+                L2GrandBossInstance core = (L2GrandBossInstance) addSpawn(CORE, 17726, 108915, -6480, 0, false, 0, false);
                 GrandBossManager.getInstance().setBossStatus(CORE, ALIVE);
                 spawnBoss(core);
             }
         }
         else {
-            final int loc_x = info.getInteger("loc_x");
-            final int loc_y = info.getInteger("loc_y");
-            final int loc_z = info.getInteger("loc_z");
-            final int heading = info.getInteger("heading");
-            final int hp = info.getInteger("currentHP");
-            final int mp = info.getInteger("currentMP");
+            int loc_x = info.getInteger("loc_x");
+            int loc_y = info.getInteger("loc_y");
+            int loc_z = info.getInteger("loc_z");
+            int heading = info.getInteger("heading");
+            int hp = info.getInteger("currentHP");
+            int mp = info.getInteger("currentMP");
 
-            final L2GrandBossInstance core = (L2GrandBossInstance) addSpawn(CORE, loc_x, loc_y, loc_z, heading, false, 0, false);
+            L2GrandBossInstance core = (L2GrandBossInstance) addSpawn(CORE, loc_x, loc_y, loc_z, heading, false, 0, false);
             core.setCurrentHpMp(hp, mp);
             spawnBoss(core);
         }
@@ -82,7 +83,7 @@ public class Core extends AbstractNpcAI {
 
     public void spawnBoss(L2GrandBossInstance npc) {
         GrandBossManager.getInstance().addBoss(npc);
-        npc.broadcastPacket(new PlaySound(1, "BS01_A", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
+        npc.broadcastPacket(new PlaySound(ESound.BS01_A, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
 
         // Spawn minions
         L2Attackable mob;
@@ -111,18 +112,18 @@ public class Core extends AbstractNpcAI {
     @Override
     public String onAdvEvent(String event, L2Npc npc, L2PcInstance player) {
         if (event.equalsIgnoreCase("core_unlock")) {
-            final L2GrandBossInstance core = (L2GrandBossInstance) addSpawn(CORE, 17726, 108915, -6480, 0, false, 0, false);
+            L2GrandBossInstance core = (L2GrandBossInstance) addSpawn(CORE, 17726, 108915, -6480, 0, false, 0, false);
             GrandBossManager.getInstance().setBossStatus(CORE, ALIVE);
             spawnBoss(core);
         }
         else if (event.equalsIgnoreCase("spawn_minion")) {
-            final L2Attackable mob = (L2Attackable) addSpawn(npc.getNpcId(), npc.getX(), npc.getY(), npc.getZ(), npc.getHeading(), false, 0, false);
+            L2Attackable mob = (L2Attackable) addSpawn(npc.getNpcId(), npc.getX(), npc.getY(), npc.getZ(), npc.getHeading(), false, 0, false);
             mob.setIsRaidMinion(true);
             _minions.add(mob);
         }
         else if (event.equalsIgnoreCase("despawn_minions")) {
             for (int i = 0; i < _minions.size(); i++) {
-                final L2Attackable mob = _minions.get(i);
+                L2Attackable mob = _minions.get(i);
                 if (mob != null) { mob.decayMe(); }
             }
             _minions.clear();
@@ -146,7 +147,7 @@ public class Core extends AbstractNpcAI {
     @Override
     public String onKill(L2Npc npc, L2PcInstance killer, boolean isPet) {
         if (npc.getNpcId() == CORE) {
-            npc.broadcastPacket(new PlaySound(1, "BS02_D", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
+            npc.broadcastPacket(new PlaySound(ESound.BS02_D, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
             npc.broadcastNpcSay("A fatal error has occurred.");
             npc.broadcastNpcSay("System is being shut down...");
             npc.broadcastNpcSay("......");
@@ -160,7 +161,7 @@ public class Core extends AbstractNpcAI {
 
             startQuestTimer("core_unlock", respawnTime, null, null, false);
 
-            final StatsSet info = GrandBossManager.getInstance().getStatsSet(CORE);
+            StatsSet info = GrandBossManager.getInstance().getStatsSet(CORE);
             info.set("respawn_time", System.currentTimeMillis() + respawnTime);
             GrandBossManager.getInstance().setStatsSet(CORE, info);
             startQuestTimer("despawn_minions", 20000, null, null, false);

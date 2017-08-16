@@ -18,20 +18,16 @@ import net.sf.l2j.gameserver.instancemanager.CursedWeaponsManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.client.game_to_client.ExCursedWeaponList;
 
-public class RequestCursedWeaponList extends L2GameClientPacket
-{
-	@Override
-	protected void readImpl()
-	{
-	}
-	
-	@Override
-	protected void runImpl()
-	{
-		final L2PcInstance activeChar = getClient().getActiveChar();
-		if (activeChar == null)
-			return;
-		
-		activeChar.sendPacket(new ExCursedWeaponList(CursedWeaponsManager.getInstance().getCursedWeaponsIds()));
-	}
+public class RequestCursedWeaponList extends L2GameClientPacket {
+    @Override
+    protected void readImpl() {
+    }
+
+    @Override
+    protected void runImpl() {
+        final L2PcInstance activeChar = getClient().getActiveChar();
+        if (activeChar == null) { return; }
+
+        activeChar.sendPacket(new ExCursedWeaponList(CursedWeaponsManager.getInstance().getCursedWeaponsIds()));
+    }
 }

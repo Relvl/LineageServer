@@ -16,20 +16,18 @@ package net.sf.l2j.gameserver.network.client.game_to_client;
 
 /**
  * Format: (ch)
+ *
  * @author -Wooden-
  */
-public class ExOrcMove extends L2GameServerPacket
-{
-	public static final ExOrcMove STATIC_PACKET = new ExOrcMove();
-	
-	private ExOrcMove()
-	{
-	}
-	
-	@Override
-	protected void writeImpl()
-	{
-		writeC(0xfe);
-		writeH(0x44);
-	}
+public class ExOrcMove extends L2GameServerPacket {
+    public static final ExOrcMove STATIC_PACKET = new ExOrcMove();
+
+    private ExOrcMove() {
+    }
+
+    @Override
+    protected void writeImpl() {
+        writeC(0xfe);
+        writeH(0x44);
+    }
 }

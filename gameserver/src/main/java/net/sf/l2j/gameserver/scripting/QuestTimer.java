@@ -23,8 +23,8 @@ public final class QuestTimer implements Runnable {
         this.player = player;
         this.repeating = repeating;
         this.scheduler = repeating ?
-                ThreadPoolManager.getInstance().weakScheduleAtFixedRate(this, time, time) :
-                ThreadPoolManager.getInstance().weakSchedule(this, time);
+                         ThreadPoolManager.getInstance().weakScheduleAtFixedRate(this, time, time) :
+                         ThreadPoolManager.getInstance().weakSchedule(this, time);
     }
 
     @Override
@@ -45,7 +45,7 @@ public final class QuestTimer implements Runnable {
         quest.removeQuestTimer(this);
     }
 
-    @SuppressWarnings({"ObjectEquality", "SimplifiableIfStatement"})
+    @SuppressWarnings({ "ObjectEquality", "SimplifiableIfStatement" })
     public boolean equals(Quest quest, String event, L2Npc npc, L2PcInstance player) {
         if (quest == null || quest != this.quest) { return false; }
         if (event == null || !event.equals(this.event)) { return false; }

@@ -30,6 +30,7 @@ import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.zone.type.L2BossZone;
 import net.sf.l2j.gameserver.network.client.game_to_client.MagicSkillUse;
 import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 import net.sf.l2j.gameserver.scripting.EventType;
 import net.sf.l2j.gameserver.scripting.scripts.ai.AbstractNpcAI;
@@ -74,8 +75,8 @@ public class QueenAnt extends AbstractNpcAI {
 
     private static final List<L2MonsterInstance> _nurses = new ArrayList<>(5);
 
-    private L2MonsterInstance _queen = null;
-    private L2MonsterInstance _larva = null;
+    private L2MonsterInstance _queen;
+    private L2MonsterInstance _larva;
 
     public QueenAnt() {
         super("ai/individual");
@@ -124,7 +125,7 @@ public class QueenAnt extends AbstractNpcAI {
         GrandBossManager.getInstance().addBoss(npc);
         startQuestTimer("action", 10000, npc, null, true);
         startQuestTimer("heal", 1000, null, null, true);
-        npc.broadcastPacket(new PlaySound(1, "BS02_D", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
+        npc.broadcastPacket(new PlaySound(ESound.BS02_D, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
 
         _queen = npc;
         _larva = (L2MonsterInstance) addSpawn(LARVA, -21600, 179482, -5846, Rnd.get(360), false, 0, false);
@@ -134,8 +135,8 @@ public class QueenAnt extends AbstractNpcAI {
     public String onAdvEvent(String event, L2Npc npc, L2PcInstance player) {
         if (event.equalsIgnoreCase("heal")) {
             boolean notCasting;
-            final boolean larvaNeedHeal = _larva != null && _larva.getCurrentHp() < _larva.getMaxHp();
-            final boolean queenNeedHeal = _queen != null && _queen.getCurrentHp() < _queen.getMaxHp();
+            boolean larvaNeedHeal = _larva != null && _larva.getCurrentHp() < _larva.getMaxHp();
+            boolean queenNeedHeal = _queen != null && _queen.getCurrentHp() < _queen.getMaxHp();
             for (L2MonsterInstance nurse : _nurses) {
                 if (nurse == null || nurse.isDead() || nurse.isCastingNow()) { continue; }
 
@@ -179,7 +180,7 @@ public class QueenAnt extends AbstractNpcAI {
 
     @Override
     public String onSpawn(L2Npc npc) {
-        final L2MonsterInstance mob = (L2MonsterInstance) npc;
+        L2MonsterInstance mob = (L2MonsterInstance) npc;
         switch (npc.getNpcId()) {
             case LARVA:
                 mob.setIsImmobilized(true);
@@ -255,7 +256,7 @@ public class QueenAnt extends AbstractNpcAI {
         if (GrandBossManager.getInstance().getBossStatus(QUEEN) == ALIVE) {
             int npcId = npc.getNpcId();
             if (npcId == QUEEN) {
-                npc.broadcastPacket(new PlaySound(1, "BS02_D", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
+                npc.broadcastPacket(new PlaySound(ESound.BS02_D, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
                 GrandBossManager.getInstance().setBossStatus(QUEEN, DEAD);
 
                 long respawnTime = (long) Config.SPAWN_INTERVAL_AQ + Rnd.get(-Config.RANDOM_SPAWN_TIME_AQ, Config.RANDOM_SPAWN_TIME_AQ);

@@ -14,6 +14,6 @@ import net.sf.l2j.gameserver.model.skill.target.ISkillTargetCollector;
 public class TargetSummonCollector implements ISkillTargetCollector {
     @Override
     public L2Object[] getTargetList(L2Character activeChar, boolean onlyFirst, L2Character target, L2Skill skill) {
-        return activeChar.getPet() != null && !activeChar.getPet().isDead() && activeChar.getPet() instanceof L2SummonInstance ? new L2Character[]{activeChar.getPet()} : EMPTY_TARGET_LIST;
+        return activeChar.getPet() != null && !activeChar.getPet().isDead() && activeChar.getPet() instanceof L2SummonInstance ? new L2Character[]{ activeChar.getPet() } : EMPTY_TARGET_LIST;
     }
 }

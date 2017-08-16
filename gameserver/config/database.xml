@@ -1,8 +1,8 @@
 <DatabaseConfig>
-  <Driver>com.mysql.jdbc.Driver</Driver>
-  <URL>jdbc:mysql://localhost/acis</URL>
-  <User>root</User>
-  <Password></Password>
-  <MaxConnections>100</MaxConnections>
-  <MaxIdleTime>0</MaxIdleTime>
+    <Driver>com.mysql.jdbc.Driver</Driver>
+    <URL>jdbc:mysql://localhost/acis</URL>
+    <User>root</User>
+    <Password></Password>
+    <MaxConnections>100</MaxConnections>
+    <MaxIdleTime>0</MaxIdleTime>
 </DatabaseConfig>

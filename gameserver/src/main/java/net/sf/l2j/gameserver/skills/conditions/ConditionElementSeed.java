@@ -1,10 +1,10 @@
 package net.sf.l2j.gameserver.skills.conditions;
 
-import net.sf.l2j.gameserver.skills.func.Env;
 import net.sf.l2j.gameserver.skills.effects.EffectSeed;
+import net.sf.l2j.gameserver.skills.func.Env;
 
 public final class ConditionElementSeed extends ACondition {
-    private static final int[] SEED_SKILLS = {1285, 1286, 1287};
+    private static final int[] SEED_SKILLS = { 1285, 1286, 1287 };
     private final int[] requiredSeeds;
 
     public ConditionElementSeed(int... seeds) {
@@ -16,8 +16,8 @@ public final class ConditionElementSeed extends ACondition {
         int[] seeds = new int[3];
         for (int i = 0; i < seeds.length; i++) {
             seeds[i] = env.getCharacter().getFirstEffect(SEED_SKILLS[i]) instanceof EffectSeed ?
-                    ((EffectSeed) env.getCharacter().getFirstEffect(SEED_SKILLS[i])).getPower() :
-                    0;
+                       ((EffectSeed) env.getCharacter().getFirstEffect(SEED_SKILLS[i])).getPower() :
+                       0;
             if (seeds[i] >= requiredSeeds[i]) {
                 seeds[i] -= requiredSeeds[i];
             }

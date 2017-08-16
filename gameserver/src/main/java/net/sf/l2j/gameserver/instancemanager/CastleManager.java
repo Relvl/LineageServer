@@ -2,7 +2,6 @@ package net.sf.l2j.gameserver.instancemanager;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.CastleUpdaterTask;
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.L2ClanMember;
@@ -12,6 +11,7 @@ import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

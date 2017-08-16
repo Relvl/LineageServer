@@ -16,7 +16,6 @@ package net.sf.l2j.gameserver.model;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.geoengine.GeoData;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.model.actor.L2Attackable;
@@ -24,6 +23,7 @@ import net.sf.l2j.gameserver.model.actor.L2Character;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2MonsterInstance;
 import net.sf.l2j.gameserver.model.actor.template.NpcTemplate;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -389,7 +389,8 @@ public class L2Spawn {
         // Test champion state for next spawn.
         if (Config.CHAMPION_FREQUENCY > 0) {
             // It can't be a Raid, a Raid minion nor a minion. Quest mobs and chests are disabled too.
-            if (mob instanceof L2MonsterInstance && !getTemplate().cantBeChampion() && mob.getLevel() >= Config.CHAMP_MIN_LVL && mob.getLevel() <= Config.CHAMP_MAX_LVL && !mob.isRaid() && !((L2MonsterInstance) mob).isRaidMinion() && !((L2MonsterInstance) mob).isMinion()) {
+            if (mob instanceof L2MonsterInstance && !getTemplate().cantBeChampion() && mob.getLevel() >= Config.CHAMP_MIN_LVL && mob.getLevel() <= Config.CHAMP_MAX_LVL && !mob.isRaid() && !((L2MonsterInstance) mob).isRaidMinion() && !((L2MonsterInstance) mob)
+                    .isMinion()) {
                 ((L2Attackable) mob).setChampion(Rnd.get(100) < Config.CHAMPION_FREQUENCY);
             }
         }

@@ -55,7 +55,7 @@ public class TargetCorpsePlayerCollector implements ISkillTargetCollector {
                 }
             }
             if (condGood) {
-                return new L2Character[]{target};
+                return new L2Character[]{ target };
             }
         }
         return sendIncorrect(activeChar);

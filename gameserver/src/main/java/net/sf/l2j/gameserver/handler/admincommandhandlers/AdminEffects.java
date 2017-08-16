@@ -133,8 +133,8 @@ public class AdminEffects implements IAdminCommandHandler {
         }
         else if (command.startsWith("admin_play_sound")) {
             try {
-                final String sound = command.substring(17);
-                final PlaySound snd = (sound.contains(".")) ? new PlaySound(sound) : new PlaySound(1, sound, 0, 0, 0, 0, 0);
+                String sound = command.substring(17);
+                PlaySound snd = (sound.contains(".")) ? new PlaySound(sound) : new PlaySound(1, sound, 0, 0, 0, 0, 0);
 
                 activeChar.broadcastPacket(snd);
                 activeChar.sendMessage("Playing " + sound + ".");
@@ -158,9 +158,9 @@ public class AdminEffects implements IAdminCommandHandler {
             }
         }
         else if (command.startsWith("admin_para")) {
-            final L2Object target = activeChar.getTarget();
+            L2Object target = activeChar.getTarget();
             if (target instanceof L2Character) {
-                final L2Character player = (L2Character) target;
+                L2Character player = (L2Character) target;
 
                 player.startAbnormalEffect(0x0800);
                 player.setIsParalyzed(true);
@@ -169,9 +169,9 @@ public class AdminEffects implements IAdminCommandHandler {
             else { activeChar.sendPacket(SystemMessageId.INCORRECT_TARGET); }
         }
         else if (command.startsWith("admin_unpara")) {
-            final L2Object target = activeChar.getTarget();
+            L2Object target = activeChar.getTarget();
             if (target instanceof L2Character) {
-                final L2Character player = (L2Character) target;
+                L2Character player = (L2Character) target;
 
                 player.stopAbnormalEffect(0x0800);
                 player.setIsParalyzed(false);
@@ -182,7 +182,7 @@ public class AdminEffects implements IAdminCommandHandler {
             try {
                 activeChar.stopSkillEffects(7029);
 
-                final int val = Integer.parseInt(st.nextToken());
+                int val = Integer.parseInt(st.nextToken());
                 if (val > 0 && val < 5) { activeChar.doCast(SkillTable.getInfo(7029, val)); }
             }
             catch (Exception e) {
@@ -226,10 +226,10 @@ public class AdminEffects implements IAdminCommandHandler {
         }
         else if (command.startsWith("admin_social")) {
             try {
-                final int social = Integer.parseInt(st.nextToken());
+                int social = Integer.parseInt(st.nextToken());
 
                 if (st.countTokens() == 2) {
-                    final String targetOrRadius = st.nextToken();
+                    String targetOrRadius = st.nextToken();
                     if (targetOrRadius != null) {
                         L2PcInstance player = L2World.getInstance().getPlayer(targetOrRadius);
                         if (player != null) {
@@ -237,7 +237,7 @@ public class AdminEffects implements IAdminCommandHandler {
                             else { activeChar.sendPacket(SystemMessageId.NOTHING_HAPPENED); }
                         }
                         else {
-                            final int radius = Integer.parseInt(targetOrRadius);
+                            int radius = Integer.parseInt(targetOrRadius);
 
                             for (L2Object object : activeChar.getKnownList().getKnownTypeInRadius(L2Character.class, radius)) { performSocial(social, object); }
 
@@ -262,10 +262,10 @@ public class AdminEffects implements IAdminCommandHandler {
         }
         else if (command.startsWith("admin_abnormal")) {
             try {
-                final int abnormal = Integer.decode("0x" + st.nextToken());
+                int abnormal = Integer.decode("0x" + st.nextToken());
 
                 if (st.countTokens() == 2) {
-                    final String targetOrRadius = st.nextToken();
+                    String targetOrRadius = st.nextToken();
                     if (targetOrRadius != null) {
                         L2PcInstance player = L2World.getInstance().getPlayer(targetOrRadius);
                         if (player != null) {
@@ -273,7 +273,7 @@ public class AdminEffects implements IAdminCommandHandler {
                             else { activeChar.sendPacket(SystemMessageId.NOTHING_HAPPENED); }
                         }
                         else {
-                            final int radius = Integer.parseInt(targetOrRadius);
+                            int radius = Integer.parseInt(targetOrRadius);
 
                             for (L2Object object : activeChar.getKnownList().getKnownTypeInRadius(L2Character.class, radius)) { performAbnormal(abnormal, object); }
 
@@ -332,7 +332,7 @@ public class AdminEffects implements IAdminCommandHandler {
 
     private static boolean performAbnormal(int action, L2Object target) {
         if (target instanceof L2Character) {
-            final L2Character character = (L2Character) target;
+            L2Character character = (L2Character) target;
             if ((character.getAbnormalEffect() & action) == action) { character.stopAbnormalEffect(action); }
             else { character.startAbnormalEffect(action); }
 
@@ -345,7 +345,7 @@ public class AdminEffects implements IAdminCommandHandler {
         if (target instanceof L2Character) {
             if (target instanceof L2Summon || target instanceof L2ChestInstance || (target instanceof L2Npc && (action < 1 || action > 3)) || (target instanceof L2PcInstance && (action < 2 || action > 16))) { return false; }
 
-            final L2Character character = (L2Character) target;
+            L2Character character = (L2Character) target;
             character.broadcastPacket(new SocialAction(character, action));
             return true;
         }

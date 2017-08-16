@@ -17,6 +17,7 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.EItemProcessPurpose;
 import net.sf.l2j.gameserver.model.zone.L2ZoneType;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -49,11 +50,11 @@ public class Q636_TruthBeyondTheGate extends Quest {
         if (event.equalsIgnoreCase("31329-04.htm")) {
             st.setState(QuestState.STATE_STARTED);
             st.set("cond", "1");
-            st.playSound(QuestState.SOUND_ACCEPT);
+            st.playSound(ESound.ItemSound_quest_accept);
         }
         else if (event.equalsIgnoreCase("32010-02.htm")) {
             st.giveItems(VISITOR_MARK, 1);
-            st.playSound(QuestState.SOUND_FINISH);
+            st.playSound(ESound.ItemSound_quest_finish);
             st.exitQuest(false);
         }
 

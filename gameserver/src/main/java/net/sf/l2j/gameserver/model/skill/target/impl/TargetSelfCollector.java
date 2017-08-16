@@ -13,6 +13,6 @@ import net.sf.l2j.gameserver.model.skill.target.ISkillTargetCollector;
 public class TargetSelfCollector implements ISkillTargetCollector {
     @Override
     public L2Object[] getTargetList(L2Character activeChar, boolean onlyFirst, L2Character target, L2Skill skill) {
-        return new L2Character[]{activeChar};
+        return new L2Character[]{ activeChar };
     }
 }

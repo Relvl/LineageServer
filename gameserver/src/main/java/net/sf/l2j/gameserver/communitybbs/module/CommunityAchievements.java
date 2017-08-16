@@ -40,15 +40,15 @@ public class CommunityAchievements extends ACommunityModule {
                 );
                 html = CommunityBoard.PTN_CONTENT.matcher(html).replaceAll(
                         Stream.of(EAchievementGroup.values())
-                                .map(g -> String.format(achiGroupTemplate,
-                                        g.getIcon(),
-                                        g.getTitle(),
-                                        g.name(),
-                                        g.getDescription(),
-                                        EAchievementGroup.getAllAchievements().filter(a -> a.getGroup() == g).count(),
-                                        EAchievementGroup.getAllAchievements().filter(a -> a.getGroup() == g && player.getAchievementController().hasAchievement(a)).count()
-                                ))
-                                .collect(Collectors.joining(""))
+                              .map(g -> String.format(achiGroupTemplate,
+                                      g.getIcon(),
+                                      g.getTitle(),
+                                      g.name(),
+                                      g.getDescription(),
+                                      EAchievementGroup.getAllAchievements().filter(a -> a.getGroup() == g).count(),
+                                      EAchievementGroup.getAllAchievements().filter(a -> a.getGroup() == g && player.getAchievementController().hasAchievement(a)).count()
+                              ))
+                              .collect(Collectors.joining(""))
                 );
 
                 CommunityBoard.showHtml(player, html, this);
@@ -61,13 +61,13 @@ public class CommunityAchievements extends ACommunityModule {
                 if (page <= 0) { return false; }
 
                 List<IAchieveElement> achievements = group.getAchievements()
-                        .sorted((a1, a2) -> {
-                            if (player.getAchievementController().hasAchievement(a1)) { return Integer.MIN_VALUE; }
-                            if (player.getAchievementController().hasAchievement(a2)) { return Integer.MAX_VALUE; }
-                            return player.getAchievementController().getAchievementPartialCount(a2)
-                                    .compareTo(player.getAchievementController().getAchievementPartialCount(a1));
-                        })
-                        .collect(Collectors.toList());
+                                                          .sorted((a1, a2) -> {
+                                                              if (player.getAchievementController().hasAchievement(a1)) { return Integer.MIN_VALUE; }
+                                                              if (player.getAchievementController().hasAchievement(a2)) { return Integer.MAX_VALUE; }
+                                                              return player.getAchievementController().getAchievementPartialCount(a2)
+                                                                           .compareTo(player.getAchievementController().getAchievementPartialCount(a1));
+                                                          })
+                                                          .collect(Collectors.toList());
                 int idxFirst = (page - 1) * ACHIEVEMENTS_PER_PAGE;
                 int idxLast = Math.min((page * ACHIEVEMENTS_PER_PAGE) - 1, achievements.size() - 1);
                 if (idxFirst > achievements.size()) { return false; }
@@ -78,23 +78,23 @@ public class CommunityAchievements extends ACommunityModule {
                 );
                 html = CommunityBoard.PTN_CONTENT.matcher(html).replaceAll(
                         achievements.subList(idxFirst, idxLast + 1).stream()
-                                .map(achi -> {
+                                    .map(achi -> {
 
-                                    boolean completed = player.getAchievementController().hasAchievement(achi);
-                                    int partial = player.getAchievementController().getAchievementPartialCount(achi);
-                                    return String.format(
-                                            achiElementTemplate,
-                                            achi.getId(), // %1$s - ID для ссылки
-                                            String.format("%s&nbsp;[%s%s]",
-                                                    achi.title(),
-                                                    completed ? "завершено" : "",
-                                                    partial > 0 ? partial + "/" + achi.getCount() : ""
-                                            ), // %2$s - Текст ссылки
-                                            completed ? "ffff00" : partial > 0 ? "8fbc8f" : "888888",
-                                            String.format(achi.description(), achi.getCount())
-                                    );
-                                })
-                                .collect(Collectors.joining("")) //
+                                        boolean completed = player.getAchievementController().hasAchievement(achi);
+                                        int partial = player.getAchievementController().getAchievementPartialCount(achi);
+                                        return String.format(
+                                                achiElementTemplate,
+                                                achi.getId(), // %1$s - ID для ссылки
+                                                String.format("%s&nbsp;[%s%s]",
+                                                        achi.title(),
+                                                        completed ? "завершено" : "",
+                                                        partial > 0 ? partial + "/" + achi.getCount() : ""
+                                                ), // %2$s - Текст ссылки
+                                                completed ? "ffff00" : partial > 0 ? "8fbc8f" : "888888",
+                                                String.format(achi.description(), achi.getCount())
+                                        );
+                                    })
+                                    .collect(Collectors.joining("")) //
                 );
 
                 CommunityBoard.showHtml(player, html, this);
@@ -123,7 +123,7 @@ public class CommunityAchievements extends ACommunityModule {
     @Override
     public void getPages(BiConsumer<String, String> consumer) {
         IntStream.rangeClosed(1, (int) Math.ceil(EAchievementGroup.getAllAchievements().count() / (double) ACHIEVEMENTS_PER_PAGE))
-                .mapToObj(String::valueOf)
-                .forEach(s -> consumer.accept("_bbs_achievements page " + s, s));
+                 .mapToObj(String::valueOf)
+                 .forEach(s -> consumer.accept("_bbs_achievements page " + s, s));
     }
 }

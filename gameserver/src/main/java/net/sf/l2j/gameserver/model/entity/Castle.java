@@ -3,7 +3,6 @@ package net.sf.l2j.gameserver.model.entity;
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.gameserver.CastleUpdaterTask;
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.instancemanager.*;
 import net.sf.l2j.gameserver.instancemanager.CastleManorManager.CropProcure;
@@ -20,8 +19,10 @@ import net.sf.l2j.gameserver.model.zone.type.L2CastleZone;
 import net.sf.l2j.gameserver.model.zone.type.L2SiegeZone;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.network.client.game_to_client.PledgeShowInfoUpdate;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -448,7 +449,7 @@ public class Castle {
             // Announce to clan memebers
             if (clan != null) {
                 clan.setCastle(_castleId); // Set castle flag for new owner
-                clan.broadcastToOnlineMembers(new PledgeShowInfoUpdate(clan), new PlaySound(1, "Siege_Victory", 0, 0, 0, 0, 0));
+                clan.broadcastToOnlineMembers(new PledgeShowInfoUpdate(clan), new PlaySound(ESound.SIEGE_VICTORY));
                 ThreadPoolManager.getInstance().schedule(new CastleUpdaterTask(clan, 1), 3600000); // Schedule owner tasks to start running
             }
         }

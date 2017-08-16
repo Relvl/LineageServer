@@ -20,46 +20,38 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
-public final class RequestSurrenderPledgeWar extends L2GameClientPacket
-{
-	private String _pledgeName;
-	
-	@Override
-	protected void readImpl()
-	{
-		_pledgeName = readS();
-	}
-	
-	@Override
-	protected void runImpl()
-	{
-		final L2PcInstance activeChar = getClient().getActiveChar();
-		if (activeChar == null)
-			return;
-		
-		final L2Clan playerClan = activeChar.getClan();
-		if (playerClan == null)
-			return;
-		
-		// Check if player who does the request has the correct rights to do it
-		if ((activeChar.getClanPrivileges() & L2Clan.CP_CL_PLEDGE_WAR) != L2Clan.CP_CL_PLEDGE_WAR)
-		{
-			activeChar.sendPacket(SystemMessageId.YOU_ARE_NOT_AUTHORIZED_TO_DO_THAT);
-			return;
-		}
-		
-		final L2Clan clan = ClanTable.getInstance().getClanByName(_pledgeName);
-		if (clan == null)
-			return;
-		
-		if (!playerClan.isAtWarWith(clan.getClanId()))
-		{
-			activeChar.sendPacket(SystemMessageId.NOT_INVOLVED_IN_WAR);
-			return;
-		}
-		
-		activeChar.deathPenalty(false, false, false);
-		activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_HAVE_SURRENDERED_TO_THE_S1_CLAN).addString(_pledgeName));
-		ClanTable.getInstance().deleteClansWars(playerClan.getClanId(), clan.getClanId());
-	}
+public final class RequestSurrenderPledgeWar extends L2GameClientPacket {
+    private String _pledgeName;
+
+    @Override
+    protected void readImpl() {
+        _pledgeName = readS();
+    }
+
+    @Override
+    protected void runImpl() {
+        final L2PcInstance activeChar = getClient().getActiveChar();
+        if (activeChar == null) { return; }
+
+        final L2Clan playerClan = activeChar.getClan();
+        if (playerClan == null) { return; }
+
+        // Check if player who does the request has the correct rights to do it
+        if ((activeChar.getClanPrivileges() & L2Clan.CP_CL_PLEDGE_WAR) != L2Clan.CP_CL_PLEDGE_WAR) {
+            activeChar.sendPacket(SystemMessageId.YOU_ARE_NOT_AUTHORIZED_TO_DO_THAT);
+            return;
+        }
+
+        final L2Clan clan = ClanTable.getInstance().getClanByName(_pledgeName);
+        if (clan == null) { return; }
+
+        if (!playerClan.isAtWarWith(clan.getClanId())) {
+            activeChar.sendPacket(SystemMessageId.NOT_INVOLVED_IN_WAR);
+            return;
+        }
+
+        activeChar.deathPenalty(false, false, false);
+        activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.YOU_HAVE_SURRENDERED_TO_THE_S1_CLAN).addString(_pledgeName));
+        ClanTable.getInstance().deleteClansWars(playerClan.getClanId(), clan.getClanId());
+    }
 }

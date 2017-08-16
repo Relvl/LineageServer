@@ -14,41 +14,36 @@
  */
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
-import java.util.List;
-
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.Henna;
 
-public class HennaEquipList extends L2GameServerPacket
-{
-	private final L2PcInstance _player;
-	private final List<Henna> _hennaEquipList;
-	
-	public HennaEquipList(L2PcInstance player, List<Henna> hennaEquipList)
-	{
-		_player = player;
-		_hennaEquipList = hennaEquipList;
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
-		writeC(0xe2);
-		writeD(_player.getAdena());
-		writeD(3);
-		writeD(_hennaEquipList.size());
-		
-		for (Henna temp : _hennaEquipList)
-		{
-			// Player must have at least one dye in inventory to be able to see the henna that can be applied with it.
-			if ((_player.getInventory().getItemByItemId(temp.getDyeId())) != null)
-			{
-				writeD(temp.getSymbolId()); // symbolid
-				writeD(temp.getDyeId()); // itemid of dye
-				writeD(Henna.getAmountDyeRequire()); // amount of dyes required
-				writeD(temp.getPrice()); // amount of adenas required
-				writeD(1); // meet the requirement or not
-			}
-		}
-	}
+import java.util.List;
+
+public class HennaEquipList extends L2GameServerPacket {
+    private final L2PcInstance _player;
+    private final List<Henna> _hennaEquipList;
+
+    public HennaEquipList(L2PcInstance player, List<Henna> hennaEquipList) {
+        _player = player;
+        _hennaEquipList = hennaEquipList;
+    }
+
+    @Override
+    protected final void writeImpl() {
+        writeC(0xe2);
+        writeD(_player.getAdena());
+        writeD(3);
+        writeD(_hennaEquipList.size());
+
+        for (Henna temp : _hennaEquipList) {
+            // Player must have at least one dye in inventory to be able to see the henna that can be applied with it.
+            if ((_player.getInventory().getItemByItemId(temp.getDyeId())) != null) {
+                writeD(temp.getSymbolId()); // symbolid
+                writeD(temp.getDyeId()); // itemid of dye
+                writeD(Henna.getAmountDyeRequire()); // amount of dyes required
+                writeD(temp.getPrice()); // amount of adenas required
+                writeD(1); // meet the requirement or not
+            }
+        }
+    }
 }

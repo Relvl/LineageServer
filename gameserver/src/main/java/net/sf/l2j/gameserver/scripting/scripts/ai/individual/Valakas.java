@@ -20,14 +20,15 @@ import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.geoengine.PathFinding;
 import net.sf.l2j.gameserver.instancemanager.GrandBossManager;
-import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.L2Playable;
 import net.sf.l2j.gameserver.model.actor.instance.L2GrandBossInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.location.HeadedLocation;
+import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.model.zone.type.L2BossZone;
 import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 import net.sf.l2j.gameserver.network.client.game_to_client.SpecialCamera;
 import net.sf.l2j.gameserver.scripting.scripts.ai.AbstractNpcAI;
@@ -82,7 +83,7 @@ public class Valakas extends AbstractNpcAI {
 
     public static final int VALAKAS = 29028;
 
-    private long _timeTracker = 0; // Time tracker for last attack on Valakas.
+    private long _timeTracker; // Time tracker for last attack on Valakas.
     private L2Playable _actualVictim; // Actual target of Valakas.
 
     public Valakas() {
@@ -94,19 +95,19 @@ public class Valakas extends AbstractNpcAI {
                 };
         registerMobs(mob);
 
-        final StatsSet info = GrandBossManager.getInstance().getStatsSet(VALAKAS);
-        final int status = GrandBossManager.getInstance().getBossStatus(VALAKAS);
+        StatsSet info = GrandBossManager.getInstance().getStatsSet(VALAKAS);
+        int status = GrandBossManager.getInstance().getBossStatus(VALAKAS);
 
         if (status == DEAD) {
             // load the unlock date and time for valakas from DB
-            long temp = (info.getLong("respawn_time") - System.currentTimeMillis());
+            long temp = info.getLong("respawn_time") - System.currentTimeMillis();
             if (temp > 0) {
                 // The time has not yet expired. Mark Valakas as currently locked (dead).
                 startQuestTimer("valakas_unlock", temp, null, null, false);
             }
             else {
                 // The time has expired while the server was offline. Spawn valakas in his cave as DORMANT.
-                final L2Npc valakas = addSpawn(VALAKAS, -105200, -253104, -15264, 0, false, 0, false);
+                L2Npc valakas = addSpawn(VALAKAS, -105200, -253104, -15264, 0, false, 0, false);
                 GrandBossManager.getInstance().setBossStatus(VALAKAS, DORMANT);
                 GrandBossManager.getInstance().addBoss((L2GrandBossInstance) valakas);
 
@@ -117,14 +118,14 @@ public class Valakas extends AbstractNpcAI {
             }
         }
         else {
-            final int loc_x = info.getInteger("loc_x");
-            final int loc_y = info.getInteger("loc_y");
-            final int loc_z = info.getInteger("loc_z");
-            final int heading = info.getInteger("heading");
-            final int hp = info.getInteger("currentHP");
-            final int mp = info.getInteger("currentMP");
+            int loc_x = info.getInteger("loc_x");
+            int loc_y = info.getInteger("loc_y");
+            int loc_z = info.getInteger("loc_z");
+            int heading = info.getInteger("heading");
+            int hp = info.getInteger("currentHP");
+            int mp = info.getInteger("currentMP");
 
-            final L2Npc valakas = addSpawn(VALAKAS, loc_x, loc_y, loc_z, heading, false, 0, false);
+            L2Npc valakas = addSpawn(VALAKAS, loc_x, loc_y, loc_z, heading, false, 0, false);
             GrandBossManager.getInstance().addBoss((L2GrandBossInstance) valakas);
 
             valakas.setCurrentHpMp(hp, mp);
@@ -160,7 +161,7 @@ public class Valakas extends AbstractNpcAI {
 
                 // Sound + socialAction.
                 for (L2PcInstance plyr : VALAKAS_LAIR.getKnownTypeInside(L2PcInstance.class)) {
-                    plyr.sendPacket(new PlaySound(1, "B03_A", 0, 0, 0, 0, 0));
+                    plyr.sendPacket(new PlaySound(ESound.B03_A));
                     plyr.sendPacket(new SocialAction(npc, 3));
                 }
 
@@ -200,7 +201,7 @@ public class Valakas extends AbstractNpcAI {
                 // Regeneration buff.
                 if (Rnd.get(30) == 0) {
                     L2Skill skillRegen;
-                    final double hpRatio = npc.getCurrentHp() / npc.getMaxHp();
+                    double hpRatio = npc.getCurrentHp() / npc.getMaxHp();
 
                     // Current HPs are inferior to 25% ; apply lvl 4 of regen skill.
                     if (hpRatio < 0.25) { skillRegen = SkillTable.getInfo(4691, 4); }
@@ -249,7 +250,7 @@ public class Valakas extends AbstractNpcAI {
         }
         else {
             if (event.equalsIgnoreCase("valakas_unlock")) {
-                final L2Npc valakas = addSpawn(VALAKAS, -105200, -253104, -15264, 32768, false, 0, false);
+                L2Npc valakas = addSpawn(VALAKAS, -105200, -253104, -15264, 32768, false, 0, false);
                 GrandBossManager.getInstance().addBoss((L2GrandBossInstance) valakas);
                 GrandBossManager.getInstance().setBossStatus(VALAKAS, DORMANT);
             }
@@ -280,7 +281,7 @@ public class Valakas extends AbstractNpcAI {
 
         // Debuff strider-mounted players.
         if (attacker.getMountType() == 1) {
-            final L2Skill skill = SkillTable.getInfo(4258, 1);
+            L2Skill skill = SkillTable.getInfo(4258, 1);
             if (attacker.getFirstEffect(skill) == null) {
                 npc.setTarget(attacker);
                 npc.doCast(skill);
@@ -298,7 +299,7 @@ public class Valakas extends AbstractNpcAI {
         cancelQuestTimer("skill_task", npc, null);
 
         // Launch death animation.
-        VALAKAS_LAIR.broadcastPacket(new PlaySound(1, "B03_D", 0, 0, 0, 0, 0));
+        VALAKAS_LAIR.broadcastPacket(new PlaySound(ESound.B03_D));
 
         startQuestTimer("die_1", 300, npc, null, false); // 300
         startQuestTimer("die_2", 600, npc, null, false); // 300
@@ -333,7 +334,7 @@ public class Valakas extends AbstractNpcAI {
         if (npc.isInvul() || npc.isCastingNow()) { return; }
 
         // Pickup a target if no or dead victim. 10% luck he decides to reconsiders his target.
-        if (_actualVictim == null || _actualVictim.isDead() || !(npc.getKnownList().isObjectKnown(_actualVictim)) || Rnd.get(10) == 0) { _actualVictim = getRandomPlayer(npc); }
+        if (_actualVictim == null || _actualVictim.isDead() || !npc.getKnownList().isObjectKnown(_actualVictim) || Rnd.get(10) == 0) { _actualVictim = getRandomPlayer(npc); }
 
         // If result is still null, Valakas will roam. Don't go deeper in skill AI.
         if (_actualVictim == null) {
@@ -350,7 +351,7 @@ public class Valakas extends AbstractNpcAI {
             return;
         }
 
-        final L2Skill skill = SkillTable.getInfo(getRandomSkill(npc), 1);
+        L2Skill skill = SkillTable.getInfo(getRandomSkill(npc), 1);
 
         // Cast the skill or follow the target.
         if (Util.checkIfInRange((skill.getCastRange() < 600) ? 600 : skill.getCastRange(), npc, _actualVictim, true)) {
@@ -370,7 +371,7 @@ public class Valakas extends AbstractNpcAI {
      * @return a usable skillId
      */
     private static int getRandomSkill(L2Npc npc) {
-        final double hpRatio = npc.getCurrentHp() / npc.getMaxHp();
+        double hpRatio = npc.getCurrentHp() / npc.getMaxHp();
 
         // Valakas Lava Skin is prioritary.
         if (hpRatio < 0.25 && Rnd.get(1500) == 0 && npc.getFirstEffect(4680) == null) { return LAVA_SKIN; }
@@ -378,7 +379,7 @@ public class Valakas extends AbstractNpcAI {
         if (hpRatio < 0.5 && Rnd.get(60) == 0) { return METEOR_SWARM; }
 
         // Find enemies surrounding Valakas.
-        final int[] playersAround = getPlayersCountInPositions(1200, npc, false);
+        int[] playersAround = getPlayersCountInPositions(1200, npc, false);
 
         // Behind position got more ppl than front position, use behind aura skill.
         if (playersAround[1] > playersAround[0]) { return BEHIND_SKILLS[Rnd.get(BEHIND_SKILLS.length)]; }

@@ -20,26 +20,22 @@ import net.sf.l2j.gameserver.network.client.game_to_client.PledgePowerGradeList;
 
 /**
  * Format: (ch)
+ *
  * @author -Wooden-
  */
-public final class RequestPledgePowerGradeList extends L2GameClientPacket
-{
-	@Override
-	protected void readImpl()
-	{
-	}
-	
-	@Override
-	protected void runImpl()
-	{
-		final L2PcInstance player = getClient().getActiveChar();
-		if (player == null)
-			return;
-		
-		final L2Clan clan = player.getClan();
-		if (clan == null)
-			return;
-		
-		player.sendPacket(new PledgePowerGradeList(clan.getAllRankPrivs(), clan.getMembers()));
-	}
+public final class RequestPledgePowerGradeList extends L2GameClientPacket {
+    @Override
+    protected void readImpl() {
+    }
+
+    @Override
+    protected void runImpl() {
+        final L2PcInstance player = getClient().getActiveChar();
+        if (player == null) { return; }
+
+        final L2Clan clan = player.getClan();
+        if (clan == null) { return; }
+
+        player.sendPacket(new PledgePowerGradeList(clan.getAllRankPrivs(), clan.getMembers()));
+    }
 }

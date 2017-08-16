@@ -12,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class ClanWarsList implements IUserCommandHandler {
-    private static final int[] COMMAND_IDS = {88, 89, 90};
+    private static final int[] COMMAND_IDS = { 88, 89, 90 };
 
     @Override
     public boolean useUserCommand(int id, L2PcInstance activeChar) {
@@ -70,7 +70,8 @@ public class ClanWarsList implements IUserCommandHandler {
 
             rset.close();
             statement.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
         }
         return true;
     }

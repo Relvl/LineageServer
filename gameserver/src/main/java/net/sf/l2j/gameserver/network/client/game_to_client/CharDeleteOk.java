@@ -14,17 +14,14 @@
  */
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
-public class CharDeleteOk extends L2GameServerPacket
-{
-	public static final CharDeleteOk STATIC_PACKET = new CharDeleteOk();
-	
-	private CharDeleteOk()
-	{
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
-		writeC(0x23);
-	}
+public class CharDeleteOk extends L2GameServerPacket {
+    public static final CharDeleteOk STATIC_PACKET = new CharDeleteOk();
+
+    private CharDeleteOk() {
+    }
+
+    @Override
+    protected final void writeImpl() {
+        writeC(0x23);
+    }
 }

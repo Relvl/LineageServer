@@ -14,7 +14,7 @@ public class TargetPetOwnerCollector implements ISkillTargetCollector {
     @Override
     public L2Object[] getTargetList(L2Character activeChar, boolean onlyFirst, L2Character target, L2Skill skill) {
         return activeChar.isSummon() && activeChar.getActingPlayer() != null && !activeChar.getActingPlayer().isDead() ?
-                new L2Character[]{activeChar.getActingPlayer()} :
-                sendIncorrect(activeChar);
+               new L2Character[]{ activeChar.getActingPlayer() } :
+               sendIncorrect(activeChar);
     }
 }

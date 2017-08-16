@@ -2,7 +2,6 @@ package net.sf.l2j.gameserver.model.actor;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.model.L2AttackableAI;
@@ -60,6 +59,7 @@ import net.sf.l2j.gameserver.templates.skills.L2EffectType;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
 import net.sf.l2j.gameserver.util.Broadcast;
 import net.sf.l2j.gameserver.util.Util;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -203,8 +203,8 @@ public abstract class L2Character extends L2Object {
     @Override
     public boolean isInsideZone(ZoneId zone) {
         return zone == ZoneId.PVP ?
-                zones[ZoneId.PVP.getId()] > 0 && zones[ZoneId.PEACE.getId()] == 0 :
-                zones[zone.getId()] > 0;
+               zones[ZoneId.PVP.getId()] > 0 && zones[ZoneId.PEACE.getId()] == 0 :
+               zones[zone.getId()] > 0;
     }
 
     public void setInsideZone(ZoneId zone, boolean state) {
@@ -1994,7 +1994,6 @@ public abstract class L2Character extends L2Object {
         if (m.onGeodataPathIndex == -1) { return false; }
 
         return m.onGeodataPathIndex != m.geoPath.size() - 1;
-
     }
 
     /**
@@ -2968,7 +2967,6 @@ public abstract class L2Character extends L2Object {
 
         // Can't interact if regular distance doesn't match.
         return isInsideRadius(player, L2Npc.INTERACTION_DISTANCE, true, false);
-
     }
 
     /**

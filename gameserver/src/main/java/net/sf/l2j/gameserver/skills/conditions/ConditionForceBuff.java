@@ -2,8 +2,8 @@ package net.sf.l2j.gameserver.skills.conditions;
 
 import net.sf.l2j.gameserver.model.L2Effect;
 import net.sf.l2j.gameserver.model.skill.SkillConst;
-import net.sf.l2j.gameserver.skills.func.Env;
 import net.sf.l2j.gameserver.skills.effects.EffectFusion;
+import net.sf.l2j.gameserver.skills.func.Env;
 
 public final class ConditionForceBuff extends ACondition {
 

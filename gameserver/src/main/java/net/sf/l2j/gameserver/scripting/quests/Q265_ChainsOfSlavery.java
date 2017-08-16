@@ -16,120 +16,101 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.PlayerRace;
 import net.sf.l2j.gameserver.model.item.ItemConst;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
-public class Q265_ChainsOfSlavery extends Quest
-{
-	private static final String qn = "Q265_ChainsOfSlavery";
-	
-	// Item
-	private static final int SHACKLE = 1368;
-	
-	// Newbie Items
-	private static final int SPIRITSHOT_FOR_BEGINNERS = 5790;
-	private static final int SOULSHOT_FOR_BEGINNERS = 5789;
-	
-	public Q265_ChainsOfSlavery()
-	{
-		super(265, "Chains of Slavery");
-		
-		setItemsIds(SHACKLE);
-		
-		addStartNpc(30357); // Kristin
-		addTalkId(30357);
-		
-		addKillId(20004, 20005);
-	}
-	
-	@Override
-	public String onAdvEvent(String event, L2Npc npc, L2PcInstance player)
-	{
-		String htmltext = event;
-		QuestState st = player.getQuestState(qn);
-		if (st == null)
-			return htmltext;
-		
-		if (event.equalsIgnoreCase("30357-03.htm"))
-		{
-			st.setState(QuestState.STATE_STARTED);
-			st.set("cond", "1");
-			st.playSound(QuestState.SOUND_ACCEPT);
-		}
-		else if (event.equalsIgnoreCase("30357-06.htm"))
-		{
-			st.playSound(QuestState.SOUND_FINISH);
-			st.exitQuest(true);
-		}
-		
-		return htmltext;
-	}
-	
-	@Override
-	public String onTalk(L2Npc npc, L2PcInstance player)
-	{
-		QuestState st = player.getQuestState(qn);
-		String htmltext = getNoQuestMsg();
-		if (st == null)
-			return htmltext;
-		
-		switch (st.getState())
-		{
-			case QuestState.STATE_CREATED:
-				if (player.getRace() != PlayerRace.DarkElf)
-					htmltext = "30357-00.htm";
-				else if (player.getLevel() < 6)
-					htmltext = "30357-01.htm";
-				else
-					htmltext = "30357-02.htm";
-				break;
-			
-			case QuestState.STATE_STARTED:
-				final int shackles = st.getQuestItemsCount(SHACKLE);
-				if (shackles == 0)
-					htmltext = "30357-04.htm";
-				else
-				{
-					int reward = 12 * shackles;
-					if (shackles > 10)
-						reward += 500;
-					
-					htmltext = "30357-05.htm";
-					st.takeItems(SHACKLE, -1);
-					st.rewardItems(ItemConst.ADENA_ID, reward);
-					
-					if (player.isNewbie() && st.getInt("Reward") == 0)
-					{
-						st.showQuestionMark(26);
-						st.set("Reward", "1");
-						
-						if (player.isMageClass())
-						{
-							st.playTutorialVoice("tutorial_voice_027");
-							st.giveItems(SPIRITSHOT_FOR_BEGINNERS, 3000);
-						}
-						else
-						{
-							st.playTutorialVoice("tutorial_voice_026");
-							st.giveItems(SOULSHOT_FOR_BEGINNERS, 6000);
-						}
-					}
-				}
-				break;
-		}
-		
-		return htmltext;
-	}
-	
-	@Override
-	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
-	{
-		QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
-		if (st == null)
-			return null;
-		
-		st.dropItems(SHACKLE, 1, 0, (npc.getNpcId() == 20004) ? 500000 : 600000);
-		
-		return null;
-	}
+public class Q265_ChainsOfSlavery extends Quest {
+    private static final String qn = "Q265_ChainsOfSlavery";
+
+    // Item
+    private static final int SHACKLE = 1368;
+
+    // Newbie Items
+    private static final int SPIRITSHOT_FOR_BEGINNERS = 5790;
+    private static final int SOULSHOT_FOR_BEGINNERS = 5789;
+
+    public Q265_ChainsOfSlavery() {
+        super(265, "Chains of Slavery");
+
+        setItemsIds(SHACKLE);
+
+        addStartNpc(30357); // Kristin
+        addTalkId(30357);
+
+        addKillId(20004, 20005);
+    }
+
+    @Override
+    public String onAdvEvent(String event, L2Npc npc, L2PcInstance player) {
+        String htmltext = event;
+        QuestState st = player.getQuestState(qn);
+        if (st == null) { return htmltext; }
+
+        if (event.equalsIgnoreCase("30357-03.htm")) {
+            st.setState(QuestState.STATE_STARTED);
+            st.set("cond", "1");
+            st.playSound(ESound.ItemSound_quest_accept);
+        }
+        else if (event.equalsIgnoreCase("30357-06.htm")) {
+            st.playSound(ESound.ItemSound_quest_finish);
+            st.exitQuest(true);
+        }
+
+        return htmltext;
+    }
+
+    @Override
+    public String onTalk(L2Npc npc, L2PcInstance player) {
+        QuestState st = player.getQuestState(qn);
+        String htmltext = getNoQuestMsg();
+        if (st == null) { return htmltext; }
+
+        switch (st.getState()) {
+            case QuestState.STATE_CREATED:
+                if (player.getRace() != PlayerRace.DarkElf) { htmltext = "30357-00.htm"; }
+                else if (player.getLevel() < 6) { htmltext = "30357-01.htm"; }
+                else { htmltext = "30357-02.htm"; }
+                break;
+
+            case QuestState.STATE_STARTED:
+                int shackles = st.getQuestItemsCount(SHACKLE);
+                if (shackles == 0) { htmltext = "30357-04.htm"; }
+                else {
+                    int reward = 12 * shackles;
+                    if (shackles > 10) { reward += 500; }
+
+                    htmltext = "30357-05.htm";
+                    st.takeItems(SHACKLE, -1);
+                    st.rewardItems(ItemConst.ADENA_ID, reward);
+
+                    if (player.isNewbie() && st.getInt("Reward") == 0) {
+                        st.showQuestionMark(26);
+                        st.set("Reward", "1");
+
+                        if (player.isMageClass()) {
+                            st.playTutorialVoice("tutorial_voice_027");
+                            st.giveItems(SPIRITSHOT_FOR_BEGINNERS, 3000);
+                        }
+                        else {
+                            st.playTutorialVoice("tutorial_voice_026");
+                            st.giveItems(SOULSHOT_FOR_BEGINNERS, 6000);
+                        }
+                    }
+                }
+                break;
+        }
+
+        return htmltext;
+    }
+
+    @Override
+    public String onKill(L2Npc npc, L2PcInstance player, boolean isPet) {
+        QuestState st = checkPlayerState(player, npc, QuestState.STATE_STARTED);
+        if (st == null) { return null; }
+
+        st.dropItems(SHACKLE, 1, 0, (npc.getNpcId() == 20004) ? 500000 : 600000);
+
+        return null;
+    }
 }

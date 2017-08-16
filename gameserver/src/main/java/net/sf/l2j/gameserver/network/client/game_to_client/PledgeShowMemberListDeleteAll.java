@@ -14,17 +14,14 @@
  */
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
-public class PledgeShowMemberListDeleteAll extends L2GameServerPacket
-{
-	public static final PledgeShowMemberListDeleteAll STATIC_PACKET = new PledgeShowMemberListDeleteAll();
-	
-	private PledgeShowMemberListDeleteAll()
-	{
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
-		writeC(0x82);
-	}
+public class PledgeShowMemberListDeleteAll extends L2GameServerPacket {
+    public static final PledgeShowMemberListDeleteAll STATIC_PACKET = new PledgeShowMemberListDeleteAll();
+
+    private PledgeShowMemberListDeleteAll() {
+    }
+
+    @Override
+    protected final void writeImpl() {
+        writeC(0x82);
+    }
 }

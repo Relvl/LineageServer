@@ -23,41 +23,33 @@ import net.sf.l2j.gameserver.templates.skills.L2EffectType;
 /**
  * @author Faror
  */
-public class EffectPhoenixBless extends L2Effect
-{
-	public EffectPhoenixBless(Env env, EffectTemplate template)
-	{
-		super(env, template);
-	}
-	
-	@Override
-	public L2EffectType getEffectType()
-	{
-		return L2EffectType.PHOENIX_BLESSING;
-	}
-	
-	@Override
-	public boolean onStart()
-	{
-		return true;
-	}
-	
-	@Override
-	public void onExit()
-	{
-		if (getEffected() instanceof L2Playable)
-			((L2Playable) getEffected()).stopPhoenixBlessing(this);
-	}
-	
-	@Override
-	public boolean onActionTime()
-	{
-		return false;
-	}
-	
-	@Override
-	public int getEffectFlags()
-	{
-		return L2EffectFlag.PHOENIX_BLESSING.getMask();
-	}
+public class EffectPhoenixBless extends L2Effect {
+    public EffectPhoenixBless(Env env, EffectTemplate template) {
+        super(env, template);
+    }
+
+    @Override
+    public L2EffectType getEffectType() {
+        return L2EffectType.PHOENIX_BLESSING;
+    }
+
+    @Override
+    public boolean onStart() {
+        return true;
+    }
+
+    @Override
+    public void onExit() {
+        if (getEffected() instanceof L2Playable) { ((L2Playable) getEffected()).stopPhoenixBlessing(this); }
+    }
+
+    @Override
+    public boolean onActionTime() {
+        return false;
+    }
+
+    @Override
+    public int getEffectFlags() {
+        return L2EffectFlag.PHOENIX_BLESSING.getMask();
+    }
 }

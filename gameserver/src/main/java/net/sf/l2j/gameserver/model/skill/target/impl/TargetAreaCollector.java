@@ -32,7 +32,7 @@ public class TargetAreaCollector implements ISkillTargetCollector {
             if (!L2Skill.checkForAreaOffensiveSkills(activeChar, target, skill, srcInArena)) {
                 return sendIncorrect(activeChar);
             }
-            if (onlyFirst) { return new L2Character[]{target}; }
+            if (onlyFirst) { return new L2Character[]{ target }; }
             origin = target;
             targetList.add(origin);
         }

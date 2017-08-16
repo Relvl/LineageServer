@@ -27,38 +27,31 @@ import net.sf.l2j.gameserver.network.client.game_to_client.CreatureSay;
  * <li>gmchat_menu : same as gmchat, but displays the admin panel after chat</li>
  * </ul>
  */
-public class AdminGmChat implements IAdminCommandHandler
-{
-	private static final String[] ADMIN_COMMANDS =
-	{
-		"admin_gmchat",
-		"admin_gmchat_menu"
-	};
-	
-	@Override
-	public boolean useAdminCommand(String command, L2PcInstance activeChar)
-	{
-		if (command.startsWith("admin_gmchat"))
-		{
-			try
-			{
-				GmListTable.broadcastToGMs(new CreatureSay(0, EChatType.ALLIANCE, activeChar.getName(), command.substring((command.startsWith("admin_gmchat_menu")) ? 18 : 13)));
-			}
-			catch (StringIndexOutOfBoundsException e)
-			{
-				// empty message.. ignore
-			}
-			
-			if (command.startsWith("admin_gmchat_menu"))
-				AdminHelpPage.showHelpPage(activeChar, "main_menu.htm");
-		}
-		
-		return true;
-	}
-	
-	@Override
-	public String[] getAdminCommandList()
-	{
-		return ADMIN_COMMANDS;
-	}
+public class AdminGmChat implements IAdminCommandHandler {
+    private static final String[] ADMIN_COMMANDS =
+            {
+                    "admin_gmchat",
+                    "admin_gmchat_menu"
+            };
+
+    @Override
+    public boolean useAdminCommand(String command, L2PcInstance activeChar) {
+        if (command.startsWith("admin_gmchat")) {
+            try {
+                GmListTable.broadcastToGMs(new CreatureSay(0, EChatType.ALLIANCE, activeChar.getName(), command.substring((command.startsWith("admin_gmchat_menu")) ? 18 : 13)));
+            }
+            catch (StringIndexOutOfBoundsException e) {
+                // empty message.. ignore
+            }
+
+            if (command.startsWith("admin_gmchat_menu")) { AdminHelpPage.showHelpPage(activeChar, "main_menu.htm"); }
+        }
+
+        return true;
+    }
+
+    @Override
+    public String[] getAdminCommandList() {
+        return ADMIN_COMMANDS;
+    }
 }

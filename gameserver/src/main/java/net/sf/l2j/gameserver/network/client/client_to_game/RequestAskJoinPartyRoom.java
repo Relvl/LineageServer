@@ -14,42 +14,34 @@
  */
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
-import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ExAskJoinPartyRoom;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 
-public class RequestAskJoinPartyRoom extends L2GameClientPacket
-{
-	private static String _name;
-	
-	@Override
-	protected void readImpl()
-	{
-		_name = readS();
-	}
-	
-	@Override
-	protected void runImpl()
-	{
-		final L2PcInstance activeChar = getClient().getActiveChar();
-		if (activeChar == null)
-			return;
-		
-		// Send PartyRoom invite request (with activeChar) name to the target
-		final L2PcInstance target = L2World.getInstance().getPlayer(_name);
-		if (target != null)
-		{
-			if (!target.isProcessingRequest())
-			{
-				activeChar.onTransactionRequest(target);
-				target.sendPacket(new ExAskJoinPartyRoom(activeChar.getName()));
-			}
-			else
-				activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_IS_BUSY_TRY_LATER).addPcName(target));
-		}
-		else
-			activeChar.sendPacket(SystemMessageId.TARGET_IS_NOT_FOUND_IN_THE_GAME);
-	}
+public class RequestAskJoinPartyRoom extends L2GameClientPacket {
+    private static String _name;
+
+    @Override
+    protected void readImpl() {
+        _name = readS();
+    }
+
+    @Override
+    protected void runImpl() {
+        final L2PcInstance activeChar = getClient().getActiveChar();
+        if (activeChar == null) { return; }
+
+        // Send PartyRoom invite request (with activeChar) name to the target
+        final L2PcInstance target = L2World.getInstance().getPlayer(_name);
+        if (target != null) {
+            if (!target.isProcessingRequest()) {
+                activeChar.onTransactionRequest(target);
+                target.sendPacket(new ExAskJoinPartyRoom(activeChar.getName()));
+            }
+            else { activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.S1_IS_BUSY_TRY_LATER).addPcName(target)); }
+        }
+        else { activeChar.sendPacket(SystemMessageId.TARGET_IS_NOT_FOUND_IN_THE_GAME); }
+    }
 }

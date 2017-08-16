@@ -271,5 +271,4 @@ public class PcStat extends PlayableStat {
         su.addAttribute(StatusUpdate.SP, getSp());
         getActiveChar().sendPacket(su);
     }
-
 }

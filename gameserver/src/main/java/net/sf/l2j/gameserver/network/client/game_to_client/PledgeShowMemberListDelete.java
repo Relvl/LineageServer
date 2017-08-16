@@ -14,19 +14,16 @@
  */
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
-public class PledgeShowMemberListDelete extends L2GameServerPacket
-{
-	private final String _player;
-	
-	public PledgeShowMemberListDelete(String playerName)
-	{
-		_player = playerName;
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
-		writeC(0x56);
-		writeS(_player);
-	}
+public class PledgeShowMemberListDelete extends L2GameServerPacket {
+    private final String _player;
+
+    public PledgeShowMemberListDelete(String playerName) {
+        _player = playerName;
+    }
+
+    @Override
+    protected final void writeImpl() {
+        writeC(0x56);
+        writeS(_player);
+    }
 }

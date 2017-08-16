@@ -6,7 +6,7 @@ import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.client.game_to_client.ExMultiPartyCommandChannelInfo;
 
 public class ChannelListUpdate implements IUserCommandHandler {
-    private static final int[] COMMAND_IDS = {97};
+    private static final int[] COMMAND_IDS = { 97 };
 
     @Override
     public boolean useUserCommand(int id, L2PcInstance activeChar) {

@@ -119,7 +119,8 @@ public class SiegeManager {
         if (activeChar == null) { return false; }
 
         Castle castle = CastleManager.getInstance().getCastle(activeChar);
-        if ((castle == null || castle.getCastleId() <= 0) || (!castle.getSiege().isInProgress()) || (activeChar.getClanId() != 0 && castle.getSiege().getAttackerClan(activeChar.getClanId()) == null) || (activeChar.isInSiege() && activeChar.isInsideZone(ZoneId.CASTLE))) {
+        if ((castle == null || castle.getCastleId() <= 0) || (!castle.getSiege().isInProgress()) || (activeChar.getClanId() != 0 && castle.getSiege()
+                                                                                                                                          .getAttackerClan(activeChar.getClanId()) == null) || (activeChar.isInSiege() && activeChar.isInsideZone(ZoneId.CASTLE))) {
             activeChar.sendPacket(SystemMessage.getSystemMessage(SystemMessageId.NOT_CALL_PET_FROM_THIS_LOCATION));
             return false;
         }

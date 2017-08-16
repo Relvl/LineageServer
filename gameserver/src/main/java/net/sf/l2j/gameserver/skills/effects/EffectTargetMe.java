@@ -24,46 +24,38 @@ import net.sf.l2j.gameserver.templates.skills.L2EffectType;
 /**
  * @author -Nemesiss-
  */
-public class EffectTargetMe extends L2Effect
-{
-	public EffectTargetMe(Env env, EffectTemplate template)
-	{
-		super(env, template);
-	}
-	
-	@Override
-	public L2EffectType getEffectType()
-	{
-		return L2EffectType.TARGET_ME;
-	}
-	
-	@Override
-	public boolean onStart()
-	{
-		// work only on players, cause mobs got their own aggro system (AGGDAMAGE, AGGREMOVE, etc)
-		if (getEffected() instanceof L2PcInstance)
-		{
-			// add an INTENTION_ATTACK, but only if victim got attacker as target
-			if ((getEffected().getAI() == null || getEffected().getAI().getNextIntention() == null) && getEffected().getTarget() == getEffector())
-				getEffected().getAI().setIntention(EIntention.ATTACK, getEffector());
-			
-			// target the agressor
-			getEffected().setTarget(getEffector());
-			getEffected().sendPacket(new MyTargetSelected(getEffector().getObjectId(), 0));
-			
-			return true;
-		}
-		return false;
-	}
-	
-	@Override
-	public void onExit()
-	{
-	}
-	
-	@Override
-	public boolean onActionTime()
-	{
-		return false;
-	}
+public class EffectTargetMe extends L2Effect {
+    public EffectTargetMe(Env env, EffectTemplate template) {
+        super(env, template);
+    }
+
+    @Override
+    public L2EffectType getEffectType() {
+        return L2EffectType.TARGET_ME;
+    }
+
+    @Override
+    public boolean onStart() {
+        // work only on players, cause mobs got their own aggro system (AGGDAMAGE, AGGREMOVE, etc)
+        if (getEffected() instanceof L2PcInstance) {
+            // add an INTENTION_ATTACK, but only if victim got attacker as target
+            if ((getEffected().getAI() == null || getEffected().getAI().getNextIntention() == null) && getEffected().getTarget() == getEffector()) { getEffected().getAI().setIntention(EIntention.ATTACK, getEffector()); }
+
+            // target the agressor
+            getEffected().setTarget(getEffector());
+            getEffected().sendPacket(new MyTargetSelected(getEffector().getObjectId(), 0));
+
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onExit() {
+    }
+
+    @Override
+    public boolean onActionTime() {
+        return false;
+    }
 }

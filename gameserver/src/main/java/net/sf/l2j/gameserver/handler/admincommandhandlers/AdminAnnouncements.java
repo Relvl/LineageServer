@@ -2,8 +2,8 @@ package net.sf.l2j.gameserver.handler.admincommandhandlers;
 
 import net.sf.l2j.gameserver.datatables.AnnouncementTable;
 import net.sf.l2j.gameserver.handler.IAdminCommandHandler;
-import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.world.L2World;
 
 public class AdminAnnouncements implements IAdminCommandHandler {
     private static final String[] ADMIN_COMMANDS = {
@@ -45,7 +45,8 @@ public class AdminAnnouncements implements IAdminCommandHandler {
                         if (!AnnouncementTable.getInstance().addAnnouncement(split[1], crit, false, -1, -1, -1)) {
                             activeChar.sendMessage("Invalid //announce message content ; can't be null or empty.");
                         }
-                    } catch (Exception e) {
+                    }
+                    catch (Exception e) {
                     }
                     AnnouncementTable.getInstance().listAnnouncements(activeChar);
                     break;
@@ -63,7 +64,8 @@ public class AdminAnnouncements implements IAdminCommandHandler {
                         if (!AnnouncementTable.getInstance().addAnnouncement(msg, crit, auto, idelay, delay, limit)) {
                             activeChar.sendMessage("Invalid //announce message content ; can't be null or empty.");
                         }
-                    } catch (Exception e) {
+                    }
+                    catch (Exception e) {
                     }
                     AnnouncementTable.getInstance().listAnnouncements(activeChar);
                     break;
@@ -71,7 +73,8 @@ public class AdminAnnouncements implements IAdminCommandHandler {
                 case "del":
                     try {
                         AnnouncementTable.getInstance().delAnnouncement(Integer.parseInt(tokens[2]));
-                    } catch (Exception e) {
+                    }
+                    catch (Exception e) {
                     }
                     AnnouncementTable.getInstance().listAnnouncements(activeChar);
                     break;

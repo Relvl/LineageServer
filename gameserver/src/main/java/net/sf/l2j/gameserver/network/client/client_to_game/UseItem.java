@@ -15,7 +15,6 @@
 package net.sf.l2j.gameserver.network.client.client_to_game;
 
 import net.sf.l2j.Config;
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.handler.IItemHandler;
 import net.sf.l2j.gameserver.handler.ItemHandler;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
@@ -35,6 +34,7 @@ import net.sf.l2j.gameserver.network.client.game_to_client.PetItemList;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 public final class UseItem extends L2GameClientPacket {
     private int _objectId;

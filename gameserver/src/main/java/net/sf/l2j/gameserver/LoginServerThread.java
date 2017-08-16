@@ -5,8 +5,8 @@ import net.sf.l2j.NewCrypt;
 import net.sf.l2j.commons.EServerStatus;
 import net.sf.l2j.commons.SessionKey;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.world.L2World;
 import net.sf.l2j.gameserver.network.GameClientState;
 import net.sf.l2j.gameserver.network.L2GameClient;
 import net.sf.l2j.gameserver.network.client.game_to_client.AuthLoginFail;
@@ -92,21 +92,26 @@ public class LoginServerThread extends AServerCommunicationThread {
                 blowfishCrypt = new NewCrypt(BLOWFISH_KEY_BASE);
 
                 doThreadLoop(socket);
-            } catch (UnknownHostException e) {
+            }
+            catch (UnknownHostException e) {
                 LOGGER.error("", e);
-            } catch (IOException ignored) {
+            }
+            catch (IOException ignored) {
                 LOGGER.info("No connection found with loginserver, next try in 10 seconds.");
-            } finally {
+            }
+            finally {
                 try {
                     socket.close();
                     isInterrupted();
-                } catch (RuntimeException | IOException ignored) { }
+                }
+                catch (RuntimeException | IOException ignored) { }
             }
 
             // 10 seconds tempo before another try
             try {
                 Thread.sleep(10000);
-            } catch (InterruptedException ignored) { }
+            }
+            catch (InterruptedException ignored) { }
         }
     }
 
@@ -124,7 +129,8 @@ public class LoginServerThread extends AServerCommunicationThread {
                     KeyFactory kfac = KeyFactory.getInstance("RSA");
                     BigInteger modulus = new BigInteger(init.getPublicKey());
                     publicKey = (RSAPublicKey) kfac.generatePublic(new RSAPublicKeySpec(modulus, RSAKeyGenParameterSpec.F4));
-                } catch (GeneralSecurityException e) {
+                }
+                catch (GeneralSecurityException e) {
                     LOGGER.warn("Troubles while init the public key send by login", e);
                     break;
                 }
@@ -273,5 +279,4 @@ public class LoginServerThread extends AServerCommunicationThread {
             session = key;
         }
     }
-
 }

@@ -1,7 +1,6 @@
 package net.sf.l2j.gameserver.model.entity;
 
 import net.sf.l2j.L2DatabaseFactoryOld;
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.instancemanager.AuctionManager;
 import net.sf.l2j.gameserver.instancemanager.ClanHallManager;
@@ -14,6 +13,7 @@ import net.sf.l2j.gameserver.model.zone.type.L2ClanHallZone;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.PledgeShowInfoUpdate;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -14,57 +14,51 @@
  */
 package net.sf.l2j.gameserver.geoengine.converter.blocks;
 
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
 import net.sf.l2j.Config;
 import net.sf.l2j.gameserver.geoengine.geodata.GeoFormat;
 import net.sf.l2j.gameserver.geoengine.geodata.GeoStructure;
 
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+
 /**
  * @author Hasha
  */
-public final class FlatBlock extends Block
-{
-	private final short _height;
-	
-	/**
-	 * Creates FlatBlock.
-	 * @param bb : Input byte buffer.
-	 */
-	public FlatBlock(ByteBuffer bb)
-	{
-		_height = bb.getShort();
-		
-		if (Config.GEODATA_FORMAT == GeoFormat.L2OFF)
-			bb.getShort();
-	}
-	
-	@Override
-	public short getHeightNearest(int geoX, int geoY, int worldZ)
-	{
-		return _height;
-	}
-	
-	@Override
-	public byte getNsweNearest(int geoX, int geoY, int worldZ)
-	{
-		return 0x0F;
-	}
-	
-	@Override
-	public byte getNsweBelow(int geoX, int geoY, int worldZ)
-	{
-		return 0x0F;
-	}
-	
-	@Override
-	public void saveBlock(BufferedOutputStream stream) throws IOException
-	{
-		stream.write(GeoStructure.TYPE_FLAT_L2D);
-		
-		stream.write((byte) (_height & 0x00FF));
-		stream.write((byte) (_height >> 8));
-	}
+public final class FlatBlock extends Block {
+    private final short _height;
+
+    /**
+     * Creates FlatBlock.
+     *
+     * @param bb : Input byte buffer.
+     */
+    public FlatBlock(ByteBuffer bb) {
+        _height = bb.getShort();
+
+        if (Config.GEODATA_FORMAT == GeoFormat.L2OFF) { bb.getShort(); }
+    }
+
+    @Override
+    public short getHeightNearest(int geoX, int geoY, int worldZ) {
+        return _height;
+    }
+
+    @Override
+    public byte getNsweNearest(int geoX, int geoY, int worldZ) {
+        return 0x0F;
+    }
+
+    @Override
+    public byte getNsweBelow(int geoX, int geoY, int worldZ) {
+        return 0x0F;
+    }
+
+    @Override
+    public void saveBlock(BufferedOutputStream stream) throws IOException {
+        stream.write(GeoStructure.TYPE_FLAT_L2D);
+
+        stream.write((byte) (_height & 0x00FF));
+        stream.write((byte) (_height >> 8));
+    }
 }

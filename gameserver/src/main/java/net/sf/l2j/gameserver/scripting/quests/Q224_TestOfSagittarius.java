@@ -17,6 +17,7 @@ import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.ClassId;
 import net.sf.l2j.gameserver.model.item.EPaperdollSlot;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.network.client.game_to_client.SocialAction;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
@@ -99,33 +100,33 @@ public class Q224_TestOfSagittarius extends Quest {
         if (event.equalsIgnoreCase("30702-04a.htm")) {
             st.setState(QuestState.STATE_STARTED);
             st.set("cond", "1");
-            st.playSound(QuestState.SOUND_ACCEPT);
+            st.playSound(ESound.ItemSound_quest_accept);
             st.giveItems(BERNARD_INTRODUCTION, 1);
             st.giveItems(DIMENSIONAL_DIAMOND, 96);
         }
         // HAMIL
         else if (event.equalsIgnoreCase("30626-03.htm")) {
             st.set("cond", "2");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.takeItems(BERNARD_INTRODUCTION, 1);
             st.giveItems(HAMIL_LETTER_1, 1);
         }
         else if (event.equalsIgnoreCase("30626-07.htm")) {
             st.set("cond", "5");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.takeItems(HUNTER_RUNE_1, 10);
             st.giveItems(HAMIL_LETTER_2, 1);
         }
         // SIR_ARON_TANFORD
         else if (event.equalsIgnoreCase("30653-02.htm")) {
             st.set("cond", "3");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.takeItems(HAMIL_LETTER_1, 1);
         }
         // VOKIAN
         else if (event.equalsIgnoreCase("30514-02.htm")) {
             st.set("cond", "6");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.takeItems(HAMIL_LETTER_2, 1);
         }
 
@@ -160,7 +161,7 @@ public class Q224_TestOfSagittarius extends Quest {
                         else if (cond == 8) {
                             htmltext = "30626-09.htm";
                             st.set("cond", "9");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(HUNTER_RUNE_2, 10);
                             st.giveItems(HAMIL_LETTER_3, 1);
                         }
@@ -168,7 +169,7 @@ public class Q224_TestOfSagittarius extends Quest {
                         else if (cond == 12) {
                             htmltext = "30626-11.htm";
                             st.set("cond", "13");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                         }
                         else if (cond == 13) { htmltext = "30626-12.htm"; }
                         else if (cond == 14) {
@@ -179,7 +180,7 @@ public class Q224_TestOfSagittarius extends Quest {
                             st.giveItems(MARK_OF_SAGITTARIUS, 1);
                             st.rewardExpAndSp(54726, 20250);
                             player.broadcastPacket(new SocialAction(player, 3));
-                            st.playSound(QuestState.SOUND_FINISH);
+                            st.playSound(ESound.ItemSound_quest_finish);
                             st.exitQuest(false);
                         }
                         break;
@@ -195,7 +196,7 @@ public class Q224_TestOfSagittarius extends Quest {
                         else if (cond == 7) {
                             htmltext = "30514-04.htm";
                             st.set("cond", "8");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(TALISMAN_OF_SNAKE, 1);
                         }
                         else if (cond > 7) { htmltext = "30514-05.htm"; }
@@ -205,14 +206,14 @@ public class Q224_TestOfSagittarius extends Quest {
                         if (cond == 9) {
                             htmltext = "30717-01.htm";
                             st.set("cond", "10");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(HAMIL_LETTER_3, 1);
                         }
                         else if (cond == 10) { htmltext = "30717-03.htm"; }
                         else if (cond == 11) {
                             htmltext = "30717-02.htm";
                             st.set("cond", "12");
-                            st.playSound(QuestState.SOUND_MIDDLE);
+                            st.playSound(ESound.ItemSound_quest_middle);
                             st.takeItems(MANASHEN_HORN, 1);
                             st.takeItems(MITHRIL_CLIP, 1);
                             st.takeItems(REINFORCED_BOWSTRING, 1);
@@ -284,7 +285,7 @@ public class Q224_TestOfSagittarius extends Quest {
             case LETO_LIZARDMAN_OVERLORD:
                 if (st.getInt("cond") == 13) {
                     if (((st.getQuestItemsCount(BLOOD_OF_LIZARDMAN) - 120) * 5) > Rnd.get(100)) {
-                        st.playSound(QuestState.SOUND_BEFORE_BATTLE);
+                        st.playSound(ESound.Itemsound_quest_before_battle);
                         st.takeItems(BLOOD_OF_LIZARDMAN, -1);
                         addSpawn(SERPENT_DEMON_KADESH, player, false, 300000, true);
                     }
@@ -296,7 +297,7 @@ public class Q224_TestOfSagittarius extends Quest {
                 if (st.getInt("cond") == 13) {
                     if (st.getItemEquipped(EPaperdollSlot.PAPERDOLL_RHAND) == CRESCENT_MOON_BOW) {
                         st.set("cond", "14");
-                        st.playSound(QuestState.SOUND_MIDDLE);
+                        st.playSound(ESound.ItemSound_quest_middle);
                         st.giveItems(TALISMAN_OF_KADESH, 1);
                     }
                     else { addSpawn(SERPENT_DEMON_KADESH, player, false, 300000, true); }

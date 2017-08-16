@@ -193,14 +193,18 @@ public class L2BufferInstance extends L2NpcInstance {
         else {
             for (Entry<String, ArrayList<Integer>> scheme : schemes.entrySet()) {
                 int cost = getFee(scheme.getValue());
-                StringUtil.append(sb, "<font color=\"LEVEL\"><a action=\"bypass -h npc_%objectId%_givebuffs ", targetType, " ", scheme.getKey(), " ", cost, "\">", scheme.getKey(), " (", scheme.getValue().size(), " skill(s))</a>", cost > 0 ? " - Adena cost: " + cost : "", "</font><br1>");
+                StringUtil.append(sb, "<font color=\"LEVEL\"><a action=\"bypass -h npc_%objectId%_givebuffs ", targetType, " ", scheme.getKey(), " ", cost, "\">", scheme.getKey(), " (", scheme.getValue().size(), " skill(s))</a>", cost > 0
+                                                                                                                                                                                                                                      ? " - Adena cost: " + cost
+                                                                                                                                                                                                                                      : "", "</font><br1>");
             }
         }
 
         NpcHtmlMessage html = new NpcHtmlMessage(0);
         html.setFile(getHtmlPath(getNpcId(), 1));
         html.replace("%schemes%", sb.toString());
-        html.replace("%targettype%", targetType.equalsIgnoreCase("pet") ? "&nbsp;<a action=\"bypass -h npc_%objectId%_support player\">yourself</a>&nbsp;|&nbsp;your pet" : "yourself&nbsp;|&nbsp;<a action=\"bypass -h npc_%objectId%_support pet\">your pet</a>");
+        html.replace("%targettype%", targetType.equalsIgnoreCase("pet")
+                                     ? "&nbsp;<a action=\"bypass -h npc_%objectId%_support player\">yourself</a>&nbsp;|&nbsp;your pet"
+                                     : "yourself&nbsp;|&nbsp;<a action=\"bypass -h npc_%objectId%_support pet\">your pet</a>");
         html.replace("%objectId%", getObjectId());
         player.sendPacket(html);
     }
@@ -218,7 +222,9 @@ public class L2BufferInstance extends L2NpcInstance {
         else {
             sb.append("<table>");
             for (Entry<String, ArrayList<Integer>> scheme : schemes.entrySet()) {
-                StringUtil.append(sb, "<tr><td width=140>", scheme.getKey(), " (", scheme.getValue().size(), " skill(s))</td><td width=60><button value=\"Clear\" action=\"bypass -h npc_%objectId%_clearscheme ", scheme.getKey(), "\" width=55 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td><td width=60><button value=\"Drop\" action=\"bypass -h npc_%objectId%_deletescheme ", scheme.getKey(), "\" width=55 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td></tr>");
+                StringUtil.append(sb, "<tr><td width=140>", scheme.getKey(), " (", scheme.getValue()
+                                                                                         .size(), " skill(s))</td><td width=60><button value=\"Clear\" action=\"bypass -h npc_%objectId%_clearscheme ", scheme.getKey(), "\" width=55 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td><td width=60><button value=\"Drop\" action=\"bypass -h npc_%objectId%_deletescheme ", scheme
+                        .getKey(), "\" width=55 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td></tr>");
             }
 
             sb.append("</table>");
@@ -275,7 +281,8 @@ public class L2BufferInstance extends L2NpcInstance {
                 StringUtil.append(sb, "<tr><td width=200>", scheme.getKey(), " (<font color=\"LEVEL\">", scheme.getValue().size(), "</font> / ", Config.BUFFER_MAX_SKILLS, " skill(s))</td></tr>");
             }
             else {
-                StringUtil.append(sb, "<tr><td width=200><a action=\"bypass -h npc_%objectId%_editschemes none ", scheme.getKey(), "\">", scheme.getKey(), " (", scheme.getValue().size(), " / ", Config.BUFFER_MAX_SKILLS, " skill(s))</a></td></tr>");
+                StringUtil.append(sb, "<tr><td width=200><a action=\"bypass -h npc_%objectId%_editschemes none ", scheme.getKey(), "\">", scheme.getKey(), " (", scheme.getValue()
+                                                                                                                                                                       .size(), " / ", Config.BUFFER_MAX_SKILLS, " skill(s))</a></td></tr>");
             }
         }
 

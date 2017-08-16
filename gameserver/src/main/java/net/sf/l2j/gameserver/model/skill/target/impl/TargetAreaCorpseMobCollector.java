@@ -22,7 +22,7 @@ public class TargetAreaCorpseMobCollector implements ISkillTargetCollector {
         if (!(target instanceof L2Attackable) || !target.isDead()) {
             return sendIncorrect(activeChar);
         }
-        if (onlyFirst) { return new L2Character[]{target}; }
+        if (onlyFirst) { return new L2Character[]{ target }; }
         List<L2Character> targetList = new ArrayList<>();
         targetList.add(target);
         boolean srcInArena = activeChar.isInArena();

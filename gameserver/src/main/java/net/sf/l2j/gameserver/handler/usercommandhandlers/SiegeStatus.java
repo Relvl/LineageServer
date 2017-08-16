@@ -11,7 +11,7 @@ import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.NpcHtmlMessage;
 
 public class SiegeStatus implements IUserCommandHandler {
-    private static final int[] COMMAND_IDS = {99};
+    private static final int[] COMMAND_IDS = { 99 };
 
     private static final String IN_PROGRESS = "Castle Siege in Progress";
     private static final String OUTSIDE_ZONE = "Outside Castle Siege Zone";

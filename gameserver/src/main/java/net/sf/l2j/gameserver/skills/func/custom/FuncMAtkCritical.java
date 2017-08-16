@@ -1,9 +1,9 @@
 package net.sf.l2j.gameserver.skills.func.custom;
 
 import net.sf.l2j.gameserver.model.actor.L2Character;
-import net.sf.l2j.gameserver.skills.func.Env;
 import net.sf.l2j.gameserver.skills.Formulas;
 import net.sf.l2j.gameserver.skills.Stats;
+import net.sf.l2j.gameserver.skills.func.Env;
 import net.sf.l2j.gameserver.skills.func.Func;
 
 public class FuncMAtkCritical extends Func {

@@ -15,6 +15,7 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.base.PlayerRace;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
@@ -51,26 +52,26 @@ public class Q010_IntoTheWorld extends Quest {
         if (event.equalsIgnoreCase("30533-02.htm")) {
             st.setState(QuestState.STATE_STARTED);
             st.set("cond", "1");
-            st.playSound(QuestState.SOUND_ACCEPT);
+            st.playSound(ESound.ItemSound_quest_accept);
         }
         else if (event.equalsIgnoreCase("30520-02.htm")) {
             st.set("cond", "2");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.giveItems(VERY_EXPENSIVE_NECKLACE, 1);
         }
         else if (event.equalsIgnoreCase("30650-02.htm")) {
             st.set("cond", "3");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
             st.takeItems(VERY_EXPENSIVE_NECKLACE, 1);
         }
         else if (event.equalsIgnoreCase("30520-04.htm")) {
             st.set("cond", "4");
-            st.playSound(QuestState.SOUND_MIDDLE);
+            st.playSound(ESound.ItemSound_quest_middle);
         }
         else if (event.equalsIgnoreCase("30533-05.htm")) {
             st.giveItems(SOE_GIRAN, 1);
             st.rewardItems(MARK_OF_TRAVELER, 1);
-            st.playSound(QuestState.SOUND_FINISH);
+            st.playSound(ESound.ItemSound_quest_finish);
             st.exitQuest(false);
         }
 

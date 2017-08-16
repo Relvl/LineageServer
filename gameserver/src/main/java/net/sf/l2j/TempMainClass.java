@@ -185,7 +185,6 @@ public class TempMainClass {
                         case "default_action":
                             element.defaultActionType = ActionType.valueOf(set.val);
                             break;
-
                     }
                     // endregion case
 
@@ -220,7 +219,6 @@ public class TempMainClass {
                         break;
                 }
             }
-
         }
 
         Comparator<ItemXmlElement> comparator = (o1, o2) -> o1.id.compareTo(o2.id);
@@ -238,6 +236,5 @@ public class TempMainClass {
                 Serializer.MAPPER.writeValue(new File("./data/xml/items_new/etc_" + entry.getKey().name().toLowerCase() + ".xml"), entry.getValue());
             }
         }
-
     }
 }

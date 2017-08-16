@@ -1,8 +1,8 @@
 package net.sf.l2j.gameserver.model;
 
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.actor.instance.L2PetInstance;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 import java.util.concurrent.ScheduledFuture;
 
@@ -34,7 +34,6 @@ public class DropProtection implements Runnable {
         if (_owner == actor) { return true; }
 
         return _owner.getParty() != null && _owner.getParty() == actor.getParty();
-
     }
 
     public boolean tryPickUp(L2PetInstance pet) {

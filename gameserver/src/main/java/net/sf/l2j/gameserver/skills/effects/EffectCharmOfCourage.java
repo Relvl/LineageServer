@@ -24,46 +24,37 @@ import net.sf.l2j.gameserver.templates.skills.L2EffectType;
 /**
  * @author nBd
  */
-public class EffectCharmOfCourage extends L2Effect
-{
-	public EffectCharmOfCourage(Env env, EffectTemplate template)
-	{
-		super(env, template);
-	}
-	
-	@Override
-	public L2EffectType getEffectType()
-	{
-		return L2EffectType.CHARMOFCOURAGE;
-	}
-	
-	@Override
-	public boolean onStart()
-	{
-		if (getEffected() instanceof L2PcInstance)
-		{
-			getEffected().broadcastPacket(new EtcStatusUpdate((L2PcInstance) getEffected()));
-			return true;
-		}
-		return false;
-	}
-	
-	@Override
-	public void onExit()
-	{
-		if (getEffected() instanceof L2PcInstance)
-			getEffected().broadcastPacket(new EtcStatusUpdate((L2PcInstance) getEffected()));
-	}
-	
-	@Override
-	public boolean onActionTime()
-	{
-		return false;
-	}
-	
-	@Override
-	public int getEffectFlags()
-	{
-		return L2EffectFlag.CHARM_OF_COURAGE.getMask();
-	}
+public class EffectCharmOfCourage extends L2Effect {
+    public EffectCharmOfCourage(Env env, EffectTemplate template) {
+        super(env, template);
+    }
+
+    @Override
+    public L2EffectType getEffectType() {
+        return L2EffectType.CHARMOFCOURAGE;
+    }
+
+    @Override
+    public boolean onStart() {
+        if (getEffected() instanceof L2PcInstance) {
+            getEffected().broadcastPacket(new EtcStatusUpdate((L2PcInstance) getEffected()));
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onExit() {
+        if (getEffected() instanceof L2PcInstance) { getEffected().broadcastPacket(new EtcStatusUpdate((L2PcInstance) getEffected())); }
+    }
+
+    @Override
+    public boolean onActionTime() {
+        return false;
+    }
+
+    @Override
+    public int getEffectFlags() {
+        return L2EffectFlag.CHARM_OF_COURAGE.getMask();
+    }
 }

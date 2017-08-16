@@ -19,26 +19,23 @@ import net.sf.l2j.gameserver.network.client.game_to_client.HennaRemoveList;
 
 /**
  * RequestHennaRemoveList
+ *
  * @author Tempy
  */
-public final class RequestHennaRemoveList extends L2GameClientPacket
-{
-	@SuppressWarnings("unused")
-	private int _unknown;
-	
-	@Override
-	protected void readImpl()
-	{
-		_unknown = readD(); // ??
-	}
-	
-	@Override
-	protected void runImpl()
-	{
-		final L2PcInstance activeChar = getClient().getActiveChar();
-		if (activeChar == null)
-			return;
-		
-		activeChar.sendPacket(new HennaRemoveList(activeChar));
-	}
+public final class RequestHennaRemoveList extends L2GameClientPacket {
+    @SuppressWarnings("unused")
+    private int _unknown;
+
+    @Override
+    protected void readImpl() {
+        _unknown = readD(); // ??
+    }
+
+    @Override
+    protected void runImpl() {
+        final L2PcInstance activeChar = getClient().getActiveChar();
+        if (activeChar == null) { return; }
+
+        activeChar.sendPacket(new HennaRemoveList(activeChar));
+    }
 }

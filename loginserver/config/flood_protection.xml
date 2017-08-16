@@ -1,6 +1,6 @@
 <FloodProtectionConfig Enabled="true">
-  <FastConnectionLimit>15</FastConnectionLimit>
-  <FastConnectionTime>350</FastConnectionTime>
-  <NormalConnectionTime>700</NormalConnectionTime>
-  <MaxConnectionsPerIP>10</MaxConnectionsPerIP>
+    <FastConnectionLimit>15</FastConnectionLimit>
+    <FastConnectionTime>350</FastConnectionTime>
+    <NormalConnectionTime>700</NormalConnectionTime>
+    <MaxConnectionsPerIP>10</MaxConnectionsPerIP>
 </FloodProtectionConfig>

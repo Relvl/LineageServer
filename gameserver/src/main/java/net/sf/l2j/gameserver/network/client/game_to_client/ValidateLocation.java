@@ -16,28 +16,25 @@ package net.sf.l2j.gameserver.network.client.game_to_client;
 
 import net.sf.l2j.gameserver.model.actor.L2Character;
 
-public class ValidateLocation extends L2GameServerPacket
-{
-	private final int _charObjId;
-	private final int _x, _y, _z, _heading;
-	
-	public ValidateLocation(L2Character cha)
-	{
-		_charObjId = cha.getObjectId();
-		_x = cha.getX();
-		_y = cha.getY();
-		_z = cha.getZ();
-		_heading = cha.getHeading();
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
-		writeC(0x61);
-		writeD(_charObjId);
-		writeD(_x);
-		writeD(_y);
-		writeD(_z);
-		writeD(_heading);
-	}
+public class ValidateLocation extends L2GameServerPacket {
+    private final int _charObjId;
+    private final int _x, _y, _z, _heading;
+
+    public ValidateLocation(L2Character cha) {
+        _charObjId = cha.getObjectId();
+        _x = cha.getX();
+        _y = cha.getY();
+        _z = cha.getZ();
+        _heading = cha.getHeading();
+    }
+
+    @Override
+    protected final void writeImpl() {
+        writeC(0x61);
+        writeD(_charObjId);
+        writeD(_x);
+        writeD(_y);
+        writeD(_z);
+        writeD(_heading);
+    }
 }

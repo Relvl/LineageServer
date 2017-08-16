@@ -2,7 +2,6 @@ package net.sf.l2j.gameserver.model;
 
 import net.sf.l2j.Config;
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.datatables.ItemTable;
 import net.sf.l2j.gameserver.instancemanager.DuelManager;
 import net.sf.l2j.gameserver.instancemanager.SevenSignsFestival;
@@ -20,6 +19,7 @@ import net.sf.l2j.gameserver.model.partymatching.PartyMatchRoomList;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
 import net.sf.l2j.gameserver.util.Util;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,7 +35,7 @@ public class L2Party {
     public static final int ITEM_ORDER = 3;
     public static final int ITEM_ORDER_SPOIL = 4;
 
-    private static final double[] BONUS_EXP_SP = {1, 1.30, 1.39, 1.50, 1.54, 1.58, 1.63, 1.67, 1.71};
+    private static final double[] BONUS_EXP_SP = { 1, 1.30, 1.39, 1.50, 1.54, 1.58, 1.63, 1.67, 1.71 };
     private static final int PARTY_POSITION_BROADCAST = 12000;
     private final List<L2PcInstance> _members = new CopyOnWriteArrayList<>();
     private final int _itemDistribution;

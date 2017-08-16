@@ -16,35 +16,32 @@ package net.sf.l2j.gameserver.network.client.game_to_client;
 
 import net.sf.l2j.gameserver.model.item.L2ItemInstance;
 
-public class SpawnItem extends L2GameServerPacket
-{
-	private final int _objectId;
-	private final int _itemId;
-	private final int _x, _y, _z;
-	private final int _stackable, _count;
-	
-	public SpawnItem(L2ItemInstance item)
-	{
-		_objectId = item.getObjectId();
-		_itemId = item.getItemId();
-		_x = item.getX();
-		_y = item.getY();
-		_z = item.getZ();
-		_stackable = item.isStackable() ? 0x01 : 0x00;
-		_count = item.getCount();
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
-		writeC(0x0b);
-		writeD(_objectId);
-		writeD(_itemId);
-		writeD(_x);
-		writeD(_y);
-		writeD(_z);
-		writeD(_stackable);
-		writeD(_count);
-		writeD(0x00); // c2
-	}
+public class SpawnItem extends L2GameServerPacket {
+    private final int _objectId;
+    private final int _itemId;
+    private final int _x, _y, _z;
+    private final int _stackable, _count;
+
+    public SpawnItem(L2ItemInstance item) {
+        _objectId = item.getObjectId();
+        _itemId = item.getItemId();
+        _x = item.getX();
+        _y = item.getY();
+        _z = item.getZ();
+        _stackable = item.isStackable() ? 0x01 : 0x00;
+        _count = item.getCount();
+    }
+
+    @Override
+    protected final void writeImpl() {
+        writeC(0x0b);
+        writeD(_objectId);
+        writeD(_itemId);
+        writeD(_x);
+        writeD(_y);
+        writeD(_z);
+        writeD(_stackable);
+        writeD(_count);
+        writeD(0x00); // c2
+    }
 }

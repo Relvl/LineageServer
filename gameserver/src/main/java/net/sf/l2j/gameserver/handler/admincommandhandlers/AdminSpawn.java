@@ -95,7 +95,6 @@ public class AdminSpawn implements IAdminCommandHandler {
             if (!permanent) { spawn.stopRespawn(); }
 
             activeChar.sendMessage("Spawned " + template.getName() + ".");
-
         }
         catch (Exception e) {
             activeChar.sendPacket(SystemMessageId.APPLICANT_INFORMATION_INCORRECT);

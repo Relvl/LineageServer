@@ -17,10 +17,10 @@ public abstract class IdFactory {
     private static final Logger LOGGER = LoggerFactory.getLogger(IdFactory.class);
 
     private static final String[][] EXTRACT_OBJ_ID_TABLES = {
-            {"characters", "obj_Id"},
-            {"items", "object_id"},
-            {"clan_data", "clan_id"},
-            {"items_on_ground", "object_id"}
+            { "characters", "obj_Id" },
+            { "items", "object_id" },
+            { "clan_data", "clan_id" },
+            { "items_on_ground", "object_id" }
     };
 
     protected boolean _initialized;

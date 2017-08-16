@@ -20,8 +20,8 @@ public final class RequestFriendList extends L2GameClientPacket {
         for (Entry<Integer, String> id : player.getContactController().getFriends().entrySet()) {
             L2PcInstance friend = L2World.getInstance().getPlayer(id.getKey());
             player.sendPacket(SystemMessage.getSystemMessage(friend == null || !friend.isOnline() ?
-                            SystemMessageId.S1_OFFLINE :
-                            SystemMessageId.S1_ONLINE
+                                                             SystemMessageId.S1_OFFLINE :
+                                                             SystemMessageId.S1_ONLINE
             ).addString(id.getValue()));
         }
         player.sendPacket(SystemMessageId.FRIEND_LIST_FOOTER);

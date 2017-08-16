@@ -14,7 +14,6 @@
  */
 package net.sf.l2j.gameserver.model.actor.instance;
 
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.ai.model.L2CharacterAI;
 import net.sf.l2j.gameserver.ai.model.L2DoorAI;
@@ -35,6 +34,7 @@ import net.sf.l2j.gameserver.model.location.HeadedLocation;
 import net.sf.l2j.gameserver.model.skill.L2Skill;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.*;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 import java.util.concurrent.ScheduledFuture;
 

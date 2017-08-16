@@ -219,7 +219,7 @@ public final class GeoDataConverter extends Server {
                             nswe = updateNsweBelow(x, y, height, nswe);
 
 							/*
-							 * // test byte test = updateNsweNearest(x, y, height, nswe); if (nswe != test) { int geoX = (rx - 16) * GeoStructure.REGION_CELLS_X + x; int geoY = (ry - 10) * GeoStructure.REGION_CELLS_Y + y; System.out.println("M: X=" + geoX + " Y=" + geoY + " Z=" + height + " below="
+                             * // test byte test = updateNsweNearest(x, y, height, nswe); if (nswe != test) { int geoX = (rx - 16) * GeoStructure.REGION_CELLS_X + x; int geoY = (ry - 10) * GeoStructure.REGION_CELLS_Y + y; System.out.println("M: X=" + geoX + " Y=" + geoY + " Z=" + height + " below="
 							 * + Integer.toBinaryString((0x100 | nswe) & 0x1FF).substring(1) + " near=" + Integer.toBinaryString((0x100 | test) & 0x1FF).substring(1)); }
 							 */
 

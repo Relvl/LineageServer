@@ -3,7 +3,6 @@ package net.sf.l2j.gameserver.datatables;
 import net.sf.l2j.Config;
 import net.sf.l2j.L2DatabaseFactoryOld;
 import net.sf.l2j.commons.lang.StringUtil;
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.idfactory.IdFactory;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager;
 import net.sf.l2j.gameserver.model.L2Clan;
@@ -17,6 +16,7 @@ import net.sf.l2j.gameserver.network.client.game_to_client.PledgeShowMemberListA
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
 import net.sf.l2j.gameserver.network.client.game_to_client.UserInfo;
 import net.sf.l2j.gameserver.playerpart.variables.EPlayerVariableKey;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

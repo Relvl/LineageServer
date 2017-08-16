@@ -159,12 +159,12 @@ public final class CharacterCreate extends L2GameClientPacket {
         }
 
         // TODO Сделать тутор!
-//        if (newChar.getQuestState("Tutorial") == null) {
-//            Quest q = ScriptManager.getInstance().getQuest("Tutorial");
-//            if (q != null) {
-//                q.newQuestState(newChar).setState(QuestState.STATE_STARTED);
-//            }
-//        }
+        //        if (newChar.getQuestState("Tutorial") == null) {
+        //            Quest q = ScriptManager.getInstance().getQuest("Tutorial");
+        //            if (q != null) {
+        //                q.newQuestState(newChar).setState(QuestState.STATE_STARTED);
+        //            }
+        //        }
 
         newChar.setOnlineStatus(true, false);
         newChar.deleteMe();

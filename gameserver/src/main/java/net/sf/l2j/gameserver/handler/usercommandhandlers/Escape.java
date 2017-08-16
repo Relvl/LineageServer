@@ -6,13 +6,15 @@ import net.sf.l2j.gameserver.instancemanager.GrandBossManager;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 
 public class Escape implements IUserCommandHandler {
-    private static final int[] COMMAND_IDS = {52};
+    private static final int[] COMMAND_IDS = { 52 };
 
     @Override
     public boolean useUserCommand(int id, L2PcInstance activeChar) {
-        if (activeChar.isCastingNow() || activeChar.isSitting() || activeChar.isMovementDisabled() || activeChar.isOutOfControl() || activeChar.isInOlympiadMode() || activeChar.isInObserverMode() || activeChar.isFestivalParticipant() || activeChar.isInJail() || GrandBossManager.getInstance().isInBossZone(activeChar)) {
+        if (activeChar.isCastingNow() || activeChar.isSitting() || activeChar.isMovementDisabled() || activeChar.isOutOfControl() || activeChar.isInOlympiadMode() || activeChar.isInObserverMode() || activeChar.isFestivalParticipant() || activeChar
+                .isInJail() || GrandBossManager.getInstance().isInBossZone(activeChar)) {
             activeChar.sendMessage("Your current state doesn't allow you to use the /unstuck command.");
             return false;
         }
@@ -24,7 +26,7 @@ public class Escape implements IUserCommandHandler {
             activeChar.doCast(SkillTable.getInfo(2100, 1));
         }
         else {
-            activeChar.sendPacket(new PlaySound("systemmsg_e.809"));
+            activeChar.sendPacket(new PlaySound(ESound.systemmsg_e_809));
             activeChar.sendPacket(SystemMessageId.STUCK_TRANSPORT_IN_FIVE_MINUTES);
             activeChar.doCast(SkillTable.getInfo(2099, 1));
         }

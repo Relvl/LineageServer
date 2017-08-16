@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 
 public class AdminInvul implements IAdminCommandHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(AdminInvul.class);
-    private static final String[] ADMIN_COMMANDS = {"admin_invul", "admin_setinvul"};
+    private static final String[] ADMIN_COMMANDS = { "admin_invul", "admin_setinvul" };
 
     private static void handleInvul(L2PcInstance activeChar) {
         String text;

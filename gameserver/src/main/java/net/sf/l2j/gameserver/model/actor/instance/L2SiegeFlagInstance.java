@@ -1,6 +1,5 @@
 package net.sf.l2j.gameserver.model.actor.instance;
 
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.EIntention;
 import net.sf.l2j.gameserver.instancemanager.SiegeManager;
 import net.sf.l2j.gameserver.model.L2Clan;
@@ -14,6 +13,7 @@ import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.client.game_to_client.ActionFailed;
 import net.sf.l2j.gameserver.network.client.game_to_client.MoveToPawn;
 import net.sf.l2j.gameserver.network.client.game_to_client.SystemMessage;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 
 public class L2SiegeFlagInstance extends L2Npc {
     private final L2Clan _clan;

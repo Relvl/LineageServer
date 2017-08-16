@@ -20,13 +20,12 @@ import java.io.IOException;
 /**
  * @author Hasha
  */
-public abstract class Block
-{
-	public abstract short getHeightNearest(int geoX, int geoY, int worldZ);
-	
-	public abstract byte getNsweNearest(int geoX, int geoY, int worldZ);
-	
-	public abstract byte getNsweBelow(int geoX, int geoY, int worldZ);
-	
-	public abstract void saveBlock(BufferedOutputStream stream) throws IOException;
+public abstract class Block {
+    public abstract short getHeightNearest(int geoX, int geoY, int worldZ);
+
+    public abstract byte getNsweNearest(int geoX, int geoY, int worldZ);
+
+    public abstract byte getNsweBelow(int geoX, int geoY, int worldZ);
+
+    public abstract void saveBlock(BufferedOutputStream stream) throws IOException;
 }

@@ -26,45 +26,37 @@ import net.sf.l2j.gameserver.templates.skills.L2EffectType;
 /**
  * @author ZaKaX (Ghost @ L2D)
  */
-public class EffectClanGate extends L2Effect
-{
-	public EffectClanGate(Env env, EffectTemplate template)
-	{
-		super(env, template);
-	}
-	
-	@Override
-	public boolean onStart()
-	{
-		getEffected().startAbnormalEffect(AbnormalEffect.MAGIC_CIRCLE);
-		if (getEffected() instanceof L2PcInstance)
-		{
-			L2Clan clan = ((L2PcInstance) getEffected()).getClan();
-			if (clan != null)
-			{
-				SystemMessage msg = SystemMessage.getSystemMessage(SystemMessageId.COURT_MAGICIAN_CREATED_PORTAL);
-				clan.broadcastToOtherOnlineMembers(msg, ((L2PcInstance) getEffected()));
-			}
-		}
-		
-		return true;
-	}
-	
-	@Override
-	public boolean onActionTime()
-	{
-		return false;
-	}
-	
-	@Override
-	public void onExit()
-	{
-		getEffected().stopAbnormalEffect(AbnormalEffect.MAGIC_CIRCLE);
-	}
-	
-	@Override
-	public L2EffectType getEffectType()
-	{
-		return L2EffectType.CLAN_GATE;
-	}
+public class EffectClanGate extends L2Effect {
+    public EffectClanGate(Env env, EffectTemplate template) {
+        super(env, template);
+    }
+
+    @Override
+    public boolean onStart() {
+        getEffected().startAbnormalEffect(AbnormalEffect.MAGIC_CIRCLE);
+        if (getEffected() instanceof L2PcInstance) {
+            L2Clan clan = ((L2PcInstance) getEffected()).getClan();
+            if (clan != null) {
+                SystemMessage msg = SystemMessage.getSystemMessage(SystemMessageId.COURT_MAGICIAN_CREATED_PORTAL);
+                clan.broadcastToOtherOnlineMembers(msg, ((L2PcInstance) getEffected()));
+            }
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean onActionTime() {
+        return false;
+    }
+
+    @Override
+    public void onExit() {
+        getEffected().stopAbnormalEffect(AbnormalEffect.MAGIC_CIRCLE);
+    }
+
+    @Override
+    public L2EffectType getEffectType() {
+        return L2EffectType.CLAN_GATE;
+    }
 }

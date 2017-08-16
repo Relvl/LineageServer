@@ -14,19 +14,16 @@
  */
 package net.sf.l2j.gameserver.network.client.game_to_client;
 
-public class ChooseInventoryItem extends L2GameServerPacket
-{
-	private final int _itemId;
-	
-	public ChooseInventoryItem(int itemId)
-	{
-		_itemId = itemId;
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
-		writeC(0x6f);
-		writeD(_itemId);
-	}
+public class ChooseInventoryItem extends L2GameServerPacket {
+    private final int _itemId;
+
+    public ChooseInventoryItem(int itemId) {
+        _itemId = itemId;
+    }
+
+    @Override
+    protected final void writeImpl() {
+        writeC(0x6f);
+        writeD(_itemId);
+    }
 }

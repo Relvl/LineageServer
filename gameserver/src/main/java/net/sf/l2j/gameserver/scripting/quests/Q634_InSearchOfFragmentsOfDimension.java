@@ -14,86 +14,74 @@ package net.sf.l2j.gameserver.scripting.quests;
 
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
-public class Q634_InSearchOfFragmentsOfDimension extends Quest
-{
-	private static final String qn = "Q634_InSearchOfFragmentsOfDimension";
-	
-	// Items
-	private static final int DIMENSION_FRAGMENT = 7079;
-	
-	public Q634_InSearchOfFragmentsOfDimension()
-	{
-		super(634, "In Search of Fragments of Dimension");
-		
-		// Dimensional Gate Keepers.
-		for (int i = 31494; i < 31508; i++)
-		{
-			addStartNpc(i);
-			addTalkId(i);
-		}
-		
-		// All mobs.
-		for (int i = 21208; i < 21256; i++)
-			addKillId(i);
-	}
-	
-	@Override
-	public String onAdvEvent(String event, L2Npc npc, L2PcInstance player)
-	{
-		String htmltext = event;
-		QuestState st = player.getQuestState(qn);
-		if (st == null)
-			return htmltext;
-		
-		if (event.equalsIgnoreCase("02.htm"))
-		{
-			st.setState(QuestState.STATE_STARTED);
-			st.set("cond", "1");
-			st.playSound(QuestState.SOUND_ACCEPT);
-		}
-		else if (event.equalsIgnoreCase("05.htm"))
-		{
-			st.playSound(QuestState.SOUND_FINISH);
-			st.exitQuest(true);
-		}
-		
-		return htmltext;
-	}
-	
-	@Override
-	public String onTalk(L2Npc npc, L2PcInstance player)
-	{
-		QuestState st = player.getQuestState(qn);
-		String htmltext = getNoQuestMsg();
-		if (st == null)
-			return htmltext;
-		
-		switch (st.getState())
-		{
-			case QuestState.STATE_CREATED:
-				htmltext = (player.getLevel() < 20) ? "01a.htm" : "01.htm";
-				break;
-			
-			case QuestState.STATE_STARTED:
-				htmltext = "03.htm";
-				break;
-		}
-		
-		return htmltext;
-	}
-	
-	@Override
-	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
-	{
-		L2PcInstance partyMember = getRandomPartyMemberState(player, npc, QuestState.STATE_STARTED);
-		if (partyMember == null)
-			return null;
-		
-		partyMember.getQuestState(qn).dropItems(DIMENSION_FRAGMENT, (int) (npc.getLevel() * 0.15 + 2.6), -1, 80000);
-		
-		return null;
-	}
+public class Q634_InSearchOfFragmentsOfDimension extends Quest {
+    private static final String qn = "Q634_InSearchOfFragmentsOfDimension";
+
+    // Items
+    private static final int DIMENSION_FRAGMENT = 7079;
+
+    public Q634_InSearchOfFragmentsOfDimension() {
+        super(634, "In Search of Fragments of Dimension");
+
+        // Dimensional Gate Keepers.
+        for (int i = 31494; i < 31508; i++) {
+            addStartNpc(i);
+            addTalkId(i);
+        }
+
+        // All mobs.
+        for (int i = 21208; i < 21256; i++) { addKillId(i); }
+    }
+
+    @Override
+    public String onAdvEvent(String event, L2Npc npc, L2PcInstance player) {
+        String htmltext = event;
+        QuestState st = player.getQuestState(qn);
+        if (st == null) { return htmltext; }
+
+        if (event.equalsIgnoreCase("02.htm")) {
+            st.setState(QuestState.STATE_STARTED);
+            st.set("cond", "1");
+            st.playSound(ESound.ItemSound_quest_accept);
+        }
+        else if (event.equalsIgnoreCase("05.htm")) {
+            st.playSound(ESound.ItemSound_quest_finish);
+            st.exitQuest(true);
+        }
+
+        return htmltext;
+    }
+
+    @Override
+    public String onTalk(L2Npc npc, L2PcInstance player) {
+        QuestState st = player.getQuestState(qn);
+        String htmltext = getNoQuestMsg();
+        if (st == null) { return htmltext; }
+
+        switch (st.getState()) {
+            case QuestState.STATE_CREATED:
+                htmltext = (player.getLevel() < 20) ? "01a.htm" : "01.htm";
+                break;
+
+            case QuestState.STATE_STARTED:
+                htmltext = "03.htm";
+                break;
+        }
+
+        return htmltext;
+    }
+
+    @Override
+    public String onKill(L2Npc npc, L2PcInstance player, boolean isPet) {
+        L2PcInstance partyMember = getRandomPartyMemberState(player, npc, QuestState.STATE_STARTED);
+        if (partyMember == null) { return null; }
+
+        partyMember.getQuestState(qn).dropItems(DIMENSION_FRAGMENT, (int) (npc.getLevel() * 0.15 + 2.6), -1, 80000);
+
+        return null;
+    }
 }

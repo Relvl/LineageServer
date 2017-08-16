@@ -1,7 +1,6 @@
 package net.sf.l2j.gameserver.model.actor.instance;
 
 import net.sf.l2j.commons.random.Rnd;
-import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import net.sf.l2j.gameserver.ai.ECtrlEvent;
 import net.sf.l2j.gameserver.datatables.SkillTable;
 import net.sf.l2j.gameserver.handler.ISkillHandler;
@@ -22,6 +21,7 @@ import net.sf.l2j.gameserver.skills.Formulas;
 import net.sf.l2j.gameserver.skills.l2skills.L2SkillDrain;
 import net.sf.l2j.gameserver.taskmanager.AttackStanceTaskManager;
 import net.sf.l2j.gameserver.templates.skills.L2SkillType;
+import net.sf.l2j.gameserver.util.threading.ThreadPoolManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -534,7 +534,8 @@ public class L2CubicInstance {
                 target = _owner;
             }
 
-            if (_owner.getPet() != null && !_owner.getPet().isDead() && _owner.getPet().getCurrentHp() < _owner.getPet().getMaxHp() && percentleft > (_owner.getPet().getCurrentHp() / _owner.getPet().getMaxHp()) && isInCubicRange(_owner, _owner.getPet())) {
+            if (_owner.getPet() != null && !_owner.getPet().isDead() && _owner.getPet().getCurrentHp() < _owner.getPet().getMaxHp() && percentleft > (_owner.getPet().getCurrentHp() / _owner.getPet()
+                                                                                                                                                                                             .getMaxHp()) && isInCubicRange(_owner, _owner.getPet())) {
                 target = _owner.getPet();
             }
         }

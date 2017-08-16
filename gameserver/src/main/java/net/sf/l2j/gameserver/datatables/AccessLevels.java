@@ -76,7 +76,9 @@ public class AccessLevels {
                     boolean takeAggro = Boolean.valueOf(attrs.getNamedItem("takeAggro").getNodeValue());
                     boolean gainExp = Boolean.valueOf(attrs.getNamedItem("gainExp").getNodeValue());
 
-                    _accessLevels.put(accessLevel, new L2AccessLevel(accessLevel, name, nameColor, titleColor, childs.isEmpty() ? null : childs, isGm, allowPeaceAttack, allowFixedRes, allowTransaction, allowAltG, giveDamage, takeAggro, gainExp));
+                    _accessLevels.put(accessLevel, new L2AccessLevel(accessLevel, name, nameColor, titleColor, childs.isEmpty()
+                                                                                                               ? null
+                                                                                                               : childs, isGm, allowPeaceAttack, allowFixedRes, allowTransaction, allowAltG, giveDamage, takeAggro, gainExp));
                 }
             }
         }

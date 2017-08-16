@@ -21,55 +21,44 @@ import net.sf.l2j.gameserver.model.zone.ZoneId;
 
 /**
  * A zone where your speed is affected.
+ *
  * @author kerberos
  */
-public class L2SwampZone extends ACastleZoneType
-{
-	private int _moveBonus;
-	
-	public L2SwampZone(int id)
-	{
-		super(id);
-		
-		// Setup default speed reduce (in %)
-		_moveBonus = -50;
-	}
-	
-	@Override
-	public void setParameter(String name, String value)
-	{
-		if (name.equals("move_bonus"))
-			_moveBonus = Integer.parseInt(value);
-		else
-			super.setParameter(name, value);
-	}
-	
-	@Override
-	protected void onEnter(L2Character character)
-	{
-		// Castle traps are active only during siege, or if they're activated.
-		if (getCastle() != null && (!isEnabled() || !getCastle().getSiege().isInProgress()))
-			return;
-		
-		character.setInsideZone(ZoneId.SWAMP, true);
-		if (character instanceof L2PcInstance)
-			((L2PcInstance) character).broadcastUserInfo();
-	}
-	
-	@Override
-	protected void onExit(L2Character character)
-	{
-		// don't broadcast info if not needed
-		if (character.isInsideZone(ZoneId.SWAMP))
-		{
-			character.setInsideZone(ZoneId.SWAMP, false);
-			if (character instanceof L2PcInstance)
-				((L2PcInstance) character).broadcastUserInfo();
-		}
-	}
-	
-	public int getMoveBonus()
-	{
-		return _moveBonus;
-	}
+public class L2SwampZone extends ACastleZoneType {
+    private int _moveBonus;
+
+    public L2SwampZone(int id) {
+        super(id);
+
+        // Setup default speed reduce (in %)
+        _moveBonus = -50;
+    }
+
+    @Override
+    public void setParameter(String name, String value) {
+        if (name.equals("move_bonus")) { _moveBonus = Integer.parseInt(value); }
+        else { super.setParameter(name, value); }
+    }
+
+    @Override
+    protected void onEnter(L2Character character) {
+        // Castle traps are active only during siege, or if they're activated.
+        if (getCastle() != null && (!isEnabled() || !getCastle().getSiege().isInProgress())) { return; }
+
+        character.setInsideZone(ZoneId.SWAMP, true);
+        if (character instanceof L2PcInstance) { ((L2PcInstance) character).broadcastUserInfo(); }
+    }
+
+    @Override
+    protected void onExit(L2Character character) {
+        // don't broadcast info if not needed
+        if (character.isInsideZone(ZoneId.SWAMP)) {
+            character.setInsideZone(ZoneId.SWAMP, false);
+            if (character instanceof L2PcInstance) { ((L2PcInstance) character).broadcastUserInfo(); }
+        }
+    }
+
+    public int getMoveBonus() {
+        return _moveBonus;
+    }
 }

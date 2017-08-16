@@ -32,5 +32,4 @@ public interface ISkillTargetCollector {
     default boolean canAddCharacter(L2Character caster, L2Character target, int radius, boolean isDead) {
         return isDead == target.isDead() && !(radius > 0 && !Util.checkIfInRange(radius, caster, target, true));
     }
-
 }

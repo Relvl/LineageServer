@@ -26,7 +26,7 @@ public class TargetAuraCollector implements ISkillTargetCollector {
     public L2Object[] getTargetList(L2Character activeChar, boolean onlyFirst, L2Character target, L2Skill skill) {
         List<L2Character> targetList = new ArrayList<>();
         if (skill.getSkillType() == L2SkillType.DUMMY) {
-            if (onlyFirst) { return new L2Character[]{activeChar}; }
+            if (onlyFirst) { return new L2Character[]{ activeChar }; }
             L2PcInstance actingPlayer = activeChar.getActingPlayer();
             targetList.add(activeChar);
             for (L2Character obj : activeChar.getKnownList().getKnownTypeInRadius(L2Character.class, skill.getSkillRadius())) {
@@ -47,7 +47,7 @@ public class TargetAuraCollector implements ISkillTargetCollector {
                             break;
                     }
                     if (!L2Skill.checkForAreaOffensiveSkills(activeChar, obj, skill, srcInArena)) { continue; }
-                    if (onlyFirst) { return new L2Character[]{obj}; }
+                    if (onlyFirst) { return new L2Character[]{ obj }; }
                     targetList.add(obj);
                 }
             }

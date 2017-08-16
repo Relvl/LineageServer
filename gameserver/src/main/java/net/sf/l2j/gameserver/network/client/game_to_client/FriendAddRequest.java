@@ -17,20 +17,17 @@ package net.sf.l2j.gameserver.network.client.game_to_client;
 /**
  * format cdd
  */
-public class FriendAddRequest extends L2GameServerPacket
-{
-	private final String _requestorName;
-	
-	public FriendAddRequest(String requestorName)
-	{
-		_requestorName = requestorName;
-	}
-	
-	@Override
-	protected final void writeImpl()
-	{
-		writeC(0x7d);
-		writeS(_requestorName);
-		writeD(0);
-	}
+public class FriendAddRequest extends L2GameServerPacket {
+    private final String _requestorName;
+
+    public FriendAddRequest(String requestorName) {
+        _requestorName = requestorName;
+    }
+
+    @Override
+    protected final void writeImpl() {
+        writeC(0x7d);
+        writeS(_requestorName);
+        writeD(0);
+    }
 }

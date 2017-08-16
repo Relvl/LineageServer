@@ -17,7 +17,7 @@ import java.util.List;
 public class TargetPartyCollector implements ISkillTargetCollector {
     @Override
     public L2Object[] getTargetList(L2Character activeChar, boolean onlyFirst, L2Character target, L2Skill skill) {
-        if (onlyFirst) { return new L2Character[]{activeChar}; }
+        if (onlyFirst) { return new L2Character[]{ activeChar }; }
 
         List<L2Character> targetList = new ArrayList<>();
         targetList.add(activeChar);

@@ -53,7 +53,7 @@ public class AuctionManager {
             "(60, 0, '', '', 60, 'Molten Ore Hall', 50000000, 0, 1164841200000)",
             "(61, 0, '', '', 61, 'Titan Hall', 50000000, 0, 1164841200000)"
     };
-    private static final int[] ItemInitDataId = {22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61};
+    private static final int[] ItemInitDataId = { 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61 };
     private final List<Auction> _auctions;
 
     protected AuctionManager() {

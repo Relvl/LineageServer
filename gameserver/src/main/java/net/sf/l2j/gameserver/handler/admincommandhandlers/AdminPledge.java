@@ -127,7 +127,9 @@ public class AdminPledge implements IAdminCommandHandler {
                             }
 
                             clan.addReputationScore(points);
-                            activeChar.sendMessage("You " + (points > 0 ? "added " : "removed ") + Math.abs(points) + " points " + (points > 0 ? "to " : "from ") + clan.getName() + "'s reputation. Their current score is: " + clan.getReputationScore());
+                            activeChar.sendMessage("You " + (points > 0 ? "added " : "removed ") + Math.abs(points) + " points " + (points > 0
+                                                                                                                                    ? "to "
+                                                                                                                                    : "from ") + clan.getName() + "'s reputation. Their current score is: " + clan.getReputationScore());
                         }
                         catch (Exception e) {
                             activeChar.sendMessage("Invalid number parameter for //pledge rep.");

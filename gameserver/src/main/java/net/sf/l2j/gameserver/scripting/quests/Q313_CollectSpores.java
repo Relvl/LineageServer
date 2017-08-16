@@ -15,87 +15,75 @@ package net.sf.l2j.gameserver.scripting.quests;
 import net.sf.l2j.gameserver.model.actor.L2Npc;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
 import net.sf.l2j.gameserver.model.item.ItemConst;
+import net.sf.l2j.gameserver.network.client.game_to_client.PlaySound.ESound;
 import net.sf.l2j.gameserver.scripting.Quest;
 import net.sf.l2j.gameserver.scripting.QuestState;
 
-public class Q313_CollectSpores extends Quest
-{
-	private static final String qn = "Q313_CollectSpores";
-	
-	// Item
-	private static final int SPORE_SAC = 1118;
-	
-	public Q313_CollectSpores()
-	{
-		super(313, "Collect Spores");
-		
-		setItemsIds(SPORE_SAC);
-		
-		addStartNpc(30150); // Herbiel
-		addTalkId(30150);
-		
-		addKillId(20509); // Spore Fungus
-	}
-	
-	@Override
-	public String onAdvEvent(String event, L2Npc npc, L2PcInstance player)
-	{
-		String htmltext = event;
-		QuestState st = player.getQuestState(qn);
-		if (st == null)
-			return htmltext;
-		
-		if (event.equalsIgnoreCase("30150-05.htm"))
-		{
-			st.setState(QuestState.STATE_STARTED);
-			st.set("cond", "1");
-			st.playSound(QuestState.SOUND_ACCEPT);
-		}
-		
-		return htmltext;
-	}
-	
-	@Override
-	public String onTalk(L2Npc npc, L2PcInstance player)
-	{
-		QuestState st = player.getQuestState(qn);
-		String htmltext = getNoQuestMsg();
-		if (st == null)
-			return htmltext;
-		
-		switch (st.getState())
-		{
-			case QuestState.STATE_CREATED:
-				htmltext = (player.getLevel() < 8) ? "30150-02.htm" : "30150-03.htm";
-				break;
-			
-			case QuestState.STATE_STARTED:
-				if (st.getInt("cond") == 1)
-					htmltext = "30150-06.htm";
-				else
-				{
-					htmltext = "30150-07.htm";
-					st.takeItems(SPORE_SAC, -1);
-					st.rewardItems(ItemConst.ADENA_ID, 3500);
-					st.playSound(QuestState.SOUND_FINISH);
-					st.exitQuest(true);
-				}
-				break;
-		}
-		
-		return htmltext;
-	}
-	
-	@Override
-	public String onKill(L2Npc npc, L2PcInstance player, boolean isPet)
-	{
-		QuestState st = checkPlayerCondition(player, npc, "cond", "1");
-		if (st == null)
-			return null;
-		
-		if (st.dropItems(SPORE_SAC, 1, 10, 400000))
-			st.set("cond", "2");
-		
-		return null;
-	}
+public class Q313_CollectSpores extends Quest {
+    private static final String qn = "Q313_CollectSpores";
+
+    // Item
+    private static final int SPORE_SAC = 1118;
+
+    public Q313_CollectSpores() {
+        super(313, "Collect Spores");
+
+        setItemsIds(SPORE_SAC);
+
+        addStartNpc(30150); // Herbiel
+        addTalkId(30150);
+
+        addKillId(20509); // Spore Fungus
+    }
+
+    @Override
+    public String onAdvEvent(String event, L2Npc npc, L2PcInstance player) {
+        String htmltext = event;
+        QuestState st = player.getQuestState(qn);
+        if (st == null) { return htmltext; }
+
+        if (event.equalsIgnoreCase("30150-05.htm")) {
+            st.setState(QuestState.STATE_STARTED);
+            st.set("cond", "1");
+            st.playSound(ESound.ItemSound_quest_accept);
+        }
+
+        return htmltext;
+    }
+
+    @Override
+    public String onTalk(L2Npc npc, L2PcInstance player) {
+        QuestState st = player.getQuestState(qn);
+        String htmltext = getNoQuestMsg();
+        if (st == null) { return htmltext; }
+
+        switch (st.getState()) {
+            case QuestState.STATE_CREATED:
+                htmltext = (player.getLevel() < 8) ? "30150-02.htm" : "30150-03.htm";
+                break;
+
+            case QuestState.STATE_STARTED:
+                if (st.getInt("cond") == 1) { htmltext = "30150-06.htm"; }
+                else {
+                    htmltext = "30150-07.htm";
+                    st.takeItems(SPORE_SAC, -1);
+                    st.rewardItems(ItemConst.ADENA_ID, 3500);
+                    st.playSound(ESound.ItemSound_quest_finish);
+                    st.exitQuest(true);
+                }
+                break;
+        }
+
+        return htmltext;
+    }
+
+    @Override
+    public String onKill(L2Npc npc, L2PcInstance player, boolean isPet) {
+        QuestState st = checkPlayerCondition(player, npc, "cond", "1");
+        if (st == null) { return null; }
+
+        if (st.dropItems(SPORE_SAC, 1, 10, 400000)) { st.set("cond", "2"); }
+
+        return null;
+    }
 }
